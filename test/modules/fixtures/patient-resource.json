@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "mCODEPatientExample01",
+  "meta": {
+    "profile": ["http://hl7.org/fhir/us/mcode/StructureDefinition/obf-Patient"]
+  },
+  "identifier": [
+    {
+      "use": "usual",
+      "system": "http://example.com/clinicaltrialids",
+      "type": {
+        "text": "Clinical Trial Research ID"
+      },
+      "value": "AFT-05"
+    },
+    {
+      "use": "usual",
+      "system": "http://example.com/clinicaltrialsubjectids",
+      "type": {
+        "text": "Clinical Trial Subject ID"
+      },
+      "value": "AFT-05-patient-01"
+    },
+    {
+      "use": "usual",
+      "type": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v2/0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          }
+        ],
+        "text": "Medical Record Number"
+      },
+      "system": "http://hospital.example.org",
+      "value": "m123"
+    }
+  ],
+  "name": [
+    {
+      "family": "Anyperson",
+      "given": ["John", "B."]
+    }
+  ],
+  "gender": "male"
+}

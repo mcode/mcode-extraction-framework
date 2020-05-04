@@ -1,0 +1,53 @@
+{
+  "resourceType": "CarePlan",
+  "id": "Careplan-With-Review-Example",
+  "meta": {
+    "profile": [
+      "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-CarePlanWithReview"
+    ]
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">This resource details the Treatment Plan Changes for a particular patient over a period of time, as modeled in the ICAREdata usecase of mCODE. It is based on the profile found here: http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-CarePlanWithReview.html</div>"
+  },
+  "extension": [
+    {
+      "url": "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review",
+      "extension": [
+        {
+          "url": "CarePlanChangeReason",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "code": "281647001",
+                "system": "http://snomed.info/sct",
+                "display": "Adverse reaction (disorder)"
+              }
+            ],
+            "text": "Adverse reaction (disorder)"
+          }
+        },
+        {
+          "url": "ReviewDate",
+          "valueDate": "2020-01-23"
+        },
+        {
+          "url": "ChangedFlag",
+          "valueBoolean": true
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/abc-def",
+    "display": "Sample Text"
+  },
+  "status": "draft",
+  "intent": "proposal",
+  "created": "2020-01-23T09:07:00Z",
+  "category": [
+    {
+      "coding": [ { "code": "assess-plan", "system": "http://argonaut.hl7.org"}]
+    }
+  ]
+}

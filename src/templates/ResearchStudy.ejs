@@ -1,0 +1,23 @@
+
+<%# Based on https://www.hl7.org/fhir/researchstudy.html %>
+<% /* %>
+{
+  id: String,
+  trialStatus: String,
+  trialResearchID: String
+}
+<% */ %>
+{
+  "resourceType": "ResearchStudy",
+  "id": "<%- id %>",
+  "status": "<%- trialStatus %>",
+  "identifier": [
+      {
+          "system": "http://example.com/clinicaltrialids",
+          "type": {
+              "text": "Clinical Trial Research ID"
+          },
+          "value": "<%- trialResearchID %>"
+      }
+  ]
+}

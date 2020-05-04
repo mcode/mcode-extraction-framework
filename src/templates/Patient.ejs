@@ -1,0 +1,33 @@
+<%# Patient Template %>
+<%# Based on https://mcodeinitiative.github.io/StructureDefinition-obf-Patient.html %>
+<%# Official url: http://hl7.org/fhir/us/mcode/StructureDefinition/obf-Patient %>
+<% /* %>
+{
+  id: String,
+  family: String,
+  given: String,
+  gender: String,
+  identifier: {
+    system: String,
+    value: String,
+  },
+}
+<% */ %>
+{
+    "resourceType": "Patient",
+    "id": "<%- id %>",
+    "identifier": [
+        {
+            "system": "<%- identifier.system %>",
+            "value": "<%- identifier.value %>"
+        }
+    ],
+    "name": [
+        {
+            "text": "<%- `${given} ${family}` %>",
+            "family": "<%- family %>",
+            "given": [ <%- given.split(' ').map(e => `"${e}"`) %> ]
+        }
+    ],
+    "gender": "<%- gender %>"
+}

@@ -1,0 +1,53 @@
+{
+  "resourceType": "Condition",
+  "id": "TQ6-lmYpARvptztb1K4wGKgB",
+  "patient": {
+    "display": "Mitre-Mammogram Mitre-Test-Abnormal"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/icd-9-cm/diagnosis",
+        "code": "174.2",
+        "display": "Malignant neoplasm of upper-inner quadrant of right female breast"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "C7981",
+        "display": "Secondary malignant neoplasm of breast"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "188152004",
+        "display": "Malignant neoplasm of upper-inner quadrant of female breast (disorder)"
+      }
+    ],
+    "text": "Malignant neoplasm of upper-inner quadrant of right female breast"
+  },
+  "category": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "29308-4",
+        "display": "Diagnosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "439401001",
+        "display": "Diagnosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/condition-category",
+        "code": "diagnosis",
+        "display": "Diagnosis"
+      },
+      {
+        "system": "http://argonautwiki.hl7.org/extension-codes",
+        "code": "problem",
+        "display": "Problem"
+      }
+    ],
+    "text": "Diagnosis"
+  },
+  "verificationStatus": "confirmed"
+}

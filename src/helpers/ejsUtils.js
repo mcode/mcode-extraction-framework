@@ -1,0 +1,46 @@
+const fs = require('fs');
+const path = require('path');
+const ejs = require('ejs');
+const _ = require('lodash');
+const shajs = require('sha.js');
+const logger = require('./logger');
+
+
+const fhirTemplateLookup = {
+  CancerDiseaseStatus: fs.readFileSync(path.join(__dirname, '../templates/CancerDiseaseStatus.ejs'), 'utf8'),
+  CarePlanWithReview: fs.readFileSync(path.join(__dirname, '../templates/CarePlanWithReview.ejs'), 'utf8'),
+  Patient: fs.readFileSync(path.join(__dirname, '../templates/Patient.ejs'), 'utf8'),
+  ResearchStudy: fs.readFileSync(path.join(__dirname, '../templates/ResearchStudy.ejs'), 'utf8'),
+  ResearchSubject: fs.readFileSync(path.join(__dirname, '../templates/ResearchSubject.ejs'), 'utf8'),
+};
+
+function loadFhirTemplate(mcodeProfileID) {
+  return fhirTemplateLookup[mcodeProfileID];
+}
+
+function generateResourceId(data) {
+  return shajs('sha256').update(JSON.stringify(data)).digest('hex');
+}
+
+function renderTemplate(template, data) {
+  return JSON.parse(ejs.render(template, { ...data, id: generateResourceId(data) }));
+}
+
+function generateMcodeResources(mcodeProfileID, data) {
+  logger.info(`Generating FHIR resource for ${mcodeProfileID} data element`);
+  const ejsTemplate = loadFhirTemplate(mcodeProfileID);
+  if (!ejsTemplate) throw new Error(`No matching profile for ${mcodeProfileID} found`);
+  return {
+    resourceType: 'Bundle',
+    type: 'collection',
+    entry: (_.isArray(data) ? data : [data]).map((d) => ({
+      fullUrl: `urn:uuid:${generateResourceId(d)}`,
+      resource: renderTemplate(ejsTemplate, d),
+    })),
+  };
+}
+
+module.exports = {
+  renderTemplate,
+  generateMcodeResources,
+};

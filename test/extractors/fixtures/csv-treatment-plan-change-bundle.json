@@ -1,0 +1,50 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:4af65d96ed5787f612d58396d081551c95c6883f359d3505fe0faee7fefc7f85",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "4af65d96ed5787f612d58396d081551c95c6883f359d3505fe0faee7fefc7f85",
+        "meta": {
+          "profile": [
+            "http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-CarePlanWithReview.html"
+          ]
+        },
+        "text": {
+          "status": "additional",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">This resource details the Treatment Plan Changes for a particular patient over a period of time, as modeled in the ICAREdata usecase of mCODE. It is based on the profile found here: http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-CarePlanWithReview.html</div>"
+        },
+        "extension": [
+          {
+            "url": "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review",
+            "extension": [
+              {
+                "url": "CarePlanChangeReason",
+                "valueCodeableConcept": {
+                  "coding": [
+                    { "system": "http://snomed.info/sct", "code": "281647001" }
+                  ]
+                }
+              },
+              { "url": "ReviewDate", "valueDate": "04/15/2020" },
+              { "url": "ChangedFlag", "valueBoolean": true }
+            ]
+          }
+        ],
+        "subject": { "reference": "Patient/subjectId-1" },
+        "status": "draft",
+        "intent": "proposal",
+        "created": "04/15/2020",
+        "category": [
+          {
+            "coding": [
+              { "code": "assess-plan", "system": "http://argonaut.hl7.org" }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "mrn": "EXAMPLE-MRN",
+    "trialSubjectID": "example-subjectId",
+    "enrollmentStatus": "example-enrollment-status",
+    "trialResearchID": "example-researchId",
+    "trialStatus": "example-trialStatus"
+  }
+]

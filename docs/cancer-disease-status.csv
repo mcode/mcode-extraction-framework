@@ -1,0 +1,3 @@
+mrn,subjectFHIRId,conditionFHIRId,diseaseStatus,dateOfObservation
+pat-mrn-1,pat-fhir-1,cond-1,responding,12/2/19
+pat-mrn-2,pat-fhir-2,cond-2,responding,12/2/19

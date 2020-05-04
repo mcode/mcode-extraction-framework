@@ -1,0 +1,20 @@
+{
+  "resourceType": "ResearchSubject",
+  "id": "ab9cbc8c62fe5a3e307a9658929f45547647b100df1446cacbb3b36a49bde52e",
+  "identifier": [
+    {
+      "type": {
+        "text": "Clinical Trial Subject ID"
+      },
+      "system": "http://example.com/clinicaltrialsubjectids",
+      "value": "123"
+    }
+  ],
+  "status": "candidate",
+  "study": {
+    "reference": "ResearchStudy/rs1"
+  },
+  "individual": {
+    "reference": "Patient/mCODEPatient1"
+  }
+}

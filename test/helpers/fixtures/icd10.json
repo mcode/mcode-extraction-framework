@@ -1,0 +1,5 @@
+{
+    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+    "code": "C50211",
+    "display": "Malignant neoplasm of upper-inner quadrant of right female breast"
+}

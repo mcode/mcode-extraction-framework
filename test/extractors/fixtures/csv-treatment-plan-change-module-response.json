@@ -1,0 +1,9 @@
+[
+  {
+    "mrn": "mrn-1",
+    "subjectFHIRId": "subjectId-1",
+    "dateOfCarePlan": "04/15/2020",
+    "reasonCode": "281647001",
+    "changed": "true"
+  }
+]
