@@ -4,17 +4,14 @@ const validExamplePatient = require('./fixtures/patient-resource.json');
 const { renderTemplate } = require('../../src/helpers/ejsUtils');
 
 const PATIENT_VALID_DATA = {
+  mrn: '1234',
   family: 'Patient',
   given: 'Test',
   gender: 'female',
-  identifier: {
-    system: 'http://example.com',
-    value: '1234',
-  },
 };
 
 const PATIENT_INVALID_DATA = {
-  // Omitting identifier information, which is required
+  // Omitting mrn information, which is required
   family: 'Patient',
   given: 'Test',
   gender: 'female',

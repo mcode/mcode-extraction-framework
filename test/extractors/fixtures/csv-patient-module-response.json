@@ -1,0 +1,9 @@
+[
+  {
+    "mrn": "3213742",
+    "patientId": "any-unique-id",
+    "family": "Marshall",
+    "given": "Archy",
+    "gender": "male"
+  }
+]
