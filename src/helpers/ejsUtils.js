@@ -23,7 +23,7 @@ function generateResourceId(data) {
 }
 
 function renderTemplate(template, data) {
-  return JSON.parse(ejs.render(template, { ...data, id: generateResourceId(data) }));
+  return JSON.parse(ejs.render(template, { id: generateResourceId(data), ...data }));
 }
 
 function generateMcodeResources(mcodeProfileID, data) {
