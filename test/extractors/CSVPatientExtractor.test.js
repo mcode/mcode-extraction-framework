@@ -20,7 +20,7 @@ const csvModuleSpy = jest.spyOn(csvModule, 'get');
 csvModuleSpy
   .mockReturnValue(examplePatientResponse);
 
-test('clinical trial information extractor', async () => {
+test('csv patient extractor', async () => {
   const data = await csvPatientExtractor.get({ mrn: MOCK_PATIENT_MRN });
 
   expect(data.resourceType).toEqual('Bundle');
