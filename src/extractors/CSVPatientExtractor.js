@@ -25,7 +25,7 @@ class CSVPatientExtractor {
   async getPatientData(mrn) {
     logger.info('Getting patient data');
     const data = await this.csvModule.get('mrn', mrn);
-    // Should only need one patient
+    // Should only be one patient with this mrn; get that pat from our arr
     return data[0];
   }
 
