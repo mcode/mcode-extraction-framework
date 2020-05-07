@@ -3,6 +3,7 @@ const { generateMcodeResources } = require('../helpers/ejsUtils');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(patientData) {
+  logger.info('Reformatting patient data from CSV into template format');
   // No join needed, just a reformatting
   const {
     mrn, patientId, family, given, gender,
