@@ -39,7 +39,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/pat-fhir-1"
+          "reference": "Patient/subjectId-1"
         },
         "effectiveDateTime": "12/2/19",
         "valueCodeableConcept": {

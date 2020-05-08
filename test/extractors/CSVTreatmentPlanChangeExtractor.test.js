@@ -19,13 +19,13 @@ csvModuleSpy
 const formatData = rewire('../../src/extractors/CSVTreatmentPlanChangeExtractor.js').__get__('formatData');
 
 test('format data from CSV', () => {
-  const expectedErrorString = 'Treatment Plan Change Data missing an expected property: dateOfCarePlan, subjectFHIRId, reasonCode, changed are required';
+  const expectedErrorString = 'Treatment Plan Change Data missing an expected property: dateOfCarePlan, subjectId, reasonCode, changed are required';
   const exampleData = [
     {
       dateOfCarePlan: '04/15/2020',
       changed: true,
       reasonCode: 'exampleCode',
-      subjectFHIRId: 'id',
+      subjectId: 'id',
     },
   ];
 
