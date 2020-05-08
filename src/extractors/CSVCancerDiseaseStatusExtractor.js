@@ -8,8 +8,8 @@ function joinAndReformatData(arrOfDiseaseStatusData) {
   // No join needed - just reformatting for template
   // Check the shape of the data
   arrOfDiseaseStatusData.forEach((record) => {
-    if (!(record.mrn && record.subjectFHIRId && record.conditionFHIRId && record.diseaseStatus && record.dateOfObservation)) {
-      throw new Error('DiseaseStatusData missing an expected property: mrn, subjectFHIRId, conditionFHIRId, diseaseStatus and dateOfObservation are required.');
+    if (!(record.mrn && record.subjectId && record.conditionId && record.diseaseStatus && record.dateOfObservation)) {
+      throw new Error('DiseaseStatusData missing an expected property: mrn, subjectId, conditionId, diseaseStatus and dateOfObservation are required.');
     }
   });
   return arrOfDiseaseStatusData.map((record) => ({
@@ -21,10 +21,10 @@ function joinAndReformatData(arrOfDiseaseStatusData) {
       display: record.diseaseStatus,
     },
     subject: {
-      id: record.subjectFHIRId,
+      id: record.subjectId,
     },
     condition: {
-      id: record.conditionFHIRId,
+      id: record.conditionId,
     },
     effectiveDateTime: record.dateOfObservation,
   }));

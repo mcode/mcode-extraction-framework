@@ -6,9 +6,9 @@ const logger = require('../helpers/logger');
 // Formats data to be passed into template-friendly format
 function formatData(tpcData) {
   return tpcData.map((data) => {
-    const { dateOfCarePlan, changed, reasonCode, subjectFHIRId } = data;
-    if (!dateOfCarePlan || !changed || !reasonCode || !subjectFHIRId) {
-      throw new Error('Treatment Plan Change Data missing an expected property: dateOfCarePlan, subjectFHIRId, reasonCode, changed are required');
+    const { dateOfCarePlan, changed, reasonCode, subjectId } = data;
+    if (!dateOfCarePlan || !changed || !reasonCode || !subjectId) {
+      throw new Error('Treatment Plan Change Data missing an expected property: dateOfCarePlan, subjectId, reasonCode, changed are required');
     }
 
     return {
@@ -21,7 +21,7 @@ function formatData(tpcData) {
         },
       },
       subject: {
-        id: subjectFHIRId,
+        id: subjectId,
       },
     };
   });

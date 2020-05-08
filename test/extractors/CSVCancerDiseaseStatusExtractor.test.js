@@ -34,35 +34,35 @@ test('CSVCancerDiseaseStatusExtractor -> joinAndReformatData', () => {
   // Test all required properties are
   delete localData[0].mrn;
   expect(() => joinAndReformatData(localData)).toThrow(
-    new Error('DiseaseStatusData missing an expected property: mrn, subjectFHIRId, conditionFHIRId, diseaseStatus and dateOfObservation are required.'),
+    new Error('DiseaseStatusData missing an expected property: mrn, subjectId, conditionId, diseaseStatus and dateOfObservation are required.'),
   );
   localData[0].mrn = exampleCSVDiseaseStatusModuleResponse[0].mrn;
   expect(joinAndReformatData(localData)).toEqual(expect.anything());
 
-  delete localData[0].subjectFHIRId;
+  delete localData[0].subjectId;
   expect(() => joinAndReformatData(localData)).toThrow(
-    new Error('DiseaseStatusData missing an expected property: mrn, subjectFHIRId, conditionFHIRId, diseaseStatus and dateOfObservation are required.'),
+    new Error('DiseaseStatusData missing an expected property: mrn, subjectId, conditionId, diseaseStatus and dateOfObservation are required.'),
   );
-  localData[0].subjectFHIRId = exampleCSVDiseaseStatusModuleResponse[0].subjectFHIRId;
+  localData[0].subjectId = exampleCSVDiseaseStatusModuleResponse[0].subjectId;
   expect(joinAndReformatData(localData)).toEqual(expect.anything());
 
-  delete localData[0].conditionFHIRId;
+  delete localData[0].conditionId;
   expect(() => joinAndReformatData(localData)).toThrow(
-    new Error('DiseaseStatusData missing an expected property: mrn, subjectFHIRId, conditionFHIRId, diseaseStatus and dateOfObservation are required.'),
+    new Error('DiseaseStatusData missing an expected property: mrn, subjectId, conditionId, diseaseStatus and dateOfObservation are required.'),
   );
-  localData[0].conditionFHIRId = exampleCSVDiseaseStatusModuleResponse[0].conditionFHIRId;
+  localData[0].conditionId = exampleCSVDiseaseStatusModuleResponse[0].conditionId;
   expect(joinAndReformatData(localData)).toEqual(expect.anything());
 
   delete localData[0].diseaseStatus;
   expect(() => joinAndReformatData(localData)).toThrow(
-    new Error('DiseaseStatusData missing an expected property: mrn, subjectFHIRId, conditionFHIRId, diseaseStatus and dateOfObservation are required.'),
+    new Error('DiseaseStatusData missing an expected property: mrn, subjectId, conditionId, diseaseStatus and dateOfObservation are required.'),
   );
   localData[0].diseaseStatus = exampleCSVDiseaseStatusModuleResponse[0].diseaseStatus;
   expect(joinAndReformatData(localData)).toEqual(expect.anything());
 
   delete localData[0].dateOfObservation;
   expect(() => joinAndReformatData(localData)).toThrow(
-    new Error('DiseaseStatusData missing an expected property: mrn, subjectFHIRId, conditionFHIRId, diseaseStatus and dateOfObservation are required.'),
+    new Error('DiseaseStatusData missing an expected property: mrn, subjectId, conditionId, diseaseStatus and dateOfObservation are required.'),
   );
   localData[0].dateOfObservation = exampleCSVDiseaseStatusModuleResponse[0].dateOfObservation;
   expect(joinAndReformatData(localData)).toEqual(expect.anything());
