@@ -13,7 +13,6 @@
   "scripts": {
     "lint": "eslint \"./**/*.js\"",
     "lint-fix": "eslint \"./**/*.js\" --fix",
-    "cli": "node src/cli.js",
     "test": "cross-env LOGGING=none jest",
     "test:watch": "cross-env LOGGING=none jest --watchAll"
   },
