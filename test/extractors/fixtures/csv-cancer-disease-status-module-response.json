@@ -2,7 +2,7 @@
   {
     "mrn": "pat-mrn-1",
     "subjectId": "subjectId-1",
-    "conditionFHIRId": "cond-1",
+    "conditionId": "cond-1",
     "diseaseStatus": "responding",
     "dateOfObservation": "12/2/19"
   }
