@@ -35,7 +35,7 @@ function generateMcodeResources(mcodeProfileID, data) {
     resourceType: 'Bundle',
     type: 'collection',
     entry: (_.isArray(data) ? data : [data]).map((d) => ({
-      fullUrl: `urn:uuid:${d.id ? d.id : generateResourceId(d)}`,
+      fullUrl: `urn:uuid:${d.id || generateResourceId(d)}`,
       resource: renderTemplate(ejsTemplate, d),
     })),
   };

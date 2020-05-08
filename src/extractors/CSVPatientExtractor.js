@@ -1,5 +1,6 @@
 const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
+const { Extractor } = require('./Extractor');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(patientData) {
@@ -18,8 +19,9 @@ function joinAndReformatData(patientData) {
   };
 }
 
-class CSVPatientExtractor {
+class CSVPatientExtractor extends Extractor {
   constructor(patientCSVPath) {
+    super();
     this.csvModule = new CSVModule(patientCSVPath);
   }
 
