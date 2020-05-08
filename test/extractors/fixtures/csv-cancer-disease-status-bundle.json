@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:d32b1f23bdf0e95058f5bc29359235a5e669fa9d40594947fe32125e9b9b1323",
+      "fullUrl": "urn:uuid:c0782423117bcafaa74fd5e1aef1d5525a0479c6427cd23387ff1c16105db13b",
       "resource": {
         "resourceType": "Observation",
-        "id": "d32b1f23bdf0e95058f5bc29359235a5e669fa9d40594947fe32125e9b9b1323",
+        "id": "c0782423117bcafaa74fd5e1aef1d5525a0479c6427cd23387ff1c16105db13b",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/onco-core-CancerDiseaseStatus"
