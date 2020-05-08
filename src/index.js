@@ -1,8 +1,9 @@
 const logger = require('./helpers/logger');
 const {
   BaseFHIRExtractor,
-  CSVClinicalTrialInformationExtractor,
   CSVCancerDiseaseStatusExtractor,
+  CSVClinicalTrialInformationExtractor,
+  CSVPatientExtractor,
   CSVTreatmentPlanChangeExtractor,
   Extractor,
 } = require('./extractors');
@@ -18,6 +19,7 @@ module.exports = {
   BaseFHIRModule,
   CSVCancerDiseaseStatusExtractor,
   CSVClinicalTrialInformationExtractor,
+  CSVPatientExtractor,
   CSVTreatmentPlanChangeExtractor,
   Extractor,
   logger,

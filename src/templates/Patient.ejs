@@ -4,13 +4,10 @@
 <% /* %>
 {
   id: String,
+  mrn: String,
   family: String,
   given: String,
   gender: String,
-  identifier: {
-    system: String,
-    value: String,
-  },
 }
 <% */ %>
 {
@@ -18,8 +15,18 @@
     "id": "<%- id %>",
     "identifier": [
         {
-            "system": "<%- identifier.system %>",
-            "value": "<%- identifier.value %>"
+            "type" : {
+                "coding" : [
+                  {
+                    "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                    "code" : "MR",
+                    "display" : "Medical Record Number"
+                  }
+                ],
+                "text" : "Medical Record Number"
+            },
+            "system": "http://example.com/system/mrn",
+            "value": "<%- mrn %>"
         }
     ],
     "name": [
