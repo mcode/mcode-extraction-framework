@@ -1,0 +1,31 @@
+{
+  "resourceType": "Condition",
+  "id": "example-id",
+  "subject" : {
+    "reference": "Patient/example-subject-id"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "example-system",
+        "code": "example-code"
+      }
+    ]
+  },
+  "category": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category",
+        "code": "encounter-diagnosis"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ValueSet/condition-ver-status",
+        "code": "confirmed"
+      }
+    ]
+  }
+}

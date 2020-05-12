@@ -9,6 +9,7 @@ const logger = require('./logger');
 const fhirTemplateLookup = {
   CancerDiseaseStatus: fs.readFileSync(path.join(__dirname, '../templates/CancerDiseaseStatus.ejs'), 'utf8'),
   CarePlanWithReview: fs.readFileSync(path.join(__dirname, '../templates/CarePlanWithReview.ejs'), 'utf8'),
+  Condition: fs.readFileSync(path.join(__dirname, '../templates/Condition.ejs'), 'utf8'),
   Patient: fs.readFileSync(path.join(__dirname, '../templates/Patient.ejs'), 'utf8'),
   ResearchStudy: fs.readFileSync(path.join(__dirname, '../templates/ResearchStudy.ejs'), 'utf8'),
   ResearchSubject: fs.readFileSync(path.join(__dirname, '../templates/ResearchSubject.ejs'), 'utf8'),

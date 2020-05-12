@@ -1,0 +1,52 @@
+<%# Condition Template %>
+<%# Based on https://mcodeinitiative.github.io/StructureDefinition-obf-Condition.html %>
+<%# Official url: http://hl7.org/fhir/us/mcode/StructureDefinition/obf-Condition %>
+<% /* %>
+{
+  id: String,
+  subject: {
+    id: String,
+    name: String,
+  },
+  code: {
+    system: String,
+    code: String,
+    display: String,
+  },
+}
+<% */ %>
+{
+  "resourceType": "Condition",
+  "id": "<%- id %>",
+  "subject" : {
+    "reference": "Patient/<%- subject.id %>"<% if (subject.name) { %>,
+    "display": "<%- subject.name %>"
+    <% } %>
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "<%- code.system %>",
+        "code": "<%- code.code %>"<% if (code.display) { %>,
+        "display": "<%- code.display %>"
+        <% } %>
+      }
+    ]
+  },
+  "category": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category",
+        "code": "encounter-diagnosis"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ValueSet/condition-ver-status",
+        "code": "confirmed"
+      }
+    ]
+  }
+}
