@@ -1,0 +1,35 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:conditionId-1",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "conditionId-1",
+        "subject": { "reference": "Patient/subjectId-1" },
+        "code": {
+          "coding": [
+            { "system": "example-code-system", "code": "example-code" }
+          ]
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category",
+              "code": "encounter-diagnosis"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

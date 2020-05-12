@@ -1,0 +1,9 @@
+[
+  {
+    "mrn": "mrn-1",
+    "conditionId": "conditionId-1",
+    "subjectId": "subjectId-1",
+    "codeSystem": "example-code-system",
+    "code": "example-code"
+  }
+]
