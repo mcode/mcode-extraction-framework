@@ -6,12 +6,12 @@ const logger = require('../helpers/logger');
 // Formats data to be passed into template-friendly format
 function formatData(conditionData) {
   return conditionData.map((data) => {
-    const { conditionId, subjectId, codeSystem, code } = data;
+    const { mrn, conditionId, codeSystem, code } = data;
 
     return {
       id: conditionId,
       subject: {
-        id: subjectId,
+        id: mrn,
       },
       code: {
         code,
