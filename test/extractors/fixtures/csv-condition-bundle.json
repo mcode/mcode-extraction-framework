@@ -13,18 +13,20 @@
             { "system": "example-code-system", "code": "example-code" }
           ]
         },
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category",
-              "code": "problem-list-item"
-            }
-          ]
-        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item"
+              }
+            ]
+          }
+        ],
         "verificationStatus": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/ValueSet/condition-ver-status",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
               "code": "confirmed"
             }
           ]
