@@ -31,9 +31,8 @@ describe('test Condition template', () => {
       CONDITION_TEMPLATE,
       CONDITION_VALID_DATA,
     );
-    expect(generateCondition.id).toEqual(validExampleCondition.id);
-    expect(generateCondition.code).toEqual(validExampleCondition.code);
-    expect(generateCondition.subject).toEqual(validExampleCondition.subject);
+
+    expect(generateCondition).toEqual(validExampleCondition);
   });
 
   test('invalid data should throw an error', () => {
