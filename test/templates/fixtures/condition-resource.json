@@ -16,7 +16,7 @@
     "coding": [
       {
         "system": "http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category",
-        "code": "encounter-diagnosis"
+        "code": "problem-list-item"
       }
     ]
   },
