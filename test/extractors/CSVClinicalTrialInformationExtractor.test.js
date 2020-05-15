@@ -21,11 +21,10 @@ csvModuleSpy
 
 test('clinical trial information extractor', async () => {
   const data = await csvClinicalTrialInformationExtractor.get({ mrn: MOCK_PATIENT_MRN });
-  const exampleBundleWithMRN = { ...exampleClinicalTrialInformationBundle };
 
   expect(data.resourceType).toEqual('Bundle');
   expect(data.type).toEqual('collection');
   expect(data.entry).toBeDefined();
   expect(data.entry.length).toEqual(2);
-  expect(data.entry).toEqual(exampleBundleWithMRN.entry);
+  expect(data.entry).toEqual(exampleClinicalTrialInformationBundle.entry);
 });

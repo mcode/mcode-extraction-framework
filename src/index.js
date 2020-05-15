@@ -6,7 +6,6 @@ const {
   CSVPatientExtractor,
   CSVTreatmentPlanChangeExtractor,
   Extractor,
-  ServiceClinicalTrialInformationExtractor,
 } = require('./extractors');
 const { BaseFHIRModule } = require('./modules');
 const { getPatientName } = require('./helpers/patientUtils');
@@ -23,7 +22,6 @@ module.exports = {
   CSVPatientExtractor,
   CSVTreatmentPlanChangeExtractor,
   Extractor,
-  ServiceClinicalTrialInformationExtractor,
   logger,
   allResourcesInBundle,
   firstResourceInBundle,
