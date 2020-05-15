@@ -7,6 +7,10 @@ const logger = require('../helpers/logger');
 function joinClinicalTrialData(patientId, clinicalTrialData) {
   const { trialSubjectID, enrollmentStatus, trialResearchID, trialStatus } = clinicalTrialData;
 
+  if (!(patientId && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
+    throw new Error('Clinical trial missing an expected property: patientId, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
+  }
+
   // Need separate data objects for ResearchSubject and ResearchStudy so that they get different resource ids
   return {
     formattedDataSubject: {
