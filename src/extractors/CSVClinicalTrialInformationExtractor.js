@@ -1,11 +1,15 @@
 const { Extractor } = require('./Extractor');
-const { BaseFHIRModule, CSVModule } = require('../modules');
-const { isBundleEmpty, firstResourceInBundle, firstEntryInBundle } = require('../helpers/fhirUtils');
+const { CSVModule } = require('../modules');
+const { firstEntryInBundle } = require('../helpers/fhirUtils');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const logger = require('../helpers/logger');
 
 function joinClinicalTrialData(patientId, clinicalTrialData) {
   const { trialSubjectID, enrollmentStatus, trialResearchID, trialStatus } = clinicalTrialData;
+
+  if (!(patientId && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
+    throw new Error('Clinical trial missing an expected property: patientId, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
+  }
 
   // Need separate data objects for ResearchSubject and ResearchStudy so that they get different resource ids
   return {
@@ -22,25 +26,18 @@ function joinClinicalTrialData(patientId, clinicalTrialData) {
   };
 }
 
+// eslint-disable-next-line no-unused-vars
+function getPatientId(contextBundle) {
+  // When context enabled:
+  // Use FHIR path to get patient resource off bundle (and remove eslint-disable)
+  // If patient, get id off of that, return id;
+  // If no patient, return;
+}
+
 class CSVClinicalTrialInformationExtractor extends Extractor {
-  constructor(baseFhirUrl, requestHeaders, clinicalTrialCSVPath) {
+  constructor(clinicalTrialCSVPath) {
     super();
     this.csvModule = new CSVModule(clinicalTrialCSVPath);
-    this.baseFHIRModule = new BaseFHIRModule(baseFhirUrl, requestHeaders);
-  }
-
-  updateRequestHeaders(newHeaders) {
-    this.baseFHIRModule.updateRequestHeaders(newHeaders);
-  }
-
-  async getPatient(mrn) {
-    logger.info('Getting patient information for patient by MRN');
-    const patientSearchSet = await this.baseFHIRModule.search('Patient', { identifier: mrn });
-    if (isBundleEmpty(patientSearchSet)) {
-      throw Error('Patient search bundle that was supposed to have entries had 0');
-    }
-    logger.info(`Found ${patientSearchSet.total} result(s) in Patient search`);
-    return firstResourceInBundle(patientSearchSet);
   }
 
   async getClinicalTrialData(mrn) {
@@ -50,12 +47,12 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
     return data[0];
   }
 
-  async get({ mrn }) {
-    const patient = await this.getPatient(mrn);
+  async get({ mrn, contextBundle }) {
+    const patientId = getPatientId(contextBundle) || mrn;
     const clinicalTrialData = await this.getClinicalTrialData(mrn);
 
     // Format data for research study and research subject
-    const formattedData = joinClinicalTrialData(patient.id, clinicalTrialData);
+    const formattedData = joinClinicalTrialData(patientId, clinicalTrialData);
     const { formattedDataSubject, formattedDataStudy } = formattedData;
 
     // Generate ResearchSubject and ResearchStudy resources and combine into one bundle to return

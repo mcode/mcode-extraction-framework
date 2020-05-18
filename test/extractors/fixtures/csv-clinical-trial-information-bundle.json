@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:8a40c2bc30fd4e8f43d1f52bee23e6e0347778eb5cc9723e02d69a9c7330999b",
+      "fullUrl": "urn:uuid:d528f1b04f5d3588ef80ca680fbc0f82b93e7c05eb08d293f698c7b075fc0b25",
       "resource": {
         "resourceType": "ResearchSubject",
-        "id": "8a40c2bc30fd4e8f43d1f52bee23e6e0347778eb5cc9723e02d69a9c7330999b",
+        "id": "d528f1b04f5d3588ef80ca680fbc0f82b93e7c05eb08d293f698c7b075fc0b25",
         "identifier": [
           {
             "system": "http://example.com/clinicaltrialsubjectids",
@@ -16,7 +16,7 @@
         ],
         "status": "example-enrollment-status",
         "study": { "reference": "ResearchStudy/example-researchId" },
-        "individual": { "reference": "Patient/mCODEPatientExample01" }
+        "individual": { "reference": "Patient/EXAMPLE-MRN" }
       }
     },
     {
