@@ -39,6 +39,20 @@ describe('CSVClinicalTrialInformationExtractor', () => {
 
     // patientId is required to be passed in
     expect(() => joinClinicalTrialData(undefined, firstClinicalTrialInfoResponse)).toThrow(new Error(expectedErrorString));
+
+    // joinClinicalTrialData should return correct format
+    expect(joinClinicalTrialData(MOCK_PATIENT_MRN, firstClinicalTrialInfoResponse)).toEqual({
+      formattedDataSubject: {
+        enrollmentStatus: firstClinicalTrialInfoResponse.enrollmentStatus,
+        trialSubjectID: firstClinicalTrialInfoResponse.trialSubjectID,
+        trialResearchID: firstClinicalTrialInfoResponse.trialResearchID,
+        patientId: MOCK_PATIENT_MRN,
+      },
+      formattedDataStudy: {
+        trialStatus: firstClinicalTrialInfoResponse.trialStatus,
+        trialResearchID: firstClinicalTrialInfoResponse.trialResearchID,
+      },
+    });
   });
 
   test('should return a bundle with the correct resources', async () => {
