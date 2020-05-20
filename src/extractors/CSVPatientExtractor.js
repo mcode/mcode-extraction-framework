@@ -20,9 +20,9 @@ function joinAndReformatData(patientData) {
 }
 
 class CSVPatientExtractor extends Extractor {
-  constructor(patientCSVPath) {
+  constructor({ filePath }) {
     super();
-    this.csvModule = new CSVModule(patientCSVPath);
+    this.csvModule = new CSVModule(filePath);
   }
 
   async getPatientData(mrn) {

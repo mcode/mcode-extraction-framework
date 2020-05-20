@@ -35,9 +35,9 @@ function getPatientId(contextBundle) {
 }
 
 class CSVClinicalTrialInformationExtractor extends Extractor {
-  constructor(clinicalTrialCSVPath) {
+  constructor({ filePath }) {
     super();
-    this.csvModule = new CSVModule(clinicalTrialCSVPath);
+    this.csvModule = new CSVModule(filePath);
   }
 
   async getClinicalTrialData(mrn) {

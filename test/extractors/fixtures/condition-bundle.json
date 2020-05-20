@@ -1,0 +1,327 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 5,
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "TQJ-wIMDyCRN1gwoAY9A8tAB",
+        "patient": {
+          "display": "Mychart, Theodore"
+        },
+        "asserter": {
+          "display": "Physician Family Medicine, MD"
+        },
+        "dateRecorded": "2006-07-07",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-9-cm/diagnosis",
+              "code": "401.9",
+              "display": "Essential hypertension"
+            },
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.90",
+              "code": "I10",
+              "display": "Essential hypertension"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "59621000",
+              "display": "Essential hypertension (disorder)"
+            }
+          ],
+          "text": "Essential hypertension"
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29308-4",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "439401001",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://argonautwiki.hl7.org/extension-codes",
+              "code": "problem",
+              "display": "Problem"
+            }
+          ],
+          "text": "Diagnosis"
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "severity": {
+          "text": "High"
+        },
+        "onsetDateTime": "2011-02-15"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "TnHWKG1c3Kc571xwwVjTuGQB",
+        "patient": {
+          "display": "Mychart, Theodore"
+        },
+        "asserter": {
+          "display": "Physician Family Medicine, MD"
+        },
+        "dateRecorded": "2006-07-07",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-9-cm/diagnosis",
+              "code": "530.81",
+              "display": "Gastroesophageal reflux disease"
+            },
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.90",
+              "code": "K21.9",
+              "display": "Gastroesophageal reflux disease"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "235595009",
+              "display": "Gastroesophageal reflux disease (disorder)"
+            }
+          ],
+          "text": "Gastroesophageal reflux disease"
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29308-4",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "439401001",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://argonautwiki.hl7.org/extension-codes",
+              "code": "problem",
+              "display": "Problem"
+            }
+          ],
+          "text": "Diagnosis"
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2006-07-07"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Td1uO2js2PVWBKSBTYS5ppwB",
+        "patient": {
+          "display": "Mychart, Theodore"
+        },
+        "asserter": {
+          "display": "Physician Family Medicine, MD"
+        },
+        "dateRecorded": "2006-07-12",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-9-cm/diagnosis",
+              "code": "244.9",
+              "display": "Hypothyroidism"
+            },
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.90",
+              "code": "E03.9",
+              "display": "Hypothyroidism"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "40930008",
+              "display": "Hypothyroidism (disorder)"
+            }
+          ],
+          "text": "Hypothyroidism"
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29308-4",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "439401001",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://argonautwiki.hl7.org/extension-codes",
+              "code": "problem",
+              "display": "Problem"
+            }
+          ],
+          "text": "Diagnosis"
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2006-07-12"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "TNev-ooPT7KkDcjx6fXFFEAB",
+        "patient": {
+          "display": "Mychart, Theodore"
+        },
+        "asserter": {
+          "display": "Physician Family Medicine, MD"
+        },
+        "dateRecorded": "2009-03-18",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-9-cm/diagnosis",
+              "code": "272.0",
+              "display": "Hypercholesterolemia"
+            },
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.90",
+              "code": "E78.00",
+              "display": "Hypercholesterolemia"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "13644009",
+              "display": "Hypercholesterolemia (disorder)"
+            }
+          ],
+          "text": "Hypercholesterolemia"
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29308-4",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "439401001",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://argonautwiki.hl7.org/extension-codes",
+              "code": "problem",
+              "display": "Problem"
+            }
+          ],
+          "text": "Diagnosis"
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2009-03-18"
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "T3oabhwKipqzR.2fTblQm-QB",
+        "patient": {
+          "display": "Mychart, Theodore"
+        },
+        "dateRecorded": "2020-05-19",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-9-cm/diagnosis",
+              "code": "388.8",
+              "display": "Crackling sound in left ear"
+            },
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.90",
+              "code": "H93.8X2",
+              "display": "Crackling sound in left ear"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "95823003",
+              "display": "Leudet's tinnitus (disorder)"
+            }
+          ],
+          "text": "Crackling sound in left ear"
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29308-4",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "439401001",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis",
+              "display": "Diagnosis"
+            },
+            {
+              "system": "http://argonautwiki.hl7.org/extension-codes",
+              "code": "problem",
+              "display": "Problem"
+            }
+          ],
+          "text": "Diagnosis"
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2020-05-19"
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}

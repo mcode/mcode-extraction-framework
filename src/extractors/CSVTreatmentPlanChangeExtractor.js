@@ -28,9 +28,9 @@ function formatData(tpcData) {
 }
 
 class CSVTreatmentPlanChangeExtractor extends Extractor {
-  constructor(csvPath) {
+  constructor({ filePath }) {
     super();
-    this.csvModule = new CSVModule(csvPath);
+    this.csvModule = new CSVModule(filePath);
   }
 
   async getTPCData(mrn) {

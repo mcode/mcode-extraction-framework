@@ -22,9 +22,9 @@ function formatData(conditionData) {
 }
 
 class CSVConditionExtractor extends Extractor {
-  constructor(conditionCSVPath) {
+  constructor({ filePath }) {
     super();
-    this.csvModule = new CSVModule(conditionCSVPath);
+    this.csvModule = new CSVModule(filePath);
   }
 
   async getConditionData(mrn) {

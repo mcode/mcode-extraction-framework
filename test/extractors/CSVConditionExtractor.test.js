@@ -6,7 +6,9 @@ const exampleConditionBundle = require('./fixtures/csv-condition-bundle.json');
 // Constants for mock tests
 const MOCK_PATIENT_MRN = 'mrn-1';
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv'); // need a valid path/csv here to avoid parse error
-const csvConditionExtractor = new CSVConditionExtractor(MOCK_CSV_PATH);
+const csvConditionExtractor = new CSVConditionExtractor({
+  filePath: MOCK_CSV_PATH,
+});
 
 const { csvModule } = csvConditionExtractor;
 

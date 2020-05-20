@@ -8,9 +8,9 @@ const MOCK_PATIENT_MRN = 'EXAMPLE-MRN';
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv'); // need a valid path/csv here to avoid parse error
 
 // Instantiate module with mock parameters
-const csvPatientExtractor = new CSVPatientExtractor(
-  MOCK_CSV_PATH,
-);
+const csvPatientExtractor = new CSVPatientExtractor({
+  filePath: MOCK_CSV_PATH,
+});
 
 // Destructure all modules
 const { csvModule } = csvPatientExtractor;

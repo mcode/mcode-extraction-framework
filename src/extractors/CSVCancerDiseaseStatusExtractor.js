@@ -31,8 +31,8 @@ function joinAndReformatData(arrOfDiseaseStatusData) {
 }
 
 class CSVCancerDiseaseStatusExtractor {
-  constructor(diseaseStatusCSVPath) {
-    this.csvModule = new CSVModule(diseaseStatusCSVPath);
+  constructor({ filePath }) {
+    this.csvModule = new CSVModule(filePath);
   }
 
   async getDiseaseStatusData(mrn) {
