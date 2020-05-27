@@ -1,12 +1,12 @@
 const { Extractor } = require('./Extractor');
 const { BaseFHIRModule } = require('../modules');
-const { determineVersion, mapFHIRVersions, isBundleEmpty } = require('../helpers/fhirUtils');
+const { determineVersion, mapFHIRVersions, isBundleEmpty, getBundleResourcesByType } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
 // eslint-disable-next-line no-unused-vars
 function parseContextForPatientId(context) {
-  // TODO: Sync with Dan
-  return undefined;
+  const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
+  return patientInContext ? patientInContext.id : undefined;
 }
 
 class BaseFHIRExtractor extends Extractor {
