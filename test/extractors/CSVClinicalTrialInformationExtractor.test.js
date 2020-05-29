@@ -24,6 +24,7 @@ csvModuleSpy
   .mockReturnValue(exampleClinicalTrialInformationResponse);
 
 const joinClinicalTrialData = rewire('../../src/extractors/CSVClinicalTrialInformationExtractor.js').__get__('joinClinicalTrialData');
+const getPatientId = rewire('../../src/extractors/CSVClinicalTrialInformationExtractor.js').__get__('getPatientId');
 
 describe('CSVClinicalTrialInformationExtractor', () => {
   test('should join clinical trial data appropriately', () => {
@@ -55,6 +56,31 @@ describe('CSVClinicalTrialInformationExtractor', () => {
         trialResearchID: firstClinicalTrialInfoResponse.trialResearchID,
       },
     });
+  });
+
+  test('should return patient id when patient resource in context', () => {
+    const contextPatient = {
+      resourceType: 'Patient',
+      id: 'context-patient-id',
+    };
+    const contextBundle = {
+      resourceType: 'Bundle',
+      type: 'collection',
+      entry: [
+        {
+          fullUrl: 'context-url',
+          resource: contextPatient,
+        },
+      ],
+    };
+
+    const patientId = getPatientId(contextBundle);
+    expect(patientId).toEqual(contextPatient.id);
+  });
+
+  test('getPatientId should return undefined when no patient resource in context', () => {
+    const patientId = getPatientId({});
+    expect(patientId).toBeUndefined();
   });
 
   test('should return a bundle with the correct resources', async () => {

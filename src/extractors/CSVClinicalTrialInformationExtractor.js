@@ -1,7 +1,7 @@
 const path = require('path');
 const { Extractor } = require('./Extractor');
 const { CSVModule } = require('../modules');
-const { firstEntryInBundle } = require('../helpers/fhirUtils');
+const { firstEntryInBundle, getBundleResourcesByType } = require('../helpers/fhirUtils');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const logger = require('../helpers/logger');
 
@@ -27,12 +27,9 @@ function joinClinicalTrialData(patientId, clinicalTrialData) {
   };
 }
 
-// eslint-disable-next-line no-unused-vars
-function getPatientId(contextBundle) {
-  // When context enabled:
-  // Use FHIR path to get patient resource off bundle (and remove eslint-disable)
-  // If patient, get id off of that, return id;
-  // If no patient, return;
+function getPatientId(context) {
+  const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
+  return patientInContext ? patientInContext.id : undefined;
 }
 
 class CSVClinicalTrialInformationExtractor extends Extractor {
@@ -48,8 +45,8 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
     return data[0];
   }
 
-  async get({ mrn, contextBundle }) {
-    const patientId = getPatientId(contextBundle) || mrn;
+  async get({ mrn, context }) {
+    const patientId = getPatientId(context) || mrn;
     const clinicalTrialData = await this.getClinicalTrialData(mrn);
 
     // Format data for research study and research subject
