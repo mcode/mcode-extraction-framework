@@ -2,17 +2,13 @@ const { FHIRClient } = require('fhir-crud-client');
 const logger = require('../helpers/logger');
 
 class BaseFHIRModule {
-  constructor(baseUrl, requestHeaders, authConfig) {
+  constructor(baseUrl, requestHeaders) {
     this.baseUrl = baseUrl;
-    this.authConfig = authConfig;
-    // All the request headers for our request
-    this.requestHeaders = requestHeaders;
-    this.client = new FHIRClient(this.baseUrl, this.requestHeaders);
+    this.client = new FHIRClient(this.baseUrl, requestHeaders);
   }
 
   updateRequestHeaders(newHeaders) {
-    this.requestHeaders = newHeaders;
-    this.client.updateRequestHeaders(this.requestHeaders);
+    this.client.updateRequestHeaders(newHeaders);
   }
 
   async search(resourceType, params) {

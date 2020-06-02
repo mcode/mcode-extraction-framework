@@ -1,3 +1,4 @@
+const path = require('path');
 const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { Extractor } = require('./Extractor');
@@ -22,9 +23,9 @@ function formatData(conditionData) {
 }
 
 class CSVConditionExtractor extends Extractor {
-  constructor(conditionCSVPath) {
+  constructor({ filePath }) {
     super();
-    this.csvModule = new CSVModule(conditionCSVPath);
+    this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
   async getConditionData(mrn) {

@@ -1,3 +1,4 @@
+const path = require('path');
 const { CSVModule } = require('../modules');
 const { getDiseaseStatusCode } = require('../helpers/diseaseStatusUtils');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
@@ -31,8 +32,8 @@ function joinAndReformatData(arrOfDiseaseStatusData) {
 }
 
 class CSVCancerDiseaseStatusExtractor {
-  constructor(diseaseStatusCSVPath) {
-    this.csvModule = new CSVModule(diseaseStatusCSVPath);
+  constructor({ filePath }) {
+    this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
   async getDiseaseStatusData(mrn) {

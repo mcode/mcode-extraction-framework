@@ -1,3 +1,4 @@
+const path = require('path');
 const { Extractor } = require('./Extractor');
 const { CSVModule } = require('../modules');
 const { firstEntryInBundle } = require('../helpers/fhirUtils');
@@ -35,9 +36,9 @@ function getPatientId(contextBundle) {
 }
 
 class CSVClinicalTrialInformationExtractor extends Extractor {
-  constructor(clinicalTrialCSVPath) {
+  constructor({ filePath }) {
     super();
-    this.csvModule = new CSVModule(clinicalTrialCSVPath);
+    this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
   async getClinicalTrialData(mrn) {

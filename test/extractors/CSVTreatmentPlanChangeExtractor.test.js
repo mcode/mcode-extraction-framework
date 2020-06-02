@@ -7,7 +7,9 @@ const exampleCSVTPCBundle = require('./fixtures/csv-treatment-plan-change-bundle
 
 const MOCK_MRN = 'mrn-1';
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv');
-const csvTPCExtractor = new CSVTreatmentPlanChangeExtractor(MOCK_CSV_PATH);
+const csvTPCExtractor = new CSVTreatmentPlanChangeExtractor({
+  filePath: MOCK_CSV_PATH,
+});
 
 const { csvModule } = csvTPCExtractor;
 

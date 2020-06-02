@@ -11,7 +11,9 @@ const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv'); // need a va
 const MOCK_PATIENT_MRN = 'EXAMPLE-MRN';
 
 // Instantiate module with mock parameters
-const csvClinicalTrialInformationExtractor = new CSVClinicalTrialInformationExtractor(MOCK_CSV_PATH);
+const csvClinicalTrialInformationExtractor = new CSVClinicalTrialInformationExtractor({
+  filePath: MOCK_CSV_PATH,
+});
 
 // Destructure all modules
 const { csvModule } = csvClinicalTrialInformationExtractor;

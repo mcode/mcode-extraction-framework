@@ -17,9 +17,9 @@ function allResourcesInBundle(bundle) {
 function determineVersion(fhirBundle) {
   // TODO: Actual determination of versions
   if (fhirBundle) {
-    return 'DSTU2';
+    return 'R4';
   }
-  return 'DSTU2';
+  return 'R4';
 }
 
 function mapFHIRVersions(resource, currentVersion, targetVersion) {
