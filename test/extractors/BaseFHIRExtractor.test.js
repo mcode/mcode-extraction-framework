@@ -53,7 +53,9 @@ describe('BaseFhirExtractor', () => {
   // });
 
   // test('parametrizeArgsForFHIRModule parses data off of context if available', async () => {
+  //   baseFHIRModuleSearchSpy.mockClear();
   //   const paramsBasedOnContext = await baseFHIRExtractor.parametrizeArgsForFHIRModule({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
+  //   expect(baseFHIRModuleSearchSpy).not.toHaveBeenCalled();
   //   expect(paramsBasedOnContext).toHaveProperty('patient');
   //   expect(paramsBasedOnContext.patient).toEqual(MOCK_CONTEXT.entry[0].id);
   // });
