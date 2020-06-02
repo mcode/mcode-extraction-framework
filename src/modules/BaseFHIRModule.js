@@ -4,7 +4,6 @@ const logger = require('../helpers/logger');
 class BaseFHIRModule {
   constructor(baseUrl, requestHeaders) {
     this.baseUrl = baseUrl;
-    // All the request headers for our request
     this.client = new FHIRClient(this.baseUrl, requestHeaders);
   }
 
