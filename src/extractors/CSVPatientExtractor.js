@@ -1,3 +1,4 @@
+const path = require('path');
 const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { Extractor } = require('./Extractor');
@@ -22,7 +23,7 @@ function joinAndReformatData(patientData) {
 class CSVPatientExtractor extends Extractor {
   constructor({ filePath }) {
     super();
-    this.csvModule = new CSVModule(filePath);
+    this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
   async getPatientData(mrn) {

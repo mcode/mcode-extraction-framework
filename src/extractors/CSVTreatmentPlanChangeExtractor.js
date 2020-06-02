@@ -1,3 +1,4 @@
+const path = require('path');
 const { Extractor } = require('./Extractor');
 const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
@@ -30,7 +31,7 @@ function formatData(tpcData) {
 class CSVTreatmentPlanChangeExtractor extends Extractor {
   constructor({ filePath }) {
     super();
-    this.csvModule = new CSVModule(filePath);
+    this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
   async getTPCData(mrn) {
