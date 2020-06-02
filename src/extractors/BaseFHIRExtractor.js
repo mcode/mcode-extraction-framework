@@ -59,7 +59,6 @@ class BaseFHIRExtractor extends Extractor {
     return fhirResponseBundle;
   }
 
-  // eslint-disable-next-line no-unused-vars
   async get(argumentObject) {
     // Need to translate MRN to FHIR params
     const params = await this.parametrizeArgsForFHIRModule(argumentObject);
