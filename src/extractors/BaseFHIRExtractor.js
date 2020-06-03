@@ -3,7 +3,6 @@ const { BaseFHIRModule } = require('../modules');
 const { determineVersion, mapFHIRVersions, isBundleEmpty, getBundleResourcesByType } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
-// eslint-disable-next-line no-unused-vars
 function parseContextForPatientId(context) {
   const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
   return patientInContext ? patientInContext.id : undefined;
