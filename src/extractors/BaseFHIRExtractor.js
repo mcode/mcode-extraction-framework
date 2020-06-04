@@ -26,7 +26,7 @@ class BaseFHIRExtractor extends Extractor {
     if (idFromContext) return { patient: idFromContext };
 
     logger.info('No patient ID in context; fetching with baseFHIRModule');
-    const patientResponseBundle = await this.baseFHIRModule.search('Patient', { identifier: mrn });
+    const patientResponseBundle = await this.baseFHIRModule.search('Patient', { identifier: `MRN|${mrn}` });
     if (!patientResponseBundle || !patientResponseBundle.entry || !patientResponseBundle.entry[0] || !patientResponseBundle.entry[0].resource) {
       logger.error(`Could not get a patient ID to cross-reference for ${this.resourceType}`);
       return {};

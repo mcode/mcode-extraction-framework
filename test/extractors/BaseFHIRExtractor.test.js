@@ -32,7 +32,7 @@ const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
 const moduleRequestHeadersSpy = jest.spyOn(baseFHIRModule, 'updateRequestHeaders');
 
 when(baseFHIRModuleSearchSpy)
-  .calledWith('Patient', { identifier: MOCK_PATIENT_MRN })
+  .calledWith('Patient', { identifier: `MRN|${MOCK_PATIENT_MRN}` })
   .mockReturnValue(examplePatientBundle);
 // Ensure that data is returned for condition
 when(baseFHIRModuleSearchSpy)

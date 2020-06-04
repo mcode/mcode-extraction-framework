@@ -17,7 +17,7 @@ describe('FHIRObservationExtractor', () => {
   test('Constructor sets resourceType as Observation', () => {
     expect(extractor.resourceType).toEqual('Observation');
   });
-  test('Constructor sets category is based on BASECATEGORY if not provided', () => {
+  test('Constructor sets category based on BASE_CATEGORIES if not provided', () => {
     expect(extractor.category).toEqual(baseCategories);
   });
   test('Constructor sets category if provided', () => {
