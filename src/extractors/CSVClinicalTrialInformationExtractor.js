@@ -29,7 +29,13 @@ function joinClinicalTrialData(patientId, clinicalTrialData) {
 
 function getPatientId(context) {
   const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
-  return patientInContext ? patientInContext.id : undefined;
+  if (patientInContext) {
+    logger.info('Patient resource found in context.');
+    return patientInContext.id;
+  }
+
+  logger.info('No patient resource found in context.');
+  return undefined;
 }
 
 class CSVClinicalTrialInformationExtractor extends Extractor {
