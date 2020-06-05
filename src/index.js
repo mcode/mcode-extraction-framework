@@ -31,11 +31,11 @@ const { getDiseaseStatusCode } = require('./helpers/diseaseStatusUtils');
 
 module.exports = {
   BaseFHIRExtractor,
-  CSVModule,
   BaseFHIRModule,
   CSVCancerDiseaseStatusExtractor,
   CSVClinicalTrialInformationExtractor,
   CSVConditionExtractor,
+  CSVModule,
   CSVPatientExtractor,
   CSVTreatmentPlanChangeExtractor,
   Extractor,
@@ -51,9 +51,9 @@ module.exports = {
   allResourcesInBundle,
   firstEntryInBundle,
   firstResourceInBundle,
-  getDiseaseStatusCode,
   generateMcodeResources,
   getBundleResourcesByType,
+  getDiseaseStatusCode,
   getICD10Code,
   getPatientName,
   isBundleEmpty,

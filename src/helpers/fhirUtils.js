@@ -49,11 +49,11 @@ const getBundleResourcesByType = (bundle, type, context = {}, first) => {
 };
 
 module.exports = {
-  isBundleEmpty,
-  firstEntryInBundle,
-  firstResourceInBundle,
   allResourcesInBundle,
   determineVersion,
-  mapFHIRVersions,
+  firstEntryInBundle,
+  firstResourceInBundle,
   getBundleResourcesByType,
+  isBundleEmpty,
+  mapFHIRVersions,
 };
