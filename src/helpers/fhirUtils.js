@@ -1,3 +1,5 @@
+const fhirpath = require('fhirpath');
+
 function isBundleEmpty(bundle) {
   return bundle.total === 0;
 }
@@ -30,11 +32,28 @@ function mapFHIRVersions(resource, currentVersion, targetVersion) {
   return resource;
 }
 
+// Utility function to get the resources of a type from our bundle
+// Optionally get only the first resource of that type via 'first' parameter
+const getBundleResourcesByType = (bundle, type, context = {}, first) => {
+  const resources = fhirpath.evaluate(
+    bundle,
+    `Bundle.entry.where(resource.resourceType='${type}').resource`,
+    context,
+  );
+
+  if (resources.length > 0) {
+    return first ? resources[0] : resources;
+  }
+
+  return first ? null : [];
+};
+
 module.exports = {
-  isBundleEmpty,
-  firstEntryInBundle,
-  firstResourceInBundle,
   allResourcesInBundle,
   determineVersion,
+  firstEntryInBundle,
+  firstResourceInBundle,
+  getBundleResourcesByType,
+  isBundleEmpty,
   mapFHIRVersions,
 };

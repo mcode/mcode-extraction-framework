@@ -18,18 +18,24 @@ const {
 } = require('./extractors');
 const { BaseFHIRModule, CSVModule } = require('./modules');
 const { getPatientName } = require('./helpers/patientUtils');
-const { allResourcesInBundle, firstEntryInBundle, firstResourceInBundle, isBundleEmpty } = require('./helpers/fhirUtils');
+const {
+  allResourcesInBundle,
+  firstEntryInBundle,
+  firstResourceInBundle,
+  getBundleResourcesByType,
+  isBundleEmpty,
+} = require('./helpers/fhirUtils');
 const { generateMcodeResources } = require('./helpers/ejsUtils');
 const { isConditionPrimary, isConditionSecondary, getICD10Code } = require('./helpers/conditionUtils');
 const { getDiseaseStatusCode } = require('./helpers/diseaseStatusUtils');
 
 module.exports = {
   BaseFHIRExtractor,
-  CSVModule,
   BaseFHIRModule,
   CSVCancerDiseaseStatusExtractor,
   CSVClinicalTrialInformationExtractor,
   CSVConditionExtractor,
+  CSVModule,
   CSVPatientExtractor,
   CSVTreatmentPlanChangeExtractor,
   Extractor,
@@ -45,8 +51,9 @@ module.exports = {
   allResourcesInBundle,
   firstEntryInBundle,
   firstResourceInBundle,
-  getDiseaseStatusCode,
   generateMcodeResources,
+  getBundleResourcesByType,
+  getDiseaseStatusCode,
   getICD10Code,
   getPatientName,
   isBundleEmpty,

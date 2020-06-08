@@ -43,6 +43,6 @@ function generateMcodeResources(mcodeProfileID, data) {
 }
 
 module.exports = {
-  renderTemplate,
   generateMcodeResources,
+  renderTemplate,
 };

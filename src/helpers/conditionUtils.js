@@ -48,7 +48,7 @@ function isConditionSecondary(condition) {
 }
 
 module.exports = {
+  getICD10Code,
   isConditionPrimary,
   isConditionSecondary,
-  getICD10Code,
 };
