@@ -3,7 +3,7 @@
   "id": "Careplan-With-Review-Example",
   "meta": {
     "profile": [
-      "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-CarePlanWithReview"
+      "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-with-review"
     ]
   },
   "text": {
