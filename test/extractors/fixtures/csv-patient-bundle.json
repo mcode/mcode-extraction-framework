@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:any-unique-id",
+      "fullUrl": "urn:uuid:119147111821125",
       "resource": {
         "resourceType": "Patient",
-        "id": "any-unique-id",
+        "id": "119147111821125",
         "identifier": [
           {
             "type": {

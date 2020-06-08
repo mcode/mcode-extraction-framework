@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:4af65d96ed5787f612d58396d081551c95c6883f359d3505fe0faee7fefc7f85",
+      "fullUrl": "urn:uuid:f45018cdf3bfc70b281462c980a15d3876bb1428fd223d66d9895bd03d5d2ae2",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "4af65d96ed5787f612d58396d081551c95c6883f359d3505fe0faee7fefc7f85",
+        "id": "f45018cdf3bfc70b281462c980a15d3876bb1428fd223d66d9895bd03d5d2ae2",
         "meta": {
           "profile": [
             "http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-CarePlanWithReview.html"
@@ -33,7 +33,7 @@
             ]
           }
         ],
-        "subject": { "reference": "Patient/subjectId-1" },
+        "subject": { "reference": "Patient/mrn-1" },
         "status": "draft",
         "intent": "proposal",
         "created": "04/15/2020",
