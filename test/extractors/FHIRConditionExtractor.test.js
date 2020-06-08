@@ -13,26 +13,30 @@ const extractorWithCategories = new FHIRConditionExtractor({ baseFhirUrl: MOCK_U
 const baseCategories = FHIRConditionExtractorRewired.__get__('BASE_CATEGORIES');
 
 describe('FHIRConditionExtractor', () => {
-  test('Constructor sets resourceType to Condition', () => {
-    expect(extractor.resourceType).toEqual('Condition');
+  describe('Constructor', () => {
+    test('sets resourceType to Condition', () => {
+      expect(extractor.resourceType).toEqual('Condition');
+    });
+
+    test('sets category based on BASE_CATEGORIES if not provided', () => {
+      expect(extractor.category).toEqual(baseCategories);
+    });
+
+    test('sets category if provided', () => {
+      expect(extractorWithCategories.category).toEqual(MOCK_CATEGORIES);
+    });
   });
 
-  test('Constructor sets category based on BASE_CATEGORIES if not provided', () => {
-    expect(extractor.category).toEqual(baseCategories);
-  });
+  describe('parametrizeArgsForFHIRModule', () => {
+    test('should add category to param values', async () => {
+      // Create spy
+      const { baseFHIRModule } = extractor;
+      const baseFHIRModuleSpy = jest.spyOn(baseFHIRModule, 'search');
+      baseFHIRModuleSpy.mockReturnValue(examplePatientBundle);
 
-  test('Constructor sets category if provided', () => {
-    expect(extractorWithCategories.category).toEqual(MOCK_CATEGORIES);
-  });
-
-  test('parametrizeArgsForFHIRModule should add category to param values', async () => {
-    // Create spy
-    const { baseFHIRModule } = extractor;
-    const baseFHIRModuleSpy = jest.spyOn(baseFHIRModule, 'search');
-    baseFHIRModuleSpy.mockReturnValue(examplePatientBundle);
-
-    const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
-    expect(params).toHaveProperty('category');
-    expect(params.category).toEqual(baseCategories);
+      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
+      expect(params).toHaveProperty('category');
+      expect(params.category).toEqual(baseCategories);
+    });
   });
 });

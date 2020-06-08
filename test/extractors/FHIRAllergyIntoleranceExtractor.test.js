@@ -13,26 +13,30 @@ const extractorWithClinicalStatus = new FHIRAllergyIntoleranceExtractor({ baseFh
 const baseClinicalStatus = FHIRAllergyIntoleranceExtractorRewired.__get__('BASE_CLINICAL_STATUS');
 
 describe('FHIRAllergyIntoleranceExtractor', () => {
-  test('Constructor sets resourceType as AllergyIntolerance', () => {
-    expect(extractor.resourceType).toEqual('AllergyIntolerance');
+  describe('Constructor', () => {
+    test('sets resourceType as AllergyIntolerance', () => {
+      expect(extractor.resourceType).toEqual('AllergyIntolerance');
+    });
+
+    test('sets clinical status based on BASE_CLINICAL_STATUS', () => {
+      expect(extractor.clinicalStatus).toEqual(baseClinicalStatus);
+    });
+
+    test('sets clinical status if provided', () => {
+      expect(extractorWithClinicalStatus.clinicalStatus).toEqual(MOCK_CLINICAL_STATUS);
+    });
   });
 
-  test('Constructor sets clinical status based on BASE_CLINICAL_STATUS', () => {
-    expect(extractor.clinicalStatus).toEqual(baseClinicalStatus);
-  });
+  describe('parametrizeArgsForFHIRModule', () => {
+    test('should add category to param values', async () => {
+      // Create spy
+      const { baseFHIRModule } = extractor;
+      const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
+      baseFHIRModuleSearchSpy.mockReturnValue(examplePatientBundle);
 
-  test('Constructor sets clinical status if provided', () => {
-    expect(extractorWithClinicalStatus.clinicalStatus).toEqual(MOCK_CLINICAL_STATUS);
-  });
-
-  test('parametrizeArgsForFHIRModule should add category to param values', async () => {
-    // Create spy
-    const { baseFHIRModule } = extractor;
-    const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
-    baseFHIRModuleSearchSpy.mockReturnValue(examplePatientBundle);
-
-    const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
-    expect(params).toHaveProperty('clinical-status');
-    expect(params['clinical-status']).toEqual(baseClinicalStatus);
+      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
+      expect(params).toHaveProperty('clinical-status');
+      expect(params['clinical-status']).toEqual(baseClinicalStatus);
+    });
   });
 });
