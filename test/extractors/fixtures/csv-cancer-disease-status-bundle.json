@@ -9,7 +9,7 @@
         "id": "c0782423117bcafaa74fd5e1aef1d5525a0479c6427cd23387ff1c16105db13b",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/mcode/StructureDefinition/onco-core-CancerDiseaseStatus"
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
           ]
         },
         "category": [
