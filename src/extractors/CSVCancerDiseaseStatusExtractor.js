@@ -2,6 +2,7 @@ const path = require('path');
 const { CSVModule } = require('../modules');
 const { getDiseaseStatusCode } = require('../helpers/diseaseStatusUtils');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
+const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(arrOfDiseaseStatusData) {
@@ -27,7 +28,7 @@ function joinAndReformatData(arrOfDiseaseStatusData) {
     condition: {
       id: record.conditionId,
     },
-    effectiveDateTime: record.dateOfObservation,
+    effectiveDateTime: formatDateTime(record.dateOfObservation),
   }));
 }
 

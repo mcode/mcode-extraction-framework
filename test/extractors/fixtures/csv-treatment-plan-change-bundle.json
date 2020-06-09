@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:f45018cdf3bfc70b281462c980a15d3876bb1428fd223d66d9895bd03d5d2ae2",
+      "fullUrl": "urn:uuid:077b177c9f25c32768459bf2062422811d6a5809d87ed9908a737d7bb9be5c9c",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "f45018cdf3bfc70b281462c980a15d3876bb1428fd223d66d9895bd03d5d2ae2",
+        "id": "077b177c9f25c32768459bf2062422811d6a5809d87ed9908a737d7bb9be5c9c",
         "meta": {
           "profile": [
             "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-with-review"
@@ -28,7 +28,7 @@
                   ]
                 }
               },
-              { "url": "ReviewDate", "valueDate": "04/15/2020" },
+              { "url": "ReviewDate", "valueDate": "2020-04-15" },
               { "url": "ChangedFlag", "valueBoolean": true }
             ]
           }
@@ -36,7 +36,7 @@
         "subject": { "reference": "Patient/mrn-1" },
         "status": "draft",
         "intent": "proposal",
-        "created": "04/15/2020",
+        "created": "2020-04-15",
         "category": [
           {
             "coding": [
