@@ -14,25 +14,29 @@ const extractorWithCategories = new FHIRObservationExtractor({ baseFhirUrl: MOCK
 const baseCategories = FHIRObservationExtractorRewired.__get__('BASE_CATEGORIES');
 
 describe('FHIRObservationExtractor', () => {
-  test('Constructor sets resourceType as Observation', () => {
-    expect(extractor.resourceType).toEqual('Observation');
-  });
-  test('Constructor sets category is based on BASECATEGORY if not provided', () => {
-    expect(extractor.category).toEqual(baseCategories);
-  });
-  test('Constructor sets category if provided', () => {
-    expect(extractorWithCategories.category).toEqual(MOCK_CATEGORIES);
+  describe('Constructor', () => {
+    test('sets resourceType as Observation', () => {
+      expect(extractor.resourceType).toEqual('Observation');
+    });
+    test('sets category based on BASE_CATEGORIES if not provided', () => {
+      expect(extractor.category).toEqual(baseCategories);
+    });
+    test('sets category if provided', () => {
+      expect(extractorWithCategories.category).toEqual(MOCK_CATEGORIES);
+    });
   });
 
-  test('parametrizeArgsForFHIRModule should add category to param values', async () => {
-    // Create spy
-    const { baseFHIRModule } = extractor;
-    const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
-    baseFHIRModuleSearchSpy
-      .mockReturnValue(examplePatientBundle);
+  describe('parametrizeArgsForFHIRModule', () => {
+    test('should add category to param values', async () => {
+      // Create spy
+      const { baseFHIRModule } = extractor;
+      const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
+      baseFHIRModuleSearchSpy
+        .mockReturnValue(examplePatientBundle);
 
-    const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
-    expect(params).toHaveProperty('category');
-    expect(params.category).toEqual(baseCategories);
+      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
+      expect(params).toHaveProperty('category');
+      expect(params.category).toEqual(baseCategories);
+    });
   });
 });

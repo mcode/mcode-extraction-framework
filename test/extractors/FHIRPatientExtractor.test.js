@@ -13,6 +13,6 @@ describe('FHIRPatientExtractor', () => {
   test('parametrizeArgsForFHIRModule should translate the MRN value into the identifier param', async () => {
     const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
     expect(params).toHaveProperty('identifier');
-    expect(params.identifier).toEqual(MOCK_MRN);
+    expect(params.identifier).toEqual(`MRN|${MOCK_MRN}`);
   });
 });

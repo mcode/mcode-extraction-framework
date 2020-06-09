@@ -10,7 +10,7 @@ class FHIRPatientExtractor extends BaseFHIRExtractor {
   // eslint-disable-next-line class-methods-use-this
   async parametrizeArgsForFHIRModule({ mrn }) {
     return {
-      identifier: mrn,
+      identifier: `MRN|${mrn}`,
     };
   }
 }

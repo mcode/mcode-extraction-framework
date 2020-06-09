@@ -1,6 +1,6 @@
 const { BaseFHIRExtractor } = require('./BaseFHIRExtractor');
 
-const BASE_CATEGORIES = 'laboratory,vital-signs,social-history';
+const BASE_CATEGORIES = 'laboratory,vital-signs,social-history,LDA,core-characteristics';
 
 class FHIRObservationExtractor extends BaseFHIRExtractor {
   constructor({ baseFhirUrl, requestHeaders, version, category }) {
