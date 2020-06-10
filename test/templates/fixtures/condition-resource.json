@@ -2,7 +2,7 @@
   "resourceType": "Condition",
   "id": "example-id",
   "subject" : {
-    "reference": "Patient/example-subject-id"
+    "reference": "urn:uuid:example-subject-id"
   },
   "code": {
     "coding": [

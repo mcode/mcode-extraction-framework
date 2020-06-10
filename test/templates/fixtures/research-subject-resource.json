@@ -15,6 +15,6 @@
     "reference": "ResearchStudy/rs1"
   },
   "individual": {
-    "reference": "Patient/mCODEPatient1"
+    "reference": "urn:uuid:mCODEPatient1"
   }
 }

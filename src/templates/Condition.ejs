@@ -19,7 +19,7 @@
   "resourceType": "Condition",
   "id": "<%- id %>",
   "subject" : {
-    "reference": "Patient/<%- subject.id %>"<% if (subject.name) { %>,
+    "reference": "urn:uuid:<%- subject.id %>"<% if (subject.name) { %>,
     "display": "<%- subject.name %>"
     <% } %>
   },

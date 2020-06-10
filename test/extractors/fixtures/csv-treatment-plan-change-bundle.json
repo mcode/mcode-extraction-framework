@@ -33,7 +33,7 @@
             ]
           }
         ],
-        "subject": { "reference": "Patient/mrn-1" },
+        "subject": { "reference": "urn:uuid:mrn-1" },
         "status": "draft",
         "intent": "proposal",
         "created": "2020-04-15",

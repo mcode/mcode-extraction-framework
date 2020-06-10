@@ -35,11 +35,11 @@
         },
         "focus": [
           {
-            "reference": "Condition/cond-1"
+            "reference": "urn:uuid:cond-1"
           }
         ],
         "subject": {
-          "reference": "Patient/pat-mrn-1"
+          "reference": "urn:uuid:pat-mrn-1"
         },
         "effectiveDateTime": "2019-12-02",
         "valueCodeableConcept": {

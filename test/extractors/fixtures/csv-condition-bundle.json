@@ -7,7 +7,7 @@
       "resource": {
         "resourceType": "Condition",
         "id": "conditionId-1",
-        "subject": { "reference": "Patient/mrn-1" },
+        "subject": { "reference": "urn:uuid:mrn-1" },
         "code": {
           "coding": [
             { "system": "example-code-system", "code": "example-code" }

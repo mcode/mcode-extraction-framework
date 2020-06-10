@@ -39,7 +39,7 @@
     }
   ],
   "subject": {
-    "reference": "Patient/abc-def",
+    "reference": "urn:uuid:abc-def",
     "display": "Sample Text"
   },
   "status": "draft",

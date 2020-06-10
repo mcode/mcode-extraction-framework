@@ -29,12 +29,12 @@
   },
   "focus" : [
     {
-      "reference": "Condition/123-Walking-Corpse-Syndrome",
+      "reference": "urn:uuid:123-Walking-Corpse-Syndrome",
       "display": "Walking Corpse Syndrome"
     }
   ],
   "subject": {
-    "reference": "Patient/123-example-patient",
+    "reference": "urn:uuid:123-example-patient",
     "display": "Mr. Patient Example"
   },
   "effectiveDateTime" : "1994-12-09T09:07:00Z",

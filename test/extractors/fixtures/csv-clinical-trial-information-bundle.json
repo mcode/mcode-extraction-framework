@@ -16,7 +16,7 @@
         ],
         "status": "example-enrollment-status",
         "study": { "reference": "ResearchStudy/example-researchId" },
-        "individual": { "reference": "Patient/EXAMPLE-MRN" }
+        "individual": { "reference": "urn:uuid:EXAMPLE-MRN" }
       }
     },
     {

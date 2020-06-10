@@ -50,13 +50,13 @@
   },
   "focus" : [
     {
-      "reference": "Condition/<%- condition.id %>"<% if (condition.name) { %>,
+      "reference": "urn:uuid:<%- condition.id %>"<% if (condition.name) { %>,
       "display": "<%- condition.name %>"
       <% } %>
     }
   ],
   "subject" : {
-    "reference": "Patient/<%- subject.id %>"<% if (subject.name) { %>,
+    "reference": "urn:uuid:<%- subject.id %>"<% if (subject.name) { %>,
     "display": "<%- subject.name %>"
     <% } %>
   },
