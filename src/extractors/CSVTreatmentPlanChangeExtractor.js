@@ -2,6 +2,7 @@ const path = require('path');
 const { Extractor } = require('./Extractor');
 const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
+const { formatDate, formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
@@ -13,8 +14,8 @@ function formatData(tpcData) {
     }
 
     return {
-      effectiveDate: dateOfCarePlan,
-      effectiveDateTime: dateOfCarePlan,
+      effectiveDate: formatDate(dateOfCarePlan),
+      effectiveDateTime: formatDateTime(dateOfCarePlan),
       treatmentPlanChange: {
         hasChanged: changed,
         reason: {

@@ -29,6 +29,7 @@ const {
 const { generateMcodeResources } = require('./helpers/ejsUtils');
 const { isConditionPrimary, isConditionSecondary, getICD10Code } = require('./helpers/conditionUtils');
 const { getDiseaseStatusCode } = require('./helpers/diseaseStatusUtils');
+const { formatDate, formatDateTime } = require('./helpers/dateUtils');
 
 module.exports = {
   BaseFHIRExtractor,
@@ -53,6 +54,8 @@ module.exports = {
   allResourcesInBundle,
   firstEntryInBundle,
   firstResourceInBundle,
+  formatDate,
+  formatDateTime,
   generateMcodeResources,
   getBundleResourcesByType,
   getDiseaseStatusCode,

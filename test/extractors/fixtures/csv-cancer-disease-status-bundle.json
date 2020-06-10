@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:b7e26f3bb795a02703c2619fb7ed9155e011572c4c05434e6fd3cfe32bb0d1cd",
+      "fullUrl": "urn:uuid:ca18e669dec6d735f840c8b787c8f00cda949085fcbc18e21a52c409afcf3587",
       "resource": {
         "resourceType": "Observation",
-        "id": "b7e26f3bb795a02703c2619fb7ed9155e011572c4c05434e6fd3cfe32bb0d1cd",
+        "id": "ca18e669dec6d735f840c8b787c8f00cda949085fcbc18e21a52c409afcf3587",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
@@ -41,7 +41,7 @@
         "subject": {
           "reference": "Patient/pat-mrn-1"
         },
-        "effectiveDateTime": "12/2/19",
+        "effectiveDateTime": "2019-12-02",
         "valueCodeableConcept": {
           "coding": [
             {
