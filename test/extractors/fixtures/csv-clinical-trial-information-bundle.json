@@ -31,8 +31,7 @@
             "identifier": {
               "system": "http://example.com/clinicalSiteIds",
               "value": "EXAMPLE-CLINICAL-SITE-ID"
-            },
-            "type": "Location"
+            }
           }
         ],
         "identifier": [

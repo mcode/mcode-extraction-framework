@@ -8,8 +8,7 @@
       "identifier": {
         "system": "http://example.com/clinicalSiteIds",
         "value": "EXAMPLE_SITE_ID"
-      },
-      "type": "Location"
+      }
     }
   ],
   "identifier": [
