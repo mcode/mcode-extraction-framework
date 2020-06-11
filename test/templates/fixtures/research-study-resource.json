@@ -2,14 +2,16 @@
   "resourceType": "ResearchStudy",
   "id": "4419c8c6cf32a3647dff187f301906d26e9435c1f009ebb59b88a0b233ba4ab5",
   "status": "active",
-  "site": {
-    "display": "ID associated with Clinical Trial",
-    "identifier": {
-      "system": "NOTE: Not sure what to use here, but presumably we want some code system of all trial IDs",
-      "value": "EXAMPLE_SITE_ID"
-    },
-    "type": "Location"
-  },
+  "site": [
+      {
+      "display": "ID associated with Clinical Trial",
+      "identifier": {
+        "system": "http://example.com/clinicalSiteIds",
+        "value": "EXAMPLE_SITE_ID"
+      },
+      "type": "Location"
+    }
+  ],
   "identifier": [
     {
       "value": "AFT1235",

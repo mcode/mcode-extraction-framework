@@ -12,14 +12,16 @@
   "resourceType": "ResearchStudy",
   "id": "<%- id %>",
   "status": "<%- trialStatus %>",
-  "site": {
-    "type": "Location",
-    "display": "ID associated with Clinical Trial",
-    "identifier": {
-      "system": "NOTE: Not sure what to use here, but presumably we want some code system of all trial IDs",
-      "value": "<%- clinicalSiteID %>"
+  "site": [
+    {
+      "type": "Location",
+      "display": "ID associated with Clinical Trial",
+      "identifier": {
+        "system": "http://example.com/clinicalSiteIds",
+        "value": "<%- clinicalSiteID %>"
+      }
     }
-  },
+  ],
   "identifier": [
     {
       "system": "http://example.com/clinicaltrialids",
