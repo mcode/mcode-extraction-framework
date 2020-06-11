@@ -6,6 +6,7 @@ const { renderTemplate } = require('../../src/helpers/ejsUtils');
 const VALID_DATA = {
   trialStatus: 'active',
   trialResearchID: 'AFT1235',
+  clinicalSiteID: 'EXAMPLE_SITE_ID',
 };
 
 const INVALID_DATA = {
@@ -22,9 +23,7 @@ describe('test ResearchStudy template', () => {
       VALID_DATA,
     );
     // Relevant fields should match the valid FHIR
-    expect(generatedResearchStudy.id).toEqual(validResearchStudy.id);
-    expect(generatedResearchStudy.trialStatus).toEqual(validResearchStudy.trialStatus);
-    expect(generatedResearchStudy.trialResearchID).toEqual(validResearchStudy.trialResearchID);
+    expect(generatedResearchStudy).toEqual(validResearchStudy);
   });
 
   test('invalid data should throw an error', () => {
