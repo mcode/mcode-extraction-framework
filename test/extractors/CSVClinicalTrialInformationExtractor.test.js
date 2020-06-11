@@ -30,7 +30,7 @@ describe('CSVClinicalTrialInformationExtractor', () => {
   describe('joinClinicalTrialData', () => {
     test('should join clinical trial data appropriately', () => {
       const firstClinicalTrialInfoResponse = exampleClinicalTrialInformationResponse[0]; // Each patient will only have one entry per clinical trial
-      const expectedErrorString = 'Clinical trial missing an expected property: patientId, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.';
+      const expectedErrorString = 'Clinical trial missing an expected property: patientId, clinicalSiteID, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.';
 
       // Test required properties in CSV throw error
       Object.keys(firstClinicalTrialInfoResponse).forEach((key) => {

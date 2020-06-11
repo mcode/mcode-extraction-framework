@@ -20,14 +20,16 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
   constructor({ filePath, clinicalSiteID }) {
     super();
     this.csvModule = new CSVModule(path.resolve(filePath));
+    if (!clinicalSiteID) logger.warn(`${this.constructor.name} expects a value for clinicalSiteID but got ${clinicalSiteID}`);
     this.clinicalSiteID = clinicalSiteID;
   }
 
   joinClinicalTrialData(patientId, clinicalTrialData) {
     const { trialSubjectID, enrollmentStatus, trialResearchID, trialStatus } = clinicalTrialData;
+    const { clinicalSiteID } = this;
 
-    if (!(patientId && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
-      throw new Error('Clinical trial missing an expected property: patientId, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
+    if (!(patientId && clinicalSiteID && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
+      throw new Error('Clinical trial missing an expected property: patientId, clinicalSiteID, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
     }
 
     // Need separate data objects for ResearchSubject and ResearchStudy so that they get different resource ids
@@ -41,7 +43,7 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
       formattedDataStudy: {
         trialStatus,
         trialResearchID,
-        clinicalSiteID: this.clinicalSiteID,
+        clinicalSiteID,
       },
     };
   }
