@@ -27,12 +27,12 @@ const CONDITION_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templ
 
 describe('test Condition template', () => {
   test('valid data passed into template should generate FHIR resource', () => {
-    const generateCondition = renderTemplate(
+    const generatedCondition = renderTemplate(
       CONDITION_TEMPLATE,
       CONDITION_VALID_DATA,
     );
 
-    expect(generateCondition).toEqual(validExampleCondition);
+    expect(generatedCondition).toEqual(validExampleCondition);
   });
 
   test('invalid data should throw an error', () => {

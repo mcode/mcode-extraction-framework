@@ -20,11 +20,19 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:37a4e7de00084e541b81c6ddbb1ee0ab50b7a5e58d10a2695301487ec094e6ab",
+      "fullUrl": "urn:uuid:1b04fc751b08fd0e0b89293a0ccb61e931e6eeed87d88100fb0c3b15d0cf7fbb",
       "resource": {
         "resourceType": "ResearchStudy",
-        "id": "37a4e7de00084e541b81c6ddbb1ee0ab50b7a5e58d10a2695301487ec094e6ab",
+        "id": "1b04fc751b08fd0e0b89293a0ccb61e931e6eeed87d88100fb0c3b15d0cf7fbb",
         "status": "example-trialStatus",
+        "site": {
+          "display": "ID associated with Clinical Trial",
+          "identifier": {
+            "system": "NOTE: Not sure what to use here, but presumably we want some code system of all trial IDs",
+            "value": "EXAMPLE-CLINICAL-SITE-ID"
+          },
+          "type": "Location"
+        },
         "identifier": [
           {
             "system": "http://example.com/clinicaltrialids",

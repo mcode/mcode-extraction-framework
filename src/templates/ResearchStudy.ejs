@@ -4,20 +4,29 @@
 {
   id: String,
   trialStatus: String,
-  trialResearchID: String
+  trialResearchID: String,
+  clinicalSiteID: String
 }
 <% */ %>
 {
   "resourceType": "ResearchStudy",
   "id": "<%- id %>",
   "status": "<%- trialStatus %>",
+  "site": {
+    "type": "Location",
+    "display": "ID associated with Clinical Trial",
+    "identifier": {
+      "system": "NOTE: Not sure what to use here, but presumably we want some code system of all trial IDs",
+      "value": "<%- clinicalSiteID %>"
+    }
+  },
   "identifier": [
-      {
-          "system": "http://example.com/clinicaltrialids",
-          "type": {
-              "text": "Clinical Trial Research ID"
-          },
-          "value": "<%- trialResearchID %>"
-      }
+    {
+      "system": "http://example.com/clinicaltrialids",
+      "type": {
+        "text": "Clinical Trial Research ID"
+      },
+      "value": "<%- trialResearchID %>"
+    }
   ]
 }

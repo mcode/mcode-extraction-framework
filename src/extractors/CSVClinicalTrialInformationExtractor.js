@@ -5,28 +5,6 @@ const { firstEntryInBundle, getBundleResourcesByType } = require('../helpers/fhi
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const logger = require('../helpers/logger');
 
-function joinClinicalTrialData(patientId, clinicalTrialData) {
-  const { trialSubjectID, enrollmentStatus, trialResearchID, trialStatus } = clinicalTrialData;
-
-  if (!(patientId && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
-    throw new Error('Clinical trial missing an expected property: patientId, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
-  }
-
-  // Need separate data objects for ResearchSubject and ResearchStudy so that they get different resource ids
-  return {
-    formattedDataSubject: {
-      enrollmentStatus,
-      trialSubjectID,
-      trialResearchID,
-      patientId,
-    },
-    formattedDataStudy: {
-      trialStatus,
-      trialResearchID,
-    },
-  };
-}
-
 function getPatientId(context) {
   const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
   if (patientInContext) {
@@ -39,9 +17,33 @@ function getPatientId(context) {
 }
 
 class CSVClinicalTrialInformationExtractor extends Extractor {
-  constructor({ filePath }) {
+  constructor({ filePath, clinicalSiteID }) {
     super();
     this.csvModule = new CSVModule(path.resolve(filePath));
+    this.clinicalSiteID = clinicalSiteID;
+  }
+
+  joinClinicalTrialData(patientId, clinicalTrialData) {
+    const { trialSubjectID, enrollmentStatus, trialResearchID, trialStatus } = clinicalTrialData;
+
+    if (!(patientId && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
+      throw new Error('Clinical trial missing an expected property: patientId, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
+    }
+
+    // Need separate data objects for ResearchSubject and ResearchStudy so that they get different resource ids
+    return {
+      formattedDataSubject: {
+        enrollmentStatus,
+        trialSubjectID,
+        trialResearchID,
+        patientId,
+      },
+      formattedDataStudy: {
+        trialStatus,
+        trialResearchID,
+        clinicalSiteID: this.clinicalSiteID,
+      },
+    };
   }
 
   async getClinicalTrialData(mrn) {
@@ -56,7 +58,7 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
     const clinicalTrialData = await this.getClinicalTrialData(mrn);
 
     // Format data for research study and research subject
-    const formattedData = joinClinicalTrialData(patientId, clinicalTrialData);
+    const formattedData = this.joinClinicalTrialData(patientId, clinicalTrialData);
     const { formattedDataSubject, formattedDataStudy } = formattedData;
 
     // Generate ResearchSubject and ResearchStudy resources and combine into one bundle to return

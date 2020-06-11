@@ -1,10 +1,22 @@
 {
-    "resourceType": "ResearchStudy",
-    "id": "fd1a39e3cb43961b5f44ace008930c88e38a705d687f23920a45038cfb8d9482",
-    "status": "active",
-    "identifier": [
-        {
-            "value": "AFT1235"
-        }
-    ]
+  "resourceType": "ResearchStudy",
+  "id": "4419c8c6cf32a3647dff187f301906d26e9435c1f009ebb59b88a0b233ba4ab5",
+  "status": "active",
+  "site": {
+    "display": "ID associated with Clinical Trial",
+    "identifier": {
+      "system": "NOTE: Not sure what to use here, but presumably we want some code system of all trial IDs",
+      "value": "EXAMPLE_SITE_ID"
+    },
+    "type": "Location"
+  },
+  "identifier": [
+    {
+      "value": "AFT1235",
+      "system": "http://example.com/clinicaltrialids",
+      "type":  {
+        "text": "Clinical Trial Research ID"
+      }
+    }
+  ]
 }
