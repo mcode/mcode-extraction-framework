@@ -1,13 +1,12 @@
 const path = require('path');
 const { CSVModule } = require('../modules');
-const { getDiseaseStatusCode } = require('../helpers/diseaseStatusUtils');
+const { getDiseaseStatusDisplay } = require('../helpers/diseaseStatusUtils');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(arrOfDiseaseStatusData) {
   logger.info('Reformatting disease status data from CSV into template format');
-  // No join needed - just reformatting for template
   // Check the shape of the data
   arrOfDiseaseStatusData.forEach((record) => {
     if (!(record.mrn && record.conditionId && record.diseaseStatus && record.dateOfObservation)) {
@@ -18,9 +17,9 @@ function joinAndReformatData(arrOfDiseaseStatusData) {
     // We have no note to base our ObservationStatus off of; default to 'final'
     status: 'final',
     value: {
-      code: getDiseaseStatusCode(record.diseaseStatus),
+      code: record.diseaseStatus,
       system: 'http://snomed.info/sct',
-      display: record.diseaseStatus,
+      display: getDiseaseStatusDisplay(record.diseaseStatus),
     },
     subject: {
       id: record.mrn,

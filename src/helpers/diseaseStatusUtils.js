@@ -7,6 +7,17 @@ const diseaseStatusTextToCodeLookup = {
   'not evaluated': 709137006,
 };
 
+function invert(obj) {
+  return Object.entries(obj).reduce((ret, entry) => {
+    const [key, value] = entry;
+    // eslint-disable-next-line no-param-reassign
+    ret[value] = key;
+    return ret;
+  }, {});
+}
+
+const diseaseStatusCodeToTextLookup = invert(diseaseStatusTextToCodeLookup);
+
 /**
  * Converts Text Value to code in mCODE's ConditionStatusTrendVS
  * @param text, limited to No evidence of disease, Responding, Stable, Progressing, or not evaluated
@@ -16,6 +27,16 @@ function getDiseaseStatusCode(text) {
   return diseaseStatusTextToCodeLookup[text];
 }
 
+/**
+ * Converts code in mCODE's ConditionStatusTrendVS to Text Value
+ * @param text, limited to No evidence of disease, Responding, Stable, Progressing, or not evaluated
+ * @return {code} corresponding code from mCODE's ConditionStatusTrendVS
+ */
+function getDiseaseStatusDisplay(code) {
+  return diseaseStatusCodeToTextLookup[code];
+}
+
 module.exports = {
   getDiseaseStatusCode,
+  getDiseaseStatusDisplay,
 };
