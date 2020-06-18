@@ -47,7 +47,6 @@ class CSVTreatmentPlanChangeExtractor extends Extractor {
       return {
         resourceType: 'Bundle',
         type: 'collection',
-        total: 0,
         entry: [],
       };
     }

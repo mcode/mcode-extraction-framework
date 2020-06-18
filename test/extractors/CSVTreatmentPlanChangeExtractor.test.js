@@ -54,6 +54,5 @@ test('CSV Treatment Plan Change Extractor returns empty bundle with no data avai
 
   expect(data.resourceType).toEqual('Bundle');
   expect(data.type).toEqual('collection');
-  expect(data.total).toEqual(0);
   expect(data.entry.length).toEqual(0);
 });

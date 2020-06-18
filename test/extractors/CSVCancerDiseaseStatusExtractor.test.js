@@ -53,7 +53,6 @@ test('CSVCancerDiseaseStatusExtractor returns empty bundle when no data availabl
   const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
   expect(data.resourceType).toEqual('Bundle');
   expect(data.type).toEqual('collection');
-  expect(data.total).toEqual(0);
   expect(data.entry).toBeDefined();
   expect(data.entry.length).toEqual(0);
 });

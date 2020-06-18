@@ -54,7 +54,6 @@ class CSVCancerDiseaseStatusExtractor {
       return {
         resourceType: 'Bundle',
         type: 'collection',
-        total: 0,
         entry: [],
       };
     }
