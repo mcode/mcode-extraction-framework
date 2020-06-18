@@ -8,15 +8,16 @@ class CSVModule {
     this.data = parse(fs.readFileSync(csvFilePath), { columns: true });
   }
 
-  async get(key, value, fromDate) {
+  async get(key, value, fromDate, toDate) {
     logger.info(`Get csvModule info by key '${key}'`);
     // return all rows if key and value aren't provided
     if (!key && !value) return this.data;
     let result = this.data.filter((d) => d[key] === value);
     if (result.length === 0) throw new ReferenceError(`CSV Record with provided key '${key}' and value was not found`);
 
-    // If fromDate is provided, filter out all results that were recorded before fromDate
-    if (fromDate) result = result.filter((r) => !(r.dateRecorded && moment(fromDate).isAfter(r.dateRecorded)));
+    // If fromDate and toDate is provided, filter out all results that fall outside that timespan
+    if (fromDate && moment(fromDate).isValid()) result = result.filter((r) => !(r.dateRecorded && moment(fromDate).isAfter(r.dateRecorded)));
+    if (toDate && moment(toDate).isValid()) result = result.filter((r) => !(r.dateRecorded && moment(toDate).isBefore(r.dateRecorded)));
     if (result.length === 0) logger.warn('No data for patient after specified fromDate');
     return result;
   }

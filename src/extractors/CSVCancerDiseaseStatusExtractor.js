@@ -41,14 +41,14 @@ class CSVCancerDiseaseStatusExtractor {
     this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
-  async getDiseaseStatusData(mrn, fromDate) {
+  async getDiseaseStatusData(mrn, fromDate, toDate) {
     logger.info('Getting disease status data');
-    return this.csvModule.get('mrn', mrn, fromDate);
+    return this.csvModule.get('mrn', mrn, fromDate, toDate);
   }
 
-  async get({ mrn, fromDate }) {
+  async get({ mrn, fromDate, toDate }) {
     // 1. Get all relevant data and do necessary post-processing
-    const diseaseStatusData = await this.getDiseaseStatusData(mrn, fromDate);
+    const diseaseStatusData = await this.getDiseaseStatusData(mrn, fromDate, toDate);
     if (diseaseStatusData.length === 0) {
       logger.warn('No disease status data found for patient');
       return {

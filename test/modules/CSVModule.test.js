@@ -26,6 +26,11 @@ test('Returns data with recordedDate after specified from date', async () => {
   expect(data).toHaveLength(1);
 });
 
+test('Returns data with recordedDate before specified to date', async () => {
+  const data = await csvModule.get('mrn', 'example-mrn-2', null, '2020-05-01');
+  expect(data).toHaveLength(1);
+});
+
 test('Invalid MRN', async () => {
   try {
     await csvModule.get('mrn', INVALID_MRN);
