@@ -18,6 +18,7 @@ const diseaseStatusTextToCodeLookup = {
 };
 const diseaseStatusCodeToTextLookup = invert(diseaseStatusTextToCodeLookup);
 
+// Code mapping is based on http://hl7.org/fhir/us/mcode/ValueSet-mcode-cancer-disease-status-evidence-type-vs.html
 const evidenceTextToCodeLookup = {
   Imaging: 363679005,
   'Histopathology test': 252416005,
@@ -46,18 +47,18 @@ function getDiseaseStatusDisplay(code) {
 }
 
 /**
- * Converts Text Value to code in mCODE's ConditionStatusTrendVS
+ * Converts Text Value to code in mCODE's CancerDiseaseStatusEvidenceTypeVS
  * @param text, limited to No evidence of disease, Responding, Stable, Progressing, or not evaluated
- * @return {code} corresponding code from mCODE's ConditionStatusTrendVS
+ * @return {code} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
  */
 function getDiseaseStatusEvidenceCode(text) {
   return evidenceTextToCodeLookup[text];
 }
 
 /**
- * Converts code in mCODE's ConditionStatusTrendVS to Text Value
+ * Converts code in mCODE's CancerDiseaseStatusEvidenceTypeVS to Text Value
  * @param text, limited to No evidence of disease, Responding, Stable, Progressing, or not evaluated
- * @return {code} corresponding code from mCODE's ConditionStatusTrendVS
+ * @return {code} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
  */
 function getDiseaseStatusEvidenceDisplay(code) {
   return evidenceCodeToTextLookup[code];
