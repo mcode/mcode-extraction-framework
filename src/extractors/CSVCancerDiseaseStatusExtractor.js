@@ -54,7 +54,8 @@ class CSVCancerDiseaseStatusExtractor {
     const packagedDiseaseStatusData = joinAndReformatData(diseaseStatusData);
 
     // 3. Generate FHIR Resources
-    return generateMcodeResources('CancerDiseaseStatus', packagedDiseaseStatusData);
+    const resources = generateMcodeResources('CancerDiseaseStatus', packagedDiseaseStatusData);
+    return resources;
   }
 }
 

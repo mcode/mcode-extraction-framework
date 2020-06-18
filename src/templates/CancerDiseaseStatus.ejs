@@ -74,20 +74,19 @@
       }
     ]
   }<% if (evidence) { %>,
-  "extension" : [
-    <% evidence.forEach(e => { %>
+  "extension" : [<% evidence.forEach((e, i) => { %>
     {
       "url" : "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
       "valueCodeableConcept" : {
         "coding" : [
           {
             "system" : "http://snomed.info/sct",
-            "display": <%- e.display %>
-            "code" : <%- e.code %>
+            "display": "<%- e.display %>",
+            "code": "<%- e.code %>"
           }
         ]
       }
-    }<% }) %>
+    }<% if (i + 1 < evidence.length) { %>,<% }%><% }) %>
   ]<% } %>
 }
 

@@ -25,7 +25,8 @@ function generateResourceId(data) {
 
 function renderTemplate(template, data) {
   // Ensure that spread operator on data is last, so any data.id takes precedence
-  return JSON.parse(ejs.render(template, { id: generateResourceId(data), ...data }));
+  const render = ejs.render(template, { id: generateResourceId(data), ...data });
+  return JSON.parse(render);
 }
 
 function generateMcodeResources(mcodeProfileID, data) {
