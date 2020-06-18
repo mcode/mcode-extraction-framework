@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:e7125282081c74589baca75d56c783a79e3a8f7cb95c979a45012b4e55765227",
+      "fullUrl": "urn:uuid:3953511e92b90d115c8234f8bccef8cbe152f436aa01894cdcde3d665f30b4db",
       "resource": {
         "resourceType": "Observation",
-        "id": "e7125282081c74589baca75d56c783a79e3a8f7cb95c979a45012b4e55765227",
+        "id": "3953511e92b90d115c8234f8bccef8cbe152f436aa01894cdcde3d665f30b4db",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"

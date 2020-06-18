@@ -17,6 +17,10 @@
     code: String,
     display: String,
   },
+  evidence: [{
+    code: String,
+    display: String,
+  }]
 }
 <% */ %>
 {
@@ -69,6 +73,21 @@
         "display": "<%- value.display %>"
       }
     ]
-  }
+  }<% if (evidence) { %>,
+  "extension" : [
+    <% evidence.forEach(e => { %>
+    {
+      "url" : "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
+      "valueCodeableConcept" : {
+        "coding" : [
+          {
+            "system" : "http://snomed.info/sct",
+            "display": <%- e.display %>
+            "code" : <%- e.code %>
+          }
+        ]
+      }
+    }<% }) %>
+  ]<% } %>
 }
 
