@@ -25,38 +25,17 @@ const csvModuleSpy = jest.spyOn(csvModule, 'get');
 
 const joinAndReformatData = CSVCancerDiseaseStatusExtractorRewired.__get__('joinAndReformatData');
 test('CSVCancerDiseaseStatusExtractor -> joinAndReformatData', () => {
+  const expectedErrorString = 'DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.';
   const localData = _.cloneDeep(exampleCSVDiseaseStatusModuleResponse);
   // Test that valid data works fine
   expect(joinAndReformatData(exampleCSVDiseaseStatusModuleResponse)).toEqual(expect.anything());
 
   // Test all required properties are
-  delete localData[0].mrn;
-  expect(() => joinAndReformatData(localData)).toThrow(
-    new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.'),
-  );
-  localData[0].mrn = exampleCSVDiseaseStatusModuleResponse[0].mrn;
-  expect(joinAndReformatData(localData)).toEqual(expect.anything());
-
-  delete localData[0].conditionId;
-  expect(() => joinAndReformatData(localData)).toThrow(
-    new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.'),
-  );
-  localData[0].conditionId = exampleCSVDiseaseStatusModuleResponse[0].conditionId;
-  expect(joinAndReformatData(localData)).toEqual(expect.anything());
-
-  delete localData[0].diseaseStatus;
-  expect(() => joinAndReformatData(localData)).toThrow(
-    new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.'),
-  );
-  localData[0].diseaseStatus = exampleCSVDiseaseStatusModuleResponse[0].diseaseStatus;
-  expect(joinAndReformatData(localData)).toEqual(expect.anything());
-
-  delete localData[0].dateOfObservation;
-  expect(() => joinAndReformatData(localData)).toThrow(
-    new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.'),
-  );
-  localData[0].dateOfObservation = exampleCSVDiseaseStatusModuleResponse[0].dateOfObservation;
-  expect(joinAndReformatData(localData)).toEqual(expect.anything());
+  Object.keys(localData[0]).forEach((key) => {
+    const clonedData = _.cloneDeep(localData);
+    delete clonedData[0][key];
+    expect(() => joinAndReformatData(clonedData)).toThrow(new Error(expectedErrorString));
+  });
 });
 
 test('CSVCancerDiseaseStatusExtractor returns bundle with Observation', async () => {
