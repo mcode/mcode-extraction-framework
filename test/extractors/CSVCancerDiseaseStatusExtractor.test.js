@@ -39,7 +39,7 @@ test('CSVCancerDiseaseStatusExtractor -> joinAndReformatData', () => {
 });
 
 test('CSVCancerDiseaseStatusExtractor returns bundle with Observation', async () => {
-  csvModuleSpy.mockImplementation(() => exampleCSVDiseaseStatusModuleResponse);
+  csvModuleSpy.mockReturnValue(exampleCSVDiseaseStatusModuleResponse);
   const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
   expect(data.resourceType).toEqual('Bundle');
   expect(data.type).toEqual('collection');
@@ -49,7 +49,7 @@ test('CSVCancerDiseaseStatusExtractor returns bundle with Observation', async ()
 });
 
 test('CSVCancerDiseaseStatusExtractor returns empty bundle when no data available from module', async () => {
-  csvModuleSpy.mockImplementation(() => []);
+  csvModuleSpy.mockReturnValue([]);
   const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
   expect(data.resourceType).toEqual('Bundle');
   expect(data.type).toEqual('collection');
