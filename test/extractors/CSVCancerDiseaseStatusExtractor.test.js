@@ -22,8 +22,6 @@ const { csvModule } = csvCancerDiseaseStatusExtractor;
 
 // Spy on csvModule
 const csvModuleSpy = jest.spyOn(csvModule, 'get');
-csvModuleSpy
-  .mockReturnValue(exampleCSVDiseaseStatusModuleResponse);
 
 const joinAndReformatData = CSVCancerDiseaseStatusExtractorRewired.__get__('joinAndReformatData');
 test('CSVCancerDiseaseStatusExtractor -> joinAndReformatData', () => {
@@ -61,11 +59,22 @@ test('CSVCancerDiseaseStatusExtractor -> joinAndReformatData', () => {
   expect(joinAndReformatData(localData)).toEqual(expect.anything());
 });
 
-test('CSVCancerDiseaseStatusExtractor', async () => {
+test('CSVCancerDiseaseStatusExtractor returns bundle with Observation', async () => {
+  csvModuleSpy.mockImplementation(() => exampleCSVDiseaseStatusModuleResponse);
   const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
   expect(data.resourceType).toEqual('Bundle');
   expect(data.type).toEqual('collection');
   expect(data.entry).toBeDefined();
   expect(data.entry.length).toEqual(1);
   expect(data.entry).toEqual(exampleCSVDiseaseStatusBundle.entry);
+});
+
+test('CSVCancerDiseaseStatusExtractor returns empty bundle when no data available from module', async () => {
+  csvModuleSpy.mockImplementation(() => []);
+  const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
+  expect(data.resourceType).toEqual('Bundle');
+  expect(data.type).toEqual('collection');
+  expect(data.total).toEqual(0);
+  expect(data.entry).toBeDefined();
+  expect(data.entry.length).toEqual(0);
 });

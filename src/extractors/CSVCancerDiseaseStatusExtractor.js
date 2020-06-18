@@ -41,14 +41,23 @@ class CSVCancerDiseaseStatusExtractor {
     this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
-  async getDiseaseStatusData(mrn) {
+  async getDiseaseStatusData(mrn, fromDate) {
     logger.info('Getting disease status data');
-    return this.csvModule.get('mrn', mrn);
+    return this.csvModule.get('mrn', mrn, fromDate);
   }
 
-  async get({ mrn }) {
+  async get({ mrn, fromDate }) {
     // 1. Get all relevant data and do necessary post-processing
-    const diseaseStatusData = await this.getDiseaseStatusData(mrn);
+    const diseaseStatusData = await this.getDiseaseStatusData(mrn, fromDate);
+    if (diseaseStatusData.length === 0) {
+      logger.warn('No disease status data found for patient');
+      return {
+        resourceType: 'Bundle',
+        type: 'collection',
+        total: 0,
+        entry: [],
+      };
+    }
 
     // 2. Format data for research study and research subject
     const packagedDiseaseStatusData = joinAndReformatData(diseaseStatusData);

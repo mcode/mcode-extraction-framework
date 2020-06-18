@@ -21,6 +21,11 @@ test('Returns all rows when both key and value are undefined', async () => {
   expect(data).toEqual(csvModule.data);
 });
 
+test('Returns data with recordedDate after specified from date', async () => {
+  const data = await csvModule.get('mrn', 'example-mrn-2', '2020-05-01');
+  expect(data).toHaveLength(1);
+});
+
 test('Invalid MRN', async () => {
   try {
     await csvModule.get('mrn', INVALID_MRN);

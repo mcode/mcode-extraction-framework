@@ -15,8 +15,6 @@ const { csvModule } = csvTPCExtractor;
 
 // Spy on csvModule
 const csvModuleSpy = jest.spyOn(csvModule, 'get');
-csvModuleSpy
-  .mockReturnValue(exampleCSVTPCModuleResponse);
 
 const formatData = rewire('../../src/extractors/CSVTreatmentPlanChangeExtractor.js').__get__('formatData');
 
@@ -40,11 +38,22 @@ test('format data from CSV', () => {
   });
 });
 
-test('CSV Treatment Plan Change Extractor', async () => {
+test('CSV Treatment Plan Change Extractor returns bundle with CarePlan', async () => {
+  csvModuleSpy.mockReturnValue(exampleCSVTPCModuleResponse);
   const data = await csvTPCExtractor.get({ mrn: MOCK_MRN });
 
   expect(data.resourceType).toEqual('Bundle');
   expect(data.type).toEqual('collection');
   expect(data.entry.length).toEqual(1);
   expect(data).toEqual(exampleCSVTPCBundle);
+});
+
+test('CSV Treatment Plan Change Extractor returns empty bundle with no data available from module', async () => {
+  csvModuleSpy.mockReturnValue([]);
+  const data = await csvTPCExtractor.get({ mrn: MOCK_MRN });
+
+  expect(data.resourceType).toEqual('Bundle');
+  expect(data.type).toEqual('collection');
+  expect(data.total).toEqual(0);
+  expect(data.entry.length).toEqual(0);
 });

@@ -4,6 +4,7 @@
     "trialSubjectID": "subjectId-1",
     "enrollmentStatus": "status-1",
     "trialResearchID": "researchId-1",
-    "trialStatus": "trialStatus-1"
+    "trialStatus": "trialStatus-1",
+    "dateRecorded": "2020-01-10"
   }
 ]

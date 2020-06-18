@@ -35,13 +35,23 @@ class CSVTreatmentPlanChangeExtractor extends Extractor {
     this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
-  async getTPCData(mrn) {
+  async getTPCData(mrn, fromDate) {
     logger.info('Getting Treatment Plan Change Data');
-    return this.csvModule.get('mrn', mrn);
+    return this.csvModule.get('mrn', mrn, fromDate);
   }
 
-  async get({ mrn }) {
-    const tpcData = await this.getTPCData(mrn);
+  async get({ mrn, fromDate }) {
+    const tpcData = await this.getTPCData(mrn, fromDate);
+    if (tpcData.length === 0) {
+      logger.warn('No disease status data found for patient');
+      return {
+        resourceType: 'Bundle',
+        type: 'collection',
+        total: 0,
+        entry: [],
+      };
+    }
+
     const formattedData = formatData(tpcData);
 
     return generateMcodeResources('CarePlanWithReview', formattedData);
