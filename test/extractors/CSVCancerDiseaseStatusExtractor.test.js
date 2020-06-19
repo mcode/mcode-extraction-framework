@@ -24,35 +24,42 @@ const { csvModule } = csvCancerDiseaseStatusExtractor;
 const csvModuleSpy = jest.spyOn(csvModule, 'get');
 
 const joinAndReformatData = CSVCancerDiseaseStatusExtractorRewired.__get__('joinAndReformatData');
-test('CSVCancerDiseaseStatusExtractor -> joinAndReformatData', () => {
-  const expectedErrorString = 'DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.';
-  const localData = _.cloneDeep(exampleCSVDiseaseStatusModuleResponse);
-  // Test that valid data works fine
-  expect(joinAndReformatData(exampleCSVDiseaseStatusModuleResponse)).toEqual(expect.anything());
 
-  // Test all required properties are
-  Object.keys(localData[0]).forEach((key) => {
-    const clonedData = _.cloneDeep(localData);
-    delete clonedData[0][key];
-    expect(() => joinAndReformatData(clonedData)).toThrow(new Error(expectedErrorString));
+describe('CSVCancerDiseaseStatusExtractor', () => {
+  describe('joinAndReformatData', () => {
+    test('should join data appropriately and throw errors when missing required properties', () => {
+      const expectedErrorString = 'DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.';
+      const localData = _.cloneDeep(exampleCSVDiseaseStatusModuleResponse);
+      // Test that valid data works fine
+      expect(joinAndReformatData(exampleCSVDiseaseStatusModuleResponse)).toEqual(expect.anything());
+
+      // Test all required properties are
+      Object.keys(localData[0]).forEach((key) => {
+        const clonedData = _.cloneDeep(localData);
+        delete clonedData[0][key];
+        expect(() => joinAndReformatData(clonedData)).toThrow(new Error(expectedErrorString));
+      });
+    });
   });
-});
 
-test('CSVCancerDiseaseStatusExtractor returns bundle with Observation', async () => {
-  csvModuleSpy.mockReturnValue(exampleCSVDiseaseStatusModuleResponse);
-  const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
-  expect(data.resourceType).toEqual('Bundle');
-  expect(data.type).toEqual('collection');
-  expect(data.entry).toBeDefined();
-  expect(data.entry.length).toEqual(1);
-  expect(data.entry).toEqual(exampleCSVDiseaseStatusBundle.entry);
-});
+  describe('get', () => {
+    test('should return bundle with Observation', async () => {
+      csvModuleSpy.mockReturnValue(exampleCSVDiseaseStatusModuleResponse);
+      const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
+      expect(data.resourceType).toEqual('Bundle');
+      expect(data.type).toEqual('collection');
+      expect(data.entry).toBeDefined();
+      expect(data.entry.length).toEqual(1);
+      expect(data.entry).toEqual(exampleCSVDiseaseStatusBundle.entry);
+    });
 
-test('CSVCancerDiseaseStatusExtractor returns empty bundle when no data available from module', async () => {
-  csvModuleSpy.mockReturnValue([]);
-  const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
-  expect(data.resourceType).toEqual('Bundle');
-  expect(data.type).toEqual('collection');
-  expect(data.entry).toBeDefined();
-  expect(data.entry.length).toEqual(0);
+    test('should return empty bundle when no data available from module', async () => {
+      csvModuleSpy.mockReturnValue([]);
+      const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
+      expect(data.resourceType).toEqual('Bundle');
+      expect(data.type).toEqual('collection');
+      expect(data.entry).toBeDefined();
+      expect(data.entry.length).toEqual(0);
+    });
+  });
 });

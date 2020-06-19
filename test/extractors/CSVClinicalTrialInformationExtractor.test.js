@@ -28,7 +28,7 @@ const getPatientId = rewire('../../src/extractors/CSVClinicalTrialInformationExt
 
 describe('CSVClinicalTrialInformationExtractor', () => {
   describe('joinClinicalTrialData', () => {
-    test('should join clinical trial data appropriately', () => {
+    test('should join clinical trial data appropriately and throw errors when missing required properties', () => {
       const firstClinicalTrialInfoResponse = exampleClinicalTrialInformationResponse[0]; // Each patient will only have one entry per clinical trial
       const expectedErrorString = 'Clinical trial missing an expected property: patientId, clinicalSiteID, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.';
 
