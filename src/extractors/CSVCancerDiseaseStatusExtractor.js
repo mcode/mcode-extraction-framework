@@ -1,8 +1,9 @@
 const path = require('path');
 const { CSVModule } = require('../modules');
+const { formatDateTime } = require('../helpers/dateUtils');
 const { getDiseaseStatusDisplay, getDiseaseStatusEvidenceDisplay } = require('../helpers/diseaseStatusUtils');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
-const { formatDateTime } = require('../helpers/dateUtils');
+const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(arrOfDiseaseStatusData) {
@@ -51,11 +52,7 @@ class CSVCancerDiseaseStatusExtractor {
     const diseaseStatusData = await this.getDiseaseStatusData(mrn, fromDate, toDate);
     if (diseaseStatusData.length === 0) {
       logger.warn('No disease status data found for patient');
-      return {
-        resourceType: 'Bundle',
-        type: 'collection',
-        entry: [],
-      };
+      return getEmptyBundle();
     }
 
     // 2. Format data for research study and research subject

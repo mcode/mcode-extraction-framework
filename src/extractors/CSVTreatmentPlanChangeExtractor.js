@@ -1,8 +1,9 @@
 const path = require('path');
 const { Extractor } = require('./Extractor');
 const { CSVModule } = require('../modules');
-const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { formatDate, formatDateTime } = require('../helpers/dateUtils');
+const { generateMcodeResources } = require('../helpers/ejsUtils');
+const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
@@ -44,11 +45,7 @@ class CSVTreatmentPlanChangeExtractor extends Extractor {
     const tpcData = await this.getTPCData(mrn, fromDate, toDate);
     if (tpcData.length === 0) {
       logger.warn('No disease status data found for patient');
-      return {
-        resourceType: 'Bundle',
-        type: 'collection',
-        entry: [],
-      };
+      return getEmptyBundle();
     }
 
     const formattedData = formatData(tpcData);
