@@ -18,7 +18,7 @@ class CSVModule {
     // If fromDate and toDate is provided, filter out all results that fall outside that timespan
     if (fromDate && moment(fromDate).isValid()) result = result.filter((r) => !(r.dateRecorded && moment(fromDate).isAfter(r.dateRecorded)));
     if (toDate && moment(toDate).isValid()) result = result.filter((r) => !(r.dateRecorded && moment(toDate).isBefore(r.dateRecorded)));
-    if (result.length === 0) logger.warn('No data for patient after specified fromDate');
+    if (result.length === 0) logger.warn('No data for patient within specified time range');
     return result;
   }
 }
