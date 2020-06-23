@@ -24,6 +24,7 @@ const {
   firstEntryInBundle,
   firstResourceInBundle,
   getBundleResourcesByType,
+  getEmptyBundle,
   isBundleEmpty,
 } = require('./helpers/fhirUtils');
 const { generateMcodeResources } = require('./helpers/ejsUtils');
@@ -56,6 +57,7 @@ module.exports = {
   firstResourceInBundle,
   formatDate,
   formatDateTime,
+  getEmptyBundle,
   generateMcodeResources,
   getBundleResourcesByType,
   getDiseaseStatusCode,

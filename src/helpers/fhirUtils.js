@@ -16,6 +16,14 @@ function allResourcesInBundle(bundle) {
   return bundle.entry.map((e) => e.resource);
 }
 
+function getEmptyBundle() {
+  return {
+    resourceType: 'Bundle',
+    type: 'collection',
+    entry: [],
+  };
+}
+
 function determineVersion(fhirBundle) {
   // TODO: Actual determination of versions
   if (fhirBundle) {
@@ -54,6 +62,7 @@ module.exports = {
   firstEntryInBundle,
   firstResourceInBundle,
   getBundleResourcesByType,
+  getEmptyBundle,
   isBundleEmpty,
   mapFHIRVersions,
 };

@@ -1,8 +1,9 @@
 const path = require('path');
 const { CSVModule } = require('../modules');
+const { formatDateTime } = require('../helpers/dateUtils');
 const { getDiseaseStatusDisplay, getDiseaseStatusEvidenceDisplay } = require('../helpers/diseaseStatusUtils');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
-const { formatDateTime } = require('../helpers/dateUtils');
+const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(arrOfDiseaseStatusData) {
@@ -41,14 +42,18 @@ class CSVCancerDiseaseStatusExtractor {
     this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
-  async getDiseaseStatusData(mrn) {
+  async getDiseaseStatusData(mrn, fromDate, toDate) {
     logger.info('Getting disease status data');
-    return this.csvModule.get('mrn', mrn);
+    return this.csvModule.get('mrn', mrn, fromDate, toDate);
   }
 
-  async get({ mrn }) {
+  async get({ mrn, fromDate, toDate }) {
     // 1. Get all relevant data and do necessary post-processing
-    const diseaseStatusData = await this.getDiseaseStatusData(mrn);
+    const diseaseStatusData = await this.getDiseaseStatusData(mrn, fromDate, toDate);
+    if (diseaseStatusData.length === 0) {
+      logger.warn('No disease status data found for patient');
+      return getEmptyBundle();
+    }
 
     // 2. Format data for research study and research subject
     const packagedDiseaseStatusData = joinAndReformatData(diseaseStatusData);
