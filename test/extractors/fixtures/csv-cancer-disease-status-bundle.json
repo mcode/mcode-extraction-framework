@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:e7125282081c74589baca75d56c783a79e3a8f7cb95c979a45012b4e55765227",
+      "fullUrl": "urn:uuid:2f26785071c04af0b4f649cf9aed2a31298c2194b331e2117874586dd6493d28",
       "resource": {
         "resourceType": "Observation",
-        "id": "e7125282081c74589baca75d56c783a79e3a8f7cb95c979a45012b4e55765227",
+        "id": "2f26785071c04af0b4f649cf9aed2a31298c2194b331e2117874586dd6493d28",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
@@ -50,7 +50,33 @@
               "display": "responding"
             }
           ]
-        }
+        },
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
+            "valueCodeableConcept" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "display": "Imaging",
+                  "code": "363679005"
+                }
+              ]
+            }
+          },
+          {
+            "url" : "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
+            "valueCodeableConcept" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "display": "Histopathology test",
+                  "code": "252416005"
+                }
+              ]
+            }
+          }
+        ]
       }
     }
   ]

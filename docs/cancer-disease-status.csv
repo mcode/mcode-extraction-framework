@@ -1,3 +1,5 @@
-mrn,conditionId,diseaseStatus,dateOfObservation
-pat-mrn-1,cond-1,268910001,12/2/19
-pat-mrn-2,cond-2,268910001,12/2/19
+mrn,conditionId,evidence,diseaseStatus,dateOfObservation
+pat-mrn-1,cond-1,363679005|252416005,268910001,12/2/19
+pat-mrn-2,cond-2,363679005,268910001,12/3/19
+pat-mrn-3,cond-3,,260415000,12/4/19
+pat-mrn-4,cond-4,271299001,268910001,12/5/19

@@ -1,6 +1,6 @@
 const path = require('path');
 const { CSVModule } = require('../modules');
-const { getDiseaseStatusDisplay } = require('../helpers/diseaseStatusUtils');
+const { getDiseaseStatusDisplay, getDiseaseStatusEvidenceDisplay } = require('../helpers/diseaseStatusUtils');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
@@ -13,6 +13,7 @@ function joinAndReformatData(arrOfDiseaseStatusData) {
       throw new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.');
     }
   });
+  const evidenceDelimiter = '|';
   return arrOfDiseaseStatusData.map((record) => ({
     // We have no note to base our ObservationStatus off of; default to 'final'
     status: 'final',
@@ -28,6 +29,10 @@ function joinAndReformatData(arrOfDiseaseStatusData) {
       id: record.conditionId,
     },
     effectiveDateTime: formatDateTime(record.dateOfObservation),
+    evidence: !record.evidence ? null : record.evidence.split(evidenceDelimiter).map((evidenceCode) => ({
+      code: evidenceCode,
+      display: getDiseaseStatusEvidenceDisplay(evidenceCode),
+    })),
   }));
 }
 
@@ -49,7 +54,8 @@ class CSVCancerDiseaseStatusExtractor {
     const packagedDiseaseStatusData = joinAndReformatData(diseaseStatusData);
 
     // 3. Generate FHIR Resources
-    return generateMcodeResources('CancerDiseaseStatus', packagedDiseaseStatusData);
+    const resources = generateMcodeResources('CancerDiseaseStatus', packagedDiseaseStatusData);
+    return resources;
   }
 }
 

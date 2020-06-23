@@ -4,6 +4,7 @@ const validCancerDiseaseStatus = require('./fixtures/disease-status-resource.jso
 const { renderTemplate } = require('../../src/helpers/ejsUtils');
 
 const VALID_DATA = {
+  id: 'CancerDiseaseStatus-fixture',
   status: 'final',
   value: {
     code: '385633008',
@@ -19,9 +20,19 @@ const VALID_DATA = {
     name: 'Walking Corpse Syndrome',
   },
   effectiveDateTime: '1994-12-09T09:07:00Z',
+  evidence: [
+    {
+      code: '09870987',
+      display: 'Evidence display text',
+    },
+    {
+      code: '12341234',
+    },
+  ],
 };
 
 const INVALID_DATA = {
+  id: 'CancerDiseaseStatus-fixture',
   // Omitting 'status' field which is required
   value: {
     code: '385633008',
@@ -37,6 +48,7 @@ const INVALID_DATA = {
     name: 'Walking Corpse Syndrome',
   },
   effectiveDateTime: '1994-12-09T09:07:00Z',
+  evidence: null,
 };
 
 const DISEASE_STATUS_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/CancerDiseaseStatus.ejs'), 'utf8');
@@ -49,10 +61,7 @@ describe('test CancerDiseaseStatus template', () => {
     );
 
     // Relevant fields should match the valid FHIR
-    expect(generatedDiseaseStatus.valueCodeableConcept)
-      .toEqual(validCancerDiseaseStatus.valueCodeableConcept);
-    expect(generatedDiseaseStatus.status).toEqual(validCancerDiseaseStatus.status);
-    expect(generatedDiseaseStatus.subject).toEqual(validCancerDiseaseStatus.subject);
+    expect(generatedDiseaseStatus).toEqual(validCancerDiseaseStatus);
   });
 
   test('invalid data should throw an error', () => {

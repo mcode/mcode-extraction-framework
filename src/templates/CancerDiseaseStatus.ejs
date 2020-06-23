@@ -17,6 +17,10 @@
     code: String,
     display: String,
   },
+  evidence: [{
+    code: String,
+    display: String,
+  }]
 }
 <% */ %>
 {
@@ -69,6 +73,20 @@
         "display": "<%- value.display %>"
       }
     ]
-  }
+  }<% if (evidence && evidence.length > 0) { %>,
+  "extension" : [<% evidence.forEach((e, i) => { %>
+    {
+      "url" : "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
+      "valueCodeableConcept" : {
+        "coding" : [
+          {
+            "system" : "http://snomed.info/sct",
+            "code": "<%- e.code %>"<% if (e.display) { %>,
+            "display": "<%- e.display %>"<% } %>
+          }
+        ]
+      }
+    }<% if (i + 1 < evidence.length) { %>,<% }%><% }) %>
+  ]<% } %>
 }
 

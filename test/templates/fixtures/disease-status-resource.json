@@ -46,5 +46,30 @@
         "display": "Improving"
       }
     ]
-  }
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "09870987",
+            "display": "Evidence display text"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "12341234"
+          }
+        ]
+      }
+    }
+  ]
 }
