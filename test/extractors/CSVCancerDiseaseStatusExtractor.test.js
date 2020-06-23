@@ -34,6 +34,7 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
       expect(joinAndReformatData(exampleCSVDiseaseStatusModuleResponse)).toEqual(expect.anything());
 
       // Test all required properties are
+      delete localData[0].evidence; // Evidence is not required and will not throw an error
       Object.keys(localData[0]).forEach((key) => {
         const clonedData = _.cloneDeep(localData);
         delete clonedData[0][key];
