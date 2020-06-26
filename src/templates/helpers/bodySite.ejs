@@ -1,0 +1,18 @@
+<% if(bodySite) { %> 
+  "bodySite" : [{
+    <% if(laterality) { %> "extension": [
+    {
+      "url": "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review",
+      "valueCodeableConcept": { 
+        "code" : "<%- laterality %>",
+        "codeSystem" :"http://snomed.info/sct",
+      }
+    }
+    ], <% } %> 
+    "coding": [ 
+      {
+          "code" : "<%- bodySite %>",
+          "codeSystem" : "http://snomed.info/sct"}
+        ]
+
+}] <%}%>

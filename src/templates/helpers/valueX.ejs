@@ -1,0 +1,45 @@
+<% if(value ) { 
+   if(typeof value === "number"){ %>
+    "valueInteger": "<%- value %>"
+  <% } else if(typeof value === "boolean"){ %>
+    "valueBoolean": <%- value %>
+  <% } else if(typeof value === "string"){%>
+
+  <% if( /true | false/.exec(value)) { %>
+      "valueBoolean": <%- value %>
+      <%} else if (/[0]|[-+]?[1-9][0-9]*/.exec(value)){ %>
+        "valueInteger": "<%- value %>"
+      <%} else if (/-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?/.exec(value)){  %>
+       "valueQuantity" : {"value" : <%- value %>}
+      <%}  else if (/([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?/.exec(value)){  %>
+        "valueDate" : {"value" : <%- value %>} 
+      <%} else if(([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?/.exec(value)){ %>
+       "valueDateTime" : {"value" : <%- value %>}
+      <%} else if (/([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?/.exec(value)){%>
+       "valueTime" : {"value" : <%- value %>}
+      <%} else { %>
+       "valueString" : {"value" : <%- value %>}
+       <% } %>
+
+ 
+    <%} else if(value.code){ %>
+    <%- import("./codableConcept", {name: "valueCodableConcept", obj: value}) %>
+    <% } else if(value.high  || value.low ){ %>
+    "valueRange": {
+      "high" : "<%- value.high %>",
+      "low" : "<%- value.low %>"
+    }
+    <%} else if(value.start  || value.end ){ %>
+    "valuePeriod" : {
+      "start" : "<%- value.start %>",
+      "end" : "<%- value.end %>"
+    }
+    <% } else if(value.unit){ %>
+     "valueQuantity" : {
+       "unit" : "<%- value.unit %> ",
+       "value" : <%- value.value %>
+     }
+     <% } 
+
+     <%}
+

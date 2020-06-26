@@ -1,0 +1,54 @@
+{
+  "resourceType" : "Observation",
+  "id": "<%- id %>",
+  "subject" : {
+    "reference": "urn:uuid:<%- subject.id %>"<% if (subject.name) { %>,
+    "display": "<%- subject.name %>"
+    <% } %>
+  }
+  
+  <% if(code) { %>
+    ,
+    <%- import("helpers/codableConcept", {"name" : "code", "obj" : code}) %>
+  <% } %>
+
+  <% if(category) { %>
+    ,
+    <%- import("helpers/codableConcept", {"name" : "category", "obj" : [
+        {
+        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "<%- category %>"
+        } ]
+      }) %>
+    <% } %>
+
+  <% if(condition) { %>
+  , "focus" : [
+    {
+      "reference": "urn:uuid:<%- condition.id %>"<% if (condition.name) { %>,
+      "display": "<%- condition.name %>"
+      <% } %>
+    }
+  ]
+  <% } %>
+
+  <% if(effectiveDateTime) { %>
+    , 
+    <%- import("helpers/effectiveX", {"effective" : effectiveDateTime}) %>
+  <% } %>
+
+  <% if(value) { %>
+    ,
+    <%- import("helpers/valueX", {"value" : value}) %>
+  <% } %>
+
+  <% if(bodySite) { %>
+    ,
+    <%- import("helpers/bodySite", {"bodySite" : bodySite, "laterality": laterality}) %>
+  <% } %>
+
+
+
+
+
+}

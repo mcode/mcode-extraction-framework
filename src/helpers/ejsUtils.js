@@ -5,7 +5,6 @@ const _ = require('lodash');
 const shajs = require('sha.js');
 const logger = require('./logger');
 
-
 const fhirTemplateLookup = {
   CancerDiseaseStatus: fs.readFileSync(path.join(__dirname, '../templates/CancerDiseaseStatus.ejs'), 'utf8'),
   CarePlanWithReview: fs.readFileSync(path.join(__dirname, '../templates/CarePlanWithReview.ejs'), 'utf8'),

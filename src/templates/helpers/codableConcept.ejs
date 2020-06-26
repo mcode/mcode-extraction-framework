@@ -1,0 +1,20 @@
+<% if(name ) %> "<%- name -%>" : % } %> 
+<% if(obj ) {%>
+  {  
+  <% if(extension) { %> 
+      "extension": [{
+        "url" : "<%- extension.url -%>",
+        <%- include("./valueX", {value: extension.value}) %>
+        }]
+    <% } %>
+  <% if(obj.text) { %> , "text" : "" <%}%>
+    "coding": [
+      {
+        "system": "<%- obj.system %>",
+        "code": "<%- obj.code %>"<% if (obj.display) { %>,
+        "display": "<%- obj.display %>"
+        <% } %>
+      }
+    ]
+}
+% } %> 

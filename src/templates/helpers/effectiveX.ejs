@@ -1,0 +1,10 @@
+<% if(effective){
+  if(effective.high || effective.low) { %>
+    "effectivePeriod" : {
+      "high": "<%- effective.high %>",
+      "low" :  "<%- effective.low %>"
+    }
+  <% }else { %>
+    "effectiveDateTime" : "<%- effective %>"
+ <% }
+} %>

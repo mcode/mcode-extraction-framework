@@ -22,7 +22,6 @@ function getICD10Code(condition) {
   return undefined;
 }
 
-
 // Checks if condition's ICD10 code is in valueset
 function checkConditionInVS(condition, vs) {
   const icd10Code = getICD10Code(condition);
