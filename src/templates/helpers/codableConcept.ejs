@@ -1,20 +1,28 @@
-<% if(name ) %> "<%- name -%>" : % } %> 
-<% if(obj ) {%>
+<% if(typeof obj !== 'undefined' && obj ) { 
+   let isArray = Array.isArray(obj);
+   let arr = (isArray) ? obj : [obj]; 
+  %> 
+    <% if(name ) { %> "<%- name -%>" : <% } %> 
+    <% if(isArray) {%> [ <%} %>
+  <% 
+   for(let i =0; i< arr.length; i++){ 
+   %>
   {  
-  <% if(extension) { %> 
+  <% if(typeof extension !== 'undefined' && extension) { %> 
       "extension": [{
         "url" : "<%- extension.url -%>",
         <%- include("./valueX", {value: extension.value}) %>
-        }]
+        }],
     <% } %>
-  <% if(obj.text) { %> , "text" : "" <%}%>
     "coding": [
       {
-        "system": "<%- obj.system %>",
-        "code": "<%- obj.code %>"<% if (obj.display) { %>,
-        "display": "<%- obj.display %>"
+        "system": "<%- arr[i].system %>",
+        "code": "<%- arr[i].code %>"<% if (arr[i].display) { %>,
+        "display": "<%- arr[i].display %>"
         <% } %>
       }
     ]
 }
-% } %> 
+<% } %>
+<% if(isArray) {%> ] <%} %>
+<% } %> 

@@ -1,11 +1,11 @@
-<% if(bodySite) { %> 
+<% if(typeof bodySite != 'undefined' && bodySite) { %> 
   "bodySite" : [{
-    <% if(laterality) { %> "extension": [
+    <% if(typeof laterality != 'undefined' && laterality) { %> "extension": [
     {
-      "url": "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review",
+      "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality",
       "valueCodeableConcept": { 
         "code" : "<%- laterality %>",
-        "codeSystem" :"http://snomed.info/sct",
+        "codeSystem" :"http://snomed.info/sct"
       }
     }
     ], <% } %> 

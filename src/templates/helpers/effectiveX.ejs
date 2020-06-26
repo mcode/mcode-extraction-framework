@@ -1,4 +1,4 @@
-<% if(effective){
+<% if(typeof effective != 'undefined' && effective){
   if(effective.high || effective.low) { %>
     "effectivePeriod" : {
       "high": "<%- effective.high %>",
