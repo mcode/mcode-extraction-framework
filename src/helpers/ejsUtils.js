@@ -5,6 +5,8 @@ const _ = require('lodash');
 const shajs = require('sha.js');
 const logger = require('./logger');
 
+const TEMPLATE_ROOT = path.join(__dirname, '../templates');
+
 const fhirTemplateLookup = {
   CancerDiseaseStatus: fs.readFileSync(path.join(__dirname, '../templates/CancerDiseaseStatus.ejs'), 'utf8'),
   CarePlanWithReview: fs.readFileSync(path.join(__dirname, '../templates/CarePlanWithReview.ejs'), 'utf8'),
@@ -24,7 +26,7 @@ function generateResourceId(data) {
 
 function renderTemplate(template, data) {
   // Ensure that spread operator on data is last, so any data.id takes precedence
-  const render = ejs.render(template, { id: generateResourceId(data), ...data });
+  const render = ejs.render(template, { id: generateResourceId(data), ...data }, { root: TEMPLATE_ROOT });
   return JSON.parse(render);
 }
 

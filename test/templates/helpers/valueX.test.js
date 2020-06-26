@@ -81,13 +81,13 @@ describe('test valueX template', () => {
     expect(generatedString).toEqual({ valueString: '10:10:10sdfasdfasdfasdfasdfasdf' });
   });
 
-  test('supplying coded value should result in valueCodableConcept entry', () => {
-    const generatedCodableConcept = wrapAndParse(ejs.render(
+  test('supplying coded value should result in valueCodeableConcept entry', () => {
+    const generatedCodeableConcept = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: { code: 'Code1', system: 'system' } }, { filename: path.join(__dirname, '../../../src/templates/helpers/valueX.ejs') },
+      { value: { code: 'Code1', system: 'system' } }, { root: path.join(__dirname, '../../../src/templates/') },
     ));
 
-    expect(generatedCodableConcept).toEqual({ valueCodableConcept: { coding: [{ code: 'Code1', system: 'system' }] } });
+    expect(generatedCodeableConcept).toEqual({ valueCodeableConcept: { coding: [{ code: 'Code1', system: 'system' }] } });
   });
 
   test('supplying value and units  should result in valueQuantity entry', () => {

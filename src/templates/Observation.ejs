@@ -5,24 +5,28 @@
     "reference": "urn:uuid:<%- subject.id %>"<% if (subject.name) { %>,
     "display": "<%- subject.name %>"
     <% } %>
-  }
+  },
   
-  <% if(code) { %>
-    ,
-    <%- import("helpers/codableConcept", {"name" : "code", "obj" : code}) %>
-  <% } %>
+  "status" : "<%- (typeof status != 'undefined')? status : 'final' %>"
 
-  <% if(category) { %>
+ 
+  <% if(typeof code != 'undefined') { %>
     ,
-    <%- import("helpers/codableConcept", {"name" : "category", "obj" : [
+    <%- include("/helpers/codableConcept", {"name" : "code", "obj" : code}) %>
+  <% } %>
+  
+  <% if(typeof category != 'undefined') { %>
+    ,
+    <%- include("/helpers/codableConcept", {"name" : "category", "obj" : [
         {
         "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": "<%- category %>"
+          "code": category
         } ]
       }) %>
     <% } %>
 
-  <% if(condition) { %>
+
+<% if(typeof condition != 'undefined') { %>
   , "focus" : [
     {
       "reference": "urn:uuid:<%- condition.id %>"<% if (condition.name) { %>,
@@ -32,23 +36,19 @@
   ]
   <% } %>
 
-  <% if(effectiveDateTime) { %>
+  <% if(typeof effectiveDate != 'undefined') { %>
     , 
-    <%- import("helpers/effectiveX", {"effective" : effectiveDateTime}) %>
+    <%- include("/helpers/effectiveX", {"effective" : effectiveDate}) %>
   <% } %>
-
-  <% if(value) { %>
+  
+  <% if(typeof value != 'undefined') { %>
     ,
-    <%- import("helpers/valueX", {"value" : value}) %>
+    <%- include("/helpers/valueX", {"value" : value}) %>
   <% } %>
-
-  <% if(bodySite) { %>
+  
+  <% if(typeof bodySite != 'undefined') { %>
     ,
-    <%- import("helpers/bodySite", {"bodySite" : bodySite, "laterality": laterality}) %>
+    <%- include("/helpers/bodySite", {"bodySite" : bodySite, "laterality": laterality}) %>
   <% } %>
-
-
-
-
 
 }

@@ -22,7 +22,7 @@
        "valueString" : "<%- value %>"
        <% } %>
     <%} else if(value.code){ %>
-      <%- include("./codableConcept", {name: "valueCodableConcept" , obj: value}) %>
+      <%- include("/helpers/codableConcept", {name: "valueCodeableConcept" , obj: value}) %>
     <% } else if(value.high  || value.low ){ %>
     "valueRange": {
       "high" : "<%- value.high %>",
