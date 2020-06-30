@@ -1,5 +1,6 @@
-<% if(typeof effective != 'undefined' && effective){
-  if(effective.high || effective.low) { %>
+<% if(typeof effective != 'undefined' && effective){ %>
+  <%- (typeof excludePreComma !== 'undefined' && excludePreComma) ? '' : ',' %>
+  <% if(effective.high || effective.low) { %>
     "effectivePeriod" : {
       "high": "<%- effective.high %>",
       "low" :  "<%- effective.low %>"

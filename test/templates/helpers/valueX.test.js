@@ -13,7 +13,7 @@ describe('test valueX template', () => {
   test('null data passed into template should generate empty string', () => {
     const generated = ejs.render(
       VALUE_X_TEMPLATE,
-      null,
+      { value: null },
     );
     expect(generated).toEqual('');
   });
@@ -21,7 +21,7 @@ describe('test valueX template', () => {
   test('supplying number value should result in valueInteger entry', () => {
     const generatedInteger = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: 34 },
+      { value: 34, excludePreComma: true },
     ));
 
     expect(generatedInteger).toEqual({ valueInteger: 34 });
@@ -30,12 +30,12 @@ describe('test valueX template', () => {
   test('supplying boolean value should result in valueBoolean entry', () => {
     const generatedFalse = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: false },
+      { value: false, excludePreComma: true },
     ));
 
     const generatedTrue = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: true },
+      { value: true, excludePreComma: true },
     ));
 
     expect(generatedFalse).toEqual({ valueBoolean: false });
@@ -45,32 +45,32 @@ describe('test valueX template', () => {
   test('supplying string value should result in different entry types based n format of string', () => {
     const generatedQuantity = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: '1979 m' },
+      { value: '1979 m', excludePreComma: true },
     ));
 
     const generatedDateYearMonth = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: '1979-01' },
+      { value: '1979-01', excludePreComma: true },
     ));
 
     const generatedDateYearMonthDay = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: '1979-01-01' },
+      { value: '1979-01-01', excludePreComma: true },
     ));
 
     const generatedDateTime = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: '1979-01-01T10:10' },
+      { value: '1979-01-01T10:10', excludePreComma: true },
     ));
 
     const generatedTime = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: '10:10:10' },
+      { value: '10:10:10', excludePreComma: true },
     ));
 
     const generatedString = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: '10:10:10sdfasdfasdfasdfasdfasdf' },
+      { value: '10:10:10sdfasdfasdfasdfasdfasdf', excludePreComma: true },
     ));
 
     expect(generatedQuantity).toEqual({ valueQuantity: { value: 1979, unit: 'm' } });
@@ -84,7 +84,7 @@ describe('test valueX template', () => {
   test('supplying coded value should result in valueCodeableConcept entry', () => {
     const generatedCodeableConcept = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: { code: 'Code1', system: 'system' } }, { root: path.join(__dirname, '../../../src/templates/') },
+      { value: { code: 'Code1', system: 'system' }, excludePreComma: true }, { root: path.join(__dirname, '../../../src/templates/') },
     ));
 
     expect(generatedCodeableConcept).toEqual({ valueCodeableConcept: { coding: [{ code: 'Code1', system: 'system' }] } });
@@ -93,7 +93,7 @@ describe('test valueX template', () => {
   test('supplying value and units  should result in valueQuantity entry', () => {
     const generatedQuantity = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: { value: 1979, unit: 'm' } },
+      { value: { value: 1979, unit: 'm' }, excludePreComma: true },
     ));
 
     expect(generatedQuantity).toEqual({ valueQuantity: { value: 1979, unit: 'm' } });
@@ -102,7 +102,7 @@ describe('test valueX template', () => {
   test('supplying start and end  should result in valuePeriod entry', () => {
     const generatedPeriod = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: { start: '1979', end: '1980' } },
+      { value: { start: '1979', end: '1980' }, excludePreComma: true },
     ));
 
     expect(generatedPeriod).toEqual({ valuePeriod: { start: '1979', end: '1980' } });
@@ -111,7 +111,7 @@ describe('test valueX template', () => {
   test('supplying high and low  should result in valueRange entry', () => {
     const generatedRange = wrapAndParse(ejs.render(
       VALUE_X_TEMPLATE,
-      { value: { low: '1979', high: '1980' } },
+      { value: { low: '1979', high: '1980' }, excludePreComma: true },
     ));
 
     expect(generatedRange).toEqual({ valueRange: { low: '1979', high: '1980' } });

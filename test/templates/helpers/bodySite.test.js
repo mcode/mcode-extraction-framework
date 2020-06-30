@@ -32,7 +32,7 @@ describe('test bodySite template', () => {
   test('supplying just laterality will produce empty string', () => {
     const generated = ejs.render(
       BODY_SITE_TEMPLATE,
-      { laterality: 'someValue' },
+      { laterality: 'someValue', excludePreComma: true },
     );
 
     // Relevant fields should match the valid FHIR
@@ -42,7 +42,7 @@ describe('test bodySite template', () => {
   test('supplying a valid body site should produce valid output', () => {
     const generated = `{${ejs.render(
       BODY_SITE_TEMPLATE,
-      { bodySite: 'SomeValue' },
+      { bodySite: 'SomeValue', excludePreComma: true },
     )}}`;
 
     // Relevant fields should match the valid FHIR
@@ -52,7 +52,7 @@ describe('test bodySite template', () => {
   test('supplying a valid bodySite and laterality should produce valid output', () => {
     const generated = `{${ejs.render(
       BODY_SITE_TEMPLATE,
-      { bodySite: 'SomeValue', laterality: 'latValue' },
+      { bodySite: 'SomeValue', laterality: 'latValue', excludePreComma: true },
     )}}`;
 
     // Relevant fields should match the valid FHIR

@@ -1,4 +1,5 @@
-<% if(typeof value != 'undefined' && value != null) { %>
+<% if( value != null) { %>
+  <%- (typeof excludePreComma !== 'undefined' && excludePreComma) ? '' : ',' %>
   <%   if(typeof value === "number"){ %>
     "valueInteger": <%- value %>
   <% } else if(typeof value === "boolean"){ %>
@@ -22,7 +23,7 @@
        "valueString" : "<%- value %>"
        <% } %>
     <%} else if(value.code){ %>
-      <%- include("/helpers/codableConcept", {name: "valueCodeableConcept" , obj: value}) %>
+      <%- include("/helpers/codableConcept", {name: "valueCodeableConcept" , obj: value, excludePreComma: true}) %>
     <% } else if(value.high  || value.low ){ %>
     "valueRange": {
       "high" : "<%- value.high %>",

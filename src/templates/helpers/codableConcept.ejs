@@ -2,6 +2,7 @@
    let isArray = Array.isArray(obj);
    let arr = (isArray) ? obj : [obj]; 
   %> 
+  <%- (typeof excludePreComma !== 'undefined' && excludePreComma) ? '' : ',' %>
     <% if(name ) { %> "<%- name -%>" : <% } %> 
     <% if(isArray) {%> [ <%} %>
   <% 

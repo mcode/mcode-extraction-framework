@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const validExampleObservation = require('./fixtures/observation-resource.json');
-const { renderTemplate } = require('../../src/helpers/ejsUtils');
+const { renderTemplate, applyAttributesToData } = require('../../src/helpers/ejsUtils');
 
-const OBSERVATION_VALID_DATA = {
+const OBSERVATION_VALID_DATA = applyAttributesToData({
   id: 'CancerDiseaseStatus-fixture',
   subject: {
     id: '123-example-patient',
@@ -24,7 +24,7 @@ const OBSERVATION_VALID_DATA = {
     name: 'Walking Corpse Syndrome',
   },
   effectiveDate: '1994-12-09T09:07:00Z',
-};
+}, 'Observation');
 
 const OBSERVTION_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/Observation.ejs'), 'utf8');
 

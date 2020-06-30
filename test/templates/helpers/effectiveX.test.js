@@ -23,7 +23,7 @@ describe('test effectiveX template', () => {
   test('supplying string value should result in effectiveDateTime entry', () => {
     const generated = `{${ejs.render(
       EFFECTIVE_X_TEMPLATE,
-      { effective: 'June 30' },
+      { effective: 'June 30', excludePreComma: true },
     )}}`;
 
     // Relevant fields should match the valid FHIR
@@ -33,7 +33,7 @@ describe('test effectiveX template', () => {
   test('supplying an object with high and low should result in effectivePeriod', () => {
     const generated = `{${ejs.render(
       EFFECTIVE_X_TEMPLATE,
-      { effective: { high: 'June 30', low: 'June 1' } },
+      { effective: { high: 'June 30', low: 'June 1' }, excludePreComma: true },
     )}}`;
 
     // Relevant fields should match the valid FHIR

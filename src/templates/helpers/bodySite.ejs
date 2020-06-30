@@ -1,4 +1,5 @@
 <% if(typeof bodySite != 'undefined' && bodySite) { %> 
+  <%- (typeof excludePreComma !== 'undefined' && excludePreComma) ? '' : ',' %>
   "bodySite" : [{
     <% if(typeof laterality != 'undefined' && laterality) { %> "extension": [
     {
