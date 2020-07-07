@@ -22,8 +22,8 @@ const diseaseStatusCodeToTextLookup = invert(diseaseStatusTextToCodeLookup);
 const evidenceTextToCodeLookup = {
   Imaging: 363679005,
   'Histopathology test': 252416005,
-  'Assessment of symptom control': 711015009,
-  'Physical examination procedure': 5880005,
+  symptoms: 711015009,
+  'physical exam': 5880005,
   'Laboratory data interpretation': 386344002,
 };
 const evidenceCodeToTextLookup = invert(evidenceTextToCodeLookup);

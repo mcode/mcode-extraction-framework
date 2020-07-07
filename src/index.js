@@ -28,8 +28,14 @@ const {
   isBundleEmpty,
 } = require('./helpers/fhirUtils');
 const { generateMcodeResources } = require('./helpers/ejsUtils');
-const { isConditionPrimary, isConditionSecondary, getICD10Code } = require('./helpers/conditionUtils');
-const { getDiseaseStatusCode } = require('./helpers/diseaseStatusUtils');
+const {
+  isConditionCodePrimary,
+  isConditionCodeSecondary,
+  isConditionPrimary,
+  isConditionSecondary,
+  getICD10Code,
+} = require('./helpers/conditionUtils');
+const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode } = require('./helpers/diseaseStatusUtils');
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
 
 module.exports = {
@@ -61,9 +67,12 @@ module.exports = {
   generateMcodeResources,
   getBundleResourcesByType,
   getDiseaseStatusCode,
+  getDiseaseStatusEvidenceCode,
   getICD10Code,
   getPatientName,
   isBundleEmpty,
+  isConditionCodePrimary,
   isConditionPrimary,
+  isConditionCodeSecondary,
   isConditionSecondary,
 };
