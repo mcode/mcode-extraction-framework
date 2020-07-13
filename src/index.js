@@ -35,7 +35,7 @@ const {
   isConditionSecondary,
   getICD10Code,
 } = require('./helpers/conditionUtils');
-const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode } = require('./helpers/diseaseStatusUtils');
+const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = require('./helpers/diseaseStatusUtils');
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
 
 module.exports = {
@@ -75,4 +75,5 @@ module.exports = {
   isConditionPrimary,
   isConditionCodeSecondary,
   isConditionSecondary,
+  mEpochToDate,
 };

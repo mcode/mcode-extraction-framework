@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 // Helper function for inverting a object's keys and values s.t. (k->v) becomes (v->k)
 function invert(obj) {
   return Object.entries(obj).reduce((ret, entry) => {
@@ -6,6 +8,12 @@ function invert(obj) {
     ret[value] = key;
     return ret;
   }, {});
+}
+
+// Translate an M-language epoch date to an appropriate moment date
+function mEpochToDate(date) {
+  const epochDate = moment('12-31-1840');
+  return epochDate.add(date, 'days');
 }
 
 // Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
@@ -71,4 +79,5 @@ module.exports = {
   getDiseaseStatusDisplay,
   getDiseaseStatusEvidenceCode,
   getDiseaseStatusEvidenceDisplay,
+  mEpochToDate,
 };
