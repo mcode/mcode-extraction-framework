@@ -12,7 +12,7 @@ function invert(obj) {
 
 // Translate an M-language epoch date to an appropriate moment date
 function mEpochToDate(date) {
-  const epochDate = moment('12-31-1840');
+  const epochDate = moment('1840-12-31');
   return epochDate.add(date, 'days');
 }
 
