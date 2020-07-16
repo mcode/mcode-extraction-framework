@@ -16,16 +16,14 @@ const icd10 = require('./fixtures/icd10.json');
 const primaryCancerConditionCode = primaryCancerConditionVS.compose.include[2].concept[0].code;
 const secondaryCancerConditionCode = secondaryCancerConditionVS.compose.include[2].concept[0].code;
 
-describe("conditionUtils", () => {
+describe('conditionUtils', () => {
   test('isConditionCodePrimary', () => {
-    console.log('primaryCancerConditionCode', primaryCancerConditionCode);
     expect(isConditionCodePrimary(primaryCancerConditionCode)).toBeTruthy();
     expect(isConditionCodePrimary('anything')).toBeFalsy();
     expect(() => isConditionCodePrimary(undefined)).toThrowError(TypeError);
   });
 
   test('isConditionCodeSecondary', () => {
-    console.log('secondaryCancerConditionCode', secondaryCancerConditionCode);
     expect(isConditionCodeSecondary(secondaryCancerConditionCode)).toBeTruthy();
     expect(isConditionCodeSecondary('anyCode')).toBeFalsy();
     expect(() => isConditionCodeSecondary(undefined)).toThrowError(TypeError);
@@ -47,4 +45,4 @@ describe("conditionUtils", () => {
     expect(getICD10Code(conditionWithICD10)).toEqual(icd10);
     expect(getICD10Code(conditionWithoutICD10)).toBeUndefined();
   });
-}
+});
