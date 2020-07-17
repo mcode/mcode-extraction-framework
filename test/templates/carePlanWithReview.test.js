@@ -7,7 +7,7 @@ const VALID_DATA = {
   effectiveDateTime: '2020-01-23T09:07:00Z',
   effectiveDate: '2020-01-23',
   treatmentPlanChange: {
-    hasChanged: true,
+    hasChanged: 'true',
     reason: {
       code: '281647001',
       displayText: 'Adverse reaction (disorder)',
