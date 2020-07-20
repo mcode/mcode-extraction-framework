@@ -10,23 +10,34 @@ const logger = require('../helpers/logger');
 function formatData(tpcData) {
   return tpcData.map((data) => {
     const { mrn, dateOfCarePlan, changed, reasonCode } = data;
-    if (!mrn || !dateOfCarePlan || !changed || !reasonCode) {
-      throw new Error('Treatment Plan Change Data missing an expected property: mrn, dateOfCarePlan, reasonCode, changed are required');
+    if (!mrn || !dateOfCarePlan || !changed) {
+      throw new Error('Treatment Plan Change Data missing an expected property: mrn, dateOfCarePlan, changed are required');
     }
 
-    return {
+    // reasonCode is required if changed flag is true
+    if (changed === 'true' && !reasonCode) {
+      throw new Error('reasonCode is required when changed flag is true');
+    }
+
+    const formattedData = {
       effectiveDate: formatDate(dateOfCarePlan),
       effectiveDateTime: formatDateTime(dateOfCarePlan),
       treatmentPlanChange: {
         hasChanged: changed,
-        reason: {
-          code: reasonCode,
-        },
       },
       subject: {
         id: mrn,
       },
     };
+
+    // Add reasonCode to formattedData if available
+    if (reasonCode) {
+      formattedData.treatmentPlanChange.reason = {
+        code: reasonCode,
+      };
+    }
+
+    return formattedData;
   });
 }
 

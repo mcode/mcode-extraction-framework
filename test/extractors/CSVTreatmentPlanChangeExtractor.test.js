@@ -20,16 +20,19 @@ const formatData = rewire('../../src/extractors/CSVTreatmentPlanChangeExtractor.
 
 describe('CSVTreatmentPlanChangeExtractor', () => {
   describe('formatData', () => {
+    const exampleData = [
+      {
+        dateOfCarePlan: '04/15/2020',
+        changed: 'false',
+        mrn: 'id',
+      },
+    ];
+
     test('should join data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'Treatment Plan Change Data missing an expected property: mrn, dateOfCarePlan, reasonCode, changed are required';
-      const exampleData = [
-        {
-          dateOfCarePlan: '04/15/2020',
-          changed: true,
-          reasonCode: 'exampleCode',
-          mrn: 'id',
-        },
-      ];
+      const expectedErrorString = 'Treatment Plan Change Data missing an expected property: mrn, dateOfCarePlan, changed are required';
+
+      // formatData on example data should not throw error when changed is false
+      expect(() => formatData(exampleData)).not.toThrowError();
 
       // Test required properties throw error
       Object.keys(exampleData[0]).forEach((key) => {
@@ -38,6 +41,18 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
         delete clonedData[0][key];
         expect(() => formatData(clonedData)).toThrow(new Error(expectedErrorString));
       });
+    });
+
+    test('should throw error if reasonCode is missing when changed flag is true.', () => {
+      const expectedErrorString = 'reasonCode is required when changed flag is true';
+
+      // error should get throw when changed flag is true and there is no reasonCode provided
+      exampleData[0].changed = 'true';
+      expect(() => formatData(exampleData)).toThrow(new Error(expectedErrorString));
+
+      // No error should be throw when reasonCode is provided
+      exampleData[0].reasonCode = 'example code';
+      expect(() => formatData(exampleData)).not.toThrowError();
     });
   });
 
