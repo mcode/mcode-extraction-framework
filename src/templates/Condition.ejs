@@ -8,11 +8,11 @@
     id: String,
     name: String,
   },
-  code: [{
+  code: {
     system: String,
     code: String,
     display: String,
-  }],
+  },
 }
 <% */ %>
 {
@@ -24,14 +24,13 @@
     <% } %>
   },
   "code": {
-    "coding": [ <% codes.forEach((c, i) => {%>
+    "coding": [
       {
-        "system": "<%- c.system %>",
-        "code": "<%- c.code %>"<% if (c.display) { %>,
-        "display": "<%- c.display %>"
+        "system": "<%- code.system %>",
+        "code": "<%- code.code %>"<% if (code.display) { %>,
+        "display": "<%- code.display %>"
         <% } %>
-      }<% if (i + 1 < codes.length) { %>,<% }%>
-    <%})%>
+      }
     ]
   },
   "category": [

@@ -14,10 +14,10 @@ function formatData(conditionData) {
       subject: {
         id: mrn,
       },
-      codes: [{
+      code: {
         code,
         system: codeSystem,
-      }],
+      },
     };
   });
 }

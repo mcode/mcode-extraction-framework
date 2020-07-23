@@ -8,19 +8,19 @@ const CONDITION_VALID_DATA = {
   subject: {
     id: 'example-subject-id',
   },
-  codes: [{
+  code: {
     system: 'example-system',
     code: 'example-code',
-  }],
+  },
 };
 
 const CONDITION_INVALID_DATA = {
   // Omitting 'subject' field which is required
   id: 'example-id',
-  codes: [{
+  code: {
     system: 'example-system',
     code: 'example-code',
-  }],
+  },
 };
 
 const CONDITION_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/Condition.ejs'), 'utf8');
