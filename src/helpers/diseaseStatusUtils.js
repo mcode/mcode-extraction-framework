@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 // Helper function for inverting a object's keys and values s.t. (k->v) becomes (v->k)
 function invert(obj) {
   return Object.entries(obj).reduce((ret, entry) => {
@@ -8,7 +10,14 @@ function invert(obj) {
   }, {});
 }
 
+// Translate an M-language epoch date to an appropriate moment date
+function mEpochToDate(date) {
+  const epochDate = moment('1840-12-31');
+  return epochDate.add(date, 'days');
+}
+
 // Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
+// specifically using lowercase versions of the text specified by ICARE for status
 const diseaseStatusTextToCodeLookup = {
   'no evidence of disease': 260415000,
   responding: 268910001,
@@ -18,13 +27,14 @@ const diseaseStatusTextToCodeLookup = {
 };
 const diseaseStatusCodeToTextLookup = invert(diseaseStatusTextToCodeLookup);
 
-// Code mapping is based on http://hl7.org/fhir/us/mcode/ValueSet-mcode-cancer-disease-status-evidence-type-vs.html
+// Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
+// specifically using lowercase versions of the text specified by ICARE for Reason
 const evidenceTextToCodeLookup = {
-  Imaging: 363679005,
-  'Histopathology test': 252416005,
-  'Assessment of symptom control': 711015009,
-  'Physical examination procedure': 5880005,
-  'Laboratory data interpretation': 386344002,
+  imaging: 363679005,
+  pathology: 252416005,
+  symptoms: 711015009,
+  'physical exam': 5880005,
+  'lab results': 386344002,
 };
 const evidenceCodeToTextLookup = invert(evidenceTextToCodeLookup);
 
@@ -69,4 +79,5 @@ module.exports = {
   getDiseaseStatusDisplay,
   getDiseaseStatusEvidenceCode,
   getDiseaseStatusEvidenceDisplay,
+  mEpochToDate,
 };

@@ -22,11 +22,22 @@ function getICD10Code(condition) {
   return undefined;
 }
 
+/**
+ * Checks if a condition code is a primary cancer condition
+ * @param code ICD code, string
+ * @return {boolean} if primary cancer condition
+ */
+function isConditionCodePrimary(code) {
+  return checkCodeInVS(code, primaryCancerConditionVS);
+}
 
-// Checks if condition's ICD10 code is in valueset
-function checkConditionInVS(condition, vs) {
-  const icd10Code = getICD10Code(condition);
-  return icd10Code && checkCodeInVS(icd10Code.code, vs);
+/**
+ * Checks if a condition code is a primary cancer condition
+ * @param code ICD code, string
+ * @return {boolean} if secondary cancer condition
+ */
+function isConditionCodeSecondary(code) {
+  return checkCodeInVS(code, secondaryCancerConditionVS);
 }
 
 /**
@@ -35,7 +46,8 @@ function checkConditionInVS(condition, vs) {
  * @return {boolean} if primary cancer condition
  */
 function isConditionPrimary(condition) {
-  return checkConditionInVS(condition, primaryCancerConditionVS);
+  const icd10Code = getICD10Code(condition);
+  return icd10Code && isConditionCodePrimary(icd10Code.code);
 }
 
 /**
@@ -44,11 +56,14 @@ function isConditionPrimary(condition) {
  * @return {boolean} if secondary cancer condition
  */
 function isConditionSecondary(condition) {
-  return checkConditionInVS(condition, secondaryCancerConditionVS);
+  const icd10Code = getICD10Code(condition);
+  return icd10Code && isConditionCodeSecondary(icd10Code.code);
 }
 
 module.exports = {
   getICD10Code,
   isConditionPrimary,
   isConditionSecondary,
+  isConditionCodePrimary,
+  isConditionCodeSecondary,
 };

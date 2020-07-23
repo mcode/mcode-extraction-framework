@@ -1,7 +1,7 @@
 const fhirpath = require('fhirpath');
 
 function isBundleEmpty(bundle) {
-  return bundle.total === 0;
+  return bundle.total === 0 || bundle.entry.length === 0;
 }
 
 function firstEntryInBundle(bundle) {

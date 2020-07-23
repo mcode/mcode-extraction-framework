@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:2f26785071c04af0b4f649cf9aed2a31298c2194b331e2117874586dd6493d28",
+      "fullUrl": "urn:uuid:63f3cf69813e1bfd1939706f9fa6214ef0bded2ddd89d1ed3def45079132636f",
       "resource": {
         "resourceType": "Observation",
-        "id": "2f26785071c04af0b4f649cf9aed2a31298c2194b331e2117874586dd6493d28",
+        "id": "63f3cf69813e1bfd1939706f9fa6214ef0bded2ddd89d1ed3def45079132636f",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
@@ -58,7 +58,7 @@
               "coding" : [
                 {
                   "system" : "http://snomed.info/sct",
-                  "display": "Imaging",
+                  "display": "imaging",
                   "code": "363679005"
                 }
               ]
@@ -70,7 +70,7 @@
               "coding" : [
                 {
                   "system" : "http://snomed.info/sct",
-                  "display": "Histopathology test",
+                  "display": "pathology",
                   "code": "252416005"
                 }
               ]
