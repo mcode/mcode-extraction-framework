@@ -56,11 +56,26 @@ const getBundleResourcesByType = (bundle, type, context = {}, first) => {
   return first ? null : [];
 };
 
+const getBundleEntriesByResourceType = (bundle, type, context = {}, first) => {
+  const resources = fhirpath.evaluate(
+    bundle,
+    `Bundle.entry.where(resource.resourceType='${type}')`,
+    context,
+  );
+
+  if (resources.length > 0) {
+    return first ? resources[0] : resources;
+  }
+
+  return first ? null : [];
+};
+
 module.exports = {
   allResourcesInBundle,
   determineVersion,
   firstEntryInBundle,
   firstResourceInBundle,
+  getBundleEntriesByResourceType,
   getBundleResourcesByType,
   getEmptyBundle,
   isBundleEmpty,
