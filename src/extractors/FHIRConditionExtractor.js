@@ -1,20 +1,12 @@
 const { BaseFHIRExtractor } = require('./BaseFHIRExtractor');
 
 const BASE_CATEGORIES = 'problem-list-item';
-const BASE_STATUSES = ''; // No status specified, returns all statuses (active, resolved, inactive)
 
 class FHIRConditionExtractor extends BaseFHIRExtractor {
-  constructor({
-    baseFhirUrl,
-    requestHeaders,
-    version,
-    category,
-    status,
-  }) {
+  constructor({ baseFhirUrl, requestHeaders, version, category }) {
     super({ baseFhirUrl, requestHeaders, version });
     this.resourceType = 'Condition';
     this.category = category || BASE_CATEGORIES;
-    this.status = status || BASE_STATUSES;
   }
 
   // In addition to default parametrization, add category
@@ -23,7 +15,6 @@ class FHIRConditionExtractor extends BaseFHIRExtractor {
     return {
       ...paramsWithID,
       category: this.category,
-      ...(this.status && { 'clinical-status': this.status }),
     };
   }
 }
