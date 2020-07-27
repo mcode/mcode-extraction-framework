@@ -7,7 +7,7 @@ const logger = require('../helpers/logger');
 function joinAndReformatData(patientData) {
   logger.debug('Reformatting patient data from CSV into template format');
   // No join needed, just a reformatting
-  const { mrn, family, given, gender } = patientData;
+  const { mrn, family, given, gender, dateOfBirth, race, ethnicity, language, address, city, state, zip } = patientData;
 
   return {
     id: mrn,
@@ -15,6 +15,14 @@ function joinAndReformatData(patientData) {
     family,
     given,
     gender,
+    dateOfBirth,
+    race,
+    ethnicity,
+    language,
+    address,
+    city,
+    state,
+    zip,
   };
 }
 
