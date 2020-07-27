@@ -42,10 +42,24 @@ function mapFHIRVersions(resource, currentVersion, targetVersion) {
 
 // Utility function to get the resources of a type from our bundle
 // Optionally get only the first resource of that type via 'first' parameter
-const getBundleResourcesByType = (bundle, type, context = {}, first) => {
+const getBundleResourcesByType = (bundle, type, context = {}, first = false) => {
   const resources = fhirpath.evaluate(
     bundle,
     `Bundle.entry.where(resource.resourceType='${type}').resource`,
+    context,
+  );
+
+  if (resources.length > 0) {
+    return first ? resources[0] : resources;
+  }
+
+  return first ? null : [];
+};
+
+const getBundleEntriesByResourceType = (bundle, type, context = {}, first = false) => {
+  const resources = fhirpath.evaluate(
+    bundle,
+    `Bundle.entry.where(resource.resourceType='${type}')`,
     context,
   );
 
@@ -61,6 +75,7 @@ module.exports = {
   determineVersion,
   firstEntryInBundle,
   firstResourceInBundle,
+  getBundleEntriesByResourceType,
   getBundleResourcesByType,
   getEmptyBundle,
   isBundleEmpty,
