@@ -1,14 +1,5 @@
 const moment = require('moment');
-
-// Helper function for inverting a object's keys and values s.t. (k->v) becomes (v->k)
-function invert(obj) {
-  return Object.entries(obj).reduce((ret, entry) => {
-    const [key, value] = entry;
-    // eslint-disable-next-line no-param-reassign
-    ret[value] = key;
-    return ret;
-  }, {});
-}
+const { invertObject } = require('./helperUtils')
 
 // Translate an M-language epoch date to an appropriate moment date
 function mEpochToDate(date) {
@@ -25,7 +16,7 @@ const diseaseStatusTextToCodeLookup = {
   progressing: 271299001,
   'not evaluated': 709137006,
 };
-const diseaseStatusCodeToTextLookup = invert(diseaseStatusTextToCodeLookup);
+const diseaseStatusCodeToTextLookup = invertObject(diseaseStatusTextToCodeLookup);
 
 // Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
 // specifically using lowercase versions of the text specified by ICARE for Reason
@@ -36,11 +27,11 @@ const evidenceTextToCodeLookup = {
   'physical exam': 5880005,
   'lab results': 386344002,
 };
-const evidenceCodeToTextLookup = invert(evidenceTextToCodeLookup);
+const evidenceCodeToTextLookup = invertObject(evidenceTextToCodeLookup);
 
 /**
  * Converts Text Value to code in mCODE's ConditionStatusTrendVS
- * @param text, limited to No evidence of disease, Responding, Stable, Progressing, or not evaluated
+ * @param text, limited to 'no evidence of disease', Responding, Stable, Progressing, or 'not evaluated'
  * @return {code} corresponding code from mCODE's ConditionStatusTrendVS
  */
 function getDiseaseStatusCode(text) {
@@ -49,7 +40,7 @@ function getDiseaseStatusCode(text) {
 
 /**
  * Converts code in mCODE's ConditionStatusTrendVS to Text Value
- * @param text, limited to No evidence of disease, Responding, Stable, Progressing, or not evaluated
+ * @param text, limited to codes in the diseaseStatusTextToCodeLookup above
  * @return {code} corresponding code from mCODE's ConditionStatusTrendVS
  */
 function getDiseaseStatusDisplay(code) {
@@ -58,7 +49,7 @@ function getDiseaseStatusDisplay(code) {
 
 /**
  * Converts Text Value to code in mCODE's CancerDiseaseStatusEvidenceTypeVS
- * @param text, limited to No evidence of disease, Responding, Stable, Progressing, or not evaluated
+ * @param text, limited to imaging, pathology, symptoms, 'physical exam', 'lab results'
  * @return {code} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
  */
 function getDiseaseStatusEvidenceCode(text) {
@@ -67,7 +58,7 @@ function getDiseaseStatusEvidenceCode(text) {
 
 /**
  * Converts code in mCODE's CancerDiseaseStatusEvidenceTypeVS to Text Value
- * @param text, limited to No evidence of disease, Responding, Stable, Progressing, or not evaluated
+ * @param text, limited to codes in the evidenceTextToCodeLookup above
  * @return {code} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
  */
 function getDiseaseStatusEvidenceDisplay(code) {

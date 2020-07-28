@@ -7,7 +7,13 @@ const logger = require('../helpers/logger');
 function joinAndReformatData(patientData) {
   logger.debug('Reformatting patient data from CSV into template format');
   // No join needed, just a reformatting
-  const { mrn, family, given, gender, dateOfBirth, race, ethnicity, language, address, city, state, zip } = patientData;
+  const {
+    mrn, family, given, gender, dateOfBirth, race, ethnicity, language, address, city, state, zip,
+  } = patientData;
+
+  if (!mrn || !family || !given || !gender) {
+    throw Error('Missing required field for Patient CSV Extraction. Required values include: mrn, family, given, gender');
+  }
 
   return {
     id: mrn,

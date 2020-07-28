@@ -3,6 +3,8 @@
     "mrn": "119147111821125",
     "family": "Marshall",
     "given": "Archy",
-    "gender": "male"
+    "gender": "male",
+    "dateOfBirth":"1994-08-24",
+    "language": null
   }
 ]

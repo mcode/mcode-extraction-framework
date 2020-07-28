@@ -23,6 +23,7 @@ csvModuleSpy
 describe('CSV Patient Extractor tests', () => {
   test('get should return a fhir bundle when MRN is known', async () => {
     const data = await csvPatientExtractor.get({ mrn: MOCK_PATIENT_MRN });
+    console.log('data', JSON.stringify(data));
 
     expect(data.resourceType).toEqual('Bundle');
     expect(data.type).toEqual('collection');
