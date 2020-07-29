@@ -7,7 +7,7 @@ const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(arrOfDiseaseStatusData) {
-  logger.info('Reformatting disease status data from CSV into template format');
+  logger.debug('Reformatting disease status data from CSV into template format');
   // Check the shape of the data
   arrOfDiseaseStatusData.forEach((record) => {
     if (!(record.mrn && record.conditionId && record.diseaseStatus && record.dateOfObservation)) {
@@ -43,7 +43,7 @@ class CSVCancerDiseaseStatusExtractor {
   }
 
   async getDiseaseStatusData(mrn, fromDate, toDate) {
-    logger.info('Getting disease status data');
+    logger.debug('Getting disease status data');
     return this.csvModule.get('mrn', mrn, fromDate, toDate);
   }
 

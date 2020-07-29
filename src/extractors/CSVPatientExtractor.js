@@ -5,7 +5,7 @@ const { Extractor } = require('./Extractor');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(patientData) {
-  logger.info('Reformatting patient data from CSV into template format');
+  logger.debug('Reformatting patient data from CSV into template format');
   // No join needed, just a reformatting
   const { mrn, family, given, gender } = patientData;
 
@@ -25,7 +25,7 @@ class CSVPatientExtractor extends Extractor {
   }
 
   async getPatientData(mrn) {
-    logger.info('Getting patient data');
+    logger.debug('Getting patient data');
     const data = await this.csvModule.get('mrn', mrn);
     // Should only be one patient with this mrn; get that pat from our arr
     return data[0];
