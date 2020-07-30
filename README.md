@@ -39,7 +39,6 @@ const cancerDiseaseStatusExtractor = new CSVCancerDiseaseStatusExtractor('path-t
 (async () => {
   logger.info('Extracting primary disease status data');
   const primaryDiseaseStatusBundle = await cancerDiseaseStatusExtractor.get({ mrn: 'some-mrn' });
-  logger.info(JSON.stringify(primaryDiseaseStatusBundle));
 })();
 ```
 

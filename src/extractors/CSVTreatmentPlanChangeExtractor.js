@@ -8,6 +8,7 @@ const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
 function formatData(tpcData) {
+  logger.debug('Reformatting disease status data from CSV into template format');
   return tpcData.map((data) => {
     const { mrn, dateOfCarePlan, changed, reasonCode } = data;
     if (!mrn || !dateOfCarePlan || !changed) {
@@ -48,14 +49,14 @@ class CSVTreatmentPlanChangeExtractor extends Extractor {
   }
 
   async getTPCData(mrn, fromDate, toDate) {
-    logger.info('Getting Treatment Plan Change Data');
+    logger.debug('Getting Treatment Plan Change Data');
     return this.csvModule.get('mrn', mrn, fromDate, toDate);
   }
 
   async get({ mrn, fromDate, toDate }) {
     const tpcData = await this.getTPCData(mrn, fromDate, toDate);
     if (tpcData.length === 0) {
-      logger.warn('No disease status data found for patient');
+      logger.warn('No treatment plan change data found for patient');
       return getEmptyBundle();
     }
 

@@ -30,7 +30,7 @@ function renderTemplate(template, data) {
 }
 
 function generateMcodeResources(mcodeProfileID, data) {
-  logger.info(`Generating FHIR resource for ${mcodeProfileID} data element`);
+  logger.debug(`Generating FHIR resource for ${mcodeProfileID} data element`);
   const ejsTemplate = loadFhirTemplate(mcodeProfileID);
   if (!ejsTemplate) throw new Error(`No matching profile for ${mcodeProfileID} found`);
   return {

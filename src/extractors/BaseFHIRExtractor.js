@@ -25,7 +25,7 @@ class BaseFHIRExtractor extends Extractor {
     const idFromContext = parseContextForPatientId(context);
     if (idFromContext) return { patient: idFromContext };
 
-    logger.info('No patient ID in context; fetching with baseFHIRModule');
+    logger.debug('No patient ID in context; fetching with baseFHIRModule');
     const patientResponseBundle = await this.baseFHIRModule.search('Patient', { identifier: `MRN|${mrn}` });
     if (!patientResponseBundle || !patientResponseBundle.entry || !patientResponseBundle.entry[0] || !patientResponseBundle.entry[0].resource) {
       logger.error(`Could not get a patient ID to cross-reference for ${this.resourceType}`);
@@ -38,18 +38,18 @@ class BaseFHIRExtractor extends Extractor {
   // arguments differently, all pass to this function which interfaces with the baseFHIRModule
   async getWithFHIRParams(params) {
     // 1. Get data
-    logger.info(`Getting ${this.resourceType} FHIR resource`);
+    logger.debug(`Getting ${this.resourceType} FHIR resource`);
     const fhirResponseBundle = await this.baseFHIRModule.search(this.resourceType, params);
     if (isBundleEmpty(fhirResponseBundle)) {
       logger.warn(`${this.resourceType} bundle that was supposed to have entries had 0`);
       return fhirResponseBundle;
     }
-    logger.info(`Found ${fhirResponseBundle.entry.length} ${this.resourceType} FHIR resources in get`);
+    logger.debug(`Found ${fhirResponseBundle.entry.length} ${this.resourceType} FHIR resources in get`);
 
     // 2. Reformat versions where necessary;
     const resVersion = determineVersion(fhirResponseBundle);
     if (this.version && resVersion !== this.version) {
-      logger.info(`Mapping ${this.resourceType} FHIR responses from ${resVersion} to ${this.version}`);
+      logger.debug(`Mapping ${this.resourceType} FHIR responses from ${resVersion} to ${this.version}`);
       fhirResponseBundle.entry = fhirResponseBundle.entry.map((resource) => mapFHIRVersions(resource, resVersion, this.version));
       return fhirResponseBundle;
     }

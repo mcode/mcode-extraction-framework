@@ -6,6 +6,7 @@ const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
 function formatData(conditionData) {
+  logger.debug('Reformatting condition data from CSV into template format');
   return conditionData.map((data) => {
     const { mrn, conditionId, codeSystem, code } = data;
 
@@ -29,7 +30,7 @@ class CSVConditionExtractor extends Extractor {
   }
 
   async getConditionData(mrn) {
-    logger.info('Getting Condition Data');
+    logger.debug('Getting Condition Data');
     return this.csvModule.get('mrn', mrn);
   }
 

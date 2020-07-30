@@ -12,7 +12,7 @@ class BaseFHIRModule {
   }
 
   async search(resourceType, params) {
-    logger.info(`GET ${this.baseUrl}/${resourceType}`);
+    logger.debug(`GET ${this.baseUrl}/${resourceType}`);
     return this.client.search({ resourceType, params });
   }
 }

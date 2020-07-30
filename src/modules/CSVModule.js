@@ -9,7 +9,7 @@ class CSVModule {
   }
 
   async get(key, value, fromDate, toDate) {
-    logger.info(`Get csvModule info by key '${key}'`);
+    logger.debug(`Get csvModule info by key '${key}'`);
     // return all rows if key and value aren't provided
     if (!key && !value) return this.data;
     let result = this.data.filter((d) => d[key] === value);

@@ -8,11 +8,11 @@ const logger = require('../helpers/logger');
 function getPatientId(context) {
   const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
   if (patientInContext) {
-    logger.info('Patient resource found in context.');
+    logger.debug('Patient resource found in context.');
     return patientInContext.id;
   }
 
-  logger.info('No patient resource found in context.');
+  logger.debug('No patient resource found in context.');
   return undefined;
 }
 
@@ -25,6 +25,7 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
   }
 
   joinClinicalTrialData(patientId, clinicalTrialData) {
+    logger.debug('Reformatting clinical trial data from CSV into template format');
     const { trialSubjectID, enrollmentStatus, trialResearchID, trialStatus } = clinicalTrialData;
     const { clinicalSiteID } = this;
 
@@ -49,7 +50,7 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
   }
 
   async getClinicalTrialData(mrn) {
-    logger.info('Getting clinical trial data');
+    logger.debug('Getting clinical trial data');
     const data = await this.csvModule.get('mrn', mrn);
     // Should only be one value return for clinical trial data
     return data[0];
