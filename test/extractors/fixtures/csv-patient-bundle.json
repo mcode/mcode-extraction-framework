@@ -32,7 +32,31 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "birthDate": "1994-08-24",
+        "address": [
+          {
+            "line": [
+              "57 Adams St"
+            ],
+            "city": "New Rochelle",
+            "state": "NY",
+            "postalCode": "10801",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en"
+                }
+              ]
+            }
+          }
+        ]
       }
     }
   ]

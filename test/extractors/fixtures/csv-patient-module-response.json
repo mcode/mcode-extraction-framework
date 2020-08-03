@@ -5,6 +5,15 @@
     "given": "Archy",
     "gender": "male",
     "dateOfBirth":"1994-08-24",
-    "language": null
+    "language": "en",
+    "address": "57 Adams St",
+    "city": "New Rochelle",
+    "state": "NY",
+    "zip": "10801",
+    "raceCodesystem": "http://some.codesystem.com",
+    "raceCode": "29178",
+    "raceText": "Some Race",
+    "ethnicityCode": "90210",
+    "ethnicityText": "Some Ethnicity"
   }
 ]

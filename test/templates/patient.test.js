@@ -7,7 +7,7 @@ const { renderTemplate } = require('../../src/helpers/ejsUtils');
 const PATIENT_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/Patient.ejs'), 'utf8');
 
 
-describe('Patient EJS', () => {
+describe('EJS Render Patient', () => {
   test('minimal required data passed into template should generate FHIR resource', () => {
     const PATIENT_VALID_DATA = {
       id: 'Some Id',
@@ -47,7 +47,6 @@ describe('Patient EJS', () => {
       MAX_PATIENT_DATA,
     );
 
-    console.log(JSON.stringify(generatedPatient));
     expect(generatedPatient).toEqual(maximalPatient);
   });
   test('missing non-required data should not throw an error', () => {
