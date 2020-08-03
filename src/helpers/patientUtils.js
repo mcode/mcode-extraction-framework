@@ -1,9 +1,7 @@
-const { invertObject } = require('./helperUtils')
-
 // Based on the OMB Ethnicity table found here:http://hl7.org/fhir/us/core/STU3.1/ValueSet-omb-ethnicity-category.html
 const ethnicityCodeToDisplay = {
-  "2135-2": "Hispanic or Latino",
-  "2186-5": "Non Hispanic or Latino",
+  '2135-2': 'Hispanic or Latino',
+  '2186-5': 'Non Hispanic or Latino',
 };
 
 /**
@@ -18,13 +16,13 @@ function getEthnicityDisplay(code) {
 
 // Based on the OMB Race table found here: http://hl7.org/fhir/us/core/STU3.1/ValueSet-omb-race-category.html
 const raceCodeToCodesystem = {
-  "1002-5": "urn:oid:2.16.840.1.113883.6.238",
-  "2028-9": "urn:oid:2.16.840.1.113883.6.238",
-  "2054-5": "urn:oid:2.16.840.1.113883.6.238",
-  "2076-8": "urn:oid:2.16.840.1.113883.6.238",
-  "2106-3": "urn:oid:2.16.840.1.113883.6.238",
-  "UNK": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
-  "ASKU": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+  '1002-5': 'urn:oid:2.16.840.1.113883.6.238',
+  '2028-9': 'urn:oid:2.16.840.1.113883.6.238',
+  '2054-5': 'urn:oid:2.16.840.1.113883.6.238',
+  '2076-8': 'urn:oid:2.16.840.1.113883.6.238',
+  '2106-3': 'urn:oid:2.16.840.1.113883.6.238',
+  UNK: 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor',
+  ASKU: 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor',
 };
 
 /**
@@ -39,13 +37,13 @@ function getRaceCodesystem(code) {
 
 // Based on the OMB Race table found here: http://hl7.org/fhir/us/core/STU3.1/ValueSet-omb-race-category.html
 const raceCodeToDisplay = {
-  "1002-5": "American Indian or Alaska Native",
-  "2028-9": "Asian",
-  "2054-5": "Black or African American",
-  "2076-8": "Native Hawaiian or Other Pacific Islander",
-  "2106-3": "White",
-  "UNK": "Unknown Description: A proper value is applicable, but not known",
-  "ASKU": "Asked but no answer",
+  '1002-5': 'American Indian or Alaska Native',
+  '2028-9': 'Asian',
+  '2054-5': 'Black or African American',
+  '2076-8': 'Native Hawaiian or Other Pacific Islander',
+  '2106-3': 'White',
+  UNK: 'Unknown Description: A proper value is applicable, but not known',
+  ASKU: 'Asked but no answer',
 };
 
 /**

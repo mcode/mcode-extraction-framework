@@ -1,5 +1,5 @@
 const moment = require('moment');
-const { invertObject } = require('./helperUtils')
+const { invertObject } = require('./helperUtils');
 
 // Translate an M-language epoch date to an appropriate moment date
 function mEpochToDate(date) {

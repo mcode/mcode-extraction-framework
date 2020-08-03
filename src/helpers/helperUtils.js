@@ -9,5 +9,5 @@ function invertObject(obj) {
 }
 
 module.exports = {
-  invertObject
-}
+  invertObject,
+};
