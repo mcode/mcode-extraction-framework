@@ -22,7 +22,7 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
   describe('formatData', () => {
     const exampleData = [
       {
-        dateOfCarePlan: '04/15/2020',
+        dateOfCarePlan: '2020-04-15',
         changed: 'false',
         mrn: 'id',
       },
