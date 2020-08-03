@@ -18,7 +18,10 @@ const {
   FHIRProcedureExtractor,
 } = require('./extractors');
 const { BaseFHIRModule, CSVModule } = require('./modules');
-const { getPatientName } = require('./helpers/patientUtils');
+const { getEthnicityDisplay,
+  getPatientName,
+  getRaceCodesystem,
+  getRaceDisplay } = require('./helpers/patientUtils');
 const {
   allResourcesInBundle,
   firstEntryInBundle,
@@ -64,18 +67,21 @@ module.exports = {
   firstResourceInBundle,
   formatDate,
   formatDateTime,
-  getEmptyBundle,
   generateMcodeResources,
   getBundleEntriesByResourceType,
   getBundleResourcesByType,
   getDiseaseStatusCode,
   getDiseaseStatusEvidenceCode,
+  getEmptyBundle,
+  getEthnicityDisplay,
   getICD10Code,
   getPatientName,
+  getRaceCodesystem,
+  getRaceDisplay,
   isBundleEmpty,
   isConditionCodePrimary,
-  isConditionPrimary,
   isConditionCodeSecondary,
+  isConditionPrimary,
   isConditionSecondary,
   mEpochToDate,
 };
