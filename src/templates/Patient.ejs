@@ -59,7 +59,7 @@
       "postalCode": "<%- zip %>",
       "country": "US"
     }
-  ]<% } %><% if (language) { %>,
+  ]<% } %><% if (locals.language && language) { %>,
   "communication": [
     {
       "language": {
@@ -68,7 +68,7 @@
             "system": "urn:ietf:bcp:47",
             "code": "<%- language %>"
           }
-        ],
+        ]
       }
     }
   ]<% } %><% if ((locals.raceCodesystem && locals.raceCode && locals.raceText && raceCodesystem && raceCode && raceText) || (locals.ethnicityCode && locals.ethnicityText && ethnicityCode && ethnicityText)) { %>,
@@ -88,8 +88,8 @@
         }
       ],
       "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
-    }<% } %><% if ((raceCodesystem && raceCode && raceText) && (ethnicityCode && ethnicityText)) { %>,<% } %>
-    <% if (ethnicityCode && ethnicityText) { %> {
+    }<% } %><% if ((locals.raceCodesystem && locals.raceCode && locals.raceText && raceCodesystem && raceCode && raceText) && (locals.ethnicityCode && locals.ethnicityText && ethnicityCode && ethnicityText)) { %>,<% } %>
+    <% if (locals.ethnicityCode && locals.ethnicityText && ethnicityCode && ethnicityText) { %> {
       "extension": [
         {
           "url": "ombCategory",
