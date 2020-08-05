@@ -40,8 +40,8 @@ function getDiseaseStatusCode(text) {
 
 /**
  * Converts code in mCODE's ConditionStatusTrendVS to Text Value
- * @param text, limited to codes in the diseaseStatusTextToCodeLookup above
- * @return {code} corresponding code from mCODE's ConditionStatusTrendVS
+ * @param code - limited to codes in the diseaseStatusTextToCodeLookup above
+ * @return {string} corresponding code from mCODE's ConditionStatusTrendVS
  */
 function getDiseaseStatusDisplay(code) {
   return diseaseStatusCodeToTextLookup[code];
@@ -49,8 +49,8 @@ function getDiseaseStatusDisplay(code) {
 
 /**
  * Converts Text Value to code in mCODE's CancerDiseaseStatusEvidenceTypeVS
- * @param text, limited to imaging, pathology, symptoms, 'physical exam', 'lab results'
- * @return {code} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
+ * @param text - limited to imaging, pathology, symptoms, 'physical exam', 'lab results'
+ * @return {string} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
  */
 function getDiseaseStatusEvidenceCode(text) {
   return evidenceTextToCodeLookup[text];
@@ -58,8 +58,8 @@ function getDiseaseStatusEvidenceCode(text) {
 
 /**
  * Converts code in mCODE's CancerDiseaseStatusEvidenceTypeVS to Text Value
- * @param text, limited to codes in the evidenceTextToCodeLookup above
- * @return {code} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
+ * @param code - limited to codes in the evidenceTextToCodeLookup above
+ * @return {string} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
  */
 function getDiseaseStatusEvidenceDisplay(code) {
   return evidenceCodeToTextLookup[code];
