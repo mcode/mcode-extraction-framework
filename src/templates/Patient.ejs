@@ -8,6 +8,7 @@
   family: String,
   given: String,
   gender: String,
+  birthSex: String,
   dateOfBirth: String,
   language: String,
   address: String,
@@ -71,7 +72,7 @@
         ]
       }
     }
-  ]<% } %><% if ((locals.raceCodesystem && locals.raceCode && locals.raceText && raceCodesystem && raceCode && raceText) || (locals.ethnicityCode && locals.ethnicityText && ethnicityCode && ethnicityText)) { %>,
+  ]<% } %><% if ((locals.raceCodesystem && locals.raceCode && locals.raceText && raceCodesystem && raceCode && raceText) || (locals.ethnicityCode && locals.ethnicityText && ethnicityCode && ethnicityText) || (locals.birthSex && birthSex)) { %>,
   "extension": [
     <% if (locals.raceCodesystem && locals.raceCode && locals.raceText && raceCodesystem && raceCode && raceText) { %> {
       "extension": [
@@ -88,7 +89,7 @@
         }
       ],
       "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
-    }<% } %><% if ((locals.raceCodesystem && locals.raceCode && locals.raceText && raceCodesystem && raceCode && raceText) && (locals.ethnicityCode && locals.ethnicityText && ethnicityCode && ethnicityText)) { %>,<% } %>
+    }<% if ((locals.ethnicityCode && locals.ethnicityText && ethnicityCode && ethnicityText) || (locals.birthSex && birthSex)) { %>,<% } %><% } %>
     <% if (locals.ethnicityCode && locals.ethnicityText && ethnicityCode && ethnicityText) { %> {
       "extension": [
         {
@@ -104,6 +105,10 @@
         }
       ],
       "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    }<% if (locals.birthSex && birthSex) { %>,<% } %><% } %>
+    <% if (locals.birthSex && birthSex) { %> {
+      "url" : "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+      "valueCode" : "<%- birthSex %>"
     }<% } %>
   ]<% } %>
 }

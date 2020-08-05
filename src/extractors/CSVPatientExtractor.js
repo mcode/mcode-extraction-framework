@@ -2,13 +2,16 @@ const path = require('path');
 const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { Extractor } = require('./Extractor');
+const { getEthnicityDisplay,
+  getRaceCodesystem,
+  getRaceDisplay } = require('../helpers/patientUtils');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(patientData) {
   logger.debug('Reformatting patient data from CSV into template format');
   // No join needed, just a reformatting
   const {
-    mrn, family, given, gender, dateOfBirth, race, ethnicity, language, address, city, state, zip,
+    mrn, family, given, gender, birthSex, dateOfBirth, race, ethnicity, language, address, city, state, zip,
   } = patientData;
 
   if (!mrn || !family || !given || !gender) {
@@ -21,14 +24,18 @@ function joinAndReformatData(patientData) {
     family,
     given,
     gender,
+    birthSex,
     dateOfBirth,
-    race,
-    ethnicity,
     language,
     address,
     city,
     state,
     zip,
+    raceCode: race,
+    raceCodesystem: getRaceCodesystem(race),
+    raceText: getRaceDisplay(race),
+    ethnicityCode: ethnicity,
+    ethnicityText: getEthnicityDisplay(ethnicity),
   };
 }
 

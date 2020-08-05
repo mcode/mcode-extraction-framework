@@ -29,6 +29,7 @@ describe('EJS Render Patient', () => {
       family: 'Patient',
       given: 'Test',
       gender: 'female',
+      birthSex: 'female',
       dateOfBirth: '2001-02-06',
       language: 'en',
       address: '57 Adams St',

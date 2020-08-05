@@ -4,6 +4,7 @@
     "family": "Marshall",
     "given": "Archy",
     "gender": "male",
+    "birthSex": "male",
     "dateOfBirth":"1994-08-24",
     "language": "en",
     "address": "57 Adams St",

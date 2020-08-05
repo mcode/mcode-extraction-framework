@@ -1,3 +1,3 @@
-mrn,family,given,gender,dateOfBirth,race,ethnicity,language,address,city,state,zip
-pat-mrn-1,last,first,female,1991-06-21,ASKU,2186-5,no,2 West Side Rd,Malden,MA,02186
-pat-mrn-2,final,preceding,male,1986-11-08,2106-3,2186-5,en-US,1 Main street,Brooklyn,NY,11201
+mrn,family,given,gender,birthSex,dateOfBirth,race,ethnicity,language,address,city,state,zip
+pat-mrn-1,last,first,female,female,1991-06-21,ASKU,2186-5,no,2 West Side Rd,Malden,MA,02186
+pat-mrn-2,final,preceding,male,male,1986-11-08,2106-3,2186-5,en-US,1 Main street,Brooklyn,NY,11201

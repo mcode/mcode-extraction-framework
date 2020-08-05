@@ -56,6 +56,12 @@
               ]
             }
           }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+            "valueCode": "male"
+          }
         ]
       }
     }
