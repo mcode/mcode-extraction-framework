@@ -49,15 +49,15 @@
       }
   ],
   "gender": "<%- gender %>"<% if(locals.dateOfBirth && dateOfBirth) { %>,
-  "birthDate": "<%- dateOfBirth%>"<% } %><% if (locals.address && address && locals.city && city && locals.state && state && locals.zip && zip) { %>,
+  "birthDate": "<%- dateOfBirth%>"<% } %><% if (locals.address || locals.city || locals.state || locals.zip) { %>,
   "address": [
     {
-      "line": [
+      <% if (locals.address && address) { %>"line": [
         "<%- address %>"
-      ],
-      "city": "<%- city %>",
-      "state": "<%- state %>",
-      "postalCode": "<%- zip %>",
+      ],<% } %>
+      <% if (locals.city && city) { %>"city": "<%- city %>",<% } %>
+      <% if (locals.state && state) { %>"state": "<%- state %>",<% } %>
+      <% if (locals.zip && zip) { %>"postalCode": "<%- zip %>",<% } %>
       "country": "US"
     }
   ]<% } %><% if (locals.language && language) { %>,
