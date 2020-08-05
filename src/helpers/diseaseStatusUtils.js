@@ -31,7 +31,7 @@ const evidenceCodeToTextLookup = invertObject(evidenceTextToCodeLookup);
 
 /**
  * Converts Text Value to code in mCODE's ConditionStatusTrendVS
- * @param text, limited to 'no evidence of disease', Responding, Stable, Progressing, or 'not evaluated'
+ * @param {string} text, limited to 'no evidence of disease', Responding, Stable, Progressing, or 'not evaluated'
  * @return {code} corresponding code from mCODE's ConditionStatusTrendVS
  */
 function getDiseaseStatusCode(text) {
@@ -40,7 +40,7 @@ function getDiseaseStatusCode(text) {
 
 /**
  * Converts code in mCODE's ConditionStatusTrendVS to Text Value
- * @param code - limited to codes in the diseaseStatusTextToCodeLookup above
+ * @param {string} code - limited to codes in the diseaseStatusTextToCodeLookup above
  * @return {string} corresponding code from mCODE's ConditionStatusTrendVS
  */
 function getDiseaseStatusDisplay(code) {
@@ -49,7 +49,7 @@ function getDiseaseStatusDisplay(code) {
 
 /**
  * Converts Text Value to code in mCODE's CancerDiseaseStatusEvidenceTypeVS
- * @param text - limited to imaging, pathology, symptoms, 'physical exam', 'lab results'
+ * @param {string} text - limited to imaging, pathology, symptoms, 'physical exam', 'lab results'
  * @return {string} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
  */
 function getDiseaseStatusEvidenceCode(text) {
@@ -58,7 +58,7 @@ function getDiseaseStatusEvidenceCode(text) {
 
 /**
  * Converts code in mCODE's CancerDiseaseStatusEvidenceTypeVS to Text Value
- * @param code - limited to codes in the evidenceTextToCodeLookup above
+ * @param {string} code - limited to codes in the evidenceTextToCodeLookup above
  * @return {string} corresponding code from mCODE's CancerDiseaseStatusEvidenceTypeVS
  */
 function getDiseaseStatusEvidenceDisplay(code) {
