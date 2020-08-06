@@ -57,7 +57,7 @@ function getRaceDisplay(code) {
 
 
 /**
- * Turn a name object into a single name string
+ * Turn a FHIR name object into a single name string
  * @param {Object} name object of the following shape: [{
  *   given: Array[String],
  *   ƒamily: String,

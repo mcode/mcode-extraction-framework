@@ -12,8 +12,8 @@ describe('EJS Render Patient', () => {
     const PATIENT_VALID_DATA = {
       id: 'Some Id',
       mrn: '1234',
-      family: 'Patient',
-      given: 'Test',
+      familyName: 'Patient',
+      givenName: 'Test',
       gender: 'female',
     };
     const generatedPatient = renderTemplate(
@@ -26,13 +26,13 @@ describe('EJS Render Patient', () => {
     const MAX_PATIENT_DATA = {
       id: 'Some Id',
       mrn: '1234',
-      family: 'Patient',
-      given: 'Test',
+      familyName: 'Patient',
+      givenName: 'Test',
       gender: 'female',
       birthSex: 'female',
       dateOfBirth: '2001-02-06',
       language: 'en',
-      address: '57 Adams St',
+      addressLine: '57 Adams St',
       city: 'New Rochelle',
       state: 'NY',
       zip: '10801',
@@ -54,14 +54,14 @@ describe('EJS Render Patient', () => {
     const NECESSARY_DATA = {
       id: 'Some Id',
       mrn: '1234',
-      family: 'Patient',
-      given: 'Test',
+      familyName: 'Patient',
+      givenName: 'Test',
       gender: 'female',
     };
     const OPTIONAL_DATA = {
       dateOfBirth: '2001-02-06',
       language: 'en',
-      address: '57 Adams St',
+      addressLine: '57 Adams St',
       city: 'New Rochelle',
       state: 'NY',
       zip: '10801',
@@ -85,8 +85,8 @@ describe('EJS Render Patient', () => {
   test('missing required data should thrown an error', () => {
     const PATIENT_INVALID_DATA = {
       // Omitting mrn information, which is required
-      family: 'Patient',
-      given: 'Test',
+      familyName: 'Patient',
+      givenName: 'Test',
       gender: 'female',
     };
 

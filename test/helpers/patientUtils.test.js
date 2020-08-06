@@ -70,7 +70,7 @@ describe('PatientUtils', () => {
     });
   });
   describe('getPatientName', () => {
-    test('valid name object is concatenated', () => {
+    test('valid FHIR name object is concatenated', () => {
       const name = [{
         given: ['Peter', 'Christen'],
         family: 'Asbjørnsen',

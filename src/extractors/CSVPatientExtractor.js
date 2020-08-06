@@ -11,23 +11,23 @@ function joinAndReformatData(patientData) {
   logger.debug('Reformatting patient data from CSV into template format');
   // No join needed, just a reformatting
   const {
-    mrn, family, given, gender, birthSex, dateOfBirth, race, ethnicity, language, address, city, state, zip,
+    mrn, familyName, givenName, gender, birthSex, dateOfBirth, race, ethnicity, language, addressLine, city, state, zip,
   } = patientData;
 
-  if (!mrn || !family || !given || !gender) {
-    throw Error('Missing required field for Patient CSV Extraction. Required values include: mrn, family, given, gender');
+  if (!mrn || !familyName || !givenName || !gender) {
+    throw Error('Missing required field for Patient CSV Extraction. Required values include: mrn, familyName, given, gender');
   }
 
   return {
     id: mrn,
     mrn,
-    family,
-    given,
+    familyName,
+    givenName,
     gender,
     birthSex,
     dateOfBirth,
     language,
-    address,
+    addressLine,
     city,
     state,
     zip,
