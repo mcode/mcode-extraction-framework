@@ -2,19 +2,40 @@ const path = require('path');
 const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { Extractor } = require('./Extractor');
+const { getEthnicityDisplay,
+  getRaceCodesystem,
+  getRaceDisplay } = require('../helpers/patientUtils');
 const logger = require('../helpers/logger');
 
 function joinAndReformatData(patientData) {
   logger.debug('Reformatting patient data from CSV into template format');
   // No join needed, just a reformatting
-  const { mrn, family, given, gender } = patientData;
+  const {
+    mrn, familyName, givenName, gender, birthsex, dateOfBirth, race, ethnicity, language, addressLine, city, state, zip,
+  } = patientData;
+
+  if (!mrn || !familyName || !givenName || !gender) {
+    throw Error('Missing required field for Patient CSV Extraction. Required values include: mrn, familyName, givenName, gender');
+  }
 
   return {
     id: mrn,
     mrn,
-    family,
-    given,
+    familyName,
+    givenName,
     gender,
+    birthsex,
+    dateOfBirth,
+    language,
+    addressLine,
+    city,
+    state,
+    zip,
+    raceCode: race,
+    raceCodesystem: getRaceCodesystem(race),
+    raceText: getRaceDisplay(race),
+    ethnicityCode: ethnicity,
+    ethnicityText: getEthnicityDisplay(ethnicity),
   };
 }
 

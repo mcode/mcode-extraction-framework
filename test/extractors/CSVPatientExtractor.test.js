@@ -14,20 +14,23 @@ const csvPatientExtractor = new CSVPatientExtractor({
 
 // Destructure all modules
 const { csvModule } = csvPatientExtractor;
-
 // Spy on csvModule
 const csvModuleSpy = jest.spyOn(csvModule, 'get');
-csvModuleSpy
-  .mockReturnValue(examplePatientResponse);
 
-describe('CSV Patient Extractor tests', () => {
-  test('get should return a fhir bundle when MRN is known', async () => {
-    const data = await csvPatientExtractor.get({ mrn: MOCK_PATIENT_MRN });
 
-    expect(data.resourceType).toEqual('Bundle');
-    expect(data.type).toEqual('collection');
-    expect(data.entry).toBeDefined();
-    expect(data.entry.length).toEqual(1);
-    expect(data.entry).toEqual(examplePatientBundle.entry);
+describe('CSV Patient Extractor', () => {
+  describe('get', () => {
+    test('should return a fhir bundle when MRN is known', async () => {
+      csvModuleSpy.mockReset();
+      csvModuleSpy
+        .mockReturnValue(examplePatientResponse);
+      const data = await csvPatientExtractor.get({ mrn: MOCK_PATIENT_MRN });
+
+      expect(data.resourceType).toEqual('Bundle');
+      expect(data.type).toEqual('collection');
+      expect(data.entry).toBeDefined();
+      expect(data.entry.length).toEqual(1);
+      expect(data.entry).toEqual(examplePatientBundle.entry);
+    });
   });
 });

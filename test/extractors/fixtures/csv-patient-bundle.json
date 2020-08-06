@@ -32,7 +32,69 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "birthDate": "1994-08-24",
+        "address": [
+          {
+            "line": [
+              "57 Adams St"
+            ],
+            "city": "New Rochelle",
+            "state": "NY",
+            "postalCode": "10801",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en"
+                }
+              ]
+            }
+          }
+        ],
+        "extension": [
+          {
+          "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "code": "1002-5",
+                  "system": "urn:oid:2.16.840.1.113883.6.238"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "American Indian or Alaska Native"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "code": "2186-5",
+                  "system": "urn:oid:2.16.840.1.113883.6.238"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Non Hispanic or Latino"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+            "valueCode": "male"
+          }
+        ]
       }
     }
   ]

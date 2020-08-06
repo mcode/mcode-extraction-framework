@@ -1,0 +1,92 @@
+{
+  "resourceType": "Patient",
+  "id": "Some Id",
+  "identifier": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          }
+        ],
+        "text": "Medical Record Number"
+      },
+      "system": "http://example.com/system/mrn",
+      "value": "1234"
+    }
+  ],
+  "name": [
+    {
+      "text": "Test Patient",
+      "family": "Patient",
+      "given": [
+        "Test"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-02-06",
+  "address": [
+    {
+      "line": [
+        "57 Adams St"
+      ],
+      "city": "New Rochelle",
+      "state": "NY",
+      "postalCode": "10801",
+      "country": "US"
+    }
+  ],
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en"
+          }
+        ]
+      }
+    }
+  ],
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "http://some.codesystem.com",
+            "code": "29178"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Some Race"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+    },
+    {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "90210"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Some Ethnicity"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    },
+    {
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+      "valueCode": "female"
+    }
+  ]
+}
