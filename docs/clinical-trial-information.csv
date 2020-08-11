@@ -1,3 +1,3 @@
 mrn,trialSubjectID,enrollmentStatus,trialResearchID,trialStatus
-123,subjectId,status,researchId,trialStatus
-456,subjectId,status,researchId,trialStatus
+123,subjectId-1,example-status,researchId-1,example-trialStatus
+456,subjectId-2,example-status,researchId-1,example-trialStatus
