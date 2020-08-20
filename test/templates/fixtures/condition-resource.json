@@ -20,6 +20,14 @@
           "code": "problem-list-item"
         }
       ]
+    },
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "64572001"
+        }
+      ]
     }
   ],
   "verificationStatus": {
