@@ -14,7 +14,7 @@ class FHIRAllergyIntoleranceExtractor extends BaseFHIRExtractor {
     const paramsWithID = await super.parametrizeArgsForFHIRModule({ mrn, context });
     return {
       ...paramsWithID,
-      'clinical-status': BASE_CLINICAL_STATUS,
+      'clinical-status': this.clinicalStatus,
     };
   }
 }
