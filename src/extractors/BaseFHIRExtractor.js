@@ -61,7 +61,12 @@ class BaseFHIRExtractor extends Extractor {
   async get(argumentObject) {
     // Need to translate MRN to FHIR params
     const params = await this.parametrizeArgsForFHIRModule(argumentObject);
-    return this.getWithFHIRParams(params);
+    const searchSetBundle = await this.getWithFHIRParams(params);
+    return {
+      resourceType: 'Bundle',
+      type: 'collection',
+      entry: (searchSetBundle.total === 0) ? [] : searchSetBundle.entry,
+    };
   }
 }
 
