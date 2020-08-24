@@ -1,0 +1,64 @@
+const logger = require('../helpers/logger');
+
+class BaseClient {
+  constructor() {
+    this.extractorClasses = {};
+    this.extractors = [];
+  }
+
+  // Given a list of extractorClasses, register them in our lookup table
+  registerExtractors(...listOfExtractorClasses) {
+    listOfExtractorClasses.forEach((extractorClass) => {
+      if (extractorClass.name === undefined) {
+        throw Error(`Trying to register a non-class ${extractorClass}`);
+      }
+      logger.debug(`Registering ${extractorClass.name} as an extractor`);
+      this.extractorClasses[extractorClass.name] = extractorClass;
+    });
+  }
+
+  // Given an extractor configuration, initialize all the necessary extractors
+  initializeExtractors(extractorConfig, commonExtractorArgs) {
+    extractorConfig.forEach((curExtractorConfig) => {
+      const { label, type, constructorArgs } = curExtractorConfig;
+      logger.debug(`Initializing ${label} extractor with type ${type}`);
+      const ExtractorClass = this.extractorClasses[type];
+      this.extractors.push(new ExtractorClass({ ...commonExtractorArgs, ...constructorArgs }));
+    });
+  }
+
+  async get(args) {
+    // Context is where all the responses from extractors reside
+    const contextBundle = {
+      resourceType: 'Bundle',
+      type: 'collection',
+      entry: [],
+    };
+    return this.extractors.reduce(async (contextPromise, extractor) => {
+      const context = await contextPromise;
+      try {
+        logger.info(`Extracting using ${extractor.constructor.name}`);
+        const newBundle = await extractor.get({ ...args, context });
+        // Update existing entries or push new entries
+        newBundle.entry.forEach((newEntry) => {
+          const existingEntryIndex = contextBundle.entry.findIndex((contextEntry) => contextEntry.fullUrl && newEntry.fullUrl && contextEntry.fullUrl === newEntry.fullUrl);
+          if (existingEntryIndex > -1) {
+            contextBundle.entry[existingEntryIndex].resource = newEntry.resource;
+          } else {
+            contextBundle.entry.push(newEntry);
+          }
+        });
+
+        return contextBundle;
+      } catch (e) {
+        logger.error(e);
+        logger.debug(e.stack);
+        return contextBundle;
+      }
+    }, Promise.resolve(contextBundle));
+  }
+}
+
+module.exports = {
+  BaseClient,
+};
