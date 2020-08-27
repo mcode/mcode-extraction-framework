@@ -1,4 +1,5 @@
 const logger = require('./helpers/logger');
+const { BaseClient } = require('./client/BaseClient');
 const {
   BaseFHIRExtractor,
   CSVCancerDiseaseStatusExtractor,
@@ -43,6 +44,7 @@ const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = req
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
 
 module.exports = {
+  BaseClient,
   BaseFHIRExtractor,
   BaseFHIRModule,
   CSVCancerDiseaseStatusExtractor,

@@ -1,0 +1,102 @@
+/* eslint-disable class-methods-use-this */
+// eslint-disable-next-line max-classes-per-file
+const { BaseClient } = require('../../src/client/BaseClient.js');
+
+const engine = new BaseClient();
+// Reseet out Engine state before each iteration
+beforeEach(() => {
+  engine.extractorClasses = {
+  };
+  engine.extractors = [];
+});
+
+describe('BaseClient', () => {
+  describe('registerExtractors', () => {
+    it('should fail if array of non-classes are provided', () => {
+      expect(() => engine.registerExtractors(1, 2, 3)).toThrowError();
+      expect(() => engine.registerExtractors('a', 'b', 'c')).toThrowError();
+      expect(() => engine.registerExtractors({}, {}, {})).toThrowError();
+    });
+    it('should add all classes to the extractorClasses lookup', () => {
+      const extractorClasses = [
+        class A {},
+        class B {},
+      ];
+      engine.registerExtractors(...extractorClasses);
+      expect(Object.keys(engine.extractorClasses)).toEqual(extractorClasses.map((klass) => klass.name));
+      expect(Object.values(engine.extractorClasses)).toEqual(extractorClasses);
+    });
+  });
+
+  describe('initializeExtractors', () => {
+    it('should fail if extractors are missing a type', () => {
+      const extractorsWithoutType = [
+        {
+          label: 'Broken extractor',
+          type: undefined,
+        },
+      ];
+      expect(() => engine.initializeExtractors(extractorsWithoutType)).toThrowError();
+    });
+    it('should fail on un-registered extractors', () => {
+      // No extractors are registered by default
+      const unregisteredExtractors = [
+        {
+          label: 'Unregistered Extractor',
+          type: 'UnregisteredExtractor',
+        },
+      ];
+      expect(() => engine.initializeExtractors(unregisteredExtractors)).toThrowError();
+    });
+    it('should add extractors to engine if they are registered', () => {
+      // Register classes
+      const extractorClasses = [
+        class Extractor {},
+      ];
+      engine.registerExtractors(...extractorClasses);
+      // Reference those classes we've registered
+      const registeredExtractors = [
+        {
+          label: 'Registered Extractor',
+          type: 'Extractor',
+        },
+      ];
+      engine.initializeExtractors(registeredExtractors);
+      expect(engine.extractors).toHaveLength(registeredExtractors.length);
+      expect(engine.extractors[0]).toBeInstanceOf(extractorClasses[0]);
+    });
+  });
+
+  describe('run', () => {
+    it('should return a bundle even if there are no extractors', async () => {
+      const data = await engine.get();
+      expect(data.resourceType).toEqual('Bundle');
+      expect(data.type).toEqual('collection');
+      expect(data.entry).toHaveLength(0);
+    });
+    it('should iterate over all extractors gets, aggregating resultant entries in a bundle', async () => {
+      const extractorClassesWithEntryGets = [
+        class Ext1 { get() { return { entry: [{ data: 'here' }] }; }},
+        class Ext2 { get() { return { entry: [{ data: 'alsoHere' }] }; }},
+      ];
+      engine.registerExtractors(...extractorClassesWithEntryGets);
+      const registeredExtractors = [
+        {
+          label: 'Registered Extractor',
+          type: 'Ext1',
+        },
+        {
+          label: 'Registered Extractor',
+          type: 'Ext2',
+        },
+      ];
+      engine.initializeExtractors(registeredExtractors);
+      const data = await engine.get();
+      expect(data.resourceType).toEqual('Bundle');
+      expect(data.type).toEqual('collection');
+      expect(data.entry.length).toEqual(registeredExtractors.length);
+      expect(data.entry).toContainEqual(new extractorClassesWithEntryGets[0]().get().entry[0]);
+      expect(data.entry).toContainEqual(new extractorClassesWithEntryGets[1]().get().entry[0]);
+    });
+  });
+});
