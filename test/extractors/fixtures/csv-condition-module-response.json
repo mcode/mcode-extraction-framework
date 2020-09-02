@@ -3,6 +3,14 @@
     "mrn": "mrn-1",
     "conditionId": "conditionId-1",
     "codeSystem": "example-code-system",
-    "code": "example-code"
+    "code": "example-code",
+    "displayName": "Example Name",
+    "category": "example-category",
+    "dateOfDiagnosis": "YYYY-MM-DD",
+    "clinicalStatus": "example-status",
+    "verificationStatus": "example-status",
+    "bodySite": "example-site",
+    "laterality": "example-laterality",
+    "histology": "example-histology"
   }
 ]

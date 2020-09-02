@@ -1,41 +1,87 @@
 {
   "resourceType": "Condition",
-  "id": "example-id",
-  "subject" : {
-    "reference": "urn:uuid:example-subject-id"
-  },
-  "code": {
+  "id": "example-id", 
+  "extension": [
+    {
+      "url": "example-url",
+      "valueDateTime": "YYYY-MM-DD"
+    }  , 
+    {
+      "url": "example-url",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "example-system",
+            "code": "example-code"
+          }
+        ]
+      }
+    }
+  ]  ,
+  "clinicalStatus": {
     "coding": [
       {
         "system": "example-system",
         "code": "example-code"
       }
     ]
-  },
-  "category": [
-    {
-      "coding": [
-        {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-          "code": "problem-list-item"
-        }
-      ]
-    },
-    {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "64572001"
-        }
-      ]
-    }
-  ],
+  }  ,
   "verificationStatus": {
     "coding": [
       {
-        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-        "code": "confirmed"
+        "system": "example-system",
+        "code": "example-code"
       }
     ]
+  } , 
+  "category": [
+  
+    {
+      "coding": [ 
+        {
+          "system": "example-system",
+          "code": "example-code"
+        }
+      ]
+    } 
+  ],  
+  "code": {
+    "coding": [
+      {
+        "system": "example-system",
+        "code": "example-code",
+        "display": "exampleDisplayName"
+        
+      }
+    ]
+  }, 
+  
+  "bodySite": [
+  
+    {
+      
+      "extension": [
+        {
+          "url": "example-url",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "example-system",
+                "code": "example-code"
+              }
+            ]
+          }
+        }
+      ], 
+      "coding": [
+        {
+          "system": "example-system",
+          "code": "example-code"
+        }
+      ]
+    }  
+  ], 
+  "subject" : {
+    "reference": "urn:uuid:example-subject-id"
   }
 }

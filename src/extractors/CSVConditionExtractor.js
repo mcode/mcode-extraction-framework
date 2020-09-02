@@ -3,12 +3,18 @@ const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { Extractor } = require('./Extractor');
 const logger = require('../helpers/logger');
+const { formatDateTime } = require('../helpers/dateUtils');
 
 // Formats data to be passed into template-friendly format
 function formatData(conditionData) {
   logger.debug('Reformatting condition data from CSV into template format');
   return conditionData.map((data) => {
-    const { mrn, conditionId, codeSystem, code } = data;
+    if (!(data.conditionId.trim() && data.mrn.trim() && data.codeSystem.trim() && data.code.trim() && data.category.trim())) {
+      throw new Error('The condition is missing an expected attribute. Condition id, subject, code system, code, and category are all required.');
+    }
+    const {
+      mrn, conditionId, codeSystem, code, displayName, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
+    } = data;
 
     return {
       id: conditionId,
@@ -18,6 +24,37 @@ function formatData(conditionData) {
       code: {
         code,
         system: codeSystem,
+        display: displayName,
+      },
+      category: category.split('|').map((categoryCode) => ({
+        system: 'http://terminology.hl7.org/CodeSystem/condition-category',
+        code: categoryCode,
+      })),
+      dateOfDiagnosis: !dateOfDiagnosis.trim() ? null : {
+        value: formatDateTime(dateOfDiagnosis),
+        url: 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate',
+      },
+      clinicalStatus: !clinicalStatus.trim() ? null : {
+        system: 'http://terminology.hl7.org/CodeSystem/condition-clinical',
+        code: clinicalStatus,
+      },
+      verificationStatus: !verificationStatus.trim() ? null : {
+        system: 'http://terminology.hl7.org/CodeSystem/condition-ver-status',
+        code: verificationStatus,
+      },
+      bodySite: !bodySite.trim() ? null : bodySite.split('|').map((site) => ({
+        system: 'http://snomed.info/sct/',
+        code: site,
+      })),
+      laterality: !laterality.trim() ? null : {
+        system: 'http://snomed.info/sct',
+        code: laterality,
+        url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality',
+      },
+      histology: !histology.trim() ? null : {
+        system: 'http://snomed.info/sct',
+        code: histology,
+        url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histology-morphology-behavior',
       },
     };
   });

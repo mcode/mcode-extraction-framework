@@ -4,25 +4,93 @@
 <% /* %>
 {
   id: String,
-  subject: {
-    id: String,
-    name: String,
+  assertedDate: {
+    valueDateTime: DateTime
+  },
+  histologyMorphologyBehavior: {
+    system: String,
+    code: String,
+    cisplay: String
+  },
+  clinicalStatus: {
+    system: String,
+    code: String
+  },
+  verificationStatus: {
+    system: String,
+    code: String
+  },
+  category: {
+    system: String,
+    code: String
   },
   code: {
     system: String,
     code: String,
-    display: String,
+    display: String
   },
+  bodySite: [{
+    laterality: {
+      system: String,
+      code: String
+    },
+    system: String,
+    code: String
+  }],
+  subject: {
+    id: String,
+    name: String,
+  },
+
 }
 <% */ %>
 {
   "resourceType": "Condition",
-  "id": "<%- id %>",
-  "subject" : {
-    "reference": "urn:uuid:<%- subject.id %>"<% if (subject.name) { %>,
-    "display": "<%- subject.name %>"
-    <% } %>
-  },
+  "id": "<%- id %>", <% if (dateOfDiagnosis || histology) { %>
+  "extension": [
+  <% if (dateOfDiagnosis) { %>  {
+      "url": "<%- dateOfDiagnosis.url %>",
+      "valueDateTime": "<%- dateOfDiagnosis.value %>"
+    } <% } %> <% if (histology) { %>, 
+    {
+      "url": "<%- histology.url %>",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "<%- histology.system %>",
+            "code": "<%- histology.code %>"
+          }
+        ]
+      }
+    }
+  ]<% }} %><% if(clinicalStatus) { %>,
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "<%- clinicalStatus.system %>",
+        "code": "<%- clinicalStatus.code %>"
+      }
+    ]
+  } <% } %> <% if(verificationStatus) { %>,
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "<%- verificationStatus.system %>",
+        "code": "<%- verificationStatus.code %>"
+      }
+    ]
+  } <% } %>, 
+  "category": [
+  <% category.forEach((categoryCode, i) => { %>
+    {
+      "coding": [ 
+        {
+          "system": "<%- categoryCode.system %>",
+          "code": "<%- categoryCode.code %>"
+        }
+      ]
+    } <% if (i + 1 < category.length) { %>, <% } %>
+  ], <% })%> 
   "code": {
     "coding": [
       {
@@ -32,31 +100,36 @@
         <% } %>
       }
     ]
-  },
-  "category": [
+  }, 
+  <% if(bodySite && bodySite.length > 0) { %>
+  "bodySite": [
+  <% bodySite.forEach((site, i) => { %>
     {
+      <% if (laterality) { %>
+      "extension": [
+        {
+          "url": "<%- laterality.url %>",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "<%- laterality.system %>",
+                "code": "<%- laterality.code %>"
+              }
+            ]
+          }
+        }
+      ], <% } %>
       "coding": [
         {
-          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-          "code": "problem-list-item"
+          "system": "<%- site.system %>",
+          "code": "<%- site.code %>"
         }
       ]
-    },
-    {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "64572001"
-        }
-      ]
-    }
-  ],
-  "verificationStatus": {
-    "coding": [
-      {
-        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-        "code": "confirmed"
-      }
-    ]
+    } <%if (i + 1 < bodySite.length) { %>, <% } %> 
+  ], <% })} %>
+  "subject" : {
+    "reference": "urn:uuid:<%- subject.id %>"<% if (subject.name) { %>,
+    "display": "<%- subject.name %>"
+    <% } %>
   }
 }
