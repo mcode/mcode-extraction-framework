@@ -11,7 +11,7 @@ const CONDITION_VALID_DATA = {
   code: {
     system: 'example-system',
     code: 'example-code',
-    display: 'exampleDisplayName'
+    display: 'exampleDisplayName',
   },
   category: [
     {
