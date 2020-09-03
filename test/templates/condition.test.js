@@ -66,6 +66,12 @@ const CONDITION_MINIMAL_DATA = {
       code: 'example-code',
     },
   ],
+  dateOfDiagnosis: null,
+  clinicalStatus: null,
+  verificationStatus: null,
+  bodySite: null,
+  laterality: null,
+  histology: null,
 };
 
 

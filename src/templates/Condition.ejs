@@ -46,12 +46,12 @@
 <% */ %>
 {
   "resourceType": "Condition",
-  "id": "<%- id %>" <% if (typeof dateOfDiagnosis !== 'undefined' || typeof histology !== 'undefined') { %>,
+  "id": "<%- id %>" <% if ((typeof dateOfDiagnosis !== 'undefined' && dateOfDiagnosis) || (typeof histology !== 'undefined' && histology)) { %>,
   "extension": [
-  <% if (typeof dateOfDiagnosis !== 'undefined') { %>  {
+  <% if (typeof dateOfDiagnosis !== 'undefined' && dateOfDiagnosis) { %>  {
       "url": "<%- dateOfDiagnosis.url %>",
       "valueDateTime": "<%- dateOfDiagnosis.value %>"
-    } <% } %> <% if (typeof histology !== 'undefined') { %>, 
+    } <% } %> <% if (typeof histology !== 'undefined' && histology) { %>, 
     {
       "url": "<%- histology.url %>",
       "valueCodeableConcept": {
@@ -63,7 +63,7 @@
         ]
       }
     }
-  ]<% }} %><% if(typeof clinicalStatus !== 'undefined') { %>,
+  ]<% }} %><% if(typeof clinicalStatus !== 'undefined' && clinicalStatus) { %>,
   "clinicalStatus": {
     "coding": [
       {
@@ -71,7 +71,7 @@
         "code": "<%- clinicalStatus.code %>"
       }
     ]
-  } <% } %> <% if(typeof verificationStatus !== 'undefined') { %>,
+  } <% } %> <% if(typeof verificationStatus !== 'undefined' && verificationStatus) { %>,
   "verificationStatus": {
     "coding": [
       {
@@ -95,17 +95,17 @@
     "coding": [
       {
         "system": "<%- code.system %>",
-        "code": "<%- code.code %>"<% if (typeof code.display !== 'undefined') { %>,
+        "code": "<%- code.code %>"<% if (typeof code.display !== 'undefined' && code.display) { %>,
         "display": "<%- code.display %>"
         <% } %>
       }
     ]
   }, 
-  <% if(typeof bodySite !== 'undefined' && bodySite.length > 0) { %>
+  <% if(typeof bodySite !== 'undefined' && bodySite) { %>
   "bodySite": [
   <% bodySite.forEach((site, i) => { %>
     {
-      <% if (typeof laterality !== 'undefined') { %>
+      <% if (typeof laterality !== 'undefined' && laterality) { %>
       "extension": [
         {
           "url": "<%- laterality.url %>",
@@ -128,7 +128,7 @@
     } <%if (i + 1 < bodySite.length) { %>, <% } %> 
   ], <% })} %>
   "subject" : {
-    "reference": "urn:uuid:<%- subject.id %>"<% if (typeof subject.name !== 'undefined') { %>,
+    "reference": "urn:uuid:<%- subject.id %>"<% if (typeof subject.name !== 'undefined' && subject.name) { %>,
     "display": "<%- subject.name %>"
     <% } %>
   }
