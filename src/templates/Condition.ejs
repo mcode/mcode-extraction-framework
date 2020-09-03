@@ -101,7 +101,7 @@
       }
     ]
   }, 
-  <% if(typeof bodySite !== 'undefined' && bodySite) { %>
+  <% if(typeof bodySite !== 'undefined' && bodySite && bodySite.length > 0) { %>
   "bodySite": [
   <% bodySite.forEach((site, i) => { %>
     {
