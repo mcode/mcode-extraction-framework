@@ -69,15 +69,16 @@ describe('BaseClient', () => {
 
   describe('run', () => {
     it('should return a bundle even if there are no extractors', async () => {
-      const data = await engine.get();
-      expect(data.resourceType).toEqual('Bundle');
-      expect(data.type).toEqual('collection');
-      expect(data.entry).toHaveLength(0);
+      const { bundle } = await engine.get();
+      expect(bundle.resourceType).toEqual('Bundle');
+      expect(bundle.type).toEqual('collection');
+      expect(bundle.entry).toHaveLength(0);
     });
     it('should iterate over all extractors gets, aggregating resultant entries in a bundle', async () => {
       const extractorClassesWithEntryGets = [
         class Ext1 { get() { return { entry: [{ data: 'here' }] }; }},
         class Ext2 { get() { return { entry: [{ data: 'alsoHere' }] }; }},
+        class Ext3 { get() { throw new Error('Error'); }},
       ];
       engine.registerExtractors(...extractorClassesWithEntryGets);
       const registeredExtractors = [
@@ -89,14 +90,19 @@ describe('BaseClient', () => {
           label: 'Registered Extractor',
           type: 'Ext2',
         },
+        {
+          label: 'Registered Extractor',
+          type: 'Ext3',
+        },
       ];
       engine.initializeExtractors(registeredExtractors);
-      const data = await engine.get();
-      expect(data.resourceType).toEqual('Bundle');
-      expect(data.type).toEqual('collection');
-      expect(data.entry.length).toEqual(registeredExtractors.length);
-      expect(data.entry).toContainEqual(new extractorClassesWithEntryGets[0]().get().entry[0]);
-      expect(data.entry).toContainEqual(new extractorClassesWithEntryGets[1]().get().entry[0]);
+      const { bundle, extractionErrors } = await engine.get();
+      expect(bundle.resourceType).toEqual('Bundle');
+      expect(bundle.type).toEqual('collection');
+      expect(bundle.entry.length).toEqual(2);
+      expect(bundle.entry).toContainEqual(new extractorClassesWithEntryGets[0]().get().entry[0]);
+      expect(bundle.entry).toContainEqual(new extractorClassesWithEntryGets[1]().get().entry[0]);
+      expect(extractionErrors).toHaveLength(1);
     });
   });
 });
