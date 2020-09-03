@@ -1,0 +1,27 @@
+{
+    "resourceType": "Condition",
+    "id": "example-id", 
+    "category": [
+    
+      {
+        "coding": [ 
+          {
+            "system": "example-system",
+            "code": "example-code"
+          }
+        ]
+      } 
+    ],  
+    "code": {
+      "coding": [
+        {
+          "system": "example-system",
+          "code": "example-code"
+          
+        }
+      ]
+    }, 
+    "subject" : {
+      "reference": "urn:uuid:example-subject-id"
+    }
+  }

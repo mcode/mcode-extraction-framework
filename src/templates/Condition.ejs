@@ -46,12 +46,12 @@
 <% */ %>
 {
   "resourceType": "Condition",
-  "id": "<%- id %>", <% if (dateOfDiagnosis || histology) { %>
+  "id": "<%- id %>" <% if (typeof dateOfDiagnosis !== 'undefined' || typeof histology !== 'undefined') { %>,
   "extension": [
-  <% if (dateOfDiagnosis) { %>  {
+  <% if (typeof dateOfDiagnosis !== 'undefined') { %>  {
       "url": "<%- dateOfDiagnosis.url %>",
       "valueDateTime": "<%- dateOfDiagnosis.value %>"
-    } <% } %> <% if (histology) { %>, 
+    } <% } %> <% if (typeof histology !== 'undefined') { %>, 
     {
       "url": "<%- histology.url %>",
       "valueCodeableConcept": {
@@ -63,7 +63,7 @@
         ]
       }
     }
-  ]<% }} %><% if(clinicalStatus) { %>,
+  ]<% }} %><% if(typeof clinicalStatus !== 'undefined') { %>,
   "clinicalStatus": {
     "coding": [
       {
@@ -71,7 +71,7 @@
         "code": "<%- clinicalStatus.code %>"
       }
     ]
-  } <% } %> <% if(verificationStatus) { %>,
+  } <% } %> <% if(typeof verificationStatus !== 'undefined') { %>,
   "verificationStatus": {
     "coding": [
       {
@@ -95,17 +95,17 @@
     "coding": [
       {
         "system": "<%- code.system %>",
-        "code": "<%- code.code %>"<% if (code.display) { %>,
+        "code": "<%- code.code %>"<% if (typeof code.display !== 'undefined') { %>,
         "display": "<%- code.display %>"
         <% } %>
       }
     ]
   }, 
-  <% if(bodySite && bodySite.length > 0) { %>
+  <% if(typeof bodySite !== 'undefined' && bodySite.length > 0) { %>
   "bodySite": [
   <% bodySite.forEach((site, i) => { %>
     {
-      <% if (laterality) { %>
+      <% if (typeof laterality !== 'undefined') { %>
       "extension": [
         {
           "url": "<%- laterality.url %>",
@@ -128,7 +128,7 @@
     } <%if (i + 1 < bodySite.length) { %>, <% } %> 
   ], <% })} %>
   "subject" : {
-    "reference": "urn:uuid:<%- subject.id %>"<% if (subject.name) { %>,
+    "reference": "urn:uuid:<%- subject.id %>"<% if (typeof subject.name !== 'undefined') { %>,
     "display": "<%- subject.name %>"
     <% } %>
   }
