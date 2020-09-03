@@ -34,7 +34,8 @@ class BaseClient {
       type: 'collection',
       entry: [],
     };
-    return this.extractors.reduce(async (contextPromise, extractor) => {
+    const extractionErrors = [];
+    await this.extractors.reduce(async (contextPromise, extractor) => {
       const context = await contextPromise;
       try {
         logger.info(`Extracting using ${extractor.constructor.name}`);
@@ -51,11 +52,14 @@ class BaseClient {
 
         return contextBundle;
       } catch (e) {
+        extractionErrors.push(e);
         logger.error(e);
         logger.debug(e.stack);
         return contextBundle;
       }
     }, Promise.resolve(contextBundle));
+
+    return { bundle: contextBundle, extractionErrors };
   }
 }
 
