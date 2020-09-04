@@ -2,8 +2,9 @@
   {
     "mrn": "pat-mrn-1",
     "conditionId": "cond-1",
-    "diseaseStatus": "268910001",
+    "diseaseStatusCode": "268910001",
     "dateOfObservation": "2019-12-02",
-    "evidence": "363679005|252416005"
+    "evidence": "363679005|252416005",
+    "observationStatus": "amended"
   }
 ]

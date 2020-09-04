@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:63f3cf69813e1bfd1939706f9fa6214ef0bded2ddd89d1ed3def45079132636f",
+      "fullUrl": "urn:uuid:d1d13594c371179797ce1a58884f714624d5b1782c4775f0fa303d78e943d64c",
       "resource": {
         "resourceType": "Observation",
-        "id": "63f3cf69813e1bfd1939706f9fa6214ef0bded2ddd89d1ed3def45079132636f",
+        "id": "d1d13594c371179797ce1a58884f714624d5b1782c4775f0fa303d78e943d64c",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
@@ -23,7 +23,7 @@
             ]
           }
         ],
-        "status": "final",
+        "status": "amended",
         "code": {
           "coding": [
             {
@@ -47,7 +47,7 @@
             {
               "system": "http://snomed.info/sct",
               "code": "268910001",
-              "display": "responding"
+              "display": "Patient condition improved (finding)"
             }
           ]
         },

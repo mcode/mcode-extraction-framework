@@ -28,7 +28,7 @@ const joinAndReformatData = CSVCancerDiseaseStatusExtractorRewired.__get__('join
 describe('CSVCancerDiseaseStatusExtractor', () => {
   describe('joinAndReformatData', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.';
+      const expectedErrorString = 'DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, observationStatus, and dateOfObservation are required.';
       const localData = _.cloneDeep(exampleCSVDiseaseStatusModuleResponse);
       // Test that valid data works fine
       expect(joinAndReformatData(exampleCSVDiseaseStatusModuleResponse)).toEqual(expect.anything());

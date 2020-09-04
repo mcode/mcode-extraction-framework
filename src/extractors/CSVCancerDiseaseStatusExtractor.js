@@ -10,18 +10,17 @@ function joinAndReformatData(arrOfDiseaseStatusData) {
   logger.debug('Reformatting disease status data from CSV into template format');
   // Check the shape of the data
   arrOfDiseaseStatusData.forEach((record) => {
-    if (!(record.mrn && record.conditionId && record.diseaseStatus && record.dateOfObservation)) {
-      throw new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatus and dateOfObservation are required.');
+    if (!(record.mrn && record.conditionId && record.diseaseStatusCode && record.dateOfObservation && record.observationStatus)) {
+      throw new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, observationStatus, and dateOfObservation are required.');
     }
   });
   const evidenceDelimiter = '|';
   return arrOfDiseaseStatusData.map((record) => ({
-    // We have no note to base our ObservationStatus off of; default to 'final'
-    status: 'final',
+    status: record.observationStatus,
     value: {
-      code: record.diseaseStatus,
+      code: record.diseaseStatusCode,
       system: 'http://snomed.info/sct',
-      display: getDiseaseStatusDisplay(record.diseaseStatus),
+      display: record.diseaseStatusText ? record.diseaseStatusText : getDiseaseStatusDisplay(record.diseaseStatusCode),
     },
     subject: {
       id: record.mrn,
