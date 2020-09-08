@@ -89,8 +89,16 @@
           "code": "<%- categoryCode.code %>"
         }
       ]
-    } <% if (i + 1 < category.length) { %>, <% } %>
-  ], <% })%> 
+    }, <% }) %>
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "64572001"
+        }
+      ]
+    }
+  ], 
   "code": {
     "coding": [
       {

@@ -49,6 +49,14 @@
                   "code": "example-category"
                 }
               ]
+            },
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "64572001"
+                }
+              ]
             } 
           ],  
           "code": {
@@ -81,7 +89,7 @@
               ], 
               "coding": [
                 {
-                  "system": "http://snomed.info/sct/",
+                  "system": "http://snomed.info/sct",
                   "code": "example-site"
                 }
               ]

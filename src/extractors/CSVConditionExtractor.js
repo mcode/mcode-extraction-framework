@@ -43,7 +43,7 @@ function formatData(conditionData) {
         code: verificationStatus,
       },
       bodySite: !bodySite ? null : bodySite.split('|').map((site) => ({
-        system: 'http://snomed.info/sct/',
+        system: 'http://snomed.info/sct',
         code: site,
       })),
       laterality: !laterality ? null : {

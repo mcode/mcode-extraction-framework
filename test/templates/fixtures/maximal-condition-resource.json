@@ -43,6 +43,14 @@
           "code": "example-code"
         }
       ]
+    },
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "64572001"
+        }
+      ]
     } 
   ],  
   "code": {
