@@ -1,0 +1,95 @@
+{
+  "resourceType": "Condition",
+  "id": "example-id", 
+  "extension": [
+    {
+      "url": "example-url",
+      "valueDateTime": "YYYY-MM-DD"
+    }  , 
+    {
+      "url": "example-url",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "example-system",
+            "code": "example-code"
+          }
+        ]
+      }
+    }
+  ]  ,
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "example-system",
+        "code": "example-code"
+      }
+    ]
+  }  ,
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "example-system",
+        "code": "example-code"
+      }
+    ]
+  } , 
+  "category": [
+  
+    {
+      "coding": [ 
+        {
+          "system": "example-system",
+          "code": "example-code"
+        }
+      ]
+    },
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "64572001"
+        }
+      ]
+    } 
+  ],  
+  "code": {
+    "coding": [
+      {
+        "system": "example-system",
+        "code": "example-code",
+        "display": "exampleDisplayName"
+        
+      }
+    ]
+  }, 
+  
+  "bodySite": [
+  
+    {
+      
+      "extension": [
+        {
+          "url": "example-url",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "example-system",
+                "code": "example-code"
+              }
+            ]
+          }
+        }
+      ], 
+      "coding": [
+        {
+          "system": "example-system",
+          "code": "example-code"
+        }
+      ]
+    }  
+  ], 
+  "subject" : {
+    "reference": "urn:uuid:example-subject-id"
+  }
+}

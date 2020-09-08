@@ -5,41 +5,100 @@
     {
       "fullUrl": "urn:uuid:conditionId-1",
       "resource": {
-        "resourceType": "Condition",
-        "id": "conditionId-1",
-        "subject": { "reference": "urn:uuid:mrn-1" },
-        "code": {
-          "coding": [
-            { "system": "example-code-system", "code": "example-code" }
-          ]
-        },
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-                "code": "problem-list-item"
-              }
-            ]
-          },
-          {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "64572001"
-              }
-            ]
-          }
-        ],
-        "verificationStatus": {
-          "coding": [
+          "resourceType": "Condition",
+          "id": "conditionId-1", 
+          "extension": [
             {
-              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-              "code": "confirmed"
+              "url": "http://hl7.org/fhir/StructureDefinition/condition-assertedDate",
+              "valueDateTime": "YYYY-MM-DD"
+            }  , 
+            {
+              "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histology-morphology-behavior",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "example-histology"
+                  }
+                ]
+              }
             }
-          ]
+          ]  ,
+          "clinicalStatus": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code": "example-status"
+              }
+            ]
+          }  ,
+          "verificationStatus": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "code": "example-status"
+              }
+            ]
+          } , 
+          "category": [
+          
+            {
+              "coding": [ 
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                  "code": "example-category"
+                }
+              ]
+            },
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "64572001"
+                }
+              ]
+            } 
+          ],  
+          "code": {
+            "coding": [
+              {
+                "system": "example-code-system",
+                "code": "example-code",
+                "display": "Example Name"
+                
+              }
+            ]
+          }, 
+          
+          "bodySite": [
+          
+            {
+              
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://snomed.info/sct",
+                        "code": "example-laterality"
+                      }
+                    ]
+                  }
+                }
+              ], 
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "example-site"
+                }
+              ]
+            }  
+          ], 
+          "subject" : {
+            "reference": "urn:uuid:mrn-1"
+          }
         }
       }
-    }
   ]
 }
