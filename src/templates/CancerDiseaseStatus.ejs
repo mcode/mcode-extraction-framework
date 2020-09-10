@@ -30,7 +30,7 @@
     "profile": [
       "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
     ]
-  }, <% if (typeof evidence !== 'undefined' && evidence && evidence.length > 0) { %>
+  }, <% if (evidence && evidence.length > 0) { %>
   "extension" : [<% evidence.forEach((e, i) => { %>
     {
       "url" : "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
