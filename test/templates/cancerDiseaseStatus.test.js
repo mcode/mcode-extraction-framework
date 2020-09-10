@@ -50,6 +50,7 @@ const MINIMAL_DATA = {
     name: 'Walking Corpse Syndrome',
   },
   effectiveDateTime: '1994-12-09T09:07:00Z',
+  evidence: null,
 };
 
 const INVALID_DATA = {
