@@ -8,7 +8,7 @@ const {
 
 // Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
 // specifically using lowercase versions of the text specified by ICARE for status
-const diseaseStatusTextToCodeLookup = {
+const currentDiseaseStatusTextToCodeLookup = {
   'Not detected (qualifier)': 260415000,
   'Patient condition improved (finding)': 268910001,
   'Patient\'s condition stable (finding)': 359746009,
@@ -27,15 +27,15 @@ const evidenceTextToCodeLookup = {
 
 describe('diseaseStatusUtils', () => {
   test('getDiseaseStatusCode,', () => {
-    Object.keys(diseaseStatusTextToCodeLookup).forEach((dsText) => {
-      const dsCode = diseaseStatusTextToCodeLookup[dsText];
-      expect(getDiseaseStatusCode(dsText)).toEqual(dsCode);
+    Object.keys(currentDiseaseStatusTextToCodeLookup).forEach((dsText) => {
+      const dsCode = currentDiseaseStatusTextToCodeLookup[dsText];
+      expect(getDiseaseStatusCode(dsText, 'mcode')).toEqual(dsCode);
     });
   });
   test('getDiseaseStatusDisplay,', () => {
-    Object.keys(diseaseStatusTextToCodeLookup).forEach((dsText) => {
-      const dsCode = diseaseStatusTextToCodeLookup[dsText];
-      expect(getDiseaseStatusDisplay(dsCode)).toEqual(dsText);
+    Object.keys(currentDiseaseStatusTextToCodeLookup).forEach((dsText) => {
+      const dsCode = currentDiseaseStatusTextToCodeLookup[dsText];
+      expect(getDiseaseStatusDisplay(dsCode, 'mcode')).toEqual(dsText);
     });
   });
   test('getDiseaseStatusEvidenceCode,', () => {

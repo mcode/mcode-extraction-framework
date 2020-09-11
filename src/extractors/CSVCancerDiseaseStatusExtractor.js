@@ -6,39 +6,40 @@ const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
-function joinAndReformatData(arrOfDiseaseStatusData) {
-  logger.debug('Reformatting disease status data from CSV into template format');
-  // Check the shape of the data
-  arrOfDiseaseStatusData.forEach((record) => {
-    if (!(record.mrn && record.conditionId && record.diseaseStatusCode && record.dateOfObservation && record.observationStatus)) {
-      throw new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, observationStatus, and dateOfObservation are required.');
-    }
-  });
-  const evidenceDelimiter = '|';
-  return arrOfDiseaseStatusData.map((record) => ({
-    status: record.observationStatus,
-    value: {
-      code: record.diseaseStatusCode,
-      system: 'http://snomed.info/sct',
-      display: record.diseaseStatusText ? record.diseaseStatusText : getDiseaseStatusDisplay(record.diseaseStatusCode),
-    },
-    subject: {
-      id: record.mrn,
-    },
-    condition: {
-      id: record.conditionId,
-    },
-    effectiveDateTime: formatDateTime(record.dateOfObservation),
-    evidence: !record.evidence ? null : record.evidence.split(evidenceDelimiter).map((evidenceCode) => ({
-      code: evidenceCode,
-      display: getDiseaseStatusEvidenceDisplay(evidenceCode),
-    })),
-  }));
-}
-
 class CSVCancerDiseaseStatusExtractor {
-  constructor({ filePath }) {
+  constructor({ filePath, implementation }) {
     this.csvModule = new CSVModule(path.resolve(filePath));
+    this.implementation = implementation;
+  }
+
+  joinAndReformatData(arrOfDiseaseStatusData) {
+    logger.debug('Reformatting disease status data from CSV into template format');
+    // Check the shape of the data
+    arrOfDiseaseStatusData.forEach((record) => {
+      if (!(record.mrn && record.conditionId && record.diseaseStatusCode && record.dateOfObservation && record.observationStatus)) {
+        throw new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, observationStatus, and dateOfObservation are required.');
+      }
+    });
+    const evidenceDelimiter = '|';
+    return arrOfDiseaseStatusData.map((record) => ({
+      status: record.observationStatus,
+      value: {
+        code: record.diseaseStatusCode,
+        system: 'http://snomed.info/sct',
+        display: record.diseaseStatusText ? record.diseaseStatusText : getDiseaseStatusDisplay(record.diseaseStatusCode, this.implementation),
+      },
+      subject: {
+        id: record.mrn,
+      },
+      condition: {
+        id: record.conditionId,
+      },
+      effectiveDateTime: formatDateTime(record.dateOfObservation),
+      evidence: !record.evidence ? null : record.evidence.split(evidenceDelimiter).map((evidenceCode) => ({
+        code: evidenceCode,
+        display: getDiseaseStatusEvidenceDisplay(evidenceCode),
+      })),
+    }));
   }
 
   async getDiseaseStatusData(mrn, fromDate, toDate) {
@@ -55,7 +56,7 @@ class CSVCancerDiseaseStatusExtractor {
     }
 
     // 2. Format data for research study and research subject
-    const packagedDiseaseStatusData = joinAndReformatData(diseaseStatusData);
+    const packagedDiseaseStatusData = this.joinAndReformatData(diseaseStatusData);
 
     // 3. Generate FHIR Resources
     const resources = generateMcodeResources('CancerDiseaseStatus', packagedDiseaseStatusData);
