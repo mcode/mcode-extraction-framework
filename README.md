@@ -15,7 +15,7 @@ A Node.js framework for extracting mCODE FHIR resources. All resources are profi
 
 ## Prerequisites
 
-- [Node.js >= 10](https://nodejs.org/en/)
+- [Node.js >= 12](https://nodejs.org/en/)
 
 ### Latest
 
