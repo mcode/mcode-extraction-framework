@@ -6,8 +6,7 @@ const {
   mEpochToDate,
 } = require('../../src/helpers/diseaseStatusUtils.js');
 
-// Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
-// specifically using lowercase versions of the text specified by ICARE for status
+// Code mapping is based on current values at http://standardhealthrecord.org/guides/icare/mapping_guidance.html
 const currentDiseaseStatusTextToCodeLookup = {
   'Not detected (qualifier)': 260415000,
   'Patient condition improved (finding)': 268910001,
@@ -15,6 +14,17 @@ const currentDiseaseStatusTextToCodeLookup = {
   'Patient\'s condition worsened (finding)': 271299001,
   'Patient condition undetermined (finding)': 709137006,
 };
+
+// Code mapping is based on initial values still in use by icare implementors
+// specifically using lowercase versions of the text specified by ICARE for status
+const icareDiseaseStatusTextToCodeLookup = {
+  'no evidence of disease': 260415000,
+  responding: 268910001,
+  stable: 359746009,
+  progressing: 271299001,
+  'not evaluated': 709137006,
+};
+
 // Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
 // specifically using lowercase versions of the text specified by ICARE for Reason
 const evidenceTextToCodeLookup = {
@@ -26,16 +36,28 @@ const evidenceTextToCodeLookup = {
 };
 
 describe('diseaseStatusUtils', () => {
-  test('getDiseaseStatusCode,', () => {
+  test('getMcodeDiseaseStatusCode,', () => {
     Object.keys(currentDiseaseStatusTextToCodeLookup).forEach((dsText) => {
       const dsCode = currentDiseaseStatusTextToCodeLookup[dsText];
       expect(getDiseaseStatusCode(dsText, 'mcode')).toEqual(dsCode);
     });
   });
-  test('getDiseaseStatusDisplay,', () => {
+  test('getIcareDiseaseStatusCode,', () => {
+    Object.keys(icareDiseaseStatusTextToCodeLookup).forEach((dsText) => {
+      const dsCode = icareDiseaseStatusTextToCodeLookup[dsText];
+      expect(getDiseaseStatusCode(dsText, 'icare')).toEqual(dsCode);
+    });
+  });
+  test('getMcodeDiseaseStatusDisplay,', () => {
     Object.keys(currentDiseaseStatusTextToCodeLookup).forEach((dsText) => {
       const dsCode = currentDiseaseStatusTextToCodeLookup[dsText];
       expect(getDiseaseStatusDisplay(dsCode, 'mcode')).toEqual(dsText);
+    });
+  });
+  test('getIcareDiseaseStatusDisplay,', () => {
+    Object.keys(icareDiseaseStatusTextToCodeLookup).forEach((dsText) => {
+      const dsCode = icareDiseaseStatusTextToCodeLookup[dsText];
+      expect(getDiseaseStatusDisplay(dsCode, 'icare')).toEqual(dsText);
     });
   });
   test('getDiseaseStatusEvidenceCode,', () => {

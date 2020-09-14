@@ -1,4 +1,3 @@
-/* eslint-disable no-else-return */
 const moment = require('moment');
 const { invertObject } = require('./helperUtils');
 
@@ -45,11 +44,12 @@ const evidenceCodeToTextLookup = invertObject(evidenceTextToCodeLookup);
  * @param {string} text, limited to 'no evidence of disease', Responding, Stable, Progressing, or 'not evaluated'
  * @return {code} corresponding DiseaseStatus code
  */
-function getDiseaseStatusCode(text, implementation = 'icare') {
-  if (implementation === 'icare') {
-    return icareDiseaseStatusTextToCodeLookup[text];
-  } else {
-    return currentDiseaseStatusTextToCodeLookup[text];
+function getDiseaseStatusCode(text, implementation) {
+  switch (implementation) {
+    case 'icare':
+      return icareDiseaseStatusTextToCodeLookup[text];
+    default:
+      return currentDiseaseStatusTextToCodeLookup[text];
   }
 }
 
@@ -58,11 +58,12 @@ function getDiseaseStatusCode(text, implementation = 'icare') {
  * @param {string} code - limited to codes in the diseaseStatusTextToCodeLookup above
  * @return {string} corresponding DiseaseStatus display text
  */
-function getDiseaseStatusDisplay(code, implementation = 'icare') {
-  if (implementation === 'icare') {
-    return icareDiseaseStatusCodeToTextLookup[code];
-  } else {
-    return currentDiseaseStatusCodeToTextLookup[code];
+function getDiseaseStatusDisplay(code, implementation) {
+  switch (implementation) {
+    case 'icare':
+      return icareDiseaseStatusCodeToTextLookup[code];
+    default:
+      return currentDiseaseStatusCodeToTextLookup[code];
   }
 }
 
