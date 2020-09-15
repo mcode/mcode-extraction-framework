@@ -7,16 +7,26 @@ function mEpochToDate(date) {
   return epochDate.add(date, 'days');
 }
 
-// Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
+// Code mapping is based on current values at http://standardhealthrecord.org/guides/icare/mapping_guidance.html
+const currentDiseaseStatusTextToCodeLookup = {
+  'Not detected (qualifier)': 260415000,
+  'Patient condition improved (finding)': 268910001,
+  'Patient\'s condition stable (finding)': 359746009,
+  'Patient\'s condition worsened (finding)': 271299001,
+  'Patient condition undetermined (finding)': 709137006,
+};
+const currentDiseaseStatusCodeToTextLookup = invertObject(currentDiseaseStatusTextToCodeLookup);
+
+// Code mapping is based on initial values still in use by icare implementors
 // specifically using lowercase versions of the text specified by ICARE for status
-const diseaseStatusTextToCodeLookup = {
+const icareDiseaseStatusTextToCodeLookup = {
   'no evidence of disease': 260415000,
   responding: 268910001,
   stable: 359746009,
   progressing: 271299001,
   'not evaluated': 709137006,
 };
-const diseaseStatusCodeToTextLookup = invertObject(diseaseStatusTextToCodeLookup);
+const icareDiseaseStatusCodeToTextLookup = invertObject(icareDiseaseStatusTextToCodeLookup);
 
 // Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
 // specifically using lowercase versions of the text specified by ICARE for Reason
@@ -34,8 +44,13 @@ const evidenceCodeToTextLookup = invertObject(evidenceTextToCodeLookup);
  * @param {string} text, limited to 'no evidence of disease', Responding, Stable, Progressing, or 'not evaluated'
  * @return {code} corresponding DiseaseStatus code
  */
-function getDiseaseStatusCode(text) {
-  return diseaseStatusTextToCodeLookup[text];
+function getDiseaseStatusCode(text, implementation) {
+  switch (implementation) {
+    case 'icare':
+      return icareDiseaseStatusTextToCodeLookup[text];
+    default:
+      return currentDiseaseStatusTextToCodeLookup[text];
+  }
 }
 
 /**
@@ -43,8 +58,13 @@ function getDiseaseStatusCode(text) {
  * @param {string} code - limited to codes in the diseaseStatusTextToCodeLookup above
  * @return {string} corresponding DiseaseStatus display text
  */
-function getDiseaseStatusDisplay(code) {
-  return diseaseStatusCodeToTextLookup[code];
+function getDiseaseStatusDisplay(code, implementation) {
+  switch (implementation) {
+    case 'icare':
+      return icareDiseaseStatusCodeToTextLookup[code];
+    default:
+      return currentDiseaseStatusCodeToTextLookup[code];
+  }
 }
 
 /**
