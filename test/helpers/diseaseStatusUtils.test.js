@@ -40,6 +40,7 @@ describe('diseaseStatusUtils', () => {
     Object.keys(currentDiseaseStatusTextToCodeLookup).forEach((dsText) => {
       const dsCode = currentDiseaseStatusTextToCodeLookup[dsText];
       expect(getDiseaseStatusCode(dsText, 'mcode')).toEqual(dsCode);
+      expect(getDiseaseStatusCode(dsText)).toEqual(dsCode);
     });
   });
   test('getIcareDiseaseStatusCode,', () => {
@@ -52,6 +53,7 @@ describe('diseaseStatusUtils', () => {
     Object.keys(currentDiseaseStatusTextToCodeLookup).forEach((dsText) => {
       const dsCode = currentDiseaseStatusTextToCodeLookup[dsText];
       expect(getDiseaseStatusDisplay(dsCode, 'mcode')).toEqual(dsText);
+      expect(getDiseaseStatusDisplay(dsCode)).toEqual(dsText);
     });
   });
   test('getIcareDiseaseStatusDisplay,', () => {
