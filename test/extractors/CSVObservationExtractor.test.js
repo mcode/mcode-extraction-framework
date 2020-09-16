@@ -30,8 +30,17 @@ describe('CSVObservationExtractor', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
       const expectedErrorString = 'The observation is missing an expected attribute. Obervation id, mrn, status, code, code system, value, value code system, and effective date are all required.';
       const localData = _.cloneDeep(exampleCSVObservationModuleResponse);
-      // Test that valid data works fine
+
+      // Test that valid maximal data works fine
       expect(formatData(exampleCSVObservationModuleResponse)).toEqual(expect.anything());
+
+      // Test that deleting an optional value works fine
+      delete localData[0].bodySite;
+      expect(formatData(exampleCSVObservationModuleResponse)).toEqual(expect.anything());
+
+      // Test that deleting a mandatory value throws an error
+      delete localData[0].status;
+      expect(() => formatData(localData)).toThrow(new Error(expectedErrorString));
     });
   });
 

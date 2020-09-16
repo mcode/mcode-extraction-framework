@@ -1,8 +1,4 @@
-const {
-  isVitalSign,
-  getQuantityUnit,
-  getQuantityCode,
-} = require('../../src/helpers/observationUtils.js');
+const { isVitalSign, getQuantityUnit, getQuantityCode } = require('../../src/helpers/observationUtils.js');
 
 // Codes and display values for Vital Signs resources
 // Code mapping is based on http://hl7.org/fhir/R4/observation-vitalsigns.html
@@ -44,17 +40,17 @@ describe('observationUtils', () => {
     });
   });
   test('isVitalSign,', () => {
-    let code = '12345';
+    const code = '12345';
     expect(isVitalSign(code)).toEqual(false);
   });
   test('getQuantityUnit,', () => {
-    Object.keys(quantityCodeToUnitLookup).forEach((unitCode) =>  {
+    Object.keys(quantityCodeToUnitLookup).forEach((unitCode) => {
       const unitText = quantityCodeToUnitLookup[unitCode];
       expect(getQuantityUnit(unitCode)).toEqual(unitText);
     });
   });
   test('getQuantityCode,', () => {
-    Object.keys(quantityCodeToUnitLookup).forEach((unitCode) =>  {
+    Object.keys(quantityCodeToUnitLookup).forEach((unitCode) => {
       const unitText = quantityCodeToUnitLookup[unitCode];
       expect(getQuantityCode(unitText)).toEqual(unitCode);
     });
