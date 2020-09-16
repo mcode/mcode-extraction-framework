@@ -1,0 +1,15 @@
+[
+  {
+    "mrn": "example-patient",
+    "observationId": "observation-id",
+    "status": "final",
+    "code": "39004-7",
+    "codeSystem": "http://loinc.org",
+    "displayName": "",
+    "value": "10828004",
+    "valueCodeSystem": "http://snomed.info/sct",
+    "effectiveDate": "2020-01-02",
+    "bodySite": "12345",
+    "laterality": "678910"
+  }
+]

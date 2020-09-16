@@ -1,0 +1,66 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:observation-id",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-id",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],  
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39004-7"
+            }
+          ]
+        },
+        "subject" : {
+          "reference": "urn:uuid:example-patient"
+        },
+        "effectiveDateTime" : "2020-01-02",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "10828004"
+            }
+          ]
+        },
+        "bodySite": { 
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "678910"
+                  }
+                ]
+              }
+            }
+          ], 
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "12345"
+            }
+          ] 
+        }
+      }
+    }
+  ]
+}
+
