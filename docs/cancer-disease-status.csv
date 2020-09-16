@@ -1,5 +1,5 @@
-mrn,conditionId,diseaseStatusCode,diseaseStatusText,dateOfObservation,evidence,observationStatus
-pat-mrn-1,cond-1,268910001,Patient's Condition improved,2019-12-02,363679005|252416005,registered
-pat-mrn-2,cond-2,268910001,Patient's Condition improved,2019-12-03,363679005,amended
-pat-mrn-3,cond-3,260415000,Not detected,2019-12-04,363679005,corrected
-pat-mrn-4,cond-4,268910001,Patient's Condition improved,2019-12-05,271299001,final
+mrn,conditionId,diseaseStatusCode,diseaseStatusText,dateOfObservation,evidence,observationStatus,dateRecorded
+pat-mrn-1,cond-1,268910001,Patient's Condition improved,2019-12-02,363679005|252416005,registered,2020-01-10
+pat-mrn-2,cond-2,268910001,Patient's Condition improved,2019-12-03,363679005,amended,2020-01-10
+pat-mrn-3,cond-3,260415000,Not detected,2019-12-04,363679005,corrected,2020-01-10
+pat-mrn-4,cond-4,268910001,Patient's Condition improved,2019-12-05,,final,2020-05-10
