@@ -14,7 +14,7 @@ function formatData(observationData) {
     } = data;
 
     if (!mrn || !observationId || !status || !code || !codeSystem || !value || !valueCodeSystem || !effectiveDate) {
-      throw new Error('The observation is missing an expected attribute. Obervation id, mrn, status, code, code system, value, value code system, and effective date are all required.');
+      throw new Error('The observation is missing an expected attribute. Observation id, mrn, status, code, code system, value, value code system, and effective date are all required.');
     }
 
     return {
@@ -51,13 +51,13 @@ class CSVObservationExtractor extends Extractor {
     this.csvModule = new CSVModule(path.resolve(filePath));
   }
 
-  async getObservationData(mrn, fromDate, toDate) {
+  async getObservationData(mrn) {
     logger.debug('Getting Observation Data');
-    return this.csvModule.get('mrn', mrn, fromDate, toDate);
+    return this.csvModule.get('mrn', mrn);
   }
 
-  async get({ mrn, fromDate, toDate }) {
-    const observationData = await this.getObservationData(mrn, fromDate, toDate);
+  async get({ mrn }) {
+    const observationData = await this.getObservationData(mrn);
     const formattedData = formatData(observationData);
 
     return generateMcodeResources('Observation', formattedData);

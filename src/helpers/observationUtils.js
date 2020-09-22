@@ -4,7 +4,7 @@ const { invertObject } = require('./helperUtils');
 // Code mapping is based on http://hl7.org/fhir/R4/observation-vitalsigns.html
 const vitalSignsCodeToTextLookup = {
   '85353-1': 'Vital Signs Panel',
-  '9279-1': 'Repiratory Rate',
+  '9279-1': 'Respiratory Rate',
   '8867-4': 'Heart rate',
   '2708-6': 'Oxygen saturation',
   '8310-5': 'Body temperature',
@@ -18,7 +18,7 @@ const vitalSignsCodeToTextLookup = {
 };
 
 // Unit codes and display values fo Vital Signs values
-// Code mapping is based on http://unitsofmeasure.org
+// Code mapping is based on http://hl7.org/fhir/R4/observation-vitalsigns.html
 const quantityCodeToUnitLookup = {
   '/min': '/min',
   '%': '%',
@@ -54,4 +54,6 @@ module.exports = {
   isVitalSign,
   getQuantityUnit,
   getQuantityCode,
+  quantityCodeToUnitLookup,
+  vitalSignsCodeToTextLookup,
 };
