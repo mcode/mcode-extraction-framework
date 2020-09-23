@@ -1,11 +1,6 @@
-const fs = require('fs');
-const path = require('path');
 const basicPatient = require('./fixtures/patient-resource.json');
 const maximalPatient = require('./fixtures/maximal-patient-resource.json');
-const { renderTemplate } = require('../../src/helpers/ejsUtils');
-
-const PATIENT_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/Patient.ejs'), 'utf8');
-
+const { patientTemplate } = require('../../src/templates/PatientTemplate');
 
 describe('EJS Render Patient', () => {
   test('minimal required data passed into template should generate FHIR resource', () => {
@@ -16,12 +11,10 @@ describe('EJS Render Patient', () => {
       givenName: 'Test',
       gender: 'female',
     };
-    const generatedPatient = renderTemplate(
-      PATIENT_TEMPLATE,
-      PATIENT_VALID_DATA,
-    );
+    const generatedPatient = patientTemplate(PATIENT_VALID_DATA);
     expect(generatedPatient).toEqual(basicPatient);
   });
+
   test('maximal data passed into template should generate FHIR resource', () => {
     const MAX_PATIENT_DATA = {
       id: 'Some Id',
@@ -43,10 +36,7 @@ describe('EJS Render Patient', () => {
       ethnicityText: 'Some Ethnicity',
     };
 
-    const generatedPatient = renderTemplate(
-      PATIENT_TEMPLATE,
-      MAX_PATIENT_DATA,
-    );
+    const generatedPatient = patientTemplate(MAX_PATIENT_DATA);
 
     expect(generatedPatient).toEqual(maximalPatient);
   });
@@ -79,7 +69,7 @@ describe('EJS Render Patient', () => {
         ...OPTIONAL_DATA,
       };
       delete patientData[key];
-      expect(() => renderTemplate(PATIENT_TEMPLATE, patientData)).not.toThrow();
+      expect(() => patientTemplate(patientData)).not.toThrow();
     }
   });
   test('missing required data should thrown an error', () => {
@@ -90,6 +80,6 @@ describe('EJS Render Patient', () => {
       gender: 'female',
     };
 
-    expect(() => renderTemplate(PATIENT_TEMPLATE, PATIENT_INVALID_DATA)).toThrow(ReferenceError);
+    expect(() => patientTemplate(PATIENT_INVALID_DATA)).toThrow(Error);
   });
 });
