@@ -7,7 +7,7 @@ const logger = require('./logger');
 
 
 const { patientTemplate } = require('../templates');
-// TODO: When all templates have been updated
+// TODO: When all templates have been updated, we can remove this entire array and always use the template functions
 // TODO: As you update templates, add their lookup string to this list
 const NEW_TEMPLATES = [
   'Patient',
