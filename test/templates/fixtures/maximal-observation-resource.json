@@ -1,0 +1,57 @@
+{
+  "resourceType": "Observation",
+  "id": "example-id",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ]
+    }
+  ],  
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8302-2",
+        "display": "Body Height"
+        
+      }
+    ]
+  },
+  "subject" : {
+    "reference": "urn:uuid:example-mrn"
+  },
+  "effectiveDateTime" : "2020-01-01",
+  "valueQuantity": {
+    "value": 70,
+    "unit": "in",
+    "system": "http://unitsofmeasure.org",
+    "code": "[in_i]"
+  },
+  "bodySite": { 
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "51440002"
+            }
+          ]
+        }
+      }
+    ], 
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "106004"
+      }
+    ] 
+  } 
+}

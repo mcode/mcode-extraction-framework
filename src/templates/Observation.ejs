@@ -1,0 +1,100 @@
+<%# Based on http://hl7.org/fhir/R4/observation.html %>
+<% /* %>
+{
+  id: String,
+  subject: {
+    id: String
+  },
+  status: String,
+  code: {
+    code: String,
+    system: String,
+    display: String
+  },
+  value: {
+    system: String,
+    code: String,
+    unit: String
+  },
+  effectiveDate: Date,
+  bodySite: String,
+  laterality: String,
+  isVitalSign: Boolean
+}
+<% */ %>
+{
+  "resourceType": "Observation",
+  "id": "<%- id %>",
+  "status": "<%- status %>",<% if(isVitalSign) { %>
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ]
+    }
+  ], <%}else if (code.code === '39004-7') {%>
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ], <%}%> 
+  "code": {
+    "coding": [
+      {
+        "system": "<%- code.system %>",
+        "code": "<%- code.code %>"<% if (code.display) { %>,
+        "display": "<%- code.display %>"
+        <% } %>
+      }
+    ]
+  },
+  "subject" : {
+    "reference": "urn:uuid:<%- subject.id %>"
+  },
+  "effectiveDateTime" : "<%- effectiveDate %>",<% if (code.code === '89247-1' || code.code === '89243-0') { %>
+  "valueInteger": <%- value.code %> <%}else if (code.code === '39004-7') {%>
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "system": "<%- value.system %>",
+        "code": "<%- value.code %>"
+      }
+    ]
+  } <%}else {%>
+  "valueQuantity": {
+    "value": <%- value.code %>,
+    "unit": "<%- value.unit %>",
+    "system": "http://unitsofmeasure.org",
+    "code": "<%- value.system %>"
+  }<% } if (bodySite) {%>, 
+  "bodySite": { <% if (laterality) { %>
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "<%- laterality.code %>"
+            }
+          ]
+        }
+      }
+    ], <% } %>
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "<%- bodySite.code %>"
+      }
+    ] 
+  } <% } %>
+}
