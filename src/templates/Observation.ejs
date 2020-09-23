@@ -36,13 +36,13 @@
         }
       ]
     }
-  ], <%}else {%>
+  ], <%}else if (code.code === '39004-7') {%>
   "category": [
     {
       "coding": [
         {
           "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-          "code": <% if (code.code === '39004-7') { %>"laboratory" <%} else { %>"survey" <%}%>
+          "code": "laboratory"
         }
       ]
     }
