@@ -40,6 +40,7 @@ describe('EJS Render Patient', () => {
 
     expect(generatedPatient).toEqual(maximalPatient);
   });
+
   test('missing non-required data should not throw an error', () => {
     const NECESSARY_DATA = {
       id: 'Some Id',
@@ -72,6 +73,7 @@ describe('EJS Render Patient', () => {
       expect(() => patientTemplate(patientData)).not.toThrow();
     }
   });
+
   test('missing required data should thrown an error', () => {
     const PATIENT_INVALID_DATA = {
       // Omitting mrn information, which is required

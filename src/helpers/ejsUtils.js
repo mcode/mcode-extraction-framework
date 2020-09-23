@@ -13,7 +13,7 @@ const NEW_TEMPLATES = [
   'Patient',
 ];
 
-// TODO: As you update tempaltes, add their new templateFunction to this lookup table
+// TODO: As you update templates, add their new templateFunction to this lookup table
 const fhirTemplateLookup = {
   CancerDiseaseStatus: fs.readFileSync(path.join(__dirname, '../templates/CancerDiseaseStatus.ejs'), 'utf8'),
   CarePlanWithReview: fs.readFileSync(path.join(__dirname, '../templates/CarePlanWithReview.ejs'), 'utf8'),
