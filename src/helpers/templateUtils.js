@@ -13,7 +13,7 @@ function ifAllArgs(templateFn) {
 }
 
 // A decorator that modifies a template to only render
-// when all of the values on its argumentsObject are null/empty, returning null otherwise
+// when all of the values on its argumentsObject are not null/empty, returning null otherwise
 // NOTE: Will not return if the argumentsObj/properties are not defined; just checks if they're present with undefined/null values
 function ifAllArgsObj(templateFn) {
   return (argObj) => {
@@ -37,7 +37,7 @@ function ifSomeArgs(templateFn) {
 }
 
 // A decorator that modifies a template to only render
-// when some of the values on its argumentsObject are null/empty, returning null otherwise
+// when some of the values on its argumentsObject are not null/empty, returning null otherwise
 // NOTE: Will not return if the argumentsObj/properties are not defined; just checks if they're present with undefined/null values
 function ifSomeArgsObj(templateFn) {
   return (argObj) => {
