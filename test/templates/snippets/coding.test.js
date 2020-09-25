@@ -1,4 +1,5 @@
 const { coding } = require('../../../src/templates/snippets');
+const { allKeyCombinationsNotThrow } = require('../../utils');
 const maximalCoding = require('../fixtures/maximal-coding-object.json');
 
 describe('Coding Snippet', () => {
@@ -31,5 +32,15 @@ describe('Coding Snippet', () => {
     expect(coding(MAX_CODING_INPUT)).toEqual(maximalCoding);
   });
 
-  // test('Renders a partial coding object when any subset of arguments are supplied, rendering');
+  test('Any combination of properties will not throw an error', () => {
+    const MAX_CODING_INPUT = {
+      system: 'example-sys',
+      version: 'v3.1.4',
+      code: 'example-code',
+      display: 'A string of display text',
+      userSelected: true,
+    };
+
+    allKeyCombinationsNotThrow(MAX_CODING_INPUT, coding);
+  });
 });

@@ -56,6 +56,8 @@ describe('TemplateUtils', () => {
 
     test('Returns nothing when all args are empty', () => {
       expect(ifAllArgsObjFn({ a1: undefined, a2: undefined })).toBeNull();
+      expect(ifAllArgsObjFn({ a1: undefined, a2: null })).toBeNull();
+      expect(ifAllArgsObjFn({ a1: null, a2: undefined })).toBeNull();
       expect(ifAllArgsObjFn({ a1: null, a2: null })).toBeNull();
     });
 
@@ -103,6 +105,8 @@ describe('TemplateUtils', () => {
 
     test('Returns nothing when all args are empty', () => {
       expect(ifSomeArgsFn(undefined, undefined)).toBeNull();
+      expect(ifSomeArgsFn(undefined, null)).toBeNull();
+      expect(ifSomeArgsFn(null, undefined)).toBeNull();
       expect(ifSomeArgsFn(null, null)).toBeNull();
     });
 
@@ -146,6 +150,8 @@ describe('TemplateUtils', () => {
 
     test('Returns nothing when all args are empty', () => {
       expect(ifSomeArgsObjFn({ a1: undefined, a2: undefined })).toBeNull();
+      expect(ifSomeArgsObjFn({ a1: undefined, a2: null })).toBeNull();
+      expect(ifSomeArgsObjFn({ a1: null, a2: undefined })).toBeNull();
       expect(ifSomeArgsObjFn({ a1: null, a2: null })).toBeNull();
     });
 
