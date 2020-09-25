@@ -25,13 +25,14 @@ const csvModuleSpy = jest.spyOn(csvModule, 'get');
 describe('CSVCancerDiseaseStatusExtractor', () => {
   describe('joinAndReformatData', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, observationStatus, and dateOfObservation are required.';
+      const expectedErrorString = 'DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, and dateOfObservation are required.';
       const localData = _.cloneDeep(exampleCSVDiseaseStatusModuleResponse);
       // Test that valid data works fine
       expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(exampleCSVDiseaseStatusModuleResponse)).toEqual(expect.anything());
 
       // Test all required properties are
       delete localData[0].evidence; // Evidence is not required and will not throw an error
+      delete localData[0].observationStatus; // Observation Status is not required and will not throw an error
       Object.keys(localData[0]).forEach((key) => {
         const clonedData = _.cloneDeep(localData);
         delete clonedData[0][key];
