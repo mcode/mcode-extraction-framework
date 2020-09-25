@@ -22,7 +22,10 @@
   ],
   "status": "<%- enrollmentStatus %>",
   "study": {
-      "reference": "ResearchStudy/<%- trialResearchID %>"
+      "identifier": {
+        "system": "http://example.com/clinicaltrialids",
+        "value": "<%- trialResearchID %>"
+      }
   },
   "individual": {
       "reference": "urn:uuid:<%- patientId %>"

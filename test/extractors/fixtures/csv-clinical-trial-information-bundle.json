@@ -15,7 +15,12 @@
           }
         ],
         "status": "example-enrollment-status",
-        "study": { "reference": "ResearchStudy/example-researchId" },
+        "study": {
+          "identifier": {
+            "system": "http://example.com/clinicaltrialids",
+            "value": "example-researchId"
+          }
+        },
         "individual": { "reference": "urn:uuid:EXAMPLE-MRN" }
       }
     },
