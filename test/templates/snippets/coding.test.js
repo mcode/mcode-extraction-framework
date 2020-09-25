@@ -1,4 +1,5 @@
 const { coding } = require('../../../src/templates/snippets');
+const maximalCoding = require('../fixtures/maximal-coding-object.json');
 
 describe('Coding Snippet', () => {
   test('Throws an error when no argument is supplied', () => {
@@ -18,15 +19,17 @@ describe('Coding Snippet', () => {
     expect(coding({})).toBeNull();
   });
 
-  // test('Returns a saturated coding object when all arguments are supplied', () => {
-  //   const MAX_CODING = {
-  //     system: 'example-sys',
-  //     version: 'v3.1.4',
-  //     code: 'example-code',
-  //     display: 'A string of display text',
-  //     userSelected: '',
-  //   };
-  // });
+  test('Returns a saturated coding object when all arguments are supplied', () => {
+    const MAX_CODING_INPUT = {
+      system: 'example-sys',
+      version: 'v3.1.4',
+      code: 'example-code',
+      display: 'A string of display text',
+      userSelected: true,
+    };
+
+    expect(coding(MAX_CODING_INPUT)).toEqual(maximalCoding);
+  });
 
   // test('Renders a partial coding object when any subset of arguments are supplied, rendering');
 });

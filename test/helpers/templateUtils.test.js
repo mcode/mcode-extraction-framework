@@ -7,6 +7,8 @@ describe('TemplateUtils', () => {
 
     test('Returns nothing when all args are empty', () => {
       expect(ifAllArgsFn(undefined, undefined)).toBeNull();
+      expect(ifAllArgsFn(undefined, null)).toBeNull();
+      expect(ifAllArgsFn(null, undefined)).toBeNull();
       expect(ifAllArgsFn(null, null)).toBeNull();
     });
 
@@ -70,8 +72,8 @@ describe('TemplateUtils', () => {
       expect(ifAllArgsObjFn({ a1: vStr, a2: undefined })).toBeNull();
       expect(ifAllArgsObjFn({ a1: undefined, a2: vStr })).toBeNull();
       expect(ifAllArgsObjFn({ a1: vStr, a2: null })).toBeNull();
-      // Permutations with Bool
       expect(ifAllArgsObjFn({ a1: null, a2: vStr })).toBeNull();
+      // Permutations with Bool
       expect(ifAllArgsObjFn({ a1: vBool, a2: undefined })).toBeNull();
       expect(ifAllArgsObjFn({ a1: undefined, a2: vBool })).toBeNull();
       expect(ifAllArgsObjFn({ a1: vBool, a2: null })).toBeNull();
@@ -125,7 +127,7 @@ describe('TemplateUtils', () => {
       expect(ifSomeArgsFn(null, vBool)).toEqual(fn(null, vBool));
     });
 
-    test('Returns the function output when all args are empty', () => {
+    test('Returns the function output when all args are present', () => {
       // Permutations with Num
       const vNum = 1;
       expect(ifSomeArgsFn(vNum, vNum)).toEqual(fn(vNum, vNum));
@@ -168,7 +170,7 @@ describe('TemplateUtils', () => {
       expect(ifSomeArgsObjFn({ a1: null, a2: vBool })).toEqual(objFn({ a1: null, a2: vBool }));
     });
 
-    test('Returns the function output when all args are empty', () => {
+    test('Returns the function output when all args are present', () => {
       // Permutations with Num
       const vNum = 1;
       expect(ifSomeArgsObjFn({ a1: vNum, a2: vNum })).toEqual(objFn({ a1: vNum, a2: vNum }));

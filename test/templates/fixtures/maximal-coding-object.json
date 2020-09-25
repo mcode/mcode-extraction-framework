@@ -1,0 +1,7 @@
+{
+  "system": "example-sys",
+  "version": "v3.1.4",
+  "code": "example-code",
+  "display": "A string of display text",
+  "userSelected": true
+}
