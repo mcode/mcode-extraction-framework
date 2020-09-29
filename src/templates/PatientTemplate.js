@@ -1,4 +1,4 @@
-const { extension, coding } = require('./snippets');
+const { extension, coding, valueX } = require('./snippets');
 const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
 
 function mrnIdentifierTemplate({ mrn }) {
@@ -7,11 +7,11 @@ function mrnIdentifierTemplate({ mrn }) {
       {
         type: {
           coding: [
-            {
+            coding({
               system: 'http://terminology.hl7.org/CodeSystem/v2-0203',
               code: 'MR',
               display: 'Medical Record Number',
-            },
+            }),
           ],
           text: 'Medical Record Number',
         },
@@ -27,14 +27,14 @@ function usCoreRaceTemplate({ raceCodesystem, raceCode, raceText }) {
     extension: [
       {
         url: 'ombCategory',
-        valueCoding: coding({
+        ...valueX({
           system: raceCodesystem,
           code: raceCode,
         }),
       },
       {
         url: 'text',
-        valueString: raceText,
+        ...valueX(raceText),
       },
     ],
     url: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race',
@@ -46,7 +46,7 @@ function usCoreEthnicityTemplate({ ethnicityCode, ethnicityText }) {
     extension: [
       {
         url: 'ombCategory',
-        valueCoding: coding({
+        ...valueX({
           system: 'urn:oid:2.16.840.1.113883.6.238',
           code: ethnicityCode,
         }),
@@ -109,10 +109,10 @@ function languageTemplate({ language }) {
       {
         language: {
           coding: [
-            {
+            coding({
               system: 'urn:ietf:bcp:47',
               code: language,
-            },
+            }),
           ],
         },
       },

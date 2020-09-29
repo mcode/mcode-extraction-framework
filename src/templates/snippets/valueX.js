@@ -1,4 +1,5 @@
 const logger = require('../../helpers/logger');
+const { coding } = require('./coding');
 
 // Regex Patterns
 const quantRegex = /^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?((\s){1,3}(\S{1,15}))?$/;
@@ -68,6 +69,10 @@ function valueX(value) {
             unit: value.unit,
             value: value.value,
           },
+        };
+      } if (value.system || value.version || value.code || value.display || value.userSelected) {
+        return {
+          valueCoding: coding(value),
         };
       }
       logger.warn(`Trying to render a ValueTemplate with an object of unknown shape, including properties ${Object.keys(value)}`);
