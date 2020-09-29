@@ -53,7 +53,7 @@ function usCoreEthnicityTemplate({ ethnicityCode, ethnicityText }) {
       },
       {
         url: 'text',
-        valueString: ethnicityText,
+        ...valueX(ethnicityText),
       },
     ],
     url: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity',

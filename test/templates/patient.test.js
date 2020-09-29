@@ -2,7 +2,7 @@ const basicPatient = require('./fixtures/patient-resource.json');
 const maximalPatient = require('./fixtures/maximal-patient-resource.json');
 const { patientTemplate } = require('../../src/templates/PatientTemplate');
 
-describe('EJS Render Patient', () => {
+describe('JavaScript Render Patient', () => {
   test('minimal required data passed into template should generate FHIR resource', () => {
     const PATIENT_VALID_DATA = {
       id: 'Some Id',
