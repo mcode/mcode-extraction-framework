@@ -3,8 +3,7 @@ const { cancerDiseaseStatusTemplate } = require('./CancerDiseaseStatusTemplate')
 const { carePlanWithReviewTemplate } = require('./CarePlanWithReviewTemplate');
 const { researchStudyTemplate } = require('./ResearchStudyTemplate');
 const { researchSubjectTemplate } = require('./ResearchSubjectTemplate');
-
-const conditionTemplate = () => { };
+const { conditionTemplate } = require('./ConditionTemplate');
 
 module.exports = {
   cancerDiseaseStatusTemplate,

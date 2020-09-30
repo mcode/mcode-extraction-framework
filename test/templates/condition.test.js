@@ -1,14 +1,10 @@
-const fs = require('fs');
-const path = require('path');
 const maximalValidExampleCondition = require('./fixtures/maximal-condition-resource.json');
 const minimalValidExampleCondition = require('./fixtures/minimal-condition-resource.json');
-const { renderTemplate } = require('../../src/helpers/ejsUtils');
+const { conditionTemplate } = require('../../src/templates/ConditionTemplate.js');
 
 const CONDITION_VALID_DATA = {
-  id: 'example-id',
-  subject: {
-    id: 'example-subject-id',
-  },
+  conditionId: 'example-id',
+  mrn: 'example-subject-id',
   code: {
     system: 'example-system',
     code: 'example-code',
@@ -52,10 +48,8 @@ const CONDITION_VALID_DATA = {
 
 const CONDITION_MINIMAL_DATA = {
   // Only include 'subject', 'conditionId', 'code', 'codesystem', and 'category' fields which are required
-  id: 'example-id',
-  subject: {
-    id: 'example-subject-id',
-  },
+  conditionId: 'example-id',
+  mrn: 'example-subject-id',
   code: {
     system: 'example-system',
     code: 'example-code',
@@ -77,6 +71,10 @@ const CONDITION_MINIMAL_DATA = {
 
 const CONDITION_INVALID_DATA = {
   // Omitting 'subject', 'conditionId', 'code', 'codesystem', and 'category' fields which are required
+  conditionId: null,
+  mrn: null,
+  code: null,
+  category: null,
   dateOfDiagnosis: {
     value: 'YYYY-MM-DD',
     url: 'example-url',
@@ -107,28 +105,20 @@ const CONDITION_INVALID_DATA = {
   },
 };
 
-const CONDITION_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/Condition.ejs'), 'utf8');
-
 describe('test Condition template', () => {
   test('valid data passed into template should generate FHIR resource', () => {
-    const generatedCondition = renderTemplate(
-      CONDITION_TEMPLATE,
-      CONDITION_VALID_DATA,
-    );
+    const generatedCondition = conditionTemplate(CONDITION_VALID_DATA);
 
     expect(generatedCondition).toEqual(maximalValidExampleCondition);
   });
 
   test('minimal data passed into template should generate FHIR resource', () => {
-    const generatedCondition = renderTemplate(
-      CONDITION_TEMPLATE,
-      CONDITION_MINIMAL_DATA,
-    );
+    const generatedCondition = conditionTemplate(CONDITION_MINIMAL_DATA);
 
     expect(generatedCondition).toEqual(minimalValidExampleCondition);
   });
 
   test('invalid data should throw an error', () => {
-    expect(() => renderTemplate(CONDITION_TEMPLATE, CONDITION_INVALID_DATA)).toThrow(ReferenceError);
+    expect(() => conditionTemplate(CONDITION_INVALID_DATA)).toThrow(Error);
   });
 });

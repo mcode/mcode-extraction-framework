@@ -6,13 +6,14 @@ const shajs = require('sha.js');
 const logger = require('./logger');
 
 const {
-  cancerDiseaseStatusTemplate, carePlanWithReviewTemplate, patientTemplate, researchStudyTemplate, researchSubjectTemplate,
+  cancerDiseaseStatusTemplate, carePlanWithReviewTemplate, patientTemplate, researchStudyTemplate, researchSubjectTemplate, conditionTemplate,
 } = require('../templates');
 // TODO: When all templates have been updated, we can remove this entire array and always use the template functions
 // TODO: As you update templates, add their lookup string to this list
 const NEW_TEMPLATES = [
   'CancerDiseaseStatus',
   'CarePlanWithReview',
+  'Condition',
   'Patient',
   'ResearchStudy',
   'ResearchSubject',
@@ -22,7 +23,7 @@ const NEW_TEMPLATES = [
 const fhirTemplateLookup = {
   CancerDiseaseStatus: cancerDiseaseStatusTemplate,
   CarePlanWithReview: carePlanWithReviewTemplate,
-  Condition: fs.readFileSync(path.join(__dirname, '../templates/Condition.ejs'), 'utf8'),
+  Condition: conditionTemplate,
   Observation: fs.readFileSync(path.join(__dirname, '../templates/Observation.ejs'), 'utf8'),
   Patient: patientTemplate,
   ResearchStudy: researchStudyTemplate,
