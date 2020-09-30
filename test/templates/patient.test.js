@@ -1,6 +1,7 @@
 const basicPatient = require('./fixtures/patient-resource.json');
 const maximalPatient = require('./fixtures/maximal-patient-resource.json');
 const { patientTemplate } = require('../../src/templates/PatientTemplate');
+const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 describe('JavaScript Render Patient', () => {
   test('minimal required data passed into template should generate FHIR resource', () => {
@@ -49,6 +50,7 @@ describe('JavaScript Render Patient', () => {
       givenName: 'Test',
       gender: 'female',
     };
+
     const OPTIONAL_DATA = {
       dateOfBirth: '2001-02-06',
       language: 'en',
@@ -63,15 +65,7 @@ describe('JavaScript Render Patient', () => {
       ethnicityText: 'Some Ethnicity',
     };
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key of Object.keys(OPTIONAL_DATA)) {
-      const patientData = {
-        ...NECESSARY_DATA,
-        ...OPTIONAL_DATA,
-      };
-      delete patientData[key];
-      expect(() => patientTemplate(patientData)).not.toThrow();
-    }
+    allOptionalKeyCombinationsNotThrow(OPTIONAL_DATA, patientTemplate, NECESSARY_DATA);
   });
 
   test('missing required data should thrown an error', () => {

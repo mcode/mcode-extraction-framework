@@ -1,5 +1,5 @@
 const { coding } = require('../../../src/templates/snippets');
-const { allKeyCombinationsNotThrow } = require('../../utils');
+const { allOptionalKeyCombinationsNotThrow } = require('../../utils');
 const maximalCoding = require('../fixtures/maximal-coding-object.json');
 
 describe('Coding Snippet', () => {
@@ -41,6 +41,6 @@ describe('Coding Snippet', () => {
       userSelected: true,
     };
 
-    allKeyCombinationsNotThrow(MAX_CODING_INPUT, coding);
+    allOptionalKeyCombinationsNotThrow(MAX_CODING_INPUT, coding, {});
   });
 });
