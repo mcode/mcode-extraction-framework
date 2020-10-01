@@ -33,6 +33,11 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
       // Test all required properties are
       delete localData[0].evidence; // Evidence is not required and will not throw an error
       delete localData[0].observationStatus; // Observation Status is not required and will not throw an error
+
+      // Only including required properties is valid
+      expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(localData)).toEqual(expect.anything());
+
+      // Removing each required property should throw an error
       Object.keys(localData[0]).forEach((key) => {
         const clonedData = _.cloneDeep(localData);
         delete clonedData[0][key];
