@@ -6,16 +6,17 @@ const shajs = require('sha.js');
 const logger = require('./logger');
 
 
-const { patientTemplate } = require('../templates');
+const { cancerDiseaseStatusTemplate, patientTemplate } = require('../templates');
 // TODO: When all templates have been updated, we can remove this entire array and always use the template functions
 // TODO: As you update templates, add their lookup string to this list
 const NEW_TEMPLATES = [
+  'CancerDiseaseStatus',
   'Patient',
 ];
 
 // TODO: As you update templates, add their new templateFunction to this lookup table
 const fhirTemplateLookup = {
-  CancerDiseaseStatus: fs.readFileSync(path.join(__dirname, '../templates/CancerDiseaseStatus.ejs'), 'utf8'),
+  CancerDiseaseStatus: cancerDiseaseStatusTemplate,
   CarePlanWithReview: fs.readFileSync(path.join(__dirname, '../templates/CarePlanWithReview.ejs'), 'utf8'),
   Condition: fs.readFileSync(path.join(__dirname, '../templates/Condition.ejs'), 'utf8'),
   Observation: fs.readFileSync(path.join(__dirname, '../templates/Observation.ejs'), 'utf8'),
@@ -52,7 +53,7 @@ function fillAndBundleTemplate(template, data) {
     type: 'collection',
     entry: (_.isArray(data) ? data : [data]).map((d) => ({
       fullUrl: `urn:uuid:${d.id || generateResourceId(d)}`,
-      resource: template(dataWithId(data)),
+      resource: template(dataWithId(d)),
     })),
   };
 }
