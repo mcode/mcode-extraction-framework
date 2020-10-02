@@ -1,8 +1,6 @@
-const fs = require('fs');
-const path = require('path');
 const validCancerDiseaseStatus = require('./fixtures/disease-status-resource.json');
 const minimalCancerDiseaseStatus = require('./fixtures/minimal-disease-status-resource.json');
-const { renderTemplate } = require('../../src/helpers/ejsUtils');
+const { cancerDiseaseStatusTemplate } = require('../../src/templates/CancerDiseaseStatusTemplate');
 
 const VALID_DATA = {
   id: 'CancerDiseaseStatus-fixture',
@@ -73,24 +71,16 @@ const INVALID_DATA = {
   evidence: null,
 };
 
-const DISEASE_STATUS_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/CancerDiseaseStatus.ejs'), 'utf8');
-
 describe('test CancerDiseaseStatus template', () => {
   test('valid data passed into template should generate valid FHIR resource', () => {
-    const generatedDiseaseStatus = renderTemplate(
-      DISEASE_STATUS_TEMPLATE,
-      VALID_DATA,
-    );
+    const generatedDiseaseStatus = cancerDiseaseStatusTemplate(VALID_DATA);
 
     // Relevant fields should match the valid FHIR
     expect(generatedDiseaseStatus).toEqual(validCancerDiseaseStatus);
   });
 
   test('valid data with only required attributes passed into template should generate valid FHIR resource', () => {
-    const generatedDiseaseStatus = renderTemplate(
-      DISEASE_STATUS_TEMPLATE,
-      MINIMAL_DATA,
-    );
+    const generatedDiseaseStatus = cancerDiseaseStatusTemplate(MINIMAL_DATA);
 
     // Relevant fields should match the valid FHIR
     expect(generatedDiseaseStatus).toEqual(minimalCancerDiseaseStatus);
@@ -98,6 +88,6 @@ describe('test CancerDiseaseStatus template', () => {
 
   test('invalid data should throw an error', () => {
     // ReferenceError will happen when a required field in the template is undefined
-    expect(() => renderTemplate(DISEASE_STATUS_TEMPLATE, INVALID_DATA)).toThrow(ReferenceError);
+    expect(() => cancerDiseaseStatusTemplate(INVALID_DATA)).toThrow(Error);
   });
 });

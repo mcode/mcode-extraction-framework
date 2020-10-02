@@ -1,6 +1,6 @@
 const { coding } = require('./coding');
 const { extension } = require('./extension');
-const { valueX } = require('./valueX');
+const { valueCodeableConcept, valueX } = require('./valueX');
 const { effectiveX } = require('./effectiveX');
 const { reference } = require('./reference');
 
@@ -9,5 +9,6 @@ module.exports = {
   effectiveX,
   extension,
   reference,
+  valueCodeableConcept,
   valueX,
 };

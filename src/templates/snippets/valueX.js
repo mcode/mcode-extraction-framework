@@ -84,6 +84,18 @@ function valueX(value) {
   }
 }
 
+// TODO: move this into valueX when we define optional args
+function valueCodeableConcept(value) {
+  return {
+    valueCodeableConcept: {
+      coding: [
+        coding(value),
+      ],
+    },
+  };
+}
+
 module.exports = {
+  valueCodeableConcept,
   valueX,
 };
