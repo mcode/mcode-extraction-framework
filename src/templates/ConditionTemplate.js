@@ -57,6 +57,7 @@ function individualCategoryTemplate(category) {
 
 function categoryArrayTemplate(array) {
   const category = array.map(individualCategoryTemplate);
+  // Including the fixed value for the category element at the end of the array
   category.push({
     coding: [coding({
       system: 'http://snomed.info/sct',
@@ -132,10 +133,10 @@ function conditionTemplate({
     ),
     ...ifAllArgsObj(clinicalStatusTemplate)({ clinicalStatus }),
     ...ifAllArgsObj(verificationStatusTemplate)({ verificationStatus }),
-    ...ifAllArgsObj(categoryArrayTemplate)(category),
-    ...ifAllArgsObj(codingTemplate)({ code }),
+    ...categoryArrayTemplate(category),
+    ...codingTemplate({ code }),
     ...ifAllArgsObj(bodySiteTemplate)({ bodySite, laterality }),
-    ...ifAllArgsObj(subjectTemplate)({ mrn }),
+    ...subjectTemplate({ mrn }),
   };
 }
 
