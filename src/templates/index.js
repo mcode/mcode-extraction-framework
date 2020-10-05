@@ -1,6 +1,6 @@
 const { patientTemplate } = require('./PatientTemplate');
 const { cancerDiseaseStatusTemplate } = require('./CancerDiseaseStatusTemplate');
-const { carePlanWithReviewTemplate } = require('./CarePlanWithReview');
+const { carePlanWithReviewTemplate } = require('./CarePlanWithReviewTemplate');
 
 const conditionTemplate = () => { };
 const researchStudyTemplate = () => { };
