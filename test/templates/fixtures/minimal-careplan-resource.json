@@ -1,6 +1,6 @@
 {
   "resourceType": "CarePlan",
-  "id": "Careplan-With-Review-Example",
+  "id": "test-id",
   "meta": {
     "profile": [
       "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-with-review"
@@ -15,32 +15,18 @@
       "url": "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review",
       "extension": [
         {
-          "url": "CarePlanChangeReason",
-          "valueCodeableConcept": {
-            "coding": [
-              {
-                "code": "281647001",
-                "system": "http://snomed.info/sct",
-                "display": "Adverse reaction (disorder)"
-              }
-            ],
-            "text": "Adverse reaction (disorder)"
-          }
-        },
-        {
           "url": "ReviewDate",
           "valueDate": "2020-01-23"
         },
         {
           "url": "ChangedFlag",
-          "valueBoolean": true
+          "valueBoolean": false
         }
       ]
     }
   ],
   "subject": {
-    "reference": "urn:uuid:abc-def",
-    "display": "Sample Text"
+    "reference": "urn:uuid:abc-def"
   },
   "status": "draft",
   "intent": "proposal",
