@@ -3,7 +3,7 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:b0c5aa1aa2b11fbcd4e103d7a95971157a73f01c2aaf3230f086896fb8dd2d76",
+      "fullUrl": "urn:uuid:conditionId-1",
       "resource": {
           "resourceType": "Condition",
           "id": "conditionId-1", 

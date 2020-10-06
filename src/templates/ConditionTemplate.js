@@ -118,15 +118,15 @@ function subjectTemplate({ mrn }) {
 // Based on https://mcodeinitiative.github.io/StructureDefinition-obf-Condition.html
 // Official url: http://hl7.org/fhir/us/mcode/StructureDefinition/obf-Condition
 function conditionTemplate({
-  mrn, conditionId, code, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
+  mrn, id, code, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
 }) {
-  if (!(conditionId && mrn && code.system && code.code && category)) {
+  if (!(id && mrn && code.system && code.code && category)) {
     throw Error('Trying to render a ConditionTemplate, but a required argument is missing; ensure that id, mrn, code, codesystem, and category are all present');
   }
 
   return {
     resourceType: 'Condition',
-    id: conditionId,
+    id: id,
     ...extension(
       ifAllArgsObj(dateOfDiagnosisTemplate)({ dateOfDiagnosis }),
       ifAllArgsObj(histologyTemplate)({ histology }),

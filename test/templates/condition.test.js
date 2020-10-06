@@ -4,7 +4,7 @@ const { conditionTemplate } = require('../../src/templates/ConditionTemplate.js'
 const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 const CONDITION_VALID_DATA = {
-  conditionId: 'example-id',
+  id: 'example-id',
   mrn: 'example-subject-id',
   code: {
     system: 'example-system',
@@ -49,7 +49,7 @@ const CONDITION_VALID_DATA = {
 
 const CONDITION_MINIMAL_DATA = {
   // Only include 'subject', 'conditionId', 'code', 'codesystem', and 'category' fields which are required
-  conditionId: 'example-id',
+  id: 'example-id',
   mrn: 'example-subject-id',
   code: {
     system: 'example-system',
@@ -72,7 +72,7 @@ const CONDITION_MINIMAL_DATA = {
 
 const CONDITION_INVALID_DATA = {
   // Omitting 'subject', 'conditionId', 'code', 'codesystem', and 'category' fields which are required
-  conditionId: null,
+  id: null,
   mrn: null,
   code: null,
   category: null,
@@ -152,7 +152,7 @@ describe('test Condition template', () => {
     };
 
     const NECESSARY_DATA = {
-      conditionId: 'example-id',
+      id: 'example-id',
       mrn: 'example-subject-id',
       code: {
         system: 'example-system',

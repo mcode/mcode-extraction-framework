@@ -17,7 +17,7 @@ function formatData(conditionData) {
       throw new Error('The condition is missing an expected attribute. Condition id, mrn, code system, code, and category are all required.');
     }
     return {
-      conditionId,
+      id: conditionId,
       mrn,
       code: {
         code,
