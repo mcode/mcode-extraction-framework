@@ -1,5 +1,5 @@
 const {
-  coding, extension, meta, narrative, valueX,
+  coding, extension, meta, narrative, reference, valueCodeableConcept, valueX,
 } = require('./snippets');
 const { ifAllArgs } = require('../helpers/templateUtils');
 
@@ -27,16 +27,12 @@ function createdTemplate({ effectiveDateTime }) {
 function carePlanReasonTemplate({ reason }) {
   return {
     url: 'CarePlanChangeReason',
-    valueCodeableConcept: {
-      coding: [
-        coding({
-          system: 'http://snomed.info/sct',
-          code: reason.code,
-          display: reason.displayText,
-        }),
-      ],
-      ...(reason.displayText && { text: reason.displayText }),
-    },
+    ...valueCodeableConcept({
+      system: 'http://snomed.info/sct',
+      code: reason.code,
+      display: reason.displayText,
+      text: reason.displayText,
+    }),
   };
 }
 
@@ -64,12 +60,9 @@ function carePlanChangeReasonExtensionTemplate({ treatmentPlanChange, effectiveD
   };
 }
 
-function subjectTemplate({ id, name }) {
+function subjectTemplate({ subject }) {
   return {
-    subject: {
-      reference: `urn:uuid:${id}`,
-      ...(name && { display: name }),
-    },
+    subject: reference(subject),
   };
 }
 
@@ -107,7 +100,7 @@ function carePlanWithReviewTemplate({
     ...extension(
       carePlanChangeReasonExtensionTemplate({ treatmentPlanChange, effectiveDate }),
     ),
-    ...subjectTemplate({ id: subject.id, name: subject.name }),
+    ...subjectTemplate({ subject }),
     status: 'draft',
     intent: 'proposal',
     ...ifAllArgs(createdTemplate)({ effectiveDateTime }),

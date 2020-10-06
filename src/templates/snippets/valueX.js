@@ -91,6 +91,7 @@ function valueCodeableConcept(value) {
       coding: [
         coding(value),
       ],
+      ...(value.text && { text: value.text }),
     },
   };
 }
