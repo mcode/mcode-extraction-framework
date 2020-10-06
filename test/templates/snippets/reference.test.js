@@ -1,6 +1,7 @@
-const { reference } = require('../../../src/templates/snippets');
 const minimalReference = require('../fixtures/minimal-reference-object.json');
 const maximalReference = require('../fixtures/maximal-reference-object.json');
+const { reference } = require('../../../src/templates/snippets');
+const { allOptionalKeyCombinationsNotThrow } = require('../../utils');
 
 describe('Reference Snippet', () => {
   test('Throws an error when no argument is supplied', () => {
@@ -26,5 +27,17 @@ describe('Reference Snippet', () => {
     };
 
     expect(reference(MAXIMAL_DATA)).toEqual(maximalReference);
+  });
+
+  test('missing non-required data should not throw an error', () => {
+    const NECESSARY_DATA = {
+      id: 'example-id',
+    };
+
+    const OPTIONAL_DATA = {
+      name: 'example-name',
+    };
+
+    allOptionalKeyCombinationsNotThrow(OPTIONAL_DATA, reference, NECESSARY_DATA);
   });
 });
