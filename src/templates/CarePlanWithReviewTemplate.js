@@ -40,7 +40,13 @@ function carePlanReasonTemplate({ reason }) {
 }
 
 function carePlanChangeReasonExtensionTemplate({ treatmentPlanChange, effectiveDate }) {
-  const { reason, hasChanged } = treatmentPlanChange;
+  const { reason } = treatmentPlanChange;
+  let { hasChanged } = treatmentPlanChange;
+  if (hasChanged === 'true') {
+    hasChanged = true;
+  } else if (hasChanged === 'false') {
+    hasChanged = false;
+  }
   return {
     url: 'http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review',
     extension: [
@@ -51,7 +57,7 @@ function carePlanChangeReasonExtensionTemplate({ treatmentPlanChange, effectiveD
       },
       {
         url: 'ChangedFlag',
-        ...valueX(hasChanged === 'true'),
+        ...valueX(hasChanged),
       },
     ],
   };
@@ -87,7 +93,7 @@ function categoryTemplate() {
 function carePlanWithReviewTemplate({
   id, effectiveDateTime, effectiveDate, treatmentPlanChange, subject,
 }) {
-  if (!(subject && subject.id && effectiveDate && effectiveDateTime && treatmentPlanChange && treatmentPlanChange.hasChanged)) {
+  if (!(subject && subject.id && effectiveDate && effectiveDateTime && treatmentPlanChange && treatmentPlanChange.hasChanged != null)) {
     const errorMessage = 'Trying to render a CarePlanWithReviewTemplate, but a required argument was missing; '
       + 'ensure that subject.id, effectiveDate, effectiveDateTime, treatmentPlanChange.hasChanged are all present';
     throw new Error(errorMessage);
