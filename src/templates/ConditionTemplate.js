@@ -126,7 +126,7 @@ function conditionTemplate({
 
   return {
     resourceType: 'Condition',
-    id: id,
+    id,
     ...extension(
       ifAllArgsObj(dateOfDiagnosisTemplate)({ dateOfDiagnosis }),
       ifAllArgsObj(histologyTemplate)({ histology }),

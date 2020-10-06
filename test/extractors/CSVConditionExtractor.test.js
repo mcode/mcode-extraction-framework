@@ -16,7 +16,7 @@ const { csvModule } = csvConditionExtractor;
 // Spy on csvModule
 const csvModuleSpy = jest.spyOn(csvModule, 'get');
 
-// Creating an example bundle with two conditions 
+// Creating an example bundle with two conditions
 const exampleEntry = exampleConditionResponse[0];
 const expandedExampleBundle = _.cloneDeep(exampleConditionBundle);
 expandedExampleBundle.entry.push(exampleConditionBundle.entry[0]);
