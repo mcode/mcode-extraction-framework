@@ -1,7 +1,7 @@
 function meta(profiles) {
   return {
     meta: {
-      profile: profiles.map((p) => p),
+      profile: profiles,
     },
   };
 }

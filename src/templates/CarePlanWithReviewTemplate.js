@@ -1,6 +1,7 @@
 const {
   coding, extension, meta, narrative, valueX,
 } = require('./snippets');
+const { ifAllArgs } = require('../helpers/templateUtils');
 
 function metaTemplate() {
   return {
@@ -93,9 +94,9 @@ function categoryTemplate() {
 function carePlanWithReviewTemplate({
   id, effectiveDateTime, effectiveDate, treatmentPlanChange, subject,
 }) {
-  if (!(subject && subject.id && effectiveDate && effectiveDateTime && treatmentPlanChange && treatmentPlanChange.hasChanged != null)) {
+  if (!(id && subject && subject.id && effectiveDate && treatmentPlanChange && treatmentPlanChange.hasChanged != null)) {
     const errorMessage = 'Trying to render a CarePlanWithReviewTemplate, but a required argument was missing; '
-      + 'ensure that subject.id, effectiveDate, effectiveDateTime, treatmentPlanChange.hasChanged are all present';
+      + 'ensure that id, subject.id, effectiveDate, treatmentPlanChange.hasChanged are all present';
     throw new Error(errorMessage);
   }
   return {
@@ -109,7 +110,7 @@ function carePlanWithReviewTemplate({
     ...subjectTemplate({ id: subject.id, name: subject.name }),
     status: 'draft',
     intent: 'proposal',
-    ...createdTemplate({ effectiveDateTime }),
+    ...ifAllArgs(createdTemplate)({ effectiveDateTime }),
     ...categoryTemplate(),
   };
 }
