@@ -1,4 +1,3 @@
-const { max } = require('lodash');
 const { identifier, identifierArr } = require('../../../src/templates/snippets');
 const { allOptionalKeyCombinationsNotThrow } = require('../../utils');
 const maximalIdentifier = require('../fixtures/maximal-identifier.json');
