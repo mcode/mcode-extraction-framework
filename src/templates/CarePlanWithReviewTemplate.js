@@ -24,43 +24,42 @@ function createdTemplate({ effectiveDateTime }) {
 }
 
 // R4 change reasons valueset: http://standardhealthrecord.org/guides/icare/ValueSet-icare-care-plan-change-reason-vs.html
-function carePlanReasonTemplate({ reason }) {
+function carePlanReasonTemplate({ reasonCode, reasonDisplayText }) {
   return {
     url: 'CarePlanChangeReason',
     ...valueCodeableConcept({
       system: 'http://snomed.info/sct',
-      code: reason.code,
-      display: reason.displayText,
-      text: reason.displayText,
+      code: reasonCode,
+      display: reasonDisplayText,
+      text: reasonDisplayText,
     }),
   };
 }
 
-function carePlanChangeReasonExtensionTemplate({ treatmentPlanChange, effectiveDate }) {
-  const { reason } = treatmentPlanChange;
-  let { hasChanged } = treatmentPlanChange;
+function carePlanChangeReasonExtensionTemplate({ hasChanged, reasonCode, reasonDisplayText, effectiveDate }) {
+  let hasChangedBoolean = hasChanged;
   if (hasChanged === 'true') {
-    hasChanged = true;
+    hasChangedBoolean = true;
   } else if (hasChanged === 'false') {
-    hasChanged = false;
+    hasChangedBoolean = false;
   }
   return {
     url: 'http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review',
     extension: [
-      ...(reason ? [carePlanReasonTemplate({ reason })] : []),
+      ...((reasonCode || reasonDisplayText) ? [carePlanReasonTemplate({ reasonCode, reasonDisplayText })] : []),
       {
         url: 'ReviewDate',
         ...valueX(effectiveDate),
       },
       {
         url: 'ChangedFlag',
-        ...valueX(hasChanged),
+        ...valueX(hasChangedBoolean),
       },
     ],
   };
 }
 
-function subjectTemplate({ subject }) {
+function subjectTemplate(subject) {
   return {
     subject: reference(subject),
   };
@@ -85,11 +84,11 @@ function categoryTemplate() {
 // Uses the ICARE R4 Care Plan profile which is not published yet
 // For reference, ICARE R4 Care Plan profile: http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-care-plan-with-review.html
 function carePlanWithReviewTemplate({
-  id, effectiveDateTime, effectiveDate, treatmentPlanChange, subject,
+  id, mrn, name, effectiveDate, effectiveDateTime, hasChanged, reasonCode, reasonDisplayText,
 }) {
-  if (!(id && subject && subject.id && effectiveDate && treatmentPlanChange && treatmentPlanChange.hasChanged != null)) {
+  if (!(id && mrn && effectiveDate && hasChanged != null)) {
     const errorMessage = 'Trying to render a CarePlanWithReviewTemplate, but a required argument was missing; '
-      + 'ensure that id, subject.id, effectiveDate, treatmentPlanChange.hasChanged are all present';
+      + 'ensure that id, mrn, effectiveDate, hasChanged are all present';
     throw new Error(errorMessage);
   }
   return {
@@ -98,9 +97,9 @@ function carePlanWithReviewTemplate({
     ...metaTemplate(),
     ...textTemplate(),
     ...extension(
-      carePlanChangeReasonExtensionTemplate({ treatmentPlanChange, effectiveDate }),
+      carePlanChangeReasonExtensionTemplate({ hasChanged, reasonCode, reasonDisplayText, effectiveDate }),
     ),
-    ...subjectTemplate({ subject }),
+    ...subjectTemplate({ id: mrn, name }),
     status: 'draft',
     intent: 'proposal',
     ...ifAllArgs(createdTemplate)({ effectiveDateTime }),
