@@ -18,7 +18,9 @@ function formatData(conditionData) {
     }
     return {
       id: conditionId,
-      mrn,
+      subject: {
+        id: mrn,
+      },
       code: {
         code,
         system: codeSystem,

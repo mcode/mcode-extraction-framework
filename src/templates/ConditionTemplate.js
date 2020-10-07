@@ -1,16 +1,10 @@
-const { extension, coding } = require('./snippets');
+const { extension, coding, valueCodeableConcept, reference } = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
 
 function histologyTemplate({ histology }) {
   return {
     url: histology.url,
-    valueCodeableConcept: {
-      coding: [coding({
-        system: histology.system,
-        code: histology.code,
-      }),
-      ],
-    },
+    ...valueCodeableConcept({ ...histology }),
   };
 }
 
@@ -24,10 +18,7 @@ function dateOfDiagnosisTemplate({ dateOfDiagnosis }) {
 function clinicalStatusTemplate({ clinicalStatus }) {
   return {
     clinicalStatus: {
-      coding: [coding({
-        system: clinicalStatus.system,
-        code: clinicalStatus.code,
-      }),
+      coding: [coding({ ...clinicalStatus }),
       ],
     },
   };
@@ -36,10 +27,7 @@ function clinicalStatusTemplate({ clinicalStatus }) {
 function verificationStatusTemplate({ verificationStatus }) {
   return {
     verificationStatus: {
-      coding: [coding({
-        system: verificationStatus.system,
-        code: verificationStatus.code,
-      }),
+      coding: [coding({ ...verificationStatus }),
       ],
     },
   };
@@ -47,10 +35,7 @@ function verificationStatusTemplate({ verificationStatus }) {
 
 function individualCategoryTemplate(category) {
   return {
-    coding: [coding({
-      system: category.system,
-      code: category.code,
-    }),
+    coding: [coding({ ...category }),
     ],
   };
 }
@@ -71,11 +56,7 @@ function categoryArrayTemplate(array) {
 function codingTemplate({ code }) {
   return {
     code: {
-      coding: [coding({
-        system: code.system,
-        code: code.code,
-        display: code.display,
-      }),
+      coding: [coding({ ...code }),
       ],
     },
   };
@@ -88,39 +69,28 @@ function bodySiteTemplate({ bodySite, laterality }) {
         extension: [
           {
             url: laterality.url,
-            valueCodeableConcept: {
-              coding: [coding({
-                system: laterality.system,
-                code: laterality.code,
-              }),
-              ],
-            },
+            ...valueCodeableConcept({ ...laterality }),
           },
         ],
-        coding: [coding({
-          system: bodySite[0].system,
-          code: bodySite[0].code,
-        }),
+        coding: [coding({ ...bodySite[0] }),
         ],
       },
     ],
   };
 }
 
-function subjectTemplate({ mrn }) {
+function subjectTemplate({ subject }) {
   return {
-    subject: {
-      reference: `urn:uuid:${mrn}`,
-    },
+    subject: reference(subject),
   };
 }
 
 // Based on https://mcodeinitiative.github.io/StructureDefinition-obf-Condition.html
 // Official url: http://hl7.org/fhir/us/mcode/StructureDefinition/obf-Condition
 function conditionTemplate({
-  mrn, id, code, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
+  subject, id, code, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
 }) {
-  if (!(id && mrn && code.system && code.code && category)) {
+  if (!(id && subject && code.system && code.code && category)) {
     throw Error('Trying to render a ConditionTemplate, but a required argument is missing; ensure that id, mrn, code, codesystem, and category are all present');
   }
 
@@ -136,7 +106,7 @@ function conditionTemplate({
     ...categoryArrayTemplate(category),
     ...codingTemplate({ code }),
     ...ifAllArgsObj(bodySiteTemplate)({ bodySite, laterality }),
-    ...subjectTemplate({ mrn }),
+    ...subjectTemplate({ subject }),
   };
 }
 

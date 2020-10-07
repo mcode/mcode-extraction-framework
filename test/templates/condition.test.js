@@ -5,7 +5,9 @@ const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 const CONDITION_VALID_DATA = {
   id: 'example-id',
-  mrn: 'example-subject-id',
+  subject: {
+    id: 'example-subject-id',
+  },
   code: {
     system: 'example-system',
     code: 'example-code',
@@ -50,7 +52,9 @@ const CONDITION_VALID_DATA = {
 const CONDITION_MINIMAL_DATA = {
   // Only include 'subject', 'conditionId', 'code', 'codesystem', and 'category' fields which are required
   id: 'example-id',
-  mrn: 'example-subject-id',
+  subject: {
+    id: 'example-subject-id',
+  },
   code: {
     system: 'example-system',
     code: 'example-code',
@@ -73,7 +77,7 @@ const CONDITION_MINIMAL_DATA = {
 const CONDITION_INVALID_DATA = {
   // Omitting 'subject', 'conditionId', 'code', 'codesystem', and 'category' fields which are required
   id: null,
-  mrn: null,
+  subject: null,
   code: null,
   category: null,
   dateOfDiagnosis: {
@@ -153,7 +157,9 @@ describe('test Condition template', () => {
 
     const NECESSARY_DATA = {
       id: 'example-id',
-      mrn: 'example-subject-id',
+      subject: {
+        id: 'example-subject-id',
+      },
       code: {
         system: 'example-system',
         code: 'example-code',
