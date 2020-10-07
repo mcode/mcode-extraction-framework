@@ -1,3 +1,4 @@
+const { identifierArr } = require('./snippets');
 
 function siteTemplate(clinicalSiteID) {
   return {
@@ -13,6 +14,17 @@ function siteTemplate(clinicalSiteID) {
   };
 }
 
+function researchStudyIdentifierTemplate(trialResearchID) {
+  return identifierArr({
+    system: 'http://example.com/clinicaltrialids',
+    type: {
+      text: 'Clinical Trial Research ID',
+    },
+    value: trialResearchID,
+  });
+}
+
+
 // Based on https://www.hl7.org/fhir/researchstudy.html
 function researchStudyTemplate({ id, trialStatus, trialResearchID, clinicalSiteID }) {
   if (!(id && trialStatus && trialResearchID && clinicalSiteID)) {
@@ -24,15 +36,7 @@ function researchStudyTemplate({ id, trialStatus, trialResearchID, clinicalSiteI
     id,
     status: trialStatus,
     ...siteTemplate(clinicalSiteID),
-    identifier: [
-      {
-        system: 'http://example.com/clinicaltrialids',
-        type: {
-          text: 'Clinical Trial Research ID',
-        },
-        value: trialResearchID,
-      },
-    ],
+    ...researchStudyIdentifierTemplate(trialResearchID),
   };
 }
 
