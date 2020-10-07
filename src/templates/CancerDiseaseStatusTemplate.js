@@ -1,4 +1,4 @@
-const { coding, extension, reference, valueCodeableConcept } = require('./snippets');
+const { coding, extensionArr, reference, valueCodeableConcept } = require('./snippets');
 
 function evidenceTemplate({ evidence }) {
   if (!evidence || evidence.length === 0) return [];
@@ -44,7 +44,7 @@ function cancerDiseaseStatusTemplate({
         'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status',
       ],
     },
-    ...extension(...evidenceTemplate({ evidence })),
+    ...extensionArr(...evidenceTemplate({ evidence })),
     status,
     category: [
       {
