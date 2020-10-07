@@ -3,7 +3,7 @@ const { reference, identifier, identifierArr } = require('./snippets');
 function studyTemplate(trialResearchID) {
   return {
     study: {
-      identifier: identifier({
+      ...identifier({
         system: 'http://example.com/clinicaltrialids',
         value: trialResearchID,
       }),

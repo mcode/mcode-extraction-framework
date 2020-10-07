@@ -19,7 +19,7 @@ describe('Identifier snippet', () => {
   const MAXIMAL_IDENTIFIER = {
     system: 'http://system.com/codesystem',
     value: '90210',
-    typeCodeableConcept: {
+    type: {
       text: 'Text explaining what this code system value is',
     },
   };
@@ -46,7 +46,7 @@ describe('Array of Identifiers snippet', () => {
   const MAXIMAL_IDENTIFIER_1 = {
     system: 'http://system.com/codesystem',
     value: '90210',
-    typeCodeableConcept: {
+    type: {
       text: 'Text explaining what this code system value is',
     },
   };

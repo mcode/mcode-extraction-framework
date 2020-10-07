@@ -5,14 +5,17 @@ const _ = require('lodash');
 const shajs = require('sha.js');
 const logger = require('./logger');
 
-
-const { cancerDiseaseStatusTemplate, carePlanWithReviewTemplate, patientTemplate } = require('../templates');
+const {
+  cancerDiseaseStatusTemplate, carePlanWithReviewTemplate, patientTemplate, researchStudyTemplate, researchSubjectTemplate,
+} = require('../templates');
 // TODO: When all templates have been updated, we can remove this entire array and always use the template functions
 // TODO: As you update templates, add their lookup string to this list
 const NEW_TEMPLATES = [
   'CancerDiseaseStatus',
   'CarePlanWithReview',
   'Patient',
+  'ResearchStudy',
+  'ResearchSubject',
 ];
 
 // TODO: As you update templates, add their new templateFunction to this lookup table
@@ -22,8 +25,8 @@ const fhirTemplateLookup = {
   Condition: fs.readFileSync(path.join(__dirname, '../templates/Condition.ejs'), 'utf8'),
   Observation: fs.readFileSync(path.join(__dirname, '../templates/Observation.ejs'), 'utf8'),
   Patient: patientTemplate,
-  ResearchStudy: fs.readFileSync(path.join(__dirname, '../templates/ResearchStudy.ejs'), 'utf8'),
-  ResearchSubject: fs.readFileSync(path.join(__dirname, '../templates/ResearchSubject.ejs'), 'utf8'),
+  ResearchStudy: researchStudyTemplate,
+  ResearchSubject: researchSubjectTemplate,
 };
 
 function loadFhirTemplate(mcodeProfileID) {

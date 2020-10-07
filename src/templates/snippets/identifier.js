@@ -1,15 +1,15 @@
 const { ifSomeArgs, ifSomeArgsObj } = require('../../helpers/templateUtils');
 
-function identifier({ system, typeCodeableConcept, value }) {
+function identifier({ system, type, value }) {
   return ifSomeArgsObj(
-    ({ system: system_, typeCodeableConcept: typeCodeableConcept_, value: value_ }) => ({
+    ({ system: system_, type: type_, value: value_ }) => ({
       identifier: {
         ...(system_ && { system: system_ }),
         ...(value_ && { value: value_ }),
-        ...(typeCodeableConcept_ && { type: typeCodeableConcept_ }),
+        ...(type_ && { type: type_ }),
       },
     }),
-  )({ system, typeCodeableConcept, value });
+  )({ system, type, value });
 }
 
 // Transform a list of identifier-objects into a list of identifier vales. Shape of return value below
