@@ -3,22 +3,22 @@ const { ifAllArgsObj } = require('../helpers/templateUtils');
 
 function histologyTemplate({ histology }) {
   return {
-    url: histology.url,
-    ...valueCodeableConcept({ ...histology }),
+    url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histology-morphology-behavior',
+    ...valueCodeableConcept({ code: histology, system: 'http://snomed.info/sct' }),
   };
 }
 
 function dateOfDiagnosisTemplate({ dateOfDiagnosis }) {
   return {
-    url: dateOfDiagnosis.url,
-    valueDateTime: dateOfDiagnosis.value,
+    url: 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate',
+    valueDateTime: dateOfDiagnosis,
   };
 }
 
 function clinicalStatusTemplate({ clinicalStatus }) {
   return {
     clinicalStatus: {
-      coding: [coding({ ...clinicalStatus }),
+      coding: [coding({ code: clinicalStatus, system: 'http://terminology.hl7.org/CodeSystem/condition-clinical' }),
       ],
     },
   };
@@ -27,7 +27,7 @@ function clinicalStatusTemplate({ clinicalStatus }) {
 function verificationStatusTemplate({ verificationStatus }) {
   return {
     verificationStatus: {
-      coding: [coding({ ...verificationStatus }),
+      coding: [coding({ code: verificationStatus, system: 'http://terminology.hl7.org/CodeSystem/condition-ver-status' }),
       ],
     },
   };
@@ -35,7 +35,7 @@ function verificationStatusTemplate({ verificationStatus }) {
 
 function individualCategoryTemplate(category) {
   return {
-    coding: [coding({ ...category }),
+    coding: [coding({ code: category, system: 'http://terminology.hl7.org/CodeSystem/condition-category' }),
     ],
   };
 }
@@ -56,7 +56,7 @@ function categoryArrayTemplate(array) {
 function codingTemplate({ code }) {
   return {
     code: {
-      coding: [coding({ ...code }),
+      coding: [coding(code),
       ],
     },
   };
@@ -68,11 +68,11 @@ function bodySiteTemplate({ bodySite, laterality }) {
       {
         extension: [
           {
-            url: laterality.url,
-            ...valueCodeableConcept({ ...laterality }),
+            url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality',
+            ...valueCodeableConcept({ code: laterality, system: 'http://snomed.info/sct' }),
           },
         ],
-        coding: [coding({ ...bodySite[0] }),
+        coding: [coding({ code: bodySite[0], system: 'http://snomed.info/sct' }),
         ],
       },
     ],

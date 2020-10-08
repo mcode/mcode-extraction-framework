@@ -14,39 +14,16 @@ const CONDITION_VALID_DATA = {
     display: 'exampleDisplayName',
   },
   category: [
-    {
-      system: 'example-system',
-      code: 'example-code',
-    },
+    'example-code',
   ],
-  dateOfDiagnosis: {
-    value: 'YYYY-MM-DD',
-    url: 'example-url',
-  },
-  clinicalStatus: {
-    system: 'example-system',
-    code: 'example-code',
-  },
-  verificationStatus: {
-    system: 'example-system',
-    code: 'example-code',
-  },
+  dateOfDiagnosis: 'YYYY-MM-DD',
+  clinicalStatus: 'example-code',
+  verificationStatus: 'example-code',
   bodySite: [
-    {
-      system: 'example-system',
-      code: 'example-code',
-    },
+    'example-code',
   ],
-  laterality: {
-    system: 'example-system',
-    code: 'example-code',
-    url: 'example-url',
-  },
-  histology: {
-    system: 'example-system',
-    code: 'example-code',
-    url: 'example-url',
-  },
+  laterality: 'example-code',
+  histology: 'example-code',
 };
 
 const CONDITION_MINIMAL_DATA = {
@@ -60,10 +37,7 @@ const CONDITION_MINIMAL_DATA = {
     code: 'example-code',
   },
   category: [
-    {
-      system: 'example-system',
-      code: 'example-code',
-    },
+    'example-code',
   ],
   dateOfDiagnosis: null,
   clinicalStatus: null,
@@ -80,34 +54,14 @@ const CONDITION_INVALID_DATA = {
   subject: null,
   code: null,
   category: null,
-  dateOfDiagnosis: {
-    value: 'YYYY-MM-DD',
-    url: 'example-url',
-  },
-  clinicalStatus: {
-    system: 'example-system',
-    code: 'example-code',
-  },
-  verificationStatus: {
-    system: 'example-system',
-    code: 'example-code',
-  },
+  dateOfDiagnosis: 'YYYY-MM-DD',
+  clinicalStatus: 'example-code',
+  verificationStatus: 'example-code',
   bodySite: [
-    {
-      system: 'example-system',
-      code: 'example-code',
-    },
+    'example-code',
   ],
-  laterality: {
-    system: 'example-system',
-    code: 'example-code',
-    url: 'example-url',
-  },
-  histology: {
-    system: 'example-system',
-    code: 'example-code',
-    url: 'example-url',
-  },
+  laterality: 'example-code',
+  histology: 'example-code',
 };
 
 describe('test Condition template', () => {
@@ -125,34 +79,14 @@ describe('test Condition template', () => {
 
   test('missing non-required data should not throw an error', () => {
     const OPTIONAL_DATA = {
-      dateOfDiagnosis: {
-        value: 'YYYY-MM-DD',
-        url: 'example-url',
-      },
-      clinicalStatus: {
-        system: 'example-system',
-        code: 'example-code',
-      },
-      verificationStatus: {
-        system: 'example-system',
-        code: 'example-code',
-      },
+      dateOfDiagnosis: 'YYYY-MM-DD',
+      clinicalStatus: 'example-code',
+      verificationStatus: 'example-code',
       bodySite: [
-        {
-          system: 'example-system',
-          code: 'example-code',
-        },
+        'example-code',
       ],
-      laterality: {
-        system: 'example-system',
-        code: 'example-code',
-        url: 'example-url',
-      },
-      histology: {
-        system: 'example-system',
-        code: 'example-code',
-        url: 'example-url',
-      },
+      laterality: 'example-code',
+      histology: 'example-code',
     };
 
     const NECESSARY_DATA = {
@@ -163,12 +97,10 @@ describe('test Condition template', () => {
       code: {
         system: 'example-system',
         code: 'example-code',
+        display: 'exampleDisplayName',
       },
       category: [
-        {
-          system: 'example-system',
-          code: 'example-code',
-        },
+        'example-code',
       ],
     };
 
