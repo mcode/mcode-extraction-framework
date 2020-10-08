@@ -1,14 +1,14 @@
-const { identifierArr } = require('./snippets');
+const { identifierArr, identifier } = require('./snippets');
 
 function siteTemplate(clinicalSiteID) {
   return {
     site: [
       {
         display: 'ID associated with Clinical Trial',
-        identifier: {
+        ...identifier({
           system: 'http://example.com/clinicalSiteIds',
           value: clinicalSiteID,
-        },
+        }),
       },
     ],
   };
