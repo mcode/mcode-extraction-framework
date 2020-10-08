@@ -3,7 +3,7 @@
     "mrn": "example-patient",
     "observationId": "observation-id",
     "status": "final",
-    "code": "39004-7",
+    "code": "1695-6",
     "codeSystem": "http://loinc.org",
     "displayName": "",
     "value": "10828004",

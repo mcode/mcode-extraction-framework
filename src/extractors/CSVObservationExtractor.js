@@ -3,8 +3,7 @@ const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../helpers/ejsUtils');
 const { Extractor } = require('./Extractor');
 const logger = require('../helpers/logger');
-const { formatDate } = require('../helpers/dateUtils');
-const { isVitalSign, getQuantityUnit } = require('../helpers/observationUtils');
+const { formatDateTime } = require('../helpers/dateUtils');
 
 function formatData(observationData) {
   logger.debug('Reformatting observation data from CSV into template format');
@@ -13,34 +12,22 @@ function formatData(observationData) {
       mrn, observationId, status, code, codeSystem, displayName, value, valueCodeSystem, effectiveDate, bodySite, laterality,
     } = data;
 
-    if (!mrn || !observationId || !status || !code || !codeSystem || !value || !valueCodeSystem || !effectiveDate) {
-      throw new Error('The observation is missing an expected attribute. Observation id, mrn, status, code, code system, value, value code system, and effective date are all required.');
+    if (!mrn || !observationId || !status || !code || !codeSystem || !value || !effectiveDate) {
+      throw new Error('The observation is missing an expected attribute. Observation id, mrn, status, code, code system, value, and effective date are all required.');
     }
 
     return {
       id: observationId,
-      subject: {
-        id: mrn,
-      },
+      subjectId: mrn,
       status,
-      code: {
-        code,
-        system: codeSystem,
-        display: !displayName ? null : displayName,
-      },
-      value: {
-        code: value,
-        system: !valueCodeSystem ? null : valueCodeSystem,
-        unit: getQuantityUnit(valueCodeSystem),
-      },
-      effectiveDate: formatDate(effectiveDate),
-      bodySite: !bodySite ? null : {
-        code: bodySite,
-      },
-      laterality: !laterality ? null : {
-        code: laterality,
-      },
-      isVitalSign: isVitalSign(code),
+      code,
+      system: codeSystem,
+      display: !displayName ? null : displayName,
+      valueCode: value,
+      valueSystem: !valueCodeSystem ? null : valueCodeSystem,
+      effectiveDateTime: formatDateTime(effectiveDate),
+      bodySite,
+      laterality,
     };
   });
 }
