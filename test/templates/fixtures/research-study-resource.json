@@ -1,9 +1,9 @@
 {
   "resourceType": "ResearchStudy",
-  "id": "4419c8c6cf32a3647dff187f301906d26e9435c1f009ebb59b88a0b233ba4ab5",
+  "id": "id-for-research-study",
   "status": "active",
   "site": [
-      {
+    {
       "display": "ID associated with Clinical Trial",
       "identifier": {
         "system": "http://example.com/clinicalSiteIds",
@@ -15,7 +15,7 @@
     {
       "value": "AFT1235",
       "system": "http://example.com/clinicaltrialids",
-      "type":  {
+      "type": {
         "text": "Clinical Trial Research ID"
       }
     }

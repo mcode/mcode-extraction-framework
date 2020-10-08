@@ -1,9 +1,8 @@
-const fs = require('fs');
-const path = require('path');
 const validResearchSubject = require('./fixtures/research-subject-resource.json');
-const { renderTemplate } = require('../../src/helpers/ejsUtils');
+const { researchSubjectTemplate } = require('../../src/templates');
 
 const VALID_DATA = {
+  id: 'id-for-research-subject',
   enrollmentStatus: 'candidate',
   trialSubjectID: 'trial-123',
   trialResearchID: 'rs1',
@@ -17,14 +16,9 @@ const INVALID_DATA = {
   patientId: 'mCODEPatient1',
 };
 
-const RESEARCH_SUBJECT_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/ResearchSubject.ejs'), 'utf8');
-
 describe('test ResearchSubject template', () => {
   test('valid data passed into template should generate valid FHIR resource', () => {
-    const generatedResearchSubject = renderTemplate(
-      RESEARCH_SUBJECT_TEMPLATE,
-      VALID_DATA,
-    );
+    const generatedResearchSubject = researchSubjectTemplate(VALID_DATA);
     // Relevant fields should match the valid FHIR
     expect(generatedResearchSubject.id).toEqual(validResearchSubject.id);
     expect(generatedResearchSubject.trialStatus).toEqual(validResearchSubject.trialStatus);
@@ -32,9 +26,6 @@ describe('test ResearchSubject template', () => {
   });
 
   test('invalid data should throw an error', () => {
-    expect(() => renderTemplate(
-      RESEARCH_SUBJECT_TEMPLATE,
-      INVALID_DATA,
-    )).toThrow(ReferenceError);
+    expect(() => researchSubjectTemplate(INVALID_DATA)).toThrow(Error);
   });
 });

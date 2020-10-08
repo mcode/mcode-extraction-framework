@@ -1,4 +1,4 @@
-const { extension, coding, valueX } = require('./snippets');
+const { extensionArr, coding, valueX } = require('./snippets');
 const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
 
 function mrnIdentifierTemplate({ mrn }) {
@@ -137,7 +137,7 @@ function patientTemplate({
     ...ifSomeArgsObj(addressTemplate)({ addressLine, city, state, zip }),
     ...ifAllArgsObj(birthDateTemplate)({ dateOfBirth }),
     ...ifAllArgsObj(languageTemplate)({ language }),
-    ...extension(
+    ...extensionArr(
       ifAllArgsObj(usCoreRaceTemplate)({ raceCodesystem, raceCode, raceText }),
       ifAllArgsObj(usCoreEthnicityTemplate)({ ethnicityCode, ethnicityText }),
       ifAllArgsObj(usCoreBirthSexExtensionTemplate)({ birthsex }),
