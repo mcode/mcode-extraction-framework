@@ -1,56 +1,65 @@
-const fs = require('fs');
-const path = require('path');
-const validCarePlanWithReview = require('./fixtures/careplan-resource.json');
-const { renderTemplate } = require('../../src/helpers/ejsUtils');
+const minimalCarePlan = require('./fixtures/minimal-careplan-resource.json');
+const maximalCarePlan = require('./fixtures/maximal-careplan-resource.json');
+const { carePlanWithReviewTemplate } = require('../../src/templates');
+const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
-const VALID_DATA = {
-  effectiveDateTime: '2020-01-23T09:07:00Z',
-  effectiveDate: '2020-01-23',
-  treatmentPlanChange: {
-    hasChanged: 'true',
-    reason: {
-      code: '281647001',
-      displayText: 'Adverse reaction (disorder)',
-    },
-  },
-  subject: {
-    id: 'abc-def',
-    name: 'Sample Text',
-  },
-};
+describe('JavaScript render CarePlan template', () => {
+  test('minimal required data passed into template should generate FHIR resource', () => {
+    const CARE_PLAN_VALID_DATA = {
+      id: 'test-id',
+      effectiveDateTime: '2020-01-23T09:07:00Z',
+      effectiveDate: '2020-01-23',
+      hasChanged: 'false',
+      mrn: 'abc-def',
+    };
 
-const INVALID_DATA = {
-  // Omitting 'treatmentPlanChange' field which is required
-  effectiveDateTime: '2020-01-23T09:07:00Z',
-  effectiveDate: '2020-01-23',
-  subject: {
-    id: 'abc-def',
-    name: 'Sample Text',
-  },
-};
-
-const CARE_PLAN_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/CarePlanWithReview.ejs'), 'utf8');
-
-describe('test CarePlan template', () => {
-  test('valid data passed into template should generate valid FHIR resource', () => {
-    const generatedCarePlanWithReview = renderTemplate(
-      CARE_PLAN_TEMPLATE,
-      VALID_DATA,
-    );
-
-    // Relevant fields should match the valid FHIR
-    expect(generatedCarePlanWithReview.status).toEqual(validCarePlanWithReview.status);
-    expect(generatedCarePlanWithReview.intent).toEqual(validCarePlanWithReview.intent);
-    expect(generatedCarePlanWithReview.created).toEqual(validCarePlanWithReview.created);
-    expect(generatedCarePlanWithReview.subject).toEqual(validCarePlanWithReview.subject);
-    expect(generatedCarePlanWithReview.extension).toHaveLength(1);
-    expect(generatedCarePlanWithReview.extension).toEqual(validCarePlanWithReview.extension);
+    const generatedCarePlan = carePlanWithReviewTemplate(CARE_PLAN_VALID_DATA);
+    expect(generatedCarePlan).toEqual(minimalCarePlan);
   });
 
-  test('invalid data should throw a reference error', () => {
-    expect(() => renderTemplate(
-      CARE_PLAN_TEMPLATE,
-      INVALID_DATA,
-    )).toThrow(ReferenceError);
+  test('maximal data passed into template should generate FHIR resource', () => {
+    const MAX_CARE_PLAN_DATA = {
+      id: 'test-id',
+      effectiveDateTime: '2020-01-23T09:07:00Z',
+      effectiveDate: '2020-01-23',
+      hasChanged: 'true',
+      reasonCode: '281647001',
+      reasonDisplayText: 'Adverse reaction (disorder)',
+      mrn: 'abc-def',
+      name: 'Sample Text',
+    };
+
+    const generatedCarePlan = carePlanWithReviewTemplate(MAX_CARE_PLAN_DATA);
+    expect(generatedCarePlan).toEqual(maximalCarePlan);
+  });
+
+  test('missing non-required data should not throw an error', () => {
+    const NECESSARY_DATA = {
+      id: 'test-id',
+      effectiveDateTime: '2020-01-23T09:07:00Z',
+      effectiveDate: '2020-01-23',
+      hasChanged: 'false',
+      mrn: 'abc-def',
+    };
+
+    const OPTIONAL_DATA = {
+      reasonCode: '281647001',
+      reasonDisplayText: 'Adverse reaction (disorder)',
+      name: 'Sample Text',
+    };
+
+    allOptionalKeyCombinationsNotThrow(OPTIONAL_DATA, carePlanWithReviewTemplate, NECESSARY_DATA);
+  });
+
+  test('missing required data should throw a reference error', () => {
+    const INVALID_DATA = {
+      // Omitting 'hasChanged' field which is a required property
+      id: 'test-id',
+      effectiveDateTime: '2020-01-23T09:07:00Z',
+      effectiveDate: '2020-01-23',
+      mrn: 'abc-def',
+    };
+
+    expect(() => carePlanWithReviewTemplate(INVALID_DATA)).toThrow(Error);
   });
 });

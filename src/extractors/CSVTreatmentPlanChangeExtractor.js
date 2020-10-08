@@ -23,19 +23,13 @@ function formatData(tpcData) {
     const formattedData = {
       effectiveDate: formatDate(dateOfCarePlan),
       effectiveDateTime: formatDateTime(dateOfCarePlan),
-      treatmentPlanChange: {
-        hasChanged: changed,
-      },
-      subject: {
-        id: mrn,
-      },
+      hasChanged: changed,
+      mrn,
     };
 
     // Add reasonCode to formattedData if available
     if (reasonCode) {
-      formattedData.treatmentPlanChange.reason = {
-        code: reasonCode,
-      };
+      formattedData.reasonCode = reasonCode;
     }
 
     return formattedData;
