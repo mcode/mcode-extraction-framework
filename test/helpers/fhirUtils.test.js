@@ -1,4 +1,6 @@
-const { getQuantityUnit, getQuantityCode, isBundleEmpty, firstEntryInBundle, firstResourceInBundle, allResourcesInBundle, quantityCodeToUnitLookup } = require('../../src/helpers/fhirUtils.js');
+const {
+  getQuantityUnit, getQuantityCode, isBundleEmpty, firstEntryInBundle, firstResourceInBundle, allResourcesInBundle, quantityCodeToUnitLookup,
+} = require('../../src/helpers/fhirUtils.js');
 const emptyBundle = require('./fixtures/emptyBundle.json');
 const bundleWithOneEntry = require('./fixtures/searchsetBundleWithOneEntry.json');
 const bundleWithMultipleEntries = require('./fixtures/searchsetBundleWithMultipleEntries.json');
