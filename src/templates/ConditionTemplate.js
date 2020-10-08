@@ -87,6 +87,24 @@ function subjectTemplate({ subject }) {
 
 // Based on https://mcodeinitiative.github.io/StructureDefinition-obf-Condition.html
 // Official url: http://hl7.org/fhir/us/mcode/StructureDefinition/obf-Condition
+// {
+//   id: String,
+//   dateOfDiagnosis: DateTime
+//   histology: String,
+//   clinicalStatus: String,
+//   verificationStatus: String,
+//   category: [String],
+//   code: {
+//     system: String,
+//     code: String,
+//     display: String
+//   },
+//   bodySite: [String],
+//   subject: {
+//     id: String
+//   },
+// }
+
 function conditionTemplate({
   subject, id, code, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
 }) {
