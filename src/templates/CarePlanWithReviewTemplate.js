@@ -1,5 +1,5 @@
 const {
-  coding, extension, meta, narrative, reference, valueCodeableConcept, valueX,
+  coding, extensionArr, meta, narrative, reference, valueCodeableConcept, valueX,
 } = require('./snippets');
 const { ifAllArgs } = require('../helpers/templateUtils');
 
@@ -11,7 +11,7 @@ function metaTemplate() {
 
 function textTemplate() {
   const carePlanDiv = '<div xmlns="http://www.w3.org/1999/xhtml">This resource details the Treatment Plan Changes for a particular patient over a period of time, '
-  + 'as modeled in the ICAREdata usecase of mCODE. It is based on the profile found here: http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-CarePlanWithReview.html</div>';
+    + 'as modeled in the ICAREdata usecase of mCODE. It is based on the profile found here: http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-CarePlanWithReview.html</div>';
   return {
     text: narrative('additional', carePlanDiv),
   };
@@ -96,7 +96,7 @@ function carePlanWithReviewTemplate({
     id,
     ...metaTemplate(),
     ...textTemplate(),
-    ...extension(
+    ...extensionArr(
       carePlanChangeReasonExtensionTemplate({ hasChanged, reasonCode, reasonDisplayText, effectiveDate }),
     ),
     ...subjectTemplate({ id: mrn, name }),
