@@ -29,7 +29,8 @@
   "effectiveDateTime" : "2020-01-01",
   "valueQuantity": {
     "value": 70,
-    "unit": "in"
+    "code": "[in_i]",
+    "system": "http://unitsofmeasure.org"
   },
   "bodySite": { 
     "extension": [

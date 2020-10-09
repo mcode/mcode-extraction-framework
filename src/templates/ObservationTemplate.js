@@ -56,7 +56,6 @@ function subjectTemplate({ subjectId }) {
 // if we revisit the valueX inference approach at a later date
 function valueTemplate({ code, valueCode, valueSystem }) {
   if (!(code && valueCode)) return null;
-
   if (isTumorMarker(code)) return valueCodeableConcept({ code: valueCode, system: valueSystem });
   if (isECOGPerformanceStatus(code) || isKarnofskyPerformanceStatus(code)) return valueX(parseInt(valueCode, 10));
   return valueX(valueCode); // Vital Sign will be parsed as quantity, others will be parsed as appropriate
