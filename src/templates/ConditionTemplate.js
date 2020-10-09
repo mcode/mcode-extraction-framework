@@ -1,4 +1,4 @@
-const { extension, coding, valueCodeableConcept, reference } = require('./snippets');
+const { extensionArr, coding, valueCodeableConcept, reference } = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
 
 function histologyTemplate({ histology }) {
@@ -115,7 +115,7 @@ function conditionTemplate({
   return {
     resourceType: 'Condition',
     id,
-    ...extension(
+    ...extensionArr(
       ifAllArgsObj(dateOfDiagnosisTemplate)({ dateOfDiagnosis }),
       ifAllArgsObj(histologyTemplate)({ histology }),
     ),
