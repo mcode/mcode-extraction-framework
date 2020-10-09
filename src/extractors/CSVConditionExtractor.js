@@ -26,36 +26,13 @@ function formatData(conditionData) {
         system: codeSystem,
         display: displayName,
       },
-      category: category.split('|').map((categoryCode) => ({
-        system: 'http://terminology.hl7.org/CodeSystem/condition-category',
-        code: categoryCode,
-      })),
-      dateOfDiagnosis: !dateOfDiagnosis ? null : {
-        value: formatDateTime(dateOfDiagnosis),
-        url: 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate',
-      },
-      clinicalStatus: !clinicalStatus ? null : {
-        system: 'http://terminology.hl7.org/CodeSystem/condition-clinical',
-        code: clinicalStatus,
-      },
-      verificationStatus: !verificationStatus ? null : {
-        system: 'http://terminology.hl7.org/CodeSystem/condition-ver-status',
-        code: verificationStatus,
-      },
-      bodySite: !bodySite ? null : bodySite.split('|').map((site) => ({
-        system: 'http://snomed.info/sct',
-        code: site,
-      })),
-      laterality: !laterality ? null : {
-        system: 'http://snomed.info/sct',
-        code: laterality,
-        url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality',
-      },
-      histology: !histology ? null : {
-        system: 'http://snomed.info/sct',
-        code: histology,
-        url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histology-morphology-behavior',
-      },
+      category: category.split('|'),
+      dateOfDiagnosis: !dateOfDiagnosis ? null : formatDateTime(dateOfDiagnosis),
+      clinicalStatus: !clinicalStatus ? null : clinicalStatus,
+      verificationStatus: !verificationStatus ? null : verificationStatus,
+      bodySite: !bodySite ? null : bodySite.split('|'),
+      laterality: !laterality ? null : laterality,
+      histology: !histology ? null : histology,
     };
   });
 }

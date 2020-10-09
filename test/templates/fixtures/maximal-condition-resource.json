@@ -3,15 +3,15 @@
   "id": "example-id", 
   "extension": [
     {
-      "url": "example-url",
+      "url": "http://hl7.org/fhir/StructureDefinition/condition-assertedDate",
       "valueDateTime": "YYYY-MM-DD"
     }  , 
     {
-      "url": "example-url",
+      "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histology-morphology-behavior",
       "valueCodeableConcept": {
         "coding": [
           {
-            "system": "example-system",
+            "system": "http://snomed.info/sct",
             "code": "example-code"
           }
         ]
@@ -21,7 +21,7 @@
   "clinicalStatus": {
     "coding": [
       {
-        "system": "example-system",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
         "code": "example-code"
       }
     ]
@@ -29,7 +29,7 @@
   "verificationStatus": {
     "coding": [
       {
-        "system": "example-system",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
         "code": "example-code"
       }
     ]
@@ -39,7 +39,7 @@
     {
       "coding": [ 
         {
-          "system": "example-system",
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
           "code": "example-code"
         }
       ]
@@ -70,11 +70,11 @@
       
       "extension": [
         {
-          "url": "example-url",
+          "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality",
           "valueCodeableConcept": {
             "coding": [
               {
-                "system": "example-system",
+                "system": "http://snomed.info/sct",
                 "code": "example-code"
               }
             ]
@@ -83,7 +83,7 @@
       ], 
       "coding": [
         {
-          "system": "example-system",
+          "system": "http://snomed.info/sct",
           "code": "example-code"
         }
       ]

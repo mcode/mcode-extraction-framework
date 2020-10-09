@@ -1,8 +1,7 @@
-const fs = require('fs');
-const path = require('path');
 const maximalValidExampleCondition = require('./fixtures/maximal-condition-resource.json');
 const minimalValidExampleCondition = require('./fixtures/minimal-condition-resource.json');
-const { renderTemplate } = require('../../src/helpers/ejsUtils');
+const { conditionTemplate } = require('../../src/templates/ConditionTemplate.js');
+const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 const CONDITION_VALID_DATA = {
   id: 'example-id',
@@ -15,39 +14,16 @@ const CONDITION_VALID_DATA = {
     display: 'exampleDisplayName',
   },
   category: [
-    {
-      system: 'example-system',
-      code: 'example-code',
-    },
+    'example-code',
   ],
-  dateOfDiagnosis: {
-    value: 'YYYY-MM-DD',
-    url: 'example-url',
-  },
-  clinicalStatus: {
-    system: 'example-system',
-    code: 'example-code',
-  },
-  verificationStatus: {
-    system: 'example-system',
-    code: 'example-code',
-  },
+  dateOfDiagnosis: 'YYYY-MM-DD',
+  clinicalStatus: 'example-code',
+  verificationStatus: 'example-code',
   bodySite: [
-    {
-      system: 'example-system',
-      code: 'example-code',
-    },
+    'example-code',
   ],
-  laterality: {
-    system: 'example-system',
-    code: 'example-code',
-    url: 'example-url',
-  },
-  histology: {
-    system: 'example-system',
-    code: 'example-code',
-    url: 'example-url',
-  },
+  laterality: 'example-code',
+  histology: 'example-code',
 };
 
 const CONDITION_MINIMAL_DATA = {
@@ -61,10 +37,7 @@ const CONDITION_MINIMAL_DATA = {
     code: 'example-code',
   },
   category: [
-    {
-      system: 'example-system',
-      code: 'example-code',
-    },
+    'example-code',
   ],
   dateOfDiagnosis: null,
   clinicalStatus: null,
@@ -77,58 +50,64 @@ const CONDITION_MINIMAL_DATA = {
 
 const CONDITION_INVALID_DATA = {
   // Omitting 'subject', 'conditionId', 'code', 'codesystem', and 'category' fields which are required
-  dateOfDiagnosis: {
-    value: 'YYYY-MM-DD',
-    url: 'example-url',
-  },
-  clinicalStatus: {
-    system: 'example-system',
-    code: 'example-code',
-  },
-  verificationStatus: {
-    system: 'example-system',
-    code: 'example-code',
-  },
+  id: null,
+  subject: null,
+  code: null,
+  category: null,
+  dateOfDiagnosis: 'YYYY-MM-DD',
+  clinicalStatus: 'example-code',
+  verificationStatus: 'example-code',
   bodySite: [
-    {
-      system: 'example-system',
-      code: 'example-code',
-    },
+    'example-code',
   ],
-  laterality: {
-    system: 'example-system',
-    code: 'example-code',
-    url: 'example-url',
-  },
-  histology: {
-    system: 'example-system',
-    code: 'example-code',
-    url: 'example-url',
-  },
+  laterality: 'example-code',
+  histology: 'example-code',
 };
-
-const CONDITION_TEMPLATE = fs.readFileSync(path.join(__dirname, '../../src/templates/Condition.ejs'), 'utf8');
 
 describe('test Condition template', () => {
   test('valid data passed into template should generate FHIR resource', () => {
-    const generatedCondition = renderTemplate(
-      CONDITION_TEMPLATE,
-      CONDITION_VALID_DATA,
-    );
+    const generatedCondition = conditionTemplate(CONDITION_VALID_DATA);
 
     expect(generatedCondition).toEqual(maximalValidExampleCondition);
   });
 
   test('minimal data passed into template should generate FHIR resource', () => {
-    const generatedCondition = renderTemplate(
-      CONDITION_TEMPLATE,
-      CONDITION_MINIMAL_DATA,
-    );
+    const generatedCondition = conditionTemplate(CONDITION_MINIMAL_DATA);
 
     expect(generatedCondition).toEqual(minimalValidExampleCondition);
   });
 
+  test('missing non-required data should not throw an error', () => {
+    const OPTIONAL_DATA = {
+      dateOfDiagnosis: 'YYYY-MM-DD',
+      clinicalStatus: 'example-code',
+      verificationStatus: 'example-code',
+      bodySite: [
+        'example-code',
+      ],
+      laterality: 'example-code',
+      histology: 'example-code',
+    };
+
+    const NECESSARY_DATA = {
+      id: 'example-id',
+      subject: {
+        id: 'example-subject-id',
+      },
+      code: {
+        system: 'example-system',
+        code: 'example-code',
+        display: 'exampleDisplayName',
+      },
+      category: [
+        'example-code',
+      ],
+    };
+
+    allOptionalKeyCombinationsNotThrow(OPTIONAL_DATA, conditionTemplate, NECESSARY_DATA);
+  });
+
   test('invalid data should throw an error', () => {
-    expect(() => renderTemplate(CONDITION_TEMPLATE, CONDITION_INVALID_DATA)).toThrow(ReferenceError);
+    expect(() => conditionTemplate(CONDITION_INVALID_DATA)).toThrow(Error);
   });
 });
