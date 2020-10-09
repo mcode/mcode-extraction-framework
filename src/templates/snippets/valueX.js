@@ -39,7 +39,7 @@ function valueX(value) {
         const quantMatch = quantRegex.exec(value);
         return {
           valueQuantity: {
-            value: parseFloat(quantMatch[1], 10),
+            value: parseFloat(`${quantMatch[1]}${quantMatch[2] ? quantMatch[2] : ''}`, 10),
             ...(quantMatch[6] && { code: quantMatch[6], system: 'http://unitsofmeasure.org' }),
           },
         };
