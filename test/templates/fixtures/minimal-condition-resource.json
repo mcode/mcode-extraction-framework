@@ -1,35 +1,33 @@
 {
-    "resourceType": "Condition",
-    "id": "example-id", 
-    "category": [
-    
-      {
-        "coding": [ 
-          {
-            "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-            "code": "example-code"
-          }
-        ]
-      },
-      {
-        "coding": [
-          {
-            "system": "http://snomed.info/sct",
-            "code": "64572001"
-          }
-        ]
-      } 
-    ],  
-    "code": {
+  "resourceType": "Condition",
+  "id": "example-id",
+  "category": [
+    {
       "coding": [
         {
-          "system": "example-system",
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
           "code": "example-code"
-          
         }
       ]
-    }, 
-    "subject" : {
-      "reference": "urn:uuid:example-subject-id"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "64572001"
+        }
+      ]
     }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "example-system",
+        "code": "example-code"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "urn:uuid:example-subject-id"
   }
+}
