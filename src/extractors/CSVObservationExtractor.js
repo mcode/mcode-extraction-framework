@@ -24,7 +24,7 @@ function formatData(observationData) {
       system: codeSystem,
       display: !displayName ? null : displayName,
       valueCode: value,
-      valueSystem: !valueCodeSystem ? null : valueCodeSystem,
+      valueCodeSystem: !valueCodeSystem ? null : valueCodeSystem,
       effectiveDateTime: formatDateTime(effectiveDate),
       bodySite,
       laterality,

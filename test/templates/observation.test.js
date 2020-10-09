@@ -1,6 +1,7 @@
 const maximalObservationResource = require('./fixtures/maximal-observation-resource.json');
 const minimalObservationResource = require('./fixtures/minimal-observation-resource.json');
 const { observationTemplate } = require('../../src/templates');
+const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 const MAXIMAL_VALID_DATA = {
   id: 'example-id',
@@ -10,7 +11,7 @@ const MAXIMAL_VALID_DATA = {
   system: 'http://loinc.org',
   display: 'Body Height',
   valueCode: '70 [in_i]',
-  valueSystem: 'http://unitsofmeasure.org',
+  valueCodeSystem: 'http://unitsofmeasure.org',
   effectiveDateTime: '2020-01-01',
   bodySite: '106004',
   laterality: '51440002',
@@ -25,7 +26,7 @@ const MINIMAL_DATA = {
   system: 'http://loinc.org',
   display: null,
   valueCode: '70 [in_i]',
-  valueSystem: null,
+  valueCodeSystem: null,
   effectiveDateTime: '2020-01-01',
   bodySite: null,
   laterality: null,
@@ -51,6 +52,27 @@ describe('test Observation template', () => {
 
     // Relevant fields should match the valid FHIR
     expect(generatedObservation).toEqual(minimalObservationResource);
+  });
+
+  test('missing non-required data should not throw an error', () => {
+    const NECESSARY_DATA = {
+      id: 'example-id',
+      subjectId: 'example-mrn',
+      status: 'final',
+      code: '8302-2',
+      system: 'http://loinc.org',
+      valueCode: '70 [in_i]',
+      effectiveDateTime: '2020-01-01',
+    };
+
+    const OPTIONAL_DATA = {
+      display: 'Body Height',
+      valueCodeSystem: 'http://unitsofmeasure.org',
+      bodySite: '106004',
+      laterality: '51440002',
+    };
+
+    allOptionalKeyCombinationsNotThrow(OPTIONAL_DATA, observationTemplate, NECESSARY_DATA);
   });
 
   test('invalid data should throw an error', () => {

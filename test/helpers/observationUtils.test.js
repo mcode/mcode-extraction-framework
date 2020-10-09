@@ -26,7 +26,7 @@ describe('observationUtils', () => {
     const code = '89243-0';
     expect(isKarnofskyPerformanceStatus(code)).toEqual(true);
   });
-  test('isKarnofskyPerformanceStatus should return false when passed a code that does not belong to a Vital Sign', () => {
+  test('isKarnofskyPerformanceStatus should return false when passed an incorrect code', () => {
     const code = '12345';
     expect(isKarnofskyPerformanceStatus(code)).toEqual(false);
   });
@@ -34,7 +34,7 @@ describe('observationUtils', () => {
     const code = '89247-1';
     expect(isECOGPerformanceStatus(code)).toEqual(true);
   });
-  test('isECOGPerformanceStatus should return false when passed a code that does not belong to a Vital Sign', () => {
+  test('isECOGPerformanceStatus should return false when passed an incorrect code', () => {
     const code = '12345';
     expect(isECOGPerformanceStatus(code)).toEqual(false);
   });
