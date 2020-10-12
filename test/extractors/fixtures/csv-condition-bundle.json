@@ -61,9 +61,9 @@
         "code": {
           "coding": [
             {
-              "system": "example-code-system",
-              "code": "example-code",
-              "display": "Example Name"
+              "system": "http://snomed.info/sct",
+              "code": "C020",
+              "display": "Some Cancer Condition"
             }
           ]
         },

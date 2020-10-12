@@ -2,9 +2,9 @@
   {
     "mrn": "mrn-1",
     "conditionId": "conditionId-1",
-    "codeSystem": "example-code-system",
-    "code": "example-code",
-    "displayName": "Example Name",
+    "codeSystem": "http://snomed.info/sct",
+    "code": "C020",
+    "displayName": "Some Cancer Condition",
     "category": "example-category",
     "dateOfDiagnosis": "YYYY-MM-DD",
     "clinicalStatus": "example-status",

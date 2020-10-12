@@ -9,13 +9,21 @@
           "code": "example-code"
         }
       ]
+    },
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "64572001"
+        }
+      ]
     }
   ],
   "code": {
     "coding": [
       {
-        "system": "example-system",
-        "code": "example-code"
+        "system": "http://snomed.info/sct",
+        "code": "C020"
       }
     ]
   },
