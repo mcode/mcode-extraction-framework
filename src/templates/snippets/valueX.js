@@ -1,4 +1,5 @@
 const logger = require('../../helpers/logger');
+const { getQuantityUnit } = require('../../helpers/fhirUtils');
 const { coding } = require('./coding');
 
 // Regex Patterns
@@ -36,11 +37,15 @@ function valueX(value) {
         };
       }
       if (quantRegex.test(value)) {
-        const quantMatch = quantRegex.test(value);
+        const quantMatch = quantRegex.exec(value);
         return {
           valueQuantity: {
-            value: quantMatch[1],
-            ...(quantMatch[6] && { unit: quantMatch[6] }),
+            value: parseFloat(`${quantMatch[1]}${quantMatch[2] ? quantMatch[2] : ''}`, 10),
+            ...(quantMatch[6] && {
+              code: quantMatch[6],
+              system: 'http://unitsofmeasure.org',
+              unit: getQuantityUnit(quantMatch[6]),
+            }),
           },
         };
       }

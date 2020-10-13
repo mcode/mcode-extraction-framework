@@ -28,7 +28,7 @@ const formatData = CSVObservationExtractorRewired.__get__('formatData');
 describe('CSVObservationExtractor', () => {
   describe('formatData', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'The observation is missing an expected attribute. Observation id, mrn, status, code, code system, value, value code system, and effective date are all required.';
+      const expectedErrorString = 'The observation is missing an expected attribute. Observation id, mrn, status, code, code system, value, and effective date are all required.';
       const localData = _.cloneDeep(exampleCSVObservationModuleResponse);
 
       // Test that valid maximal data works fine

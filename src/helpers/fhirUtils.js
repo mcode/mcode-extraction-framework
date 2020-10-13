@@ -1,4 +1,31 @@
 const fhirpath = require('fhirpath');
+const logger = require('./logger');
+
+// Unit codes and display values fo Vital Signs values
+// Code mapping is based on http://hl7.org/fhir/R4/observation-vitalsigns.html
+// and inferred from manually referencing display values of codes in
+// value sets utilized by these Vital Signs
+const quantityCodeToUnitLookup = {
+  '/min': '/min',
+  '%': '%',
+  '[degF]': 'degF',
+  '[in_i]': 'in',
+  '[lb_av]': 'lb_av',
+  'kg/m2': 'kg/m2',
+  'mm[Hg]': 'mmHg',
+  Cel: 'Cel',
+  cm: 'cm',
+  kg: 'kg',
+  g: 'g',
+};
+
+function getQuantityUnit(unitCode) {
+  if (!Object.keys(quantityCodeToUnitLookup).includes(unitCode)) {
+    logger.warn('No unit found for provided unit code. Using unit code as unit instead.');
+    return unitCode;
+  }
+  return quantityCodeToUnitLookup[unitCode];
+}
 
 function isBundleEmpty(bundle) {
   return bundle.total === 0 || bundle.entry.length === 0;
@@ -71,6 +98,8 @@ const getBundleEntriesByResourceType = (bundle, type, context = {}, first = fals
 };
 
 module.exports = {
+  getQuantityUnit,
+  quantityCodeToUnitLookup,
   allResourcesInBundle,
   determineVersion,
   firstEntryInBundle,

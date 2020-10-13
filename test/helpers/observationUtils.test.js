@@ -1,6 +1,7 @@
 const {
-  isVitalSign, getQuantityUnit, getQuantityCode, vitalSignsCodeToTextLookup, quantityCodeToUnitLookup,
+  isVitalSign, isTumorMarker, isKarnofskyPerformanceStatus, isECOGPerformanceStatus, vitalSignsCodeToTextLookup,
 } = require('../../src/helpers/observationUtils.js');
+const tumorMarkerTestVS = require('../../src/valueSets/ValueSet-mcode-tumor-marker-test-vs.json');
 
 describe('observationUtils', () => {
   test('isVitalSign should return true when passed a valid Vital Sign code', () => {
@@ -12,16 +13,29 @@ describe('observationUtils', () => {
     const code = '12345';
     expect(isVitalSign(code)).toEqual(false);
   });
-  test('getQuantityUnit should return the corresponding unit display value when passed a unit code', () => {
-    Object.keys(quantityCodeToUnitLookup).forEach((unitCode) => {
-      const unitText = quantityCodeToUnitLookup[unitCode];
-      expect(getQuantityUnit(unitCode)).toEqual(unitText);
+  test('isTumorMarker should return true when passed a valid Tumor marker code', () => {
+    tumorMarkerTestVS.compose.include[0].concept.map((c) => c.code).forEach((code) => {
+      expect(isTumorMarker(code)).toEqual(true);
     });
   });
-  test('getQuantityCode should return the corresponding unit code when passed a unit display value', () => {
-    Object.keys(quantityCodeToUnitLookup).forEach((unitCode) => {
-      const unitText = quantityCodeToUnitLookup[unitCode];
-      expect(getQuantityCode(unitText)).toEqual(unitCode);
-    });
+  test('isTumorMarker should return false when passed a code that does not belong to a Tumor Marker', () => {
+    const code = '12345';
+    expect(isTumorMarker(code)).toEqual(false);
+  });
+  test('isKarnofskyPerformanceStatus should return true when passed the correct code', () => {
+    const code = '89243-0';
+    expect(isKarnofskyPerformanceStatus(code)).toEqual(true);
+  });
+  test('isKarnofskyPerformanceStatus should return false when passed an incorrect code', () => {
+    const code = '12345';
+    expect(isKarnofskyPerformanceStatus(code)).toEqual(false);
+  });
+  test('isECOGPerformanceStatus should return true when passed the correct code', () => {
+    const code = '89247-1';
+    expect(isECOGPerformanceStatus(code)).toEqual(true);
+  });
+  test('isECOGPerformanceStatus should return false when passed an incorrect code', () => {
+    const code = '12345';
+    expect(isECOGPerformanceStatus(code)).toEqual(false);
   });
 });
