@@ -1,7 +1,20 @@
-const { isBundleEmpty, firstEntryInBundle, firstResourceInBundle, allResourcesInBundle } = require('../../src/helpers/fhirUtils.js');
+const {
+  getQuantityUnit, isBundleEmpty, firstEntryInBundle, firstResourceInBundle, allResourcesInBundle, quantityCodeToUnitLookup,
+} = require('../../src/helpers/fhirUtils.js');
 const emptyBundle = require('./fixtures/emptyBundle.json');
 const bundleWithOneEntry = require('./fixtures/searchsetBundleWithOneEntry.json');
 const bundleWithMultipleEntries = require('./fixtures/searchsetBundleWithMultipleEntries.json');
+
+test('getQuantityUnit', () => {
+  // Should return unit text if provided in lookup table
+  Object.keys(quantityCodeToUnitLookup).forEach((unitCode) => {
+    const unitText = quantityCodeToUnitLookup[unitCode];
+    expect(getQuantityUnit(unitCode)).toEqual(unitText);
+  });
+
+  // Should return unit code if unit text is not provided
+  expect(getQuantityUnit('foo')).toEqual('foo');
+});
 
 test('isBundleEmpty', () => {
   // Empty bundle return true
