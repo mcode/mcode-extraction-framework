@@ -1,6 +1,6 @@
 const { extensionArr, coding, valueCodeableConcept, reference } = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
-const { isConditionCodePrimary, isConditionCodeSecondary } = require('../helpers/conditionUtils');
+const { isConditionCodeCancer } = require('../helpers/conditionUtils');
 
 function histologyTemplate({ histology }) {
   return {
@@ -44,7 +44,7 @@ function individualCategoryTemplate(category) {
 function categoryArrayTemplate(array, code) {
   const category = array.map(individualCategoryTemplate);
   const codeValue = `${code}`;
-  if (isConditionCodePrimary(codeValue) || isConditionCodeSecondary(codeValue)) {
+  if (isConditionCodeCancer(codeValue)) {
     // On cancer conditions, include the fixed value for the disease category
     category.push({
       coding: [coding({

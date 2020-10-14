@@ -1,4 +1,6 @@
 const {
+  isConditionCancer,
+  isConditionCodeCancer,
   isConditionCodePrimary,
   isConditionCodeSecondary,
   isConditionPrimary,
@@ -44,5 +46,18 @@ describe('conditionUtils', () => {
   test('getICD10Code', () => {
     expect(getICD10Code(conditionWithICD10)).toEqual(icd10);
     expect(getICD10Code(conditionWithoutICD10)).toBeUndefined();
+  });
+
+  test('isConditionCodeCancer', () => {
+    expect(isConditionCodeCancer(primaryCancerConditionCode)).toBeTruthy();
+    expect(isConditionCodeCancer(secondaryCancerConditionCode)).toBeTruthy();
+    expect(isConditionCodeCancer('anything')).toBeFalsy();
+    expect(() => isConditionCodeCancer(undefined)).toThrowError(TypeError);
+  });
+
+  test('isConditionCancer', () => {
+    expect(isConditionCancer(examplePrimaryCondition)).toBeTruthy();
+    expect(isConditionCancer(exampleSecondaryCondition)).toBeTruthy();
+    expect(isConditionCancer(undefined)).toBeFalsy();
   });
 });
