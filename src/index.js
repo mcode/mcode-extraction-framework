@@ -39,6 +39,8 @@ const {
   isConditionCodeSecondary,
   isConditionPrimary,
   isConditionSecondary,
+  isConditionCodeCancer,
+  isConditionCancer,
   getICD10Code,
 } = require('./helpers/conditionUtils');
 const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = require('./helpers/diseaseStatusUtils');
@@ -87,5 +89,7 @@ module.exports = {
   isConditionCodeSecondary,
   isConditionPrimary,
   isConditionSecondary,
+  isConditionCodeCancer,
+  isConditionCancer,
   mEpochToDate,
 };
