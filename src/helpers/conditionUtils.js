@@ -32,7 +32,7 @@ function isConditionCodePrimary(code) {
 }
 
 /**
- * Checks if a condition code is a primary cancer condition
+ * Checks if a condition code is a secondary cancer condition
  * @param code ICD code, string
  * @return {boolean} if secondary cancer condition
  */
@@ -51,7 +51,7 @@ function isConditionPrimary(condition) {
 }
 
 /**
- * Checks if a condition resource is a primary cancer condition
+ * Checks if a condition resource is a secondary cancer condition
  * @param condition fhir resource
  * @return {boolean} if secondary cancer condition
  */
@@ -60,10 +60,30 @@ function isConditionSecondary(condition) {
   return icd10Code && isConditionCodeSecondary(icd10Code.code);
 }
 
+/**
+ * Checks if a condition code is a cancer condition we recognize
+ * @param code ICD code, string
+ * @return {boolean} if primary or secondary cancer condition
+ */
+function isConditionCodeCancer(code) {
+  return isConditionCodePrimary(code) || isConditionCodeSecondary(code);
+}
+
+/**
+ * Checks if a condition is a cancer condition we recognize
+ * @param condition fhir resource
+ * @return {boolean} if primary or secondary cancer condition
+ */
+function isConditionCancer(condition) {
+  return isConditionPrimary(condition) || isConditionSecondary(condition);
+}
+
 module.exports = {
   getICD10Code,
   isConditionPrimary,
   isConditionSecondary,
   isConditionCodePrimary,
   isConditionCodeSecondary,
+  isConditionCodeCancer,
+  isConditionCancer,
 };
