@@ -9,6 +9,7 @@ const { carePlanWithReviewTemplate } = require('./CarePlanWithReviewTemplate');
 const { researchStudyTemplate } = require('./ResearchStudyTemplate');
 const { researchSubjectTemplate } = require('./ResearchSubjectTemplate');
 const { conditionTemplate } = require('./ConditionTemplate');
+const { cancerRelatedMedicationTemplate } = require('./CancerRelatedMedicationTemplate');
 
 const fhirTemplateLookup = {
   CancerDiseaseStatus: cancerDiseaseStatusTemplate,
@@ -18,6 +19,7 @@ const fhirTemplateLookup = {
   Patient: patientTemplate,
   ResearchStudy: researchStudyTemplate,
   ResearchSubject: researchSubjectTemplate,
+  CancerRelatedMedication: cancerRelatedMedicationTemplate,
 };
 
 function loadFhirTemplate(mcodeProfileID) {

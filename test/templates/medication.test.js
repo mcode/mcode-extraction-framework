@@ -1,0 +1,87 @@
+const maximalValidExampleMedication = require('./fixtures/maximal-medication-resource.json');
+const minimalValidExampleMedication = require('./fixtures/minimal-medication-resource.json');
+const { cancerRelatedMedicationTemplate } = require('../../src/templates/CancerRelatedMedicationTemplate.js');
+const { allOptionalKeyCombinationsNotThrow } = require('../utils');
+
+const MEDICATION_VALID_DATA = {
+  mrn: 'mrn-1',
+  id: 'medicationId-1',
+  code: 'example-code',
+  codeSystem: 'example-code-system',
+  displayText: 'Example Text',
+  startDate: 'YYYY-MM-DD',
+  endDate: 'YYYY-MM-DD',
+  treatmentReasonCode: 'example-reason',
+  treatmentReasonCodeSystem: 'example-code-system',
+  treatmentReasonDisplayText: 'Example Text',
+  treatmentIntent: 'example-code',
+};
+
+const MEDICATION_MINIMAL_DATA = {
+  // Only include 'mrn', 'code', 'codesystem', 'startDate, and 'endDate' fields which are required
+  mrn: 'mrn-1',
+  code: 'example-code',
+  codeSystem: 'example-code-system',
+  startDate: 'YYYY-MM-DD',
+  endDate: 'YYYY-MM-DD',
+  displayText: null,
+  treatmentReasonCode: null,
+  treatmentReasonCodeSystem: null,
+  treatmentReasonDisplayText: null,
+  treatmentIntent: null,
+};
+
+
+const MEDICATION_INVALID_DATA = {
+  // Omitting 'mrn', 'code', 'codesystem', 'startDate', and 'endDate' fields which are required
+  mrn: null,
+  code: null,
+  codeSystem: null,
+  startDate: null,
+  endDate: null,
+  id: 'medicationId-1',
+  displayText: 'Example Text',
+  treatmentReasonCode: 'example-reason',
+  treatmentReasonCodeSystem: 'example-code-system',
+  treatmentReasonDisplayText: 'Example Text',
+  treatmentIntent: 'example-code',
+};
+
+describe('test Medication template', () => {
+  test('valid data passed into template should generate FHIR resource', () => {
+    const generatedMedication = cancerRelatedMedicationTemplate(MEDICATION_VALID_DATA);
+
+    expect(generatedMedication).toEqual(maximalValidExampleMedication);
+  });
+
+  test('minimal data passed into template should generate FHIR resource', () => {
+    const generatedMedication = cancerRelatedMedicationTemplate(MEDICATION_MINIMAL_DATA);
+
+    expect(generatedMedication).toEqual(minimalValidExampleMedication);
+  });
+
+  test('missing non-required data should not throw an error', () => {
+    const OPTIONAL_DATA = {
+      displayText: 'Example Text',
+      treatmentReasonCode: 'example-reason',
+      treatmentReasonCodeSystem: 'example-code-system',
+      treatmentReasonDisplayText: 'Example Text',
+      treatmentIntent: 'example-code',
+      id: 'medicationId-1',
+    };
+
+    const NECESSARY_DATA = {
+      mrn: 'mrn-1',
+      code: 'example-code',
+      codeSystem: 'example-code-system',
+      startDate: 'YYYY-MM-DD',
+      endDate: 'YYYY-MM-DD',
+    };
+
+    allOptionalKeyCombinationsNotThrow(OPTIONAL_DATA, cancerRelatedMedicationTemplate, NECESSARY_DATA);
+  });
+
+  test('invalid data should throw an error', () => {
+    expect(() => cancerRelatedMedicationTemplate(MEDICATION_INVALID_DATA)).toThrow(Error);
+  });
+});

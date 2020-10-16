@@ -1,0 +1,15 @@
+[
+  {
+    "mrn": "mrn-1",
+    "medicationId": "medicationId-1",
+    "code": "example-code",
+    "codeSystem": "example-code-system",
+    "displayText": "Example Text",
+    "startDate": "YYYY-MM-DD",
+    "endDate": "YYYY-MM-DD",
+    "treatmentReasonCode": "example-reason",
+    "treatmentReasonCodeSystem": "example-code-system",
+    "treatmentReasonDisplayText": "Example Text",
+    "treatmentIntent": "example-code"
+  }
+]
