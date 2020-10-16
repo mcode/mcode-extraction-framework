@@ -1,5 +1,5 @@
 const validResearchStudy = require('./fixtures/research-study-resource.json');
-const { researchStudyTemplate } = require('../../src/templates');
+const { researchStudyTemplate } = require('../../src/templates/ResearchStudyTemplate');
 
 const VALID_DATA = {
   id: 'id-for-research-study',

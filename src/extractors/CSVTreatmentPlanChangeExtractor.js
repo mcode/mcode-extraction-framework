@@ -2,7 +2,7 @@ const path = require('path');
 const { Extractor } = require('./Extractor');
 const { CSVModule } = require('../modules');
 const { formatDate, formatDateTime } = require('../helpers/dateUtils');
-const { generateMcodeResources } = require('../helpers/ejsUtils');
+const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 

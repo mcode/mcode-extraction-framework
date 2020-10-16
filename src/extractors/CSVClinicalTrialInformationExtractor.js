@@ -2,7 +2,7 @@ const path = require('path');
 const { Extractor } = require('./Extractor');
 const { CSVModule } = require('../modules');
 const { firstEntryInBundle, getBundleResourcesByType } = require('../helpers/fhirUtils');
-const { generateMcodeResources } = require('../helpers/ejsUtils');
+const { generateMcodeResources } = require('../templates');
 const logger = require('../helpers/logger');
 
 function getPatientId(context) {

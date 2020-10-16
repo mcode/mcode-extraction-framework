@@ -2,7 +2,7 @@ const path = require('path');
 const { CSVModule } = require('../modules');
 const { formatDateTime } = require('../helpers/dateUtils');
 const { getDiseaseStatusDisplay, getDiseaseStatusEvidenceDisplay } = require('../helpers/diseaseStatusUtils');
-const { generateMcodeResources } = require('../helpers/ejsUtils');
+const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 

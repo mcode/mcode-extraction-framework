@@ -1,6 +1,6 @@
 const minimalCarePlan = require('./fixtures/minimal-careplan-resource.json');
 const maximalCarePlan = require('./fixtures/maximal-careplan-resource.json');
-const { carePlanWithReviewTemplate } = require('../../src/templates');
+const { carePlanWithReviewTemplate } = require('../../src/templates/CarePlanWithReviewTemplate');
 const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 describe('JavaScript render CarePlan template', () => {
