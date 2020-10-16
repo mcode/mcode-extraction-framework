@@ -1,0 +1,3 @@
+mrn,medicationId,code,codeSystem,displayText,startDate,endDate,treatmentReasonCode,treatmentReasonCodeSystem,treatmentReasonDisplayText,treatmentIntent
+pat-mrn-1,medicationId-1,code,code-system,code-text,YYYY-MM-DD,YYYY-MM-DD,code,code-system,display-text,intent-code
+pat-mrn-2,medicationId-2,code,code-system,code-text,YYYY-MM-DD,YYYY-MM-DD,code,code-system,display-text,intent-code
