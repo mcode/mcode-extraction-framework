@@ -1,6 +1,6 @@
 const path = require('path');
 const { CSVModule } = require('../modules');
-const { generateMcodeResources } = require('../helpers/ejsUtils');
+const { generateMcodeResources } = require('../templates');
 const { Extractor } = require('./Extractor');
 const logger = require('../helpers/logger');
 const { formatDateTime } = require('../helpers/dateUtils');

@@ -1,7 +1,7 @@
 const maximalValidExampleCondition = require('./fixtures/maximal-condition-resource.json');
 const minimalValidExampleCondition = require('./fixtures/minimal-condition-resource.json');
 const cancerValidExampleCondition = require('./fixtures/cancer-condition-resource.json');
-const { conditionTemplate } = require('../../src/templates/ConditionTemplate.js');
+const { conditionTemplate } = require('../../src/templates/ConditionTemplate');
 const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 const CONDITION_VALID_DATA = {

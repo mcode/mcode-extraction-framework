@@ -1,6 +1,6 @@
 const maximalObservationResource = require('./fixtures/maximal-observation-resource.json');
 const minimalObservationResource = require('./fixtures/minimal-observation-resource.json');
-const { observationTemplate } = require('../../src/templates');
+const { observationTemplate } = require('../../src/templates/ObservationTemplate');
 const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 const MAXIMAL_VALID_DATA = {

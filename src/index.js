@@ -33,7 +33,7 @@ const {
   getEmptyBundle,
   isBundleEmpty,
 } = require('./helpers/fhirUtils');
-const { generateMcodeResources } = require('./helpers/ejsUtils');
+const { generateMcodeResources } = require('./templates');
 const {
   isConditionCodePrimary,
   isConditionCodeSecondary,
