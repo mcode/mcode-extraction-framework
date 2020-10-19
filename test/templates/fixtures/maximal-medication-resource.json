@@ -19,7 +19,7 @@
       }
     }
   ],
-  "status": "active",
+  "status": "example-status",
   "medicationCodeableConcept": {
     "coding": [
       {

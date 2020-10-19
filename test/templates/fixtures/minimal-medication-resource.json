@@ -5,7 +5,7 @@
       "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-statement"
     ]
   },
-  "status": "active",
+  "status": "example-status",
   "medicationCodeableConcept": {
     "coding": [
       {

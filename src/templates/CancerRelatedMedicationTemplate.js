@@ -56,9 +56,10 @@ function cancerRelatedMedicationTemplate({
   treatmentReasonCodeSystem,
   treatmentReasonDisplayText,
   treatmentIntent,
+  status,
 }) {
-  if (!(mrn && code && codeSystem && startDate && endDate)) {
-    throw Error('Trying to render a CancerRelatedMedicationTemplate, but a required argument is missing; ensure that mrn, code, code system, start date, and end date are all present');
+  if (!(mrn && code && codeSystem && startDate && endDate && status)) {
+    throw Error('Trying to render a CancerRelatedMedicationTemplate, but a required argument is missing; ensure that mrn, code, code system, start date, end date, and status are all present');
   }
 
   return {
@@ -70,7 +71,7 @@ function cancerRelatedMedicationTemplate({
       ],
     },
     ...extensionArr(ifAllArgsObj(treatmentIntentTemplate)({ treatmentIntent })),
-    status: 'active',
+    status,
     ...medicationTemplate({ code, codeSystem, displayText }),
     ...ifAllArgsObj(subjectTemplate)({ id: mrn }),
     ...periodTemplate({ startDate, endDate }),

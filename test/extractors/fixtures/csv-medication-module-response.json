@@ -10,6 +10,7 @@
     "treatmentReasonCode": "example-reason",
     "treatmentReasonCodeSystem": "example-code-system",
     "treatmentReasonDisplayText": "Example Text",
-    "treatmentIntent": "example-code"
+    "treatmentIntent": "example-code",
+    "status": "example-status"
   }
 ]

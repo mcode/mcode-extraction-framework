@@ -15,6 +15,7 @@ const MEDICATION_VALID_DATA = {
   treatmentReasonCodeSystem: 'example-code-system',
   treatmentReasonDisplayText: 'Example Text',
   treatmentIntent: 'example-code',
+  status: 'example-status',
 };
 
 const MEDICATION_MINIMAL_DATA = {
@@ -24,6 +25,7 @@ const MEDICATION_MINIMAL_DATA = {
   codeSystem: 'example-code-system',
   startDate: 'YYYY-MM-DD',
   endDate: 'YYYY-MM-DD',
+  status: 'example-status',
   displayText: null,
   treatmentReasonCode: null,
   treatmentReasonCodeSystem: null,
@@ -39,6 +41,7 @@ const MEDICATION_INVALID_DATA = {
   codeSystem: null,
   startDate: null,
   endDate: null,
+  status: null,
   id: 'medicationId-1',
   displayText: 'Example Text',
   treatmentReasonCode: 'example-reason',
@@ -76,6 +79,7 @@ describe('test Medication template', () => {
       codeSystem: 'example-code-system',
       startDate: 'YYYY-MM-DD',
       endDate: 'YYYY-MM-DD',
+      status: 'example-status',
     };
 
     allOptionalKeyCombinationsNotThrow(OPTIONAL_DATA, cancerRelatedMedicationTemplate, NECESSARY_DATA);

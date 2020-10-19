@@ -2,24 +2,24 @@ const _ = require('lodash');
 const shajs = require('sha.js');
 const logger = require('../helpers/logger');
 
+const { cancerDiseaseStatusTemplate } = require('./CancerDiseaseStatusTemplate');
+const { cancerRelatedMedicationTemplate } = require('./CancerRelatedMedicationTemplate');
+const { carePlanWithReviewTemplate } = require('./CarePlanWithReviewTemplate');
+const { conditionTemplate } = require('./ConditionTemplate');
 const { observationTemplate } = require('./ObservationTemplate');
 const { patientTemplate } = require('./PatientTemplate');
-const { cancerDiseaseStatusTemplate } = require('./CancerDiseaseStatusTemplate');
-const { carePlanWithReviewTemplate } = require('./CarePlanWithReviewTemplate');
 const { researchStudyTemplate } = require('./ResearchStudyTemplate');
 const { researchSubjectTemplate } = require('./ResearchSubjectTemplate');
-const { conditionTemplate } = require('./ConditionTemplate');
-const { cancerRelatedMedicationTemplate } = require('./CancerRelatedMedicationTemplate');
 
 const fhirTemplateLookup = {
   CancerDiseaseStatus: cancerDiseaseStatusTemplate,
+  CancerRelatedMedication: cancerRelatedMedicationTemplate,
   CarePlanWithReview: carePlanWithReviewTemplate,
   Condition: conditionTemplate,
   Observation: observationTemplate,
   Patient: patientTemplate,
   ResearchStudy: researchStudyTemplate,
   ResearchSubject: researchSubjectTemplate,
-  CancerRelatedMedication: cancerRelatedMedicationTemplate,
 };
 
 function loadFhirTemplate(mcodeProfileID) {

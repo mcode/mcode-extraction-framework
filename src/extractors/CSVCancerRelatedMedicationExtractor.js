@@ -11,11 +11,11 @@ function formatData(medicationData) {
 
   return medicationData.map((medication) => {
     const {
-      mrn, medicationId, code, codeSystem, displayText, startDate, endDate, treatmentReasonCode, treatmentReasonCodeSystem, treatmentReasonDisplayText, treatmentIntent,
+      mrn, medicationId, code, codeSystem, displayText, startDate, endDate, treatmentReasonCode, treatmentReasonCodeSystem, treatmentReasonDisplayText, treatmentIntent, status,
     } = medication;
 
-    if (!(mrn && code && codeSystem && startDate && endDate)) {
-      throw new Error('The cancer-related medication is missing an expected element; mrn, code, code system, start date, and end date are all required values.');
+    if (!(mrn && code && codeSystem && startDate && endDate && status)) {
+      throw new Error('The cancer-related medication is missing an expected element; mrn, code, code system, start date, end date, and status are all required values.');
     }
 
     return {
@@ -25,7 +25,7 @@ function formatData(medicationData) {
       // the value is null, then the bundler function will generate the id element on
       // the resulting fhir resource with a string value of 'null', rather than encoding
       // an actual id as we expect it to.
-      id: !medicationId ? undefined : medicationId,
+      ...(medicationId && { id: medicationId }),
       code,
       codeSystem,
       displayText: !displayText ? null : displayText,
@@ -35,6 +35,7 @@ function formatData(medicationData) {
       treatmentReasonCodeSystem: !treatmentReasonCodeSystem ? null : treatmentReasonCodeSystem,
       treatmentReasonDisplayText: !treatmentReasonDisplayText ? null : treatmentReasonDisplayText,
       treatmentIntent: !treatmentIntent ? null : treatmentIntent,
+      status,
     };
   });
 }
