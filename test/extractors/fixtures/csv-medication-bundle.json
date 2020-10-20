@@ -1,0 +1,59 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:medicationId-1",
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medicationId-1",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-statement"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "example-code"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "example-status",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "example-code-system",
+              "code": "example-code",
+              "display": "Example Text"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:mrn-1"
+        },
+        "effectivePeriod": {
+          "start": "YYYY-MM-DD",
+          "end": "YYYY-MM-DD"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "example-code-system",
+                "code": "example-reason",
+                "display": "Example Text"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

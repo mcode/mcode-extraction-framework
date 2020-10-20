@@ -1,0 +1,24 @@
+{
+  "resourceType": "MedicationStatement",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-statement"
+    ]
+  },
+  "status": "example-status",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "example-code-system",
+        "code": "example-code"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "urn:uuid:mrn-1"
+  },
+  "effectivePeriod": {
+    "start": null,
+    "end": null
+  }
+}
