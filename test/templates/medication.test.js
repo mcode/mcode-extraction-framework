@@ -19,13 +19,13 @@ const MEDICATION_VALID_DATA = {
 };
 
 const MEDICATION_MINIMAL_DATA = {
-  // Only include 'mrn', 'code', 'codesystem', 'startDate, and 'endDate' fields which are required
+  // Only include 'mrn', 'code', 'codesystem', and 'status' fields which are required
   mrn: 'mrn-1',
   code: 'example-code',
   codeSystem: 'example-code-system',
-  startDate: 'YYYY-MM-DD',
-  endDate: 'YYYY-MM-DD',
   status: 'example-status',
+  startDate: null,
+  endDate: null,
   displayText: null,
   treatmentReasonCode: null,
   treatmentReasonCodeSystem: null,
@@ -35,13 +35,13 @@ const MEDICATION_MINIMAL_DATA = {
 
 
 const MEDICATION_INVALID_DATA = {
-  // Omitting 'mrn', 'code', 'codesystem', 'startDate', and 'endDate' fields which are required
+  // Omitting 'mrn', 'code', 'codesystem', fields which are required
   mrn: null,
   code: null,
   codeSystem: null,
-  startDate: null,
-  endDate: null,
   status: null,
+  startDate: 'YYYY-MM-DD',
+  endDate: 'YYYY-MM-DD',
   id: 'medicationId-1',
   displayText: 'Example Text',
   treatmentReasonCode: 'example-reason',
@@ -71,14 +71,14 @@ describe('test Medication template', () => {
       treatmentReasonDisplayText: 'Example Text',
       treatmentIntent: 'example-code',
       id: 'medicationId-1',
+      startDate: 'YYYY-MM-DD',
+      endDate: 'YYYY-MM-DD',
     };
 
     const NECESSARY_DATA = {
       mrn: 'mrn-1',
       code: 'example-code',
       codeSystem: 'example-code-system',
-      startDate: 'YYYY-MM-DD',
-      endDate: 'YYYY-MM-DD',
       status: 'example-status',
     };
 

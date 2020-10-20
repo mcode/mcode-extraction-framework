@@ -14,8 +14,8 @@ function formatData(medicationData) {
       mrn, medicationId, code, codeSystem, displayText, startDate, endDate, treatmentReasonCode, treatmentReasonCodeSystem, treatmentReasonDisplayText, treatmentIntent, status,
     } = medication;
 
-    if (!(mrn && code && codeSystem && startDate && endDate && status)) {
-      throw new Error('The cancer-related medication is missing an expected element; mrn, code, code system, start date, end date, and status are all required values.');
+    if (!(mrn && code && codeSystem && status)) {
+      throw new Error('The cancer-related medication is missing an expected element; mrn, code, code system, and status are all required values.');
     }
 
     return {
@@ -29,8 +29,8 @@ function formatData(medicationData) {
       code,
       codeSystem,
       displayText: !displayText ? null : displayText,
-      startDate: formatDateTime(startDate),
-      endDate: formatDateTime(endDate),
+      startDate: !startDate ? null : formatDateTime(startDate),
+      endDate: !endDate ? null : formatDateTime(endDate),
       treatmentReasonCode: !treatmentReasonCode ? null : treatmentReasonCode,
       treatmentReasonCodeSystem: !treatmentReasonCodeSystem ? null : treatmentReasonCodeSystem,
       treatmentReasonDisplayText: !treatmentReasonDisplayText ? null : treatmentReasonDisplayText,
