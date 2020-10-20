@@ -5,7 +5,7 @@ const {
   reference,
   valueCodeableConcept,
 } = require('./snippets');
-const { ifSomeArgsObj } = require('../helpers/templateUtils');
+const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
 
 function reasonTemplate({ reasonCode, reasonCodeSystem, reasonDisplayName }) {
   return {
@@ -24,12 +24,12 @@ function reasonTemplate({ reasonCode, reasonCodeSystem, reasonDisplayName }) {
 function reasonReference(conditionId) {
   return {
     reasonReference: [
-      ...reference({ id: conditionId }),
+      reference({ id: conditionId }),
     ],
   };
 }
 
-function treatmentIntentTemplate(treatmentIntent) {
+function treatmentIntentTemplate({ treatmentIntent }) {
   return {
     url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent',
     ...valueCodeableConcept({
@@ -59,7 +59,7 @@ function procedureTemplate({
     performedDateTime: effectiveDateTime,
     ...ifSomeArgsObj(reasonTemplate)({ reasonCode, reasonCodeSystem, reasonDisplayName }),
     ...(conditionId && reasonReference(conditionId)),
-    ...extensionArr(...treatmentIntentTemplate(treatmentIntent)),
+    ...extensionArr(ifAllArgsObj(treatmentIntentTemplate)({ treatmentIntent })),
     ...ifSomeArgsObj(bodySiteTemplate)({ bodySite, laterality }),
   };
 }

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Procedure",
+  "id": "example-id",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "152198000",
+        "display": "Brachytherapy (procedure)"
+      }
+    ]
+  },
+  "subject": { "reference": "urn:uuid:example-mrn" },
+  "performedDateTime": "2020-01-01",
+  "reasonCode": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "363346000",
+        "display": "Malignant tumor"
+      }
+    ]
+  },
+  "reasonReference": [{ "reference": "urn:uuid:example-condition-id" }],
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent",
+      "valueCodeableConcept": {
+        "coding": [{ "system": "http://snomed.info/sct", "code": "373808002" }]
+      }
+    }
+  ],
+  "bodySite": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality",
+        "valueCodeableConcept": {
+          "coding": [{ "system": "http://snomed.info/sct", "code": "51440002" }]
+        }
+      }
+    ],
+    "coding": [{ "system": "http://snomed.info/sct", "code": "41224006" }]
+  }
+}
