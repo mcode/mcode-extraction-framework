@@ -20,11 +20,6 @@ function formatData(medicationData) {
 
     return {
       mrn,
-      // Because medicationId is not a required field, we must make it undefined
-      // when it isn't read in from the module rather that making it null. If the
-      // the value is null, then the bundler function will generate the id element on
-      // the resulting fhir resource with a string value of 'null', rather than encoding
-      // an actual id as we expect it to.
       ...(medicationId && { id: medicationId }),
       code,
       codeSystem,
