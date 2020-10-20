@@ -17,8 +17,5 @@
   "subject": {
     "reference": "urn:uuid:mrn-1"
   },
-  "effectivePeriod": {
-    "start": null,
-    "end": null
-  }
+  "effectivePeriod": {}
 }
