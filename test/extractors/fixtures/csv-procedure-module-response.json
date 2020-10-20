@@ -1,0 +1,18 @@
+[
+  {
+    "mrn": "mrn-1",
+    "procedureId": "procedure-1",
+    "conditionId": "condition-id",
+    "status": "completed",
+    "codeSystem": "http://snomed.info/sct",
+    "code": "152198000",
+    "displayName": "Brachytherapy (procedure)",
+    "reasonCode": "example-category",
+    "reasonCodeSystem": "YYYY-MM-DD",
+    "reasonDisplayName": "example-status",
+    "bodySite": "example-site",
+    "laterality": "example-laterality",
+    "treatmentIntent": "example-treatment-intent",
+    "effectiveDate": "2020-01-01"
+  }
+]
