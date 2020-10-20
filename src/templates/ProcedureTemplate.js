@@ -9,15 +9,17 @@ const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
 
 function reasonTemplate({ reasonCode, reasonCodeSystem, reasonDisplayName }) {
   return {
-    reasonCode: {
-      coding: [
-        coding({
-          system: reasonCodeSystem,
-          code: reasonCode,
-          display: reasonDisplayName,
-        }),
-      ],
-    },
+    reasonCode: [
+      {
+        coding: [
+          coding({
+            system: reasonCodeSystem,
+            code: reasonCode,
+            display: reasonDisplayName,
+          }),
+        ],
+      },
+    ],
   };
 }
 
@@ -36,6 +38,17 @@ function treatmentIntentTemplate({ treatmentIntent }) {
       system: 'http://snomed.info/sct',
       code: treatmentIntent,
     }),
+  };
+}
+
+function procedureBodySiteTemplate({ bodySite, laterality }) {
+  if (!bodySite) return null;
+
+  const bodySiteObj = bodySiteTemplate({ bodySite, laterality });
+  return {
+    bodySite: [
+      bodySiteObj.bodySite,
+    ],
   };
 }
 
@@ -60,7 +73,7 @@ function procedureTemplate({
     ...ifSomeArgsObj(reasonTemplate)({ reasonCode, reasonCodeSystem, reasonDisplayName }),
     ...(conditionId && reasonReference(conditionId)),
     ...extensionArr(ifAllArgsObj(treatmentIntentTemplate)({ treatmentIntent })),
-    ...ifSomeArgsObj(bodySiteTemplate)({ bodySite, laterality }),
+    ...ifSomeArgsObj(procedureBodySiteTemplate)({ bodySite, laterality }),
   };
 }
 
