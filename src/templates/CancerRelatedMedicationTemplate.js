@@ -26,8 +26,8 @@ function subjectTemplate({ id }) {
 function periodTemplate({ startDate, endDate }) {
   return {
     effectivePeriod: {
-      start: startDate,
-      end: endDate,
+      ...(startDate && { start: startDate }),
+      ...(endDate && { end: endDate }),
     },
   };
 }
