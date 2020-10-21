@@ -1,0 +1,3 @@
+mrn,procedureId,conditionId,status,code,codeSystem,displayName,reasonCode,reasonCodeSystem,reasonDisplayName,effectiveDate,bodySite,laterality,treatmentIntent
+mrn-1,example-id,example-condition-id,example-status,example-code,example-system,example-name,example-reason-code,example-system,example-reason-display,YYYY-MM-DD,example-site,example-laterality,example-treatment-intent
+mrn-2,example-id,example-condition-id,example-status,example-code,example-system,example-name,example-reason-code,example-system,example-reason-display,YYYY-MM-DD,example-site,example-laterality,example-treatment-intent

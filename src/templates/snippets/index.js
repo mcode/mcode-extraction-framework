@@ -5,8 +5,10 @@ const { meta, narrative } = require('./resource');
 const { extensionArr } = require('./extensionArr');
 const { effectiveX } = require('./effectiveX');
 const { identifier, identifierArr } = require('./identifier');
+const { bodySiteTemplate } = require('./bodySiteTemplate');
 
 module.exports = {
+  bodySiteTemplate,
   coding,
   effectiveX,
   extensionArr,

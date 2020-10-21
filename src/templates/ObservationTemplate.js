@@ -1,7 +1,12 @@
-const { coding, reference, valueCodeableConcept } = require('./snippets');
-const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
+const {
+  bodySiteTemplate,
+  coding,
+  reference,
+  valueCodeableConcept,
+  valueX,
+} = require('./snippets');
+const { ifSomeArgsObj } = require('../helpers/templateUtils');
 const { isTumorMarker, isVitalSign, isKarnofskyPerformanceStatus, isECOGPerformanceStatus } = require('../helpers/observationUtils');
-const { valueX } = require('./snippets/valueX');
 
 function categoryTemplate({ code }) {
   if (isVitalSign(code)) {
@@ -59,31 +64,6 @@ function valueTemplate({ code, valueCode, valueCodeSystem }) {
   if (isTumorMarker(code)) return valueCodeableConcept({ code: valueCode, system: valueCodeSystem });
   if (isECOGPerformanceStatus(code) || isKarnofskyPerformanceStatus(code)) return valueX(parseInt(valueCode, 10));
   return valueX(valueCode); // Vital Sign will be parsed as quantity, others will be parsed as appropriate
-}
-
-function lateralityTemplate({ laterality }) {
-  return {
-    extension: [
-      {
-        url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality',
-        ...valueCodeableConcept({ code: laterality, system: 'http://snomed.info/sct' }),
-      },
-    ],
-  };
-}
-
-function bodySiteTemplate({ bodySite, laterality }) {
-  if (!bodySite) return null;
-
-  return {
-    bodySite: {
-      ...ifAllArgsObj(lateralityTemplate)({ laterality }),
-      coding: [coding({
-        system: 'http://snomed.info/sct',
-        code: bodySite,
-      })],
-    },
-  };
 }
 
 function observationTemplate({

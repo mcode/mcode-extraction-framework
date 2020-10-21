@@ -1,0 +1,10 @@
+{
+  "resourceType": "Procedure",
+  "id": "example-id",
+  "status": "completed",
+  "code": {
+    "coding": [{ "system": "http://snomed.info/sct", "code": "152198000" }]
+  },
+  "subject": { "reference": "urn:uuid:example-mrn" },
+  "performedDateTime": "2020-01-01"
+}

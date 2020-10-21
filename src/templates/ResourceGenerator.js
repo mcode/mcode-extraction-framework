@@ -8,6 +8,7 @@ const { carePlanWithReviewTemplate } = require('./CarePlanWithReviewTemplate');
 const { conditionTemplate } = require('./ConditionTemplate');
 const { observationTemplate } = require('./ObservationTemplate');
 const { patientTemplate } = require('./PatientTemplate');
+const { procedureTemplate } = require('./ProcedureTemplate');
 const { researchStudyTemplate } = require('./ResearchStudyTemplate');
 const { researchSubjectTemplate } = require('./ResearchSubjectTemplate');
 
@@ -18,6 +19,7 @@ const fhirTemplateLookup = {
   Condition: conditionTemplate,
   Observation: observationTemplate,
   Patient: patientTemplate,
+  Procedure: procedureTemplate,
   ResearchStudy: researchStudyTemplate,
   ResearchSubject: researchSubjectTemplate,
 };
