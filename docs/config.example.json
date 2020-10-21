@@ -1,0 +1,42 @@
+{
+  "patientIdCsvPath": "/path/to/patient/mrn/file - can be absolute or relative to the location from which the client is being run",
+  "commonExtractorArgs": {
+    "argType": "ArgValue - unneeded arguments are ignored by extractors. This is helpful in defining commonly reused arguments. Examples below",
+    "baseFHIRUrl": "http://www.example.com/fhir/api/",
+    "baseEnvUrl": "http://www.example.com/service/api/",
+    "requestHeaders": {},
+    "userId": {
+      "id": "example_userid",
+      "type": "example_userid_type"
+    }
+  },
+  "notificationInfo": {
+    "host": "smtp.example.com",
+    "port": 587,
+    "from": "sender@example.com",
+    "to": [
+      "demo@example.com",
+      "test@example.com"
+    ]
+  },
+  "extractors": [
+    {
+      "label": "Display Label for Extractor",
+      "type": "ExtractorClassNameRegisteredInICAREClient",
+      "constructorArgs": {
+        "argType": "ArgValue - for example, Extractors that use CSV modules need to specify a file path, absolute or relative to the location from which the client is being run."
+      }
+    }
+  ],
+  "auth": {
+    "tokenEndpoint": "http://example.com/oauth2/token",
+    "clientId": "client_id",
+    "jwk": {}
+  },
+  "awsConfig": {
+    "baseURL": "http://example.com",
+    "clientId": "client_id",
+    "aud": "http://example.com/auth/realms/realm",
+    "jwk": {}
+  }
+}
