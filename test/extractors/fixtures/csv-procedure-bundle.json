@@ -23,9 +23,9 @@
           {
             "coding": [
               {
-                "system": "YYYY-MM-DD",
-                "code": "example-category",
-                "display": "example-status"
+                "system": "example-system",
+                "code": "example-code",
+                "display": "example-name"
               }
             ]
           }
