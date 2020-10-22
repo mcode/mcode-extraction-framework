@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../utils');
 const maximalValidExampleMedication = require('./fixtures/maximal-medication-resource.json');
 const minimalValidExampleMedication = require('./fixtures/minimal-medication-resource.json');
 const { cancerRelatedMedicationTemplate } = require('../../src/templates/CancerRelatedMedicationTemplate.js');
@@ -55,12 +56,14 @@ describe('test Medication template', () => {
     const generatedMedication = cancerRelatedMedicationTemplate(MEDICATION_VALID_DATA);
 
     expect(generatedMedication).toEqual(maximalValidExampleMedication);
+    expect(isValidFHIR(generatedMedication)).toBeTruthy();
   });
 
   test('minimal data passed into template should generate FHIR resource', () => {
     const generatedMedication = cancerRelatedMedicationTemplate(MEDICATION_MINIMAL_DATA);
 
     expect(generatedMedication).toEqual(minimalValidExampleMedication);
+    expect(isValidFHIR(generatedMedication)).toBeTruthy();
   });
 
   test('missing non-required data should not throw an error', () => {

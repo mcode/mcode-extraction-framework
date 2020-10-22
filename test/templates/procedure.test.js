@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../utils');
 const maximalProcedure = require('./fixtures/maximal-procedure-resource.json');
 const minimalProcedure = require('./fixtures/minimal-procedure-resource.json');
 const { procedureTemplate } = require('../../src/templates/ProcedureTemplate');
@@ -16,6 +17,7 @@ describe('JavaScript render Procedure template', () => {
 
     const generatedProcedure = procedureTemplate(PROCEDURE_MINIMAL_DATA);
     expect(generatedProcedure).toEqual(minimalProcedure);
+    expect(isValidFHIR(generatedProcedure)).toBeTruthy();
   });
 
   test('maximal data passed into template should generate FHIR resource', () => {
@@ -38,6 +40,7 @@ describe('JavaScript render Procedure template', () => {
 
     const generatedProcedure = procedureTemplate(PROCEDURE_MAXIMAL_DATA);
     expect(generatedProcedure).toEqual(maximalProcedure);
+    expect(isValidFHIR(generatedProcedure)).toBeTruthy();
   });
 
   test('missing non-required data should not throw an error', () => {

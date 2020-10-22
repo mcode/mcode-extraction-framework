@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../utils');
 const maximalCancerDiseaseStatus = require('./fixtures/disease-status-resource.json');
 const minimalCancerDiseaseStatus = require('./fixtures/minimal-disease-status-resource.json');
 const { cancerDiseaseStatusTemplate } = require('../../src/templates/CancerDiseaseStatusTemplate');
@@ -36,6 +37,7 @@ describe('test CancerDiseaseStatus template', () => {
 
     // Relevant fields should match the valid FHIR
     expect(generatedDiseaseStatus).toEqual(maximalCancerDiseaseStatus);
+    expect(isValidFHIR(generatedDiseaseStatus)).toBeTruthy();
   });
 
   test('valid data with only required attributes passed into template should generate valid FHIR resource', () => {
@@ -64,6 +66,7 @@ describe('test CancerDiseaseStatus template', () => {
 
     // Relevant fields should match the valid FHIR
     expect(generatedDiseaseStatus).toEqual(minimalCancerDiseaseStatus);
+    expect(isValidFHIR(generatedDiseaseStatus)).toBeTruthy();
   });
 
   test('missing required data should throw an error', () => {

@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../utils');
 const validResearchStudy = require('./fixtures/research-study-resource.json');
 const { researchStudyTemplate } = require('../../src/templates/ResearchStudyTemplate');
 
@@ -18,6 +19,7 @@ describe('test ResearchStudy template', () => {
     const generatedResearchStudy = researchStudyTemplate(VALID_DATA);
     // Relevant fields should match the valid FHIR
     expect(generatedResearchStudy).toEqual(validResearchStudy);
+    expect(isValidFHIR(generatedResearchStudy)).toBeTruthy();
   });
 
   test('invalid data should throw an error', () => {

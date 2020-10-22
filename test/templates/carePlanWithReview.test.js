@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../utils');
 const minimalCarePlan = require('./fixtures/minimal-careplan-resource.json');
 const maximalCarePlan = require('./fixtures/maximal-careplan-resource.json');
 const { carePlanWithReviewTemplate } = require('../../src/templates/CarePlanWithReviewTemplate');
@@ -15,6 +16,7 @@ describe('JavaScript render CarePlan template', () => {
 
     const generatedCarePlan = carePlanWithReviewTemplate(CARE_PLAN_VALID_DATA);
     expect(generatedCarePlan).toEqual(minimalCarePlan);
+    expect(isValidFHIR(generatedCarePlan)).toBeTruthy();
   });
 
   test('maximal data passed into template should generate FHIR resource', () => {
@@ -31,6 +33,7 @@ describe('JavaScript render CarePlan template', () => {
 
     const generatedCarePlan = carePlanWithReviewTemplate(MAX_CARE_PLAN_DATA);
     expect(generatedCarePlan).toEqual(maximalCarePlan);
+    expect(isValidFHIR(generatedCarePlan)).toBeTruthy();
   });
 
   test('missing non-required data should not throw an error', () => {
