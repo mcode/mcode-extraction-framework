@@ -97,6 +97,36 @@ const getBundleEntriesByResourceType = (bundle, type, context = {}, first = fals
   return first ? null : [];
 };
 
+const logOperationOutcomeInfo = (operationOutcome) => {
+  logger.warn('An OperationOutcome was returned with the following issue(s):');
+  operationOutcome.issue.forEach((issue) => {
+    let issueMessage = `Severity: ${issue.severity}. Code: ${issue.code}`;
+    let detailsMessage = '';
+    if (issue.diagnostics) issueMessage += `. Diagnostics: ${issue.diagnostics}`;
+    if (issue.expression) issueMessage += `. Related FHIRPath: ${issue.expression}`;
+    if (issue.details) {
+      if (issue.details.text) issueMessage += `. Details: ${issue.details.text}`;
+      if (issue.details.coding.length > 0) detailsMessage += 'Codings: ';
+      issue.details.coding.forEach((coding) => {
+        detailsMessage += `Code: ${coding.code}, System: ${coding.system}, Display: ${coding.display}. `;
+      });
+    }
+
+    // Log with the same severity as the issue
+    let logLevel = 'info'; // issue.severity === 'information'
+    if (issue.severity === 'fatal' || issue.severity === 'error') {
+      logLevel = 'error';
+    } else if (issue.severity === 'warning') {
+      logLevel = 'warn';
+    }
+    logger.log(logLevel, issueMessage);
+    if (detailsMessage) {
+      // If there were any codes, log them
+      logger.debug(detailsMessage);
+    }
+  });
+};
+
 module.exports = {
   getQuantityUnit,
   quantityCodeToUnitLookup,
@@ -108,5 +138,6 @@ module.exports = {
   getBundleResourcesByType,
   getEmptyBundle,
   isBundleEmpty,
+  logOperationOutcomeInfo,
   mapFHIRVersions,
 };
