@@ -1,5 +1,5 @@
 const {
-  coding, extensionArr, meta, narrative, reference, valueCodeableConcept, valueX,
+  coding, extensionArr, meta, narrative, reference, valueX,
 } = require('./snippets');
 const { ifAllArgs } = require('../helpers/templateUtils');
 
@@ -27,12 +27,12 @@ function createdTemplate({ effectiveDateTime }) {
 function carePlanReasonTemplate({ reasonCode, reasonDisplayText }) {
   return {
     url: 'CarePlanChangeReason',
-    ...valueCodeableConcept({
+    ...valueX({
       system: 'http://snomed.info/sct',
       code: reasonCode,
       display: reasonDisplayText,
       text: reasonDisplayText,
-    }),
+    }, 'valueCodeableConcept'),
   };
 }
 

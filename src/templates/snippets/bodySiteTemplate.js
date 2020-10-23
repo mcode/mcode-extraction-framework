@@ -1,4 +1,4 @@
-const { valueCodeableConcept } = require('./valueX');
+const { valueX } = require('./valueX');
 const { coding } = require('./coding');
 const { ifAllArgsObj } = require('../../helpers/templateUtils');
 
@@ -7,7 +7,7 @@ function lateralityTemplate({ laterality }) {
     extension: [
       {
         url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality',
-        ...valueCodeableConcept({ code: laterality, system: 'http://snomed.info/sct' }),
+        ...valueX({ code: laterality, system: 'http://snomed.info/sct' }, 'valueCodeableConcept'),
       },
     ],
   };

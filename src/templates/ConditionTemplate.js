@@ -1,11 +1,11 @@
-const { extensionArr, coding, valueCodeableConcept, reference } = require('./snippets');
+const { extensionArr, coding, valueX, reference } = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
 const { isConditionCodeCancer } = require('../helpers/conditionUtils');
 
 function histologyTemplate({ histology }) {
   return {
     url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histology-morphology-behavior',
-    ...valueCodeableConcept({ code: histology, system: 'http://snomed.info/sct' }),
+    ...valueX({ code: histology, system: 'http://snomed.info/sct' }, 'valueCodeableConcept'),
   };
 }
 
@@ -73,7 +73,7 @@ function bodySiteTemplate({ bodySite, laterality }) {
         extension: [
           {
             url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality',
-            ...valueCodeableConcept({ code: laterality, system: 'http://snomed.info/sct' }),
+            ...valueX({ code: laterality, system: 'http://snomed.info/sct' }, 'valueCodeableConcept'),
           },
         ],
         coding: [coding({ code: bodySite[0], system: 'http://snomed.info/sct' }),

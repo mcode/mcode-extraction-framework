@@ -1,11 +1,11 @@
-const { coding, extensionArr, reference, valueCodeableConcept } = require('./snippets');
+const { coding, extensionArr, reference, valueX } = require('./snippets');
 
 function evidenceTemplate({ evidence }) {
   if (!evidence || evidence.length === 0) return [];
 
   return evidence.map((e) => ({
     url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type',
-    ...valueCodeableConcept({ ...e, system: 'http://snomed.info/sct' }),
+    ...valueX({ ...e, system: 'http://snomed.info/sct' }, 'valueCodeableConcept'),
   }));
 }
 
@@ -70,7 +70,7 @@ function cancerDiseaseStatusTemplate({
     effectiveDateTime,
     ...focusTemplate({ condition }),
     ...subjectTemplate({ subject }),
-    ...valueCodeableConcept(value),
+    ...valueX(value, 'valueCodeableConcept'),
   };
 }
 

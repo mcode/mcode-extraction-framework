@@ -2,7 +2,6 @@ const {
   bodySiteTemplate,
   coding,
   reference,
-  valueCodeableConcept,
   valueX,
 } = require('./snippets');
 const { ifSomeArgsObj } = require('../helpers/templateUtils');
@@ -57,12 +56,10 @@ function subjectTemplate({ subjectId }) {
   };
 }
 
-// TODO: We might want to consider a better way to handle the value field
-// if we revisit the valueX inference approach at a later date
 function valueTemplate({ code, valueCode, valueCodeSystem }) {
   if (!(code && valueCode)) return null;
-  if (isTumorMarker(code)) return valueCodeableConcept({ code: valueCode, system: valueCodeSystem });
-  if (isECOGPerformanceStatus(code) || isKarnofskyPerformanceStatus(code)) return valueX(parseInt(valueCode, 10));
+  if (isTumorMarker(code)) return valueX({ code: valueCode, system: valueCodeSystem }, 'valueCodeableConcept');
+  if (isECOGPerformanceStatus(code) || isKarnofskyPerformanceStatus(code)) return valueX(valueCode, 'valueInteger');
   return valueX(valueCode); // Vital Sign will be parsed as quantity, others will be parsed as appropriate
 }
 
