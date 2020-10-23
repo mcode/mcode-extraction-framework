@@ -1,9 +1,4 @@
-const {
-  bodySiteTemplate,
-  coding,
-  reference,
-  valueX,
-} = require('./snippets');
+const { bodySiteTemplate, coding, reference, valueX } = require('./snippets');
 const { ifSomeArgsObj } = require('../helpers/templateUtils');
 const { isTumorMarker, isVitalSign, isKarnofskyPerformanceStatus, isECOGPerformanceStatus } = require('../helpers/observationUtils');
 
