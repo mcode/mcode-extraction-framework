@@ -1,12 +1,6 @@
 const { Extractor } = require('./Extractor');
 const { BaseFHIRModule } = require('../modules');
-const {
-  determineVersion,
-  getBundleResourcesByType,
-  isBundleEmpty,
-  logOperationOutcomeInfo,
-  mapFHIRVersions,
-} = require('../helpers/fhirUtils');
+const { determineVersion, getBundleResourcesByType, isBundleEmpty, mapFHIRVersions } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
 function parseContextForPatientId(context) {
@@ -46,10 +40,6 @@ class BaseFHIRExtractor extends Extractor {
     // 1. Get data
     logger.debug(`Getting ${this.resourceType} FHIR resource`);
     const fhirResponseBundle = await this.baseFHIRModule.search(this.resourceType, params);
-    const operationOutcomeEntry = getBundleResourcesByType(fhirResponseBundle, 'OperationOutcome', {}, true);
-    if (operationOutcomeEntry) {
-      logOperationOutcomeInfo(operationOutcomeEntry);
-    }
     if (isBundleEmpty(fhirResponseBundle)) {
       logger.warn(`${this.resourceType} bundle that was supposed to have entries had 0`);
       return fhirResponseBundle;
