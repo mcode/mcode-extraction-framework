@@ -1,0 +1,106 @@
+{
+  "resourceType": "Bundle",
+  "id": "32e1d04d-73f4-4dbc-802b-13dce4fdc87b",
+  "type": "message",
+  "timestamp": "2020-06-24T11:17:03-04:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:0408e9ec-cf22-425b-bf8a-683ac4b7335e",
+      "resource": {
+        "resourceType": "MessageHeader",
+        "id": "0408e9ec-cf22-425b-bf8a-683ac4b7335e",
+        "eventCoding": {
+          "system": "http://example.org/fhir/message-events",
+          "code": "icaredata-submission"
+        },
+        "source": {
+          "endpoint": "http://icaredata.org/submission-client"
+        },
+        "focus": [
+          {
+            "reference": "urn:uuid:638f2b81-0cf5-4f8f-90c1-bac3704ccfb6"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:638f2b81-0cf5-4f8f-90c1-bac3704ccfb6",
+      "resource": {
+        "resourceType": "Bundle",
+        "id": "638f2b81-0cf5-4f8f-90c1-bac3704ccfb6",
+        "type": "collection",
+        "entry": [
+          {
+            "fullUrl": "urn:uuid:any-unique-id",
+            "resource": {
+              "resourceType": "Patient",
+              "id": "any-unique-id",
+              "identifier": [
+                {
+                  "type": {
+                    "coding": [
+                      {
+                        "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                        "code": "MR",
+                        "display": "Medical Record Number"
+                      }
+                    ],
+                    "text": "Medical Record Number"
+                  },
+                  "system": "http://example.com/system/mrn",
+                  "value": "119147111821125"
+                }
+              ],
+              "name": [
+                {
+                  "text": "Archy Marshall",
+                  "family": "Marshall",
+                  "given": [
+                    "Archy"
+                  ]
+                }
+              ],
+              "gender": "male"
+            }
+          },
+          {
+            "fullUrl": "urn:uuid:conditionId-1",
+            "resource": {
+              "resourceType": "Condition",
+              "id": "conditionId-1",
+              "subject": {
+                "reference": "urn:uuid:mrn-1"
+              },
+              "code": {
+                "coding": [
+                  {
+                    "system": "example-code-system",
+                    "code": "example-code"
+                  }
+                ]
+              },
+              "category": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                      "code": "problem-list-item"
+                    }
+                  ]
+                }
+              ],
+              "verificationStatus": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                    "code": "confirmed"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

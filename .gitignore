@@ -1,3 +1,7 @@
 node_modules/
 .vscode/
 .DS_Store
+output/
+logs/
+config/*.json
+!config/mcode-csv-config.example.json

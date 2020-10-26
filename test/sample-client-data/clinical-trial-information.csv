@@ -1,0 +1,4 @@
+mrn,trialSubjectID,enrollmentStatus,trialResearchID,trialStatus
+123,subjectId-1,potential-candidate,researchId-1,approved
+456,subjectId-2,on-study-intervention,researchId-1,completed
+789,subjectId-3,on-study-observation,researchId-2,active

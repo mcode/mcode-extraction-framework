@@ -2,8 +2,14 @@ const logger = require('../helpers/logger');
 
 class BaseClient {
   constructor() {
+    // Lookup table mapping classNames to constructors
     this.extractorClasses = {};
+    // Where instances of the actual extractors live
     this.extractors = [];
+    // Where an instance of the client stores it's configuration of extractors
+    this.extractorsConfig = [];
+    // Constructor arguments that are shared across all extractors
+    this.commonExtractorArgs = {};
   }
 
   // Given a list of extractorClasses, register them in our lookup table
@@ -25,6 +31,10 @@ class BaseClient {
       const ExtractorClass = this.extractorClasses[type];
       this.extractors.push(new ExtractorClass({ ...commonExtractorArgs, ...constructorArgs }));
     });
+  }
+
+  async init() {
+    return this.initializeExtractors(this.extractorConfig, this.commonExtractorArgs);
   }
 
   async get(args) {

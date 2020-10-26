@@ -1,5 +1,13 @@
 const logger = require('./helpers/logger');
 const { BaseClient } = require('./client/BaseClient');
+const { MCODEClient } = require('./client/MCODEClient');
+const {
+  mcodeApp,
+  RunInstanceLogger,
+  extractDataForPatients,
+  sendEmailNotification,
+  zipErrors,
+} = require('./cli');
 const {
   BaseFHIRExtractor,
   CSVCancerDiseaseStatusExtractor,
@@ -51,6 +59,13 @@ const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = req
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
 
 module.exports = {
+  // CLI Related utilities
+  mcodeApp,
+  RunInstanceLogger,
+  extractDataForPatients,
+  sendEmailNotification,
+  zipErrors,
+  // Extractors and Clients
   BaseClient,
   BaseFHIRExtractor,
   BaseFHIRModule,
@@ -75,6 +90,8 @@ module.exports = {
   FHIRPatientExtractor,
   FHIRProcedureExtractor,
   logger,
+  MCODEClient,
+  // FHIR and resource helpers
   allResourcesInBundle,
   firstEntryInBundle,
   firstResourceInBundle,
