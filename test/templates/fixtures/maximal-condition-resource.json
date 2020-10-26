@@ -4,7 +4,7 @@
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/condition-assertedDate",
-      "valueDateTime": "YYYY-MM-DD"
+      "valueDateTime": "2020-01-01"
     },
     {
       "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histology-morphology-behavior",

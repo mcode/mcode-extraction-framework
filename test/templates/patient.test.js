@@ -7,7 +7,7 @@ const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 describe('JavaScript Render Patient', () => {
   test('minimal required data passed into template should generate FHIR resource', () => {
     const PATIENT_VALID_DATA = {
-      id: 'Some Id',
+      id: 'SomeId',
       mrn: '1234',
       familyName: 'Patient',
       givenName: 'Test',
@@ -20,7 +20,7 @@ describe('JavaScript Render Patient', () => {
 
   test('maximal data passed into template should generate FHIR resource', () => {
     const MAX_PATIENT_DATA = {
-      id: 'Some Id',
+      id: 'SomeId',
       mrn: '1234',
       familyName: 'Patient',
       givenName: 'Test',

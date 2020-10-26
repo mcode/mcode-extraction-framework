@@ -18,7 +18,7 @@ const CONDITION_VALID_DATA = {
   category: [
     'example-code',
   ],
-  dateOfDiagnosis: 'YYYY-MM-DD',
+  dateOfDiagnosis: '2020-01-01',
   clinicalStatus: 'example-code',
   verificationStatus: 'example-code',
   bodySite: [
@@ -56,7 +56,7 @@ const CONDITION_INVALID_DATA = {
   subject: null,
   code: null,
   category: null,
-  dateOfDiagnosis: 'YYYY-MM-DD',
+  dateOfDiagnosis: '2020-01-01',
   clinicalStatus: 'example-code',
   verificationStatus: 'example-code',
   bodySite: [

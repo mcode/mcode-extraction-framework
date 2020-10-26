@@ -33,8 +33,8 @@
     "reference": "urn:uuid:mrn-1"
   },
   "effectivePeriod": {
-    "start": "YYYY-MM-DD",
-    "end": "YYYY-MM-DD"
+    "start": "2020-01-01",
+    "end": "2020-02-01"
   },
   "reasonCode": [
     {

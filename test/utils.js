@@ -37,8 +37,8 @@ function allOptionalKeyCombinationsNotThrow(optionalObj, testFn, requiredObj = n
   }
 }
 
-function isValidFHIR(bundle) {
-  return validator.validate('FHIR', bundle);
+function isValidFHIR(resource) {
+  return validator.validate('FHIR', resource);
 }
 
 module.exports = {
