@@ -1,6 +1,6 @@
 const { Extractor } = require('./Extractor');
 const { BaseFHIRModule } = require('../modules');
-const { determineVersion, getBundleResourcesByType, isBundleEmpty, mapFHIRVersions } = require('../helpers/fhirUtils');
+const { determineVersion, mapFHIRVersions, isBundleEmpty, getBundleResourcesByType } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
 function parseContextForPatientId(context) {
