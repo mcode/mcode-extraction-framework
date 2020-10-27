@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../utils');
 const maximalValidExampleCondition = require('./fixtures/maximal-condition-resource.json');
 const minimalValidExampleCondition = require('./fixtures/minimal-condition-resource.json');
 const cancerValidExampleCondition = require('./fixtures/cancer-condition-resource.json');
@@ -17,7 +18,7 @@ const CONDITION_VALID_DATA = {
   category: [
     'example-code',
   ],
-  dateOfDiagnosis: 'YYYY-MM-DD',
+  dateOfDiagnosis: '2020-01-01',
   clinicalStatus: 'example-code',
   verificationStatus: 'example-code',
   bodySite: [
@@ -55,7 +56,7 @@ const CONDITION_INVALID_DATA = {
   subject: null,
   code: null,
   category: null,
-  dateOfDiagnosis: 'YYYY-MM-DD',
+  dateOfDiagnosis: '2020-01-01',
   clinicalStatus: 'example-code',
   verificationStatus: 'example-code',
   bodySite: [
@@ -70,12 +71,14 @@ describe('test Condition template', () => {
     const generatedCondition = conditionTemplate(CONDITION_VALID_DATA);
 
     expect(generatedCondition).toEqual(maximalValidExampleCondition);
+    expect(isValidFHIR(generatedCondition)).toBeTruthy();
   });
 
   test('minimal data passed into template should generate FHIR resource', () => {
     const generatedCondition = conditionTemplate(CONDITION_MINIMAL_DATA);
 
     expect(generatedCondition).toEqual(minimalValidExampleCondition);
+    expect(isValidFHIR(generatedCondition)).toBeTruthy();
   });
 
   test('missing non-required data should not throw an error', () => {

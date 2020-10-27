@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../utils');
 const validResearchSubject = require('./fixtures/research-subject-resource.json');
 const { researchSubjectTemplate } = require('../../src/templates/ResearchSubjectTemplate');
 
@@ -23,6 +24,7 @@ describe('test ResearchSubject template', () => {
     expect(generatedResearchSubject.id).toEqual(validResearchSubject.id);
     expect(generatedResearchSubject.trialStatus).toEqual(validResearchSubject.trialStatus);
     expect(generatedResearchSubject.trialResearchID).toEqual(validResearchSubject.trialResearchID);
+    expect(isValidFHIR(generatedResearchSubject)).toBeTruthy();
   });
 
   test('invalid data should throw an error', () => {

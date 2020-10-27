@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../utils');
 const basicPatient = require('./fixtures/patient-resource.json');
 const maximalPatient = require('./fixtures/maximal-patient-resource.json');
 const { patientTemplate } = require('../../src/templates/PatientTemplate');
@@ -6,7 +7,7 @@ const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 describe('JavaScript Render Patient', () => {
   test('minimal required data passed into template should generate FHIR resource', () => {
     const PATIENT_VALID_DATA = {
-      id: 'Some Id',
+      id: 'SomeId',
       mrn: '1234',
       familyName: 'Patient',
       givenName: 'Test',
@@ -14,11 +15,12 @@ describe('JavaScript Render Patient', () => {
     };
     const generatedPatient = patientTemplate(PATIENT_VALID_DATA);
     expect(generatedPatient).toEqual(basicPatient);
+    expect(isValidFHIR(generatedPatient)).toBeTruthy();
   });
 
   test('maximal data passed into template should generate FHIR resource', () => {
     const MAX_PATIENT_DATA = {
-      id: 'Some Id',
+      id: 'SomeId',
       mrn: '1234',
       familyName: 'Patient',
       givenName: 'Test',
@@ -40,6 +42,7 @@ describe('JavaScript Render Patient', () => {
     const generatedPatient = patientTemplate(MAX_PATIENT_DATA);
 
     expect(generatedPatient).toEqual(maximalPatient);
+    expect(isValidFHIR(generatedPatient)).toBeTruthy();
   });
 
   test('missing non-required data should not throw an error', () => {

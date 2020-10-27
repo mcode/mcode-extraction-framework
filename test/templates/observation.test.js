@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../utils');
 const maximalObservationResource = require('./fixtures/maximal-observation-resource.json');
 const minimalObservationResource = require('./fixtures/minimal-observation-resource.json');
 const { observationTemplate } = require('../../src/templates/ObservationTemplate');
@@ -44,6 +45,7 @@ describe('test Observation template', () => {
 
     // Relevant fields should match the valid FHIR
     expect(generatedObservation).toEqual(maximalObservationResource);
+    expect(isValidFHIR(generatedObservation)).toBeTruthy();
   });
 
   test('valid data with only required attributes passed into template should generate valid FHIR resource', () => {
@@ -52,6 +54,7 @@ describe('test Observation template', () => {
 
     // Relevant fields should match the valid FHIR
     expect(generatedObservation).toEqual(minimalObservationResource);
+    expect(isValidFHIR(generatedObservation)).toBeTruthy();
   });
 
   test('missing non-required data should not throw an error', () => {
