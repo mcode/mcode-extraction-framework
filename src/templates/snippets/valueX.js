@@ -25,6 +25,11 @@ function valueByType(value, type) {
         valueInteger: parseInt(value, 10),
       };
 
+    case 'valueDecimal':
+      return {
+        valueInteger: parseFloat(value),
+      };
+
     case 'valueBoolean':
       return {
         valueBoolean: value,
@@ -95,7 +100,7 @@ function valueByType(value, type) {
       };
 
     default:
-      logger.warn(`The type ${type} is not recognized by the ValueTemplate, attempting to infer the type of the value.`);
+      logger.debug(`The type ${type} is not recognized by the ValueTemplate, attempting to infer the type of the value.`);
       return null;
   }
 }
@@ -166,11 +171,13 @@ function valueX(value, type = null) {
             end: value.end,
           },
         };
-      } if (value.unit) {
+      } if (value.value && value.code) {
         return {
           valueQuantity: {
-            unit: value.unit,
+            unit: !value.unit ? getQuantityUnit(value.code) : value.unit,
             value: value.value,
+            code: value.code,
+            system: 'http://unitsofmeasure.org',
           },
         };
       } if (value.system || value.version || value.code || value.display || value.userSelected) {
