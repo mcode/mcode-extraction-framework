@@ -36,7 +36,7 @@ describe('valueX snippet', () => {
   test('Should generate valueDecimal when type parameter is used', () => {
     const exampleNumber = 17;
     const exampleValueDecimal = {
-      valueInteger: 17,
+      valueDecimal: 17,
     };
     expect(valueX(exampleNumber, 'valueDecimal')).toEqual(exampleValueDecimal);
   });

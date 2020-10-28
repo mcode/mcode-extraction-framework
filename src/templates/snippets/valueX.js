@@ -8,8 +8,65 @@ const dateRegex = /^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|
 const dateTimeRegex = /^\d\d\d\d-\d\d-\d\dT\d\d(:\d\d(:\d\d(-\d\d:\d\d)?)?)?$/;
 const valueTimeRegex = /^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$/;
 
-function valueByType(value, type) {
-  switch (type) {
+// Array of supported value[x] types
+const supportedTypes = [
+  'valueBoolean',
+  'valueCodeableConcept',
+  'valueCoding',
+  'valueDate',
+  'valueDateTime',
+  'valueDecimal',
+  'valueInteger',
+  'valuePeriod',
+  'valueQuantity',
+  'valueRange',
+  'valueString',
+];
+
+function valueX(value, type = null) {
+  let valueType = type;
+  if (!supportedTypes.includes(valueType)) {
+    switch (typeof value) {
+      case 'number':
+        valueType = 'valueInteger';
+        break;
+
+      case 'boolean':
+        valueType = 'valueBoolean';
+        break;
+
+      case 'string':
+        if (dateTimeRegex.test(value)) {
+          valueType = 'valueDateTime';
+        } else if (dateRegex.test(value)) {
+          valueType = 'valueDate';
+        } else if (valueTimeRegex.test(value)) {
+          valueType = 'valueTime';
+        } else if (quantRegex.test(value)) {
+          valueType = 'valueQuantity';
+        } else {
+          valueType = 'valueString';
+        }
+        break;
+
+      case 'object':
+        if (value.high || value.low) {
+          valueType = 'valueRange';
+        } else if (value.start || value.end) {
+          valueType = 'valuePeriod';
+        } else if (value.value && value.code) {
+          valueType = 'valueQuantity';
+        } else if (value.system || value.version || value.code || value.display || value.userSelected) {
+          valueType = 'valueCoding';
+        }
+        break;
+
+      default:
+        logger.warn(`Unable to determine the value[x] specialization with the provided value of type - ${typeof value}`);
+        break;
+    }
+  }
+  switch (valueType) {
     case 'valueCodeableConcept':
       return {
         valueCodeableConcept: {
@@ -27,7 +84,7 @@ function valueByType(value, type) {
 
     case 'valueDecimal':
       return {
-        valueInteger: parseFloat(value),
+        valueDecimal: parseFloat(value),
       };
 
     case 'valueBoolean':
@@ -98,98 +155,8 @@ function valueByType(value, type) {
       return {
         valueCoding: coding(value),
       };
-
     default:
-      logger.debug(`The type ${type} is not recognized by the ValueTemplate, attempting to infer the type of the value.`);
-      return null;
-  }
-}
-
-function valueX(value, type = null) {
-  if (type) {
-    const returnValue = valueByType(value, type);
-    if (returnValue != null) {
-      return returnValue;
-    }
-  }
-  switch (typeof value) {
-    case 'number':
-      return {
-        valueInteger: value,
-      };
-
-    case 'boolean':
-      return {
-        valueBoolean: value,
-      };
-
-    case 'string':
-      if (dateRegex.test(value)) {
-        return {
-          valueDate: value,
-        };
-      }
-      if (dateTimeRegex.test(value)) {
-        return {
-          valueDateTime: value,
-        };
-      }
-      if (valueTimeRegex.test(value)) {
-        return {
-          valueTime: value,
-        };
-      }
-      if (quantRegex.test(value)) {
-        const quantMatch = quantRegex.exec(value);
-        return {
-          valueQuantity: {
-            value: parseFloat(`${quantMatch[1]}${quantMatch[2] ? quantMatch[2] : ''}`, 10),
-            ...(quantMatch[6] && {
-              code: quantMatch[6],
-              system: 'http://unitsofmeasure.org',
-              unit: getQuantityUnit(quantMatch[6]),
-            }),
-          },
-        };
-      }
-      return {
-        valueString: value,
-      };
-
-    case 'object':
-      if (value.high || value.low) {
-        return {
-          valueRange: {
-            high: value.high,
-            low: value.low,
-          },
-        };
-      } if (value.start || value.end) {
-        return {
-          valuePeriod: {
-            start: value.start,
-            end: value.end,
-          },
-        };
-      } if (value.value && value.code) {
-        return {
-          valueQuantity: {
-            unit: !value.unit ? getQuantityUnit(value.code) : value.unit,
-            value: value.value,
-            code: value.code,
-            system: 'http://unitsofmeasure.org',
-          },
-        };
-      } if (value.system || value.version || value.code || value.display || value.userSelected) {
-        return {
-          valueCoding: coding(value),
-        };
-      }
-      logger.warn(`Trying to render a ValueTemplate with an object of unknown shape, including properties ${Object.keys(value)}`);
-      return null;
-
-    default:
-      logger.warn(`Trying to render a ValueTemplate with a value of unknown type - ${typeof value}`);
+      logger.warn(`Unable to render a ${valueType} template with the provided data`);
       return null;
   }
 }
