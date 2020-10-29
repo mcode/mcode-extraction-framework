@@ -63,6 +63,9 @@ function valueX(value, type = null) {
 
       default:
         logger.warn(`Unable to determine the value[x] specialization with the provided value of type - ${typeof value}`);
+        if (typeof value === 'object') {
+          logger.debug(`The provided object has an unknown shape, including properties ${Object.keys(value)}`);
+        }
         break;
     }
   }

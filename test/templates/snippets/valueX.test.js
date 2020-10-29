@@ -81,6 +81,14 @@ describe('valueX snippet', () => {
     expect(valueX(exampleDateTime, 'valueDateTime')).toEqual(exampleValueDateTime);
   });
 
+  test('Should generate valueDateTime when type parameter is not used', () => {
+    const exampleDateTime = '2020-02-01T10:35:59';
+    const exampleValueDateTime = {
+      valueDateTime: '2020-02-01T10:35:59',
+    };
+    expect(valueX(exampleDateTime)).toEqual(exampleValueDateTime);
+  });
+
   test('Should generate valueTime when type parameter is used', () => {
     const exampconstime = '10:35:59';
     const exampleValueTime = {
