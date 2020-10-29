@@ -98,6 +98,7 @@ const getBundleEntriesByResourceType = (bundle, type, context = {}, first = fals
 };
 
 const logOperationOutcomeInfo = (operationOutcome) => {
+  logger.info('An OperationOutcome was returned with the following issue(s):');
   operationOutcome.issue.forEach((issue) => {
     let issueMessage = `Severity: ${issue.severity}. Code: ${issue.code}`;
     let detailsMessage = '';
@@ -118,7 +119,6 @@ const logOperationOutcomeInfo = (operationOutcome) => {
     } else if (issue.severity === 'warning') {
       logLevel = 'warn';
     }
-    logger.log(logLevel, 'An OperationOutcome was returned with the following issue(s):');
     logger.log(logLevel, issueMessage);
     if (detailsMessage) {
       // If there were any codes, log them
