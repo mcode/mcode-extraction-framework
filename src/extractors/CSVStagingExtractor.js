@@ -4,6 +4,7 @@ const { CSVModule } = require('../modules');
 const { firstEntryInBundle } = require('../helpers/fhirUtils');
 const { generateMcodeResources } = require('../templates');
 const logger = require('../helpers/logger');
+const { formatDateTime } = require('../helpers/dateUtils');
 
 function formatTNMCategoryData(stagingData) {
   logger.debug('Reformatting TNM Category data into template format');
@@ -19,8 +20,8 @@ function formatTNMCategoryData(stagingData) {
   // data needed for each TNM category
   const necessaryData = {
     conditionId,
-    type,
-    effectiveDate,
+    effectiveDateTime: formatDateTime(effectiveDate),
+    stageType: type,
     subjectId: mrn,
   };
 
@@ -33,7 +34,7 @@ function formatTNMCategoryData(stagingData) {
 
 function formatStagingData(stagingData, categoryIds) {
   const {
-    mrn, conditionId, type, stageGroup, effectiveDate
+    mrn, conditionId, type, stageGroup, effectiveDate,
   } = stagingData;
 
   return {
@@ -41,7 +42,7 @@ function formatStagingData(stagingData, categoryIds) {
     conditionId,
     type,
     stageGroup,
-    effectiveDate,
+    effectiveDateTime: formatDateTime(effectiveDate),
     categoryIds,
   };
 }
