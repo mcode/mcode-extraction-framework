@@ -3,7 +3,7 @@ const {
   coding,
   extensionArr,
   reference,
-  valueCodeableConcept,
+  valueX,
 } = require('./snippets');
 const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
 
@@ -34,10 +34,10 @@ function reasonReference(conditionId) {
 function treatmentIntentTemplate({ treatmentIntent }) {
   return {
     url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent',
-    ...valueCodeableConcept({
+    ...valueX({
       system: 'http://snomed.info/sct',
       code: treatmentIntent,
-    }),
+    }, 'valueCodeableConcept'),
   };
 }
 

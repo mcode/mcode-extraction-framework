@@ -1,10 +1,10 @@
-const { coding, extensionArr, reference, valueCodeableConcept } = require('./snippets');
+const { coding, extensionArr, reference, valueX } = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
 
 function treatmentIntentTemplate({ treatmentIntent }) {
   return {
     url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent',
-    ...valueCodeableConcept({ code: treatmentIntent, system: 'http://snomed.info/sct' }),
+    ...valueX({ code: treatmentIntent, system: 'http://snomed.info/sct' }, 'valueCodeableConcept'),
   };
 }
 
