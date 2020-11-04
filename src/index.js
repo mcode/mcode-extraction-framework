@@ -34,6 +34,7 @@ const {
   getBundleResourcesByType,
   getEmptyBundle,
   isBundleEmpty,
+  logOperationOutcomeInfo,
 } = require('./helpers/fhirUtils');
 const { generateMcodeResources } = require('./templates');
 const {
@@ -95,5 +96,6 @@ module.exports = {
   isConditionSecondary,
   isConditionCodeCancer,
   isConditionCancer,
+  logOperationOutcomeInfo,
   mEpochToDate,
 };

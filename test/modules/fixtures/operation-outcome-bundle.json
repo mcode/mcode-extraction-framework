@@ -1,0 +1,114 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "link": [
+    {
+      "relation": "self"
+    }
+  ],
+  "entry": [
+    {
+      "link": [
+        {
+          "relation": "self"
+        }
+      ],
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-id",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.5.104",
+                  "code": "UNK",
+                  "display": "Unknown"
+                }
+              ],
+              "text": "Unknown"
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.5.50",
+                  "code": "UNK",
+                  "display": "Unknown"
+                }
+              ],
+              "text": "Unknown"
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-birth-sex",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v3/AdministrativeGender",
+                  "code": "F",
+                  "display": "Female"
+                }
+              ],
+              "text": "Female"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "usual",
+            "text": "Elizabeth-Test Smith-Mitre",
+            "family": [
+            "Smith-Mitre"
+            ],
+            "given": [
+              "Elizabeth-Test"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1942-01-07",
+        "deceasedBoolean": false
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationOutcome",
+        "issue": [
+          {
+            "severity": "warning",
+            "code": "invalid",
+            "details": {
+              "coding": [
+                {
+                  "system": "urn:oid:1.2.840.114350.1.13.0.1.7.2.657369",
+                  "code": "59101",
+                  "display": "Content invalid against the specification or a profile."
+                }
+              ],
+              "text": "Content invalid against the specification or a profile."
+            },
+            "diagnostics": "The provided status is not valid and has been ignored",
+            "location": [
+              "/f:status"
+            ],
+            "expression": [
+              "status"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "mode": "outcome"
+      }
+    }
+  ]
+}
