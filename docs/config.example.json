@@ -28,8 +28,8 @@
       }
     }
   ],
-  "auth": {
-    "tokenEndpoint": "http://example.com/oauth2/token",
+  "webServiceAuthConfig": {
+    "url": "http://example.com/oauth2/token",
     "clientId": "client_id",
     "jwk": {}
   },
