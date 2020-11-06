@@ -86,7 +86,10 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
 
     // Extract the data
     logger.info(`Extracting data for ${patientIds.length} patients`);
+    console.log('Pre extract');
+    console.log('mcodeApp -> extractDataForPatients', extractDataForPatients);
     const { extractedData, successfulExtraction, totalExtractionErrors } = await extractDataForPatients(patientIds, mcodeClient, effectiveFromDate, effectiveToDate);
+    console.log('Post extract');
 
     // If we have notification information, send an emailNotification
     const { notificationInfo } = config;

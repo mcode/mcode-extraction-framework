@@ -1,15 +1,18 @@
 const fs = require('fs');
 const rewire = require('rewire');
 const testConfig = require('./fixtures/test-config.json');
-// const { MCODEClient } = require('../../src/client/MCODEClient');
-// const { mcodeApp } = require('../../src/cli/app');
+const { MCODEClient } = require('../../src/client/MCODEClient');
+const mcodeExtractionModule = require('../../src/cli/mcodeExtraction');
+
+mcodeExtractionModule.extractDataForPatients = jest.fn();
+
+const { mcodeApp } = require('../../src/cli/app');
 
 const app = rewire('../../src/cli/app.js');
 const getConfig = app.__get__('getConfig');
 const checkInputAndConfig = app.__get__('checkInputAndConfig');
 const checkLogFile = app.__get__('checkLogFile');
 const getEffectiveFromDate = app.__get__('getEffectiveFromDate');
-// let extractDataForPatients = app.__get__('extractDataForPatients');
 
 describe('App Tests', () => {
   describe('getConfig', () => {
@@ -88,21 +91,21 @@ describe('App Tests', () => {
 
   describe('mcodeApp', () => {
     it('should call extractDataForPatients with correct patient ids, dates, and client', () => {
-      // // mcodeApp.extractDataForPatients = jest.fn();
+      // mcodeApp.extractDataForPatients = jest.fn();
       // extractDataForPatients = jest.fn();
-      // expect(() => mcodeApp(MCODEClient, '2020-01-01', '2020-10-10', 'test/cli/fixtures/test-config.json', 'test/cli/fixtures/test-bundle.json', false, false)).not.toThrowError();
-      // expect(extractDataForPatients).toHaveBeenCalled();
+      expect(() => mcodeApp(MCODEClient, '2020-01-01', '2020-10-10', 'test/cli/fixtures/test-config.json', 'test/cli/fixtures/test-run-log-file.json', false, false)).not.toThrowError();
+      expect(mcodeExtractionModule.extractDataForPatients).toHaveBeenCalled();
     });
 
-    it('should call sendEmailNotification if notificationInfo present in config', () => {});
-    it('should add successful runs to log', () => {});
-    it('should not add unsuccessful runs to log', () => {});
-    it('should not add successful runs to log if extracting all entries', () => {});
-    it('should write data to file when successful', () => {});
+    it('should call sendEmailNotification if notificationInfo present in config', () => { });
+    it('should add successful runs to log', () => { });
+    it('should not add unsuccessful runs to log', () => { });
+    it('should not add successful runs to log if extracting all entries', () => { });
+    it('should write data to file when successful', () => { });
 
-    it('should throw error when error in log file', () => {});
-    it('should throw error when config file invalid', () => {});
-    it('should throw error when error in input or config file', () => {});
-    it('should throw error when no effective date can be found', () => {});
+    it('should throw error when error in log file', () => { });
+    it('should throw error when config file invalid', () => { });
+    it('should throw error when error in input or config file', () => { });
+    it('should throw error when no effective date can be found', () => { });
   });
 });
