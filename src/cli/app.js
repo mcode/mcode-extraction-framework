@@ -13,7 +13,7 @@ function getConfig(pathToConfig) {
   try {
     return JSON.parse(fs.readFileSync(fullPath));
   } catch (err) {
-    throw new Error(`he provided filepath to a configuration file ${pathToConfig}, full path ${fullPath} did not point to a valid JSON file.`);
+    throw new Error(`The provided filepath to a configuration file ${pathToConfig}, full path ${fullPath} did not point to a valid JSON file.`);
   }
 }
 

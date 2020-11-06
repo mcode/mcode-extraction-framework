@@ -1,0 +1,11 @@
+{
+  "patientIdCsvPath": "test/cli/fixtures/patient-mrns.csv",
+  "commonExtractorArgs": {},
+  "extractors": [],
+  "notificationInfo": {
+    "host": "smtp.example.com",
+    "to": [
+      "demo@example.com"
+    ]
+  }
+}
