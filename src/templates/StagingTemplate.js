@@ -22,7 +22,7 @@ function getTypeSpecificData(type) {
 }
 
 function hasMemberTemplate(categoryIds) {
-  if (categoryIds.length === 0) return {};
+  if (!categoryIds || categoryIds.length === 0) return {};
 
   return {
     hasMember: categoryIds.map((id) => reference({ id })),
@@ -74,7 +74,7 @@ function stagingTemplate({
     },
     subject: reference({ id: subjectId }),
     effectiveDateTime,
-    ...valueX({ code: stageGroup, system: 'http://cancerstaging.org' }, 'valueCodeableConcept'),
+    ...(stageGroup && valueX({ code: stageGroup, system: 'http://cancerstaging.org' }, 'valueCodeableConcept')),
     focus: [reference({ id: conditionId })],
     ...hasMemberTemplate(categoryIds),
   };
