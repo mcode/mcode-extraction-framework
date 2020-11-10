@@ -25,7 +25,7 @@ function getCategorySpecificData(stageType, categoryType) {
         code: '21906-3',
       };
     }
-  } else if (stageType === 'Pathological') {
+  } else if (stageType === 'Pathologic') {
     const categoryCode = 'laboratory';
     if (categoryType === 'Tumor') {
       return {
@@ -49,6 +49,7 @@ function getCategorySpecificData(stageType, categoryType) {
       };
     }
   }
+
   throw new Error('Provided stage and category types are not valid.');
 }
 

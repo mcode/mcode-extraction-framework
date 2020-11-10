@@ -38,9 +38,9 @@ function stagingTemplate({
   effectiveDateTime,
   categoryIds,
 }) {
-  if (!(id && subjectId && conditionId && effectiveDateTime && type)) {
+  if (!(id && subjectId && conditionId && effectiveDateTime && stageGroup && type)) {
     throw Error('Trying to render a StagingTemplate, but a required argument is missing;'
-      + ' ensure that id, subjectId, conditionId, effectiveDateTime, type, are all present');
+      + ' ensure that id, subjectId, conditionId, effectiveDateTime, stageGroup, type, are all present');
   }
 
   const typeSpecificData = getTypeSpecificData(type);
@@ -74,7 +74,7 @@ function stagingTemplate({
     },
     subject: reference({ id: subjectId }),
     effectiveDateTime,
-    ...(stageGroup && valueX({ code: stageGroup, system: 'http://cancerstaging.org' }, 'valueCodeableConcept')),
+    ...valueX({ code: stageGroup, system: 'http://cancerstaging.org' }, 'valueCodeableConcept'),
     focus: [reference({ id: conditionId })],
     ...hasMemberTemplate(categoryIds),
   };

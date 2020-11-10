@@ -12,6 +12,7 @@ describe('JavaScript render Staging template', () => {
       subjectId: 'example-mrn',
       conditionId: 'example-condition-id',
       effectiveDateTime: '2020-01-01',
+      stageGroup: '3C',
       type: 'Clinical',
     };
 
@@ -26,6 +27,7 @@ describe('JavaScript render Staging template', () => {
       subjectId: 'example-mrn',
       conditionId: 'example-condition-id',
       effectiveDateTime: '2020-01-01',
+      stageGroup: '3C',
       type: 'Pathologic',
     };
 
@@ -56,11 +58,11 @@ describe('JavaScript render Staging template', () => {
       subjectId: 'example-mrn',
       conditionId: 'example-condition-id',
       effectiveDateTime: '2020-01-01',
+      stageGroup: '3C',
       type: 'Clinical',
     };
 
     const OPTIONAL_DATA = {
-      stageGroup: '3C',
       categoryIds: ['t-category-id', 'n-category-id', 'm-category-id'],
     };
 
