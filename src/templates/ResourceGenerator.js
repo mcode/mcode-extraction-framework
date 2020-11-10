@@ -25,7 +25,7 @@ const fhirTemplateLookup = {
   ResearchStudy: researchStudyTemplate,
   ResearchSubject: researchSubjectTemplate,
   Staging: stagingTemplate,
-  TNMCategoryTemplate: tnmCategoryTemplate,
+  TNMCategory: tnmCategoryTemplate,
 };
 
 function loadFhirTemplate(mcodeProfileID) {

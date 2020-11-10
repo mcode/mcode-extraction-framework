@@ -60,19 +60,26 @@ class CSVStagingExtractor extends Extractor {
 
   async get({ mrn }) {
     const stagingData = await this.getStagingData(mrn);
-    const formattedCategoryData = formatTNMCategoryData(stagingData);
+    const entryResources = [];
+    stagingData.forEach((data) => {
+      const formattedCategoryData = formatTNMCategoryData(data);
 
-    // Generate observation for each TNM category
-    const mcodeCategoryResources = formattedCategoryData.map((d) => firstEntryInBundle(generateMcodeResources('TNMCategory', d)));
+      // Generate observation for each TNM category
+      const mcodeCategoryResources = formattedCategoryData.map((d) => firstEntryInBundle(generateMcodeResources('TNMCategory', d)));
 
-    // Pass category resource ids to formatStagingData
-    const formattedStagingData = formatStagingData(stagingData, mcodeCategoryResources.map((r) => r.id));
-    const stagingResource = firstEntryInBundle(generateMcodeResources('Staging', formattedStagingData));
+      // Pass category resource ids to formatStagingData
+      const formattedStagingData = formatStagingData(data, mcodeCategoryResources.map((r) => r.resource.id));
+      const stagingResource = firstEntryInBundle(generateMcodeResources('Staging', formattedStagingData));
+
+      // Push all resources into entryResources
+      mcodeCategoryResources.forEach((r) => entryResources.push(r));
+      entryResources.push(stagingResource);
+    });
 
     return {
       resourceType: 'Bundle',
       type: 'collection',
-      entry: [...mcodeCategoryResources, stagingResource],
+      entry: entryResources,
     };
   }
 }
