@@ -11,7 +11,7 @@ test('formatDate does not reformat invalid date', () => {
 });
 
 test('formatDateTime reformats date with a time if provided', () => {
-  const currentTimeZone = moment().format('Z');
+  const currentTimeZone = moment('04/12/19').format('Z');
   expect(formatDateTime('04/12/19')).toEqual('2019-04-12');
   expect(formatDateTime('2019-04-12T08:00:00')).toEqual(`2019-04-12T08:00:00${currentTimeZone}`);
 });
