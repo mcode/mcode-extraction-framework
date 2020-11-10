@@ -11,6 +11,7 @@ const { patientTemplate } = require('./PatientTemplate');
 const { procedureTemplate } = require('./ProcedureTemplate');
 const { researchStudyTemplate } = require('./ResearchStudyTemplate');
 const { researchSubjectTemplate } = require('./ResearchSubjectTemplate');
+const { tnmCategoryTemplate } = require('./TNMCategoryTemplate');
 
 const fhirTemplateLookup = {
   CancerDiseaseStatus: cancerDiseaseStatusTemplate,
@@ -22,6 +23,7 @@ const fhirTemplateLookup = {
   Procedure: procedureTemplate,
   ResearchStudy: researchStudyTemplate,
   ResearchSubject: researchSubjectTemplate,
+  TNMCategoryTemplate: tnmCategoryTemplate,
 };
 
 function loadFhirTemplate(mcodeProfileID) {

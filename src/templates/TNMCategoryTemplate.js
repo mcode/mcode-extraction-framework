@@ -1,4 +1,4 @@
-const { coding, reference, valueCodeableConcept } = require('./snippets');
+const { coding, reference, valueX } = require('./snippets');
 
 // Returns category specific data based on stage and category type
 function getCategorySpecificData(stageType, categoryType) {
@@ -61,7 +61,7 @@ function tnmCategoryTemplate({
   }
 
   const categorySpecificData = getCategorySpecificData(stageType, categoryType);
-  const { categoryCode, profileUrl, code } = categorySpecificData;
+  const { categoryCode, code, profileUrl } = categorySpecificData;
 
   return {
     resourceType: 'Observation',
@@ -91,7 +91,7 @@ function tnmCategoryTemplate({
     },
     subject: reference({ id: subjectId }),
     effectiveDateTime,
-    ...valueCodeableConcept({ code: valueCode, system: 'http://cancerstaging.org' }),
+    ...valueX({ code: valueCode, system: 'http://cancerstaging.org' }, 'valueCodeableConcept'),
     focus: [reference({ id: conditionId })],
   };
 }
