@@ -11,6 +11,7 @@ const { patientTemplate } = require('./PatientTemplate');
 const { procedureTemplate } = require('./ProcedureTemplate');
 const { researchStudyTemplate } = require('./ResearchStudyTemplate');
 const { researchSubjectTemplate } = require('./ResearchSubjectTemplate');
+const { stagingTemplate } = require('./StagingTemplate');
 const { tnmCategoryTemplate } = require('./TNMCategoryTemplate');
 
 const fhirTemplateLookup = {
@@ -23,6 +24,7 @@ const fhirTemplateLookup = {
   Procedure: procedureTemplate,
   ResearchStudy: researchStudyTemplate,
   ResearchSubject: researchSubjectTemplate,
+  Staging: stagingTemplate,
   TNMCategoryTemplate: tnmCategoryTemplate,
 };
 
