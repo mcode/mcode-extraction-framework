@@ -28,7 +28,7 @@ describe('CSVStagingExtractor', () => {
       // Test that valid data works fine
       expect(formatTNMCategoryData(localData)).toEqual(expect.anything());
 
-      // Test all required properties are
+      // Test all optional properties can be removed without throwing errors
       delete localData.t;
       delete localData.m;
       delete localData.n;

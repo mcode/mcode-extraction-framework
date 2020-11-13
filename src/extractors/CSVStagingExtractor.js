@@ -10,7 +10,7 @@ function formatTNMCategoryData(stagingData) {
   logger.debug('Reformatting TNM Category data into template format');
   const formattedData = [];
   const {
-    mrn, conditionId, t, m, n, type, effectiveDate,
+    mrn, conditionId, t, n, m, type, effectiveDate,
   } = stagingData;
 
   if (!mrn || !conditionId || !effectiveDate) {
