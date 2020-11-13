@@ -30,6 +30,5 @@ async function extractDataForPatients(patientIds, mcodeClient, fromDate, toDate)
 }
 
 module.exports = {
-  getResourceCountInBundle,
   extractDataForPatients,
 };

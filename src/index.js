@@ -42,18 +42,19 @@ const {
   getBundleEntriesByResourceType,
   getBundleResourcesByType,
   getEmptyBundle,
+  getResourceCountInBundle,
   isBundleEmpty,
   logOperationOutcomeInfo,
 } = require('./helpers/fhirUtils');
 const { generateMcodeResources } = require('./templates');
 const {
+  getICD10Code,
   isConditionCodePrimary,
   isConditionCodeSecondary,
   isConditionPrimary,
   isConditionSecondary,
   isConditionCodeCancer,
   isConditionCancer,
-  getICD10Code,
 } = require('./helpers/conditionUtils');
 const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = require('./helpers/diseaseStatusUtils');
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
@@ -108,6 +109,7 @@ module.exports = {
   getPatientName,
   getRaceCodesystem,
   getRaceDisplay,
+  getResourceCountInBundle,
   isBundleEmpty,
   isConditionCodePrimary,
   isConditionCodeSecondary,
