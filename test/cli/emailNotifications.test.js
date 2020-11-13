@@ -1,4 +1,3 @@
-// Not entirely sure why nodemailer can't be imported directly and must be imported this way
 const nodemailer = require('nodemailer');
 const { sendEmailNotification } = require('../../src/cli/emailNotifications');
 
