@@ -46,6 +46,34 @@
       "constructorArgs": {
         "filePath": "./data/treatment-plan-change-information.csv"
       }
+    },
+    {
+      "label": "staging",
+      "type": "CSVStagingExtractor",
+      "constructorArgs": {
+        "filePath": "./test/sample-client-data/staging-information.csv"
+      }
+    },
+    {
+      "label": "cancerRelatedMedication",
+      "type": "CSVCancerRelatedMedicationExtractor",
+      "constructorArgs": {
+        "filePath": "./test/sample-client-data/cancer-related-medication-information.csv"
+      }
+    },
+    {
+      "label": "genericObservations",
+      "type": "CSVObservationExtractor",
+      "constructorArgs": {
+        "filePath": "./test/sample-client-data/observation-information.csv"
+      }
+    },
+    {
+      "label": "genericProcedures",
+      "type": "CSVProcedureExtractor",
+      "constructorArgs": {
+        "filePath": "./test/sample-client-data/procedure-information.csv"
+      }
     }
   ]
 }
