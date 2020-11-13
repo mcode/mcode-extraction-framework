@@ -99,7 +99,6 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
     if (!allEntries && effectiveFromDate) {
       const successCondition = successfulExtraction;
       if (successCondition) {
-        logger.info('Logging successful run information to records');
         runLogger.addRun(effectiveFromDate, effectiveToDate);
       }
     }
