@@ -1,0 +1,45 @@
+{
+  "resourceType": "Observation",
+  "id": "example-id",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-pathological-stage-group"
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "21902-2"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "urn:uuid:example-mrn"
+  },
+  "effectiveDateTime": "2020-01-01",
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://cancerstaging.org",
+        "code": "3C"
+      }
+    ]
+  },
+  "focus": [
+    {
+      "reference": "urn:uuid:example-condition-id"
+    }
+  ]
+}

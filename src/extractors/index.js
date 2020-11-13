@@ -1,4 +1,14 @@
 const { BaseFHIRExtractor } = require('./BaseFHIRExtractor');
+const { CSVCancerDiseaseStatusExtractor } = require('./CSVCancerDiseaseStatusExtractor');
+const { CSVCancerRelatedMedicationExtractor } = require('./CSVCancerRelatedMedicationExtractor');
+const { CSVClinicalTrialInformationExtractor } = require('./CSVClinicalTrialInformationExtractor');
+const { CSVConditionExtractor } = require('./CSVConditionExtractor');
+const { CSVObservationExtractor } = require('./CSVObservationExtractor');
+const { CSVPatientExtractor } = require('./CSVPatientExtractor');
+const { CSVProcedureExtractor } = require('./CSVProcedureExtractor');
+const { CSVStagingExtractor } = require('./CSVStagingExtractor');
+const { CSVTreatmentPlanChangeExtractor } = require('./CSVTreatmentPlanChangeExtractor');
+const { Extractor } = require('./Extractor');
 const { FHIRAllergyIntoleranceExtractor } = require('./FHIRAllergyIntoleranceExtractor');
 const { FHIRConditionExtractor } = require('./FHIRConditionExtractor');
 const { FHIRDocumentReferenceExtractor } = require('./FHIRDocumentReferenceExtractor');
@@ -8,26 +18,18 @@ const { FHIRMedicationStatementExtractor } = require('./FHIRMedicationStatementE
 const { FHIRObservationExtractor } = require('./FHIRObservationExtractor');
 const { FHIRPatientExtractor } = require('./FHIRPatientExtractor');
 const { FHIRProcedureExtractor } = require('./FHIRProcedureExtractor');
-const { CSVCancerDiseaseStatusExtractor } = require('./CSVCancerDiseaseStatusExtractor');
-const { CSVClinicalTrialInformationExtractor } = require('./CSVClinicalTrialInformationExtractor');
-const { CSVCancerRelatedMedicationExtractor } = require('./CSVCancerRelatedMedicationExtractor');
-const { CSVConditionExtractor } = require('./CSVConditionExtractor');
-const { CSVPatientExtractor } = require('./CSVPatientExtractor');
-const { CSVTreatmentPlanChangeExtractor } = require('./CSVTreatmentPlanChangeExtractor');
-const { CSVObservationExtractor } = require('./CSVObservationExtractor');
-const { CSVProcedureExtractor } = require('./CSVProcedureExtractor');
-const { Extractor } = require('./Extractor');
 
 module.exports = {
   BaseFHIRExtractor,
   CSVCancerDiseaseStatusExtractor,
+  CSVCancerRelatedMedicationExtractor,
   CSVClinicalTrialInformationExtractor,
   CSVConditionExtractor,
+  CSVObservationExtractor,
   CSVPatientExtractor,
   CSVProcedureExtractor,
-  CSVObservationExtractor,
+  CSVStagingExtractor,
   CSVTreatmentPlanChangeExtractor,
-  CSVCancerRelatedMedicationExtractor,
   Extractor,
   FHIRAllergyIntoleranceExtractor,
   FHIRConditionExtractor,

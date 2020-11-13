@@ -1,0 +1,12 @@
+[
+  {
+    "mrn": "pat-mrn-1",
+    "conditionId": "cond-1",
+    "stageGroup": "3C",
+    "t": "cT3",
+    "n": "cN3",
+    "m": "cM0",
+    "type": "Clinical",
+    "effectiveDate": "2020-01-01"
+  }
+]
