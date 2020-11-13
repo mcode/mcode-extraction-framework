@@ -1,0 +1,6 @@
+mrn,conditionId,stageGroup,t,n,m,type,effectiveDate
+123,conditionId-1,3C,cT3,cN3,cM0,Clinical,2020-01-01
+456,conditionId-2,3C,cT3,cN3,cM0,Clinical,2020-01-01
+789,conditionId-2,3C,,cN3,cM0,Clinical,2020-01-02
+789,conditionId-2,3C,cT3,,cM0,Clinical,2020-01-03
+789,conditionId-2,3C,cT3,cN3,,Clinical,2020-01-04
