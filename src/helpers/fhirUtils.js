@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const fhirpath = require('fhirpath');
 const logger = require('./logger');
 
@@ -28,7 +29,7 @@ function getResourceCountInBundle(messageBundle) {
 
   // NOTE: Dynamically generated from input; could be abused later?
   const countThisResource = (resourceType) => `Bundle.descendants().where(resource.resourceType = '${resourceType}').count()`;
-  return allResourceTypes.reduce((accumulator, resourceType) => {
+  return _.uniq(allResourceTypes).reduce((accumulator, resourceType) => {
     const countForThisResource = fhirpath.evaluate(
       messageBundle,
       countThisResource(resourceType),
