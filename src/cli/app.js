@@ -110,7 +110,9 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
       fs.mkdirSync(outputPath);
     }
     const outputFile = path.join(outputPath, 'mcode-extraction.json');
+    logger.debug(`Logging mCODE output to ${outputFile}`);
     fs.writeFileSync(outputFile, JSON.stringify(extractedData), 'utf8');
+    logger.info(`Successfully logged mCODE bundle to ${outputFile}`);
   } catch (e) {
     logger.error(e.message);
     logger.debug(e.stack);
