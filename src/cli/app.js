@@ -109,10 +109,13 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
       logger.info(`Creating directory ${outputPath}`);
       fs.mkdirSync(outputPath);
     }
-    const outputFile = path.join(outputPath, 'mcode-extraction.json');
-    logger.debug(`Logging mCODE output to ${outputFile}`);
-    fs.writeFileSync(outputFile, JSON.stringify(extractedData), 'utf8');
-    logger.info(`Successfully logged mCODE bundle to ${outputFile}`);
+    // For each bundle in our extractedData, write it to our output directory
+    extractedData.forEach((bundle, i) => {
+      const outputFile = path.join(outputPath, `mcode-extraction-patient-${i + 1}.json`);
+      logger.debug(`Logging mCODE output to ${outputFile}`);
+      fs.writeFileSync(outputFile, JSON.stringify(bundle), 'utf8');
+    });
+    logger.info(`Successfully logged ${extractedData.length} mCODE bundle(S) to ${outputPath}`);
   } catch (e) {
     logger.error(e.message);
     logger.debug(e.stack);
