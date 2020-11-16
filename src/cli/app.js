@@ -115,7 +115,7 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
       logger.debug(`Logging mCODE output to ${outputFile}`);
       fs.writeFileSync(outputFile, JSON.stringify(bundle), 'utf8');
     });
-    logger.info(`Successfully logged ${extractedData.length} mCODE bundle(S) to ${outputPath}`);
+    logger.info(`Successfully logged ${extractedData.length} mCODE bundle(s) to ${outputPath}`);
   } catch (e) {
     logger.error(e.message);
     logger.debug(e.stack);
