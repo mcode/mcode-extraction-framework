@@ -1,6 +1,13 @@
 const _ = require('lodash');
 const fhirpath = require('fhirpath');
+const Ajv = require('ajv');
+const metaSchema = require('ajv/lib/refs/json-schema-draft-06.json');
+const schema = require('./schemas/fhir.schema.json');
 const logger = require('./logger');
+
+const ajv = new Ajv({ logger: false });
+ajv.addMetaSchema(metaSchema);
+const validator = ajv.addSchema(schema, 'FHIR');
 
 // Unit codes and display values fo Vital Signs values
 // Code mapping is based on http://hl7.org/fhir/R4/observation-vitalsigns.html
@@ -149,6 +156,8 @@ const logOperationOutcomeInfo = (operationOutcome) => {
   });
 };
 
+const isValidFHIR = (resource) => validator.validate('FHIR', resource);
+
 module.exports = {
   allResourcesInBundle,
   determineVersion,
@@ -163,4 +172,5 @@ module.exports = {
   logOperationOutcomeInfo,
   mapFHIRVersions,
   quantityCodeToUnitLookup,
+  isValidFHIR,
 };

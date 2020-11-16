@@ -1,13 +1,5 @@
 /* eslint-disable no-bitwise */
 
-const Ajv = require('ajv');
-const metaSchema = require('ajv/lib/refs/json-schema-draft-06.json');
-const schema = require('./helpers/fixtures/fhir.schema.json');
-
-const ajv = new Ajv({ logger: false });
-ajv.addMetaSchema(metaSchema);
-const validator = ajv.addSchema(schema, 'FHIR');
-
 // Takes an object with optional arguments, a function, and an object with required arguments
 // Ensures that all permutations of optionalArguments along with the requiredObj's args
 // Never causes the testFn to fail
@@ -37,11 +29,6 @@ function allOptionalKeyCombinationsNotThrow(optionalObj, testFn, requiredObj = n
   }
 }
 
-function isValidFHIR(resource) {
-  return validator.validate('FHIR', resource);
-}
-
 module.exports = {
   allOptionalKeyCombinationsNotThrow,
-  isValidFHIR,
 };

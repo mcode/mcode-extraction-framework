@@ -1,4 +1,4 @@
-const { isValidFHIR } = require('../utils');
+const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const minimalCarePlan = require('./fixtures/minimal-careplan-resource.json');
 const maximalCarePlan = require('./fixtures/maximal-careplan-resource.json');
 const { carePlanWithReviewTemplate } = require('../../src/templates/CarePlanWithReviewTemplate');

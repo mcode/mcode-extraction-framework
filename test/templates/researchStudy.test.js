@@ -1,4 +1,4 @@
-const { isValidFHIR } = require('../utils');
+const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const validResearchStudy = require('./fixtures/research-study-resource.json');
 const { researchStudyTemplate } = require('../../src/templates/ResearchStudyTemplate');
 

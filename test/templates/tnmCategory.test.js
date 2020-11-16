@@ -1,4 +1,4 @@
-const { isValidFHIR } = require('../utils');
+const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const tumorClinicalResource = require('./fixtures/tumor-category-clinical-resource.json');
 const tumorPathologicResource = require('./fixtures/tumor-category-pathologic-resource.json');
 const nodesClinicalResource = require('./fixtures/nodes-category-clinical-resource.json');

@@ -1,4 +1,4 @@
-const { isValidFHIR } = require('../utils');
+const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const maximalProcedure = require('./fixtures/maximal-procedure-resource.json');
 const minimalProcedure = require('./fixtures/minimal-procedure-resource.json');
 const { procedureTemplate } = require('../../src/templates/ProcedureTemplate');
