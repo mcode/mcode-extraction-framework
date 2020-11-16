@@ -8,6 +8,16 @@ function extensionArr(...extensions) { // 0. Spread since 1..n extensions
   )(...extensions); // 1. Spread to pass each extension individually
 }
 
+// See http://hl7.org/fhir/R4/extension-data-absent-reason.html
+// reasonCode is any code from Value Set http://hl7.org/fhir/R4/valueset-data-absent-reason.html
+function dataAbsentReasonExtension(reasonCode) {
+  return {
+    url: 'http://hl7.org/fhir/StructureDefinition/data-absent-reason',
+    valueCode: reasonCode,
+  };
+}
+
 module.exports = {
+  dataAbsentReasonExtension,
   extensionArr,
 };

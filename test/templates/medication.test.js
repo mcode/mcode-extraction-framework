@@ -63,6 +63,17 @@ describe('test Medication template', () => {
     const generatedMedication = cancerRelatedMedicationTemplate(MEDICATION_MINIMAL_DATA);
 
     expect(generatedMedication).toEqual(minimalValidExampleMedication);
+
+    // If no start or end date is provided, use the data absent reason extension
+    expect(generatedMedication.effectivePeriod).toEqual({
+      extension: [
+        {
+          url: 'http://hl7.org/fhir/StructureDefinition/data-absent-reason',
+          valueCode: 'unknown',
+        },
+      ],
+    });
+
     expect(isValidFHIR(generatedMedication)).toBeTruthy();
   });
 

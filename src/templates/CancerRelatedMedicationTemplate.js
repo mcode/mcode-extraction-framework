@@ -1,4 +1,10 @@
-const { coding, extensionArr, reference, valueX } = require('./snippets');
+const {
+  coding,
+  dataAbsentReasonExtension,
+  extensionArr,
+  reference,
+  valueX,
+} = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
 
 function treatmentIntentTemplate({ treatmentIntent }) {
@@ -24,6 +30,13 @@ function subjectTemplate({ id }) {
 }
 
 function periodTemplate({ startDate, endDate }) {
+  // If start and end date are not provided, indicate data absent with extension.
+  if (!startDate && !endDate) {
+    return {
+      effectivePeriod: extensionArr(dataAbsentReasonExtension('unknown')),
+    };
+  }
+
   return {
     effectivePeriod: {
       ...(startDate && { start: startDate }),
