@@ -1,4 +1,4 @@
-const { isValidFHIR } = require('../utils');
+const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const maximalValidExampleCondition = require('./fixtures/maximal-condition-resource.json');
 const minimalValidExampleCondition = require('./fixtures/minimal-condition-resource.json');
 const cancerValidExampleCondition = require('./fixtures/cancer-condition-resource.json');

@@ -1,4 +1,4 @@
-const { isValidFHIR } = require('../utils');
+const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const minimalStagingClinicalResource = require('./fixtures/minimal-staging-clinical-resource.json');
 const minimalStagingPathologicResource = require('./fixtures/minimal-staging-pathologic-resource.json');
 const maximalStagingResource = require('./fixtures/maximal-staging-resource.json');

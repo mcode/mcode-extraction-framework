@@ -1,4 +1,4 @@
-const { isValidFHIR } = require('../utils');
+const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const maximalObservationResource = require('./fixtures/maximal-observation-resource.json');
 const minimalObservationResource = require('./fixtures/minimal-observation-resource.json');
 const { observationTemplate } = require('../../src/templates/ObservationTemplate');

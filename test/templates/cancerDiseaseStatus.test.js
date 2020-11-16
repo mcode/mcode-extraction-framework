@@ -1,4 +1,4 @@
-const { isValidFHIR } = require('../utils');
+const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const maximalCancerDiseaseStatus = require('./fixtures/disease-status-resource.json');
 const minimalCancerDiseaseStatus = require('./fixtures/minimal-disease-status-resource.json');
 const { cancerDiseaseStatusTemplate } = require('../../src/templates/CancerDiseaseStatusTemplate');

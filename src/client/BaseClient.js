@@ -1,3 +1,4 @@
+const { isValidFHIR } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
 class BaseClient {
@@ -68,6 +69,10 @@ class BaseClient {
         return contextBundle;
       }
     }, Promise.resolve(contextBundle));
+
+    if (!isValidFHIR(contextBundle)) {
+      logger.error('Extracted bundle is not valid FHIR.');
+    }
 
     return { bundle: contextBundle, extractionErrors };
   }
