@@ -1,0 +1,3 @@
+mrn,conditionId,codeSystem,code,displayName,category,dateOfDiagnosis,clinicalStatus,verificationStatus,bodySite,laterality,histology
+456,conditionId-2,http://snomed.info/sct,363346000,Prostate Cancer,problem-list-item,2019-11-11,remission,confirmed,251007,24028007,2735009
+789,conditionId-2,http://snomed.info/sct,363346000,Lung Cancer,encounter-diagnosis,2020-02-14,resolved,confirmed,251007,66459002,2985005

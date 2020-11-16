@@ -1,0 +1,79 @@
+{
+  "patientIdCsvPath": "./data/patient-mrns.csv",
+  "commonExtractorArgs": {},
+  "notificationInfo": {
+    "host": "smtp.example.com",
+    "port": 587,
+    "from": "sender@example.com",
+    "to": [
+      "demo@example.com",
+      "test@example.com"
+    ]
+  },
+  "extractors": [
+    {
+      "label": "condition",
+      "type": "CSVConditionExtractor",
+      "constructorArgs": {
+        "filePath": "./data/condition-information.csv"
+      }
+    },
+    {
+      "label": "patient",
+      "type": "CSVPatientExtractor",
+      "constructorArgs": {
+        "filePath": "./data/patient-information.csv"
+      }
+    },
+    {
+      "label": "cancerDiseaseStatus",
+      "type": "CSVCancerDiseaseStatusExtractor",
+      "constructorArgs": {
+        "filePath": "./data/cancer-disease-status-information.csv"
+      }
+    },
+    {
+      "label": "clinicalTrialInformation",
+      "type": "CSVClinicalTrialInformationExtractor",
+      "constructorArgs": {
+        "filePath": "./data/clinical-trial-information.csv",
+        "clinicalSiteID": "example-site-id"
+      }
+    },
+    {
+      "label": "treatmentPlanChange",
+      "type": "CSVTreatmentPlanChangeExtractor",
+      "constructorArgs": {
+        "filePath": "./data/treatment-plan-change-information.csv"
+      }
+    },
+    {
+      "label": "staging",
+      "type": "CSVStagingExtractor",
+      "constructorArgs": {
+        "filePath": "./data/staging-information.csv"
+      }
+    },
+    {
+      "label": "cancerRelatedMedication",
+      "type": "CSVCancerRelatedMedicationExtractor",
+      "constructorArgs": {
+        "filePath": "./data/cancer-related-medication-information.csv"
+      }
+    },
+    {
+      "label": "genericObservations",
+      "type": "CSVObservationExtractor",
+      "constructorArgs": {
+        "filePath": "./data/observation-information.csv"
+      }
+    },
+    {
+      "label": "genericProcedures",
+      "type": "CSVProcedureExtractor",
+      "constructorArgs": {
+        "filePath": "./data/procedure-information.csv"
+      }
+    }
+  ]
+}

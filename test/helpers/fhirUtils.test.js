@@ -62,3 +62,9 @@ test('allResourcesInBundle', () => {
   expect(allResourcesInBundle(bundleWithMultipleEntries))
     .toEqual(bundleWithMultipleEntries.entry.map((e) => e.resource));
 });
+
+
+test('getResourceCountInBundle', () => {
+  // TODO: MAKE TESTS HERE
+  // getResourceCountInBundle;
+});

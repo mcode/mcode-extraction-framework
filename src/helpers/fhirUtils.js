@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const fhirpath = require('fhirpath');
 const logger = require('./logger');
 
@@ -18,6 +19,26 @@ const quantityCodeToUnitLookup = {
   kg: 'kg',
   g: 'g',
 };
+
+function getResourceCountInBundle(messageBundle) {
+  const allResourceTypesPath = 'Bundle.descendants().resource.resourceType';
+  const allResourceTypes = fhirpath.evaluate(
+    messageBundle,
+    allResourceTypesPath,
+  );
+
+  // NOTE: Dynamically generated from input; could be abused later?
+  const countThisResource = (resourceType) => `Bundle.descendants().where(resource.resourceType = '${resourceType}').count()`;
+  return _.uniq(allResourceTypes).reduce((accumulator, resourceType) => {
+    const countForThisResource = fhirpath.evaluate(
+      messageBundle,
+      countThisResource(resourceType),
+    );
+    accumulator[resourceType] = countForThisResource;
+    return accumulator;
+  }, {});
+}
+
 
 function getQuantityUnit(unitCode) {
   if (!Object.keys(quantityCodeToUnitLookup).includes(unitCode)) {
@@ -97,6 +118,7 @@ const getBundleEntriesByResourceType = (bundle, type, context = {}, first = fals
   return first ? null : [];
 };
 
+
 const logOperationOutcomeInfo = (operationOutcome) => {
   logger.info('An OperationOutcome was returned with the following issue(s):');
   operationOutcome.issue.forEach((issue) => {
@@ -128,8 +150,6 @@ const logOperationOutcomeInfo = (operationOutcome) => {
 };
 
 module.exports = {
-  getQuantityUnit,
-  quantityCodeToUnitLookup,
   allResourcesInBundle,
   determineVersion,
   firstEntryInBundle,
@@ -137,7 +157,10 @@ module.exports = {
   getBundleEntriesByResourceType,
   getBundleResourcesByType,
   getEmptyBundle,
+  getQuantityUnit,
+  getResourceCountInBundle,
   isBundleEmpty,
   logOperationOutcomeInfo,
   mapFHIRVersions,
+  quantityCodeToUnitLookup,
 };

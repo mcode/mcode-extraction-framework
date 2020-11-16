@@ -1,0 +1,4 @@
+mrn,procedureId,conditionId,status,code,codeSystem,displayName,reasonCode,reasonCodeSystem,reasonDisplayName,effectiveDate,bodySite,laterality,treatmentIntent
+123,procedure-id,condition-id,completed,152198000,http://snomed.info/sct,Brachytherapy (procedure),363346000,http://snomed.info/sct,Malignant tumor,2020-01-01,41224006,51440002,373808002
+456,procedure-id,condition-id,in-progress,174337000,http://snomed.info/sct,Destruction of lesion,363346000,http://snomed.info/sct,Malignant tumor,2020-01-12,41224006,51440002,373808002
+789,procedure-id,condition-id,completed,172043006,http://snomed.info/sct,Total mastectomy,363346000,http://snomed.info/sct,Malignant tumor,2020-06-30,41224006,51440002,373808002
