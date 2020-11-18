@@ -30,17 +30,18 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
       // Test that valid data works fine
       expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(exampleCSVDiseaseStatusModuleResponse)).toEqual(expect.anything());
 
-      // Test all required properties are
-      delete localData[0].evidence; // Evidence is not required and will not throw an error
-      delete localData[0].observationStatus; // Observation Status is not required and will not throw an error
+      localData[0].evidence = ''; // Evidence is not required and will not throw an error
+      localData[0].observationStatus = ''; // Observation Status is not required and will not throw an error
 
       // Only including required properties is valid
       expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(localData)).toEqual(expect.anything());
 
+      const requiredProperties = ['mrn', 'conditionId', 'diseaseStatusCode', 'dateOfObservation'];
+
       // Removing each required property should throw an error
-      Object.keys(localData[0]).forEach((key) => {
+      requiredProperties.forEach((key) => {
         const clonedData = _.cloneDeep(localData);
-        delete clonedData[0][key];
+        clonedData[0][key] = '';
         expect(() => csvCancerDiseaseStatusExtractor.joinAndReformatData(clonedData)).toThrow(new Error(expectedErrorString));
       });
     });
