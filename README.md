@@ -12,6 +12,7 @@ A Node.js framework for extracting mCODE FHIR resources. All resources are profi
   - [Terminology and Architecture](#terminology-and-architecture)
     - [Glossary](#glossary)
     - [High Level Diagram](#high-level-diagram)
+  - [License](#license)
 
 ## Prerequisites
 
@@ -58,3 +59,13 @@ This framework consists of three key components: Extractors, Modules and Templat
 ![High-level architecture diagram, detailing exactly how Clients, Extractors, Modules, Templates and various web services communicate with one another](./docs/diagrams/high-level-arch.png)
 
 These diagrams can be modified by updating the XML files in the `/docs/diagrams/` directory using draw.io or a company licensed equivalent.
+
+## License
+
+(C) 2020 The MITRE Corporation. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
