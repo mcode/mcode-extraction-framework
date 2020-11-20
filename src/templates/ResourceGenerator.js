@@ -42,11 +42,7 @@ function cleanEmptyData(data) {
   const cleanData = data;
   Object.keys(cleanData).forEach((element) => {
     if (typeof cleanData[element] === 'object' && cleanData[element]) {
-      Object.keys(cleanData[element]).forEach((key) => {
-        if (cleanData[element][key] === '' || cleanData[element][key] === undefined) {
-          cleanData[element][key] = null;
-        }
-      });
+      cleanEmptyData(cleanData[element]);
     }
     if (cleanData[element] === '' || cleanData[element] === undefined) {
       cleanData[element] = null;
