@@ -1,0 +1,30 @@
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Resource-1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Resource-2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Resource-3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Resource-4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Resource-5"
+      }
+    }
+  ]
+}
