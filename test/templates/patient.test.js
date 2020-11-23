@@ -12,6 +12,18 @@ describe('JavaScript Render Patient', () => {
       familyName: 'Patient',
       givenName: 'Test',
       gender: 'female',
+      birthsex: null,
+      dateOfBirth: null,
+      language: null,
+      addressLine: null,
+      city: null,
+      state: null,
+      zip: null,
+      raceCodesystem: null,
+      raceCode: null,
+      raceText: null,
+      ethnicityCode: null,
+      ethnicityText: null,
     };
     const generatedPatient = patientTemplate(PATIENT_VALID_DATA);
     expect(generatedPatient).toEqual(basicPatient);
@@ -77,6 +89,7 @@ describe('JavaScript Render Patient', () => {
       familyName: 'Patient',
       givenName: 'Test',
       gender: 'female',
+      mrn: null,
     };
 
     expect(() => patientTemplate(PATIENT_INVALID_DATA)).toThrow(Error);

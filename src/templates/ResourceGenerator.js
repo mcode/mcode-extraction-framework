@@ -38,11 +38,20 @@ function generateResourceId(data) {
 }
 
 // Ensures that empty data in the resource object carries a null value, rather than being undefined or an empty string
-function cleanEmptyData(data) {
+function cleanEmptyData(data, depth = 0) {
   const cleanData = data;
+  const MAX_DEPTH = 3;
   Object.keys(cleanData).forEach((element) => {
     if (typeof cleanData[element] === 'object' && cleanData[element]) {
-      cleanEmptyData(cleanData[element]);
+      if (depth < MAX_DEPTH) {
+        cleanEmptyData(cleanData[element], depth + 1);
+      } else {
+        Object.keys(cleanData[element]).forEach((key) => {
+          if (cleanData[element][key] === '' || cleanData[element][key] === undefined) {
+            cleanData[element][key] = null;
+          }
+        });
+      }
     }
     if (cleanData[element] === '' || cleanData[element] === undefined) {
       cleanData[element] = null;

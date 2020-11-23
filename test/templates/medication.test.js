@@ -36,7 +36,7 @@ const MEDICATION_MINIMAL_DATA = {
 
 
 const MEDICATION_INVALID_DATA = {
-  // Omitting 'mrn', 'code', 'codesystem', fields which are required
+  // Omitting 'mrn', 'code', 'codesystem', and 'status' fields which are required
   mrn: null,
   code: null,
   codeSystem: null,

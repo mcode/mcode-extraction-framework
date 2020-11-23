@@ -12,6 +12,7 @@ const VALID_DATA = {
 const INVALID_DATA = {
   // Omitting 'trialResearchID' field which is required
   trialStatus: 'completed',
+  trialResearchID: null,
 };
 
 describe('test ResearchStudy template', () => {

@@ -13,6 +13,14 @@ describe('JavaScript render Procedure template', () => {
       status: 'completed',
       code: '152198000',
       system: 'http://snomed.info/sct',
+      display: null,
+      reasonCode: null,
+      reasonCodeSystem: null,
+      reasonDisplayName: null,
+      conditionId: null,
+      bodySite: null,
+      laterality: null,
+      treatmentIntent: null,
     };
 
     const generatedProcedure = procedureTemplate(PROCEDURE_MINIMAL_DATA);
@@ -75,6 +83,7 @@ describe('JavaScript render Procedure template', () => {
       effectiveDateTime: '2020-01-01',
       code: '152198000',
       system: 'http://snomed.info/sct',
+      status: null,
     };
 
     expect(() => procedureTemplate(INVALID_DATA)).toThrow(Error);
