@@ -52,11 +52,11 @@ This framework consists of three key components: Extractors, Modules and Templat
 
 ### Glossary
 
-![Image detailing exact definitions of what is meant by Client, Extractor, Module and Template](./docs/diagrams/terminology-breakdown.png)
+![Image detailing exact definitions of what is meant by Client, Extractor, Module and Template](./docs/diagrams/20_11_23_steam-terminology-breakdown.png)
 
 ### High Level Diagram
 
-![High-level architecture diagram, detailing exactly how Clients, Extractors, Modules, Templates and various web services communicate with one another](./docs/diagrams/high-level-arch.png)
+![High-level architecture diagram, detailing exactly how Clients, Extractors, Modules, Templates and various web services communicate with one another](./docs/diagrams/20_11_23_steam-high-level-arch.png)
 
 These diagrams can be modified by updating the XML files in the `/docs/diagrams/` directory using draw.io or a company licensed equivalent.
 
