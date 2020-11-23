@@ -43,9 +43,8 @@ function cleanEmptyData(data, depth = 0) {
   const MAX_DEPTH = 3;
   Object.keys(cleanData).forEach((element) => {
     if (typeof cleanData[element] === 'object' && cleanData[element]) {
-      if (depth < MAX_DEPTH) {
-        cleanEmptyData(cleanData[element], depth + 1);
-      } else {
+      if (depth < MAX_DEPTH) cleanEmptyData(cleanData[element], depth + 1);
+      else {
         Object.keys(cleanData[element]).forEach((key) => {
           if (cleanData[element][key] === '' || cleanData[element][key] === undefined) {
             cleanData[element][key] = null;
