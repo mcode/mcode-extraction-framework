@@ -40,7 +40,7 @@ function generateResourceId(data) {
 // Ensures that empty data in the resource object carries a null value, rather than being undefined or an empty string
 function cleanEmptyData(data, depth = 0) {
   const cleanData = data;
-  const MAX_DEPTH = 3;
+  const MAX_DEPTH = 50;
   Object.keys(cleanData).forEach((element) => {
     if (typeof cleanData[element] === 'object' && cleanData[element]) {
       if (depth < MAX_DEPTH) cleanEmptyData(cleanData[element], depth + 1);
@@ -50,6 +50,7 @@ function cleanEmptyData(data, depth = 0) {
             cleanData[element][key] = null;
           }
         });
+        logger.warn('Maximum depth of 50 was reached while cleaning empty data on a resource, resource may not be cleaned entirely');
       }
     }
     if (cleanData[element] === '' || cleanData[element] === undefined) {
