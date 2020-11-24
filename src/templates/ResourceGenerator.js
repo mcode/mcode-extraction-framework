@@ -41,20 +41,13 @@ function generateResourceId(data) {
 function cleanEmptyData(data, depth = 0) {
   const cleanData = data;
   const MAX_DEPTH = 50;
-  Object.keys(cleanData).forEach((element) => {
-    if (typeof cleanData[element] === 'object' && cleanData[element]) {
-      if (depth < MAX_DEPTH) cleanEmptyData(cleanData[element], depth + 1);
-      else {
-        Object.keys(cleanData[element]).forEach((key) => {
-          if (cleanData[element][key] === '' || cleanData[element][key] === undefined) {
-            cleanData[element][key] = null;
-          }
-        });
-        logger.warn('Maximum depth of 50 was reached while cleaning empty data on a resource, resource may not be cleaned entirely');
-      }
+  Object.keys(cleanData).forEach((key) => {
+    if (typeof cleanData[key] === 'object' && cleanData[key]) {
+      if (depth < MAX_DEPTH) cleanEmptyData(cleanData[key], depth + 1);
+      else logger.warn('Maximum depth of 50 was reached while cleaning empty data on a resource, resource may not be cleaned entirely');
     }
-    if (cleanData[element] === '' || cleanData[element] === undefined) {
-      cleanData[element] = null;
+    if (cleanData[key] === '' || cleanData[key] === undefined) {
+      cleanData[key] = null;
     }
   });
   return cleanData;

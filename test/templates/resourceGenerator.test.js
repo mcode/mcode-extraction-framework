@@ -87,28 +87,37 @@ describe('cleanEmptyData', () => {
         system: undefined,
       },
       status: '',
-      circular: {},
+      nestedObject: {
+        status: '',
+        nestedObject: {},
+      },
     };
 
-    // Creates 51 nested object properties on testObject
-    let current = testObject.circular;
-    for (let i = 0; i < 52; i += 1) {
-      current.status = '';
-      current.circular = {};
-      current = current.circular;
-    }
-
-    // Iterates to the final object within the created nest
-    let finalObj = testObject;
-    for (let i = 0; i < 52; i += 1) {
-      finalObj = finalObj.circular;
-    }
-    cleanEmptyData(testObject);
+    // Call cleanEmptyData with the recursive ceiling having been reached
+    cleanEmptyData(testObject, 50);
 
     // The first object in the nest should have all of its properties cleaned
     expect(testObject.status).toStrictEqual(null);
 
-    // The last object in the next should still have non-standard properties
-    expect(finalObj.status).toStrictEqual('');
+    // Objects in the nest beyond the 50th call should still have non-standard properties
+    expect(testObject.nestedObject.status).toStrictEqual('');
+  });
+
+  test('Handles circular references without crashing', () => {
+    const testObject = {
+      id: 'example-id',
+      code: {
+        code: 'example-code',
+        display: '',
+        system: undefined,
+      },
+      status: '',
+      circular: {},
+    };
+
+    // Creating a circular reference
+    testObject.circular = testObject;
+
+    expect(() => cleanEmptyData(testObject)).not.toThrow();
   });
 });
