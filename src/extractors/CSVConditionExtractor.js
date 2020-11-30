@@ -28,11 +28,11 @@ function formatData(conditionData) {
       },
       category: category.split('|'),
       dateOfDiagnosis: !dateOfDiagnosis ? null : formatDateTime(dateOfDiagnosis),
-      clinicalStatus: !clinicalStatus ? null : clinicalStatus,
-      verificationStatus: !verificationStatus ? null : verificationStatus,
+      clinicalStatus,
+      verificationStatus,
       bodySite: !bodySite ? null : bodySite.split('|'),
-      laterality: !laterality ? null : laterality,
-      histology: !histology ? null : histology,
+      laterality,
+      histology,
     };
   });
 }

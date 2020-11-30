@@ -12,6 +12,9 @@ describe('JavaScript render CarePlan template', () => {
       effectiveDate: '2020-01-23',
       hasChanged: 'false',
       mrn: 'abc-def',
+      reasonCode: null,
+      reasonDisplayText: null,
+      name: null,
     };
 
     const generatedCarePlan = carePlanWithReviewTemplate(CARE_PLAN_VALID_DATA);
@@ -61,6 +64,7 @@ describe('JavaScript render CarePlan template', () => {
       effectiveDateTime: '2020-01-23T09:07:00Z',
       effectiveDate: '2020-01-23',
       mrn: 'abc-def',
+      haschanged: null,
     };
 
     expect(() => carePlanWithReviewTemplate(INVALID_DATA)).toThrow(Error);

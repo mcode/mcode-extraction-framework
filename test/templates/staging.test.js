@@ -14,6 +14,7 @@ describe('JavaScript render Staging template', () => {
       effectiveDateTime: '2020-01-01',
       stageGroup: '3C',
       type: 'Clinical',
+      categoryIds: null,
     };
 
     const generatedStaging = stagingTemplate(STAGING_CLINICAL_MINIMAL_DATA);
@@ -29,6 +30,7 @@ describe('JavaScript render Staging template', () => {
       effectiveDateTime: '2020-01-01',
       stageGroup: '3C',
       type: 'Pathologic',
+      categoryIds: null,
     };
 
     const generatedStaging = stagingTemplate(STAGING_CLINICAL_MINIMAL_DATA);
@@ -76,6 +78,7 @@ describe('JavaScript render Staging template', () => {
       subjectId: 'example-mrn',
       conditionId: 'example-condition-id',
       type: 'Clinical',
+      effectiveDateTime: null,
     };
 
     expect(() => stagingTemplate(INVALID_DATA)).toThrow(Error);

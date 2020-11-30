@@ -22,15 +22,15 @@ function formatData(procedureData) {
       status,
       code,
       system: codeSystem,
-      display: displayName || null,
-      reasonCode: reasonCode || null,
-      reasonCodeSystem: reasonCodeSystem || null,
-      reasonDisplayName: reasonDisplayName || null,
+      display: displayName,
+      reasonCode,
+      reasonCodeSystem,
+      reasonDisplayName,
       conditionId,
-      bodySite: bodySite || null,
-      laterality: laterality || null,
+      bodySite,
+      laterality,
       effectiveDateTime: formatDateTime(effectiveDate),
-      treatmentIntent: treatmentIntent || null,
+      treatmentIntent,
     };
   });
 }

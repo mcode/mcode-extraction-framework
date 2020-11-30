@@ -23,13 +23,13 @@ function formatData(medicationData) {
       ...(medicationId && { id: medicationId }),
       code,
       codeSystem,
-      displayText: !displayText ? null : displayText,
+      displayText,
       startDate: !startDate ? null : formatDateTime(startDate),
       endDate: !endDate ? null : formatDateTime(endDate),
-      treatmentReasonCode: !treatmentReasonCode ? null : treatmentReasonCode,
-      treatmentReasonCodeSystem: !treatmentReasonCodeSystem ? null : treatmentReasonCodeSystem,
-      treatmentReasonDisplayText: !treatmentReasonDisplayText ? null : treatmentReasonDisplayText,
-      treatmentIntent: !treatmentIntent ? null : treatmentIntent,
+      treatmentReasonCode,
+      treatmentReasonCodeSystem,
+      treatmentReasonDisplayText,
+      treatmentIntent,
       status,
     };
   });

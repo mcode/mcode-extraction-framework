@@ -15,6 +15,7 @@ const INVALID_DATA = {
   enrollmentStatus: 'candidate',
   trialResearchID: 'rs1',
   patientId: 'mCODEPatient1',
+  trialSubjectID: null,
 };
 
 describe('test ResearchSubject template', () => {

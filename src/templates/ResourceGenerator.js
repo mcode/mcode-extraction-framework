@@ -37,6 +37,22 @@ function generateResourceId(data) {
   return shajs('sha256').update(JSON.stringify(data)).digest('hex');
 }
 
+// Ensures that empty data in the resource object carries a null value, rather than being undefined or an empty string
+function cleanEmptyData(data, depth = 0) {
+  const cleanData = data;
+  const MAX_DEPTH = 50;
+  Object.keys(cleanData).forEach((key) => {
+    if (typeof cleanData[key] === 'object' && cleanData[key]) {
+      if (depth < MAX_DEPTH) cleanEmptyData(cleanData[key], depth + 1);
+      else logger.warn('Maximum depth of 50 was reached while cleaning empty data on a resource, resource may not be cleaned entirely');
+    }
+    if (cleanData[key] === '' || cleanData[key] === undefined) {
+      cleanData[key] = null;
+    }
+  });
+  return cleanData;
+}
+
 // Augment a data object with an ID if it doesn't have one
 function dataWithId(data) {
   return { id: generateResourceId(data), ...data };
@@ -56,10 +72,10 @@ function fillAndBundleTemplate(template, data) {
 
 function generateMcodeResources(mcodeProfileID, data) {
   logger.debug(`Generating FHIR resource for ${mcodeProfileID} data element`);
-
   const template = loadFhirTemplate(mcodeProfileID);
+  const cleanData = _.isArray(data) ? data.map((d) => cleanEmptyData(d)) : cleanEmptyData(data);
   if (!template) throw new Error(`No matching profile for ${mcodeProfileID} found`);
-  return fillAndBundleTemplate(template, data);
+  return fillAndBundleTemplate(template, cleanData);
 }
 
 module.exports = {
