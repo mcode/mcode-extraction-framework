@@ -12,6 +12,7 @@
   ],
   "main": "src/",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "lint": "eslint \"./**/*.js\"",
     "lint-fix": "eslint \"./**/*.js\" --fix",
     "test": "cross-env LOGGING=none jest",
@@ -41,5 +42,8 @@
     "jest-when": "^2.7.0",
     "nock": "^11.7.0",
     "rewire": "^5.0.0"
+  },
+  "resolutions": {
+    "antlr4": "4.8.0"
   }
 }
