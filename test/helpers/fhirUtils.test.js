@@ -84,6 +84,11 @@ describe('allResourcesInBundle', () => {
 });
 
 describe('getResourceCountInBundle', () => {
+  test('Returns an empty object when given an empty object', () => {
+    const emptyCounts = {};
+    expect(getResourceCountInBundle({})).toEqual(emptyCounts);
+  });
+
   test('Counts five different resources, all at the same depth', () => {
     const counts = {
       'Resource-1': [1],
