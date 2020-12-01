@@ -6,6 +6,7 @@ const { extensionArr, dataAbsentReasonExtension } = require('./extension');
 const { effectiveX } = require('./effectiveX');
 const { identifier, identifierArr } = require('./identifier');
 const { bodySiteTemplate } = require('./bodySiteTemplate');
+const { stagingMethodTemplate } = require('./cancerStaging');
 
 module.exports = {
   bodySiteTemplate,
@@ -18,5 +19,6 @@ module.exports = {
   meta,
   narrative,
   reference,
+  stagingMethodTemplate,
   valueX,
 };

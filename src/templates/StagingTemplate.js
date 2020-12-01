@@ -1,4 +1,4 @@
-const { coding, reference, valueX } = require('./snippets');
+const { coding, reference, stagingMethodTemplate, valueX } = require('./snippets');
 
 // Returns staging specific data based whether it is clinical or pathologic
 function getTypeSpecificData(type) {
@@ -30,13 +30,14 @@ function hasMemberTemplate(categoryIds) {
 }
 
 function stagingTemplate({
-  id,
-  subjectId,
-  conditionId,
-  type,
-  stageGroup,
-  effectiveDateTime,
   categoryIds,
+  conditionId,
+  effectiveDateTime,
+  id,
+  stageGroup,
+  stagingSystem,
+  subjectId,
+  type,
 }) {
   if (!(id && subjectId && conditionId && effectiveDateTime && stageGroup && type)) {
     throw Error('Trying to render a StagingTemplate, but a required argument is missing;'
@@ -72,6 +73,7 @@ function stagingTemplate({
         }),
       ],
     },
+    ...stagingMethodTemplate({ code: stagingSystem }),
     subject: reference({ id: subjectId }),
     effectiveDateTime,
     ...valueX({ code: stageGroup, system: 'http://cancerstaging.org' }, 'valueCodeableConcept'),

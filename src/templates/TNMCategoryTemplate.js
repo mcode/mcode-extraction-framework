@@ -1,4 +1,4 @@
-const { coding, reference, valueX } = require('./snippets');
+const { coding, reference, stagingMethodTemplate, valueX } = require('./snippets');
 
 // Returns category specific data based on stage and category type
 function getCategorySpecificData(stageType, categoryType) {
@@ -54,7 +54,14 @@ function getCategorySpecificData(stageType, categoryType) {
 }
 
 function tnmCategoryTemplate({
-  id, subjectId, conditionId, valueCode, effectiveDateTime, categoryType, stageType,
+  categoryType,
+  conditionId,
+  effectiveDateTime,
+  id,
+  stageType,
+  stagingSystem,
+  subjectId,
+  valueCode,
 }) {
   if (!(id && subjectId && conditionId && valueCode && effectiveDateTime && categoryType && stageType)) {
     throw Error('Trying to render a TNMCategoryTemplate, but a required argument is missing;'
@@ -91,6 +98,7 @@ function tnmCategoryTemplate({
       ],
     },
     subject: reference({ id: subjectId }),
+    ...stagingMethodTemplate({ code: stagingSystem }),
     effectiveDateTime,
     ...valueX({ code: valueCode, system: 'http://cancerstaging.org' }, 'valueCodeableConcept'),
     focus: [reference({ id: conditionId })],
