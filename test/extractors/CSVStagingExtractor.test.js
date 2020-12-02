@@ -33,6 +33,7 @@ describe('CSVStagingExtractor', () => {
       delete localData.m;
       delete localData.n;
       delete localData.type;
+      delete localData.stagingSystem;
       delete localData.stageGroup;
 
       // Only including required properties is valid

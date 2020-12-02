@@ -3,13 +3,21 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:9e0ea0370c9950f45625e73db044e232970a01ded7d0dcb4d0198511209d0458",
+      "fullUrl": "urn:uuid:2ef4913c24494e7169825841c632691f2953e90b9abc5fe80d0909b406323ecc",
       "resource": {
         "resourceType": "Observation",
-        "id": "9e0ea0370c9950f45625e73db044e232970a01ded7d0dcb4d0198511209d0458",
+        "id": "2ef4913c24494e7169825841c632691f2953e90b9abc5fe80d0909b406323ecc",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-primary-tumor-category"
+          ]
+        },
+        "method": {
+          "coding": [
+            {
+              "code": "444256004",
+              "system": "http://snomed.info/sct"
+            }
           ]
         },
         "status": "final",
@@ -51,13 +59,21 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:fd6a7062eca28c6853c681be57fc9f550cfd4f12b30f06aa74f9ea3bf00b521b",
+      "fullUrl": "urn:uuid:c0ed298f468d8a3784cbeb93a61b7071b0de91976c5e75d24249e09f0133b910",
       "resource": {
         "resourceType": "Observation",
-        "id": "fd6a7062eca28c6853c681be57fc9f550cfd4f12b30f06aa74f9ea3bf00b521b",
+        "id": "c0ed298f468d8a3784cbeb93a61b7071b0de91976c5e75d24249e09f0133b910",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-distant-metastases-category"
+          ]
+        },
+        "method": {
+          "coding": [
+            {
+              "code": "444256004",
+              "system": "http://snomed.info/sct"
+            }
           ]
         },
         "status": "final",
@@ -99,13 +115,21 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:d94df87970ee5bd33d1040d47e7daf23a45a060fb6ca8119d49eba031bb1796b",
+      "fullUrl": "urn:uuid:e24bd7d3e80d58904dec0e32f22fd0332d9309807c4a6f22d9ad31372fd2ef6f",
       "resource": {
         "resourceType": "Observation",
-        "id": "d94df87970ee5bd33d1040d47e7daf23a45a060fb6ca8119d49eba031bb1796b",
+        "id": "e24bd7d3e80d58904dec0e32f22fd0332d9309807c4a6f22d9ad31372fd2ef6f",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-regional-nodes-category"
+          ]
+        },
+        "method": {
+          "coding": [
+            {
+              "code": "444256004",
+              "system": "http://snomed.info/sct"
+            }
           ]
         },
         "status": "final",
@@ -147,13 +171,21 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:7ddee89cc876cb2c9a00d3fe936f72f990f74d0c7e3de455f895aca289670553",
+      "fullUrl": "urn:uuid:47010e1b639f9af9a2878140db31a3e2b6d887f2e72e7ee625e41ac2e55e7284",
       "resource": {
         "resourceType": "Observation",
-        "id": "7ddee89cc876cb2c9a00d3fe936f72f990f74d0c7e3de455f895aca289670553",
+        "id": "47010e1b639f9af9a2878140db31a3e2b6d887f2e72e7ee625e41ac2e55e7284",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-stage-group"
+          ]
+        },
+        "method": {
+          "coding": [
+            {
+              "code": "444256004",
+              "system": "http://snomed.info/sct"
+            }
           ]
         },
         "status": "final",
@@ -194,13 +226,13 @@
         ],
         "hasMember": [
           {
-            "reference": "urn:uuid:9e0ea0370c9950f45625e73db044e232970a01ded7d0dcb4d0198511209d0458"
+            "reference": "urn:uuid:2ef4913c24494e7169825841c632691f2953e90b9abc5fe80d0909b406323ecc"
           },
           {
-            "reference": "urn:uuid:fd6a7062eca28c6853c681be57fc9f550cfd4f12b30f06aa74f9ea3bf00b521b"
+            "reference": "urn:uuid:c0ed298f468d8a3784cbeb93a61b7071b0de91976c5e75d24249e09f0133b910"
           },
           {
-            "reference": "urn:uuid:d94df87970ee5bd33d1040d47e7daf23a45a060fb6ca8119d49eba031bb1796b"
+            "reference": "urn:uuid:e24bd7d3e80d58904dec0e32f22fd0332d9309807c4a6f22d9ad31372fd2ef6f"
           }
         ]
       }

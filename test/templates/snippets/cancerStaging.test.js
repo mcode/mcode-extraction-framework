@@ -7,8 +7,12 @@ describe('cancerStaging snippets', () => {
     const stagingCodeSystem = cancerStagingSystemVS.compose.include[0].system;
     const expectedStagingMethod = {
       method: {
-        code: stagingCode,
-        system: stagingCodeSystem,
+        coding: [
+          {
+            code: stagingCode,
+            system: stagingCodeSystem,
+          },
+        ],
       },
     };
     test('it returns null when provided an empty object as an argument', () => {
@@ -28,8 +32,12 @@ describe('cancerStaging snippets', () => {
 
       const expectedSpecialStagingMethod = {
         method: {
-          code: specialStagingCode,
-          system: specialStagingCodeSystem,
+          coding: [
+            {
+              code: specialStagingCode,
+              system: specialStagingCodeSystem,
+            },
+          ],
         },
       };
       const stagingMethod = stagingMethodTemplate({ code: specialStagingCode });
