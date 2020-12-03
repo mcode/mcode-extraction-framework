@@ -12,7 +12,6 @@
   ],
   "main": "src/",
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "lint": "eslint \"./**/*.js\"",
     "lint-fix": "eslint \"./**/*.js\" --fix",
     "test": "cross-env LOGGING=none jest",
@@ -21,6 +20,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "ajv": "^6.12.6",
+    "antlr4": "^4.8.0",
     "axios": "^0.19.0",
     "commander": "^6.2.0",
     "csv-parse": "^4.8.8",
@@ -42,8 +42,5 @@
     "jest-when": "^2.7.0",
     "nock": "^11.7.0",
     "rewire": "^5.0.0"
-  },
-  "resolutions": {
-    "antlr4": "4.8.0"
   }
 }
