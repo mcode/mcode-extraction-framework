@@ -1,10 +1,5 @@
-const primaryCancerConditionVS = require('../valueSets/ValueSet-onco-core-PrimaryOrUncertainBehaviorCancerDisorderVS.json');
-const secondaryCancerConditionVS = require('../valueSets/ValueSet-onco-core-SecondaryCancerDisorderVS.json');
+const { checkCodeInVS } = require('./valueSetUtils');
 
-function checkCodeInVS(code, valueSet) {
-  // strips the period in the code since the provided value set has the periods removed
-  return valueSet.compose.include[2].concept.map((c) => c.code).includes(code.replace('.', ''));
-}
 
 /**
  * Checks for ICD-10 code
@@ -28,7 +23,8 @@ function getICD10Code(condition) {
  * @return {boolean} if primary cancer condition
  */
 function isConditionCodePrimary(code) {
-  return checkCodeInVS(code, primaryCancerConditionVS);
+  const primaryCancerConditionVSFilepath = './valueSets/ValueSet-onco-core-PrimaryOrUncertainBehaviorCancerDisorderVS.json';
+  return checkCodeInVS(code, primaryCancerConditionVSFilepath);
 }
 
 /**
@@ -37,7 +33,8 @@ function isConditionCodePrimary(code) {
  * @return {boolean} if secondary cancer condition
  */
 function isConditionCodeSecondary(code) {
-  return checkCodeInVS(code, secondaryCancerConditionVS);
+  const secondaryCancerConditionVSFilepath = './valueSets/ValueSet-onco-core-SecondaryCancerDisorderVS.json';
+  return checkCodeInVS(code, secondaryCancerConditionVSFilepath);
 }
 
 /**

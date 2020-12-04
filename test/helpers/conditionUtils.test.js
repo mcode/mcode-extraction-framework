@@ -11,24 +11,22 @@ const examplePrimaryCondition = require('./fixtures/primary-cancer-condition.jso
 const exampleSecondaryCondition = require('./fixtures/secondary-cancer-condition.json');
 const conditionWithICD10 = require('./fixtures/condition-with-icd10.json');
 const conditionWithoutICD10 = require('./fixtures/condition-without-icd10.json');
-const primaryCancerConditionVS = require('../../src/valueSets/ValueSet-onco-core-PrimaryOrUncertainBehaviorCancerDisorderVS.json');
-const secondaryCancerConditionVS = require('../../src/valueSets/ValueSet-onco-core-SecondaryCancerDisorderVS.json');
 const icd10 = require('./fixtures/icd10.json');
 
-const primaryCancerConditionCode = primaryCancerConditionVS.compose.include[2].concept[0].code;
-const secondaryCancerConditionCode = secondaryCancerConditionVS.compose.include[2].concept[0].code;
+const primaryCancerConditionCode = 'C50911'; // "Malignant neoplasm of unspecified site of right female breast"
+const secondaryCancerConditionCode = 'C7B1'; // "Secondary Merkel cell carcinoma" without a
 
 describe('conditionUtils', () => {
   test('isConditionCodePrimary', () => {
     expect(isConditionCodePrimary(primaryCancerConditionCode)).toBeTruthy();
     expect(isConditionCodePrimary('anything')).toBeFalsy();
-    expect(() => isConditionCodePrimary(undefined)).toThrowError(TypeError);
+    expect(isConditionCodePrimary(undefined)).toBeFalsy();
   });
 
   test('isConditionCodeSecondary', () => {
     expect(isConditionCodeSecondary(secondaryCancerConditionCode)).toBeTruthy();
     expect(isConditionCodeSecondary('anyCode')).toBeFalsy();
-    expect(() => isConditionCodeSecondary(undefined)).toThrowError(TypeError);
+    expect(isConditionCodeSecondary(undefined)).toBeFalsy();
   });
 
   test('isConditionPrimary', () => {
@@ -52,7 +50,7 @@ describe('conditionUtils', () => {
     expect(isConditionCodeCancer(primaryCancerConditionCode)).toBeTruthy();
     expect(isConditionCodeCancer(secondaryCancerConditionCode)).toBeTruthy();
     expect(isConditionCodeCancer('anything')).toBeFalsy();
-    expect(() => isConditionCodeCancer(undefined)).toThrowError(TypeError);
+    expect(isConditionCodeCancer(undefined)).toBeFalsy();
   });
 
   test('isConditionCancer', () => {
