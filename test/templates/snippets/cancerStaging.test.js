@@ -25,7 +25,6 @@ describe('cancerStaging snippets', () => {
       const stagingMethod = stagingMethodTemplate({ code: stagingCode });
       expect(stagingMethod).toEqual(expectedStagingMethod);
     });
-    // Test that it returns a method when the one hardcoded case is in the VS
     test('Special case: it returns an object with a well defined method property when code is C146985', () => {
       const specialStagingCode = 'C146985';
       const specialStagingCodeSystem = 'http://ncimeta.nci.nih.gov';
@@ -43,10 +42,18 @@ describe('cancerStaging snippets', () => {
       const stagingMethod = stagingMethodTemplate({ code: specialStagingCode });
       expect(stagingMethod).toEqual(expectedSpecialStagingMethod);
     });
-    // Test that it returns null when the one hardcoded case is
-    test('it returns null when provided an unknown code', () => {
+    test('it returns a method with a code and no system when provided an unknown code', () => {
       const unknownStagingCode = 'anything-goes';
-      expect(stagingMethodTemplate({ code: unknownStagingCode })).toBeNull();
+      const unknownStagingMethod = {
+        method: {
+          coding: [
+            {
+              code: unknownStagingCode,
+            },
+          ],
+        },
+      };
+      expect(stagingMethodTemplate({ code: unknownStagingCode })).toEqual(unknownStagingMethod);
     });
   });
 });
