@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const logger = require('../../helpers/logger');
 const { ifSomeArgsObj } = require('../../helpers/templateUtils');
 const { isCancerStagingSystem } = require('../../helpers/cancerStagingUtils');
@@ -27,7 +28,9 @@ function stagingMethodTemplate({ code }) {
     // System based on http://hl7.org/fhir/us/mcode/Observation-mCODETNMClinicalPrimaryTumorCategoryExample01.json.html
     return methodTemplate({ code, system: 'http://ncimeta.nci.nih.gov' });
   }
-  logger.debug(`stagingMethodTemplate received a code ${code} that is not recognized; code will not be added to the resulting FHIR resource`);
+  if (!_.isNull(code)) {
+    logger.debug(`stagingMethodTemplate received a code ${code} that is not recognized; code will be added without a codeSystem if possible`);
+  }
   return methodTemplate({ code });
 }
 
