@@ -28,21 +28,22 @@ describe('CSVStagingExtractor', () => {
       // Test that valid data works fine
       expect(formatTNMCategoryData(localData)).toEqual(expect.anything());
 
-      // Test all optional properties can be removed without throwing errors
-      delete localData.t;
-      delete localData.m;
-      delete localData.n;
-      delete localData.type;
-      delete localData.stagingSystem;
-      delete localData.stageGroup;
+      // Test all optional properties can be empty without issue
+      localData.t = '';
+      localData.m = '';
+      localData.n = '';
+      localData.type = '';
+      localData.stagingSystem = '';
+      localData.stageGroup = '';
 
       // Only including required properties is valid
       expect(formatTNMCategoryData(localData)).toEqual(expect.anything());
 
       // Removing each required property should throw an error
-      Object.keys(localData).forEach((key) => {
+      const requiredKeys = ['mrn', 'conditionId', 'effectiveDate'];
+      requiredKeys.forEach((key) => {
         const clonedData = _.cloneDeep(localData);
-        delete clonedData[key];
+        clonedData[key] = '';
         expect(() => formatTNMCategoryData(clonedData)).toThrow(new Error(expectedErrorString));
       });
     });
