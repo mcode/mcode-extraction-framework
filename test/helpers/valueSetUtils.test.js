@@ -55,8 +55,10 @@ describe('valueSetUtils', () => {
     test('Should throw when not provided a vs', () => {
       expect(() => checkCodeInVs(includesCode, undefined)).toThrow();
     });
-    test('Should throw when not provided a code', () => {
-      expect(() => checkCodeInVs(undefined, vsPath)).toThrow();
+    test('Should return false when not provided a code', () => {
+      // Note: This was the expected behavior of codesystem lookups before this separate module was created;
+      // could be an opportunity for refactoring in the future, but not feasible to check now.
+      expect(checkCodeInVs(undefined, vsPath)).toBeFalsy();
     });
     test('Should return true if the code is in the VS includes', () => {
       expect(checkCodeInVs(includesCode, vsPath, vsTypes.json)).toBeTruthy();

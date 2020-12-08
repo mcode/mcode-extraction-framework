@@ -43,7 +43,6 @@ function loadVs(absoluteFilepath, typeOfVS) {
  * @return {boolean} true if condition is in valueSet's compose block or expansion block
  */
 const checkCodeInVs = (code, valueSetFilePath, typeOfVS = vsTypes.json) => {
-  if (_.isUndefined(code)) throw Error('checkCodeInVs received a code of undefined');
   const valueSet = loadVs(valueSetFilePath, typeOfVS);
   let inVSExpansion = false;
   let inVSCompose = false;
