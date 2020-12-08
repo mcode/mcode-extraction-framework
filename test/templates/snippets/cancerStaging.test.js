@@ -1,5 +1,5 @@
 const { stagingMethodTemplate } = require('../../../src/templates/snippets');
-const cancerStagingSystemVS = require('../../../src/valueSets/ValueSet-mcode-cancer-staging-system-vs.json');
+const cancerStagingSystemVS = require('../../../src/helpers/valueSets/ValueSet-mcode-cancer-staging-system-vs.json');
 
 describe('cancerStaging snippets', () => {
   describe('stagingMethodTemplate', () => {
