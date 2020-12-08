@@ -1,4 +1,5 @@
-const { checkCodeInVS } = require('./valueSetUtils');
+const path = require('path');
+const { checkCodeInVs } = require('./valueSetUtils');
 
 // Codes and display values for Vital Signs resources
 // Code mapping is based on http://hl7.org/fhir/R4/observation-vitalsigns.html
@@ -19,8 +20,8 @@ const vitalSignsCodeToTextLookup = {
 
 
 function isTumorMarker(code) {
-  const tumorMarkerTestVSPath = './valueSets/ValueSet-mcode-tumor-marker-test-vs.json';
-  return checkCodeInVS(code, tumorMarkerTestVSPath);
+  const tumorMarkerTestVSPath = path.resolve(__dirname, './valueSets/ValueSet-mcode-tumor-marker-test-vs.json');
+  return checkCodeInVs(code, tumorMarkerTestVSPath);
 }
 
 function isVitalSign(code) {

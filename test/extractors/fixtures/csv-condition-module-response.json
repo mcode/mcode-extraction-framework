@@ -3,7 +3,7 @@
     "mrn": "mrn-1",
     "conditionId": "conditionId-1",
     "codeSystem": "http://snomed.info/sct",
-    "code": "C020",
+    "code": "C02.0",
     "displayName": "Some Cancer Condition",
     "category": "example-category",
     "dateOfDiagnosis": "YYYY-MM-DD",

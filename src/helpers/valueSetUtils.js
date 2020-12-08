@@ -1,5 +1,5 @@
 const fs = require('fs');
-const path = require('path');
+const _ = require('lodash');
 const logger = require('./logger');
 
 const vsTypes = {
@@ -8,45 +8,43 @@ const vsTypes = {
   turtle: 3,
 };
 
-function loadJsonVS(filepath) {
+function loadJsonVs(absoluteFilepath) {
   try {
-    const vsData = fs.readFileSync(path.resolve(__dirname, filepath));
+    const vsData = fs.readFileSync(absoluteFilepath);
     const vsJson = JSON.parse(vsData);
     return vsJson;
   } catch (error) {
-    logger.error(`Could not load valueSet from path ${filepath}`);
+    logger.error(`Could not load valueSet from path ${absoluteFilepath}`);
     throw error;
   }
 }
 
-function loadVS(filepath, typeOfVS = vsTypes.json) {
+function loadVs(absoluteFilepath, typeOfVS) {
   switch (typeOfVS) {
     case vsTypes.json:
-      logger.info(`loading JSON valueset from ${filepath}`);
-      return loadJsonVS(filepath);
+      logger.debug(`loading JSON valueset from ${absoluteFilepath}`);
+      return loadJsonVs(absoluteFilepath);
 
     case vsTypes.xml:
-      logger.error('No defined valueset loader for `xml` type valuesets');
-      return null;
+      throw Error('No defined valueset loader for `xml` type valuesets');
 
     case vsTypes.turtle:
-      logger.error('No defined valueset loader for `turtle` type valuesets');
-      return null;
+      throw Error('No defined valueset loader for `turtle` type valuesets');
 
     default:
-      logger.error(`'${typeOfVS}' is not a recognized valueset type`);
-      return null;
+      throw Error(`${typeOfVS}' is not a recognized valueset type`);
   }
 }
 
 /**
  * Check if code is in value set
- * @param {object} code value to look for in a valueset
+ * @param {string} code value to look for in a valueset
  * @param {object} valueSet contains list of codes included in value set
  * @return {boolean} true if condition is in valueSet's compose block or expansion block
  */
-const checkCodeInVS = (code, valueSetFilePath, typeOfVS = vsTypes.json) => {
-  const valueSet = loadVS(valueSetFilePath, typeOfVS);
+const checkCodeInVs = (code, valueSetFilePath, typeOfVS = vsTypes.json) => {
+  if (_.isUndefined(code)) throw Error('checkCodeInVs received a code of undefined');
+  const valueSet = loadVs(valueSetFilePath, typeOfVS);
   let inVSExpansion = false;
   let inVSCompose = false;
   if (valueSet.expansion) {
@@ -69,7 +67,7 @@ const checkCodeInVS = (code, valueSetFilePath, typeOfVS = vsTypes.json) => {
 
 module.exports = {
   vsTypes,
-  loadJsonVS,
-  loadVS,
-  checkCodeInVS,
+  loadJsonVs,
+  loadVs,
+  checkCodeInVs,
 };

@@ -13,8 +13,8 @@ const conditionWithICD10 = require('./fixtures/condition-with-icd10.json');
 const conditionWithoutICD10 = require('./fixtures/condition-without-icd10.json');
 const icd10 = require('./fixtures/icd10.json');
 
-const primaryCancerConditionCode = 'C50911'; // "Malignant neoplasm of unspecified site of right female breast"
-const secondaryCancerConditionCode = 'C7B1'; // "Secondary Merkel cell carcinoma" without a
+const primaryCancerConditionCode = 'C50.911'; // "Malignant neoplasm of unspecified site of right female breast"
+const secondaryCancerConditionCode = 'C7B.1'; // "Secondary Merkel cell carcinoma" without a
 
 describe('conditionUtils', () => {
   test('isConditionCodePrimary', () => {

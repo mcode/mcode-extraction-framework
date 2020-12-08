@@ -1,0 +1,30 @@
+{
+  "resourceType": "ValueSet",
+  "id": "valueset-example",
+  "compose": {
+    "include": [
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "concept": [
+          {
+            "code": "C00.0",
+            "display": "Malignant neoplasm of external upper lip"
+          }
+        ]
+      }
+    ]
+  },
+  "expansion": {
+    "timestamp": "2020-04-02T12:54:59-0400",
+    "contains": [
+      {
+        "code": "C00.0",
+        "display": "Malignant neoplasm of external upper lip"
+      },
+      {
+        "code": "C00.1",
+        "display": "Malignant neoplasm of external lower lip"
+      }
+    ]
+  }
+}

@@ -13,7 +13,7 @@
       },
       {
         "system": "http://hl7.org/fhir/sid/icd-10-cm",
-        "code": "C7981",
+        "code": "C79.81",
         "display": "Secondary malignant neoplasm of breast"
       },
       {
