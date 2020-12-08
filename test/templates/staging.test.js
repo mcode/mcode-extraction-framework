@@ -14,6 +14,7 @@ describe('JavaScript render Staging template', () => {
       effectiveDateTime: '2020-01-01',
       stageGroup: '3C',
       type: 'Clinical',
+      stagingSystem: null,
       categoryIds: null,
     };
 
@@ -23,17 +24,18 @@ describe('JavaScript render Staging template', () => {
   });
 
   test('minimal pathologic required data passed into template should generate FHIR resource', () => {
-    const STAGING_CLINICAL_MINIMAL_DATA = {
+    const STAGING_PATHOLOGIC_MINIMAL_DATA = {
       id: 'example-id',
       subjectId: 'example-mrn',
       conditionId: 'example-condition-id',
       effectiveDateTime: '2020-01-01',
       stageGroup: '3C',
       type: 'Pathologic',
+      stagingSystem: null,
       categoryIds: null,
     };
 
-    const generatedStaging = stagingTemplate(STAGING_CLINICAL_MINIMAL_DATA);
+    const generatedStaging = stagingTemplate(STAGING_PATHOLOGIC_MINIMAL_DATA);
     expect(generatedStaging).toEqual(minimalStagingPathologicResource);
     expect(isValidFHIR(generatedStaging)).toBeTruthy();
   });
@@ -46,6 +48,7 @@ describe('JavaScript render Staging template', () => {
       effectiveDateTime: '2020-01-01',
       type: 'Clinical',
       stageGroup: '3C',
+      stagingSystem: '443830009',
       categoryIds: ['t-category-id', 'n-category-id', 'm-category-id'],
     };
 
@@ -65,6 +68,7 @@ describe('JavaScript render Staging template', () => {
     };
 
     const OPTIONAL_DATA = {
+      stagingSystem: '443830009',
       categoryIds: ['t-category-id', 'n-category-id', 'm-category-id'],
     };
 
@@ -74,11 +78,14 @@ describe('JavaScript render Staging template', () => {
   test('missing required data should throw an error', () => {
     const INVALID_DATA = {
       // Omitting 'effectiveDateTime' field which is a required property
+      effectiveDateTime: null,
       id: 'example-id',
       subjectId: 'example-mrn',
       conditionId: 'example-condition-id',
       type: 'Clinical',
-      effectiveDateTime: null,
+      stageGroup: '3C',
+      stagingSystem: '443830009',
+      categoryIds: ['t-category-id', 'n-category-id', 'm-category-id'],
     };
 
     expect(() => stagingTemplate(INVALID_DATA)).toThrow(Error);

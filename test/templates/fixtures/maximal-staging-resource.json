@@ -6,6 +6,14 @@
       "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-stage-group"
     ]
   },
+  "method": {
+    "coding": [
+      {
+        "code": "443830009",
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  },
   "status": "final",
   "category": [
     {
