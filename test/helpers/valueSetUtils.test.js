@@ -1,4 +1,3 @@
-const { values } = require('lodash');
 const path = require('path');
 const { checkCodeInVs, vsTypes, loadJsonVs, loadVs } = require('../../src/helpers/valueSetUtils.js');
 const exampleValueSet = require('./fixtures/valueset-without-expansion.json');

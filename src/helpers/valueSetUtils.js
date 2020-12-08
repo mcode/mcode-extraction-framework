@@ -1,5 +1,4 @@
 const fs = require('fs');
-const _ = require('lodash');
 const logger = require('./logger');
 
 const vsTypes = {
