@@ -47,7 +47,6 @@ describe('valueSetUtils', () => {
 
   describe('checkCodeInVs', () => {
     const includesCode = 'C00.0';
-    // Note: Expansions are a superset of includes
     const expansionCode = 'C00.1';
     const missingCode = 'C12.34';
     const vsPath = path.resolve(__dirname, './fixtures/valueset-without-expansion.json');
@@ -69,6 +68,7 @@ describe('valueSetUtils', () => {
     test('Should return true if the code is in the VS expansion', () => {
       expect(checkCodeInVs(expansionCode, vsWithExpansionPath, vsTypes.json)).toBeTruthy();
     });
+    // Note: Expansions are a superset of includes; this is why we dont test "when an `includesCode` isn't in the expansion ValueSet"
     test('Should return false if the code is missing from both', () => {
       expect(checkCodeInVs(missingCode, vsPath, vsTypes.json)).toBeFalsy();
       expect(checkCodeInVs(missingCode, vsWithExpansionPath, vsTypes.json)).toBeFalsy();
