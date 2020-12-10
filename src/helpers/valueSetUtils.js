@@ -31,7 +31,7 @@ function loadVs(absoluteFilepath, typeOfVS) {
       throw Error('No defined valueset loader for `turtle` type valuesets');
 
     default:
-      throw Error(`${typeOfVS}' is not a recognized valueset type`);
+      throw Error(`'${typeOfVS}' is not a recognized valueset type`);
   }
 }
 
@@ -49,14 +49,16 @@ const checkCodeInVs = (code, valueSetFilePath, typeOfVS = vsTypes.json) => {
     // If valueSet has expansion, we only need to check these codes
     inVSExpansion = valueSet.expansion.contains.some((containsItem) => {
       if (!code || !containsItem) return false;
-      // return code.system === containsItem.system && code === containsItem.code;
+      // NOTE: This is a technically incorrect interpretation of ValueSets;
+      //       this matching ought to check both code and system
       return code === containsItem.code;
     });
   } else {
     // Checks if code is in any of the valueSet.compose.include arrays
     inVSCompose = valueSet.compose.include.some((includeItem) => {
       if (!code || !includeItem || !includeItem.concept) return false;
-      // return c.system === includeItem.system && includeItem.concept.map((concept) => concept.code).includes(code);
+      // NOTE: This is a technically incorrect interpretation of ValueSets;
+      //       this matching ought to check both code and system
       return includeItem.concept.map((concept) => concept.code).includes(code);
     });
   }

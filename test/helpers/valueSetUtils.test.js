@@ -20,7 +20,7 @@ describe('valueSetUtils', () => {
       expect(() => loadJsonVs()).toThrow();
     });
     test('should throw when file does not exist', () => {
-      expect(() => loadJsonVs('./path/does/not/exist')).toThrow();
+      expect(() => loadJsonVs('./path/does/not/exist')).toThrow("ENOENT: no such file or directory, open './path/does/not/exist'");
     });
     test('should load from the supplied filepath', () => {
       const valueSetFilePath = path.resolve(__dirname, 'fixtures', 'valueset-without-expansion.json');
@@ -30,13 +30,13 @@ describe('valueSetUtils', () => {
 
   describe('loadVs', () => {
     test('should throw an error when xml type is provided', () => {
-      expect(() => loadVs(undefined, vsTypes.xml)).toThrow();
+      expect(() => loadVs(undefined, vsTypes.xml)).toThrow('No defined valueset loader for `xml` type valuesets');
     });
     test('should throw an error when turtle is provided', () => {
-      expect(() => loadVs(undefined, vsTypes.turtle)).toThrow();
+      expect(() => loadVs(undefined, vsTypes.turtle)).toThrow('No defined valueset loader for `turtle` type valuesets');
     });
     test('should throw an error when an unrecoginized type is provided', () => {
-      expect(() => loadVs(undefined, vsTypes.newType)).toThrow();
+      expect(() => loadVs(undefined, vsTypes.newType)).toThrow("'undefined' is not a recognized valueset type");
     });
     test('Should load a vs properly for json', () => {
       const valueSetFilePath = path.resolve(__dirname, 'fixtures', 'valueset-without-expansion.json');
