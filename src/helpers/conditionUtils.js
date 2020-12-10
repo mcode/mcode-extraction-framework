@@ -24,7 +24,7 @@ function getICD10Code(condition) {
  * @return {boolean} if primary cancer condition
  */
 function isConditionCodePrimary(code) {
-  const primaryCancerConditionVSFilepath = path.resolve(__dirname, './valueSets/ValueSet-mcode-primary-or-uncertain-behavior-cancer-disorder-vs.json');
+  const primaryCancerConditionVSFilepath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-primary-or-uncertain-behavior-cancer-disorder-vs.json');
   return checkCodeInVs(code, primaryCancerConditionVSFilepath);
 }
 
@@ -34,7 +34,7 @@ function isConditionCodePrimary(code) {
  * @return {boolean} if secondary cancer condition
  */
 function isConditionCodeSecondary(code) {
-  const secondaryCancerConditionVSFilepath = path.resolve(__dirname, './valueSets/ValueSet-mcode-secondary-cancer-disorder-vs.json');
+  const secondaryCancerConditionVSFilepath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-secondary-cancer-disorder-vs.json');
   return checkCodeInVs(code, secondaryCancerConditionVSFilepath);
 }
 

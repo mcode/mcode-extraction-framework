@@ -23,7 +23,7 @@ describe('valueSetUtils', () => {
       expect(() => loadJsonVs('./path/does/not/exist')).toThrow();
     });
     test('should load from the supplied filepath', () => {
-      const valueSetFilePath = path.resolve(__dirname, './fixtures/valueset-without-expansion.json');
+      const valueSetFilePath = path.resolve(__dirname, 'fixtures', 'valueset-without-expansion.json');
       expect(loadJsonVs(valueSetFilePath)).toEqual(exampleValueSet);
     });
   });
@@ -39,8 +39,8 @@ describe('valueSetUtils', () => {
       expect(() => loadVs(undefined, vsTypes.newType)).toThrow();
     });
     test('Should load a vs properly for json', () => {
-      const valueSetFilePath = path.resolve(__dirname, './fixtures/valueset-without-expansion.json');
-      expect(loadJsonVs(valueSetFilePath, vsTypes.json)).toEqual(exampleValueSet);
+      const valueSetFilePath = path.resolve(__dirname, 'fixtures', 'valueset-without-expansion.json');
+      expect(loadVs(valueSetFilePath, vsTypes.json)).toEqual(exampleValueSet);
     });
   });
 
@@ -48,8 +48,8 @@ describe('valueSetUtils', () => {
     const includesCode = 'C00.0';
     const expansionCode = 'C00.1';
     const missingCode = 'C12.34';
-    const vsPath = path.resolve(__dirname, './fixtures/valueset-without-expansion.json');
-    const vsWithExpansionPath = path.resolve(__dirname, './fixtures/valueset-with-expansion.json');
+    const vsPath = path.resolve(__dirname, 'fixtures', 'valueset-without-expansion.json');
+    const vsWithExpansionPath = path.resolve(__dirname, 'fixtures', 'valueset-with-expansion.json');
     test('Should throw when not provided a vs', () => {
       expect(() => checkCodeInVs(includesCode, undefined)).toThrow();
     });

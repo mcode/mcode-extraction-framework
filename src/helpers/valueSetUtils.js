@@ -46,7 +46,7 @@ const checkCodeInVs = (code, valueSetFilePath, typeOfVS = vsTypes.json) => {
   let inVSExpansion = false;
   let inVSCompose = false;
   if (valueSet.expansion) {
-    // If valueSet has expansion, we only need to check these codes since everything in compose is in expansion
+    // If valueSet has expansion, we only need to check these codes
     inVSExpansion = valueSet.expansion.contains.some((containsItem) => {
       if (!code || !containsItem) return false;
       // return code.system === containsItem.system && code === containsItem.code;
