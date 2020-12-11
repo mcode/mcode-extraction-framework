@@ -1,7 +1,6 @@
 const {
   isVitalSign, isTumorMarker, isKarnofskyPerformanceStatus, isECOGPerformanceStatus, vitalSignsCodeToTextLookup,
 } = require('../../src/helpers/observationUtils.js');
-const tumorMarkerTestVS = require('../../src/valueSets/ValueSet-mcode-tumor-marker-test-vs.json');
 
 describe('observationUtils', () => {
   test('isVitalSign should return true when passed a valid Vital Sign code', () => {
@@ -14,9 +13,8 @@ describe('observationUtils', () => {
     expect(isVitalSign(code)).toEqual(false);
   });
   test('isTumorMarker should return true when passed a valid Tumor marker code', () => {
-    tumorMarkerTestVS.compose.include[0].concept.map((c) => c.code).forEach((code) => {
-      expect(isTumorMarker(code)).toEqual(true);
-    });
+    const her2InTissue = '48676-1';
+    expect(isTumorMarker(her2InTissue)).toEqual(true);
   });
   test('isTumorMarker should return false when passed a code that does not belong to a Tumor Marker', () => {
     const code = '12345';

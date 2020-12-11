@@ -3,8 +3,8 @@
   "type": "searchset",
   "total": 2,
   "entry": [
-    { "resource":
-      {
+    {
+      "resource": {
         "resourceType": "Condition",
         "id": "TQ5-lmYpARvptztb1K4wGKgB",
         "patient": {
@@ -19,7 +19,7 @@
             },
             {
               "system": "http://hl7.org/fhir/sid/icd-10-cm",
-              "code": "C50211",
+              "code": "C50.211",
               "display": "Malignant neoplasm of upper-inner quadrant of right female breast"
             },
             {
@@ -58,8 +58,8 @@
         "verificationStatus": "confirmed"
       }
     },
-    { "resource":
-      {
+    {
+      "resource": {
         "resourceType": "Condition",
         "id": "TQ6-lmYpARvptztb1K4wGKgB",
         "patient": {
@@ -74,7 +74,7 @@
             },
             {
               "system": "http://hl7.org/fhir/sid/icd-10-cm",
-              "code": "C7981",
+              "code": "C79.81",
               "display": "Secondary malignant neoplasm of breast"
             },
             {

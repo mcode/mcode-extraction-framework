@@ -1,11 +1,9 @@
-const cancerStagingSystemVS = require('../valueSets/ValueSet-mcode-cancer-staging-system-vs.json');
-
-function checkCodeInVS(code, valueSet) {
-  return valueSet.compose.include[0].concept.map((c) => c.code).includes(code);
-}
+const path = require('path');
+const { checkCodeInVs } = require('./valueSetUtils');
 
 function isCancerStagingSystem(code) {
-  return checkCodeInVS(code, cancerStagingSystemVS);
+  const cancerStagingSystemVSPath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-cancer-staging-system-vs.json');
+  return checkCodeInVs(code, cancerStagingSystemVSPath);
 }
 
 module.exports = {

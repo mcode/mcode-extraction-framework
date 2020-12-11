@@ -1,4 +1,5 @@
-const tumorMarkerTestVS = require('../valueSets/ValueSet-mcode-tumor-marker-test-vs.json');
+const path = require('path');
+const { checkCodeInVs } = require('./valueSetUtils');
 
 // Codes and display values for Vital Signs resources
 // Code mapping is based on http://hl7.org/fhir/R4/observation-vitalsigns.html
@@ -17,12 +18,10 @@ const vitalSignsCodeToTextLookup = {
   '8462-4': 'Diastolic blood pressure',
 };
 
-function checkCodeInVS(code, valueSet) {
-  return valueSet.compose.include[0].concept.map((c) => c.code).includes(code);
-}
 
 function isTumorMarker(code) {
-  return checkCodeInVS(code, tumorMarkerTestVS);
+  const tumorMarkerTestVSPath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-tumor-marker-test-vs.json');
+  return checkCodeInVs(code, tumorMarkerTestVSPath);
 }
 
 function isVitalSign(code) {
