@@ -29,6 +29,7 @@ const {
   FHIRObservationExtractor,
   FHIRPatientExtractor,
   FHIRProcedureExtractor,
+  MCODESurgicalProcedureExtractor,
 } = require('./extractors');
 const { BaseFHIRModule, CSVModule } = require('./modules');
 const { getEthnicityDisplay,
@@ -90,6 +91,7 @@ module.exports = {
   FHIRObservationExtractor,
   FHIRPatientExtractor,
   FHIRProcedureExtractor,
+  MCODESurgicalProcedureExtractor,
   logger,
   MCODEClient,
   // FHIR and resource helpers

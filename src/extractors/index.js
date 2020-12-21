@@ -18,6 +18,7 @@ const { FHIRMedicationStatementExtractor } = require('./FHIRMedicationStatementE
 const { FHIRObservationExtractor } = require('./FHIRObservationExtractor');
 const { FHIRPatientExtractor } = require('./FHIRPatientExtractor');
 const { FHIRProcedureExtractor } = require('./FHIRProcedureExtractor');
+const { MCODESurgicalProcedureExtractor } = require('./MCODESurgicalProcedureExtractor');
 
 module.exports = {
   BaseFHIRExtractor,
@@ -40,4 +41,5 @@ module.exports = {
   FHIRObservationExtractor,
   FHIRPatientExtractor,
   FHIRProcedureExtractor,
+  MCODESurgicalProcedureExtractor,
 };
