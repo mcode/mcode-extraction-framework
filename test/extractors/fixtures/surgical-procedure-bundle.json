@@ -1,0 +1,141 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:procedure-1",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "procedure-1",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "152198000",
+              "display": "Brachytherapy (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:mrn-1"
+        },
+        "performedDateTime": "2020-01-01",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "example-system",
+                "code": "example-code",
+                "display": "example-name"
+              }
+            ]
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "urn:uuid:condition-id"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "example-treatment-intent"
+                }
+              ]
+            }
+          }
+        ],
+        "bodySite": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "example-laterality"
+                    }
+                  ]
+                }
+              }
+            ],
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "example-site"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:procedure-2",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "procedure-2",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "373808002"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "173170008"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:mrn-1"
+        },
+        "performedDateTime": "2020-01-01",
+        "asserter": {
+          "reference": "Practitioner/mCODEPractitionerExample01"
+        },
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "41224006"
+              }
+            ]
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "example-system",
+                "code": "example-code",
+                "display": "example-name"
+              }
+            ]
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "urn:uuid:condition-id"
+          }
+        ]
+      }
+    }
+  ]
+}
