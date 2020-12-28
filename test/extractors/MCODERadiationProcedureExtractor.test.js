@@ -1,7 +1,7 @@
 const { when } = require('jest-when');
 const rewire = require('rewire');
 const { MCODERadiationProcedureExtractor } = require('../../src/extractors/MCODERadiationProcedureExtractor.js');
-const exampleProcedureBundle = require('./fixtures/radiation-procedure-bundle.json');
+const exampleProcedureBundle = require('./fixtures/surgical-radiation-procedure-bundle.json');
 
 const radiationProcedureExtractorRewired = rewire('../../src/extractors/MCODERadiationProcedureExtractor.js');
 const getMCODERadiationProcedures = radiationProcedureExtractorRewired.__get__('getMCODERadiationProcedures');
@@ -79,14 +79,15 @@ describe('MCODERadiationProcedureExtractor', () => {
   });
 
   describe('getMCODERadiationProcedures', () => {
-    const otherProcedureCoding = {
+    const radiationProcedureCoding = {
       system: 'http://snomed.info/sct',
       code: '152198000',
       display: 'Brachytherapy (procedure)',
     };
-    const radiationProcedureCoding = {
+    const otherProcedureCoding = {
       system: 'http://snomed.info/sct',
       code: '173170008',
+      display: 'Bilobectomy of lung',
     };
     let fhirProcedures;
     beforeEach(() => {
@@ -175,7 +176,7 @@ describe('MCODERadiationProcedureExtractor', () => {
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();
       expect(data.entry).toHaveLength(1);
-      expect(data.entry[0].resource.code.coding[0].code).toEqual('173170008'); // Bilobectomy of lung - is in MCODE Cancer Related Radiation Procedure VS
+      expect(data.entry[0].resource.code.coding[0].code).toEqual('152198000'); // Brachytherapy (procedure) - is in MCODE Cancer Related Radiation Procedure VS
     });
   });
 });

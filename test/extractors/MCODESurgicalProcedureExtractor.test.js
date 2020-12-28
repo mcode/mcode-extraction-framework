@@ -1,7 +1,7 @@
 const { when } = require('jest-when');
 const rewire = require('rewire');
 const { MCODESurgicalProcedureExtractor } = require('../../src/extractors/MCODESurgicalProcedureExtractor.js');
-const exampleProcedureBundle = require('./fixtures/surgical-procedure-bundle.json');
+const exampleProcedureBundle = require('./fixtures/surgical-radiation-procedure-bundle.json');
 
 const surgicalProcedureExtractorRewired = rewire('../../src/extractors/MCODESurgicalProcedureExtractor.js');
 const getMCODESurgicalProcedures = surgicalProcedureExtractorRewired.__get__('getMCODESurgicalProcedures');
