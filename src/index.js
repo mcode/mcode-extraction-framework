@@ -29,6 +29,7 @@ const {
   FHIRObservationExtractor,
   FHIRPatientExtractor,
   FHIRProcedureExtractor,
+  MCODERadiationProcedureExtractor,
   MCODESurgicalProcedureExtractor,
 } = require('./extractors');
 const { BaseFHIRModule, CSVModule } = require('./modules');
@@ -91,6 +92,7 @@ module.exports = {
   FHIRObservationExtractor,
   FHIRPatientExtractor,
   FHIRProcedureExtractor,
+  MCODERadiationProcedureExtractor,
   MCODESurgicalProcedureExtractor,
   logger,
   MCODEClient,
