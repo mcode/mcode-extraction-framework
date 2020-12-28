@@ -13,7 +13,7 @@ const MOCK_PATIENT_MRN = 'EXAMPLE-MRN';
 const extractor = new MCODESurgicalProcedureExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_HEADERS });
 const { fhirProcedureExtractor } = extractor;
 
-// Spy on fhirProcedureExtractor
+// Spy on fhirProcedureExtractor.get
 const fhirProcedureExtractorSpy = jest.spyOn(fhirProcedureExtractor, 'get');
 
 describe('MCODESurgicalProcedureExtractor', () => {
