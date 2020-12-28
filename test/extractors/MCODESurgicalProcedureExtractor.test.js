@@ -157,6 +157,10 @@ describe('MCODESurgicalProcedureExtractor', () => {
       const resultingProcedures = getMCODESurgicalProcedures(fhirProcedures);
       expect(resultingProcedures).toHaveLength(0);
     });
+    test('should return an empty list when provided an empty list of procedures', () => {
+      const resultingProcedures = getMCODESurgicalProcedures([]);
+      expect(resultingProcedures).toHaveLength(0);
+    });
   });
 
   describe('get', () => {
