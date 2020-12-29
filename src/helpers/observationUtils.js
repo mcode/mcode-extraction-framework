@@ -21,7 +21,7 @@ const vitalSignsCodeToTextLookup = {
 
 function isTumorMarker(code) {
   const tumorMarkerTestVSPath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-tumor-marker-test-vs.json');
-  return checkCodeInVs(code, tumorMarkerTestVSPath);
+  return checkCodeInVs(code, 'http://loinc.org', tumorMarkerTestVSPath);
 }
 
 function isVitalSign(code) {

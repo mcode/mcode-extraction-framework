@@ -60,6 +60,7 @@ function tnmCategoryTemplate({
   id,
   stageType,
   stagingSystem,
+  stagingCodeSystem,
   subjectId,
   valueCode,
 }) {
@@ -98,7 +99,7 @@ function tnmCategoryTemplate({
       ],
     },
     subject: reference({ id: subjectId }),
-    ...stagingMethodTemplate({ code: stagingSystem }),
+    ...stagingMethodTemplate({ code: stagingSystem, system: stagingCodeSystem }),
     effectiveDateTime,
     ...valueX({ code: valueCode, system: 'http://cancerstaging.org' }, 'valueCodeableConcept'),
     focus: [reference({ id: conditionId })],

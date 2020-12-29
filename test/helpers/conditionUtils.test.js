@@ -13,18 +13,19 @@ const conditionWithICD10 = require('./fixtures/condition-with-icd10.json');
 const conditionWithoutICD10 = require('./fixtures/condition-without-icd10.json');
 const icd10 = require('./fixtures/icd10.json');
 
+const icd10System = 'http://hl7.org/fhir/sid/icd-10-cm';
 const primaryCancerConditionCode = 'C50.911'; // "Malignant neoplasm of unspecified site of right female breast"
 const secondaryCancerConditionCode = 'C7B.1'; // "Secondary Merkel cell carcinoma" without a
 
 describe('conditionUtils', () => {
   test('isConditionCodePrimary', () => {
-    expect(isConditionCodePrimary(primaryCancerConditionCode)).toBeTruthy();
+    expect(isConditionCodePrimary(primaryCancerConditionCode, icd10System)).toBeTruthy();
     expect(isConditionCodePrimary('anything')).toBeFalsy();
     expect(isConditionCodePrimary(undefined)).toBeFalsy();
   });
 
   test('isConditionCodeSecondary', () => {
-    expect(isConditionCodeSecondary(secondaryCancerConditionCode)).toBeTruthy();
+    expect(isConditionCodeSecondary(secondaryCancerConditionCode, icd10System)).toBeTruthy();
     expect(isConditionCodeSecondary('anyCode')).toBeFalsy();
     expect(isConditionCodeSecondary(undefined)).toBeFalsy();
   });
@@ -47,8 +48,8 @@ describe('conditionUtils', () => {
   });
 
   test('isConditionCodeCancer', () => {
-    expect(isConditionCodeCancer(primaryCancerConditionCode)).toBeTruthy();
-    expect(isConditionCodeCancer(secondaryCancerConditionCode)).toBeTruthy();
+    expect(isConditionCodeCancer(primaryCancerConditionCode, icd10System)).toBeTruthy();
+    expect(isConditionCodeCancer(secondaryCancerConditionCode, icd10System)).toBeTruthy();
     expect(isConditionCodeCancer('anything')).toBeFalsy();
     expect(isConditionCodeCancer(undefined)).toBeFalsy();
   });

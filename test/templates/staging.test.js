@@ -49,6 +49,7 @@ describe('JavaScript render Staging template', () => {
       type: 'Clinical',
       stageGroup: '3C',
       stagingSystem: '443830009',
+      stagingCodeSystem: 'http://snomed.info/sct',
       categoryIds: ['t-category-id', 'n-category-id', 'm-category-id'],
     };
 

@@ -34,6 +34,7 @@ describe('CSVStagingExtractor', () => {
       localData.n = '';
       localData.type = '';
       localData.stagingSystem = '';
+      localData.stagingCodeSystem = '';
       localData.stageGroup = '';
 
       // Only including required properties is valid
@@ -57,6 +58,7 @@ describe('CSVStagingExtractor', () => {
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();
       expect(data.entry.length).toEqual(4);
+      console.log(JSON.stringify(data.entry));
       expect(data.entry).toEqual(exampleCSVStagingBundle.entry);
     });
 

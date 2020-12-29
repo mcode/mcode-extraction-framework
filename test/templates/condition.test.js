@@ -125,7 +125,7 @@ describe('test Condition template', () => {
       ],
     };
     // Use a cancer condition code when generating resource
-    const cancerConditionData = { ...CONDITION_MINIMAL_DATA, code: { code: 'C02.0', system: 'http://snomed.info/sct' } };
+    const cancerConditionData = { ...CONDITION_MINIMAL_DATA, code: { code: 'C02.0', system: 'http://hl7.org/fhir/sid/icd-10-cm' } };
     const generatedCondition = conditionTemplate(cancerConditionData);
     expect(generatedCondition.category).toContainEqual(diseaseCategory);
     expect(generatedCondition).toEqual(cancerValidExampleCondition);

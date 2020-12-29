@@ -24,6 +24,11 @@
       {
         "code": "C00.1",
         "display": "Malignant neoplasm of external lower lip"
+      },
+      {
+        "code": "C00.2",
+        "display": "Malignant neoplasm of external lower lip",
+        "system": "http://hl7.org/fhir/sid/icd-10-cm"
       }
     ]
   }
