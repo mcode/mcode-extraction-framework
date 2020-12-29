@@ -1,6 +1,10 @@
 const path = require('path');
 const { checkCodeInVs } = require('./valueSetUtils');
 
+const systemLookup = {
+  'urn:oid:2.16.840.1.113883.6.90': 'http://hl7.org/fhir/sid/icd-10-cm',
+};
+
 
 /**
  * Checks for ICD-10 code
@@ -24,9 +28,11 @@ function getICD10Code(condition) {
  * @param {string} system Code system to which th code belongs
  * @return {boolean} if primary cancer condition
  */
+/* eslint-disable no-prototype-builtins */
 function isConditionCodePrimary(code, system) {
   const primaryCancerConditionVSFilepath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-primary-or-uncertain-behavior-cancer-disorder-vs.json');
-  return checkCodeInVs(code, system, primaryCancerConditionVSFilepath);
+  const searchSystem = systemLookup.hasOwnProperty(system) ? systemLookup[system] : system;
+  return checkCodeInVs(code, searchSystem, primaryCancerConditionVSFilepath);
 }
 
 /**
@@ -35,9 +41,11 @@ function isConditionCodePrimary(code, system) {
  * @param {string} system Code system to which th code belongs
  * @return {boolean} if secondary cancer condition
  */
+/* eslint-disable no-prototype-builtins */
 function isConditionCodeSecondary(code, system) {
   const secondaryCancerConditionVSFilepath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-secondary-cancer-disorder-vs.json');
-  return checkCodeInVs(code, system, secondaryCancerConditionVSFilepath);
+  const searchSystem = systemLookup.hasOwnProperty(system) ? systemLookup[system] : system;
+  return checkCodeInVs(code, searchSystem, secondaryCancerConditionVSFilepath);
 }
 
 /**
