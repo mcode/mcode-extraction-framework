@@ -58,7 +58,6 @@ describe('CSVStagingExtractor', () => {
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();
       expect(data.entry.length).toEqual(4);
-      console.log(JSON.stringify(data.entry));
       expect(data.entry).toEqual(exampleCSVStagingBundle.entry);
     });
 
