@@ -1,7 +1,7 @@
 const path = require('path');
 const { Extractor } = require('./Extractor');
 const { FHIRProcedureExtractor } = require('./FHIRProcedureExtractor');
-const { getBundleEntriesByResourceType } = require('../helpers/fhirUtils');
+// const { getBundleEntriesByResourceType } = require('../helpers/fhirUtils');
 const { checkCodeInVs } = require('../helpers/valueSetUtils');
 const logger = require('../helpers/logger');
 
@@ -25,11 +25,12 @@ class MCODERadiationProcedureExtractor extends Extractor {
   }
 
   async getFHIRProcedures(mrn, context) {
-    const proceduresInContext = getBundleEntriesByResourceType(context, 'Procedure', {});
-    if (proceduresInContext.length !== 0) {
-      logger.debug('Procedure resources found in context.');
-      return proceduresInContext;
-    }
+    // NOTE: This is commented out while we discuss the future of Context moving forward
+    // const proceduresInContext = getBundleEntriesByResourceType(context, 'Procedure', {});
+    // if (proceduresInContext.length !== 0) {
+    //   logger.debug('Procedure resources found in context.');
+    //   return proceduresInContext;
+    // }
 
     logger.debug('Getting procedures available for patient');
     const procedureBundle = await this.fhirProcedureExtractor.get({ mrn, context });
