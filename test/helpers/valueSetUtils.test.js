@@ -57,7 +57,7 @@ describe('valueSetUtils', () => {
       expect(() => checkCodeInVs(includesCode, undefined)).toThrow();
     });
     test('Should return false when not provided a code', () => {
-      // Note: This was the expected behavior of id10System lookups before this separate module was created;
+      // Note: This was the expected behavior of icd10System lookups before this separate module was created;
       // could be an opportunity for refactoring in the future, but not feasible to check now.
       expect(checkCodeInVs(undefined, icd10System, vsPath)).toBeFalsy();
     });
