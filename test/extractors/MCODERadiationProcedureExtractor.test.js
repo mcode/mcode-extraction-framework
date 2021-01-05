@@ -1,22 +1,22 @@
 const { when } = require('jest-when');
 const rewire = require('rewire');
-const { MCODESurgicalProcedureExtractor } = require('../../src/extractors/MCODESurgicalProcedureExtractor.js');
+const { MCODERadiationProcedureExtractor } = require('../../src/extractors/MCODERadiationProcedureExtractor.js');
 const exampleProcedureBundle = require('./fixtures/surgical-radiation-procedure-bundle.json');
 
-const surgicalProcedureExtractorRewired = rewire('../../src/extractors/MCODESurgicalProcedureExtractor.js');
-const getMCODESurgicalProcedures = surgicalProcedureExtractorRewired.__get__('getMCODESurgicalProcedures');
+const radiationProcedureExtractorRewired = rewire('../../src/extractors/MCODERadiationProcedureExtractor.js');
+const getMCODERadiationProcedures = radiationProcedureExtractorRewired.__get__('getMCODERadiationProcedures');
 
 const MOCK_URL = 'http://example.com';
 const MOCK_HEADERS = {};
 const MOCK_PATIENT_MRN = 'EXAMPLE-MRN';
 
-const extractor = new MCODESurgicalProcedureExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_HEADERS });
+const extractor = new MCODERadiationProcedureExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_HEADERS });
 const { fhirProcedureExtractor } = extractor;
 
 // Spy on fhirProcedureExtractor.get
 const fhirProcedureExtractorSpy = jest.spyOn(fhirProcedureExtractor, 'get');
 
-describe('MCODESurgicalProcedureExtractor', () => {
+describe('MCODERadiationProcedureExtractor', () => {
   describe('getFHIRProcedures', () => {
     // it('should return procedure entries for patient from context', async () => {
     //   const contextPatient = {
@@ -78,15 +78,16 @@ describe('MCODESurgicalProcedureExtractor', () => {
     });
   });
 
-  describe('getMCODESurgicalProcedures', () => {
-    const otherProcedureCoding = {
+  describe('getMCODERadiationProcedures', () => {
+    const radiationProcedureCoding = {
       system: 'http://snomed.info/sct',
       code: '152198000',
       display: 'Brachytherapy (procedure)',
     };
-    const surgicalProcedureCoding = {
+    const otherProcedureCoding = {
       system: 'http://snomed.info/sct',
       code: '173170008',
+      display: 'Bilobectomy of lung',
     };
     let fhirProcedures;
     beforeEach(() => {
@@ -103,42 +104,42 @@ describe('MCODESurgicalProcedureExtractor', () => {
         },
       ];
     });
-    test('should return procedure that has single code in surgical procedure VS', () => {
-      const surgicalProcedure = {
+    test('should return procedure that has single code in radiation procedure VS', () => {
+      const radiationProcedure = {
         fullUrl: 'urn:uuid:xyz-987',
         resource: {
           resourceType: 'Procedure',
           id: 'xyz-987',
           code: {
-            coding: [surgicalProcedureCoding],
+            coding: [radiationProcedureCoding],
           },
         },
       };
-      fhirProcedures.push(surgicalProcedure);
-      const resultingProcedures = getMCODESurgicalProcedures(fhirProcedures);
+      fhirProcedures.push(radiationProcedure);
+      const resultingProcedures = getMCODERadiationProcedures(fhirProcedures);
       expect(resultingProcedures).toHaveLength(1);
-      expect(resultingProcedures).toContain(surgicalProcedure);
+      expect(resultingProcedures).toContain(radiationProcedure);
     });
 
-    test('should return procedure that has any code in surgical procedure VS', () => {
-      const surgicalProcedure = {
+    test('should return procedure that has any code in radiation procedure VS', () => {
+      const radiationProcedure = {
         fullUrl: 'urn:uuid:xyz-987',
         resource: {
           resourceType: 'Procedure',
           id: 'xyz-987',
           code: {
-            coding: [otherProcedureCoding, surgicalProcedureCoding],
+            coding: [otherProcedureCoding, radiationProcedureCoding],
           },
         },
       };
-      fhirProcedures.push(surgicalProcedure);
-      const resultingProcedures = getMCODESurgicalProcedures(fhirProcedures);
+      fhirProcedures.push(radiationProcedure);
+      const resultingProcedures = getMCODERadiationProcedures(fhirProcedures);
       expect(resultingProcedures).toHaveLength(1);
-      expect(resultingProcedures).toContain(surgicalProcedure);
+      expect(resultingProcedures).toContain(radiationProcedure);
     });
 
-    test('should not return procedure that has no code in surgical procedure VS', () => {
-      const resultingProcedures = getMCODESurgicalProcedures(fhirProcedures);
+    test('should not return procedure that has no code in radiation procedure VS', () => {
+      const resultingProcedures = getMCODERadiationProcedures(fhirProcedures);
       expect(resultingProcedures).toHaveLength(0);
     });
 
@@ -154,17 +155,17 @@ describe('MCODESurgicalProcedureExtractor', () => {
         },
       };
       fhirProcedures.push(emptyProcedure);
-      const resultingProcedures = getMCODESurgicalProcedures(fhirProcedures);
+      const resultingProcedures = getMCODERadiationProcedures(fhirProcedures);
       expect(resultingProcedures).toHaveLength(0);
     });
     test('should return an empty list when provided an empty list of procedures', () => {
-      const resultingProcedures = getMCODESurgicalProcedures([]);
+      const resultingProcedures = getMCODERadiationProcedures([]);
       expect(resultingProcedures).toHaveLength(0);
     });
   });
 
   describe('get', () => {
-    test('should return a bundle with only procedures that are MCODE cancer related surgical procedures', async () => {
+    test('should return a bundle with only procedures that are MCODE cancer related radiation procedures', async () => {
       const bundle = {
         resourceType: 'Bundle',
         type: 'collection',
@@ -172,13 +173,12 @@ describe('MCODESurgicalProcedureExtractor', () => {
       };
       fhirProcedureExtractorSpy.mockClear();
       when(fhirProcedureExtractorSpy).calledWith({ mrn: MOCK_PATIENT_MRN, context: {} }).mockReturnValue(bundle);
-
       const data = await extractor.get({ mrn: MOCK_PATIENT_MRN, context: {} });
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();
       expect(data.entry).toHaveLength(1);
-      expect(data.entry[0].resource.code.coding[0].code).toEqual('173170008'); // Bilobectomy of lung - is in MCODE Cancer Related Surgical Procedure VS
+      expect(data.entry[0].resource.code.coding[0].code).toEqual('152198000'); // Brachytherapy (procedure) - is in MCODE Cancer Related Radiation Procedure VS
     });
   });
 });
