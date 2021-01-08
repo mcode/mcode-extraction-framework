@@ -21,7 +21,6 @@
   "dependencies": {
     "ajv": "^6.12.6",
     "antlr4": "4.8.0",
-    "axios": "^0.19.0",
     "commander": "^6.2.0",
     "csv-parse": "^4.8.8",
     "fhir-crud-client": "^1.2.1",
