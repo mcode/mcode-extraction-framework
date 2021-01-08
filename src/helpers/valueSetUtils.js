@@ -50,20 +50,14 @@ const checkCodeInVs = (code, codeSystem, valueSetFilePath, typeOfVS = vsTypes.js
   if (valueSet.expansion) {
     // If valueSet has expansion, we only need to check these codes
     inVSExpansion = valueSet.expansion.contains.some((containsItem) => {
-      if (!code || !containsItem) return false;
-      if (containsItem.system) {
-        return code === containsItem.code && codeSystem === containsItem.codeSystem;
-      }
-      return code === containsItem.code;
+      if (!code || !codeSystem || !containsItem || !containsItem.system) return false;
+      return code === containsItem.code && codeSystem === containsItem.system;
     });
   } else {
     // Checks if code is in any of the valueSet.compose.include arrays
     inVSCompose = valueSet.compose.include.some((includeItem) => {
-      if (!code || !includeItem || !includeItem.concept) return false;
-      if (includeItem.system) {
-        return includeItem.system === codeSystem && includeItem.concept.map((concept) => concept.code).includes(code);
-      }
-      return includeItem.concept.map((concept) => concept.code).includes(code);
+      if (!code || !codeSystem || !includeItem || !includeItem.system || !includeItem.concept) return false;
+      return includeItem.system === codeSystem && includeItem.concept.map((concept) => concept.code).includes(code);
     });
   }
   return inVSCompose || inVSExpansion;

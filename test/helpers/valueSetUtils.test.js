@@ -46,7 +46,7 @@ describe('valueSetUtils', () => {
 
   describe('checkCodeInVs', () => {
     const includesCode = 'C00.0';
-    const expansionCode = 'C00.1';
+    const expansionCodeWithoutSystem = 'C00.1';
     const expansionCodeWithSystem = 'C00.2';
     const missingCode = 'C12.34';
     const icd10System = 'http://hl7.org/fhir/sid/icd-10-cm';
@@ -65,13 +65,25 @@ describe('valueSetUtils', () => {
       expect(checkCodeInVs(includesCode, icd10System, vsPath, vsTypes.json)).toBeTruthy();
     });
     test('Should return false if the code is not in the VS includes', () => {
-      expect(checkCodeInVs(expansionCode, icd10System, vsPath, vsTypes.json)).toBeFalsy();
+      expect(checkCodeInVs(expansionCodeWithSystem, icd10System, vsPath, vsTypes.json)).toBeFalsy();
     });
     test('Should return false if the code is in the VS includes but the systems do not match', () => {
       expect(checkCodeInVs(includesCode, snomedSystem, vsPath, vsTypes.json)).toBeFalsy();
     });
-    test('Should return true if the code is in the VS expansion', () => {
-      expect(checkCodeInVs(expansionCode, icd10System, vsWithExpansionPath, vsTypes.json)).toBeTruthy();
+    test('Should return false if the code is in the VS includes but the coding lacks a system', () => {
+      expect(checkCodeInVs(expansionCodeWithoutSystem, snomedSystem, vsPath, vsTypes.json)).toBeFalsy();
+    });
+    test('Should return false if the code is in the VS includes but a system was not included as an argument', () => {
+      expect(checkCodeInVs(expansionCodeWithoutSystem, undefined, vsPath, vsTypes.json)).toBeFalsy();
+    });
+    test('Should return true if the code is in the VS expansion and systems match', () => {
+      expect(checkCodeInVs(expansionCodeWithSystem, icd10System, vsWithExpansionPath, vsTypes.json)).toBeTruthy();
+    });
+    test('Should return false if the code is in the VS expansion but the coding lacks a system', () => {
+      expect(checkCodeInVs(expansionCodeWithoutSystem, icd10System, vsWithExpansionPath, vsTypes.json)).toBeFalsy();
+    });
+    test('Should return false if the code is in the VS expansion but a system was not included as an argument', () => {
+      expect(checkCodeInVs(expansionCodeWithSystem, undefined, vsWithExpansionPath, vsTypes.json)).toBeFalsy();
     });
     test('Should return false if the code is in the VS expansion but the systems do not match', () => {
       expect(checkCodeInVs(expansionCodeWithSystem, snomedSystem, vsWithExpansionPath, vsTypes.json)).toBeFalsy();
@@ -83,7 +95,7 @@ describe('valueSetUtils', () => {
     });
     test('Should check against a json valueSet when no type is provided', () => {
       expect(checkCodeInVs(includesCode, icd10System, vsPath)).toBeTruthy();
-      expect(checkCodeInVs(expansionCode, icd10System, vsWithExpansionPath)).toBeTruthy();
+      expect(checkCodeInVs(expansionCodeWithSystem, icd10System, vsWithExpansionPath)).toBeTruthy();
       expect(checkCodeInVs(missingCode, icd10System, vsPath)).toBeFalsy();
     });
   });
