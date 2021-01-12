@@ -2,7 +2,7 @@ const { bodySiteTemplate, coding, reference, valueX } = require('./snippets');
 const { ifSomeArgsObj } = require('../helpers/templateUtils');
 const { isTumorMarker, isVitalSign, isKarnofskyPerformanceStatus, isECOGPerformanceStatus } = require('../helpers/observationUtils');
 
-function categoryTemplate({ code }) {
+function categoryTemplate({ code, system }) {
   if (isVitalSign(code)) {
     return {
       category: [
@@ -18,7 +18,7 @@ function categoryTemplate({ code }) {
       ],
     };
   }
-  if (isTumorMarker(code)) {
+  if (isTumorMarker(code, system)) {
     return {
       category: [
         {
@@ -51,9 +51,9 @@ function subjectTemplate({ subjectId }) {
   };
 }
 
-function valueTemplate({ code, valueCode, valueCodeSystem }) {
+function valueTemplate({ code, system, valueCode, valueCodeSystem }) {
   if (!(code && valueCode)) return null;
-  if (isTumorMarker(code)) return valueX({ code: valueCode, system: valueCodeSystem }, 'valueCodeableConcept');
+  if (isTumorMarker(code, system)) return valueX({ code: valueCode, system: valueCodeSystem }, 'valueCodeableConcept');
   if (isECOGPerformanceStatus(code) || isKarnofskyPerformanceStatus(code)) return valueX(valueCode, 'valueInteger');
   return valueX(valueCode); // Vital Sign will be parsed as quantity, others will be parsed as appropriate
 }
@@ -70,11 +70,11 @@ function observationTemplate({
     resourceType: 'Observation',
     id,
     status,
-    ...categoryTemplate({ code }),
+    ...categoryTemplate({ code, system }),
     ...ifSomeArgsObj(codeTemplate)({ code, system, display }),
     ...subjectTemplate({ subjectId }),
     effectiveDateTime,
-    ...ifSomeArgsObj(valueTemplate)({ code, valueCode, valueCodeSystem }),
+    ...ifSomeArgsObj(valueTemplate)({ code, system, valueCode, valueCodeSystem }),
     ...ifSomeArgsObj(bodySiteTemplate)({ bodySite, laterality }),
   };
 }

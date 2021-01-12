@@ -1,6 +1,6 @@
-mrn,conditionId,stageGroup,t,n,m,type,stagingSystem,effectiveDate
-123,conditionId-1,3C,cT3,cN3,cM0,Clinical,C146985,2020-01-01
-456,conditionId-2,3C,cT3,cN3,cM0,Clinical,443830009,2020-01-01
-789,conditionId-2,3C,,cN3,cM0,Clinical,444256004,2020-01-02
-789,conditionId-2,3C,cT3,,cM0,Clinical,,2020-01-03
-789,conditionId-2,3C,cT3,cN3,,Clinical,258235000,2020-01-04
+mrn,conditionId,stageGroup,t,n,m,type,stagingSystem,stagingCodeSystem,effectiveDate
+123,conditionId-1,3C,cT3,cN3,cM0,Clinical,C146985,http://ncimeta.nci.nih.gov,2020-01-01
+456,conditionId-2,3C,cT3,cN3,cM0,Clinical,443830009,http://snomed.info/sct,2020-01-01
+789,conditionId-2,3C,,cN3,cM0,Clinical,444256004,http://snomed.info/sct,2020-01-02
+789,conditionId-2,3C,cT3,,cM0,Clinical,,,2020-01-03
+789,conditionId-2,3C,cT3,cN3,,Clinical,258235000,http://snomed.info/sct,2020-01-04

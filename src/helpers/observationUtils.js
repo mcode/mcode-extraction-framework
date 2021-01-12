@@ -19,9 +19,9 @@ const vitalSignsCodeToTextLookup = {
 };
 
 
-function isTumorMarker(code) {
+function isTumorMarker(code, system) {
   const tumorMarkerTestVSPath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-tumor-marker-test-vs.json');
-  return checkCodeInVs(code, tumorMarkerTestVSPath);
+  return checkCodeInVs(code, system, tumorMarkerTestVSPath);
 }
 
 function isVitalSign(code) {

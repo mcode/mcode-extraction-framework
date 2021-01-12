@@ -1,2 +1,2 @@
-mrn,conditionId,stageGroup,t,n,m,type,stagingSystem,effectiveDate
-mrn-1,example-condition-id,3C,cT3,cN3,cM0,Clinical,443830009,2020-01-01
+mrn,conditionId,stageGroup,t,n,m,type,stagingSystem,stagingCodeSystem,effectiveDate
+mrn-1,example-condition-id,3C,cT3,cN3,cM0,Clinical,443830009,http://snomed.info/sct,2020-01-01

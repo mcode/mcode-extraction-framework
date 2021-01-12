@@ -9,8 +9,7 @@ function getMCODESurgicalProcedures(fhirProcedures) {
   const surgicalProcedureVSFilepath = path.resolve(__dirname, '..', 'helpers', 'valueSets', 'ValueSet-mcode-cancer-related-surgical-procedure-vs.json');
   return fhirProcedures.filter((procedure) => {
     const coding = procedure.resource.code ? procedure.resource.code.coding : [];
-    // NOTE: Update when checkCodeInVS checks code and system (might be able to pass in the full Coding)
-    return coding.some((c) => checkCodeInVs(c.code, surgicalProcedureVSFilepath));
+    return coding.some((c) => checkCodeInVs(c.code, c.system, surgicalProcedureVSFilepath));
   });
 }
 

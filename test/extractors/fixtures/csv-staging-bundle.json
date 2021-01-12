@@ -3,21 +3,13 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:2ef4913c24494e7169825841c632691f2953e90b9abc5fe80d0909b406323ecc",
+      "fullUrl": "urn:uuid:ed5faf7f2a1cef061d7584afd463e60eb7202104700647e92fbb7c9419eb7897",
       "resource": {
         "resourceType": "Observation",
-        "id": "2ef4913c24494e7169825841c632691f2953e90b9abc5fe80d0909b406323ecc",
+        "id": "ed5faf7f2a1cef061d7584afd463e60eb7202104700647e92fbb7c9419eb7897",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-primary-tumor-category"
-          ]
-        },
-        "method": {
-          "coding": [
-            {
-              "code": "444256004",
-              "system": "http://snomed.info/sct"
-            }
           ]
         },
         "status": "final",
@@ -42,6 +34,14 @@
         "subject": {
           "reference": "urn:uuid:pat-mrn-1"
         },
+        "method": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "444256004"
+            }
+          ]
+        },
         "effectiveDateTime": "2020-01-01",
         "valueCodeableConcept": {
           "coding": [
@@ -59,21 +59,13 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:c0ed298f468d8a3784cbeb93a61b7071b0de91976c5e75d24249e09f0133b910",
+      "fullUrl": "urn:uuid:88992af10e3a822f2a946628de91012d5afae49a25d1641db09e9d6ed4ca24c3",
       "resource": {
         "resourceType": "Observation",
-        "id": "c0ed298f468d8a3784cbeb93a61b7071b0de91976c5e75d24249e09f0133b910",
+        "id": "88992af10e3a822f2a946628de91012d5afae49a25d1641db09e9d6ed4ca24c3",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-distant-metastases-category"
-          ]
-        },
-        "method": {
-          "coding": [
-            {
-              "code": "444256004",
-              "system": "http://snomed.info/sct"
-            }
           ]
         },
         "status": "final",
@@ -98,6 +90,14 @@
         "subject": {
           "reference": "urn:uuid:pat-mrn-1"
         },
+        "method": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "444256004"
+            }
+          ]
+        },
         "effectiveDateTime": "2020-01-01",
         "valueCodeableConcept": {
           "coding": [
@@ -115,21 +115,13 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:e24bd7d3e80d58904dec0e32f22fd0332d9309807c4a6f22d9ad31372fd2ef6f",
+      "fullUrl": "urn:uuid:1373d3fb234cad0b03912cfbba16bdc4eabbd6217d83b838f6d9c1343bc9b394",
       "resource": {
         "resourceType": "Observation",
-        "id": "e24bd7d3e80d58904dec0e32f22fd0332d9309807c4a6f22d9ad31372fd2ef6f",
+        "id": "1373d3fb234cad0b03912cfbba16bdc4eabbd6217d83b838f6d9c1343bc9b394",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-regional-nodes-category"
-          ]
-        },
-        "method": {
-          "coding": [
-            {
-              "code": "444256004",
-              "system": "http://snomed.info/sct"
-            }
           ]
         },
         "status": "final",
@@ -154,6 +146,14 @@
         "subject": {
           "reference": "urn:uuid:pat-mrn-1"
         },
+        "method": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "444256004"
+            }
+          ]
+        },
         "effectiveDateTime": "2020-01-01",
         "valueCodeableConcept": {
           "coding": [
@@ -171,21 +171,13 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:47010e1b639f9af9a2878140db31a3e2b6d887f2e72e7ee625e41ac2e55e7284",
+      "fullUrl": "urn:uuid:23564150098c6afeb2abc712086a21ead2e9bd308929f9d290988c6921ac841b",
       "resource": {
         "resourceType": "Observation",
-        "id": "47010e1b639f9af9a2878140db31a3e2b6d887f2e72e7ee625e41ac2e55e7284",
+        "id": "23564150098c6afeb2abc712086a21ead2e9bd308929f9d290988c6921ac841b",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-stage-group"
-          ]
-        },
-        "method": {
-          "coding": [
-            {
-              "code": "444256004",
-              "system": "http://snomed.info/sct"
-            }
           ]
         },
         "status": "final",
@@ -204,6 +196,14 @@
             {
               "system": "http://loinc.org",
               "code": "21908-9"
+            }
+          ]
+        },
+        "method": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "444256004"
             }
           ]
         },
@@ -226,13 +226,13 @@
         ],
         "hasMember": [
           {
-            "reference": "urn:uuid:2ef4913c24494e7169825841c632691f2953e90b9abc5fe80d0909b406323ecc"
+            "reference": "urn:uuid:ed5faf7f2a1cef061d7584afd463e60eb7202104700647e92fbb7c9419eb7897"
           },
           {
-            "reference": "urn:uuid:c0ed298f468d8a3784cbeb93a61b7071b0de91976c5e75d24249e09f0133b910"
+            "reference": "urn:uuid:88992af10e3a822f2a946628de91012d5afae49a25d1641db09e9d6ed4ca24c3"
           },
           {
-            "reference": "urn:uuid:e24bd7d3e80d58904dec0e32f22fd0332d9309807c4a6f22d9ad31372fd2ef6f"
+            "reference": "urn:uuid:1373d3fb234cad0b03912cfbba16bdc4eabbd6217d83b838f6d9c1343bc9b394"
           }
         ]
       }

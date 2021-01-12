@@ -22,7 +22,7 @@ describe('cancerStaging snippets', () => {
       expect(stagingMethodTemplate({ code: null })).toBe(null);
     });
     test('it returns an object with a well defined method property when code is in the valueset', () => {
-      const stagingMethod = stagingMethodTemplate({ code: stagingCode });
+      const stagingMethod = stagingMethodTemplate({ code: stagingCode, system: stagingCodeSystem });
       expect(stagingMethod).toEqual(expectedStagingMethod);
     });
     test('Special case: it returns an object with a well defined method property when code is C146985', () => {

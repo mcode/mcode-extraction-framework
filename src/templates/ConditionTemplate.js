@@ -43,8 +43,9 @@ function individualCategoryTemplate(category) {
 
 function categoryArrayTemplate(array, code) {
   const category = array.map(individualCategoryTemplate);
-  const codeValue = `${code}`;
-  if (isConditionCodeCancer(codeValue)) {
+  const codeValue = `${code.code}`;
+  const codeSystem = `${code.system}`;
+  if (isConditionCodeCancer(codeValue, codeSystem)) {
     // On cancer conditions, include the fixed value for the disease category
     category.push({
       coding: [coding({
@@ -125,7 +126,7 @@ function conditionTemplate({
     ),
     ...ifAllArgsObj(clinicalStatusTemplate)({ clinicalStatus }),
     ...ifAllArgsObj(verificationStatusTemplate)({ verificationStatus }),
-    ...categoryArrayTemplate(category, code.code),
+    ...categoryArrayTemplate(category, code),
     ...codingTemplate({ code }),
     ...ifAllArgsObj(bodySiteTemplate)({ bodySite, laterality }),
     ...subjectTemplate({ subject }),

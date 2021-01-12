@@ -36,6 +36,7 @@ function stagingTemplate({
   id,
   stageGroup,
   stagingSystem,
+  stagingCodeSystem,
   subjectId,
   type,
 }) {
@@ -73,7 +74,7 @@ function stagingTemplate({
         }),
       ],
     },
-    ...stagingMethodTemplate({ code: stagingSystem }),
+    ...stagingMethodTemplate({ code: stagingSystem, system: stagingCodeSystem }),
     subject: reference({ id: subjectId }),
     effectiveDateTime,
     ...valueX({ code: stageGroup, system: 'http://cancerstaging.org' }, 'valueCodeableConcept'),

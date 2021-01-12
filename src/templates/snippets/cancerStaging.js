@@ -19,10 +19,9 @@ function methodTemplate({ code, system }) {
   )({ code, system });
 }
 
-function stagingMethodTemplate({ code }) {
-  if (isCancerStagingSystem(code)) {
-    // NOTE: our general value set lookup should probably return the associate system, since it's available at the VS level
-    return methodTemplate({ code, system: 'http://snomed.info/sct' });
+function stagingMethodTemplate({ code, system }) {
+  if (isCancerStagingSystem(code, system)) {
+    return methodTemplate({ code, system });
   } if (code === 'C146985') {
     // TODO: fix this HARDCODED special case as delineated by this VS's description http://hl7.org/fhir/us/mcode/ValueSet-mcode-cancer-staging-system-vs.html
     // System based on http://hl7.org/fhir/us/mcode/Observation-mCODETNMClinicalPrimaryTumorCategoryExample01.json.html

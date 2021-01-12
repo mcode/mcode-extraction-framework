@@ -34,6 +34,7 @@ describe('CSVStagingExtractor', () => {
       localData.n = '';
       localData.type = '';
       localData.stagingSystem = '';
+      localData.stagingCodeSystem = '';
       localData.stageGroup = '';
 
       // Only including required properties is valid

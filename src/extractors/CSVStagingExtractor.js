@@ -10,7 +10,7 @@ function formatTNMCategoryData(stagingData) {
   logger.debug('Reformatting TNM Category data into template format');
   const formattedData = [];
   const {
-    mrn, conditionId, t, n, m, type, stagingSystem, effectiveDate,
+    mrn, conditionId, t, n, m, type, stagingSystem, stagingCodeSystem, effectiveDate,
   } = stagingData;
 
   if (!mrn || !conditionId || !effectiveDate) {
@@ -23,6 +23,7 @@ function formatTNMCategoryData(stagingData) {
     effectiveDateTime: formatDateTime(effectiveDate),
     stageType: type,
     stagingSystem,
+    stagingCodeSystem,
     subjectId: mrn,
   };
 
@@ -35,7 +36,7 @@ function formatTNMCategoryData(stagingData) {
 
 function formatStagingData(stagingData, categoryIds) {
   const {
-    mrn, conditionId, type, stageGroup, stagingSystem, effectiveDate,
+    mrn, conditionId, type, stageGroup, stagingSystem, stagingCodeSystem, effectiveDate,
   } = stagingData;
 
   return {
@@ -44,6 +45,7 @@ function formatStagingData(stagingData, categoryIds) {
     type,
     stageGroup,
     stagingSystem,
+    stagingCodeSystem,
     effectiveDateTime: formatDateTime(effectiveDate),
     categoryIds,
   };

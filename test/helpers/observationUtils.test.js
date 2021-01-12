@@ -14,11 +14,18 @@ describe('observationUtils', () => {
   });
   test('isTumorMarker should return true when passed a valid Tumor marker code', () => {
     const her2InTissue = '48676-1';
-    expect(isTumorMarker(her2InTissue)).toEqual(true);
+    const loincSystem = 'http://loinc.org';
+    expect(isTumorMarker(her2InTissue, loincSystem)).toEqual(true);
   });
   test('isTumorMarker should return false when passed a code that does not belong to a Tumor Marker', () => {
     const code = '12345';
-    expect(isTumorMarker(code)).toEqual(false);
+    const loincSystem = 'http://loinc.org';
+    expect(isTumorMarker(code, loincSystem)).toEqual(false);
+  });
+  test('isTumorMarker should return false when passed a valid Tumor marker code but an invalid code system', () => {
+    const her2InTissue = '48676-1';
+    const snomedSystem = 'http://snomed.info/sct';
+    expect(isTumorMarker(her2InTissue, snomedSystem)).toEqual(false);
   });
   test('isKarnofskyPerformanceStatus should return true when passed the correct code', () => {
     const code = '89243-0';

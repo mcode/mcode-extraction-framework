@@ -1,6 +1,10 @@
 const path = require('path');
 const { checkCodeInVs } = require('./valueSetUtils');
 
+const systemLookup = {
+  'urn:oid:2.16.840.1.113883.6.90': 'http://hl7.org/fhir/sid/icd-10-cm',
+};
+
 
 /**
  * Checks for ICD-10 code
@@ -20,22 +24,28 @@ function getICD10Code(condition) {
 
 /**
  * Checks if a condition code is a primary cancer condition
- * @param code ICD code, string
+ * @param {string} code ICD code
+ * @param {string} system Code system to which th code belongs
  * @return {boolean} if primary cancer condition
  */
-function isConditionCodePrimary(code) {
+/* eslint-disable no-prototype-builtins */
+function isConditionCodePrimary(code, system) {
   const primaryCancerConditionVSFilepath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-primary-or-uncertain-behavior-cancer-disorder-vs.json');
-  return checkCodeInVs(code, primaryCancerConditionVSFilepath);
+  const searchSystem = systemLookup.hasOwnProperty(system) ? systemLookup[system] : system;
+  return checkCodeInVs(code, searchSystem, primaryCancerConditionVSFilepath);
 }
 
 /**
  * Checks if a condition code is a secondary cancer condition
- * @param code ICD code, string
+ * @param {string} code ICD code
+ * @param {string} system Code system to which th code belongs
  * @return {boolean} if secondary cancer condition
  */
-function isConditionCodeSecondary(code) {
+/* eslint-disable no-prototype-builtins */
+function isConditionCodeSecondary(code, system) {
   const secondaryCancerConditionVSFilepath = path.resolve(__dirname, 'valueSets', 'ValueSet-mcode-secondary-cancer-disorder-vs.json');
-  return checkCodeInVs(code, secondaryCancerConditionVSFilepath);
+  const searchSystem = systemLookup.hasOwnProperty(system) ? systemLookup[system] : system;
+  return checkCodeInVs(code, searchSystem, secondaryCancerConditionVSFilepath);
 }
 
 /**
@@ -45,7 +55,7 @@ function isConditionCodeSecondary(code) {
  */
 function isConditionPrimary(condition) {
   const icd10Code = getICD10Code(condition);
-  return icd10Code && isConditionCodePrimary(icd10Code.code);
+  return icd10Code && isConditionCodePrimary(icd10Code.code, icd10Code.system);
 }
 
 /**
@@ -55,16 +65,17 @@ function isConditionPrimary(condition) {
  */
 function isConditionSecondary(condition) {
   const icd10Code = getICD10Code(condition);
-  return icd10Code && isConditionCodeSecondary(icd10Code.code);
+  return icd10Code && isConditionCodeSecondary(icd10Code.code, icd10Code.system);
 }
 
 /**
  * Checks if a condition code is a cancer condition we recognize
- * @param code ICD code, string
+ * @param {string} code ICD code
+ * @param {string} system Code system to which th code belongs
  * @return {boolean} if primary or secondary cancer condition
  */
-function isConditionCodeCancer(code) {
-  return isConditionCodePrimary(code) || isConditionCodeSecondary(code);
+function isConditionCodeCancer(code, system) {
+  return isConditionCodePrimary(code, system) || isConditionCodeSecondary(code, system);
 }
 
 /**

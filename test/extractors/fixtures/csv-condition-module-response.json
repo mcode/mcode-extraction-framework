@@ -2,7 +2,7 @@
   {
     "mrn": "mrn-1",
     "conditionId": "conditionId-1",
-    "codeSystem": "http://snomed.info/sct",
+    "codeSystem": "http://hl7.org/fhir/sid/icd-10-cm",
     "code": "C02.0",
     "displayName": "Some Cancer Condition",
     "category": "example-category",
