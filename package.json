@@ -23,7 +23,7 @@
     "antlr4": "4.8.0",
     "commander": "^6.2.0",
     "csv-parse": "^4.8.8",
-    "fhir-crud-client": "^1.2.1",
+    "fhir-crud-client": "^1.2.2",
     "fhirpath": "2.1.5",
     "lodash": "^4.17.19",
     "moment": "^2.26.0",
