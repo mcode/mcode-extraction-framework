@@ -4,5 +4,11 @@
     "dateOfCarePlan": "2020-04-15",
     "reasonCode": "281647001",
     "changed": "true"
+  },
+  {
+    "mrn": "mrn-1",
+    "dateOfCarePlan": "2020-04-30",
+    "reasonCode": "405613005",
+    "changed": "true"
   }
 ]

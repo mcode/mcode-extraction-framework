@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:4d2afb8f74b6950922b0ae5979edbcaf59cecf959ddf80cce63940b45597a29c",
+      "fullUrl": "urn:uuid:a66c9b6d0c06506e28dcaac8fc2ef9126b1039507761c79c6e04f606b5c7b054",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "4d2afb8f74b6950922b0ae5979edbcaf59cecf959ddf80cce63940b45597a29c",
+        "id": "a66c9b6d0c06506e28dcaac8fc2ef9126b1039507761c79c6e04f606b5c7b054",
         "meta": {
           "profile": [
             "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-with-review"
@@ -31,12 +31,26 @@
               { "url": "ReviewDate", "valueDate": "2020-04-15" },
               { "url": "ChangedFlag", "valueBoolean": true }
             ]
+          },
+          {
+            "url": "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review",
+            "extension": [
+              {
+                "url": "CarePlanChangeReason",
+                "valueCodeableConcept": {
+                  "coding": [
+                    { "system": "http://snomed.info/sct", "code": "405613005" }
+                  ]
+                }
+              },
+              { "url": "ReviewDate", "valueDate": "2020-04-30" },
+              { "url": "ChangedFlag", "valueBoolean": true }
+            ]
           }
         ],
         "subject": { "reference": "urn:uuid:mrn-1" },
         "status": "draft",
         "intent": "proposal",
-        "created": "2020-04-15",
         "category": [
           {
             "coding": [
