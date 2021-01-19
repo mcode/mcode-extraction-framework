@@ -30,7 +30,12 @@ class BaseClient {
       const { label, type, constructorArgs } = curExtractorConfig;
       logger.debug(`Initializing ${label} extractor with type ${type}`);
       const ExtractorClass = this.extractorClasses[type];
-      this.extractors.push(new ExtractorClass({ ...commonExtractorArgs, ...constructorArgs }));
+      try {
+        const newExtractor = new ExtractorClass({ ...commonExtractorArgs, ...constructorArgs });
+        this.extractors.push(newExtractor);
+      } catch (e) {
+        throw new Error(`Unable to initialize ${label} extractor with type ${type}`);
+      }
     });
   }
 
