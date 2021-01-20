@@ -23,7 +23,8 @@
     ]
   },
   "subject" : {
-    "reference": "urn:uuid:example-mrn"
+    "reference": "urn:uuid:example-mrn",
+    "type": "Patient"
   },
   "effectiveDateTime" : "2020-01-01",
   "valueQuantity": {

@@ -26,7 +26,7 @@ function reasonTemplate({ reasonCode, reasonCodeSystem, reasonDisplayName }) {
 function reasonReference(conditionId) {
   return {
     reasonReference: [
-      reference({ id: conditionId }),
+      reference({ id: conditionId, resourceType: 'Condition' }),
     ],
   };
 }
@@ -68,7 +68,7 @@ function procedureTemplate({
         coding({ code, system, display }),
       ],
     },
-    subject: reference({ id: subjectId }),
+    subject: reference({ id: subjectId, resourceType: 'Patient' }),
     performedDateTime: effectiveDateTime,
     ...ifSomeArgsObj(reasonTemplate)({ reasonCode, reasonCodeSystem, reasonDisplayName }),
     ...(conditionId && reasonReference(conditionId)),

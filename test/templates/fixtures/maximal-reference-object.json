@@ -1,4 +1,5 @@
 {
   "reference": "urn:uuid:example-id",
-  "display": "example-name"
+  "display": "example-name",
+  "type": "ExampleType"
 }

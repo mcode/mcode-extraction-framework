@@ -27,7 +27,8 @@
           ]
         },
         "subject" : {
-          "reference": "urn:uuid:example-patient"
+          "reference": "urn:uuid:example-patient",
+          "type": "Patient"
         },
         "effectiveDateTime" : "2020-01-02",
         "valueCodeableConcept": {

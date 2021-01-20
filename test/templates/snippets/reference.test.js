@@ -24,6 +24,7 @@ describe('Reference Snippet', () => {
     const MAXIMAL_DATA = {
       id: 'example-id',
       name: 'example-name',
+      resourceType: 'ExampleType',
     };
 
     expect(reference(MAXIMAL_DATA)).toEqual(maximalReference);

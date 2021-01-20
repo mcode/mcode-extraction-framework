@@ -25,7 +25,7 @@ function medicationTemplate({ code, codeSystem, displayText }) {
 
 function subjectTemplate({ id }) {
   return {
-    subject: reference({ id }),
+    subject: reference({ id, resourceType: 'Patient' }),
   };
 }
 

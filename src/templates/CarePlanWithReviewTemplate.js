@@ -60,7 +60,7 @@ function carePlanChangeReasonExtensionTemplate({ hasChanged, reasonCode, reasonD
 
 function subjectTemplate(subject) {
   return {
-    subject: reference(subject),
+    subject: reference({ ...subject, resourceType: 'Patient' }),
   };
 }
 

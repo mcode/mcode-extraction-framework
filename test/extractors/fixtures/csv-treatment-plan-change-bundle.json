@@ -49,7 +49,7 @@
             ]
           }
         ],
-        "subject": { "reference": "urn:uuid:mrn-1" },
+        "subject": { "reference": "urn:uuid:mrn-1", "type": "Patient" },
         "status": "draft",
         "intent": "proposal",
         "category": [

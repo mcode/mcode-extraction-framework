@@ -28,6 +28,7 @@
     ]
   },
   "subject": {
-    "reference": "urn:uuid:example-subject-id"
+    "reference": "urn:uuid:example-subject-id",
+    "type": "Patient"
   }
 }

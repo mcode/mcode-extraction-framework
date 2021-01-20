@@ -12,14 +12,14 @@ function evidenceTemplate({ evidence }) {
 function focusTemplate({ condition }) {
   return {
     focus: [
-      reference(condition),
+      reference({ ...condition, resourceType: 'Condition' }),
     ],
   };
 }
 
 function subjectTemplate({ subject }) {
   return {
-    subject: reference(subject),
+    subject: reference({ ...subject, resourceType: 'Patient' }),
   };
 }
 
