@@ -34,7 +34,8 @@
     ]
   },
   "subject": {
-    "reference": "urn:uuid:example-mrn"
+    "reference": "urn:uuid:example-mrn",
+    "type": "Patient"
   },
   "effectiveDateTime": "2020-01-01",
   "valueCodeableConcept": {
@@ -47,18 +48,22 @@
   },
   "focus": [
     {
-      "reference": "urn:uuid:example-condition-id"
+      "reference": "urn:uuid:example-condition-id",
+      "type": "Condition"
     }
   ],
   "hasMember": [
     {
-      "reference": "urn:uuid:t-category-id"
+      "reference": "urn:uuid:t-category-id",
+      "type": "Observation"
     },
     {
-      "reference": "urn:uuid:n-category-id"
+      "reference": "urn:uuid:n-category-id",
+      "type": "Observation"
     },
     {
-      "reference": "urn:uuid:m-category-id"
+      "reference": "urn:uuid:m-category-id",
+      "type": "Observation"
     }
   ]
 }

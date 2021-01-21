@@ -14,7 +14,7 @@ function studyTemplate(trialResearchID) {
 function individualTemplate(patientId) {
   return {
     individual: {
-      ...reference({ id: patientId }),
+      ...reference({ id: patientId, resourceType: 'Patient' }),
     },
   };
 }

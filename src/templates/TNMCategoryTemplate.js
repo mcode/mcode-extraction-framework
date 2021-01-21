@@ -98,11 +98,11 @@ function tnmCategoryTemplate({
         }),
       ],
     },
-    subject: reference({ id: subjectId }),
+    subject: reference({ id: subjectId, resourceType: 'Patient' }),
     ...stagingMethodTemplate({ code: stagingSystem, system: stagingCodeSystem }),
     effectiveDateTime,
     ...valueX({ code: valueCode, system: 'http://cancerstaging.org' }, 'valueCodeableConcept'),
-    focus: [reference({ id: conditionId })],
+    focus: [reference({ id: conditionId, resourceType: 'Condition' })],
   };
 }
 

@@ -32,7 +32,8 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:pat-mrn-1"
+          "reference": "urn:uuid:pat-mrn-1",
+          "type": "Patient"
         },
         "method": {
           "coding": [
@@ -53,7 +54,8 @@
         },
         "focus": [
           {
-            "reference": "urn:uuid:cond-1"
+            "reference": "urn:uuid:cond-1",
+            "type": "Condition"
           }
         ]
       }
@@ -88,7 +90,8 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:pat-mrn-1"
+          "reference": "urn:uuid:pat-mrn-1",
+          "type": "Patient"
         },
         "method": {
           "coding": [
@@ -109,7 +112,8 @@
         },
         "focus": [
           {
-            "reference": "urn:uuid:cond-1"
+            "reference": "urn:uuid:cond-1",
+            "type": "Condition"
           }
         ]
       }
@@ -144,7 +148,8 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:pat-mrn-1"
+          "reference": "urn:uuid:pat-mrn-1",
+          "type": "Patient"
         },
         "method": {
           "coding": [
@@ -165,7 +170,8 @@
         },
         "focus": [
           {
-            "reference": "urn:uuid:cond-1"
+            "reference": "urn:uuid:cond-1",
+            "type": "Condition"
           }
         ]
       }
@@ -208,7 +214,8 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:pat-mrn-1"
+          "reference": "urn:uuid:pat-mrn-1",
+          "type": "Patient"
         },
         "effectiveDateTime": "2020-01-01",
         "valueCodeableConcept": {
@@ -221,18 +228,22 @@
         },
         "focus": [
           {
-            "reference": "urn:uuid:cond-1"
+            "reference": "urn:uuid:cond-1",
+            "type": "Condition"
           }
         ],
         "hasMember": [
           {
-            "reference": "urn:uuid:ed5faf7f2a1cef061d7584afd463e60eb7202104700647e92fbb7c9419eb7897"
+            "reference": "urn:uuid:ed5faf7f2a1cef061d7584afd463e60eb7202104700647e92fbb7c9419eb7897",
+            "type": "Observation"
           },
           {
-            "reference": "urn:uuid:88992af10e3a822f2a946628de91012d5afae49a25d1641db09e9d6ed4ca24c3"
+            "reference": "urn:uuid:88992af10e3a822f2a946628de91012d5afae49a25d1641db09e9d6ed4ca24c3",
+            "type": "Observation"
           },
           {
-            "reference": "urn:uuid:1373d3fb234cad0b03912cfbba16bdc4eabbd6217d83b838f6d9c1343bc9b394"
+            "reference": "urn:uuid:1373d3fb234cad0b03912cfbba16bdc4eabbd6217d83b838f6d9c1343bc9b394",
+            "type": "Observation"
           }
         ]
       }
