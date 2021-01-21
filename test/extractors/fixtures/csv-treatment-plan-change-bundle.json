@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:a66c9b6d0c06506e28dcaac8fc2ef9126b1039507761c79c6e04f606b5c7b054",
+      "fullUrl": "urn:uuid:3005b559bb913fdfb23756a442645c6c37bbdafa42ad4be0bd1a6b698274f466",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "a66c9b6d0c06506e28dcaac8fc2ef9126b1039507761c79c6e04f606b5c7b054",
+        "id": "3005b559bb913fdfb23756a442645c6c37bbdafa42ad4be0bd1a6b698274f466",
         "meta": {
           "profile": [
             "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-with-review"
@@ -24,8 +24,9 @@
                 "url": "CarePlanChangeReason",
                 "valueCodeableConcept": {
                   "coding": [
-                    { "system": "http://snomed.info/sct", "code": "281647001" }
-                  ]
+                    { "system": "http://snomed.info/sct", "code": "281647001", "display": "Adverse reaction (disorder)" }
+                  ],
+                  "text": "Adverse reaction (disorder)"
                 }
               },
               { "url": "ReviewDate", "valueDate": "2020-04-15" },

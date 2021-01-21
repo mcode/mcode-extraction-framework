@@ -2,7 +2,7 @@ const path = require('path');
 const _ = require('lodash');
 const { Extractor } = require('./Extractor');
 const { CSVModule } = require('../modules');
-const { formatDate, formatDateTime } = require('../helpers/dateUtils');
+const { formatDate } = require('../helpers/dateUtils');
 const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
@@ -11,39 +11,54 @@ const logger = require('../helpers/logger');
 function formatData(tpcData) {
   logger.debug('Reformatting treatment plan change data from CSV into template format');
 
+  // Nothing to format in empty array
+  if (_.isEmpty(tpcData)) {
+    return [];
+  }
+
+  // Newly combined data has mrn and list of reviews to map to an extension
+  const combinedFormat = { mrn: tpcData[0].mrn, reviews: [] };
+
   // If there are multiple entries, combine them into one object with multiple reviews
-  const combinedData = _.reduce(tpcData, (res, n) => {
-    if (!n.mrn || !n.dateOfCarePlan || !n.changed) {
+  const combinedData = _.reduce(tpcData, (res, currentDataEntry) => {
+    const {
+      mrn, dateOfCarePlan, changed, reasonCode, reasonDisplayText,
+    } = currentDataEntry;
+
+    if (!mrn || !dateOfCarePlan || !changed) {
       throw new Error('Treatment Plan Change Data missing an expected property: mrn, dateOfCarePlan, changed are required');
     }
 
     // reasonCode is required if changed flag is true
-    if (n.changed === 'true' && !n.reasonCode) {
+    if (changed === 'true' && !reasonCode) {
       throw new Error('reasonCode is required when changed flag is true');
     }
 
-    if (!res.mrn) res.mrn = n.mrn;
-    (res.reviews || (res.reviews = [])).push({
-      dateOfCarePlan: n.dateOfCarePlan,
-      reasonCode: n.reasonCode,
-      changed: n.changed,
+    res.reviews.push({
+      dateOfCarePlan,
+      reasonCode,
+      reasonDisplayText,
+      changed,
     });
     return res;
-  }, {});
+  }, combinedFormat);
 
   // Format each entry in the reviews array
-  combinedData.reviews = combinedData.reviews.map((reviews) => {
-    const { dateOfCarePlan, changed, reasonCode } = reviews;
+  combinedData.reviews = combinedData.reviews.map((review) => {
+    const { dateOfCarePlan, changed, reasonCode, reasonDisplayText } = review;
 
     const formattedData = {
       effectiveDate: formatDate(dateOfCarePlan),
-      effectiveDateTime: formatDateTime(dateOfCarePlan),
       hasChanged: changed,
     };
 
     // Add reasonCode to formattedData if available
     if (reasonCode) {
       formattedData.reasonCode = reasonCode;
+
+      if (reasonDisplayText) {
+        formattedData.reasonDisplayText = reasonDisplayText;
+      }
     }
 
     return formattedData;

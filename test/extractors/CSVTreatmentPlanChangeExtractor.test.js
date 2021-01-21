@@ -68,13 +68,12 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
           reviews: [
             {
               effectiveDate: '2020-04-15',
-              effectiveDateTime: '2020-04-15',
               hasChanged: 'true',
               reasonCode: '281647001',
+              reasonDisplayText: 'Adverse reaction (disorder)',
             },
             {
               effectiveDate: '2020-04-30',
-              effectiveDateTime: '2020-04-30',
               reasonCode: '405613005',
               hasChanged: 'true',
             },
