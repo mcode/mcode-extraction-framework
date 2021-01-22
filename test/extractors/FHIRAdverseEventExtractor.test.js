@@ -21,7 +21,7 @@ describe('FHIRAdverseEventExtractor', () => {
     test('sets study based on BASE_STUDY if not provided', () => {
       expect(extractor.study).toEqual(baseStudy);
     });
-    test('sets status if provided', () => {
+    test('sets study if provided', () => {
       expect(extractorWithStudy.study).toEqual(MOCK_STUDIES);
     });
   });
@@ -38,27 +38,25 @@ describe('FHIRAdverseEventExtractor', () => {
       expect(params).not.toHaveProperty('study');
     });
 
-    test('should add study when set to param values', async () => {
-      // Create spy
-      const { baseFHIRModule } = extractorWithStudy;
-      const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
-      baseFHIRModuleSearchSpy
-        .mockReturnValue(examplePatientBundle);
+    describe('pass in optional study parameter', () => {
+      beforeEach(() => {
+        // Create spy
+        const { baseFHIRModule } = extractorWithStudy;
+        const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
+        baseFHIRModuleSearchSpy
+          .mockReturnValue(examplePatientBundle);
+      });
 
-      const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
-      expect(params).toHaveProperty('study');
-      expect(params.study).toEqual(extractorWithStudy.study);
-    });
+      test('should add study when set to param values', async () => {
+        const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
+        expect(params).toHaveProperty('study');
+        expect(params.study).toEqual(extractorWithStudy.study);
+      });
 
-    test('should delete patient after its value is moved to subject', async () => {
-      // Create spy
-      const { baseFHIRModule } = extractorWithStudy;
-      const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
-      baseFHIRModuleSearchSpy
-        .mockReturnValue(examplePatientBundle);
-
-      const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
-      expect(params).not.toHaveProperty('patient');
+      test('should delete patient after its value is moved to subject', async () => {
+        const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
+        expect(params).not.toHaveProperty('patient');
+      });
     });
   });
 });
