@@ -17,7 +17,7 @@
             }
           ]
         },
-        "subject": { "reference": "urn:uuid:mrn-1" },
+        "subject": { "reference": "urn:uuid:mrn-1", "type": "Patient" },
         "performedDateTime": "2020-01-01",
         "reasonCode": [
           {
@@ -30,7 +30,7 @@
             ]
           }
         ],
-        "reasonReference": [{ "reference": "urn:uuid:condition-id" }],
+        "reasonReference": [{ "reference": "urn:uuid:condition-id", "type": "Condition" }],
         "extension": [
           {
             "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent",

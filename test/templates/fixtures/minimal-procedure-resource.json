@@ -5,6 +5,6 @@
   "code": {
     "coding": [{ "system": "http://snomed.info/sct", "code": "152198000" }]
   },
-  "subject": { "reference": "urn:uuid:example-mrn" },
+  "subject": { "reference": "urn:uuid:example-mrn", "type": "Patient" },
   "performedDateTime": "2020-01-01"
 }

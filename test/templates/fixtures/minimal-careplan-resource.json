@@ -26,7 +26,8 @@
     }
   ],
   "subject": {
-    "reference": "urn:uuid:abc-def"
+    "reference": "urn:uuid:abc-def",
+    "type": "Patient"
   },
   "status": "draft",
   "intent": "proposal",

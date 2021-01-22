@@ -47,7 +47,7 @@ function codeTemplate({ code, system, display }) {
 
 function subjectTemplate({ subjectId }) {
   return {
-    subject: reference({ id: subjectId }),
+    subject: reference({ id: subjectId, resourceType: 'Patient' }),
   };
 }
 

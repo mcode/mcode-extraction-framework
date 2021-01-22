@@ -36,7 +36,8 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:mrn-1"
+          "reference": "urn:uuid:mrn-1",
+          "type": "Patient"
         },
         "effectivePeriod": {
           "start": "YYYY-MM-DD",

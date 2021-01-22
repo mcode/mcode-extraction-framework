@@ -25,7 +25,7 @@ function hasMemberTemplate(categoryIds) {
   if (!categoryIds || categoryIds.length === 0) return {};
 
   return {
-    hasMember: categoryIds.map((id) => reference({ id })),
+    hasMember: categoryIds.map((id) => reference({ id, resourceType: 'Observation' })),
   };
 }
 
@@ -75,10 +75,10 @@ function stagingTemplate({
       ],
     },
     ...stagingMethodTemplate({ code: stagingSystem, system: stagingCodeSystem }),
-    subject: reference({ id: subjectId }),
+    subject: reference({ id: subjectId, resourceType: 'Patient' }),
     effectiveDateTime,
     ...valueX({ code: stageGroup, system: 'http://cancerstaging.org' }, 'valueCodeableConcept'),
-    focus: [reference({ id: conditionId })],
+    focus: [reference({ id: conditionId, resourceType: 'Condition' })],
     ...hasMemberTemplate(categoryIds),
   };
 }

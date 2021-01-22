@@ -21,7 +21,7 @@
             "value": "example-researchId"
           }
         },
-        "individual": { "reference": "urn:uuid:EXAMPLE-MRN" }
+        "individual": { "reference": "urn:uuid:EXAMPLE-MRN", "type": "Patient" }
       }
     },
     {
