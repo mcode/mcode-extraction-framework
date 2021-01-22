@@ -36,6 +36,32 @@
           "valueBoolean": true
         }
       ]
+    },
+    {
+      "url": "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review",
+      "extension": [
+        {
+          "url": "CarePlanChangeReason",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "code": "405613005",
+                "system": "http://snomed.info/sct",
+                "display": "Planned Procedure (situation)"
+              }
+            ],
+            "text": "Planned Procedure (situation)"
+          }
+        },
+        {
+          "url": "ReviewDate",
+          "valueDate": "2020-01-30"
+        },
+        {
+          "url": "ChangedFlag",
+          "valueBoolean": true
+        }
+      ]
     }
   ],
   "subject": {
@@ -44,7 +70,6 @@
   },
   "status": "draft",
   "intent": "proposal",
-  "created": "2020-01-23T09:07:00Z",
   "category": [
     {
       "coding": [ { "code": "assess-plan", "system": "http://argonaut.hl7.org"}]

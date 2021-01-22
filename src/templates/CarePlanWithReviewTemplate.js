@@ -1,7 +1,6 @@
 const {
   coding, extensionArr, meta, narrative, reference, valueX,
 } = require('./snippets');
-const { ifAllArgs } = require('../helpers/templateUtils');
 
 function metaTemplate() {
   return {
@@ -14,12 +13,6 @@ function textTemplate() {
     + 'as modeled in the ICAREdata usecase of mCODE. It is based on the profile found here: http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-CarePlanWithReview.html</div>';
   return {
     text: narrative('additional', carePlanDiv),
-  };
-}
-
-function createdTemplate({ effectiveDateTime }) {
-  return {
-    created: effectiveDateTime,
   };
 }
 
@@ -37,6 +30,12 @@ function carePlanReasonTemplate({ reasonCode, reasonDisplayText }) {
 }
 
 function carePlanChangeReasonExtensionTemplate({ hasChanged, reasonCode, reasonDisplayText, effectiveDate }) {
+  if (hasChanged === undefined || !effectiveDate) {
+    const errorMessage = 'Trying to render a CarePlanWithReviewTemplate, but a review was missing required fields; '
+      + 'ensure that hasChanged and effectiveDate are present on all reviews';
+    throw new Error(errorMessage);
+  }
+
   let hasChangedBoolean = hasChanged;
   if (hasChanged === 'true') {
     hasChangedBoolean = true;
@@ -83,12 +82,10 @@ function categoryTemplate() {
 // Treatment Plan Change modeled with CarePlanWithReview Template
 // Uses the ICARE R4 Care Plan profile which is not published yet
 // For reference, ICARE R4 Care Plan profile: http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-care-plan-with-review.html
-function carePlanWithReviewTemplate({
-  id, mrn, name, effectiveDate, effectiveDateTime, hasChanged, reasonCode, reasonDisplayText,
-}) {
-  if (!(id && mrn && effectiveDate && hasChanged != null)) {
+function carePlanWithReviewTemplate({ id, mrn, name, reviews }) {
+  if (!(id && mrn && reviews)) {
     const errorMessage = 'Trying to render a CarePlanWithReviewTemplate, but a required argument was missing; '
-      + 'ensure that id, mrn, effectiveDate, hasChanged are all present';
+      + 'ensure that id, mrn, reviews are all present';
     throw new Error(errorMessage);
   }
   return {
@@ -97,12 +94,11 @@ function carePlanWithReviewTemplate({
     ...metaTemplate(),
     ...textTemplate(),
     ...extensionArr(
-      carePlanChangeReasonExtensionTemplate({ hasChanged, reasonCode, reasonDisplayText, effectiveDate }),
+      ...reviews.map(carePlanChangeReasonExtensionTemplate),
     ),
     ...subjectTemplate({ id: mrn, name }),
     status: 'draft',
     intent: 'proposal',
-    ...ifAllArgs(createdTemplate)({ effectiveDateTime }),
     ...categoryTemplate(),
   };
 }

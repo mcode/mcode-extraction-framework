@@ -26,6 +26,12 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
         changed: 'false',
         mrn: 'id',
       },
+      {
+        dateOfCarePlan: '2020-04-30',
+        changed: 'true',
+        reasonCode: 'example code',
+        mrn: 'id',
+      },
     ];
 
     test('should join data appropriately and throw errors when missing required properties', () => {
@@ -53,6 +59,29 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
       // No error should be throw when reasonCode is provided
       exampleData[0].reasonCode = 'example code';
       expect(() => formatData(exampleData)).not.toThrowError();
+    });
+
+    test('should join multiple entries into one', () => {
+      const expectedFormattedData = [
+        {
+          mrn: 'mrn-1',
+          reviews: [
+            {
+              effectiveDate: '2020-04-15',
+              hasChanged: 'true',
+              reasonCode: '281647001',
+              reasonDisplayText: 'Adverse reaction (disorder)',
+            },
+            {
+              effectiveDate: '2020-04-30',
+              reasonCode: '405613005',
+              hasChanged: 'true',
+            },
+          ],
+        },
+      ];
+
+      expect(formatData(exampleCSVTPCModuleResponse)).toEqual(expectedFormattedData);
     });
   });
 

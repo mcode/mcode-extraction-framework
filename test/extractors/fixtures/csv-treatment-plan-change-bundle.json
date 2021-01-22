@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:4d2afb8f74b6950922b0ae5979edbcaf59cecf959ddf80cce63940b45597a29c",
+      "fullUrl": "urn:uuid:3005b559bb913fdfb23756a442645c6c37bbdafa42ad4be0bd1a6b698274f466",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "4d2afb8f74b6950922b0ae5979edbcaf59cecf959ddf80cce63940b45597a29c",
+        "id": "3005b559bb913fdfb23756a442645c6c37bbdafa42ad4be0bd1a6b698274f466",
         "meta": {
           "profile": [
             "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-with-review"
@@ -24,11 +24,27 @@
                 "url": "CarePlanChangeReason",
                 "valueCodeableConcept": {
                   "coding": [
-                    { "system": "http://snomed.info/sct", "code": "281647001" }
-                  ]
+                    { "system": "http://snomed.info/sct", "code": "281647001", "display": "Adverse reaction (disorder)" }
+                  ],
+                  "text": "Adverse reaction (disorder)"
                 }
               },
               { "url": "ReviewDate", "valueDate": "2020-04-15" },
+              { "url": "ChangedFlag", "valueBoolean": true }
+            ]
+          },
+          {
+            "url": "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-review",
+            "extension": [
+              {
+                "url": "CarePlanChangeReason",
+                "valueCodeableConcept": {
+                  "coding": [
+                    { "system": "http://snomed.info/sct", "code": "405613005" }
+                  ]
+                }
+              },
+              { "url": "ReviewDate", "valueDate": "2020-04-30" },
               { "url": "ChangedFlag", "valueBoolean": true }
             ]
           }
@@ -36,7 +52,6 @@
         "subject": { "reference": "urn:uuid:mrn-1" },
         "status": "draft",
         "intent": "proposal",
-        "created": "2020-04-15",
         "category": [
           {
             "coding": [
