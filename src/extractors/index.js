@@ -9,6 +9,7 @@ const { CSVProcedureExtractor } = require('./CSVProcedureExtractor');
 const { CSVStagingExtractor } = require('./CSVStagingExtractor');
 const { CSVTreatmentPlanChangeExtractor } = require('./CSVTreatmentPlanChangeExtractor');
 const { Extractor } = require('./Extractor');
+const { FHIRAdverseEventExtractor } = require('./FHIRAdverseEventExtractor');
 const { FHIRAllergyIntoleranceExtractor } = require('./FHIRAllergyIntoleranceExtractor');
 const { FHIRConditionExtractor } = require('./FHIRConditionExtractor');
 const { FHIRDocumentReferenceExtractor } = require('./FHIRDocumentReferenceExtractor');
@@ -33,6 +34,7 @@ module.exports = {
   CSVStagingExtractor,
   CSVTreatmentPlanChangeExtractor,
   Extractor,
+  FHIRAdverseEventExtractor,
   FHIRAllergyIntoleranceExtractor,
   FHIRConditionExtractor,
   FHIRDocumentReferenceExtractor,
