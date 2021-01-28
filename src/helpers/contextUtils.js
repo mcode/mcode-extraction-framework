@@ -1,7 +1,7 @@
 const logger = require('./logger');
 const { getBundleResourcesByType } = require('./fhirUtils');
 
-async function getPatient(mrn, context) {
+async function getPatientFromContext(mrn, context) {
   const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
   if (!patientInContext) {
     throw Error('Could not find a patient in context');
@@ -11,5 +11,5 @@ async function getPatient(mrn, context) {
 }
 
 module.exports = {
-  getPatient,
+  getPatientFromContext,
 };
