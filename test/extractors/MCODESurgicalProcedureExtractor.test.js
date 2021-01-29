@@ -18,44 +18,6 @@ const fhirProcedureExtractorSpy = jest.spyOn(fhirProcedureExtractor, 'get');
 
 describe('MCODESurgicalProcedureExtractor', () => {
   describe('getFHIRProcedures', () => {
-    // it('should return procedure entries for patient from context', async () => {
-    //   const contextPatient = {
-    //     resourceType: 'Patient',
-    //     id: 'context-patient-id',
-    //   };
-    //   const contextProcedure1 = {
-    //     resourceType: 'Procedure',
-    //     id: 'context-procedure-1-id',
-    //   };
-    //   const contextProcedure2 = {
-    //     resourceType: 'Procedure',
-    //     id: 'context-procedure-2-id',
-    //   };
-    //   const context = {
-    //     resourceType: 'Bundle',
-    //     type: 'collection',
-    //     entry: [
-    //       {
-    //         fullUrl: 'context-patient-url',
-    //         resource: contextPatient,
-    //       },
-    //       {
-    //         fullUrl: 'context-procedure-1-url',
-    //         resource: contextProcedure1,
-    //       },
-    //       {
-    //         fullUrl: 'context-procedure-2-url',
-    //         resource: contextProcedure2,
-    //       },
-    //     ],
-    //   };
-    //   const procedures = await extractor.getFHIRProcedures(MOCK_PATIENT_MRN, context);
-    //   expect(fhirProcedureExtractorSpy).not.toHaveBeenCalled();
-    //   expect(procedures).toHaveLength(2);
-    //   expect(procedures[0].resource.id).toEqual(contextProcedure1.id);
-    //   expect(procedures[1].resource.id).toEqual(contextProcedure2.id);
-    // });
-
     it('should return procedure entries for patient from FHIR search if no context', async () => {
       fhirProcedureExtractorSpy.mockClear();
       when(fhirProcedureExtractorSpy).calledWith({ mrn: MOCK_PATIENT_MRN, context: {} }).mockReturnValue(exampleProcedureBundle);

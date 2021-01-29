@@ -1,12 +1,20 @@
 const rewire = require('rewire');
 const { FHIRObservationExtractor } = require('../../src/extractors/FHIRObservationExtractor.js');
-const examplePatientBundle = require('./fixtures/patient-bundle.json');
 
 const FHIRObservationExtractorRewired = rewire('../../src/extractors/FHIRObservationExtractor.js');
 const MOCK_URL = 'http://example.com';
 const MOCK_HEADERS = {};
 const MOCK_MRN = '123456789';
 const MOCK_CATEGORIES = 'category1,category2';
+const MOCK_CONTEXT = {
+  resourceType: 'Bundle',
+  entry: [
+    {
+      fullUrl: 'context-url',
+      resource: { resourceType: 'Patient', id: MOCK_MRN },
+    },
+  ],
+};
 
 // Construct extractor and create spies for mocking responses
 const extractor = new FHIRObservationExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_HEADERS });
@@ -28,13 +36,7 @@ describe('FHIRObservationExtractor', () => {
 
   describe('parametrizeArgsForFHIRModule', () => {
     test('should add category to param values', async () => {
-      // Create spy
-      const { baseFHIRModule } = extractor;
-      const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
-      baseFHIRModuleSearchSpy
-        .mockReturnValue(examplePatientBundle);
-
-      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
+      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
       expect(params).toHaveProperty('category');
       expect(params.category).toEqual(baseCategories);
     });

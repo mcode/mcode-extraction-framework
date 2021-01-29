@@ -16,7 +16,7 @@
       ],
       "resource": {
         "resourceType": "Patient",
-        "id": "patient-id",
+        "id": "EXAMPLE-MRN",
         "extension": [
           {
             "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",

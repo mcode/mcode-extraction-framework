@@ -18,7 +18,7 @@ const MOCK_CONTEXT = {
   entry: [
     {
       fullUrl: 'context-url',
-      resource: { resourceType: 'Patient', id: 'MOCK-ID' },
+      resource: { resourceType: 'Patient', id: MOCK_PATIENT_MRN },
     },
   ],
 };
@@ -66,16 +66,14 @@ describe('BaseFhirExtractor', () => {
     expect(paramsBasedOnContext.patient).toEqual(MOCK_CONTEXT.entry[0].resource.id);
   });
 
-  test('parametrizeArgsForFHIRModule makes Patient call if context has no relevant ID', async () => {
+  test('parametrizeArgsForFHIRModule throws an error if context has no relevant ID', async () => {
     baseFHIRModuleSearchSpy.mockClear();
-    const paramsBasedOnContext = await baseFHIRExtractor.parametrizeArgsForFHIRModule({ mrn: MOCK_PATIENT_MRN });
-    expect(baseFHIRModuleSearchSpy).toHaveBeenCalled();
-    expect(paramsBasedOnContext).toHaveProperty('patient');
-    expect(paramsBasedOnContext.patient).toEqual(examplePatientBundle.entry[0].resource.id);
+    await expect(baseFHIRExtractor.parametrizeArgsForFHIRModule({ mrn: MOCK_PATIENT_MRN })).rejects.toThrowError('BaseFHIRExtractor could not find Patient resource in context.');
+    expect(baseFHIRModuleSearchSpy).not.toHaveBeenCalled();
   });
 
   test('get should return a condition resource', async () => {
-    const data = await baseFHIRExtractor.get({ mrn: MOCK_PATIENT_MRN });
+    const data = await baseFHIRExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
     expect(data.resourceType).toEqual('Bundle');
     expect(data.entry).toBeDefined();
     expect(data.entry.length).toBeGreaterThan(0);

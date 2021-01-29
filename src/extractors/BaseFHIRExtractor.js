@@ -20,19 +20,18 @@ class BaseFHIRExtractor extends Extractor {
     this.baseFHIRModule.updateRequestHeaders(newHeaders);
   }
 
-  // Use mrn to get PatientId by default; common need across almost all extractors
-  async parametrizeArgsForFHIRModule({ mrn, context }) {
+  /* eslint-disable class-methods-use-this */
+  // Use context to get PatientId by default; common need across almost all extractors
+  async parametrizeArgsForFHIRModule({ context }) {
     const idFromContext = parseContextForPatientId(context);
-    if (idFromContext) return { patient: idFromContext };
-
-    logger.debug('No patient ID in context; fetching with baseFHIRModule');
-    const patientResponseBundle = await this.baseFHIRModule.search('Patient', { identifier: `MRN|${mrn}` });
-    if (!patientResponseBundle || !patientResponseBundle.entry || !patientResponseBundle.entry[0] || !patientResponseBundle.entry[0].resource) {
-      logger.error(`Could not get a patient ID to cross-reference for ${this.resourceType}`);
-      return {};
+    if (idFromContext) {
+      logger.debug('Patient found in context');
+      return { patient: idFromContext };
     }
-    return { patient: patientResponseBundle.entry[0].resource.id };
+
+    throw new Error('BaseFHIRExtractor could not find Patient resource in context. Use an extractor to get a Patient resource first.');
   }
+  /* eslint-enable class-methods-use-this */
 
   // Since different superclasses of the baseFHIRExtractor will parse the `get`
   // arguments differently, all pass to this function which interfaces with the baseFHIRModule
