@@ -31,9 +31,6 @@ const { baseFHIRModule } = baseFHIRExtractor;
 const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
 const moduleRequestHeadersSpy = jest.spyOn(baseFHIRModule, 'updateRequestHeaders');
 
-when(baseFHIRModuleSearchSpy)
-  .calledWith('Patient', { identifier: `MRN|${MOCK_PATIENT_MRN}` })
-  .mockReturnValue(examplePatientBundle);
 // Ensure that data is returned for condition
 when(baseFHIRModuleSearchSpy)
   .calledWith('Condition', { patient: examplePatientBundle.entry[0].resource.id })
@@ -60,7 +57,7 @@ describe('BaseFhirExtractor', () => {
 
   test('parametrizeArgsForFHIRModule parses data off of context if available', async () => {
     baseFHIRModuleSearchSpy.mockClear();
-    const paramsBasedOnContext = await baseFHIRExtractor.parametrizeArgsForFHIRModule({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
+    const paramsBasedOnContext = await baseFHIRExtractor.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
     expect(baseFHIRModuleSearchSpy).not.toHaveBeenCalled();
     expect(paramsBasedOnContext).toHaveProperty('patient');
     expect(paramsBasedOnContext.patient).toEqual(MOCK_CONTEXT.entry[0].resource.id);
@@ -68,12 +65,12 @@ describe('BaseFhirExtractor', () => {
 
   test('parametrizeArgsForFHIRModule throws an error if context has no relevant ID', async () => {
     baseFHIRModuleSearchSpy.mockClear();
-    await expect(baseFHIRExtractor.parametrizeArgsForFHIRModule({ mrn: MOCK_PATIENT_MRN })).rejects.toThrowError('BaseFHIRExtractor could not find Patient resource in context.');
+    await expect(baseFHIRExtractor.parametrizeArgsForFHIRModule({})).rejects.toThrowError('BaseFHIRExtractor could not find Patient resource in context.');
     expect(baseFHIRModuleSearchSpy).not.toHaveBeenCalled();
   });
 
   test('get should return a condition resource', async () => {
-    const data = await baseFHIRExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
+    const data = await baseFHIRExtractor.get({ context: MOCK_CONTEXT });
     expect(data.resourceType).toEqual('Bundle');
     expect(data.entry).toBeDefined();
     expect(data.entry.length).toBeGreaterThan(0);
