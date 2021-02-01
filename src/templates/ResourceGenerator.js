@@ -2,6 +2,7 @@ const _ = require('lodash');
 const shajs = require('sha.js');
 const logger = require('../helpers/logger');
 
+const { adverseEventTemplate } = require('./AdverseEventTemplate');
 const { cancerDiseaseStatusTemplate } = require('./CancerDiseaseStatusTemplate');
 const { cancerRelatedMedicationTemplate } = require('./CancerRelatedMedicationTemplate');
 const { carePlanWithReviewTemplate } = require('./CarePlanWithReviewTemplate');
@@ -15,6 +16,7 @@ const { stagingTemplate } = require('./StagingTemplate');
 const { tnmCategoryTemplate } = require('./TNMCategoryTemplate');
 
 const fhirTemplateLookup = {
+  AdverseEvent: adverseEventTemplate,
   CancerDiseaseStatus: cancerDiseaseStatusTemplate,
   CancerRelatedMedication: cancerRelatedMedicationTemplate,
   CarePlanWithReview: carePlanWithReviewTemplate,
