@@ -23,6 +23,6 @@ describe('getPatientFromContext', () => {
   });
 
   test('Should throw an error if there is no patient in context', async () => {
-    await expect(getPatientFromContext(MOCK_PATIENT_MRN, {})).rejects.toThrow('Could not find a patient in context');
+    await expect(getPatientFromContext(MOCK_PATIENT_MRN, {})).rejects.toThrow('Could not find a patient in context; ensure that a PatientExtractor is used earlier in your extraction configuration');
   });
 });
