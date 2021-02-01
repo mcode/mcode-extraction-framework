@@ -1,7 +1,7 @@
 const logger = require('./logger');
 const { getBundleResourcesByType } = require('./fhirUtils');
 
-async function getPatientFromContext(mrn, context) {
+function getPatientFromContext(mrn, context) {
   logger.debug('Getting patient from context');
   const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
   if (!patientInContext) {
