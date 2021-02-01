@@ -1,12 +1,8 @@
 const { Extractor } = require('./Extractor');
 const { BaseFHIRModule } = require('../modules');
-const { determineVersion, mapFHIRVersions, isBundleEmpty, getBundleResourcesByType } = require('../helpers/fhirUtils');
+const { determineVersion, mapFHIRVersions, isBundleEmpty } = require('../helpers/fhirUtils');
+const { getPatientFromContext } = require('../helpers/contextUtils');
 const logger = require('../helpers/logger');
-
-function parseContextForPatientId(context) {
-  const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
-  return patientInContext ? patientInContext.id : undefined;
-}
 
 class BaseFHIRExtractor extends Extractor {
   constructor({ baseFhirUrl, requestHeaders, version, resourceType }) {
@@ -22,14 +18,9 @@ class BaseFHIRExtractor extends Extractor {
 
   /* eslint-disable class-methods-use-this */
   // Use context to get PatientId by default; common need across almost all extractors
-  async parametrizeArgsForFHIRModule({ context }) {
-    const idFromContext = parseContextForPatientId(context);
-    if (idFromContext) {
-      logger.debug('Patient found in context');
-      return { patient: idFromContext };
-    }
-
-    throw new Error('BaseFHIRExtractor could not find Patient resource in context. Use an extractor to get a Patient resource first.');
+  async parametrizeArgsForFHIRModule({ mrn, context }) {
+    const patient = getPatientFromContext(mrn, context);
+    return { patient: patient.id };
   }
   /* eslint-enable class-methods-use-this */
 
