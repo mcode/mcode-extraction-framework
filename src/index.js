@@ -61,6 +61,7 @@ const {
 } = require('./helpers/conditionUtils');
 const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = require('./helpers/diseaseStatusUtils');
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
+const { getPatientFromContext } = require('./helpers/contextUtils');
 
 module.exports = {
   // CLI Related utilities
@@ -125,4 +126,6 @@ module.exports = {
   isConditionCancer,
   logOperationOutcomeInfo,
   mEpochToDate,
+  // Context operations
+  getPatientFromContext,
 };
