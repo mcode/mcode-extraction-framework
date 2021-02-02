@@ -18,6 +18,7 @@ class BaseFHIRExtractor extends Extractor {
 
   /* eslint-disable class-methods-use-this */
   // Use context to get PatientId by default; common need across almost all extractors
+  // NOTE: Async because other extractors that extend this may need to make async lookups in the future
   async parametrizeArgsForFHIRModule({ mrn, context }) {
     const patient = getPatientFromContext(mrn, context);
     return { patient: patient.id };
