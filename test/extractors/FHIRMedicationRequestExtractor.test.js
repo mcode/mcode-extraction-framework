@@ -1,12 +1,20 @@
 const rewire = require('rewire');
 const { FHIRMedicationRequestExtractor } = require('../../src/extractors/FHIRMedicationRequestExtractor.js');
-const examplePatientBundle = require('./fixtures/patient-bundle.json');
 
 const FHIRMedicationRequestExtractorRewired = rewire('../../src/extractors/FHIRMedicationRequestExtractor.js');
 const MOCK_URL = 'http://example.com';
 const MOCK_HEADERS = {};
 const MOCK_MRN = '123456789';
 const MOCK_STATUSES = 'status1,status2';
+const MOCK_CONTEXT = {
+  resourceType: 'Bundle',
+  entry: [
+    {
+      fullUrl: 'context-url',
+      resource: { resourceType: 'Patient', id: MOCK_MRN },
+    },
+  ],
+};
 
 // Construct extractor and create spies for mocking responses
 const extractor = new FHIRMedicationRequestExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_HEADERS });
@@ -28,24 +36,12 @@ describe('FHIRMedicationRequestExtractor', () => {
 
   describe('parametrizeArgsForFHIRModule', () => {
     test('should not add status when not set to param values', async () => {
-      // Create spy
-      const { baseFHIRModule } = extractor;
-      const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
-      baseFHIRModuleSearchSpy
-        .mockReturnValue(examplePatientBundle);
-
-      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
+      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
       expect(params).not.toHaveProperty('status');
     });
 
     test('should add status when set to param values', async () => {
-      // Create spy
-      const { baseFHIRModule } = extractorWithStatuses;
-      const baseFHIRModuleSearchSpy = jest.spyOn(baseFHIRModule, 'search');
-      baseFHIRModuleSearchSpy
-        .mockReturnValue(examplePatientBundle);
-
-      const params = await extractorWithStatuses.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN });
+      const params = await extractorWithStatuses.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
       expect(params).toHaveProperty('status');
       expect(params.status).toEqual(extractorWithStatuses.status);
     });

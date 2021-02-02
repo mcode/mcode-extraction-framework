@@ -15,6 +15,7 @@ function getMCODERadiationProcedures(fhirProcedures) {
 class MCODERadiationProcedureExtractor extends Extractor {
   constructor({ baseFhirUrl, requestHeaders }) {
     super({ baseFhirUrl, requestHeaders });
+    logger.debug('Note that MCODERadiationProcedureExtractor uses FHIR to get FHIR Procedures.');
     this.fhirProcedureExtractor = new FHIRProcedureExtractor({ baseFhirUrl, requestHeaders });
   }
 

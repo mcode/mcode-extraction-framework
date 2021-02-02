@@ -39,6 +39,7 @@ class BaseClient {
     });
   }
 
+  // NOTE: Async because in other clients that extend this, we need async helper functions (ex. auth)
   async init() {
     return this.initializeExtractors(this.extractorConfig, this.commonExtractorArgs);
   }

@@ -1,12 +1,8 @@
 const { Extractor } = require('./Extractor');
 const { BaseFHIRModule } = require('../modules');
-const { determineVersion, mapFHIRVersions, isBundleEmpty, getBundleResourcesByType } = require('../helpers/fhirUtils');
+const { determineVersion, mapFHIRVersions, isBundleEmpty } = require('../helpers/fhirUtils');
+const { getPatientFromContext } = require('../helpers/contextUtils');
 const logger = require('../helpers/logger');
-
-function parseContextForPatientId(context) {
-  const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
-  return patientInContext ? patientInContext.id : undefined;
-}
 
 class BaseFHIRExtractor extends Extractor {
   constructor({ baseFhirUrl, requestHeaders, version, resourceType }) {
@@ -20,19 +16,14 @@ class BaseFHIRExtractor extends Extractor {
     this.baseFHIRModule.updateRequestHeaders(newHeaders);
   }
 
-  // Use mrn to get PatientId by default; common need across almost all extractors
+  /* eslint-disable class-methods-use-this */
+  // Use context to get PatientId by default; common need across almost all extractors
+  // NOTE: Async because other extractors that extend this may need to make async lookups in the future
   async parametrizeArgsForFHIRModule({ mrn, context }) {
-    const idFromContext = parseContextForPatientId(context);
-    if (idFromContext) return { patient: idFromContext };
-
-    logger.debug('No patient ID in context; fetching with baseFHIRModule');
-    const patientResponseBundle = await this.baseFHIRModule.search('Patient', { identifier: `MRN|${mrn}` });
-    if (!patientResponseBundle || !patientResponseBundle.entry || !patientResponseBundle.entry[0] || !patientResponseBundle.entry[0].resource) {
-      logger.error(`Could not get a patient ID to cross-reference for ${this.resourceType}`);
-      return {};
-    }
-    return { patient: patientResponseBundle.entry[0].resource.id };
+    const patient = getPatientFromContext(mrn, context);
+    return { patient: patient.id };
   }
+  /* eslint-enable class-methods-use-this */
 
   // Since different superclasses of the baseFHIRExtractor will parse the `get`
   // arguments differently, all pass to this function which interfaces with the baseFHIRModule
