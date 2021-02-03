@@ -1,6 +1,6 @@
 const path = require('path');
 const { CSVModule } = require('../modules');
-const { generatemCODEResources } = require('../templates');
+const { generateMcodeResources } = require('../templates');
 const { Extractor } = require('./Extractor');
 const logger = require('../helpers/logger');
 const { formatDateTime } = require('../helpers/dateUtils');
@@ -21,21 +21,21 @@ function formatData(adverseEventData) {
       id: adverseEventId,
       subjectId: mrn,
       code: adverseEventCode,
-      system: adverseEventCodeSystem,
+      system: !adverseEventCodeSystem ? 'http://snomed.info/sct' : adverseEventCodeSystem,
       display: adverseEventDisplayText,
       suspectedCauseId,
       suspectedCauseType,
       seriousnessCode: seriousness,
-      seriousnessCodeSystem,
+      seriousnessCodeSystem: !seriousnessCodeSystem ? 'http://terminology.hl7.org/CodeSystem/adverse-event-seriousness' : seriousnessCodeSystem,
       seriousnessDisplayText,
       categoryCode: category,
-      categoryCodeSystem,
+      categoryCodeSystem: !categoryCodeSystem ? 'http://terminology.hl7.org/CodeSystem/adverse-event-category' : categoryCodeSystem,
       categoryDisplayText,
       severity,
-      actuality,
+      actuality: !actuality ? 'actual' : actuality,
       studyId,
       effectiveDateTime: formatDateTime(effectiveDate),
-      recordedDateTime: formatDateTime(recordedDate),
+      recordedDateTime: !recordedDate ? null : formatDateTime(recordedDate),
     };
   });
 }
@@ -55,7 +55,7 @@ class CSVAdverseEventExtractor extends Extractor {
     const adverseEventData = await this.getAdverseEventData(mrn);
     const formattedData = formatData(adverseEventData);
 
-    return generatemCODEResources('AdverseEvent', formattedData);
+    return generateMcodeResources('AdverseEvent', formattedData);
   }
 }
 

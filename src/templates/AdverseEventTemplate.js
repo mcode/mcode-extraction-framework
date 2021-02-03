@@ -1,19 +1,11 @@
 const { coding, reference } = require('./snippets');
-const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
+const { ifAllArgsObj, ifSomeArgsObj, ifAllArgs } = require('../helpers/templateUtils');
 
-function eventTemplate({ eventCode, eventSystem, eventDisplay }) {
-  let codeSystem = eventSystem;
-  if (!codeSystem) {
-    codeSystem = 'http://snomed.info/sct';
-  }
+function eventTemplate(eventCoding) {
   return {
     event: {
       coding: [
-        coding({
-          code: eventCode,
-          system: codeSystem,
-          display: eventDisplay,
-        }),
+        coding(eventCoding),
       ],
     },
   };
@@ -31,67 +23,50 @@ function suspectedCauseTemplate({ suspectedCauseId, suspectedCauseType }) {
 }
 
 
-function seriousnessTemplate({ seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText }) {
-  let codeSystem = seriousnessCodeSystem;
-  if (!codeSystem) {
-    codeSystem = 'http://terminology.hl7.org/CodeSystem/adverse-event-seriousness';
-  }
+function seriousnessTemplate(seriousnessCoding) {
   return {
     seriousness: {
       coding: [
-        coding({
-          code: seriousnessCode,
-          system: codeSystem,
-          display: seriousnessDisplayText,
-        }),
+        coding(seriousnessCoding),
       ],
     },
   };
 }
 
-function categoryTemplate({ categoryCode, categoryCodeSystem, categoryDisplayText }) {
-  let codeSystem = categoryCodeSystem;
-  if (!codeSystem) {
-    codeSystem = 'http://terminology.hl7.org/CodeSystem/adverse-event-category';
-  }
+function categoryTemplate(categoryCoding) {
   return {
-    category: {
+    category: [{
       coding: [
-        coding({
-          code: categoryCode,
-          system: codeSystem,
-          display: categoryDisplayText,
-        }),
+        coding(categoryCoding),
       ],
-    },
+    }],
   };
 }
 
-function severityTemplate({ severityCode }) {
+function severityTemplate(severityCode) {
   return {
     severity: {
       coding: [
         coding({
           code: severityCode,
+          system: 'http://terminology.hl7.org/CodeSystem/adverse-event-severity',
         }),
       ],
     },
   };
 }
 
-function actualityTemplate({ actuality }) {
-  let actualityCode = actuality;
-  if (!actualityCode) {
-    actualityCode = 'https://www.hl7.org/fhir/valueset-adverse-event-actuality.html';
-  }
+function studyTemplate(studyId) {
   return {
-    actuality: {
-      coding: [
-        coding({
-          code: actualityCode,
-        }),
-      ],
-    },
+    study: [
+      reference({ id: studyId, resourceType: 'ResearchStudy' }),
+    ],
+  };
+}
+
+function recordedDateTemplate(recordedDateTime) {
+  return {
+    recordedDate: recordedDateTime,
   };
 }
 
@@ -108,14 +83,14 @@ function adverseEventTemplate({
     id,
     subject: reference({ id: subjectId, resourceType: 'Patient' }),
     ...ifSomeArgsObj(eventTemplate)({ code, system, display }),
-    ...ifAllArgsObj(suspectedCauseTemplate)({ id: suspectedCauseId, resourceType: suspectedCauseType }),
-    ...ifSomeArgsObj(seriousnessTemplate)({ seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText }),
-    ...ifSomeArgsObj(categoryTemplate)({ categoryCode, categoryCodeSystem, categoryDisplayText }),
-    ...ifAllArgsObj(severityTemplate)({ severity }),
-    ...actualityTemplate(actuality),
-    study: reference({ id: studyId, resourceType: 'ResearchStudy' }),
+    ...ifAllArgsObj(suspectedCauseTemplate)({ suspectedCauseId, suspectedCauseType }),
+    ...ifSomeArgsObj(seriousnessTemplate)({ code: seriousnessCode, system: seriousnessCodeSystem, display: seriousnessDisplayText }),
+    ...ifSomeArgsObj(categoryTemplate)({ code: categoryCode, system: categoryCodeSystem, display: categoryDisplayText }),
+    ...ifAllArgs(severityTemplate)(severity),
+    actuality,
+    ...ifAllArgs(studyTemplate)(studyId),
     date: effectiveDateTime,
-    recordedDate: recordedDateTime,
+    ...ifAllArgs(recordedDateTemplate)(recordedDateTime),
   };
 }
 

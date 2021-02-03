@@ -1,5 +1,5 @@
 const { BaseFHIRExtractor } = require('./BaseFHIRExtractor');
-const { CSVAdverseEventExtractor } = require('./CSVAdverseEventExtractor')
+const { CSVAdverseEventExtractor } = require('./CSVAdverseEventExtractor');
 const { CSVCancerDiseaseStatusExtractor } = require('./CSVCancerDiseaseStatusExtractor');
 const { CSVCancerRelatedMedicationExtractor } = require('./CSVCancerRelatedMedicationExtractor');
 const { CSVClinicalTrialInformationExtractor } = require('./CSVClinicalTrialInformationExtractor');
