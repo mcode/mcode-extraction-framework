@@ -1,5 +1,5 @@
 const { coding, reference } = require('./snippets');
-const { ifAllArgsObj, ifSomeArgsObj, ifAllArgs } = require('../helpers/templateUtils');
+const { ifAllArgsObj, ifSomeArgsObj, ifAllArgs, ifSomeArgsArr } = require('../helpers/templateUtils');
 
 function eventTemplate(eventCoding) {
   return {
@@ -27,20 +27,22 @@ function seriousnessTemplate(seriousnessCoding) {
   return {
     seriousness: {
       coding: [
-        coding(seriousnessCoding),
+        coding({ system: 'http://terminology.hl7.org/CodeSystem/adverse-event-seriousness', ...seriousnessCoding }),
       ],
     },
   };
 }
 
-function categoryTemplate(categoryCoding) {
+function individualCategoryTemplate(category) {
   return {
-    category: [{
-      coding: [
-        coding(categoryCoding),
-      ],
-    }],
+    coding: [coding(category),
+    ],
   };
+}
+
+function categoryArrayTemplate(categoryArr) {
+  const category = categoryArr.map(individualCategoryTemplate);
+  return { category };
 }
 
 function severityTemplate(severityCode) {
@@ -71,11 +73,11 @@ function recordedDateTemplate(recordedDateTime) {
 }
 
 function adverseEventTemplate({
-  id, subjectId, code, system, display, suspectedCauseId, suspectedCauseType, seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText, categoryCode, categoryCodeSystem, categoryDisplayText,
+  id, subjectId, code, system, display, suspectedCauseId, suspectedCauseType, seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText, category,
   severity, actuality, studyId, effectiveDateTime, recordedDateTime,
 }) {
-  if (!(subjectId && code && effectiveDateTime)) {
-    throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code and effectiveDateTime are all present');
+  if (!(subjectId && code && system && effectiveDateTime && actuality)) {
+    throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, actuality, and effectiveDateTime are all present');
   }
 
   return {
@@ -85,7 +87,7 @@ function adverseEventTemplate({
     ...ifSomeArgsObj(eventTemplate)({ code, system, display }),
     ...ifAllArgsObj(suspectedCauseTemplate)({ suspectedCauseId, suspectedCauseType }),
     ...ifSomeArgsObj(seriousnessTemplate)({ code: seriousnessCode, system: seriousnessCodeSystem, display: seriousnessDisplayText }),
-    ...ifSomeArgsObj(categoryTemplate)({ code: categoryCode, system: categoryCodeSystem, display: categoryDisplayText }),
+    ...ifSomeArgsArr(categoryArrayTemplate)(category),
     ...ifAllArgs(severityTemplate)(severity),
     actuality,
     ...ifAllArgs(studyTemplate)(studyId),

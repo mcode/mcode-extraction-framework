@@ -17,6 +17,12 @@ function formatData(adverseEventData) {
     if (!(mrn && adverseEventCode && effectiveDate)) {
       throw new Error('The adverse event is missing an expected attribute. Adverse event code, mrn, and effective date are all required.');
     }
+
+    const categoryCodes = category.split('|');
+    const categorySystems = categoryCodeSystem.split('|');
+    const categoryDisplays = categoryDisplayText.split('|');
+
+
     return {
       id: adverseEventId,
       subjectId: mrn,
@@ -26,11 +32,14 @@ function formatData(adverseEventData) {
       suspectedCauseId,
       suspectedCauseType,
       seriousnessCode: seriousness,
-      seriousnessCodeSystem: !seriousnessCodeSystem ? 'http://terminology.hl7.org/CodeSystem/adverse-event-seriousness' : seriousnessCodeSystem,
+      seriousnessCodeSystem,
       seriousnessDisplayText,
-      categoryCode: category,
-      categoryCodeSystem: !categoryCodeSystem ? 'http://terminology.hl7.org/CodeSystem/adverse-event-category' : categoryCodeSystem,
-      categoryDisplayText,
+      category: categoryCodes.map((categoryCode, index) => {
+        if (!categoryCode) return null;
+        const categoryCoding = { code: categoryCode, system: categorySystems[index] ? categorySystems[index] : 'http://terminology.hl7.org/CodeSystem/adverse-event-category' };
+        if (categoryDisplays[index]) categoryCoding.display = categoryDisplays[index];
+        return categoryCoding;
+      }),
       severity,
       actuality: !actuality ? 'actual' : actuality,
       studyId,

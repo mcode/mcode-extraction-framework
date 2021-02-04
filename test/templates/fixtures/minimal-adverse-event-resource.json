@@ -1,0 +1,18 @@
+{
+  "resourceType": "AdverseEvent",
+  "id": "adverseEventId-1",
+  "subject": {
+    "reference": "urn:uuid:mrn-1",
+    "type": "Patient"
+  },
+  "event": {
+    "coding": [
+      {
+        "system": "code-system",
+        "code": "109006"
+      }
+    ]
+  },
+  "actuality": "actual",
+  "date": "1994-12-09"
+}

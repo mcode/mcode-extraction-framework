@@ -1,0 +1,22 @@
+[
+  {
+    "mrn": "mrn-1",
+    "adverseEventId": "adverseEventId-1",
+    "adverseEventCode": "109006",
+    "adverseEventCodeSystem": "code-system",
+    "adverseEventDisplayText": "Anxiety disorder of childhood OR adolescence",
+    "suspectedCauseId": "procedure-id",
+    "suspectedCauseType": "Procedure",
+    "seriousness": "Serious",
+    "seriousnessCodeSystem": "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness",
+    "seriousnessDisplayText": "Serious",
+    "category": "product-use-error",
+    "categoryCodeSystem": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
+    "categoryDisplayText": "Product Use Error",
+    "severity": "severe",
+    "actuality": "actual",
+    "studyId": "researchId-1",
+    "effectiveDate": "12-09-1994",
+    "recordedDate": "12-09-1994"
+  }
+]
