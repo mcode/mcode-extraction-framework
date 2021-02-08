@@ -1,3 +1,4 @@
 mrn,adverseEventId,adverseEventCode,adverseEventCodeSystem,adverseEventDisplayText,suspectedCauseId,suspectedCauseType,seriousness,seriousnessCodeSystem,seriousnessDisplayText,category,categoryCodeSystem,categoryDisplayText,severity,actuality,studyId,effectiveDate,recordedDate
 mrn-full-example,example-id-1,event-code,code-system,code-display,cause-id,resourceType,seriousness-code,code-system,seriousness-display,category-code,code-system,category-dislpay,mild,actual,id,12-09-1994,12-09-1994
+mrn-two-category-example,example-id-1,event-code,code-system,code-display,cause-id,resourceType,seriousness-code,code-system,seriousness-display,category-code|category-code,code-system|code-system,category-display|category-display,mild,actual,id,12-09-1994,12-09-1994
 mrn-minimal-example,,code-from-default-system,,,,,,,,,,,,,,12-09-1994,
