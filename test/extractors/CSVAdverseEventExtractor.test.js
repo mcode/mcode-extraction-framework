@@ -34,6 +34,7 @@ describe('CSVAdverseEventExtractor', () => {
   describe('formatData', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
       const expectedErrorString = 'The adverse event is missing an expected attribute. Adverse event code, mrn, and effective date are all required.';
+      const expectedCategoryErrorString = 'A category atrribute on the adverse event is missing a corresponding categoryCodeSystem or categoryDisplayText value.';
       const localData = _.cloneDeep(exampleCSVAdverseEventModuleResponse);
 
       // Test that valid maximal data works fine
@@ -42,6 +43,20 @@ describe('CSVAdverseEventExtractor', () => {
       // Test that deleting an optional value works fine
       delete localData[0].actuality;
       expect(formatData(exampleCSVAdverseEventModuleResponse)).toEqual(expect.anything());
+
+      // Test that adding another category but not adding a corresponding categoryCodeSystem throws an error
+      localData[0].category = 'product-use-error|product-problem';
+      expect(() => formatData(localData)).toThrow(new Error(expectedCategoryErrorString));
+
+      // Test that adding another category but adding a corresponding categoryCodeSystem and categoryDisplayText works fine
+      localData[0].categoryCodeSystem = 'http://terminology.hl7.org/CodeSystem/adverse-event-category|http://snomed.info/sct';
+      localData[0].categoryDisplayText = 'Product Use Error|Product Problem';
+      expect(formatData(localData)).toEqual(expect.anything());
+
+      // Test that adding another category but including syntax for default categoryCodeSystem and categoryDisplayText values works fine
+      localData[0].categoryCodeSystem = 'http://terminology.hl7.org/CodeSystem/adverse-event-category|';
+      localData[0].categoryDisplayText = 'Product Use Error|';
+      expect(formatData(localData)).toEqual(expect.anything());
 
       // Test that deleting a mandatory value throws an error
       delete localData[0].mrn;

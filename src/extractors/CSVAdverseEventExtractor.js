@@ -22,6 +22,10 @@ function formatData(adverseEventData) {
     const categorySystems = categoryCodeSystem.split('|');
     const categoryDisplays = categoryDisplayText.split('|');
 
+    if (!(categoryCodes.length === categorySystems.length && categoryCodes.length === categoryDisplays.length)) {
+      throw new Error('A category atrribute on the adverse event is missing a corresponding categoryCodeSystem or categoryDisplayText value.');
+    }
+
 
     return {
       id: adverseEventId,

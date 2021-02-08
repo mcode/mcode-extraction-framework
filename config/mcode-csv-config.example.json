@@ -74,6 +74,13 @@
       "constructorArgs": {
         "filePath": "./data/procedure-information.csv"
       }
+    },
+    {
+      "label": "adverseEvent",
+      "type": "CSVAdverseEventExtractor",
+      "constructorArgs": {
+        "filePath": "./test/sample-client-data/adverse-event-information.csv"
+      }
     }
   ]
 }
