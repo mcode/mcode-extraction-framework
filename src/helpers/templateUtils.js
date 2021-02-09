@@ -25,6 +25,18 @@ function ifAllArgsObj(templateFn) {
 }
 
 // A decorator that modifies a template to only render
+// when all of the values on its argumentsArray are not null/empty, returning null otherwise
+// NOTE: Will not return null if the argumentsArray/elements are not defined; just checks if they're present with undefined/null values
+function ifAllArgsArr(templateFn) {
+  return (argArr) => {
+    if (_.some(argArr, (arg) => _.isUndefined(arg) || _.isNull(arg))) {
+      return null;
+    }
+    return templateFn(argArr);
+  };
+}
+
+// A decorator that modifies a template to only render
 // when some of its arguments are not null/undefined, returning null otherwise
 // NOTE: Will not return null if the arguments are not defined; just checks if they're present with undefined/null values
 function ifSomeArgs(templateFn) {
@@ -48,9 +60,22 @@ function ifSomeArgsObj(templateFn) {
   };
 }
 
+// A decorator that modifies a template to only render
+// when some of the values on its argumentsArray are not null/empty, returning null otherwise
+// NOTE: Will not return null if the argumentsArray/elemtns are not defined; just checks if they're present with undefined/null values
+function ifSomeArgsArr(templateFn) {
+  return (argArr) => {
+    if (_.every(argArr, (arg) => _.isUndefined(arg) || _.isNull(arg))) {
+      return null;
+    }
+    return templateFn(argArr);
+  };
+}
 module.exports = {
   ifAllArgs,
+  ifAllArgsArr,
   ifAllArgsObj,
   ifSomeArgs,
+  ifSomeArgsArr,
   ifSomeArgsObj,
 };

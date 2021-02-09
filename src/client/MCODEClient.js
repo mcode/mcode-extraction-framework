@@ -1,5 +1,6 @@
 const { BaseClient } = require('./BaseClient');
 const {
+  CSVAdverseEventExtractor,
   CSVCancerDiseaseStatusExtractor,
   CSVCancerRelatedMedicationExtractor,
   CSVClinicalTrialInformationExtractor,
@@ -25,6 +26,7 @@ class MCODEClient extends BaseClient {
   constructor({ extractors, commonExtractorArgs, webServiceAuthConfig }) {
     super();
     this.registerExtractors(
+      CSVAdverseEventExtractor,
       CSVCancerDiseaseStatusExtractor,
       CSVCancerRelatedMedicationExtractor,
       CSVClinicalTrialInformationExtractor,

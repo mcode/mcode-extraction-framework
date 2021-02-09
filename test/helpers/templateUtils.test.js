@@ -1,4 +1,11 @@
-const { ifAllArgs, ifAllArgsObj, ifSomeArgs, ifSomeArgsObj } = require('../../src/helpers/templateUtils.js');
+const {
+  ifAllArgs,
+  ifAllArgsObj,
+  ifSomeArgs,
+  ifSomeArgsObj,
+  ifSomeArgsArr,
+  ifAllArgsArr,
+} = require('../../src/helpers/templateUtils.js');
 
 describe('TemplateUtils', () => {
   describe('ifAllArgs', () => {
@@ -99,6 +106,55 @@ describe('TemplateUtils', () => {
     });
   });
 
+  describe('ifAllArgsArr', () => {
+    const arrFn = ([a1, a2]) => ({ arg1: a1, arg2: a2 });
+    const ifAllArgsArrFn = ifAllArgsArr(arrFn);
+
+    test('Returns nothing when all args are empty', () => {
+      expect(ifAllArgsArrFn([undefined, undefined])).toBeNull();
+      expect(ifAllArgsArrFn([undefined, null])).toBeNull();
+      expect(ifAllArgsArrFn([null, undefined])).toBeNull();
+      expect(ifAllArgsArrFn([null, null])).toBeNull();
+    });
+
+    test('Returns nothing when one arg is empty', () => {
+      const vNum = 1;
+      const vStr = '1';
+      const vBool = true;
+      // Permutations with Num
+      expect(ifAllArgsArrFn([vNum, undefined])).toBeNull();
+      expect(ifAllArgsArrFn([undefined, vNum])).toBeNull();
+      expect(ifAllArgsArrFn([vNum, null])).toBeNull();
+      expect(ifAllArgsArrFn([null, vNum])).toBeNull();
+      // Permutations with Str
+      expect(ifAllArgsArrFn([vStr, undefined])).toBeNull();
+      expect(ifAllArgsArrFn([undefined, vStr])).toBeNull();
+      expect(ifAllArgsArrFn([vStr, null])).toBeNull();
+      expect(ifAllArgsArrFn([null, vStr])).toBeNull();
+      // Permutations with Bool
+      expect(ifAllArgsArrFn([vBool, undefined])).toBeNull();
+      expect(ifAllArgsArrFn([undefined, vBool])).toBeNull();
+      expect(ifAllArgsArrFn([vBool, null])).toBeNull();
+      expect(ifAllArgsArrFn([null, vBool])).toBeNull();
+    });
+
+    test('Returns the function output when all args are present', () => {
+      const a1 = 1;
+      const a2 = 2;
+      const output = arrFn([a1, a2]);
+      expect(ifAllArgsArrFn([a1, a2])).toEqual(output);
+      const vNum = 1;
+      const outputNum = arrFn([vNum, vNum]);
+      expect(ifAllArgsArrFn([vNum, vNum])).toEqual(outputNum);
+      const vStr = '1';
+      const outputStr = arrFn([vStr, vStr]);
+      expect(ifAllArgsArrFn([vStr, vStr])).toEqual(outputStr);
+      const vBool = true;
+      const outputBool = arrFn([vBool, vBool]);
+      expect(ifAllArgsArrFn([vBool, vBool])).toEqual(outputBool);
+    });
+  });
+
   describe('ifSomeArgs', () => {
     const fn = (a1, a2) => `Things to care about include ${a1 && a1}, ${a2 && a2} and of course your own happiness.`;
     const ifSomeArgsFn = ifSomeArgs(fn);
@@ -186,6 +242,51 @@ describe('TemplateUtils', () => {
       // Permutations with Bool
       const vBool = true;
       expect(ifSomeArgsObjFn({ a1: vBool, a2: vBool })).toEqual(objFn({ a1: vBool, a2: vBool }));
+    });
+  });
+
+  describe('ifSomeArgsArr', () => {
+    const arrFn = ([a1, a2]) => ({ arg1: a1, arg2: a2, constantProp: 'This is always here' });
+    const ifSomeArgsArrFn = ifSomeArgsArr(arrFn);
+
+    test('Returns nothing when all args are empty', () => {
+      expect(ifSomeArgsArrFn([undefined, undefined])).toBeNull();
+      expect(ifSomeArgsArrFn([undefined, null])).toBeNull();
+      expect(ifSomeArgsArrFn([null, undefined])).toBeNull();
+      expect(ifSomeArgsArrFn([null, null])).toBeNull();
+    });
+
+    test('Returns the function output when one arg is empty', () => {
+      // Permutations with Num
+      const vNum = 1;
+      expect(ifSomeArgsArrFn([vNum, undefined])).toEqual(arrFn([vNum, undefined]));
+      expect(ifSomeArgsArrFn([undefined, vNum])).toEqual(arrFn([undefined, vNum]));
+      expect(ifSomeArgsArrFn([vNum, null])).toEqual(arrFn([vNum, null]));
+      expect(ifSomeArgsArrFn([null, vNum])).toEqual(arrFn([null, vNum]));
+      // Permutations with Str
+      const vStr = '1';
+      expect(ifSomeArgsArrFn([vStr, undefined])).toEqual(arrFn([vStr, undefined]));
+      expect(ifSomeArgsArrFn([undefined, vStr])).toEqual(arrFn([undefined, vStr]));
+      expect(ifSomeArgsArrFn([vStr, null])).toEqual(arrFn([vStr, null]));
+      expect(ifSomeArgsArrFn([null, vStr])).toEqual(arrFn([null, vStr]));
+      // Permutations with Bool
+      const vBool = true;
+      expect(ifSomeArgsArrFn([vBool, undefined])).toEqual(arrFn([vBool, undefined]));
+      expect(ifSomeArgsArrFn([undefined, vBool])).toEqual(arrFn([undefined, vBool]));
+      expect(ifSomeArgsArrFn([vBool, null])).toEqual(arrFn([vBool, null]));
+      expect(ifSomeArgsArrFn([null, vBool])).toEqual(arrFn([null, vBool]));
+    });
+
+    test('Returns the function output when all args are present', () => {
+      // Permutations with Num
+      const vNum = 1;
+      expect(ifSomeArgsArrFn([vNum, vNum])).toEqual(arrFn([vNum, vNum]));
+      // Permutations with Str
+      const vStr = '1';
+      expect(ifSomeArgsArrFn([vStr, vStr])).toEqual(arrFn([vStr, vStr]));
+      // Permutations with Bool
+      const vBool = true;
+      expect(ifSomeArgsArrFn([vBool, vBool])).toEqual(arrFn([vBool, vBool]));
     });
   });
 });

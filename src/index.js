@@ -10,6 +10,7 @@ const {
 } = require('./cli');
 const {
   BaseFHIRExtractor,
+  CSVAdverseEventExtractor,
   CSVCancerDiseaseStatusExtractor,
   CSVCancerRelatedMedicationExtractor,
   CSVClinicalTrialInformationExtractor,
@@ -74,6 +75,7 @@ module.exports = {
   BaseClient,
   BaseFHIRExtractor,
   BaseFHIRModule,
+  CSVAdverseEventExtractor,
   CSVCancerDiseaseStatusExtractor,
   CSVCancerRelatedMedicationExtractor,
   CSVClinicalTrialInformationExtractor,
