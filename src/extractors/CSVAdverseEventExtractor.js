@@ -23,12 +23,12 @@ function formatData(adverseEventData) {
     const categoryDisplays = categoryDisplayText.split('|');
 
     if (!(categoryCodes.length === categorySystems.length && categoryCodes.length === categoryDisplays.length)) {
-      throw new Error('A category atrribute on the adverse event is missing a corresponding categoryCodeSystem or categoryDisplayText value.');
+      throw new Error('A category attribute on the adverse event is missing a corresponding categoryCodeSystem or categoryDisplayText value.');
     }
 
 
     return {
-      id: adverseEventId,
+      ...(adverseEventId && { id: adverseEventId }),
       subjectId: mrn,
       code: adverseEventCode,
       system: !adverseEventCodeSystem ? 'http://snomed.info/sct' : adverseEventCodeSystem,
@@ -36,7 +36,7 @@ function formatData(adverseEventData) {
       suspectedCauseId,
       suspectedCauseType,
       seriousnessCode: seriousness,
-      seriousnessCodeSystem,
+      seriousnessCodeSystem: !seriousnessCodeSystem ? 'http://terminology.hl7.org/CodeSystem/adverse-event-seriousness' : seriousnessCodeSystem,
       seriousnessDisplayText,
       category: categoryCodes.map((categoryCode, index) => {
         if (!categoryCode) return null;

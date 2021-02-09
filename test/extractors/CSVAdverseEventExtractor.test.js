@@ -34,7 +34,7 @@ describe('CSVAdverseEventExtractor', () => {
   describe('formatData', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
       const expectedErrorString = 'The adverse event is missing an expected attribute. Adverse event code, mrn, and effective date are all required.';
-      const expectedCategoryErrorString = 'A category atrribute on the adverse event is missing a corresponding categoryCodeSystem or categoryDisplayText value.';
+      const expectedCategoryErrorString = 'A category attribute on the adverse event is missing a corresponding categoryCodeSystem or categoryDisplayText value.';
       const localData = _.cloneDeep(exampleCSVAdverseEventModuleResponse);
 
       // Test that valid maximal data works fine

@@ -27,7 +27,7 @@ function seriousnessTemplate(seriousnessCoding) {
   return {
     seriousness: {
       coding: [
-        coding({ system: 'http://terminology.hl7.org/CodeSystem/adverse-event-seriousness', ...seriousnessCoding }),
+        coding(seriousnessCoding),
       ],
     },
   };

@@ -7,7 +7,7 @@
     "adverseEventDisplayText": "Anxiety disorder of childhood OR adolescence",
     "suspectedCauseId": "procedure-id",
     "suspectedCauseType": "Procedure",
-    "seriousness": "Serious",
+    "seriousness": "serious",
     "seriousnessCodeSystem": "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness",
     "seriousnessDisplayText": "Serious",
     "category": "product-use-error",
