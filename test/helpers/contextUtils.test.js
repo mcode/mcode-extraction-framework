@@ -50,19 +50,19 @@ describe('getConditionsFromContext', () => {
       },
     ],
   };
-  test('Should return Patient resource in context', () => {
-    const conditions = getConditionsFromContext(MOCK_PATIENT_MRN, conditionContext);
+  test('Should return Condition resource in context', () => {
+    const conditions = getConditionsFromContext(conditionContext);
     expect(conditions).toContain(conditionResource);
     expect(conditions).toContain(conditionResource2);
   });
 
   test('Should throw an error if there is no patient in context', () => {
-    expect(() => getConditionsFromContext(MOCK_PATIENT_MRN, {}))
-      .toThrow('Could not find conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
+    expect(() => getConditionsFromContext({}))
+      .toThrow('Could not find any conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
   });
 });
 
-describe('getConditionFromContext', () => {
+describe('getConditionEntriesFromContext', () => {
   const conditionResource = {
     resourceType: 'Condition',
     id: 'mCODEConditionExample01',
@@ -82,8 +82,8 @@ describe('getConditionFromContext', () => {
     ],
   };
 
-  test('Should return all Condition resources in context', () => {
-    const conditions = getConditionEntriesFromContext(MOCK_PATIENT_MRN, conditionContext);
+  test('Should return all Condition entries in context', () => {
+    const conditions = getConditionEntriesFromContext(conditionContext);
     expect(conditions).toHaveLength(2);
     expect(conditions[0]).toEqual({
       fullUrl: 'context-url-1',
@@ -92,7 +92,7 @@ describe('getConditionFromContext', () => {
   });
 
   test('Should throw an error if there are no conditions in context', () => {
-    expect(() => getConditionEntriesFromContext(MOCK_PATIENT_MRN, {}))
+    expect(() => getConditionEntriesFromContext({}))
       .toThrow('Could not find any conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
   });
 });

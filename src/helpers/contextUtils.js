@@ -18,12 +18,12 @@ function getPatientFromContext(mrn, context) {
 * @return {Array} All the conditions entries found in context
 */
 function getConditionEntriesFromContext(context) {
-  logger.debug('Getting conditions from context');
+  logger.debug('Getting condition entries from context');
   const conditionEntriesInContext = getBundleEntriesByResourceType(context, 'Condition', {}, false);
   if (conditionEntriesInContext.length === 0) {
     throw Error('Could not find any conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
   }
-  logger.debug(`Condition resources found in context. Found ${conditionEntriesInContext.length} condition resources.`);
+  logger.debug(`Condition entries found in context. Found ${conditionEntriesInContext.length} condition resources.`);
   return conditionEntriesInContext;
 }
 
@@ -33,12 +33,12 @@ function getConditionEntriesFromContext(context) {
 * @return {Array} All the conditions resources found in context
 */
 function getConditionsFromContext(context) {
-  logger.debug('Getting conditions from context');
+  logger.debug('Getting condition resources from context');
   const conditionsResourcesInContext = getBundleResourcesByType(context, 'Condition', {}, false);
   if (_.isEmpty(conditionsResourcesInContext)) {
-    throw Error('Could not find conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
+    throw Error('Could not find any conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
   }
-  logger.debug('Condition resources found in context.');
+  logger.debug(`Condition resources found in context. Found ${conditionsResourcesInContext.length} condition resources.`);
   return conditionsResourcesInContext;
 }
 
