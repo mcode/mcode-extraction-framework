@@ -1,5 +1,5 @@
 const logger = require('./logger');
-const { getBundleResourcesByType } = require('./fhirUtils');
+const { getBundleEntriesByResourceType, getBundleResourcesByType } = require('./fhirUtils');
 
 function getPatientFromContext(mrn, context) {
   logger.debug('Getting patient from context');
@@ -11,6 +11,17 @@ function getPatientFromContext(mrn, context) {
   return patientInContext;
 }
 
+function getConditionEntriesFromContext(mrn, context) {
+  logger.debug('Getting conditions from context');
+  const conditionsInContext = getBundleEntriesByResourceType(context, 'Condition', {}, false);
+  if (conditionsInContext.length === 0) {
+    throw Error('Could not find any conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
+  }
+  logger.debug(`Condition resources found in context. Found ${conditionsInContext.length} condition resources.`);
+  return conditionsInContext;
+}
+
 module.exports = {
+  getConditionEntriesFromContext,
   getPatientFromContext,
 };
