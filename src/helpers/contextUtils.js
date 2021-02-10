@@ -1,5 +1,17 @@
+const _ = require('lodash');
 const logger = require('./logger');
 const { getBundleEntriesByResourceType, getBundleResourcesByType } = require('./fhirUtils');
+
+
+function getConditionsFromContext(mrn, context) {
+  logger.debug('Getting conditions from context');
+  const conditionsInContext = getBundleResourcesByType(context, 'Condition', {}, false);
+  if (_.isEmpty(conditionsInContext)) {
+    throw Error('Could not find conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
+  }
+  logger.debug('Condition resources found in context.');
+  return conditionsInContext;
+}
 
 function getPatientFromContext(mrn, context) {
   logger.debug('Getting patient from context');
@@ -38,6 +50,7 @@ function getEncountersFromContext(context) {
 
 module.exports = {
   getConditionEntriesFromContext,
+  getConditionsFromContext,
   getEncountersFromContext,
   getPatientFromContext,
 };
