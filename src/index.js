@@ -25,6 +25,7 @@ const {
   FHIRAllergyIntoleranceExtractor,
   FHIRConditionExtractor,
   FHIRDocumentReferenceExtractor,
+  FHIREncounterExtractor,
   FHIRMedicationOrderExtractor,
   FHIRMedicationRequestExtractor,
   FHIRMedicationStatementExtractor,
@@ -62,7 +63,7 @@ const {
 } = require('./helpers/conditionUtils');
 const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = require('./helpers/diseaseStatusUtils');
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
-const { getConditionEntriesFromContext, getPatientFromContext } = require('./helpers/contextUtils');
+const { getConditionEntriesFromContext, getEncountersFromContext, getPatientFromContext } = require('./helpers/contextUtils');
 
 module.exports = {
   // CLI Related utilities
@@ -91,6 +92,7 @@ module.exports = {
   FHIRAllergyIntoleranceExtractor,
   FHIRConditionExtractor,
   FHIRDocumentReferenceExtractor,
+  FHIREncounterExtractor,
   FHIRMedicationOrderExtractor,
   FHIRMedicationRequestExtractor,
   FHIRMedicationStatementExtractor,
@@ -130,5 +132,6 @@ module.exports = {
   mEpochToDate,
   // Context operations
   getConditionEntriesFromContext,
+  getEncountersFromContext,
   getPatientFromContext,
 };

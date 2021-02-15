@@ -14,6 +14,7 @@ const { FHIRAdverseEventExtractor } = require('./FHIRAdverseEventExtractor');
 const { FHIRAllergyIntoleranceExtractor } = require('./FHIRAllergyIntoleranceExtractor');
 const { FHIRConditionExtractor } = require('./FHIRConditionExtractor');
 const { FHIRDocumentReferenceExtractor } = require('./FHIRDocumentReferenceExtractor');
+const { FHIREncounterExtractor } = require('./FHIREncounterExtractor');
 const { FHIRMedicationOrderExtractor } = require('./FHIRMedicationOrderExtractor');
 const { FHIRMedicationRequestExtractor } = require('./FHIRMedicationRequestExtractor');
 const { FHIRMedicationStatementExtractor } = require('./FHIRMedicationStatementExtractor');
@@ -40,6 +41,7 @@ module.exports = {
   FHIRAllergyIntoleranceExtractor,
   FHIRConditionExtractor,
   FHIRDocumentReferenceExtractor,
+  FHIREncounterExtractor,
   FHIRMedicationOrderExtractor,
   FHIRMedicationRequestExtractor,
   FHIRMedicationStatementExtractor,
