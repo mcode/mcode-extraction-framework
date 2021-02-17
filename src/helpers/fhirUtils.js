@@ -95,6 +95,13 @@ function mapFHIRVersions(resource, currentVersion, targetVersion) {
   return resource;
 }
 
+function firstIdentifierEntry(resource) {
+  if (resource.identifier && resource.identifier.length > 0) {
+    return resource.identifier[0];
+  }
+  return null;
+}
+
 // Utility function to get the resources of a type from our bundle
 // Optionally get only the first resource of that type via 'first' parameter
 const getBundleResourcesByType = (bundle, type, context = {}, first = false) => {
@@ -158,10 +165,12 @@ const logOperationOutcomeInfo = (operationOutcome) => {
 
 const isValidFHIR = (resource) => validator.validate('FHIR', resource);
 
+
 module.exports = {
   allResourcesInBundle,
   determineVersion,
   firstEntryInBundle,
+  firstIdentifierEntry,
   firstResourceInBundle,
   getBundleEntriesByResourceType,
   getBundleResourcesByType,

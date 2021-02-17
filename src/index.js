@@ -42,6 +42,7 @@ const { getEthnicityDisplay,
 const {
   allResourcesInBundle,
   firstEntryInBundle,
+  firstIdentifierEntry,
   firstResourceInBundle,
   getBundleEntriesByResourceType,
   getBundleResourcesByType,
@@ -104,6 +105,7 @@ module.exports = {
   // FHIR and resource helpers
   allResourcesInBundle,
   firstEntryInBundle,
+  firstIdentifierEntry,
   firstResourceInBundle,
   formatDate,
   formatDateTime,

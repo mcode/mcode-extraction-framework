@@ -1,10 +1,10 @@
 const { reference, identifier, identifierArr } = require('./snippets');
 
-function studyTemplate(trialResearchID) {
+function studyTemplate(trialResearchID, trialResearchSystem) {
   return {
     study: {
       ...identifier({
-        system: 'http://example.com/clinicaltrialids',
+        system: trialResearchSystem,
         value: trialResearchID,
       }),
     },
@@ -37,6 +37,7 @@ function researchSubjectTemplate({
   trialSubjectID,
   trialResearchID,
   patientId,
+  trialResearchSystem = 'http://example.com/clinicaltrialids',
 }) {
   if (!(id && enrollmentStatus && trialSubjectID && trialResearchID && patientId)) {
     throw Error('Trying to render a ResearchStudyTemplate, but a required argument is missing; ensure that id, trialStatus, trialResearchID, clinicalSiteID are all present');
@@ -46,7 +47,7 @@ function researchSubjectTemplate({
     resourceType: 'ResearchSubject',
     id,
     status: enrollmentStatus,
-    ...studyTemplate(trialResearchID),
+    ...studyTemplate(trialResearchID, trialResearchSystem),
     ...individualTemplate(patientId),
     ...researchSubjectIdentifiersTemplate(trialSubjectID),
   };

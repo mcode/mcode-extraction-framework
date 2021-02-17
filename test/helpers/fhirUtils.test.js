@@ -2,6 +2,7 @@ const {
   getQuantityUnit,
   isBundleEmpty,
   firstEntryInBundle,
+  firstIdentifierEntry,
   firstResourceInBundle,
   allResourcesInBundle,
   quantityCodeToUnitLookup,
@@ -43,14 +44,36 @@ describe('isBundleEmpty', () => {
 
 describe('firstEntryInBundle', () => {
   test('Empty bundle should return undefined', () => {
+    expect(firstEntryInBundle(emptyBundle)).toBeUndefined();
   });
-  expect(firstEntryInBundle(emptyBundle)).toBeUndefined();
 
   test('Bundles with entries should always return the first', () => {
     expect(firstEntryInBundle(bundleWithOneEntry))
       .toEqual(bundleWithOneEntry.entry[0]);
     expect(firstEntryInBundle(bundleWithMultipleEntries))
       .toEqual(bundleWithMultipleEntries.entry[0]);
+  });
+});
+
+describe('firstIdentifierEntry', () => {
+  test('Resource with no identifier returns null', () => {
+    expect(firstIdentifierEntry({})).toBeNull();
+  });
+
+  test('Resource with identifier gives first value', () => {
+    const id1 = {
+      system: 'example',
+      value: 'example-value',
+    };
+    const id2 = {
+      system: 'example2',
+      value: 'example-value2',
+    };
+    const resourceWithIdentifier = {
+      identifier: [id1, id2],
+    };
+
+    expect(firstIdentifierEntry(resourceWithIdentifier)).toEqual(id1);
   });
 });
 
