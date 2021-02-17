@@ -21,7 +21,23 @@ function getConditionEntriesFromContext(mrn, context) {
   return conditionsInContext;
 }
 
+/**
+* Parses context for Encounter resources
+* @param {Object} context - Context object consisting of a FHIR Bundle
+* @return {Array} All the encounter resources found in context
+*/
+function getEncountersFromContext(context) {
+  logger.debug('Getting encounter resources from context');
+  const encountersInContext = getBundleResourcesByType(context, 'Encounter');
+  if (encountersInContext.length === 0) {
+    throw Error('Could not find any encounter resources in context; ensure that an EncounterExtractor is used earlier in your extraction configuration');
+  }
+  logger.debug(`Condition resources found in context. Found ${encountersInContext.length} condition resources.`);
+  return encountersInContext;
+}
+
 module.exports = {
   getConditionEntriesFromContext,
+  getEncountersFromContext,
   getPatientFromContext,
 };

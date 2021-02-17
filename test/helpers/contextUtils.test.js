@@ -1,4 +1,4 @@
-const { getConditionEntriesFromContext, getPatientFromContext } = require('../../src/helpers/contextUtils');
+const { getConditionEntriesFromContext, getEncountersFromContext, getPatientFromContext } = require('../../src/helpers/contextUtils');
 
 const MOCK_PATIENT_MRN = '123';
 
@@ -59,5 +59,37 @@ describe('getConditionFromContext', () => {
   test('Should throw an error if there are no conditions in context', () => {
     expect(() => getConditionEntriesFromContext(MOCK_PATIENT_MRN, {}))
       .toThrow('Could not find any conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
+  });
+});
+
+describe('getEncountersFromContext', () => {
+  const encounterResource = {
+    resourceType: 'Encounter',
+    id: 'EncounterExample01',
+  };
+  const encounterContext = {
+    resourceType: 'Bundle',
+    type: 'collection',
+    entry: [
+      {
+        fullUrl: 'context-url-1',
+        resource: encounterResource,
+      },
+      {
+        fullUrl: 'context-url-2',
+        resource: { ...encounterResource, id: 'EncounterExample02' },
+      },
+    ],
+  };
+
+  test('Should return all Encounter resources in context', () => {
+    const encounters = getEncountersFromContext(encounterContext);
+    expect(encounters).toHaveLength(2);
+    expect(encounters[0]).toEqual(encounterResource);
+  });
+
+  test('Should throw an error if there are no encounters in context', () => {
+    expect(() => getEncountersFromContext(MOCK_PATIENT_MRN, {}))
+      .toThrow('Could not find any encounter resources in context; ensure that an EncounterExtractor is used earlier in your extraction configuration');
   });
 });
