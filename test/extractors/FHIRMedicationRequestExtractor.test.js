@@ -36,12 +36,12 @@ describe('FHIRMedicationRequestExtractor', () => {
 
   describe('parametrizeArgsForFHIRModule', () => {
     test('should not add status when not set to param values', async () => {
-      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
+      const params = await extractor.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
       expect(params).not.toHaveProperty('status');
     });
 
     test('should add status when set to param values', async () => {
-      const params = await extractorWithStatuses.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
+      const params = await extractorWithStatuses.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
       expect(params).toHaveProperty('status');
       expect(params.status).toEqual(extractorWithStatuses.status);
     });

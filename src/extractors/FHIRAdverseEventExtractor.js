@@ -10,8 +10,8 @@ class FHIRAdverseEventExtractor extends BaseFHIRExtractor {
   }
 
   // In addition to default parametrization, add study if specified
-  async parametrizeArgsForFHIRModule({ mrn, context }) {
-    const paramsWithID = await super.parametrizeArgsForFHIRModule({ mrn, context });
+  async parametrizeArgsForFHIRModule({ context }) {
+    const paramsWithID = await super.parametrizeArgsForFHIRModule({ context });
     // The patient is referenced in the 'subject' field of an AdverseEvent
     paramsWithID.subject = paramsWithID.patient;
     delete paramsWithID.patient;

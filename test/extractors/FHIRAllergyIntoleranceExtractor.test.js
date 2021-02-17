@@ -37,7 +37,7 @@ describe('FHIRAllergyIntoleranceExtractor', () => {
 
   describe('parametrizeArgsForFHIRModule', () => {
     test('should add category to param values', async () => {
-      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
+      const params = await extractor.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
       expect(params).toHaveProperty('clinical-status');
       expect(params['clinical-status']).toEqual(baseClinicalStatus);
     });

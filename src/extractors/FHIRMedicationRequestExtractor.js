@@ -10,8 +10,8 @@ class FHIRMedicationRequestExtractor extends BaseFHIRExtractor {
   }
 
   // In addition to default parametrization, add status if specified
-  async parametrizeArgsForFHIRModule({ mrn, context }) {
-    const paramsWithID = await super.parametrizeArgsForFHIRModule({ mrn, context });
+  async parametrizeArgsForFHIRModule({ context }) {
+    const paramsWithID = await super.parametrizeArgsForFHIRModule({ context });
     // Only add status to parameters if it has been specified
     return {
       ...paramsWithID,

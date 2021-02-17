@@ -18,12 +18,12 @@ describe('getPatientFromContext', () => {
     ],
   };
   test('Should return Patient resource in context', () => {
-    const patient = getPatientFromContext(MOCK_PATIENT_MRN, patientContext);
+    const patient = getPatientFromContext(patientContext);
     expect(patient.id).toEqual(patientResource.id);
   });
 
   test('Should throw an error if there is no patient in context', () => {
-    expect(() => getPatientFromContext(MOCK_PATIENT_MRN, {})).toThrow('Could not find a patient in context; ensure that a PatientExtractor is used earlier in your extraction configuration');
+    expect(() => getPatientFromContext({})).toThrow('Could not find a patient in context; ensure that a PatientExtractor is used earlier in your extraction configuration');
   });
 });
 
