@@ -2,14 +2,19 @@ const _ = require('lodash');
 const logger = require('./logger');
 const { getBundleEntriesByResourceType, getBundleResourcesByType } = require('./fhirUtils');
 
+/**
+* Parses context a Patient resource
+* @param {Object} context - Context object consisting of a FHIR Bundle
+* @return {Object} The first Patient resource found in the bundle
+*/
 function getPatientFromContext(mrn, context) {
   logger.debug('Getting patient from context');
-  const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
-  if (!patientInContext) {
+  const patientResourceInContext = getBundleResourcesByType(context, 'Patient', {}, true);
+  if (!patientResourceInContext) {
     throw Error('Could not find a patient in context; ensure that a PatientExtractor is used earlier in your extraction configuration');
   }
   logger.debug('Patient resource found in context.');
-  return patientInContext;
+  return patientResourceInContext;
 }
 
 /**
@@ -49,12 +54,12 @@ function getConditionsFromContext(context) {
 */
 function getEncountersFromContext(context) {
   logger.debug('Getting encounter resources from context');
-  const encountersInContext = getBundleResourcesByType(context, 'Encounter');
-  if (encountersInContext.length === 0) {
+  const encounterResourcesInContext = getBundleResourcesByType(context, 'Encounter');
+  if (encounterResourcesInContext.length === 0) {
     throw Error('Could not find any encounter resources in context; ensure that an EncounterExtractor is used earlier in your extraction configuration');
   }
-  logger.debug(`Condition resources found in context. Found ${encountersInContext.length} condition resources.`);
-  return encountersInContext;
+  logger.debug(`Condition resources found in context. Found ${encounterResourcesInContext.length} condition resources.`);
+  return encounterResourcesInContext;
 }
 
 module.exports = {
