@@ -7,7 +7,7 @@ const { getBundleEntriesByResourceType, getBundleResourcesByType } = require('./
 * @param {Object} context - Context object consisting of a FHIR Bundle
 * @return {Object} The first Patient resource found in the bundle
 */
-function getPatientFromContext(mrn, context) {
+function getPatientFromContext(context) {
   logger.debug('Getting patient from context');
   const patientResourceInContext = getBundleResourcesByType(context, 'Patient', {}, true);
   if (!patientResourceInContext) {

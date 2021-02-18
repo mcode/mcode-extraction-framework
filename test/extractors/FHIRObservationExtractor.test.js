@@ -36,7 +36,7 @@ describe('FHIRObservationExtractor', () => {
 
   describe('parametrizeArgsForFHIRModule', () => {
     test('should add category to param values', async () => {
-      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
+      const params = await extractor.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
       expect(params).toHaveProperty('category');
       expect(params.category).toEqual(baseCategories);
     });

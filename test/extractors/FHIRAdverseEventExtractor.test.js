@@ -36,19 +36,19 @@ describe('FHIRAdverseEventExtractor', () => {
 
   describe('parametrizeArgsForFHIRModule', () => {
     test('should not add study when not set to param values', async () => {
-      const params = await extractor.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
+      const params = await extractor.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
       expect(params).not.toHaveProperty('study');
     });
 
     describe('pass in optional study parameter', () => {
       test('should add study when set to param values', async () => {
-        const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
+        const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
         expect(params).toHaveProperty('study');
         expect(params.study).toEqual(extractorWithStudy.study);
       });
 
       test('should delete patient after its value is moved to subject', async () => {
-        const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ mrn: MOCK_MRN, context: MOCK_CONTEXT });
+        const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
         expect(params).not.toHaveProperty('patient');
       });
     });

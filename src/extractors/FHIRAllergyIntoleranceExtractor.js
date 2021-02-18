@@ -10,8 +10,8 @@ class FHIRAllergyIntoleranceExtractor extends BaseFHIRExtractor {
   }
 
   // In addition to default parametrization, add clinical status
-  async parametrizeArgsForFHIRModule({ mrn, context }) {
-    const paramsWithID = await super.parametrizeArgsForFHIRModule({ mrn, context });
+  async parametrizeArgsForFHIRModule({ context }) {
+    const paramsWithID = await super.parametrizeArgsForFHIRModule({ context });
     return {
       ...paramsWithID,
       'clinical-status': this.clinicalStatus,
