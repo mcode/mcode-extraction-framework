@@ -1,4 +1,4 @@
-const { getConditionEntriesFromContext, getEncountersFromContext, getPatientFromContext } = require('../../src/helpers/contextUtils');
+const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersFromContext, getPatientFromContext } = require('../../src/helpers/contextUtils');
 
 const MOCK_PATIENT_MRN = '123';
 
@@ -27,7 +27,42 @@ describe('getPatientFromContext', () => {
   });
 });
 
-describe('getConditionFromContext', () => {
+describe('getConditionsFromContext', () => {
+  const conditionResource = {
+    resourceType: 'Condition',
+    id: 'mCODEConditionExample01',
+  };
+  const conditionResource2 = {
+    resourceType: 'Condition',
+    id: 'mCODEConditionExample02',
+  };
+  const conditionContext = {
+    resourceType: 'Bundle',
+    type: 'collection',
+    entry: [
+      {
+        fullUrl: 'context-url-1',
+        resource: conditionResource,
+      },
+      {
+        fullUrl: 'context-url-2',
+        resource: conditionResource2,
+      },
+    ],
+  };
+  test('Should return Condition resource in context', () => {
+    const conditions = getConditionsFromContext(conditionContext);
+    expect(conditions).toContain(conditionResource);
+    expect(conditions).toContain(conditionResource2);
+  });
+
+  test('Should throw an error if there is no Condition resource in context', () => {
+    expect(() => getConditionsFromContext({}))
+      .toThrow('Could not find any conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
+  });
+});
+
+describe('getConditionEntriesFromContext', () => {
   const conditionResource = {
     resourceType: 'Condition',
     id: 'mCODEConditionExample01',
@@ -47,8 +82,8 @@ describe('getConditionFromContext', () => {
     ],
   };
 
-  test('Should return all Condition resources in context', () => {
-    const conditions = getConditionEntriesFromContext(MOCK_PATIENT_MRN, conditionContext);
+  test('Should return all Condition entries in context', () => {
+    const conditions = getConditionEntriesFromContext(conditionContext);
     expect(conditions).toHaveLength(2);
     expect(conditions[0]).toEqual({
       fullUrl: 'context-url-1',
@@ -57,7 +92,7 @@ describe('getConditionFromContext', () => {
   });
 
   test('Should throw an error if there are no conditions in context', () => {
-    expect(() => getConditionEntriesFromContext(MOCK_PATIENT_MRN, {}))
+    expect(() => getConditionEntriesFromContext({}))
       .toThrow('Could not find any conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
   });
 });
