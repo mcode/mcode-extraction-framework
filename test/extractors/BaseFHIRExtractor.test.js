@@ -56,7 +56,7 @@ describe('BaseFhirExtractor', () => {
   });
 
   test('get should return a condition resource', async () => {
-    const data = await baseFHIRExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
+    const data = await baseFHIRExtractor.get({ context: MOCK_CONTEXT });
     expect(data.resourceType).toEqual('Bundle');
     expect(data.entry).toBeDefined();
     expect(data.entry.length).toBeGreaterThan(0);
