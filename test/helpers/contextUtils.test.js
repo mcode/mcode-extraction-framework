@@ -56,7 +56,7 @@ describe('getConditionsFromContext', () => {
     expect(conditions).toContain(conditionResource2);
   });
 
-  test('Should throw an error if there is no patient in context', () => {
+  test('Should throw an error if there is no Condition resource in context', () => {
     expect(() => getConditionsFromContext({}))
       .toThrow('Could not find any conditions in context; ensure that a ConditionExtractor is used earlier in your extraction configuration');
   });
