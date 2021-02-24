@@ -1,4 +1,4 @@
-const { coding, extensionArr, reference, valueX } = require('./snippets');
+const { coding, extensionArr, reference, valueX, dataAbsentReasonExtension } = require('./snippets');
 
 function evidenceTemplate({ evidence }) {
   if (!evidence || evidence.length === 0) return [];
@@ -23,6 +23,11 @@ function subjectTemplate({ subject }) {
   };
 }
 
+function valueTemplate(valueObj) {
+  if (valueObj === null) return { valueCodeableConcept: extensionArr(dataAbsentReasonExtension('not-asked')) };
+  return valueX(valueObj, 'valueCodeableConcept');
+}
+
 function cancerDiseaseStatusTemplate({
   id,
   status,
@@ -32,7 +37,7 @@ function cancerDiseaseStatusTemplate({
   value,
   evidence,
 }) {
-  if (!(id && status && effectiveDateTime && condition && subject && value)) {
+  if (!id || !status || !effectiveDateTime || !condition || !subject || (!value && status !== 'not-evaluated')) {
     throw Error('Trying to render a CancerDiseaseStatusTemplate, but a required argument is missing; ensure that id, status, effectiveDateTime, condition, subject, and value are all present');
   }
 
@@ -45,7 +50,7 @@ function cancerDiseaseStatusTemplate({
       ],
     },
     ...extensionArr(...evidenceTemplate({ evidence })),
-    status,
+    status: status === 'not-evaluated' ? 'final' : status,
     category: [
       {
         coding: [
@@ -70,7 +75,7 @@ function cancerDiseaseStatusTemplate({
     effectiveDateTime,
     ...focusTemplate({ condition }),
     ...subjectTemplate({ subject }),
-    ...valueX(value, 'valueCodeableConcept'),
+    ...valueTemplate(value),
   };
 }
 

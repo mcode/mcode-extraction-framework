@@ -41,11 +41,10 @@
     },
     "effectiveDateTime" : "1994-12-09T09:07:00Z",
     "valueCodeableConcept": {
-      "coding": [
+      "extension": [
         {
-          "system": "http://snomed.info/sct",
-          "code": "385633008",
-          "display": "Improving"
+          "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+          "valueCode": "not-asked"
         }
       ]
     }
