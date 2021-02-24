@@ -44,7 +44,7 @@ describe('test CancerDiseaseStatus template', () => {
     const MINIMAL_DATA = {
       // Minimal amount of data to be accepted, evidence is excluded
       id: 'CancerDiseaseStatus-fixture',
-      status: 'not-evaluated',
+      status: 'not evaluated',
       value: null,
       subject: {
         id: '123-example-patient',

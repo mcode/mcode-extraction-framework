@@ -43,7 +43,7 @@ function cancerDiseaseStatusTemplate({
   value,
   evidence,
 }) {
-  if (!id || !status || !effectiveDateTime || !condition || !subject || (!value && status !== 'not-evaluated')) {
+  if (!id || !status || !effectiveDateTime || !condition || !subject || (!value && status !== 'not evaluated')) {
     throw Error('Trying to render a CancerDiseaseStatusTemplate, but a required argument is missing; ensure that id, status, effectiveDateTime, condition, subject, and value are all present');
   }
 
@@ -56,7 +56,7 @@ function cancerDiseaseStatusTemplate({
       ],
     },
     ...extensionArr(...evidenceTemplate({ evidence })),
-    status: status === 'not-evaluated' ? 'final' : status,
+    status: status === 'not evaluated' ? 'final' : status,
     category: [
       {
         coding: [
