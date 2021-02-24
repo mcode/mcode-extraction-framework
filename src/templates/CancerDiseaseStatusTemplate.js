@@ -1,4 +1,10 @@
-const { coding, extensionArr, reference, valueX, dataAbsentReasonExtension } = require('./snippets');
+const {
+  coding,
+  extensionArr,
+  reference,
+  valueX,
+  dataAbsentReasonExtension,
+} = require('./snippets');
 
 function evidenceTemplate({ evidence }) {
   if (!evidence || evidence.length === 0) return [];

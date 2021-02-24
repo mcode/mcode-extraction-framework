@@ -23,6 +23,7 @@ class CSVCancerDiseaseStatusExtractor {
     const evidenceDelimiter = '|';
     return arrOfDiseaseStatusData.map((record) => ({
       status: record.observationStatus || 'final',
+      // If the Disease Status was not evaluated, there will be no value to make a record of and this property will be null
       value: record.observationStatus === 'not-evaluated' ? null : {
         code: record.diseaseStatusCode,
         system: 'http://snomed.info/sct',
