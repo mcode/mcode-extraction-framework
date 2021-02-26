@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:d528f1b04f5d3588ef80ca680fbc0f82b93e7c05eb08d293f698c7b075fc0b25",
+      "fullUrl": "urn:uuid:f8acc19f44696eea31532ac9d3b658f1fea317eba9455eddc78de0857220d362",
       "resource": {
         "resourceType": "ResearchSubject",
-        "id": "d528f1b04f5d3588ef80ca680fbc0f82b93e7c05eb08d293f698c7b075fc0b25",
+        "id": "f8acc19f44696eea31532ac9d3b658f1fea317eba9455eddc78de0857220d362",
         "identifier": [
           {
             "system": "http://example.com/clinicaltrialsubjectids",
@@ -17,7 +17,7 @@
         "status": "example-enrollment-status",
         "study": {
           "identifier": {
-            "system": "http://example.com/clinicaltrialids",
+            "system": "example-system",
             "value": "example-researchId"
           }
         },
@@ -25,10 +25,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:1b04fc751b08fd0e0b89293a0ccb61e931e6eeed87d88100fb0c3b15d0cf7fbb",
+      "fullUrl": "urn:uuid:b245aa8a67b5f67263f5a688813c435ccfb364e0f7865885c512e3a5ca3c9093",
       "resource": {
         "resourceType": "ResearchStudy",
-        "id": "1b04fc751b08fd0e0b89293a0ccb61e931e6eeed87d88100fb0c3b15d0cf7fbb",
+        "id": "b245aa8a67b5f67263f5a688813c435ccfb364e0f7865885c512e3a5ca3c9093",
         "status": "example-trialStatus",
         "site": [
           {
@@ -41,7 +41,7 @@
         ],
         "identifier": [
           {
-            "system": "http://example.com/clinicaltrialids",
+            "system": "example-system",
             "type": { "text": "Clinical Trial Research ID" },
             "value": "example-researchId"
           }

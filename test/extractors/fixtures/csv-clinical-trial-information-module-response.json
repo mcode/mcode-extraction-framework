@@ -4,6 +4,7 @@
     "trialSubjectID": "example-subjectId",
     "enrollmentStatus": "example-enrollment-status",
     "trialResearchID": "example-researchId",
-    "trialStatus": "example-trialStatus"
+    "trialStatus": "example-trialStatus",
+    "trialResearchSystem":"example-system"
   }
 ]
