@@ -64,6 +64,7 @@ const {
 } = require('./helpers/conditionUtils');
 const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = require('./helpers/diseaseStatusUtils');
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
+const { lowercaseLookupQuery, createLowercaseLookup, createInvertedLookup } = require('./helpers/lookupUtils');
 const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersFromContext, getPatientFromContext } = require('./helpers/contextUtils');
 
 module.exports = {
@@ -106,6 +107,8 @@ module.exports = {
   MCODEClient,
   // FHIR and resource helpers
   allResourcesInBundle,
+  createLowercaseLookup,
+  createInvertedLookup,
   firstEntryInBundle,
   firstIdentifierEntry,
   firstResourceInBundle,
@@ -131,6 +134,7 @@ module.exports = {
   isConditionCodeCancer,
   isConditionCancer,
   logOperationOutcomeInfo,
+  lowercaseLookupQuery,
   mEpochToDate,
   // Context operations
   getConditionEntriesFromContext,
