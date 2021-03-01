@@ -26,14 +26,17 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
 
   joinClinicalTrialData(patientId, clinicalTrialData) {
     logger.debug('Reformatting clinical trial data from CSV into template format');
-    const {
-      trialSubjectID, enrollmentStatus, trialResearchID, trialStatus, trialResearchSystem = '',
+    let {
+      trialSubjectID, enrollmentStatus, trialResearchID, trialStatus, trialResearchSystem,
     } = clinicalTrialData;
     const { clinicalSiteID } = this;
 
     if (!(patientId && clinicalSiteID && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
       throw new Error('Clinical trial missing an expected property: patientId, clinicalSiteID, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
     }
+
+    //since trialResearchSystem is optional, check for blank value and replace with default value
+    trialResearchSystem = (trialResearchSystem === '') ? 'http://example.com/clinicaltrialids' : trialResearchSystem;
 
     // Need separate data objects for ResearchSubject and ResearchStudy so that they get different resource ids
     return {
