@@ -26,7 +26,7 @@ describe('lookupUtils', () => {
     });
 
     test('# of keys should stay the same', () => {
-      expect(Object.keys(lowercaseLookup).length).toEqual(Object.values(exampleLookup).length);
+      expect(Object.keys(lowercaseLookup).length).toEqual(Object.keys(exampleLookup).length);
     });
   });
 
