@@ -16,15 +16,14 @@ class CSVCancerDiseaseStatusExtractor {
     logger.debug('Reformatting disease status data from CSV into template format');
     // Check the shape of the data
     arrOfDiseaseStatusData.forEach((record) => {
-      if (!record.mrn || !record.conditionId || (!record.diseaseStatusCode && record.observationStatus !== 'not evaluated') || !record.dateOfObservation) {
+      if (!record.mrn || !record.conditionId || !record.diseaseStatusCode || !record.dateOfObservation) {
         throw new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, and dateOfObservation are required.');
       }
     });
     const evidenceDelimiter = '|';
     return arrOfDiseaseStatusData.map((record) => ({
       status: record.observationStatus || 'final',
-      // If the Disease Status was not evaluated, there will be no value to make a record of and this property will be null
-      value: record.observationStatus === 'not evaluated' ? null : {
+      value: {
         code: record.diseaseStatusCode,
         system: 'http://snomed.info/sct',
         display: record.diseaseStatusText ? record.diseaseStatusText : getDiseaseStatusDisplay(record.diseaseStatusCode, this.implementation),

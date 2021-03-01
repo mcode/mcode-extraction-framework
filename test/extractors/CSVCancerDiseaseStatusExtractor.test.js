@@ -36,13 +36,6 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
       // Only including required properties is valid
       expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(localData)).toEqual(expect.anything());
 
-      // Excluding diseaseStatusCode with an obseervationStatus of 'not evaluated' should be valid
-      localData[0].observationStatus = 'not evaluated';
-      localData[0].diseaseStatusCode = '';
-      expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(localData)).toEqual(expect.anything());
-
-      localData[0].observationStatus = '';
-
       const requiredProperties = ['mrn', 'conditionId', 'diseaseStatusCode', 'dateOfObservation'];
 
       // Removing each required property should throw an error

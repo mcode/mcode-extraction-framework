@@ -44,8 +44,12 @@ describe('test CancerDiseaseStatus template', () => {
     const MINIMAL_DATA = {
       // Minimal amount of data to be accepted, evidence is excluded
       id: 'CancerDiseaseStatus-fixture',
-      status: 'not evaluated',
-      value: null,
+      status: 'final',
+      value: {
+        code: '709137006',
+        system: 'http://snomed.info/sct',
+        display: 'not evaluated',
+      },
       subject: {
         id: '123-example-patient',
         name: 'Mr. Patient Example',

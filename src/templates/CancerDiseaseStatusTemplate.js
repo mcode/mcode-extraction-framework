@@ -29,9 +29,9 @@ function subjectTemplate({ subject }) {
   };
 }
 
-function valueTemplate(valueObj) {
-  if (valueObj === null) return { valueCodeableConcept: extensionArr(dataAbsentReasonExtension('not-asked')) };
-  return valueX(valueObj, 'valueCodeableConcept');
+function valueTemplate({ code, display, system }) {
+  if (code === '709137006') return { valueCodeableConcept: extensionArr(dataAbsentReasonExtension('not-asked')) };
+  return valueX({ code, display, system }, 'valueCodeableConcept');
 }
 
 function cancerDiseaseStatusTemplate({
@@ -43,7 +43,7 @@ function cancerDiseaseStatusTemplate({
   value,
   evidence,
 }) {
-  if (!id || !status || !effectiveDateTime || !condition || !subject || (!value && status !== 'not evaluated')) {
+  if (!id || !status || !effectiveDateTime || !condition || !subject || !value) {
     throw Error('Trying to render a CancerDiseaseStatusTemplate, but a required argument is missing; ensure that id, status, effectiveDateTime, condition, subject, and value are all present');
   }
 
@@ -56,7 +56,7 @@ function cancerDiseaseStatusTemplate({
       ],
     },
     ...extensionArr(...evidenceTemplate({ evidence })),
-    status: status === 'not evaluated' ? 'final' : status,
+    status,
     category: [
       {
         coding: [
