@@ -16,7 +16,7 @@ class CSVCancerDiseaseStatusExtractor {
     logger.debug('Reformatting disease status data from CSV into template format');
     // Check the shape of the data
     arrOfDiseaseStatusData.forEach((record) => {
-      if (!(record.mrn && record.conditionId && record.diseaseStatusCode && record.dateOfObservation)) {
+      if (!record.mrn || !record.conditionId || !record.diseaseStatusCode || !record.dateOfObservation) {
         throw new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, and dateOfObservation are required.');
       }
     });

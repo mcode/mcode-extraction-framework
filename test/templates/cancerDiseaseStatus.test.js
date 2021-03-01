@@ -46,9 +46,9 @@ describe('test CancerDiseaseStatus template', () => {
       id: 'CancerDiseaseStatus-fixture',
       status: 'final',
       value: {
-        code: '385633008',
+        code: '709137006',
         system: 'http://snomed.info/sct',
-        display: 'Improving',
+        display: 'not evaluated',
       },
       subject: {
         id: '123-example-patient',
