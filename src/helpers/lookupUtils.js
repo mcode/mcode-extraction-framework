@@ -4,6 +4,8 @@
  * @return {Object} the lookup table, with all keys and values inverted
  */
 function createInvertedLookup(lookup) {
+  // NOTE: This will produce collisions if values aren't unique
+  //       and unspecified behavior if values are non-strings
   return Object.entries(lookup).reduce((ret, entry) => {
     const [key, value] = entry;
     // eslint-disable-next-line no-param-reassign
@@ -18,6 +20,7 @@ function createInvertedLookup(lookup) {
  * @return {Object} the lookup table, with all keys lowercased
  */
 function createLowercaseLookup(lookup) {
+  // NOTE: This will produce collisions if keys aren't unique w/r/t case
   return Object.entries(lookup).reduce((ret, entry) => {
     const [k, v] = entry;
     // eslint-disable-next-line no-param-reassign

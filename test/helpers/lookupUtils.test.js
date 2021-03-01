@@ -20,12 +20,12 @@ describe('lookupUtils', () => {
       expect(Object.keys(lowercaseLookup)).toEqual(lowercasedExampleKeys);
     });
 
-    test('values should remain unchanged after lowercasing', () => {
+    test('given a lookup with unique keys, values should remain unchanged after lowercasing', () => {
       const originalValues = Object.values(exampleLookup);
       expect(Object.values(lowercaseLookup)).toEqual(originalValues);
     });
 
-    test('# of keys should stay the same', () => {
+    test('given a lookup with unique keys, # of keys should stay the same', () => {
       expect(Object.keys(lowercaseLookup).length).toEqual(Object.keys(exampleLookup).length);
     });
   });
@@ -52,11 +52,11 @@ describe('lookupUtils', () => {
       expect(Object.values(invertedLookup)).toEqual(expect.arrayContaining(Object.keys(exampleLookup)));
     });
 
-    test('# of new keys should match the # of values in the old object', () => {
+    test('given a lookup with unique values, # of new keys should match the # of values in the old object', () => {
       expect(Object.keys(invertedLookup).length).toEqual(Object.values(exampleLookup).length);
     });
 
-    test('# of new values should match the # of keys in the old object', () => {
+    test('given a lookup with unique values, # of new values should match the # of keys in the old object', () => {
       expect(Object.values(invertedLookup).length).toEqual(Object.keys(exampleLookup).length);
     });
   });
