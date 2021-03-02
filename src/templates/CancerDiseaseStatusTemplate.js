@@ -30,7 +30,8 @@ function subjectTemplate({ subject }) {
 }
 
 function valueTemplate({ code, display, system }) {
-  if (code === '709137006') return { valueCodeableConcept: extensionArr(dataAbsentReasonExtension('not-asked')) };
+  // not-asked indicates absent data
+  if (code === 'not-asked') return { valueCodeableConcept: extensionArr(dataAbsentReasonExtension(code)) };
   return valueX({ code, display, system }, 'valueCodeableConcept');
 }
 

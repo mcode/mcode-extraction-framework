@@ -1,52 +1,52 @@
 {
-    "resourceType": "Observation",
-    "id": "CancerDiseaseStatus-fixture",
-    "meta": {
-      "profile": [
-        "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
-      ]
-    },
-    "category": [
-      {
-        "coding": [
-          {
-            "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-            "code": "therapy",
-            "display": "Therapy"
-          }
-        ]
-      }
-    ],
-    "status": "final",
-    "code": {
+  "resourceType": "Observation",
+  "id": "CancerDiseaseStatus-fixture",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
+    ]
+  },
+  "category": [
+    {
       "coding": [
         {
-          "system": "http://loinc.org",
-          "code": "88040-1",
-          "display": "Response to cancer treatment"
-        }
-      ]
-    },
-    "focus" : [
-      {
-        "reference": "urn:uuid:123-Walking-Corpse-Syndrome",
-        "display": "Walking Corpse Syndrome",
-        "type": "Condition"
-      }
-    ],
-    "subject": {
-      "reference": "urn:uuid:123-example-patient",
-      "display": "Mr. Patient Example",
-      "type": "Patient"
-    },
-    "effectiveDateTime" : "1994-12-09T09:07:00Z",
-    "valueCodeableConcept": {
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
-          "valueCode": "not-asked"
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "therapy",
+          "display": "Therapy"
         }
       ]
     }
+  ],
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "88040-1",
+        "display": "Response to cancer treatment"
+      }
+    ]
+  },
+  "focus": [
+    {
+      "reference": "urn:uuid:123-Walking-Corpse-Syndrome",
+      "display": "Walking Corpse Syndrome",
+      "type": "Condition"
+    }
+  ],
+  "subject": {
+    "reference": "urn:uuid:123-example-patient",
+    "display": "Mr. Patient Example",
+    "type": "Patient"
+  },
+  "effectiveDateTime": "1994-12-09T09:07:00Z",
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "code": "709137006",
+        "display": "undetermined",
+        "system": "http://snomed.info/sct"
+      }
+    ]
   }
-  
+}

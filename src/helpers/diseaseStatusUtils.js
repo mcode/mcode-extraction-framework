@@ -17,7 +17,7 @@ function mEpochToDate(date) {
 
 /**
  * Converts Text Value to code in mCODE's ConditionStatusTrendVS
- * @param {string} text, limited to 'no evidence of disease', Responding, Stable, Progressing, or 'not evaluated'
+ * @param {string} text - limited to keys in the DiseaseStatusTextToCodeLookups above
  * @return {code} corresponding DiseaseStatus code
  */
 function getDiseaseStatusCode(text, implementation) {
@@ -31,7 +31,7 @@ function getDiseaseStatusCode(text, implementation) {
 
 /**
  * Converts code in mCODE's ConditionStatusTrendVS to Text Value
- * @param {string} code - limited to codes in the diseaseStatusTextToCodeLookup above
+ * @param {string} code - limited to keys in the DiseaseStatusCodeToTextLookups above
  * @return {string} corresponding DiseaseStatus display text
  */
 function getDiseaseStatusDisplay(code, implementation) {
@@ -45,7 +45,7 @@ function getDiseaseStatusDisplay(code, implementation) {
 
 /**
  * Converts Text Value to code in mCODE's CancerDiseaseStatusEvidenceTypeVS
- * @param {string} text - limited to imaging, pathology, symptoms, 'physical exam', 'lab results'
+ * @param {string} text - limited to keys in the evidenceTextToCodeLookup
  * @return {string} corresponding Evidence code
  */
 function getDiseaseStatusEvidenceCode(text) {
@@ -54,7 +54,7 @@ function getDiseaseStatusEvidenceCode(text) {
 
 /**
  * Converts code in mCODE's CancerDiseaseStatusEvidenceTypeVS to Text Value
- * @param {string} code - limited to codes in the evidenceTextToCodeLookup above
+ * @param {string} code - limited to keys in the evidenceTextToCodeLookup above
  * @return {string} corresponding Evidence display text
  */
 function getDiseaseStatusEvidenceDisplay(code) {
