@@ -17,7 +17,7 @@ const icareDiseaseStatusTextToCodeLookup = {
   responding: '268910001',
   stable: '359746009',
   progressing: '271299001',
-  'undetermined': '709137006',
+  undetermined: '709137006',
   'not evaluated': 'not-asked',
 };
 const icareDiseaseStatusCodeToTextLookup = createInvertedLookup(icareDiseaseStatusTextToCodeLookup);
