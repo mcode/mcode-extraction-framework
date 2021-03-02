@@ -22,7 +22,8 @@ const icareDiseaseStatusTextToCodeLookup = {
   responding: '268910001',
   stable: '359746009',
   progressing: '271299001',
-  'not evaluated': '709137006',
+  undetermined: '709137006',
+  'not evaluated': 'not-asked',
 };
 
 // Code mapping is based on http://standardhealthrecord.org/guides/icare/mapping_guidance.html
