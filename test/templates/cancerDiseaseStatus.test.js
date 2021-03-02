@@ -93,11 +93,11 @@ describe('test CancerDiseaseStatus template', () => {
 
     // CDS should have an extension
     expect(generatedDiseaseStatus).toHaveProperty('valueCodeableConcept.extension');
-    // CDS should have an extension url of dataAbsentReason
+    // CDS should have an extension url pointing to the FHIR DataAbsentReason structure def
     expect(generatedDiseaseStatus).toHaveProperty(['valueCodeableConcept', 'extension', 0, 'url'], 'http://hl7.org/fhir/StructureDefinition/data-absent-reason');
     // CDS should have an extension valueCode of not-asked
     expect(generatedDiseaseStatus).toHaveProperty(['valueCodeableConcept', 'extension', 0, 'valueCode'], 'not-asked');
-    // CDS should be valid
+    // CDS should be valid FHIR
     expect(isValidFHIR(generatedDiseaseStatus)).toBeTruthy();
   });
 
