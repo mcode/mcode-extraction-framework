@@ -69,7 +69,7 @@ describe('test CancerDiseaseStatus template', () => {
     expect(isValidFHIR(generatedDiseaseStatus)).toBeTruthy();
   });
 
-  test('valid data where cds-status is not not-asked generates a dataAbsentReason', () => {
+  test('when provided data where cds-status value is `not-asked`, the template generates a dataAbsentReason', () => {
     const MINIMAL_DATA = {
       // Minimal amount of data to be accepted, evidence is excluded
       id: 'CancerDiseaseStatus-fixture',
