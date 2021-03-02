@@ -17,7 +17,7 @@ function mEpochToDate(date) {
 
 /**
  * Converts Text Value to code in mCODE's ConditionStatusTrendVS
- * @param {string} text - limited to keys in the DiseaseStatusTextToCodeLookup's above
+ * @param {string} text - limited to keys in the DiseaseStatusTextToCodeLookups above
  * @return {code} corresponding DiseaseStatus code
  */
 function getDiseaseStatusCode(text, implementation) {
@@ -31,7 +31,7 @@ function getDiseaseStatusCode(text, implementation) {
 
 /**
  * Converts code in mCODE's ConditionStatusTrendVS to Text Value
- * @param {string} code - limited to keys in the DiseaseStatusCodeToTextLookup's above
+ * @param {string} code - limited to keys in the DiseaseStatusCodeToTextLookups above
  * @return {string} corresponding DiseaseStatus display text
  */
 function getDiseaseStatusDisplay(code, implementation) {
