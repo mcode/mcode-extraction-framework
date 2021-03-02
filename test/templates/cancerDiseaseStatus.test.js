@@ -48,7 +48,7 @@ describe('test CancerDiseaseStatus template', () => {
       value: {
         code: '709137006',
         system: 'http://snomed.info/sct',
-        display: 'not evaluated',
+        display: 'undetermined',
       },
       subject: {
         id: '123-example-patient',
@@ -66,6 +66,38 @@ describe('test CancerDiseaseStatus template', () => {
 
     // Relevant fields should match the valid FHIR
     expect(generatedDiseaseStatus).toEqual(minimalCancerDiseaseStatus);
+    expect(isValidFHIR(generatedDiseaseStatus)).toBeTruthy();
+  });
+
+  test('valid data where cds-status is not not-asked generates a dataAbsentReason', () => {
+    const MINIMAL_DATA = {
+      // Minimal amount of data to be accepted, evidence is excluded
+      id: 'CancerDiseaseStatus-fixture',
+      status: 'final',
+      value: {
+        code: 'not-asked',
+      },
+      subject: {
+        id: '123-example-patient',
+        name: 'Mr. Patient Example',
+      },
+      condition: {
+        id: '123-Walking-Corpse-Syndrome',
+        name: 'Walking Corpse Syndrome',
+      },
+      effectiveDateTime: '1994-12-09T09:07:00Z',
+      evidence: null,
+    };
+
+    const generatedDiseaseStatus = cancerDiseaseStatusTemplate(MINIMAL_DATA);
+
+    // CDS should have an extension
+    expect(generatedDiseaseStatus).toHaveProperty('valueCodeableConcept.extension');
+    // CDS should have an extension url of dataAbsentReason
+    expect(generatedDiseaseStatus).toHaveProperty(['valueCodeableConcept', 'extension', 0, 'url'], 'http://hl7.org/fhir/StructureDefinition/data-absent-reason');
+    // CDS should have an extension valueCode of not-asked
+    expect(generatedDiseaseStatus).toHaveProperty(['valueCodeableConcept', 'extension', 0, 'valueCode'], 'not-asked');
+    // CDS should be valid
     expect(isValidFHIR(generatedDiseaseStatus)).toBeTruthy();
   });
 
