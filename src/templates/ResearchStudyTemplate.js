@@ -14,9 +14,9 @@ function siteTemplate(clinicalSiteID) {
   };
 }
 
-function researchStudyIdentifierTemplate(trialResearchID) {
+function researchStudyIdentifierTemplate(trialResearchID, trialResearchSystem) {
   return identifierArr({
-    system: 'http://example.com/clinicaltrialids',
+    system: trialResearchSystem,
     type: {
       text: 'Clinical Trial Research ID',
     },
@@ -26,7 +26,9 @@ function researchStudyIdentifierTemplate(trialResearchID) {
 
 
 // Based on https://www.hl7.org/fhir/researchstudy.html
-function researchStudyTemplate({ id, trialStatus, trialResearchID, clinicalSiteID }) {
+function researchStudyTemplate({
+  id, trialStatus, trialResearchID, clinicalSiteID, trialResearchSystem,
+}) {
   if (!(id && trialStatus && trialResearchID && clinicalSiteID)) {
     throw Error('Trying to render a ResearchStudyTemplate, but a required argument is missing; ensure that id, trialStatus, trialResearchID, clinicalSiteID are all present');
   }
@@ -36,7 +38,7 @@ function researchStudyTemplate({ id, trialStatus, trialResearchID, clinicalSiteI
     id,
     status: trialStatus,
     ...siteTemplate(clinicalSiteID),
-    ...researchStudyIdentifierTemplate(trialResearchID),
+    ...researchStudyIdentifierTemplate(trialResearchID, trialResearchSystem),
   };
 }
 

@@ -27,6 +27,8 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
   joinClinicalTrialData(patientId, clinicalTrialData) {
     logger.debug('Reformatting clinical trial data from CSV into template format');
     const { trialSubjectID, enrollmentStatus, trialResearchID, trialStatus } = clinicalTrialData;
+    // since trialResearchSystem is optional, check for blank value and replace with default value
+    const trialResearchSystem = (clinicalTrialData.trialResearchSystem === '') ? 'http://example.com/clinicaltrialids' : clinicalTrialData.trialResearchSystem;
     const { clinicalSiteID } = this;
 
     if (!(patientId && clinicalSiteID && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
@@ -40,11 +42,13 @@ class CSVClinicalTrialInformationExtractor extends Extractor {
         trialSubjectID,
         trialResearchID,
         patientId,
+        trialResearchSystem,
       },
       formattedDataStudy: {
         trialStatus,
         trialResearchID,
         clinicalSiteID,
+        trialResearchSystem,
       },
     };
   }

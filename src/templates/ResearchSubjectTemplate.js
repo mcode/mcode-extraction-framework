@@ -37,7 +37,7 @@ function researchSubjectTemplate({
   trialSubjectID,
   trialResearchID,
   patientId,
-  trialResearchSystem = 'http://example.com/clinicaltrialids',
+  trialResearchSystem,
 }) {
   if (!(id && enrollmentStatus && trialSubjectID && trialResearchID && patientId)) {
     throw Error('Trying to render a ResearchStudyTemplate, but a required argument is missing; ensure that id, trialStatus, trialResearchID, clinicalSiteID are all present');

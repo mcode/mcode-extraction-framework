@@ -14,7 +14,7 @@
   "identifier": [
     {
       "value": "AFT1235",
-      "system": "http://example.com/clinicaltrialids",
+      "system": "example-system",
       "type": {
         "text": "Clinical Trial Research ID"
       }
