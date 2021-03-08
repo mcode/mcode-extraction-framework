@@ -30,7 +30,7 @@ function carePlanReasonTemplate({ reasonCode, reasonDisplayText }) {
 }
 
 function carePlanChangeReasonExtensionTemplate({ hasChanged, reasonCode, reasonDisplayText, effectiveDate }) {
-  if (hasChanged === undefined || !effectiveDate) {
+  if (hasChanged === null || !effectiveDate) {
     const errorMessage = 'Trying to render a CarePlanWithReviewTemplate, but a review was missing required fields; '
       + 'ensure that hasChanged and effectiveDate are present on all reviews';
     throw new Error(errorMessage);
