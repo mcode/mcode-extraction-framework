@@ -103,11 +103,17 @@ describe('JavaScript render CarePlan template', () => {
       mrn: 'abc-def',
       reviews: [{
         effectiveDate: '2020-01-23',
-        haschanged: null,
+        hasChanged: null,
       }],
     };
 
     expect(() => carePlanWithReviewTemplate(INVALID_DATA)).toThrow(Error);
-    expect(() => carePlanWithReviewTemplate(INVALID_REVIEW_DATA)).toThrow(Error);
+
+    // A null hasChanged value should cause a specific error to be thrown, an undefined hasChanged value should not
+    const hasChangedError = 'Trying to render a CarePlanWithReviewTemplate, but a review was missing required fields; ensure that hasChanged and effectiveDate are present on all reviews';
+    expect(() => carePlanWithReviewTemplate(INVALID_REVIEW_DATA)).toThrowError(hasChangedError);
+
+    INVALID_REVIEW_DATA.reviews[0].hasChanged = undefined;
+    expect(() => carePlanWithReviewTemplate(INVALID_REVIEW_DATA)).not.toThrowError(hasChangedError);
   });
 });
