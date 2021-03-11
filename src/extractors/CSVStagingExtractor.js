@@ -1,6 +1,4 @@
-const path = require('path');
-const { Extractor } = require('./Extractor');
-const { CSVModule } = require('../modules');
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { firstEntryInBundle } = require('../helpers/fhirUtils');
 const { generateMcodeResources } = require('../templates');
 const logger = require('../helpers/logger');
@@ -51,10 +49,9 @@ function formatStagingData(stagingData, categoryIds) {
   };
 }
 
-class CSVStagingExtractor extends Extractor {
+class CSVStagingExtractor extends BaseCSVExtractor {
   constructor({ filePath }) {
-    super();
-    this.csvModule = new CSVModule(path.resolve(filePath));
+    super({ filePath });
   }
 
   async getStagingData(mrn) {

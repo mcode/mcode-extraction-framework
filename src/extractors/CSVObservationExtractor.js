@@ -1,7 +1,5 @@
-const path = require('path');
-const { CSVModule } = require('../modules');
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
-const { Extractor } = require('./Extractor');
 const logger = require('../helpers/logger');
 const { formatDateTime } = require('../helpers/dateUtils');
 
@@ -32,10 +30,9 @@ function formatData(observationData) {
   });
 }
 
-class CSVObservationExtractor extends Extractor {
+class CSVObservationExtractor extends BaseCSVExtractor {
   constructor({ filePath }) {
-    super();
-    this.csvModule = new CSVModule(path.resolve(filePath));
+    super({ filePath });
   }
 
   async getObservationData(mrn) {

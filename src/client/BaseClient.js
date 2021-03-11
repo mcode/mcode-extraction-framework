@@ -25,18 +25,30 @@ class BaseClient {
   }
 
   // Given an extractor configuration, initialize all the necessary extractors
-  initializeExtractors(extractorConfig, commonExtractorArgs) {
-    extractorConfig.forEach((curExtractorConfig) => {
+  async initializeExtractors(extractorConfig, commonExtractorArgs) {
+    const extractorInits = extractorConfig.map(async (curExtractorConfig) => {
       const { label, type, constructorArgs } = curExtractorConfig;
       logger.debug(`Initializing ${label} extractor with type ${type}`);
       const ExtractorClass = this.extractorClasses[type];
+
       try {
         const newExtractor = new ExtractorClass({ ...commonExtractorArgs, ...constructorArgs });
-        this.extractors.push(newExtractor);
+
+        if (newExtractor.validate) {
+          await newExtractor.validate();
+        }
+
+        return newExtractor;
       } catch (e) {
         throw new Error(`Unable to initialize ${label} extractor with type ${type}`);
       }
     });
+
+    await Promise.all(extractorInits).then((extractors) => {
+      this.extractors.push(...extractors);
+    });
+
+    logger.info('Validation succeeded');
   }
 
   // NOTE: Async because in other clients that extend this, we need async helper functions (ex. auth)

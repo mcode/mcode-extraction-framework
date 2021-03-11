@@ -29,16 +29,16 @@ describe('BaseClient', () => {
   });
 
   describe('initializeExtractors', () => {
-    it('should fail if extractors are missing a type', () => {
+    it('should fail if extractors are missing a type', async () => {
       const extractorsWithoutType = [
         {
           label: 'Broken extractor',
           type: undefined,
         },
       ];
-      expect(() => engine.initializeExtractors(extractorsWithoutType)).toThrowError();
+      await expect(engine.initializeExtractors(extractorsWithoutType)).rejects.toThrowError();
     });
-    it('should fail on un-registered extractors', () => {
+    it('should fail on un-registered extractors', async () => {
       // No extractors are registered by default
       const unregisteredExtractors = [
         {
@@ -46,9 +46,9 @@ describe('BaseClient', () => {
           type: 'UnregisteredExtractor',
         },
       ];
-      expect(() => engine.initializeExtractors(unregisteredExtractors)).toThrowError();
+      await expect(engine.initializeExtractors(unregisteredExtractors)).rejects.toThrowError();
     });
-    it('should add extractors to engine if they are registered', () => {
+    it('should add extractors to engine if they are registered', async () => {
       // Register classes
       const extractorClasses = [
         class Extractor {},
@@ -61,7 +61,7 @@ describe('BaseClient', () => {
           type: 'Extractor',
         },
       ];
-      engine.initializeExtractors(registeredExtractors);
+      await engine.initializeExtractors(registeredExtractors);
       expect(engine.extractors).toHaveLength(registeredExtractors.length);
       expect(engine.extractors[0]).toBeInstanceOf(extractorClasses[0]);
     });
@@ -95,7 +95,7 @@ describe('BaseClient', () => {
           type: 'Ext3',
         },
       ];
-      engine.initializeExtractors(registeredExtractors);
+      await engine.initializeExtractors(registeredExtractors);
       const { bundle, extractionErrors } = await engine.get();
       expect(bundle.resourceType).toEqual('Bundle');
       expect(bundle.type).toEqual('collection');

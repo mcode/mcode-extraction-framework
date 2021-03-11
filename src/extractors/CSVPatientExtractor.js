@@ -1,11 +1,10 @@
-const path = require('path');
-const { CSVModule } = require('../modules');
 const { generateMcodeResources } = require('../templates');
-const { Extractor } = require('./Extractor');
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { getEthnicityDisplay,
   getRaceCodesystem,
   getRaceDisplay } = require('../helpers/patientUtils');
 const logger = require('../helpers/logger');
+const { CSVPatientSchema } = require('../helpers/schemas/csv');
 
 function joinAndReformatData(patientData) {
   logger.debug('Reformatting patient data from CSV into template format');
@@ -39,10 +38,9 @@ function joinAndReformatData(patientData) {
   };
 }
 
-class CSVPatientExtractor extends Extractor {
+class CSVPatientExtractor extends BaseCSVExtractor {
   constructor({ filePath }) {
-    super();
-    this.csvModule = new CSVModule(path.resolve(filePath));
+    super({ filePath, csvSchema: CSVPatientSchema });
   }
 
   async getPatientData(mrn) {
