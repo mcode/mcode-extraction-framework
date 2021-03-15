@@ -2,7 +2,8 @@ const { generateMcodeResources } = require('../templates');
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { getEthnicityDisplay,
   getRaceCodesystem,
-  getRaceDisplay } = require('../helpers/patientUtils');
+  getRaceDisplay,
+  maskPatientData } = require('../helpers/patientUtils');
 const logger = require('../helpers/logger');
 const { CSVPatientSchema } = require('../helpers/schemas/csv');
 
@@ -39,8 +40,9 @@ function joinAndReformatData(patientData) {
 }
 
 class CSVPatientExtractor extends BaseCSVExtractor {
-  constructor({ filePath }) {
+  constructor({ filePath, mask = [] }) {
     super({ filePath, csvSchema: CSVPatientSchema });
+    this.mask = mask;
   }
 
   async getPatientData(mrn) {
@@ -58,7 +60,11 @@ class CSVPatientExtractor extends BaseCSVExtractor {
     const packagedPatientData = joinAndReformatData(patientData);
 
     // 3. Generate FHIR Resources
-    return generateMcodeResources('Patient', packagedPatientData);
+    const bundle = generateMcodeResources('Patient', packagedPatientData);
+
+    // mask fields in the patient data if specified in mask array
+    maskPatientData(bundle, this.mask);
+    return bundle;
   }
 }
 

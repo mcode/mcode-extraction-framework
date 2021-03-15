@@ -1,3 +1,7 @@
+/* eslint-disable no-underscore-dangle */
+const fhirpath = require('fhirpath');
+const { extensionArr, dataAbsentReasonExtension } = require('../templates/snippets/extension.js');
+
 // Based on the OMB Ethnicity table found here:http://hl7.org/fhir/us/core/STU3.1/ValueSet-omb-ethnicity-category.html
 const ethnicityCodeToDisplay = {
   '2135-2': 'Hispanic or Latino',
@@ -68,9 +72,85 @@ function getPatientName(name) {
   return `${name[0].given.join(' ')} ${name[0].family}`;
 }
 
+/**
+ * Mask fields in a Patient resource with
+ * dataAbsentReason extension with value 'masked'
+ * @param {Object} bundle a FHIR bundle with a Patient resource
+ * @param {Array} mask an array of fields to mask. Values can be:
+ * ['gender','mrn','name','address','birthDate','language','ethnicity','birthsex','race']
+ */
+function maskPatientData(bundle, mask) {
+  // get Patient resource from bundle
+  const patient = fhirpath.evaluate(
+    bundle,
+    'Bundle.entry.where(resource.resourceType=\'Patient\').resource,first()',
+  )[0];
+
+  const validFields = ['gender', 'mrn', 'name', 'address', 'birthDate', 'language', 'ethnicity', 'birthsex', 'race'];
+  const masked = extensionArr(dataAbsentReasonExtension('masked'));
+
+  mask.forEach((field) => {
+    if (!validFields.includes(field)) {
+      throw Error(`'${field}' is not a field that can be masked. Valid fields include: 'gender','mrn','name','address','birthDate','language','ethnicity','birthsex','race'`);
+    }
+    // must check if the field exists in the patient resource, so we don't add unnecessary dataAbsent extensions
+    if (field === 'gender' && 'gender' in patient) {
+      delete patient.gender;
+      // an underscore is added when a primitive type is being replaced by an object (extension)
+      patient._gender = masked;
+    } else if (field === 'mrn' && 'identifier' in patient) {
+      patient.identifier = [masked];
+    } else if (field === 'name' && 'name' in patient) {
+      patient.name = [masked];
+    } else if (field === 'address' && 'address' in patient) {
+      patient.address = [masked];
+    } else if (field === 'birthDate' && 'birthDate' in patient) {
+      delete patient.birthDate;
+      patient._birthDate = masked;
+    } else if (field === 'language') {
+      if ('communication' in patient && 'language' in patient.communication[0]) {
+        patient.communication[0].language = masked;
+      }
+    } else if (field === 'birthsex') {
+      // fields that are extensions need to be differentiated by URL using fhirpath
+      const birthsex = fhirpath.evaluate(
+        patient,
+        'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex\')',
+      );
+      // fhirpath.evaluate will return [] if there is no extension with the given URL
+      // so checking if the result is [] checks if the field exists to be masked
+      if (birthsex !== []) {
+        delete birthsex[0].valueCode;
+        birthsex[0]._valueCode = masked;
+      }
+    } else if (field === 'race') {
+      const race = fhirpath.evaluate(
+        patient,
+        'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race\')',
+      );
+      if (race !== []) {
+        race[0].extension[0].valueCoding = masked;
+        delete race[0].extension[1].valueString;
+        race[0].extension[1]._valueString = masked;
+      }
+    } else if (field === 'ethnicity') {
+      const ethnicity = fhirpath.evaluate(
+        patient,
+        'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity\')',
+      );
+      if (ethnicity !== []) {
+        ethnicity[0].extension[0].valueCoding = masked;
+        delete ethnicity[0].extension[1].valueString;
+        ethnicity[0].extension[1]._valueString = masked;
+      }
+    }
+  });
+}
+
 module.exports = {
   getEthnicityDisplay,
   getRaceCodesystem,
   getRaceDisplay,
   getPatientName,
+  maskPatientData,
 };
