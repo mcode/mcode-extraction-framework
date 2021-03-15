@@ -12,13 +12,13 @@ class BaseCSVExtractor extends Extractor {
     this.csvModule = new CSVModule(this.filePath);
   }
 
-  async validate() {
+  validate() {
     if (this.csvSchema) {
       logger.info(`Validating CSV file for ${this.filePath}`);
-      await validateCSV(this.filePath, this.csvSchema);
-    } else {
-      logger.warn(`No CSV schema provided for ${this.filePath}`);
+      return validateCSV(this.filePath, this.csvSchema, this.csvModule.data);
     }
+    logger.warn(`No CSV schema provided for ${this.filePath}`);
+    return true;
   }
 }
 

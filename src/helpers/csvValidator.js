@@ -1,37 +1,43 @@
 const _ = require('lodash');
-const fs = require('fs');
-const validate = require('csv-file-validator');
-const parse = require('csv-parse/lib/sync');
 const logger = require('./logger');
 
-async function validateCSV(pathToCSVFile, csvSchema) {
-  const csv = fs.readFileSync(pathToCSVFile, { columns: true, encoding: 'utf8' });
+function validateCSV(pathToCSVFile, csvSchema, csvData) {
+  let isValid = true;
 
-  // Use CSV parser to determine actual number of columns in file
-  const csvJson = parse(csv);
+  // Check headers
+  const headers = Object.keys(csvData[0]);
+  const schemaDiff = _.difference(csvSchema.headers.map((h) => h.name), headers);
+  const fileDiff = _.difference(headers, csvSchema.headers.map((h) => h.name));
 
-  if (csvJson[0].length !== csvSchema.headers.length) {
-    // Report which erroneous columns exist in provided CSV
-    const difference = _.difference(csvJson[0], csvSchema.headers.map((h) => h.name));
-
-    logger.error(`Validation error in CSV ${pathToCSVFile}: found extra column(s) "${difference}"`);
-    process.exit(1);
+  if (fileDiff.length > 0) {
+    logger.warn(`Found extra column(s) in CSV ${pathToCSVFile}: "${fileDiff.join(',')}"`);
   }
 
-  try {
-    const { inValidMessages } = await validate(csv, csvSchema);
-
-    if (inValidMessages.length > 0) {
-      inValidMessages.forEach((errorMsg) => {
-        logger.error(`Validation error in CSV ${pathToCSVFile}: ${errorMsg}`);
-      });
-
-      process.exit(1);
-    }
-  } catch (e) {
-    logger.error(`Error occurred during CSV validation: ${e.message}`);
-    process.exit(1);
+  if (schemaDiff.length > 0) {
+    schemaDiff.forEach((sd) => {
+      const headerSchema = csvSchema.headers.find((h) => h.name === sd);
+      if (headerSchema.required) {
+        logger.error(`Column ${sd} is marked as required but is missing in CSV ${pathToCSVFile}`);
+        isValid = false;
+      } else {
+        logger.warn(`Column ${sd} is missing in CSV ${pathToCSVFile}`);
+      }
+    });
   }
+
+  // Check values
+  csvData.forEach((row, i) => {
+    Object.entries(row).forEach(([key, value], j) => {
+      const schema = csvSchema.headers.find((h) => h.name === key);
+
+      if (schema && schema.required && !value) {
+        logger.error(`Column ${key} marked as required but missing value in row ${i + 1} column ${j + 1} in CSV ${pathToCSVFile}`);
+        isValid = false;
+      }
+    });
+  });
+
+  return isValid;
 }
 
 module.exports = {

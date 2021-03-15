@@ -25,8 +25,10 @@ class BaseClient {
   }
 
   // Given an extractor configuration, initialize all the necessary extractors
-  async initializeExtractors(extractorConfig, commonExtractorArgs) {
-    const extractorInits = extractorConfig.map(async (curExtractorConfig) => {
+  initializeExtractors(extractorConfig, commonExtractorArgs) {
+    let allExtractorsValid = true;
+
+    extractorConfig.forEach((curExtractorConfig) => {
       const { label, type, constructorArgs } = curExtractorConfig;
       logger.debug(`Initializing ${label} extractor with type ${type}`);
       const ExtractorClass = this.extractorClasses[type];
@@ -35,20 +37,26 @@ class BaseClient {
         const newExtractor = new ExtractorClass({ ...commonExtractorArgs, ...constructorArgs });
 
         if (newExtractor.validate) {
-          await newExtractor.validate();
+          const isExtractorValid = newExtractor.validate();
+          allExtractorsValid = (allExtractorsValid && isExtractorValid);
+          if (isExtractorValid) {
+            logger.debug(`Extractor ${label} PASSED CSV validation`);
+          } else {
+            logger.debug(`Extractor ${label} FAILED CSV validation`);
+          }
         }
 
-        return newExtractor;
+        this.extractors.push(newExtractor);
       } catch (e) {
-        throw new Error(`Unable to initialize ${label} extractor with type ${type}`);
+        throw new Error(`Unable to initialize ${label} extractor with type ${type}: ${e.message}`);
       }
     });
 
-    await Promise.all(extractorInits).then((extractors) => {
-      this.extractors.push(...extractors);
-    });
-
-    logger.info('Validation succeeded');
+    if (allExtractorsValid) {
+      logger.info('Validation succeeded');
+    } else {
+      throw new Error('Error occurred during CSV validation');
+    }
   }
 
   // NOTE: Async because in other clients that extend this, we need async helper functions (ex. auth)

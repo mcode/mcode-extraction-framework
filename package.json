@@ -22,7 +22,6 @@
     "ajv": "^6.12.6",
     "antlr4": "4.8.0",
     "commander": "^6.2.0",
-    "csv-file-validator": "^1.10.1",
     "csv-parse": "^4.8.8",
     "fhir-crud-client": "^1.2.2",
     "fhirpath": "2.1.5",
