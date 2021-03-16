@@ -85,7 +85,7 @@ Examples files for these extractor can be found in the [`test/sample-client-data
 
 #### Configuration Files: Step 3
 
-After exporting your CSV files to the `data` directory, kickstart the creation of a configuration file by renaming the provided `mcode-csv-config.example.json` to `csv.config.json`. Then, ensure the following configuration parameters are properly set:
+After exporting your CSV files to the `data` directory, kickstart the creation of a configuration file by renaming the provided `csv.config.example.json` to `csv.config.json`. Then, ensure the following configuration parameters are properly set:
 
 1. `patientIdCsvPath` should provide a file path to a CSV file containing MRN's for relevant patients;
 2. For each extractor, `filePath:` should provide a file path to a CSV file containing that corresponding extractor's data;
@@ -94,7 +94,7 @@ For instructions on setting up an email notification trigger whenever an error i
 
 ### Configuration Deep Dive
 
-Each deployment of the mCODE Extraction Client needs a configuration file. This file will specify basic information that every run will use. The configuration file can live in the `config` directory or any directory you prefer. An illustrative example file can be found in [`config/mcode-csv-config.example.json`](config/mcode-csv-config.example.json).
+Each deployment of the mCODE Extraction Client needs a configuration file. This file will specify basic information that every run will use. The configuration file can live in the `config` directory or any directory you prefer. An illustrative example file can be found in [`config/csv.config.example.json`](config/csv.config.example.json).
 
 To specify which patients the client should extract data for, the configuration file _must_ point to a CSV file containing MRNs for each patient. The format for this file can be found [here](https://github.com/mcode/mcode-extraction-framework/blob/master/docs). An example of this file can be found in [`test/sample-client-data/patient-mrns.csv`](test/sample-client-data/patient-mrns.csv).
 
@@ -112,7 +112,7 @@ In order to send an email, users must specify the hostname or IP address of an S
 - `to`: Comma separated list or an array of recipients email addresses that will appear on the _To:_ field
 - `from`: (Optional) The email address of the sender. All email addresses can be plain `'sender@server.com'` or formatted `'"Sender Name" sender@server.com'` (defaults to mcode-extraction-errors@mitre.org, which cannot receive reply emails)
 
-An example of this object can be found in [`config/mcode-csv-config.example.json`](config/mcode-csv-config.example.json).
+An example of this object can be found in [`config/csv.config.example.json`](config/csv.config.example.json).
 
 If the `notificationInfo` object is provided in configuration, an email will be sent using the specified options if any errors occur during data extraction. If any required field is missing in the object (`host` or `to`), an email cannot be sent. If you prefer to not have an email sent even if errors occur, you can choose to not include the `notificationInfo` object in your configuration file.
 
