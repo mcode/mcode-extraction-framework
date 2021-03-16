@@ -3,4 +3,5 @@ node_modules/
 .DS_Store
 output/
 logs/
-*.config.json
+config/*.json
+!config/csv.config.example.json
