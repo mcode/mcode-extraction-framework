@@ -4,4 +4,4 @@ node_modules/
 output/
 logs/
 config/*.json
-!config/mcode-csv-config.example.json
+!config/csv.config.example.json
