@@ -65,7 +65,7 @@ describe('mcodeExtraction', () => {
       };
 
       const testClient = new MCODEClient(testConfig);
-      testClient.init();
+      await testClient.init();
 
       const { extractedData, successfulExtraction, totalExtractionErrors } = await extractDataForPatients(testPatientIds, testClient, testFromDate, testToDate);
       expect(successfulExtraction).toEqual(true);

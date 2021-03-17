@@ -1,11 +1,10 @@
-const path = require('path');
 const _ = require('lodash');
-const { Extractor } = require('./Extractor');
-const { CSVModule } = require('../modules');
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { formatDate } = require('../helpers/dateUtils');
 const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
+const { CSVTreatmentPlanChangeSchema } = require('../helpers/schemas/csv');
 
 // Formats data to be passed into template-friendly format
 function formatData(tpcData) {
@@ -68,10 +67,9 @@ function formatData(tpcData) {
   return [combinedData];
 }
 
-class CSVTreatmentPlanChangeExtractor extends Extractor {
+class CSVTreatmentPlanChangeExtractor extends BaseCSVExtractor {
   constructor({ filePath }) {
-    super();
-    this.csvModule = new CSVModule(path.resolve(filePath));
+    super({ filePath, csvSchema: CSVTreatmentPlanChangeSchema });
   }
 
   async getTPCData(mrn, fromDate, toDate) {

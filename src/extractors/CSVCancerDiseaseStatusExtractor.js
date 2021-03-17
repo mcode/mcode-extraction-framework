@@ -1,14 +1,14 @@
-const path = require('path');
-const { CSVModule } = require('../modules');
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { formatDateTime } = require('../helpers/dateUtils');
 const { getDiseaseStatusDisplay, getDiseaseStatusEvidenceDisplay } = require('../helpers/diseaseStatusUtils');
 const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
+const { CSVCancerDiseaseStatusSchema } = require('../helpers/schemas/csv');
 
-class CSVCancerDiseaseStatusExtractor {
+class CSVCancerDiseaseStatusExtractor extends BaseCSVExtractor {
   constructor({ filePath, implementation }) {
-    this.csvModule = new CSVModule(path.resolve(filePath));
+    super({ filePath, csvSchema: CSVCancerDiseaseStatusSchema });
     this.implementation = implementation;
   }
 

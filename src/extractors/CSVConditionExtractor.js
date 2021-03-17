@@ -1,9 +1,8 @@
-const path = require('path');
-const { CSVModule } = require('../modules');
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
-const { Extractor } = require('./Extractor');
 const logger = require('../helpers/logger');
 const { formatDateTime } = require('../helpers/dateUtils');
+const { CSVConditionSchema } = require('../helpers/schemas/csv');
 
 // Formats data to be passed into template-friendly format
 function formatData(conditionData) {
@@ -37,10 +36,9 @@ function formatData(conditionData) {
   });
 }
 
-class CSVConditionExtractor extends Extractor {
+class CSVConditionExtractor extends BaseCSVExtractor {
   constructor({ filePath }) {
-    super();
-    this.csvModule = new CSVModule(path.resolve(filePath));
+    super({ filePath, csvSchema: CSVConditionSchema });
   }
 
   async getConditionData(mrn) {

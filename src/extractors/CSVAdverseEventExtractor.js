@@ -1,7 +1,5 @@
-const path = require('path');
-const { CSVModule } = require('../modules');
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
-const { Extractor } = require('./Extractor');
 const logger = require('../helpers/logger');
 const { formatDateTime } = require('../helpers/dateUtils');
 
@@ -53,15 +51,14 @@ function formatData(adverseEventData) {
   });
 }
 
-class CSVAdverseEventExtractor extends Extractor {
+class CSVAdverseEventExtractor extends BaseCSVExtractor {
   constructor({ filePath }) {
-    super();
-    this.CSVModule = new CSVModule(path.resolve(filePath));
+    super({ filePath });
   }
 
   async getAdverseEventData(mrn) {
     logger.debug('Getting Adverse Event Data');
-    return this.CSVModule.get('mrn', mrn);
+    return this.csvModule.get('mrn', mrn);
   }
 
   async get({ mrn }) {

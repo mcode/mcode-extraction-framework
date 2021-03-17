@@ -18,10 +18,10 @@ const csvAdverseEventExtractor = new CSVAdverseEventExtractor({
 });
 
 // Destructure all modules
-const { CSVModule } = csvAdverseEventExtractor;
+const { csvModule } = csvAdverseEventExtractor;
 
 // Spy on csvModule
-const csvModuleSpy = jest.spyOn(CSVModule, 'get');
+const csvModuleSpy = jest.spyOn(csvModule, 'get');
 
 const formatData = CSVAdverseEventExtractorRewired.__get__('formatData');
 

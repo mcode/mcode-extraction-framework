@@ -1,9 +1,8 @@
-const path = require('path');
-const { Extractor } = require('./Extractor');
-const { CSVModule } = require('../modules');
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { firstEntryInBundle, getBundleResourcesByType } = require('../helpers/fhirUtils');
 const { generateMcodeResources } = require('../templates');
 const logger = require('../helpers/logger');
+const { CSVClinicalTrialInformationSchema } = require('../helpers/schemas/csv');
 
 function getPatientId(context) {
   const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
@@ -16,10 +15,9 @@ function getPatientId(context) {
   return undefined;
 }
 
-class CSVClinicalTrialInformationExtractor extends Extractor {
+class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
   constructor({ filePath, clinicalSiteID }) {
-    super();
-    this.csvModule = new CSVModule(path.resolve(filePath));
+    super({ filePath, csvSchema: CSVClinicalTrialInformationSchema });
     if (!clinicalSiteID) logger.warn(`${this.constructor.name} expects a value for clinicalSiteID but got ${clinicalSiteID}`);
     this.clinicalSiteID = clinicalSiteID;
   }
