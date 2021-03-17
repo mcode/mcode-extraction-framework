@@ -63,7 +63,7 @@ class CSVPatientExtractor extends BaseCSVExtractor {
     const bundle = generateMcodeResources('Patient', packagedPatientData);
 
     // mask fields in the patient data if specified in mask array
-    maskPatientData(bundle, this.mask);
+    if (this.mask.length > 0) maskPatientData(bundle, this.mask);
     return bundle;
   }
 }

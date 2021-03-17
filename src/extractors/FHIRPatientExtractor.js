@@ -18,7 +18,7 @@ class FHIRPatientExtractor extends BaseFHIRExtractor {
 
   async get(argumentObject) {
     const bundle = await super.get(argumentObject);
-    maskPatientData(bundle, this.mask);
+    if (this.mask.length > 0) maskPatientData(bundle, this.mask);
     return bundle;
   }
 }
