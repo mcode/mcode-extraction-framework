@@ -69,7 +69,7 @@ function getRaceDisplay(code) {
  * @return {string} concatenated string of name values
  */
 function getPatientName(name) {
-  return `${name[0].given.join(' ')} ${name[0].family}`;
+  return ('extension' in name[0]) ? 'masked' : `${name[0].given.join(' ')} ${name[0].family}`;
 }
 
 /**
