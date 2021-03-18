@@ -71,6 +71,7 @@ describe('sendEmailNotification', () => {
       port: 123,
       to: ['something@example.com', 'someone@example.com'],
       from: 'other@example.com',
+      tlsRejectUnauthorized: false,
     };
     const errors = {
       0: [],
@@ -79,7 +80,7 @@ describe('sendEmailNotification', () => {
     };
 
     await expect(sendEmailNotification(notificationInfo, errors, false)).resolves.not.toThrow();
-    expect(createTransportSpy).toBeCalledWith({ host: notificationInfo.host, port: notificationInfo.port });
+    expect(createTransportSpy).toBeCalledWith({ host: notificationInfo.host, port: notificationInfo.port, tls: { rejectUnauthorized: false } });
     expect(sendMailMock).toBeCalled();
     const sendMailMockArgs = sendMailMock.mock.calls[0][0];
     expect(sendMailMockArgs.to).toEqual(notificationInfo.to);

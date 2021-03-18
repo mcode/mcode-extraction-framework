@@ -111,6 +111,7 @@ In order to send an email, users must specify the hostname or IP address of an S
 - `port`: (Optional) The port to connect to (defaults to 587)
 - `to`: Comma separated list or an array of recipients email addresses that will appear on the _To:_ field
 - `from`: (Optional) The email address of the sender. All email addresses can be plain `'sender@server.com'` or formatted `'"Sender Name" sender@server.com'` (defaults to mcode-extraction-errors@mitre.org, which cannot receive reply emails)
+- `tlsRejectUnauthorized`: (Optional) A boolean value to set the [node.js TLSSocket option](https://nodejs.org/api/tls.html#tls_class_tls_tlssocket) for rejecting any unauthorized connections, `tls.rejectUnauthorized`.  (defaults to `true`)
 
 An example of this object can be found in [`config/csv.config.example.json`](config/csv.config.example.json).
 

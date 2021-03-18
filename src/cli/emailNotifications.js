@@ -60,6 +60,7 @@ async function sendEmailNotification(notificationInfo, errors, debug = false) {
   const transporter = nodemailer.createTransport({
     host: notificationInfo.host,
     ...(notificationInfo.port && { port: notificationInfo.port }),
+    ...(notificationInfo.tlsRejectUnauthorized !== undefined && { tls: { rejectUnauthorized: notificationInfo.tlsRejectUnauthorized } }),
   });
 
   logger.debug('Sending email with error information');
