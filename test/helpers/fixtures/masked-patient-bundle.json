@@ -1,0 +1,138 @@
+{
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+        {
+            "fullUrl": "urn:uuid:119147111821125",
+            "resource": {
+                "resourceType": "Patient",
+                "id": "119147111821125",
+                "identifier": [
+                    {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                                "valueCode": "masked"
+                            }
+                        ]
+                    }
+                ],
+                "name": [
+                    {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                                "valueCode": "masked"
+                            }
+                        ]
+                    }
+                ],
+                "address": [
+                    {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                                "valueCode": "masked"
+                            }
+                        ]
+                    }
+                ],
+                "communication": [
+                    {
+                        "language": {
+                            "extension": [
+                                {
+                                    "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                                    "valueCode": "masked"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "extension": [
+                    {
+                        "extension": [
+                            {
+                                "url": "ombCategory",
+                                "valueCoding": {
+                                    "extension": [
+                                        {
+                                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                                            "valueCode": "masked"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "url": "text",
+                                "_valueString": {
+                                    "extension": [
+                                        {
+                                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                                            "valueCode": "masked"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+                    },
+                    {
+                        "extension": [
+                            {
+                                "url": "ombCategory",
+                                "valueCoding": {
+                                    "extension": [
+                                        {
+                                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                                            "valueCode": "masked"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "url": "text",
+                                "_valueString": {
+                                    "extension": [
+                                        {
+                                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                                            "valueCode": "masked"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+                    },
+                    {
+                        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+                        "_valueCode": {
+                            "extension": [
+                                {
+                                    "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                                    "valueCode": "masked"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "_gender": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                            "valueCode": "masked"
+                        }
+                    ]
+                },
+                "_birthDate": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                            "valueCode": "masked"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

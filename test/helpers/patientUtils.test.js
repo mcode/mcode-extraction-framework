@@ -1,5 +1,9 @@
-const { getEthnicityDisplay, getRaceCodesystem, getRaceDisplay, getPatientName } = require('../../src/helpers/patientUtils');
-
+const _ = require('lodash');
+const {
+  getEthnicityDisplay, getRaceCodesystem, getRaceDisplay, getPatientName, maskPatientData,
+} = require('../../src/helpers/patientUtils');
+const examplePatient = require('../extractors/fixtures/csv-patient-bundle.json');
+const exampleMaskedPatient = require('./fixtures/masked-patient-bundle.json');
 
 describe('PatientUtils', () => {
   describe('getEthnicityDisplay', () => {
@@ -77,6 +81,24 @@ describe('PatientUtils', () => {
       }];
       const expectedConcatenatedName = 'Peter Christen Asbjørnsen';
       expect(getPatientName(name)).toBe(expectedConcatenatedName);
+    });
+  });
+  describe('maskPatientData', () => {
+    test('bundle should remain the same if no fields are specified to be masked', () => {
+      const bundle = _.cloneDeep(examplePatient);
+      maskPatientData(bundle, []);
+      expect(bundle).toEqual(examplePatient);
+    });
+
+    test('bundle should be modified to have dataAbsentReason for all fields specified in mask', () => {
+      const bundle = _.cloneDeep(examplePatient);
+      maskPatientData(bundle, ['gender', 'mrn', 'name', 'address', 'birthDate', 'language', 'ethnicity', 'birthsex', 'race']);
+      expect(bundle).toEqual(exampleMaskedPatient);
+    });
+
+    test('should throw error when provided an invalid field to mask', () => {
+      const bundle = _.cloneDeep(examplePatient);
+      expect(() => maskPatientData(bundle, ['this is an invalid field', 'mrn'])).toThrowError();
     });
   });
 });
