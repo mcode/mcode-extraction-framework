@@ -57,10 +57,15 @@ async function sendEmailNotification(notificationInfo, errors, debug = false) {
     emailBody += 'The stack trace information can be seen in the terminal as well as in the notification email.';
   }
 
+  // Ensure that the tlsRejectUnauthorized property is a boolean
+  if (notificationInfo.tlsRejectUnauthorized && (notificationInfo.tlsRejectUnauthorized !== true || notificationInfo.tlsRejectUnauthorized !== false)) {
+    logger.warn('The notificationInfo.tlsRejectUnauthorized should be a boolean value. The value provided will not be used.');
+  }
+
   const transporter = nodemailer.createTransport({
     host: notificationInfo.host,
     ...(notificationInfo.port && { port: notificationInfo.port }),
-    ...(notificationInfo.tlsRejectUnauthorized !== undefined && { tls: { rejectUnauthorized: notificationInfo.tlsRejectUnauthorized } }),
+    ...((notificationInfo.tlsRejectUnauthorized === true || notificationInfo.tlsRejectUnauthorized === false) && { tls: { rejectUnauthorized: notificationInfo.tlsRejectUnauthorized } }),
   });
 
   logger.debug('Sending email with error information');
