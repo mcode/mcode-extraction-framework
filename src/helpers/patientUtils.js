@@ -91,7 +91,8 @@ function maskPatientData(bundle, mask) {
 
   mask.forEach((field) => {
     if (!validFields.includes(field)) {
-      throw Error(`'${field}' is not a field that can be masked. Valid fields include: 'gender','mrn','name','address','birthDate','language','ethnicity','birthsex','race'`);
+      throw Error(`'${field}' is not a field that can be masked. Patient will only be extracted if all mask fields are valid. \
+      Valid fields include: 'gender','mrn','name','address','birthDate','language','ethnicity','birthsex','race'`);
     }
     // must check if the field exists in the patient resource, so we don't add unnecessary dataAbsent extensions
     if (field === 'gender' && 'gender' in patient) {
