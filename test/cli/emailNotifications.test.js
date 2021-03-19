@@ -71,6 +71,7 @@ describe('sendEmailNotification', () => {
       port: 123,
       to: ['something@example.com', 'someone@example.com'],
       from: 'other@example.com',
+      tlsRejectUnauthorized: false,
     };
     const errors = {
       0: [],
@@ -79,7 +80,7 @@ describe('sendEmailNotification', () => {
     };
 
     await expect(sendEmailNotification(notificationInfo, errors, false)).resolves.not.toThrow();
-    expect(createTransportSpy).toBeCalledWith({ host: notificationInfo.host, port: notificationInfo.port });
+    expect(createTransportSpy).toBeCalledWith({ host: notificationInfo.host, port: notificationInfo.port, tls: { rejectUnauthorized: notificationInfo.tlsRejectUnauthorized } });
     expect(sendMailMock).toBeCalled();
     const sendMailMockArgs = sendMailMock.mock.calls[0][0];
     expect(sendMailMockArgs.to).toEqual(notificationInfo.to);
@@ -91,6 +92,48 @@ describe('sendEmailNotification', () => {
     expect(sendMailMockArgs.text).toMatch(/run the extraction client using the `--debug`/i);
     expect(sendMailMockArgs.text).not.toMatch(/Error at line 1`/i);
     expect(sendMailMockArgs.text).not.toMatch(/Error at line 4`/i);
+  });
+
+  it('should send an email with tlsRejectUnauthorized set to true, false, and not set', async () => {
+    const notificationInfoTLSFalse = {
+      host: 'my.host.com',
+      to: ['something@example.com', 'someone@example.com'],
+      tlsRejectUnauthorized: false,
+    };
+    const notificationInfoTLSTrue = {
+      host: 'my.host.com',
+      to: ['something@example.com', 'someone@example.com'],
+      tlsRejectUnauthorized: true,
+    };
+    const notificationInfoNoTLS = {
+      host: 'my.host.com',
+      to: ['something@example.com', 'someone@example.com'],
+    };
+    const notificationInfoUnexpectedTLS = {
+      host: 'my.host.com',
+      to: ['something@example.com', 'someone@example.com'],
+      tlsRejectUnauthorized: 'true', // Any value that is not true or false will log a warning and not be used
+    };
+    const errors = {
+      0: [],
+      1: [{ message: 'something bad', stack: 'Error at line 1' }],
+    };
+    createTransportSpy.mockReturnValueOnce({ sendMail: sendMailMock });
+    await expect(sendEmailNotification(notificationInfoTLSFalse, errors, false)).resolves.not.toThrow();
+    expect(createTransportSpy).toBeCalledWith({ host: notificationInfoTLSFalse.host, port: notificationInfoTLSFalse.port, tls: { rejectUnauthorized: false } });
+
+    createTransportSpy.mockReturnValueOnce({ sendMail: sendMailMock });
+    await expect(sendEmailNotification(notificationInfoTLSTrue, errors, false)).resolves.not.toThrow();
+    expect(createTransportSpy).toBeCalledWith({ host: notificationInfoTLSTrue.host, port: notificationInfoTLSTrue.port, tls: { rejectUnauthorized: true } });
+
+    createTransportSpy.mockReturnValueOnce({ sendMail: sendMailMock });
+    await expect(sendEmailNotification(notificationInfoNoTLS, errors, false)).resolves.not.toThrow();
+    expect(createTransportSpy).toBeCalledWith({ host: notificationInfoNoTLS.host, port: notificationInfoNoTLS.port }); // No tls object set
+
+    createTransportSpy.mockReturnValueOnce({ sendMail: sendMailMock });
+    await expect(sendEmailNotification(notificationInfoUnexpectedTLS, errors, false)).resolves.not.toThrow();
+    // A warning will be logged and the unexpected value will not be used
+    expect(createTransportSpy).toBeCalledWith({ host: notificationInfoUnexpectedTLS.host, port: notificationInfoUnexpectedTLS.port });
   });
 
   it('should send an email with stack traces if debug flag was used', async () => {

@@ -111,6 +111,7 @@ In order to send an email, users must specify the hostname or IP address of an S
 - `port`: (Optional) The port to connect to (defaults to 587)
 - `to`: Comma separated list or an array of recipients email addresses that will appear on the _To:_ field
 - `from`: (Optional) The email address of the sender. All email addresses can be plain `'sender@server.com'` or formatted `'"Sender Name" sender@server.com'` (defaults to mcode-extraction-errors@mitre.org, which cannot receive reply emails)
+- `tlsRejectUnauthorized`: (Optional) A boolean value to set the [node.js TLSSocket option](https://nodejs.org/api/tls.html#tls_class_tls_tlssocket) for rejecting any unauthorized connections, `tls.rejectUnauthorized`.  (defaults to `true`)
 
 An example of this object can be found in [`config/csv.config.example.json`](config/csv.config.example.json).
 
@@ -124,6 +125,23 @@ Users can specify a different location for the file by using the `--run-log-file
 
 ```bash
 node src/cli/cli.js --run-log-filepath path/to/file.json
+```
+
+### Masking Patient Data
+
+Currently, patient data can be masked within the extracted `Patient` resource. When masked, the value of the field will be replaced with a [Data Absent Reason extension](https://www.hl7.org/fhir/extension-data-absent-reason.html) with the code `masked`.
+Patient properties that can be masked are: `gender`, `mrn`, `name`, `address`, `birthDate`, `language`, `ethnicity`, `birthsex`, and `race`.
+To mask a property, provide an array of the properties to mask in the `constructorArgs` of the Patient extractor. For example, the following configuration can be used to mask `address` and `birthDate`:
+
+```bash
+{
+  "label": "patient",
+  "type": "CSVPatientExtractor",
+  "constructorArgs": {
+    "filePath": "./data/patient-information.csv"
+    "mask": ["address", "birthDate"]
+  }
+}
 ```
 
 ### Extraction Date Range
