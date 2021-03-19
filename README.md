@@ -127,6 +127,23 @@ Users can specify a different location for the file by using the `--run-log-file
 node src/cli/cli.js --run-log-filepath path/to/file.json
 ```
 
+### Masking Patient Data
+
+Currently, patient data can be masked within the extracted `Patient` resource. When masked, the value of the field will be replaced with a [Data Absent Reason extension](https://www.hl7.org/fhir/extension-data-absent-reason.html) with the code `masked`.
+Patient properties that can be masked are: `gender`, `mrn`, `name`, `address`, `birthDate`, `language`, `ethnicity`, `birthsex`, and `race`.
+To mask a property, provide an array of the properties to mask in the `constructorArgs` of the Patient extractor. For example, the following configuration can be used to mask `address` and `birthDate`:
+
+```bash
+{
+  "label": "patient",
+  "type": "CSVPatientExtractor",
+  "constructorArgs": {
+    "filePath": "./data/patient-information.csv"
+    "mask": ["address", "birthDate"]
+  }
+}
+```
+
 ### Extraction Date Range
 
 The mCODE Extraction Client will extract all data that is provided in the CSV files by default, regardless of any dates associated with each row of data. It is recommended that any required date filtering is performed outside of the scope of this client.
