@@ -16,6 +16,7 @@ A Node.js framework for extracting mCODE FHIR resources. All resources are profi
     - [Configuration Deep Dive](#configuration-deep-dive)
     - [Email Notification](#email-notification)
     - [Logging Successful Extractions](#logging-successful-extractions)
+    - [Masking Patient Data](#masking-patient-data)
     - [Extraction Date Range](#extraction-date-range)
       - [CLI From-Date and To-Date (NOT recommended use)](#cli-from-date-and-to-date-not-recommended-use)
   - [Terminology and Architecture](#terminology-and-architecture)
@@ -107,11 +108,11 @@ The connection to the SMTP server is considered authenticated from the start. Cu
 
 In order to send an email, users must specify the hostname or IP address of an SMTP server to connect to and the email addresses to send the email to. Optionally, users can specify the port to connect to and the email address to send from. These fields must be specified in the `notificationInfo` object in the configuration file. Below is more information on each field that can be specified. Further information can be found in the [`nodemailer` documentation](https://nodemailer.com/) for the [SMTP transport](https://nodemailer.com/smtp/) and [message configuration](https://nodemailer.com/message/).
 
-- `host`: The hostname or IP address of an SMTP server to connect to
-- `port`: (Optional) The port to connect to (defaults to 587)
-- `to`: Comma separated list or an array of recipients email addresses that will appear on the _To:_ field
-- `from`: (Optional) The email address of the sender. All email addresses can be plain `'sender@server.com'` or formatted `'"Sender Name" sender@server.com'` (defaults to mcode-extraction-errors@mitre.org, which cannot receive reply emails)
-- `tlsRejectUnauthorized`: (Optional) A boolean value to set the [node.js TLSSocket option](https://nodejs.org/api/tls.html#tls_class_tls_tlssocket) for rejecting any unauthorized connections, `tls.rejectUnauthorized`.  (defaults to `true`)
+- `host`: `<string>` The hostname or IP address of an SMTP server to connect to
+- `port`: `<number>` (Optional) The port to connect to (defaults to 587)
+- `to`: `<string[]>` Comma separated list or an array of recipients email addresses that will appear on the _To:_ field
+- `from`: `<string>` (Optional) The email address of the sender. All email addresses can be plain `'sender@server.com'` or formatted `'"Sender Name" sender@server.com'` (defaults to mcode-extraction-errors@mitre.org, which cannot receive reply emails)
+- `tlsRejectUnauthorized`: `<boolean>` (Optional) A boolean value to set the [node.js TLSSocket option](https://nodejs.org/api/tls.html#tls_class_tls_tlssocket) for rejecting any unauthorized connections, `tls.rejectUnauthorized`.  (defaults to `true`)
 
 An example of this object can be found in [`config/csv.config.example.json`](config/csv.config.example.json).
 
@@ -129,7 +130,7 @@ node src/cli/cli.js --run-log-filepath path/to/file.json
 
 ### Masking Patient Data
 
-Currently, patient data can be masked within the extracted `Patient` resource. When masked, the value of the field will be replaced with a [Data Absent Reason extension](https://www.hl7.org/fhir/extension-data-absent-reason.html) with the code `masked`.
+Patient data can be masked within the extracted `Patient` resource. When masked, the value of the field will be replaced with a [Data Absent Reason extension](https://www.hl7.org/fhir/extension-data-absent-reason.html) with the code `masked`.
 Patient properties that can be masked are: `gender`, `mrn`, `name`, `address`, `birthDate`, `language`, `ethnicity`, `birthsex`, and `race`.
 To mask a property, provide an array of the properties to mask in the `constructorArgs` of the Patient extractor. For example, the following configuration can be used to mask `address` and `birthDate`:
 
