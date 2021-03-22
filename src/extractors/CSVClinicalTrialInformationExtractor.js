@@ -27,8 +27,6 @@ class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
     const {
       trialSubjectID, enrollmentStatus, trialResearchID, trialStatus, trialResearchSystem,
     } = clinicalTrialData;
-    // since trialResearchSystem is optional, check for blank value and replace with default value
-    // const trialResearchSystem = (clinicalTrialData.trialResearchSystem === '') ? 'http://example.com/clinicaltrialids' : clinicalTrialData.trialResearchSystem;
     const { clinicalSiteID } = this;
 
     if (!(patientId && clinicalSiteID && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
