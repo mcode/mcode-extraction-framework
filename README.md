@@ -120,12 +120,12 @@ If the `notificationInfo` object is provided in configuration, an email will be 
 
 ### Logging Successful Extractions
 
-Whenever the mCODE Extraction Client successfully runs, a log is kept of the given date range of the extraction. Users will need to specify the location of the file to save this information. The default location is in a `logs` directory in a file called `run-logs.json`. Initially, this file's contents should be an empty array, `[]`. Users will need to create this file before running the mCODE Extraction Client with `from-date` and/or `to-date` for the first time.
+Whenever the mCODE Extraction Client successfully runs with the `--entries-filter` flag, a log is kept of the given date range of the extraction. The default location of the log is in a `logs` directory in a file called `run-logs.json`. If there is no log file at that location, the file will be created the first time the user runs the program with the `--entries-filter` flag.
 
-Users can specify a different location for the file by using the `--run-log-filepath <path>` CLI option. For example:
+Users can specify a different location for the file by using the `--run-log-filepath <path>` CLI option. Users will need to create this file before running the mCODE Extraction Client with `--entries-filter` and a date range. Initially, this file's contents should be an empty array, `[]`. For example:
 
 ```bash
-node src/cli/cli.js --run-log-filepath path/to/file.json
+node src/cli/cli.js --entries-filter --from-date YYYY-MM-DD --to-date YYY-MM-DD --run-log-filepath path/to/file.json
 ```
 
 ### Masking Patient Data
