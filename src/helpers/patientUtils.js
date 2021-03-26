@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const fhirpath = require('fhirpath');
+const shajs = require('sha.js');
 const { extensionArr, dataAbsentReasonExtension } = require('../templates/snippets/extension.js');
 
 // Based on the OMB Ethnicity table found here:http://hl7.org/fhir/us/core/STU3.1/ValueSet-omb-ethnicity-category.html
@@ -147,10 +148,33 @@ function maskPatientData(bundle, mask) {
   });
 }
 
+/**
+ * Mask all references to the MRN used as an id
+ * Currently, the MRN appears as an id in 'subject' and 'individual' objects in other resources
+ * and in the 'id' and 'fullUrl' fields of the Patient resource.
+ * Replaces the MRN with a hash of the MRN
+ * @param {Object} bundle a FHIR bundle with a Patient resource and other resources
+ */
+function maskMRN(bundle) {
+  const patient = fhirpath.evaluate(bundle, 'Bundle.entry.where(resource.resourceType=\'Patient\')')[0];
+  if (patient === undefined) throw Error('No Patient resource in bundle. Could not mask MRN.');
+  const mrn = patient.resource.id;
+  const masked = shajs('sha256').update(mrn).digest('hex');
+  patient.fullUrl = `urn:uuid:${masked}`;
+  patient.resource.id = masked;
+  const subjects = fhirpath.evaluate(bundle, `Bundle.entry.resource.subject.where(reference='urn:uuid:${mrn}')`);
+  const individuals = fhirpath.evaluate(bundle, `Bundle.entry.resource.individual.where(reference='urn:uuid:${mrn}')`);
+  const mrnOccurances = subjects.concat(individuals);
+  for (let i = 0; i < mrnOccurances.length; i += 1) {
+    mrnOccurances[i].reference = `urn:uuid:${masked}`;
+  }
+}
+
 module.exports = {
   getEthnicityDisplay,
   getRaceCodesystem,
   getRaceDisplay,
   getPatientName,
   maskPatientData,
+  maskMRN,
 };
