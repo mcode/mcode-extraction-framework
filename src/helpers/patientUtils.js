@@ -164,9 +164,9 @@ function maskMRN(bundle) {
   patient.resource.id = masked;
   const subjects = fhirpath.evaluate(bundle, `Bundle.entry.resource.subject.where(reference='urn:uuid:${mrn}')`);
   const individuals = fhirpath.evaluate(bundle, `Bundle.entry.resource.individual.where(reference='urn:uuid:${mrn}')`);
-  const mrnOccurrances = subjects.concat(individuals);
-  for (let i = 0; i < mrnOccurrances.length; i += 1) {
-    mrnOccurrances[i].reference = `urn:uuid:${masked}`;
+  const mrnOccurrences = subjects.concat(individuals);
+  for (let i = 0; i < mrnOccurrences.length; i += 1) {
+    mrnOccurrences[i].reference = `urn:uuid:${masked}`;
   }
 }
 
