@@ -8,12 +8,14 @@ const exampleClinicalTrialInformationBundle = require('./fixtures/csv-clinical-t
 // Constants for mock tests
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv'); // need a valid path/csv here to avoid parse error
 const MOCK_CLINICAL_SITE_ID = 'EXAMPLE-CLINICAL-SITE-ID';
+const MOCK_CLINICAL_SITE_SYSTEM = 'EXAMPLE-CLINICAL-SITE-SYSTEM';
 const MOCK_PATIENT_MRN = 'EXAMPLE-MRN';
 
 // Instantiate module with mock parameters
 const csvClinicalTrialInformationExtractor = new CSVClinicalTrialInformationExtractor({
   filePath: MOCK_CSV_PATH,
   clinicalSiteID: MOCK_CLINICAL_SITE_ID,
+  clinicalSiteSystem: MOCK_CLINICAL_SITE_SYSTEM,
 });
 
 // Destructure all modules
@@ -58,6 +60,7 @@ describe('CSVClinicalTrialInformationExtractor', () => {
           trialStatus: firstClinicalTrialInfoResponse.trialStatus,
           trialResearchID: firstClinicalTrialInfoResponse.trialResearchID,
           clinicalSiteID: MOCK_CLINICAL_SITE_ID,
+          clinicalSiteSystem: MOCK_CLINICAL_SITE_SYSTEM,
           trialResearchSystem: firstClinicalTrialInfoResponse.trialResearchSystem,
         },
       });

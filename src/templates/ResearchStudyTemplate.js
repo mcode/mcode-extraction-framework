@@ -1,12 +1,12 @@
 const { identifierArr, identifier } = require('./snippets');
 
-function siteTemplate(clinicalSiteID) {
+function siteTemplate(clinicalSiteID, clinicalSiteSystem) {
   return {
     site: [
       {
         display: 'ID associated with Clinical Trial',
         ...identifier({
-          system: 'http://example.com/clinicalSiteIds',
+          system: clinicalSiteSystem,
           value: clinicalSiteID,
         }),
       },
@@ -27,7 +27,7 @@ function researchStudyIdentifierTemplate(trialResearchID, trialResearchSystem) {
 
 // Based on https://www.hl7.org/fhir/researchstudy.html
 function researchStudyTemplate({
-  id, trialStatus, trialResearchID, clinicalSiteID, trialResearchSystem,
+  id, trialStatus, trialResearchID, clinicalSiteID, clinicalSiteSystem, trialResearchSystem,
 }) {
   if (!(id && trialStatus && trialResearchID && clinicalSiteID)) {
     throw Error('Trying to render a ResearchStudyTemplate, but a required argument is missing; ensure that id, trialStatus, trialResearchID, clinicalSiteID are all present');
@@ -37,7 +37,7 @@ function researchStudyTemplate({
     resourceType: 'ResearchStudy',
     id,
     status: trialStatus,
-    ...siteTemplate(clinicalSiteID),
+    ...siteTemplate(clinicalSiteID, clinicalSiteSystem),
     ...researchStudyIdentifierTemplate(trialResearchID, trialResearchSystem),
   };
 }

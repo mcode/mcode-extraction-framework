@@ -16,10 +16,11 @@ function getPatientId(context) {
 }
 
 class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
-  constructor({ filePath, clinicalSiteID }) {
+  constructor({ filePath, clinicalSiteID, clinicalSiteSystem }) {
     super({ filePath, csvSchema: CSVClinicalTrialInformationSchema });
     if (!clinicalSiteID) logger.warn(`${this.constructor.name} expects a value for clinicalSiteID but got ${clinicalSiteID}`);
     this.clinicalSiteID = clinicalSiteID;
+    this.clinicalSiteSystem = clinicalSiteSystem;
   }
 
   joinClinicalTrialData(patientId, clinicalTrialData) {
@@ -27,7 +28,7 @@ class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
     const {
       trialSubjectID, enrollmentStatus, trialResearchID, trialStatus, trialResearchSystem,
     } = clinicalTrialData;
-    const { clinicalSiteID } = this;
+    const { clinicalSiteID, clinicalSiteSystem } = this;
 
     if (!(patientId && clinicalSiteID && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
       throw new Error('Clinical trial missing an expected property: patientId, clinicalSiteID, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
@@ -46,6 +47,7 @@ class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
         trialStatus,
         trialResearchID,
         clinicalSiteID,
+        clinicalSiteSystem,
         trialResearchSystem,
       },
     };

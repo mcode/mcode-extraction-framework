@@ -25,16 +25,16 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:b245aa8a67b5f67263f5a688813c435ccfb364e0f7865885c512e3a5ca3c9093",
+      "fullUrl": "urn:uuid:28bd7a4890539dc60998a1b2d423e631a6d4373eb05001c45bd9f2bab3166506",
       "resource": {
         "resourceType": "ResearchStudy",
-        "id": "b245aa8a67b5f67263f5a688813c435ccfb364e0f7865885c512e3a5ca3c9093",
+        "id": "28bd7a4890539dc60998a1b2d423e631a6d4373eb05001c45bd9f2bab3166506",
         "status": "example-trialStatus",
         "site": [
           {
             "display": "ID associated with Clinical Trial",
             "identifier": {
-              "system": "http://example.com/clinicalSiteIds",
+              "system": "EXAMPLE-CLINICAL-SITE-SYSTEM",
               "value": "EXAMPLE-CLINICAL-SITE-ID"
             }
           }

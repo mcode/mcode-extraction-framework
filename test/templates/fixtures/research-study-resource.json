@@ -6,7 +6,7 @@
     {
       "display": "ID associated with Clinical Trial",
       "identifier": {
-        "system": "http://example.com/clinicalSiteIds",
+        "system": "EXAMPLE_SITE_SYSTEM",
         "value": "EXAMPLE_SITE_ID"
       }
     }
