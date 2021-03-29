@@ -113,7 +113,7 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
     // check if config specifies that MRN needs to be masked
     // if it does need to be masked, mask all references to MRN outside of the patient resource
     const patientConfig = config.extractors.find((e) => e.type === 'CSVPatientExtractor');
-    if ('constructorArgs' in patientConfig && 'mask' in patientConfig.constructorArgs) {
+    if (patientConfig && ('constructorArgs' in patientConfig && 'mask' in patientConfig.constructorArgs)) {
       if (patientConfig.constructorArgs.mask.includes('mrn')) {
         extractedData.forEach((bundle) => {
           maskMRN(bundle);
