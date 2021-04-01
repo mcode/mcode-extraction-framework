@@ -1,4 +1,4 @@
-mrn,reasonCode,changed,dateOfCarePlan,dateRecorded
-123,281647001,true,2020-04-15,2020-04-15
-456,405613005,true,2020-03-30,2020-04-15
-789,266721009,true,2020-04-22,2020-06-17
+mrn,reasonCode,reasonDisplayText,changed,dateOfCarePlan,dateRecorded
+123,281647001,Adverse reaction (disorder),true,2020-04-15,2020-04-15
+456,405613005,Planned Procedure (situation),true,2020-03-30,2020-04-15
+789,,,false,2020-04-22,2020-06-17

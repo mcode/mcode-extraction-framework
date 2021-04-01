@@ -61,6 +61,7 @@ const CSVTreatmentPlanChangeSchema = {
   headers: [
     { name: 'mrn', required: true },
     { name: 'reasonCode' },
+    { name: 'reasonDisplayText' },
     { name: 'changed', required: true },
     { name: 'dateOfCarePlan', required: true },
     { name: 'dateRecorded' },
