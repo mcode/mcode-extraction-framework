@@ -15,6 +15,28 @@ const MOCK_CONTEXT = {
     },
   ],
 };
+const researchStudyResource = {
+  resourceType: 'ResearchStudy',
+  id: 'ResearchStudyExample01',
+};
+const MOCK_CONTEXT_WITH_RESEARCH_STUDY = {
+  resourceType: 'Bundle',
+  type: 'collection',
+  entry: [
+    {
+      fullUrl: 'context-url-1',
+      resource: { resourceType: 'Patient', id: MOCK_MRN },
+    },
+    {
+      fullUrl: 'context-url-2',
+      resource: researchStudyResource,
+    },
+    {
+      fullUrl: 'context-url-3',
+      resource: { ...researchStudyResource, id: 'ResearchStudyExample02' },
+    },
+  ],
+};
 
 // Construct extractor and create spies for mocking responses
 const extractor = new FHIRAdverseEventExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_HEADERS });
@@ -40,6 +62,12 @@ describe('FHIRAdverseEventExtractor', () => {
       expect(params).not.toHaveProperty('study');
     });
 
+    test('should add study id for all ResearchStudy resources that are in context', async () => {
+      const params = await extractor.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT_WITH_RESEARCH_STUDY });
+      expect(params).toHaveProperty('study');
+      expect(params.study).toEqual(`${researchStudyResource.id},ResearchStudyExample02`);
+    });
+
     describe('pass in optional study parameter', () => {
       test('should add study when set to param values', async () => {
         const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
@@ -50,6 +78,12 @@ describe('FHIRAdverseEventExtractor', () => {
       test('should delete patient after its value is moved to subject', async () => {
         const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT });
         expect(params).not.toHaveProperty('patient');
+      });
+
+      test('should add study from study parameter and from context', async () => {
+        const params = await extractorWithStudy.parametrizeArgsForFHIRModule({ context: MOCK_CONTEXT_WITH_RESEARCH_STUDY });
+        expect(params).toHaveProperty('study');
+        expect(params.study).toEqual(`${extractorWithStudy.study},${researchStudyResource.id},ResearchStudyExample02`);
       });
     });
   });
