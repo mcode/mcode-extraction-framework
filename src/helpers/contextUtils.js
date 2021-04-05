@@ -62,9 +62,20 @@ function getEncountersFromContext(context) {
   return encounterResourcesInContext;
 }
 
+function getResearchStudiesFromContext(context) {
+  logger.debug('Getting ResearchStudy resources from context');
+  const researchStudyResourcesInContext = getBundleResourcesByType(context, 'ResearchStudy', {}, false);
+  if (researchStudyResourcesInContext.length === 0) {
+    throw Error('Could not find any ResearchStudy resources in context; ensure that a ClinicalTrialInformationExtractor or ResearchStudyExtractor is used earlier in your extraction configuration');
+  }
+  logger.debug(`ResearchStudy resources found in context. Found ${researchStudyResourcesInContext.length} ResearchStudy resources.`);
+  return researchStudyResourcesInContext;
+}
+
 module.exports = {
   getConditionEntriesFromContext,
   getConditionsFromContext,
   getEncountersFromContext,
   getPatientFromContext,
+  getResearchStudiesFromContext,
 };

@@ -1,6 +1,10 @@
-const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersFromContext, getPatientFromContext } = require('../../src/helpers/contextUtils');
-
-const MOCK_PATIENT_MRN = '123';
+const {
+  getConditionEntriesFromContext,
+  getConditionsFromContext,
+  getEncountersFromContext,
+  getPatientFromContext,
+  getResearchStudiesFromContext,
+} = require('../../src/helpers/contextUtils');
 
 describe('getPatientFromContext', () => {
   const patientResource = {
@@ -124,7 +128,39 @@ describe('getEncountersFromContext', () => {
   });
 
   test('Should throw an error if there are no encounters in context', () => {
-    expect(() => getEncountersFromContext(MOCK_PATIENT_MRN, {}))
+    expect(() => getEncountersFromContext({}))
       .toThrow('Could not find any encounter resources in context; ensure that an EncounterExtractor is used earlier in your extraction configuration');
+  });
+});
+
+describe('getResearchStudyFromContext', () => {
+  const researchStudyResource = {
+    resourceType: 'ResearchStudy',
+    id: 'ResearchStudyExample01',
+  };
+  const researchStudyContext = {
+    resourceType: 'Bundle',
+    type: 'collection',
+    entry: [
+      {
+        fullUrl: 'context-url-1',
+        resource: researchStudyResource,
+      },
+      {
+        fullUrl: 'context-url-2',
+        resource: { ...researchStudyResource, id: 'ResearchStudyExample02' },
+      },
+    ],
+  };
+
+  test('Should return all ResearchStudy resources in context', () => {
+    const researchStudyResources = getResearchStudiesFromContext(researchStudyContext);
+    expect(researchStudyResources).toHaveLength(2);
+    expect(researchStudyResources[0]).toEqual(researchStudyResource);
+  });
+
+  test('Should throw an error if there are no research studies in context', () => {
+    expect(() => getResearchStudiesFromContext({}))
+      .toThrow('Could not find any ResearchStudy resources in context; ensure that a ClinicalTrialInformationExtractor or ResearchStudyExtractor is used earlier in your extraction configuration');
   });
 });
