@@ -1,0 +1,16 @@
+{
+  "resourceType": "Patient",
+  "id": "valid-patient",
+  "name": [
+    {
+      "family": [
+        "Frege"
+      ],
+      "given": [
+        "Gottlob"
+      ]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1848-11-08"
+}

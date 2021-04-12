@@ -1,4 +1,4 @@
-const { isValidFHIR } = require('../helpers/fhirUtils');
+const { isValidFHIR, invalidResourcesFromBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 
 class BaseClient {
@@ -97,7 +97,7 @@ class BaseClient {
     }, Promise.resolve(contextBundle));
 
     if (!isValidFHIR(contextBundle)) {
-      logger.error('Extracted bundle is not valid FHIR.');
+      logger.error(`Extracted bundle is not valid FHIR, the following resources failed validation: ${invalidResourcesFromBundle(contextBundle).join(',')}`);
     }
 
     return { bundle: contextBundle, extractionErrors };
