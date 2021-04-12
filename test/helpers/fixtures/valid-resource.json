@@ -3,9 +3,7 @@
   "id": "valid-patient",
   "name": [
     {
-      "family": [
-        "Frege"
-      ],
+      "family": "Frege",
       "given": [
         "Gottlob"
       ]

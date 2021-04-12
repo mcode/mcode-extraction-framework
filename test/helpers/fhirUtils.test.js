@@ -144,12 +144,10 @@ describe('getResourceCountInBundle', () => {
 
 describe('isValidFHIR', () => {
   test('Should return true when provided valid FHIR resources', () => {
-    expect(isValidFHIR(bundleWithOneEntry)).toEqual(true);
+    expect(isValidFHIR(validResource)).toEqual(true);
   });
   test('Should return false when provided invalid FHIR resources', () => {
-    const invalidBundle = { ...bundleWithOneEntry };
-    invalidBundle.entry[0].resource = invalidResource;
-    expect(isValidFHIR(invalidBundle)).toEqual(false);
+    expect(isValidFHIR(invalidResource)).toEqual(false);
   });
 });
 

@@ -3,9 +3,7 @@
   "id": "invalid-patient",
   "name": [
     {
-      "family": [
-        "Godel"
-      ],
+      "family": "Godel",
       "given": [
         "Kurt"
       ]

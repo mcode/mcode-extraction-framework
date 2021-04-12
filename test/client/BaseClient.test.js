@@ -76,8 +76,8 @@ describe('BaseClient', () => {
     });
     it('should iterate over all extractors gets, aggregating resultant entries in a bundle', async () => {
       const extractorClassesWithEntryGets = [
-        class Ext1 { get() { return { entry: [{ data: 'here' }] }; }},
-        class Ext2 { get() { return { entry: [{ data: 'alsoHere' }] }; }},
+        class Ext1 { get() { return { entry: [{ resource: 'here' }] }; }},
+        class Ext2 { get() { return { entry: [{ resource: 'alsoHere' }] }; }},
         class Ext3 { get() { throw new Error('Error'); }},
       ];
       engine.registerExtractors(...extractorClassesWithEntryGets);
