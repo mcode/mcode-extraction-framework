@@ -98,6 +98,22 @@ describe('PatientUtils', () => {
       expect(bundle).toEqual(exampleMaskedPatient);
     });
 
+    test('should mask gender even if it only had an extension', () => {
+      const bundle = _.cloneDeep(examplePatient);
+      delete bundle.entry[0].resource.gender;
+      // eslint-disable-next-line no-underscore-dangle
+      bundle.entry[0].resource._gender = {
+        extension: [
+          {
+            url: 'http://hl7.org/fhir/StructureDefinition/data-absent-reason',
+            valueCode: 'unknown',
+          },
+        ],
+      };
+      maskPatientData(bundle, ['gender', 'mrn', 'name', 'address', 'birthDate', 'language', 'ethnicity', 'birthsex', 'race']);
+      expect(bundle).toEqual(exampleMaskedPatient);
+    });
+
     test('should throw error when provided an invalid field to mask', () => {
       const bundle = _.cloneDeep(examplePatient);
       expect(() => maskPatientData(bundle, ['this is an invalid field', 'mrn'])).toThrowError();

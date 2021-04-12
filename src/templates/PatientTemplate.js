@@ -1,4 +1,4 @@
-const { extensionArr, coding, valueX } = require('./snippets');
+const { dataAbsentReasonExtension, extensionArr, coding, valueX } = require('./snippets');
 const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
 
 function mrnIdentifierTemplate({ mrn }) {
@@ -73,13 +73,35 @@ function birthDateTemplate({ dateOfBirth }) {
   };
 }
 
+function genderTemplate({ gender }) {
+  if (!gender) {
+    // gender is 1..1 in mCODE
+    return {
+      _gender: extensionArr(dataAbsentReasonExtension('unknown')),
+    };
+  }
+
+  return {
+    gender,
+  };
+}
+
 function nameTemplate({ familyName, givenName }) {
+  if (!familyName && !givenName) {
+    // name is 1..* in mCODE
+    return {
+      name: [
+        extensionArr(dataAbsentReasonExtension('unknown')),
+      ],
+    };
+  }
+
   return {
     name: [
       {
         text: `${givenName} ${familyName}`,
-        family: familyName,
-        given: givenName.split(' '),
+        ...(familyName && { family: familyName }),
+        ...(givenName && { given: givenName.split(' ') }),
       },
     ],
   };
@@ -125,13 +147,13 @@ function languageTemplate({ language }) {
 function patientTemplate({
   id, mrn, familyName, givenName, gender, birthsex, dateOfBirth, language, addressLine, city, state, zip, raceCodesystem, raceCode, raceText, ethnicityCode, ethnicityText,
 }) {
-  if (!(id && mrn && familyName && givenName && gender)) {
-    throw Error('Trying to render a PatientTemplate, but a required argument is missing; ensure that id, mrn, familyName, givenName, and gender are all present');
+  if (!(id && mrn)) {
+    throw Error('Trying to render a PatientTemplate, but a required argument is missing; ensure that id and mrn are both present');
   }
   return {
     resourceType: 'Patient',
     id,
-    gender,
+    ...genderTemplate({ gender }),
     ...mrnIdentifierTemplate({ mrn }),
     ...nameTemplate({ familyName, givenName }),
     ...ifSomeArgsObj(addressTemplate)({ addressLine, city, state, zip }),

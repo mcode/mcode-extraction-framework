@@ -99,6 +99,9 @@ function maskPatientData(bundle, mask) {
       delete patient.gender;
       // an underscore is added when a primitive type is being replaced by an object (extension)
       patient._gender = masked;
+    } else if (field === 'gender' && '_gender' in patient) {
+      delete patient._gender; // gender may have a dataAbsentReason on it for 'unknown' data, but we'll still want to mask it
+      patient._gender = masked;
     } else if (field === 'mrn' && 'identifier' in patient) {
       patient.identifier = [masked];
     } else if (field === 'name' && 'name' in patient) {
@@ -120,7 +123,7 @@ function maskPatientData(bundle, mask) {
       );
       // fhirpath.evaluate will return [] if there is no extension with the given URL
       // so checking if the result is [] checks if the field exists to be masked
-      if (birthsex !== []) {
+      if (birthsex.length > 0) {
         delete birthsex[0].valueCode;
         birthsex[0]._valueCode = masked;
       }
@@ -129,7 +132,7 @@ function maskPatientData(bundle, mask) {
         patient,
         'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race\')',
       );
-      if (race !== []) {
+      if (race.length > 0) {
         race[0].extension[0].valueCoding = masked;
         delete race[0].extension[1].valueString;
         race[0].extension[1]._valueString = masked;
@@ -139,7 +142,7 @@ function maskPatientData(bundle, mask) {
         patient,
         'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity\')',
       );
-      if (ethnicity !== []) {
+      if (ethnicity.length > 0) {
         ethnicity[0].extension[0].valueCoding = masked;
         delete ethnicity[0].extension[1].valueString;
         ethnicity[0].extension[1]._valueString = masked;
