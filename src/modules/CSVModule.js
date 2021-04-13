@@ -13,7 +13,10 @@ class CSVModule {
     // return all rows if key and value aren't provided
     if (!key && !value) return this.data;
     let result = this.data.filter((d) => d[key] === value);
-    if (result.length === 0) throw new ReferenceError(`CSV Record with provided key '${key}' and value was not found`);
+    if (result.length === 0) {
+      logger.warn(`CSV Record with provided key '${key}' and value was not found`);
+      return result;
+    }
 
     // If fromDate and toDate is provided, filter out all results that fall outside that timespan
     if (fromDate && moment(fromDate).isValid()) result = result.filter((r) => !(r.dateRecorded && moment(fromDate).isAfter(r.dateRecorded)));

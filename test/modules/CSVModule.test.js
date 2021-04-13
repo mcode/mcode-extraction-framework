@@ -31,10 +31,7 @@ test('Returns data with recordedDate before specified to date', async () => {
   expect(data).toHaveLength(1);
 });
 
-test('Invalid MRN', async () => {
-  try {
-    await csvModule.get('mrn', INVALID_MRN);
-  } catch (e) {
-    expect(e).toEqual(ReferenceError('CSV Record with provided key \'mrn\' and value was not found'));
-  }
+test('Should return an empty array when key-value pair does not exist', async () => {
+  const data = await csvModule.get('mrn', INVALID_MRN);
+  expect(data).toEqual([]);
 });
