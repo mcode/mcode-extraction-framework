@@ -122,7 +122,7 @@ function maskPatientData(bundle, mask) {
         'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex\')',
       );
       // fhirpath.evaluate will return [] if there is no extension with the given URL
-      // so checking if the result is [] checks if the field exists to be masked
+      // so checking if the result is an array with anything in it checks if the field exists to be masked
       if (birthsex.length > 0) {
         delete birthsex[0].valueCode;
         birthsex[0]._valueCode = masked;
