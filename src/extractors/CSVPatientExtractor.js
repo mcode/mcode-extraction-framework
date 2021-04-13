@@ -14,8 +14,8 @@ function joinAndReformatData(patientData) {
     mrn, familyName, givenName, gender, birthsex, dateOfBirth, race, ethnicity, language, addressLine, city, state, zip,
   } = patientData;
 
-  if (!mrn || !familyName || !givenName || !gender) {
-    throw Error('Missing required field for Patient CSV Extraction. Required values include: mrn, familyName, givenName, gender');
+  if (!mrn) {
+    throw Error('Missing required field for Patient CSV Extraction: mrn');
   }
 
   return {
