@@ -67,6 +67,12 @@ To see all the options that can be used with the mCODE client, run the following
 node src/cli/cli.js --help
 ```
 
+The client can also be run by npm script:
+
+```bash
+npm start -- [options]
+```
+
 ### First Time User Guide
 
 To run the mCODE Extraction Client you must have:
