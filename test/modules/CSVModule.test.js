@@ -4,9 +4,15 @@ const exampleResponse = require('./fixtures/csv-response.json');
 
 const INVALID_MRN = 'INVALID MRN';
 const csvModule = new CSVModule(path.join(__dirname, './fixtures/example-csv.csv'));
+const csvModuleWithBOMs = new CSVModule(path.join(__dirname, './fixtures/example-csv-bom.csv'));
 
 test('Reads data from CSV', async () => {
   const data = await csvModule.get('mrn', 'example-mrn-1');
+  expect(data).toEqual(exampleResponse);
+});
+
+test('Reads data from CSV with a Byte Order Mark', async () => {
+  const data = await csvModuleWithBOMs.get('mrn', 'example-mrn-1');
   expect(data).toEqual(exampleResponse);
 });
 
