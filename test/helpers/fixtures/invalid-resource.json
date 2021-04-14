@@ -1,0 +1,14 @@
+{
+  "resourceType": "Patient",
+  "id": "invalid-patient",
+  "name": [
+    {
+      "family": "Godel",
+      "given": [
+        "Kurt"
+      ]
+    }
+  ],
+  "gender": "invalid-enum-value",
+  "birthDate": "1906-04-28"
+}

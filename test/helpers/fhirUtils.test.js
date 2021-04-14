@@ -7,6 +7,8 @@ const {
   allResourcesInBundle,
   quantityCodeToUnitLookup,
   getResourceCountInBundle,
+  isValidFHIR,
+  invalidResourcesFromBundle,
 } = require('../../src/helpers/fhirUtils.js');
 const emptyBundle = require('./fixtures/emptyBundle.json');
 const bundleWithOneEntry = require('./fixtures/searchsetBundleWithOneEntry.json');
@@ -14,6 +16,8 @@ const bundleWithMultipleEntries = require('./fixtures/searchsetBundleWithMultipl
 const countBundle5Unique = require('./fixtures/count-bundle-5-unique.json');
 const countBundle5Same = require('./fixtures/count-bundle-5-same.json');
 const countBundle5Nested = require('./fixtures/count-bundle-5-nested.json');
+const validResource = require('./fixtures/valid-resource');
+const invalidResource = require('./fixtures/invalid-resource');
 
 describe('getQuantityUnit', () => {
   test('Should return unit text if provided in lookup table', () => {
@@ -135,5 +139,27 @@ describe('getResourceCountInBundle', () => {
       'Resource-1': [5],
     };
     expect(getResourceCountInBundle(countBundle5Nested)).toEqual(counts);
+  });
+});
+
+describe('isValidFHIR', () => {
+  test('Should return true when provided valid FHIR resources', () => {
+    expect(isValidFHIR(validResource)).toEqual(true);
+  });
+  test('Should return false when provided invalid FHIR resources', () => {
+    expect(isValidFHIR(invalidResource)).toEqual(false);
+  });
+});
+
+describe('invalidResourcesFromBundle', () => {
+  test('Should return an empty array when all resources are valid', () => {
+    expect(invalidResourcesFromBundle(emptyBundle)).toEqual([]);
+  });
+  test('Should return an array of all invalid resources when they exist', () => {
+    const invalidBundle = { ...bundleWithOneEntry };
+    invalidBundle.entry[0].resource = invalidResource;
+    // This is dependent on implementation details intrinsic to invalidResourcesFromBundle
+    const invalidResourceId = `${invalidResource.resourceType}-${invalidResource.id}`;
+    expect(invalidResourcesFromBundle(invalidBundle)).toEqual([invalidResourceId]);
   });
 });
