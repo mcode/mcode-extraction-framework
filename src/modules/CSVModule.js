@@ -5,7 +5,7 @@ const logger = require('../helpers/logger');
 
 class CSVModule {
   constructor(csvFilePath) {
-    this.data = parse(fs.readFileSync(csvFilePath), { columns: true });
+    this.data = parse(fs.readFileSync(csvFilePath), { columns: true, bom: true });
   }
 
   async get(key, value, fromDate, toDate) {
