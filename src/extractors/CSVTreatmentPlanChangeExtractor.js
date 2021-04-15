@@ -7,7 +7,7 @@ const logger = require('../helpers/logger');
 const { CSVTreatmentPlanChangeSchema } = require('../helpers/schemas/csv');
 
 // Formats data to be passed into template-friendly format
-function formatData(tpcData) {
+function formatData(tpcData, patientId) {
   logger.debug('Reformatting treatment plan change data from CSV into template format');
 
   // Nothing to format in empty array
@@ -16,16 +16,14 @@ function formatData(tpcData) {
   }
 
   // Newly combined data has mrn and list of reviews to map to an extension
-  const combinedFormat = { mrn: tpcData[0].mrn, reviews: [] };
+  const combinedFormat = { subjectId: patientId, reviews: [] };
 
   // If there are multiple entries, combine them into one object with multiple reviews
   const combinedData = _.reduce(tpcData, (res, currentDataEntry) => {
-    const {
-      mrn, dateOfCarePlan, changed, reasonCode, reasonDisplayText,
-    } = currentDataEntry;
+    const { dateOfCarePlan, changed, reasonCode, reasonDisplayText } = currentDataEntry;
 
-    if (!mrn || !dateOfCarePlan || !changed) {
-      throw new Error('Treatment Plan Change Data missing an expected property: mrn, dateOfCarePlan, changed are required');
+    if (!dateOfCarePlan || !changed) {
+      throw new Error('Treatment Plan Change Data missing an expected property: dateOfCarePlan, changed are required');
     }
 
     // reasonCode is required if changed flag is true
@@ -84,8 +82,10 @@ class CSVTreatmentPlanChangeExtractor extends BaseCSVExtractor {
       return getEmptyBundle();
     }
 
+    // Reformat data
     const formattedData = formatData(tpcData);
 
+    // Fill templates
     return generateMcodeResources('CarePlanWithReview', formattedData);
   }
 }

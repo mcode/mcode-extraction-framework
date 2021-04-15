@@ -1,19 +1,11 @@
+const _ = require('lodash');
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
-const { firstEntryInBundle, getBundleResourcesByType } = require('../helpers/fhirUtils');
+const { firstEntryInBundle, getEmptyBundle } = require('../helpers/fhirUtils');
+const { getPatientFromContext } = require('../helpers/contextUtils');
 const { generateMcodeResources } = require('../templates');
 const logger = require('../helpers/logger');
 const { CSVClinicalTrialInformationSchema } = require('../helpers/schemas/csv');
 
-function getPatientId(context) {
-  const patientInContext = getBundleResourcesByType(context, 'Patient', {}, true);
-  if (patientInContext) {
-    logger.debug('Patient resource found in context.');
-    return patientInContext.id;
-  }
-
-  logger.debug('No patient resource found in context.');
-  return undefined;
-}
 
 class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
   constructor({ filePath, clinicalSiteID, clinicalSiteSystem }) {
@@ -23,7 +15,7 @@ class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
     this.clinicalSiteSystem = clinicalSiteSystem;
   }
 
-  joinClinicalTrialData(patientId, clinicalTrialData) {
+  joinClinicalTrialData(clinicalTrialData, patientId) {
     logger.debug('Reformatting clinical trial data from CSV into template format');
     const {
       trialSubjectID, enrollmentStatus, trialResearchID, trialStatus, trialResearchSystem,
@@ -61,11 +53,15 @@ class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
   }
 
   async get({ mrn, context }) {
-    const patientId = getPatientId(context) || mrn;
     const clinicalTrialData = await this.getClinicalTrialData(mrn);
+    if (_.isEmpty(clinicalTrialData)) {
+      logger.warn('No clinicalTrial record found for patient');
+      return getEmptyBundle();
+    }
+    const patientId = getPatientFromContext(context).id;
 
     // Format data for research study and research subject
-    const formattedData = this.joinClinicalTrialData(patientId, clinicalTrialData);
+    const formattedData = this.joinClinicalTrialData(clinicalTrialData, patientId);
     const { formattedDataSubject, formattedDataStudy } = formattedData;
 
     // Generate ResearchSubject and ResearchStudy resources and combine into one bundle to return

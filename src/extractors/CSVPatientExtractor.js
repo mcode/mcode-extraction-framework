@@ -6,8 +6,8 @@ const { getEthnicityDisplay,
   getRaceDisplay,
   maskPatientData } = require('../helpers/patientUtils');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
-const logger = require('../helpers/logger');
 const { CSVPatientSchema } = require('../helpers/schemas/csv');
+const logger = require('../helpers/logger');
 
 function joinAndReformatData(patientData) {
   logger.debug('Reformatting patient data from CSV into template format');

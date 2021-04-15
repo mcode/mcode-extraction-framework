@@ -2,6 +2,7 @@ const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { formatDateTime } = require('../helpers/dateUtils');
 const { getDiseaseStatusDisplay, getDiseaseStatusEvidenceDisplay } = require('../helpers/diseaseStatusUtils');
 const { generateMcodeResources } = require('../templates');
+const { getPatientFromContext } = require('../helpers/contextUtils');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 const { CSVCancerDiseaseStatusSchema } = require('../helpers/schemas/csv');
@@ -12,12 +13,12 @@ class CSVCancerDiseaseStatusExtractor extends BaseCSVExtractor {
     this.implementation = implementation;
   }
 
-  joinAndReformatData(arrOfDiseaseStatusData) {
+  joinAndReformatData(arrOfDiseaseStatusData, patientId) {
     logger.debug('Reformatting disease status data from CSV into template format');
     // Check the shape of the data
     arrOfDiseaseStatusData.forEach((record) => {
-      if (!record.mrn || !record.conditionId || !record.diseaseStatusCode || !record.dateOfObservation) {
-        throw new Error('DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, and dateOfObservation are required.');
+      if (!record.conditionId || !record.diseaseStatusCode || !record.dateOfObservation) {
+        throw new Error('DiseaseStatusData missing an expected property: conditionId, diseaseStatusCode, and dateOfObservation are required.');
       }
     });
     const evidenceDelimiter = '|';
@@ -29,7 +30,7 @@ class CSVCancerDiseaseStatusExtractor extends BaseCSVExtractor {
         display: record.diseaseStatusText ? record.diseaseStatusText : getDiseaseStatusDisplay(record.diseaseStatusCode, this.implementation),
       },
       subject: {
-        id: record.mrn,
+        id: patientId,
       },
       condition: {
         id: record.conditionId,
@@ -47,16 +48,17 @@ class CSVCancerDiseaseStatusExtractor extends BaseCSVExtractor {
     return this.csvModule.get('mrn', mrn, fromDate, toDate);
   }
 
-  async get({ mrn, fromDate, toDate }) {
+  async get({ mrn, context, fromDate, toDate }) {
     // 1. Get all relevant data and do necessary post-processing
     const diseaseStatusData = await this.getDiseaseStatusData(mrn, fromDate, toDate);
     if (diseaseStatusData.length === 0) {
       logger.warn('No disease status data found for patient');
       return getEmptyBundle();
     }
+    const patientId = getPatientFromContext(context).id;
 
     // 2. Format data for research study and research subject
-    const packagedDiseaseStatusData = this.joinAndReformatData(diseaseStatusData);
+    const packagedDiseaseStatusData = this.joinAndReformatData(diseaseStatusData, patientId);
 
     // 3. Generate FHIR Resources
     const resources = generateMcodeResources('CancerDiseaseStatus', packagedDiseaseStatusData);

@@ -1,22 +1,24 @@
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
-const logger = require('../helpers/logger');
+const { getPatientFromContext } = require('../helpers/contextUtils');
+const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
+const logger = require('../helpers/logger');
 
-function formatData(observationData) {
+function formatData(observationData, patientId) {
   logger.debug('Reformatting observation data from CSV into template format');
   return observationData.map((data) => {
     const {
-      mrn, observationId, status, code, codeSystem, displayName, value, valueCodeSystem, effectiveDate, bodySite, laterality,
+      observationId, status, code, codeSystem, displayName, value, valueCodeSystem, effectiveDate, bodySite, laterality,
     } = data;
 
-    if (!mrn || !observationId || !status || !code || !codeSystem || !value || !effectiveDate) {
-      throw new Error('The observation is missing an expected attribute. Observation id, mrn, status, code, code system, value, and effective date are all required.');
+    if (!observationId || !status || !code || !codeSystem || !value || !effectiveDate) {
+      throw new Error('The observation is missing an expected attribute. Observation id, status, code, code system, value, and effective date are all required.');
     }
 
     return {
       id: observationId,
-      subjectId: mrn,
+      subjectId: patientId,
       status,
       code,
       system: codeSystem,
@@ -40,10 +42,18 @@ class CSVObservationExtractor extends BaseCSVExtractor {
     return this.csvModule.get('mrn', mrn);
   }
 
-  async get({ mrn }) {
+  async get({ mrn, context }) {
     const observationData = await this.getObservationData(mrn);
-    const formattedData = formatData(observationData);
+    if (observationData.length === 0) {
+      logger.warn('No observation data found for patient');
+      return getEmptyBundle();
+    }
+    const patientId = getPatientFromContext(context).id;
 
+    // Reformat data
+    const formattedData = formatData(observationData, patientId);
+
+    // Fill template
     return generateMcodeResources('Observation', formattedData);
   }
 }
