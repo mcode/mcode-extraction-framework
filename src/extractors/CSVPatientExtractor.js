@@ -1,9 +1,11 @@
+const _ = require('lodash');
 const { generateMcodeResources } = require('../templates');
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { getEthnicityDisplay,
   getRaceCodesystem,
   getRaceDisplay,
   maskPatientData } = require('../helpers/patientUtils');
+const { getEmptyBundle } = require('../helpers/fhirUtils');
 const logger = require('../helpers/logger');
 const { CSVPatientSchema } = require('../helpers/schemas/csv');
 
@@ -55,6 +57,10 @@ class CSVPatientExtractor extends BaseCSVExtractor {
   async get({ mrn }) {
     // 1. Get all relevant data and do necessary post-processing
     const patientData = await this.getPatientData(mrn);
+    if (_.isEmpty(patientData)) {
+      logger.warn('No patient data found for this patient');
+      return getEmptyBundle();
+    }
 
     // 2. Format data for research study and research subject
     const packagedPatientData = joinAndReformatData(patientData);

@@ -99,7 +99,11 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
     const { notificationInfo } = config;
     if (notificationInfo) {
       const notificationErrors = zipErrors(totalExtractionErrors);
-      await sendEmailNotification(notificationInfo, notificationErrors, debug);
+      try {
+        await sendEmailNotification(notificationInfo, notificationErrors, debug);
+      } catch (e) {
+        logger.error(e.message);
+      }
     }
     // A run is successful and should be logged when both extraction finishes without fatal errors
     // and messages are posted without fatal errors
@@ -115,8 +119,14 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
     const patientConfig = config.extractors.find((e) => e.type === 'CSVPatientExtractor');
     if (patientConfig && ('constructorArgs' in patientConfig && 'mask' in patientConfig.constructorArgs)) {
       if (patientConfig.constructorArgs.mask.includes('mrn')) {
-        extractedData.forEach((bundle) => {
-          maskMRN(bundle);
+        extractedData.forEach((bundle, i) => {
+          // NOTE: This may fail to mask MRN-related properties on non-patient resources
+          //       Need to investigate further.
+          try {
+            maskMRN(bundle);
+          } catch (e) {
+            logger.error(`Bundle ${i + 1}: ${e.message}`);
+          }
         });
       }
     }
