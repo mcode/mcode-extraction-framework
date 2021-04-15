@@ -11,7 +11,7 @@ const MOCK_CONTEXT = require('./fixtures/context-with-patient.json');
 const CSVCancerRelatedMedicationExtractorRewired = rewire('../../src/extractors/CSVCancerRelatedMedicationExtractor.js');
 
 // Constants for tests
-const MOCK_PATIENT_MRN = 'mrn-1'; // linked to values in example-module-response above
+const MOCK_PATIENT_MRN = 'mrn-1'; // linked to values in example-module-response and context-with-patient above
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv'); // need a valid path/csv here to avoid parse error
 
 // Instantiate module with parameters

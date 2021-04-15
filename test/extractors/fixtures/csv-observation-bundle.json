@@ -17,7 +17,7 @@
               }
             ]
           }
-        ],  
+        ],
         "code": {
           "coding": [
             {
@@ -26,11 +26,11 @@
             }
           ]
         },
-        "subject" : {
-          "reference": "urn:uuid:example-patient",
+        "subject": {
+          "reference": "urn:uuid:mrn-1",
           "type": "Patient"
         },
-        "effectiveDateTime" : "2020-01-02",
+        "effectiveDateTime": "2020-01-02",
         "valueCodeableConcept": {
           "coding": [
             {
@@ -39,7 +39,7 @@
             }
           ]
         },
-        "bodySite": { 
+        "bodySite": {
           "extension": [
             {
               "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality",
@@ -52,16 +52,15 @@
                 ]
               }
             }
-          ], 
+          ],
           "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "12345"
             }
-          ] 
+          ]
         }
       }
     }
   ]
 }
-

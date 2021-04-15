@@ -7,10 +7,10 @@ const { getPatientFromContext } = require('../../src/helpers/contextUtils');
 const MOCK_CONTEXT = require('./fixtures/context-with-patient.json');
 
 // Constants for mock tests
+const MOCK_PATIENT_MRN = 'mrn-1'; // linked to values in example-module-response and context-with-patient above
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv'); // need a valid path/csv here to avoid parse error
 const MOCK_CLINICAL_SITE_ID = 'EXAMPLE-CLINICAL-SITE-ID';
 const MOCK_CLINICAL_SITE_SYSTEM = 'EXAMPLE-CLINICAL-SITE-SYSTEM';
-const MOCK_PATIENT_MRN = 'EXAMPLE-MRN';
 
 // Instantiate module with mock parameters
 const csvClinicalTrialInformationExtractor = new CSVClinicalTrialInformationExtractor({
@@ -38,8 +38,8 @@ describe('CSVClinicalTrialInformationExtractor', () => {
       Object.keys(firstClinicalTrialInfoResponse).forEach((key) => {
         const clonedData = _.cloneDeep(firstClinicalTrialInfoResponse);
         expect(csvClinicalTrialInformationExtractor.joinClinicalTrialData(clonedData, patientId)).toEqual(expect.anything());
-        if (key === 'mrn') return; // MRN is not required from CSV
-        if (key === 'trialResearchSystem') return; // trialResearchSystem is an optional field
+        if (key === 'patientId') return; // MRN is optional
+        if (key === 'trialResearchSystem') return; // trialResearchSystem is optional
         delete clonedData[key];
         expect(() => csvClinicalTrialInformationExtractor.joinClinicalTrialData(clonedData, patientId)).toThrow(new Error(expectedErrorString));
       });
