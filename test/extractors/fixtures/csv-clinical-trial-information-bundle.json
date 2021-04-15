@@ -3,14 +3,16 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:f8acc19f44696eea31532ac9d3b658f1fea317eba9455eddc78de0857220d362",
+      "fullUrl": "urn:uuid:a9235b06dfe8c24b40b938c7a1265ed3087cf0fa43ef0f11375effbb25ecca25",
       "resource": {
         "resourceType": "ResearchSubject",
-        "id": "f8acc19f44696eea31532ac9d3b658f1fea317eba9455eddc78de0857220d362",
+        "id": "a9235b06dfe8c24b40b938c7a1265ed3087cf0fa43ef0f11375effbb25ecca25",
         "identifier": [
           {
             "system": "http://example.com/clinicaltrialsubjectids",
-            "type": { "text": "Clinical Trial Subject ID" },
+            "type": {
+              "text": "Clinical Trial Subject ID"
+            },
             "value": "example-subjectId"
           }
         ],
@@ -21,7 +23,10 @@
             "value": "example-researchId"
           }
         },
-        "individual": { "reference": "urn:uuid:EXAMPLE-MRN", "type": "Patient" }
+        "individual": {
+          "reference": "urn:uuid:mrn-1",
+          "type": "Patient"
+        }
       }
     },
     {
@@ -42,7 +47,9 @@
         "identifier": [
           {
             "system": "example-system",
-            "type": { "text": "Clinical Trial Research ID" },
+            "type": {
+              "text": "Clinical Trial Research ID"
+            },
             "value": "example-researchId"
           }
         ]

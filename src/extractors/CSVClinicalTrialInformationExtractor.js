@@ -22,8 +22,8 @@ class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
     } = clinicalTrialData;
     const { clinicalSiteID, clinicalSiteSystem } = this;
 
-    if (!(patientId && clinicalSiteID && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
-      throw new Error('Clinical trial missing an expected property: patientId, clinicalSiteID, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
+    if (!(clinicalSiteID && trialSubjectID && enrollmentStatus && trialResearchID && trialStatus)) {
+      throw new Error('Clinical trial missing an expected property: clinicalSiteID, trialSubjectID, enrollmentStatus, trialResearchID, and trialStatus are required.');
     }
 
     // Need separate data objects for ResearchSubject and ResearchStudy so that they get different resource ids
