@@ -1,5 +1,4 @@
 mrn,conditionId,diseaseStatusCode,diseaseStatusText,dateOfObservation,evidence,observationStatus,dateRecorded
 123,conditionId-1,268910001,responding,2019-12-02,363679005|252416005,preliminary,2020-01-10
-456,conditionId-2,359746009,stable,2020-01-12,363679005,amended,2020-01-12
 789,conditionId-2,709137006,not evaluated,2020-04-22,,final,2020-06-10
 123,conditionId-1,not-asked,,2020-01-12,,,
