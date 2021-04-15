@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:ed5faf7f2a1cef061d7584afd463e60eb7202104700647e92fbb7c9419eb7897",
+      "fullUrl": "urn:uuid:626b61fd700d8ddc5a6a576a2e47944191b5f608e03083d00c49614f0158bb65",
       "resource": {
         "resourceType": "Observation",
-        "id": "ed5faf7f2a1cef061d7584afd463e60eb7202104700647e92fbb7c9419eb7897",
+        "id": "626b61fd700d8ddc5a6a576a2e47944191b5f608e03083d00c49614f0158bb65",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-primary-tumor-category"
@@ -32,7 +32,7 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:pat-mrn-1",
+          "reference": "urn:uuid:mrn-1",
           "type": "Patient"
         },
         "method": {
@@ -61,10 +61,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:88992af10e3a822f2a946628de91012d5afae49a25d1641db09e9d6ed4ca24c3",
+      "fullUrl": "urn:uuid:66e0e5f216bebeba287c3a3b0e220170bab88da95030e0c4bdba32f66628d00c",
       "resource": {
         "resourceType": "Observation",
-        "id": "88992af10e3a822f2a946628de91012d5afae49a25d1641db09e9d6ed4ca24c3",
+        "id": "66e0e5f216bebeba287c3a3b0e220170bab88da95030e0c4bdba32f66628d00c",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-distant-metastases-category"
@@ -90,7 +90,7 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:pat-mrn-1",
+          "reference": "urn:uuid:mrn-1",
           "type": "Patient"
         },
         "method": {
@@ -119,10 +119,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:1373d3fb234cad0b03912cfbba16bdc4eabbd6217d83b838f6d9c1343bc9b394",
+      "fullUrl": "urn:uuid:4469acab85a889d722f5b8b1cb786df8adbfc5f0b50ac23393ec42b8ecfd49e9",
       "resource": {
         "resourceType": "Observation",
-        "id": "1373d3fb234cad0b03912cfbba16bdc4eabbd6217d83b838f6d9c1343bc9b394",
+        "id": "4469acab85a889d722f5b8b1cb786df8adbfc5f0b50ac23393ec42b8ecfd49e9",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-regional-nodes-category"
@@ -148,7 +148,7 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:pat-mrn-1",
+          "reference": "urn:uuid:mrn-1",
           "type": "Patient"
         },
         "method": {
@@ -177,10 +177,10 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:23564150098c6afeb2abc712086a21ead2e9bd308929f9d290988c6921ac841b",
+      "fullUrl": "urn:uuid:8fca0c2922335ea3c92022b4b2d4de17ba0645ce72d884b1e1c71a757c300a10",
       "resource": {
         "resourceType": "Observation",
-        "id": "23564150098c6afeb2abc712086a21ead2e9bd308929f9d290988c6921ac841b",
+        "id": "8fca0c2922335ea3c92022b4b2d4de17ba0645ce72d884b1e1c71a757c300a10",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-stage-group"
@@ -214,7 +214,7 @@
           ]
         },
         "subject": {
-          "reference": "urn:uuid:pat-mrn-1",
+          "reference": "urn:uuid:mrn-1",
           "type": "Patient"
         },
         "effectiveDateTime": "2020-01-01",
@@ -234,15 +234,15 @@
         ],
         "hasMember": [
           {
-            "reference": "urn:uuid:ed5faf7f2a1cef061d7584afd463e60eb7202104700647e92fbb7c9419eb7897",
+            "reference": "urn:uuid:626b61fd700d8ddc5a6a576a2e47944191b5f608e03083d00c49614f0158bb65",
             "type": "Observation"
           },
           {
-            "reference": "urn:uuid:88992af10e3a822f2a946628de91012d5afae49a25d1641db09e9d6ed4ca24c3",
+            "reference": "urn:uuid:66e0e5f216bebeba287c3a3b0e220170bab88da95030e0c4bdba32f66628d00c",
             "type": "Observation"
           },
           {
-            "reference": "urn:uuid:1373d3fb234cad0b03912cfbba16bdc4eabbd6217d83b838f6d9c1343bc9b394",
+            "reference": "urn:uuid:4469acab85a889d722f5b8b1cb786df8adbfc5f0b50ac23393ec42b8ecfd49e9",
             "type": "Observation"
           }
         ]

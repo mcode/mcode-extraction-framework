@@ -3,6 +3,7 @@ const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { formatDate } = require('../helpers/dateUtils');
 const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
+const { getPatientFromContext } = require('../helpers/contextUtils');
 const logger = require('../helpers/logger');
 const { CSVTreatmentPlanChangeSchema } = require('../helpers/schemas/csv');
 
@@ -15,7 +16,7 @@ function formatData(tpcData, patientId) {
     return [];
   }
 
-  // Newly combined data has mrn and list of reviews to map to an extension
+  // Newly combined data has subjectId and list of reviews to map to an extension
   const combinedFormat = { subjectId: patientId, reviews: [] };
 
   // If there are multiple entries, combine them into one object with multiple reviews
@@ -75,15 +76,16 @@ class CSVTreatmentPlanChangeExtractor extends BaseCSVExtractor {
     return this.csvModule.get('mrn', mrn, fromDate, toDate);
   }
 
-  async get({ mrn, fromDate, toDate }) {
+  async get({ mrn, context, fromDate, toDate }) {
     const tpcData = await this.getTPCData(mrn, fromDate, toDate);
     if (tpcData.length === 0) {
       logger.warn('No treatment plan change data found for patient');
       return getEmptyBundle();
     }
+    const patientId = getPatientFromContext(context).id;
 
     // Reformat data
-    const formattedData = formatData(tpcData);
+    const formattedData = formatData(tpcData, patientId);
 
     // Fill templates
     return generateMcodeResources('CarePlanWithReview', formattedData);

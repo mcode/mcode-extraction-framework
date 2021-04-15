@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:3005b559bb913fdfb23756a442645c6c37bbdafa42ad4be0bd1a6b698274f466",
+      "fullUrl": "urn:uuid:86e98914af1979c1b3dd780ebda05a677fc05939068f587949f886f1f3de22ed",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "3005b559bb913fdfb23756a442645c6c37bbdafa42ad4be0bd1a6b698274f466",
+        "id": "86e98914af1979c1b3dd780ebda05a677fc05939068f587949f886f1f3de22ed",
         "meta": {
           "profile": [
             "http://mcodeinitiative.org/codex/us/icare/StructureDefinition/icare-care-plan-with-review"
@@ -24,13 +24,23 @@
                 "url": "CarePlanChangeReason",
                 "valueCodeableConcept": {
                   "coding": [
-                    { "system": "http://snomed.info/sct", "code": "281647001", "display": "Adverse reaction (disorder)" }
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "281647001",
+                      "display": "Adverse reaction (disorder)"
+                    }
                   ],
                   "text": "Adverse reaction (disorder)"
                 }
               },
-              { "url": "ReviewDate", "valueDate": "2020-04-15" },
-              { "url": "ChangedFlag", "valueBoolean": true }
+              {
+                "url": "ReviewDate",
+                "valueDate": "2020-04-15"
+              },
+              {
+                "url": "ChangedFlag",
+                "valueBoolean": true
+              }
             ]
           },
           {
@@ -40,22 +50,37 @@
                 "url": "CarePlanChangeReason",
                 "valueCodeableConcept": {
                   "coding": [
-                    { "system": "http://snomed.info/sct", "code": "405613005" }
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "405613005"
+                    }
                   ]
                 }
               },
-              { "url": "ReviewDate", "valueDate": "2020-04-30" },
-              { "url": "ChangedFlag", "valueBoolean": true }
+              {
+                "url": "ReviewDate",
+                "valueDate": "2020-04-30"
+              },
+              {
+                "url": "ChangedFlag",
+                "valueBoolean": true
+              }
             ]
           }
         ],
-        "subject": { "reference": "urn:uuid:mrn-1", "type": "Patient" },
+        "subject": {
+          "reference": "urn:uuid:mrn-1",
+          "type": "Patient"
+        },
         "status": "draft",
         "intent": "proposal",
         "category": [
           {
             "coding": [
-              { "code": "assess-plan", "system": "http://argonaut.hl7.org" }
+              {
+                "code": "assess-plan",
+                "system": "http://argonaut.hl7.org"
+              }
             ]
           }
         ]
