@@ -1,8 +1,10 @@
 const path = require('path');
 const _ = require('lodash');
 const { CSVCancerDiseaseStatusExtractor } = require('../../src/extractors');
+const { getPatientFromContext } = require('../../src/helpers/contextUtils');
 const exampleCSVDiseaseStatusModuleResponse = require('./fixtures/csv-cancer-disease-status-module-response.json');
 const exampleCSVDiseaseStatusBundle = require('./fixtures/csv-cancer-disease-status-bundle.json');
+const MOCK_CONTEXT = require('./fixtures/context-with-patient.json');
 
 // Constants for tests
 const MOCK_PATIENT_MRN = 'pat-mrn-1'; // linked to values in example-module-response above
@@ -25,7 +27,7 @@ const csvModuleSpy = jest.spyOn(csvModule, 'get');
 describe('CSVCancerDiseaseStatusExtractor', () => {
   describe('joinAndReformatData', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'DiseaseStatusData missing an expected property: mrn, conditionId, diseaseStatusCode, and dateOfObservation are required.';
+      const expectedErrorString = 'DiseaseStatusData missing an expected property: conditionId, diseaseStatusCode, and dateOfObservation are required.';
       const localData = _.cloneDeep(exampleCSVDiseaseStatusModuleResponse);
       // Test that valid data works fine
       expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(exampleCSVDiseaseStatusModuleResponse)).toEqual(expect.anything());
@@ -36,7 +38,7 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
       // Only including required properties is valid
       expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(localData)).toEqual(expect.anything());
 
-      const requiredProperties = ['mrn', 'conditionId', 'diseaseStatusCode', 'dateOfObservation'];
+      const requiredProperties = ['conditionId', 'diseaseStatusCode', 'dateOfObservation'];
 
       // Removing each required property should throw an error
       requiredProperties.forEach((key) => {
@@ -50,7 +52,7 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
   describe('get', () => {
     test('should return bundle with Observation', async () => {
       csvModuleSpy.mockReturnValue(exampleCSVDiseaseStatusModuleResponse);
-      const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
+      const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();
@@ -60,7 +62,7 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
 
     test('should return empty bundle when no data available from module', async () => {
       csvModuleSpy.mockReturnValue([]);
-      const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN });
+      const data = await csvCancerDiseaseStatusExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();
