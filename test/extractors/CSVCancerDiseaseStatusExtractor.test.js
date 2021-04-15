@@ -1,9 +1,9 @@
 const path = require('path');
 const _ = require('lodash');
 const { CSVCancerDiseaseStatusExtractor } = require('../../src/extractors');
-const { getPatientFromContext } = require('../../src/helpers/contextUtils');
 const exampleCSVDiseaseStatusModuleResponse = require('./fixtures/csv-cancer-disease-status-module-response.json');
 const exampleCSVDiseaseStatusBundle = require('./fixtures/csv-cancer-disease-status-bundle.json');
+const { getPatientFromContext } = require('../../src/helpers/contextUtils');
 const MOCK_CONTEXT = require('./fixtures/context-with-patient.json');
 
 // Constants for tests
@@ -29,14 +29,16 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
       const expectedErrorString = 'DiseaseStatusData missing an expected property: conditionId, diseaseStatusCode, and dateOfObservation are required.';
       const localData = _.cloneDeep(exampleCSVDiseaseStatusModuleResponse);
+      const patientId = getPatientFromContext(MOCK_CONTEXT).id;
+
       // Test that valid data works fine
-      expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(exampleCSVDiseaseStatusModuleResponse)).toEqual(expect.anything());
+      expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(exampleCSVDiseaseStatusModuleResponse, patientId)).toEqual(expect.anything());
 
       localData[0].evidence = ''; // Evidence is not required and will not throw an error
       localData[0].observationStatus = ''; // Observation Status is not required and will not throw an error
 
       // Only including required properties is valid
-      expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(localData)).toEqual(expect.anything());
+      expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(localData, patientId)).toEqual(expect.anything());
 
       const requiredProperties = ['conditionId', 'diseaseStatusCode', 'dateOfObservation'];
 
@@ -44,7 +46,7 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
       requiredProperties.forEach((key) => {
         const clonedData = _.cloneDeep(localData);
         clonedData[0][key] = '';
-        expect(() => csvCancerDiseaseStatusExtractor.joinAndReformatData(clonedData)).toThrow(new Error(expectedErrorString));
+        expect(() => csvCancerDiseaseStatusExtractor.joinAndReformatData(clonedData, patientId)).toThrow(new Error(expectedErrorString));
       });
     });
   });

@@ -2,9 +2,9 @@ const path = require('path');
 const rewire = require('rewire');
 const _ = require('lodash');
 const { CSVAdverseEventExtractor } = require('../../src/extractors');
-const { getPatientFromContext } = require('../../src/helpers/contextUtils');
 const exampleCSVAdverseEventModuleResponse = require('./fixtures/csv-adverse-event-module-response.json');
 const exampleCSVAdverseEventBundle = require('./fixtures/csv-adverse-event-bundle.json');
+const { getPatientFromContext } = require('../../src/helpers/contextUtils');
 const MOCK_CONTEXT = require('./fixtures/context-with-patient.json');
 
 // Constants for tests
