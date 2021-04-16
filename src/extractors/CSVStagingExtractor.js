@@ -33,13 +33,13 @@ function formatTNMCategoryData(stagingData, patientId) {
   return formattedData;
 }
 
-function formatStagingData(stagingData, categoryIds) {
+function formatStagingData(stagingData, categoryIds, patientId) {
   const {
-    mrn, conditionId, type, stageGroup, stagingSystem, stagingCodeSystem, effectiveDate,
+    conditionId, type, stageGroup, stagingSystem, stagingCodeSystem, effectiveDate,
   } = stagingData;
 
   return {
-    subjectId: mrn,
+    subjectId: patientId,
     conditionId,
     type,
     stageGroup,
@@ -77,7 +77,7 @@ class CSVStagingExtractor extends BaseCSVExtractor {
       const mcodeCategoryResources = formattedCategoryData.map((d) => firstEntryInBundle(generateMcodeResources('TNMCategory', d)));
 
       // Pass category resource ids to formatStagingData
-      const formattedStagingData = formatStagingData(data, mcodeCategoryResources.map((r) => r.resource.id));
+      const formattedStagingData = formatStagingData(data, mcodeCategoryResources.map((r) => r.resource.id), patientId);
       const stagingResource = firstEntryInBundle(generateMcodeResources('Staging', formattedStagingData));
 
       // Push all resources into entryResources
