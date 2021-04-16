@@ -12,6 +12,7 @@
   ],
   "main": "src/",
   "scripts": {
+    "start":"node src/cli/cli.js",
     "lint": "eslint \"./**/*.js\"",
     "lint-fix": "eslint \"./**/*.js\" --fix",
     "test": "cross-env LOGGING=none jest",

@@ -58,13 +58,13 @@ const cancerDiseaseStatusExtractor = new CSVCancerDiseaseStatusExtractor('path-t
 The framework also contains the [MCODEClient](src/client/MCODEClient.js) which has registered all of the extractors in this repo. Once you have exported CSV data and updated your configuration file, use the mCODE Extraction client by running the following:
 
 ```bash
-node src/cli/cli.js [options]
+npm start -- [options]
 ```
 
 To see all the options that can be used with the mCODE client, run the following:
 
 ```bash
-node src/cli/cli.js --help
+npm start -- --help
 ```
 
 ### First Time User Guide
@@ -125,7 +125,7 @@ Whenever the mCODE Extraction Client successfully runs with the `--entries-filte
 Users can specify a different location for the file by using the `--run-log-filepath <path>` CLI option. Users will need to create this file before running the mCODE Extraction Client with `--entries-filter` and a date range. Initially, this file's contents should be an empty array, `[]`. For example:
 
 ```bash
-node src/cli/cli.js --entries-filter --from-date YYYY-MM-DD --to-date YYY-MM-DD --run-log-filepath path/to/file.json
+npm start -- --entries-filter --from-date YYYY-MM-DD --to-date YYY-MM-DD --run-log-filepath path/to/file.json
 ```
 
 ### Masking Patient Data
@@ -158,7 +158,7 @@ If any filtering on data elements in CSV files is required, the `entries-filter`
 If a `from-date` is provided as an option when running the mCODE Extraction Client, it will be used to filter out any data elements that are recorded before that date based on the `dateRecorded` column in the CSV files. If a `to-date` is provided as an option, it will be used to filter out any data elements that are recorded after that date based on the `dateRecorded` column in the CSV files. If no `to-date` is provided, the default is today. If no `from-date` is provided, the mCODE Extraction Client will look to a run log file (details [above](#Logging-Successful-Extractions)) to find the most recent run and use the `to-date` of that run as the `from-date` for the current run, allowing users to only run the extraction on data elements that were not included in previous runs. If there are no previous run times logged, a `from-date` needs to be provided when running the extraction when the `entries-filter` option is provided. If the `entries-filter` option is not provided, any `from-date` and `to-date` options will be ignored, none of the data elements will be filtered by date, and a successful run will not be logged since there is no specified date range. An example running the client with the `from-date` and `to-date` is as follows:
 
 ```bash
-node src/cli/cli.js --entries-filter --from-date <YYYY-MM-DD> --to-date <YYYY-MM-DD> --config-filepath <path>
+npm start -- --entries-filter --from-date <YYYY-MM-DD> --to-date <YYYY-MM-DD> --config-filepath <path>
 ```
 
 ## Terminology and Architecture
