@@ -1,0 +1,4 @@
+﻿mrn,trialSubjectID,enrollmentStatus,trialResearchID,trialStatus,dateRecorded
+example-mrn-1,subjectId-1,status-1,researchId-1,trialStatus-1,2020-01-10
+example-mrn-2,subjectId-2,status-2,researchId-2,trialStatus-2,2020-01-10
+example-mrn-2,subjectId-3,status-3,researchId-3,trialStatus-3,2020-06-10
