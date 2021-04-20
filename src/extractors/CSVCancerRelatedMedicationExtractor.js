@@ -15,7 +15,7 @@ function formatData(medicationData, patientId) {
     } = medication;
 
     if (!(code && codeSystem && status)) {
-      throw new Error('The cancer-related medication is missing an expected element; mrn, code, code system, and status are all required values.');
+      throw new Error('The cancer-related medication is missing an expected element; code, code system, and status are all required values.');
     }
 
     return {
