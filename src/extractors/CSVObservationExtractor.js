@@ -9,7 +9,16 @@ function formatData(observationData, patientId) {
   logger.debug('Reformatting observation data from CSV into template format');
   return observationData.map((data) => {
     const {
-      observationId, status, code, codeSystem, displayName, value, valueCodeSystem, effectiveDate, bodySite, laterality,
+      observationid: observationId,
+      status,
+      code,
+      codesystem: codeSystem,
+      displayname: displayName,
+      value,
+      valuecodesystem: valueCodeSystem,
+      effectivedate: effectiveDate,
+      bodysite: bodySite,
+      laterality,
     } = data;
 
     if (!observationId || !status || !code || !codeSystem || !value || !effectiveDate) {

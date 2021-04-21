@@ -1,15 +1,15 @@
 [
   {
     "subjectId": "mrn-1",
-    "dateOfCarePlan": "2020-04-15",
-    "reasonCode": "281647001",
-    "reasonDisplayText": "Adverse reaction (disorder)",
+    "dateofcareplan": "2020-04-15",
+    "reasoncode": "281647001",
+    "reasondisplaytext": "Adverse reaction (disorder)",
     "changed": "true"
   },
   {
     "subjectId": "mrn-1",
-    "dateOfCarePlan": "2020-04-30",
-    "reasonCode": "405613005",
+    "dateofcareplan": "2020-04-30",
+    "reasoncode": "405613005",
     "changed": "true"
   }
 ]

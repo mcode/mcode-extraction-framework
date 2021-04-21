@@ -16,31 +16,40 @@ class CSVCancerDiseaseStatusExtractor extends BaseCSVExtractor {
   joinAndReformatData(arrOfDiseaseStatusData, patientId) {
     logger.debug('Reformatting disease status data from CSV into template format');
     // Check the shape of the data
-    arrOfDiseaseStatusData.forEach((record) => {
-      if (!record.conditionId || !record.diseaseStatusCode || !record.dateOfObservation) {
+    return arrOfDiseaseStatusData.map((record) => {
+      const {
+        conditionid: conditionId,
+        diseasestatuscode: diseaseStatusCode,
+        diseasestatustext: diseaseStatusText,
+        dateofobservation: dateOfObservation,
+        observationstatus: observationStatus,
+        evidence,
+      } = record;
+
+      if (!conditionId || !diseaseStatusCode || !dateOfObservation) {
         throw new Error('DiseaseStatusData missing an expected property: conditionId, diseaseStatusCode, and dateOfObservation are required.');
       }
+
+      return {
+        status: observationStatus || 'final',
+        value: {
+          code: diseaseStatusCode,
+          system: 'http://snomed.info/sct',
+          display: diseaseStatusText || getDiseaseStatusDisplay(diseaseStatusCode, this.implementation),
+        },
+        subject: {
+          id: patientId,
+        },
+        condition: {
+          id: conditionId,
+        },
+        effectiveDateTime: formatDateTime(dateOfObservation),
+        evidence: !evidence ? null : evidence.split('|').map((evidenceCode) => ({
+          code: evidenceCode,
+          display: getDiseaseStatusEvidenceDisplay(evidenceCode),
+        })),
+      };
     });
-    const evidenceDelimiter = '|';
-    return arrOfDiseaseStatusData.map((record) => ({
-      status: record.observationStatus || 'final',
-      value: {
-        code: record.diseaseStatusCode,
-        system: 'http://snomed.info/sct',
-        display: record.diseaseStatusText ? record.diseaseStatusText : getDiseaseStatusDisplay(record.diseaseStatusCode, this.implementation),
-      },
-      subject: {
-        id: patientId,
-      },
-      condition: {
-        id: record.conditionId,
-      },
-      effectiveDateTime: formatDateTime(record.dateOfObservation),
-      evidence: !record.evidence ? null : record.evidence.split(evidenceDelimiter).map((evidenceCode) => ({
-        code: evidenceCode,
-        display: getDiseaseStatusEvidenceDisplay(evidenceCode),
-      })),
-    }));
   }
 
   async getDiseaseStatusData(mrn, fromDate, toDate) {

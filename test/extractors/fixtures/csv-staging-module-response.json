@@ -1,14 +1,14 @@
 [
   {
     "mrn": "mrn-1",
-    "conditionId": "cond-1",
-    "stageGroup": "3C",
+    "conditionid": "cond-1",
+    "stagegroup": "3C",
     "t": "cT3",
     "n": "cN3",
     "m": "cM0",
     "type": "Clinical",
-    "stagingSystem": "444256004",
-    "stagingCodeSystem": "http://snomed.info/sct",
-    "effectiveDate": "2020-01-01"
+    "stagingsystem": "444256004",
+    "stagingcodesystem": "http://snomed.info/sct",
+    "effectivedate": "2020-01-01"
   }
 ]

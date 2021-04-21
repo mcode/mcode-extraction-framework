@@ -41,7 +41,7 @@ describe('CSVProcedureExtractor', () => {
       expect(formatData(localData, patientId)).toEqual(expect.anything());
 
       // Test that removing a required value throws
-      delete localData[0].procedureId;
+      delete localData[0].procedureid;
       expect(() => formatData(localData, patientId)).toThrow(new Error(expectedErrorString));
     });
   });

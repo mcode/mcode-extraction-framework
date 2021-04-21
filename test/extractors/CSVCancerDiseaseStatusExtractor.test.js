@@ -40,7 +40,7 @@ describe('CSVCancerDiseaseStatusExtractor', () => {
       // Only including required properties is valid
       expect(csvCancerDiseaseStatusExtractor.joinAndReformatData(localData, patientId)).toEqual(expect.anything());
 
-      const requiredProperties = ['conditionId', 'diseaseStatusCode', 'dateOfObservation'];
+      const requiredProperties = ['conditionid', 'diseasestatuscode', 'dateofobservation'];
 
       // Removing each required property should throw an error
       requiredProperties.forEach((key) => {

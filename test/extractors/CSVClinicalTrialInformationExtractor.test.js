@@ -39,7 +39,7 @@ describe('CSVClinicalTrialInformationExtractor', () => {
         const clonedData = _.cloneDeep(firstClinicalTrialInfoResponse);
         expect(csvClinicalTrialInformationExtractor.joinClinicalTrialData(clonedData, patientId)).toEqual(expect.anything());
         if (key === 'patientId') return; // MRN is optional
-        if (key === 'trialResearchSystem') return; // trialResearchSystem is optional
+        if (key === 'trialresearchsystem') return; // trialResearchSystem is optional
         delete clonedData[key];
         expect(() => csvClinicalTrialInformationExtractor.joinClinicalTrialData(clonedData, patientId)).toThrow(new Error(expectedErrorString));
       });
@@ -47,18 +47,18 @@ describe('CSVClinicalTrialInformationExtractor', () => {
       // joinClinicalTrialData should return correct format
       expect(csvClinicalTrialInformationExtractor.joinClinicalTrialData(firstClinicalTrialInfoResponse, patientId)).toEqual({
         formattedDataSubject: {
-          enrollmentStatus: firstClinicalTrialInfoResponse.enrollmentStatus,
-          trialSubjectID: firstClinicalTrialInfoResponse.trialSubjectID,
-          trialResearchID: firstClinicalTrialInfoResponse.trialResearchID,
+          enrollmentStatus: firstClinicalTrialInfoResponse.enrollmentstatus,
+          trialSubjectID: firstClinicalTrialInfoResponse.trialsubjectid,
+          trialResearchID: firstClinicalTrialInfoResponse.trialresearchid,
           patientId,
-          trialResearchSystem: firstClinicalTrialInfoResponse.trialResearchSystem,
+          trialResearchSystem: firstClinicalTrialInfoResponse.trialresearchsystem,
         },
         formattedDataStudy: {
-          trialStatus: firstClinicalTrialInfoResponse.trialStatus,
-          trialResearchID: firstClinicalTrialInfoResponse.trialResearchID,
+          trialStatus: firstClinicalTrialInfoResponse.trialstatus,
+          trialResearchID: firstClinicalTrialInfoResponse.trialresearchid,
           clinicalSiteID: MOCK_CLINICAL_SITE_ID,
           clinicalSiteSystem: MOCK_CLINICAL_SITE_SYSTEM,
-          trialResearchSystem: firstClinicalTrialInfoResponse.trialResearchSystem,
+          trialResearchSystem: firstClinicalTrialInfoResponse.trialresearchsystem,
         },
       });
     });

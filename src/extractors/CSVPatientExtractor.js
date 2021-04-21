@@ -13,7 +13,17 @@ function joinAndReformatData(patientData) {
   logger.debug('Reformatting patient data from CSV into template format');
   // No join needed, just a reformatting
   const {
-    mrn, familyName, givenName, gender, birthsex, dateOfBirth, race, ethnicity, language, addressLine, city, state, zip,
+    mrn,
+    familyname: familyName,
+    givenname: givenName,
+    gender,
+    birthsex,
+    dateofbirth: dateOfBirth,
+    race,
+    ethnicity,
+    language,
+    addressline: addressLine,
+    city, state, zip,
   } = patientData;
 
   if (!mrn) {

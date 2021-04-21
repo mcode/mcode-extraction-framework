@@ -21,7 +21,10 @@ function formatData(tpcData, patientId) {
 
   // If there are multiple entries, combine them into one object with multiple reviews
   const combinedData = _.reduce(tpcData, (res, currentDataEntry) => {
-    const { dateOfCarePlan, changed, reasonCode, reasonDisplayText } = currentDataEntry;
+    const { dateofcareplan: dateOfCarePlan,
+      changed,
+      reasoncode: reasonCode,
+      reasondisplaytext: reasonDisplayText } = currentDataEntry;
 
     if (!dateOfCarePlan || !changed) {
       throw new Error('Treatment Plan Change Data missing an expected property: dateOfCarePlan, changed are required');

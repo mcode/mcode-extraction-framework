@@ -36,15 +36,15 @@ describe('CSVStagingExtractor', () => {
       localData.m = '';
       localData.n = '';
       localData.type = '';
-      localData.stagingSystem = '';
-      localData.stagingCodeSystem = '';
-      localData.stageGroup = '';
+      localData.stagingsystem = '';
+      localData.stagingcodesystem = '';
+      localData.stagegroup = '';
 
       // Only including required properties is valid
       expect(formatTNMCategoryData(localData)).toEqual(expect.anything());
 
       // Removing each required property should throw an error
-      const requiredKeys = ['conditionId', 'effectiveDate'];
+      const requiredKeys = ['conditionid', 'effectivedate'];
       requiredKeys.forEach((key) => {
         const clonedData = _.cloneDeep(localData);
         clonedData[key] = '';

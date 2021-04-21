@@ -1,13 +1,13 @@
 [
   {
     "mrn": "119147111821125",
-    "familyName": "Marshall",
-    "givenName": "Archy",
+    "familyname": "Marshall",
+    "givenname": "Archy",
     "gender": "male",
     "birthsex": "male",
-    "dateOfBirth":"1994-08-24",
+    "dateofbirth":"1994-08-24",
     "language": "en",
-    "addressLine": "57 Adams St",
+    "addressline": "57 Adams St",
     "city": "New Rochelle",
     "state": "NY",
     "zip": "10801",

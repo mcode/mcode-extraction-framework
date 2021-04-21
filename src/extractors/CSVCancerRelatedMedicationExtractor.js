@@ -11,7 +11,17 @@ function formatData(medicationData, patientId) {
 
   return medicationData.map((medication) => {
     const {
-      medicationId, code, codeSystem, displayText, startDate, endDate, treatmentReasonCode, treatmentReasonCodeSystem, treatmentReasonDisplayText, treatmentIntent, status,
+      medicationid: medicationId,
+      code,
+      codesystem: codeSystem,
+      displaytext: displayText,
+      startdate: startDate,
+      enddate: endDate,
+      treatmentreasoncode: treatmentReasonCode,
+      treatmentreasoncodesystem: treatmentReasonCodeSystem,
+      treatmentreasondisplaytext: treatmentReasonDisplayText,
+      treatmentintent: treatmentIntent,
+      status,
     } = medication;
 
     if (!(code && codeSystem && status)) {
