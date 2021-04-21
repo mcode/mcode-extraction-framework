@@ -1,24 +1,26 @@
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
-const logger = require('../helpers/logger');
+const { getPatientFromContext } = require('../helpers/contextUtils');
+const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
 const { CSVConditionSchema } = require('../helpers/schemas/csv');
+const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
-function formatData(conditionData) {
+function formatData(conditionData, patientId) {
   logger.debug('Reformatting condition data from CSV into template format');
   return conditionData.map((data) => {
     const {
-      mrn, conditionId, codeSystem, code, displayName, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
+      conditionId, codeSystem, code, displayName, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
     } = data;
 
-    if (!(conditionId && mrn && codeSystem && code && category)) {
-      throw new Error('The condition is missing an expected attribute. Condition id, mrn, code system, code, and category are all required.');
+    if (!(conditionId && codeSystem && code && category)) {
+      throw new Error('The condition is missing an expected attribute. Condition id, code system, code, and category are all required.');
     }
     return {
       id: conditionId,
       subject: {
-        id: mrn,
+        id: patientId,
       },
       code: {
         code,
@@ -46,10 +48,18 @@ class CSVConditionExtractor extends BaseCSVExtractor {
     return this.csvModule.get('mrn', mrn);
   }
 
-  async get({ mrn }) {
+  async get({ mrn, context }) {
     const conditionData = await this.getConditionData(mrn);
-    const formattedData = formatData(conditionData);
+    if (conditionData.length === 0) {
+      logger.warn('No condition data found for patient');
+      return getEmptyBundle();
+    }
+    const patientId = getPatientFromContext(context).id;
 
+    // Reformat data
+    const formattedData = formatData(conditionData, patientId);
+
+    // Fill templates
     return generateMcodeResources('Condition', formattedData);
   }
 }

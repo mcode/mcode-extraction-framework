@@ -13,17 +13,17 @@
   },
   "extractors": [
     {
-      "label": "condition",
-      "type": "CSVConditionExtractor",
-      "constructorArgs": {
-        "filePath": "./data/condition-information.csv"
-      }
-    },
-    {
       "label": "patient",
       "type": "CSVPatientExtractor",
       "constructorArgs": {
         "filePath": "./data/patient-information.csv"
+      }
+    },
+    {
+      "label": "condition",
+      "type": "CSVConditionExtractor",
+      "constructorArgs": {
+        "filePath": "./data/condition-information.csv"
       }
     },
     {

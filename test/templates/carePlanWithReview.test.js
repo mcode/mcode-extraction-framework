@@ -8,7 +8,7 @@ describe('JavaScript render CarePlan template', () => {
   test('minimal required data passed into template should generate FHIR resource', () => {
     const CARE_PLAN_VALID_DATA = {
       id: 'test-id',
-      mrn: 'abc-def',
+      subjectId: 'abc-def',
       name: null,
       reviews: [
         {
@@ -28,7 +28,7 @@ describe('JavaScript render CarePlan template', () => {
   test('maximal data passed into template should generate FHIR resource', () => {
     const MAX_CARE_PLAN_DATA = {
       id: 'test-id',
-      mrn: 'abc-def',
+      subjectId: 'abc-def',
       name: 'Sample Text',
       reviews: [
         {
@@ -54,7 +54,7 @@ describe('JavaScript render CarePlan template', () => {
   test('missing non-required data at care plan object level should not throw an error', () => {
     const NECESSARY_DATA = {
       id: 'test-id',
-      mrn: 'abc-def',
+      subjectId: 'abc-def',
       reviews: [],
     };
 
@@ -68,7 +68,7 @@ describe('JavaScript render CarePlan template', () => {
   test('missing non-required data at review object level should not throw an error', () => {
     const NECESSARY_DATA = {
       id: 'test-id',
-      mrn: 'abc-def',
+      subjectId: 'abc-def',
       reviews: [
         {
           effectiveDate: '2020-01-23',
@@ -100,7 +100,7 @@ describe('JavaScript render CarePlan template', () => {
     const INVALID_REVIEW_DATA = {
       // Omitting 'hasChanged' field on the review which is a required property
       id: 'test-id',
-      mrn: 'abc-def',
+      subjectId: 'abc-def',
       reviews: [{
         effectiveDate: '2020-01-23',
         hasChanged: null,

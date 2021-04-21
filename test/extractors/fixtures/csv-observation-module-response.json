@@ -1,6 +1,6 @@
 [
   {
-    "mrn": "example-patient",
+    "mrn": "mrn-1",
     "observationId": "observation-id",
     "status": "final",
     "code": "1695-6",

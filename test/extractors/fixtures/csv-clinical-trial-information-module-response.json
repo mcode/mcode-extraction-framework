@@ -1,10 +1,10 @@
 [
   {
-    "mrn": "EXAMPLE-MRN",
+    "patientId": "mrn-1",
     "trialSubjectID": "example-subjectId",
     "enrollmentStatus": "example-enrollment-status",
     "trialResearchID": "example-researchId",
     "trialStatus": "example-trialStatus",
-    "trialResearchSystem":"example-system"
+    "trialResearchSystem": "example-system"
   }
 ]

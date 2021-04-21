@@ -47,6 +47,13 @@ describe('mcodeExtraction', () => {
       const testConfig = {
         extractors: [
           {
+            label: 'patients',
+            type: 'CSVPatientExtractor',
+            constructorArgs: {
+              filePath: path.join(__dirname, './fixtures/example-patient.csv'),
+            },
+          },
+          {
             label: 'condition',
             type: 'CSVConditionExtractor',
             constructorArgs: {
