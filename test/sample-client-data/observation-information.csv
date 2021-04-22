@@ -1,4 +1,4 @@
 mrn,observationId,status,code,codeSystem,displayName,value,valueCodeSystem,effectiveDate,bodySite,laterality
-123,observation-id,final,1695-6,http://loinc.org,,10828004,http://snomed.info/sct,2020-01-02,251007,66459002
-456,observation-id,final,8302-2,http://loinc.org,Body height,66.89 [in_i],,2020-01-02,251007,66459002
-789,observation-id,final,29463-7,http://loinc.org,Body Weight,185 [lb_av],,2020-01-02,251007,66459002
+123,observation-id-1,final,1695-6,http://loinc.org,,10828004,http://snomed.info/sct,2020-01-02,251007,66459002
+456,observation-id-2,final,8302-2,http://loinc.org,Body height,66.89 [in_i],,2020-01-02,251007,66459002
+789,observation-id-3,final,29463-7,http://loinc.org,Body Weight,185 [lb_av],,2020-01-02,251007,66459002
