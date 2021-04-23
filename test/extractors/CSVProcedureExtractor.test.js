@@ -37,7 +37,7 @@ describe('CSVProcedureExtractor', () => {
       expect(formatData(localData, patientId)).toEqual(expect.anything());
 
       // Test that removing an optional value works
-      delete localData[0].bodySite;
+      delete localData[0].bodysite;
       expect(formatData(localData, patientId)).toEqual(expect.anything());
 
       // Test that removing a required value throws

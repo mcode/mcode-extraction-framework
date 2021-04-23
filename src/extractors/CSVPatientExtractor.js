@@ -23,7 +23,9 @@ function joinAndReformatData(patientData) {
     ethnicity,
     language,
     addressline: addressLine,
-    city, state, zip,
+    city,
+    state,
+    zip,
   } = patientData;
 
   if (!mrn) {

@@ -65,6 +65,14 @@ const SIMPLE_DATA_MISSING_OPTIONAL_COLUMN = [
   },
 ];
 
+const SIMPLE_DATA_DIFFERENT_CASING = [
+  {
+    Header1: '1',
+    hEaDeR2: '2',
+    header3: '3',
+  },
+];
+
 const schema = {
   headers: [
     { name: 'header1', required: true },
@@ -92,5 +100,9 @@ describe('csvValidator', () => {
 
   test('data missing an optional column should still validate', () => {
     expect(validateCSV('', schema, SIMPLE_DATA_MISSING_OPTIONAL_COLUMN)).toBe(true);
+  });
+
+  test('data with different casing in the column header should still validate', () => {
+    expect(validateCSV('', schema, SIMPLE_DATA_DIFFERENT_CASING)).toBe(true);
   });
 });

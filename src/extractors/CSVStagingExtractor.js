@@ -10,7 +10,10 @@ function formatTNMCategoryData(stagingData, patientId) {
   const formattedData = [];
   const {
     conditionid: conditionId,
-    t, n, m, type,
+    t,
+    n,
+    m,
+    type,
     stagingsystem: stagingSystem,
     stagingcodesystem: stagingCodeSystem,
     effectivedate: effectiveDate,
