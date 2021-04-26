@@ -167,10 +167,10 @@ npm start -- --entries-filter --from-date <YYYY-MM-DD> --to-date <YYYY-MM-DD> --
 
 #### Byte Order Markers in CSV Files
 
-The extraction client has built-in handling of byte order markers for CSV files in UTF-8 and UTF-16 encodings. When using CSV files in other encodings, if you experience unexpected errors be sure to check for a byte order marker at the beginning of the file. One way to check is to run the following command from the command line:
+The extraction client has built-in handling of byte order markers for CSV files in UTF-8 and UTF-16LE encodings. When using CSV files in other encodings, if you experience unexpected errors be sure to check for a byte order marker at the beginning of the file. One way to check is to run the following command from the command line:
 
 ```bash
-cat -v file.csv
+cat -v <file.csv>
 ```
 
 If there is an unexpected symbol at the beginning of the file, then there is a byte order marker that needs to be removed.
