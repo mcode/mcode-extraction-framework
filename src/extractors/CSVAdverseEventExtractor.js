@@ -10,8 +10,23 @@ function formatData(adverseEventData, patientId) {
   logger.debug('Reformatting adverse event data from CSV into template format');
   return adverseEventData.map((data) => {
     const {
-      adverseEventId, adverseEventCode, adverseEventCodeSystem, adverseEventDisplayText, suspectedCauseId, suspectedCauseType, seriousness, seriousnessCodeSystem, seriousnessDisplayText,
-      category, categoryCodeSystem, categoryDisplayText, severity, actuality, studyId, effectiveDate, recordedDate,
+      adverseeventid: adverseEventId,
+      adverseeventcode: adverseEventCode,
+      adverseeventcodesystem: adverseEventCodeSystem,
+      adverseeventdisplaytext: adverseEventDisplayText,
+      suspectedcauseid: suspectedCauseId,
+      suspectedcausetype: suspectedCauseType,
+      seriousness,
+      seriousnesscodesystem: seriousnessCodeSystem,
+      seriousnessdisplaytext: seriousnessDisplayText,
+      category,
+      categorycodesystem: categoryCodeSystem,
+      categorydisplaytext: categoryDisplayText,
+      severity,
+      actuality,
+      studyid: studyId,
+      effectivedate: effectiveDate,
+      recordeddate: recordedDate,
     } = data;
 
     if (!(adverseEventCode && effectiveDate)) {

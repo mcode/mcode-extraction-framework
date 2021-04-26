@@ -11,7 +11,17 @@ function formatData(conditionData, patientId) {
   logger.debug('Reformatting condition data from CSV into template format');
   return conditionData.map((data) => {
     const {
-      conditionId, codeSystem, code, displayName, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
+      conditionid: conditionId,
+      codesystem: codeSystem,
+      code,
+      displayname: displayName,
+      category,
+      dateofdiagnosis: dateOfDiagnosis,
+      clinicalstatus: clinicalStatus,
+      verificationstatus: verificationStatus,
+      bodysite: bodySite,
+      laterality,
+      histology,
     } = data;
 
     if (!(conditionId && codeSystem && code && category)) {

@@ -41,3 +41,8 @@ test('Should return an empty array when key-value pair does not exist', async ()
   const data = await csvModule.get('mrn', INVALID_MRN);
   expect(data).toEqual([]);
 });
+
+test('Should return proper value regardless of key casing', async () => {
+  const data = await csvModule.get('mRN', 'example-mrn-1');
+  expect(data).toEqual(exampleResponse);
+});

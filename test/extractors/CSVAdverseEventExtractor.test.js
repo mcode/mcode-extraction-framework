@@ -51,17 +51,17 @@ describe('CSVAdverseEventExtractor', () => {
       expect(() => formatData(localData, patientId)).toThrow(new Error(expectedCategoryErrorString));
 
       // Test that adding another category but adding a corresponding categoryCodeSystem and categoryDisplayText works fine
-      localData[0].categoryCodeSystem = 'http://terminology.hl7.org/CodeSystem/adverse-event-category|http://snomed.info/sct';
-      localData[0].categoryDisplayText = 'Product Use Error|Product Problem';
+      localData[0].categorycodesystem = 'http://terminology.hl7.org/CodeSystem/adverse-event-category|http://snomed.info/sct';
+      localData[0].categorydisplaytext = 'Product Use Error|Product Problem';
       expect(formatData(localData, patientId)).toEqual(expect.anything());
 
       // Test that adding another category but including syntax for default categoryCodeSystem and categoryDisplayText values works fine
-      localData[0].categoryCodeSystem = 'http://terminology.hl7.org/CodeSystem/adverse-event-category|';
-      localData[0].categoryDisplayText = 'Product Use Error|';
+      localData[0].categorycodesystem = 'http://terminology.hl7.org/CodeSystem/adverse-event-category|';
+      localData[0].categorydisplaytext = 'Product Use Error|';
       expect(formatData(localData, patientId)).toEqual(expect.anything());
 
       // Test that deleting a mandatory value throws an error
-      delete localData[0].adverseEventCode;
+      delete localData[0].adverseeventcode;
       expect(() => formatData(localData, patientId)).toThrow(new Error(expectedErrorString));
     });
   });

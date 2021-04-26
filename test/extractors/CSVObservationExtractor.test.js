@@ -38,7 +38,7 @@ describe('CSVObservationExtractor', () => {
       expect(formatData(exampleCSVObservationModuleResponse, patientId)).toEqual(expect.anything());
 
       // Test that deleting an optional value works fine
-      delete localData[0].bodySite;
+      delete localData[0].bodysite;
       expect(formatData(exampleCSVObservationModuleResponse, patientId)).toEqual(expect.anything());
 
       // Test that deleting a mandatory value throws an error

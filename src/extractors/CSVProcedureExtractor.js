@@ -10,7 +10,19 @@ function formatData(procedureData, patientId) {
   logger.debug('Reformatting procedure data from CSV into template format');
   return procedureData.map((data) => {
     const {
-      procedureId, conditionId, status, code, codeSystem, displayName, reasonCode, reasonCodeSystem, reasonDisplayName, bodySite, laterality, effectiveDate, treatmentIntent,
+      procedureid: procedureId,
+      conditionid: conditionId,
+      status,
+      code,
+      codesystem: codeSystem,
+      displayname: displayName,
+      reasoncode: reasonCode,
+      reasoncodesystem: reasonCodeSystem,
+      reasondisplayname: reasonDisplayName,
+      bodysite: bodySite,
+      laterality,
+      effectivedate: effectiveDate,
+      treatmentintent: treatmentIntent,
     } = data;
 
     if (!(procedureId && status && code && codeSystem && effectiveDate)) {

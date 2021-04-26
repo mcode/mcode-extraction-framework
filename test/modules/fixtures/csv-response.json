@@ -1,10 +1,10 @@
 [
   {
     "mrn": "example-mrn-1",
-    "trialSubjectID": "subjectId-1",
-    "enrollmentStatus": "status-1",
-    "trialResearchID": "researchId-1",
-    "trialStatus": "trialStatus-1",
-    "dateRecorded": "2020-01-10"
+    "trialsubjectid": "subjectId-1",
+    "enrollmentstatus": "status-1",
+    "trialresearchid": "researchId-1",
+    "trialstatus": "trialStatus-1",
+    "daterecorded": "2020-01-10"
   }
 ]

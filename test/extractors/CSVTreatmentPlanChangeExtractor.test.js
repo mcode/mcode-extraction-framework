@@ -27,14 +27,14 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
   describe('formatData', () => {
     const exampleData = [
       {
-        dateOfCarePlan: '2020-04-15',
+        dateofcareplan: '2020-04-15',
         changed: 'false',
         mrn: 'id',
       },
       {
-        dateOfCarePlan: '2020-04-30',
+        dateofcareplan: '2020-04-30',
         changed: 'true',
-        reasonCode: 'example code',
+        reasoncode: 'example code',
         mrn: 'id',
       },
     ];
@@ -47,7 +47,7 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
       expect(() => formatData(exampleData, patientId)).not.toThrowError();
 
       // Test required properties throw error
-      const requiredKeys = ['dateOfCarePlan', 'changed'];
+      const requiredKeys = ['dateofcareplan', 'changed'];
       requiredKeys.forEach((key) => {
         const clonedData = _.cloneDeep(exampleData);
 
@@ -64,7 +64,7 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
       expect(() => formatData(exampleData, patientId)).toThrow(new Error(expectedErrorString));
 
       // No error should be throw when reasonCode is provided
-      exampleData[0].reasonCode = 'example code';
+      exampleData[0].reasoncode = 'example code';
       expect(() => formatData(exampleData, patientId)).not.toThrowError();
     });
 

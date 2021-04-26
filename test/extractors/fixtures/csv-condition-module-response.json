@@ -1,15 +1,15 @@
 [
   {
     "mrn": "mrn-1",
-    "conditionId": "conditionId-1",
-    "codeSystem": "http://hl7.org/fhir/sid/icd-10-cm",
+    "conditionid": "conditionId-1",
+    "codesystem": "http://hl7.org/fhir/sid/icd-10-cm",
     "code": "C02.0",
-    "displayName": "Some Cancer Condition",
+    "displayname": "Some Cancer Condition",
     "category": "example-category",
-    "dateOfDiagnosis": "YYYY-MM-DD",
-    "clinicalStatus": "example-status",
-    "verificationStatus": "example-status",
-    "bodySite": "example-site",
+    "dateofdiagnosis": "YYYY-MM-DD",
+    "clinicalstatus": "example-status",
+    "verificationstatus": "example-status",
+    "bodysite": "example-site",
     "laterality": "example-laterality",
     "histology": "example-histology"
   }
