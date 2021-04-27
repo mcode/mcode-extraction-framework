@@ -19,6 +19,8 @@ A Node.js framework for extracting mCODE FHIR resources. All resources are profi
     - [Masking Patient Data](#masking-patient-data)
     - [Extraction Date Range](#extraction-date-range)
       - [CLI From-Date and To-Date (NOT recommended use)](#cli-from-date-and-to-date-not-recommended-use)
+    - [Troubleshooting](#troubleshooting)
+      - [Byte Order Markers in CSV Files](#byte-order-markers-in-csv-files)
   - [Terminology and Architecture](#terminology-and-architecture)
     - [Glossary](#glossary)
     - [High Level Diagram](#high-level-diagram)
@@ -160,6 +162,18 @@ If a `from-date` is provided as an option when running the mCODE Extraction Clie
 ```bash
 npm start -- --entries-filter --from-date <YYYY-MM-DD> --to-date <YYYY-MM-DD> --config-filepath <path>
 ```
+
+### Troubleshooting
+
+#### Byte Order Markers in CSV Files
+
+The extraction client has built-in handling of byte order markers for CSV files in UTF-8 and UTF-16LE encodings. When using CSV files in other encodings, if you experience unexpected errors be sure to check for a byte order marker at the beginning of the file. One way to check is to run the following command from the command line:
+
+```bash
+cat -v <file.csv>
+```
+
+If there is an unexpected symbol at the beginning of the file, then there may be a byte order marker that needs to be removed.
 
 ## Terminology and Architecture
 
