@@ -173,7 +173,7 @@ The extraction client has built-in handling of byte order markers for CSV files 
 cat -v <file.csv>
 ```
 
-If there is an unexpected symbol at the beginning of the file, then there is a byte order marker that needs to be removed.
+If there is an unexpected symbol at the beginning of the file, then there may be a byte order marker that needs to be removed.
 
 ## Terminology and Architecture
 
