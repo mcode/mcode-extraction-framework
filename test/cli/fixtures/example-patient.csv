@@ -1,0 +1,4 @@
+mrn,familyName,givenName,gender,birthsex,dateOfBirth,race,ethnicity,language,addressLine,city,state,zip
+123,Doe,Jane,female,F,1980-01-01,2028-9,2186-5,en,2 West Side Rd,Malden,MA,02148
+456,Doe,John,male,M,1970-01-01,2106-3,2186-5,en-US,3 East Side Rd,Brooklyn,NY,11201
+789,Doe,Jimmy,other,UNK,1980-03-01,ASKU,2186-5,ar,,,,90001

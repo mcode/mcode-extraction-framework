@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:d1d13594c371179797ce1a58884f714624d5b1782c4775f0fa303d78e943d64c",
+      "fullUrl": "urn:uuid:4b9e9b5a8db529782cd9e89b68c6a3fac408d2195f025691a3f2850cab18057f",
       "resource": {
         "resourceType": "Observation",
-        "id": "d1d13594c371179797ce1a58884f714624d5b1782c4775f0fa303d78e943d64c",
+        "id": "4b9e9b5a8db529782cd9e89b68c6a3fac408d2195f025691a3f2850cab18057f",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
@@ -40,7 +40,7 @@
           }
         ],
         "subject": {
-          "reference": "urn:uuid:pat-mrn-1",
+          "reference": "urn:uuid:mrn-1",
           "type": "Patient"
         },
         "effectiveDateTime": "2019-12-02",
@@ -53,13 +53,13 @@
             }
           ]
         },
-        "extension" : [
+        "extension": [
           {
-            "url" : "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
-            "valueCodeableConcept" : {
-              "coding" : [
+            "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
+            "valueCodeableConcept": {
+              "coding": [
                 {
-                  "system" : "http://snomed.info/sct",
+                  "system": "http://snomed.info/sct",
                   "display": "imaging",
                   "code": "363679005"
                 }
@@ -67,11 +67,11 @@
             }
           },
           {
-            "url" : "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
-            "valueCodeableConcept" : {
-              "coding" : [
+            "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-evidence-type",
+            "valueCodeableConcept": {
+              "coding": [
                 {
-                  "system" : "http://snomed.info/sct",
+                  "system": "http://snomed.info/sct",
                   "display": "pathology",
                   "code": "252416005"
                 }

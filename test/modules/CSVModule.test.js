@@ -4,9 +4,15 @@ const exampleResponse = require('./fixtures/csv-response.json');
 
 const INVALID_MRN = 'INVALID MRN';
 const csvModule = new CSVModule(path.join(__dirname, './fixtures/example-csv.csv'));
+const csvModuleWithBOMs = new CSVModule(path.join(__dirname, './fixtures/example-csv-bom.csv'));
 
 test('Reads data from CSV', async () => {
   const data = await csvModule.get('mrn', 'example-mrn-1');
+  expect(data).toEqual(exampleResponse);
+});
+
+test('Reads data from CSV with a Byte Order Mark', async () => {
+  const data = await csvModuleWithBOMs.get('mrn', 'example-mrn-1');
   expect(data).toEqual(exampleResponse);
 });
 
@@ -31,10 +37,12 @@ test('Returns data with recordedDate before specified to date', async () => {
   expect(data).toHaveLength(1);
 });
 
-test('Invalid MRN', async () => {
-  try {
-    await csvModule.get('mrn', INVALID_MRN);
-  } catch (e) {
-    expect(e).toEqual(ReferenceError('CSV Record with provided key \'mrn\' and value was not found'));
-  }
+test('Should return an empty array when key-value pair does not exist', async () => {
+  const data = await csvModule.get('mrn', INVALID_MRN);
+  expect(data).toEqual([]);
+});
+
+test('Should return proper value regardless of key casing', async () => {
+  const data = await csvModule.get('mRN', 'example-mrn-1');
+  expect(data).toEqual(exampleResponse);
 });

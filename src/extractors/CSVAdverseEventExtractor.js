@@ -1,19 +1,36 @@
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
-const logger = require('../helpers/logger');
+const { getEmptyBundle } = require('../helpers/fhirUtils');
+const { getPatientFromContext } = require('../helpers/contextUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
+const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
-function formatData(adverseEventData) {
+function formatData(adverseEventData, patientId) {
   logger.debug('Reformatting adverse event data from CSV into template format');
   return adverseEventData.map((data) => {
     const {
-      mrn, adverseEventId, adverseEventCode, adverseEventCodeSystem, adverseEventDisplayText, suspectedCauseId, suspectedCauseType, seriousness, seriousnessCodeSystem, seriousnessDisplayText,
-      category, categoryCodeSystem, categoryDisplayText, severity, actuality, studyId, effectiveDate, recordedDate,
+      adverseeventid: adverseEventId,
+      adverseeventcode: adverseEventCode,
+      adverseeventcodesystem: adverseEventCodeSystem,
+      adverseeventdisplaytext: adverseEventDisplayText,
+      suspectedcauseid: suspectedCauseId,
+      suspectedcausetype: suspectedCauseType,
+      seriousness,
+      seriousnesscodesystem: seriousnessCodeSystem,
+      seriousnessdisplaytext: seriousnessDisplayText,
+      category,
+      categorycodesystem: categoryCodeSystem,
+      categorydisplaytext: categoryDisplayText,
+      severity,
+      actuality,
+      studyid: studyId,
+      effectivedate: effectiveDate,
+      recordeddate: recordedDate,
     } = data;
 
-    if (!(mrn && adverseEventCode && effectiveDate)) {
-      throw new Error('The adverse event is missing an expected attribute. Adverse event code, mrn, and effective date are all required.');
+    if (!(adverseEventCode && effectiveDate)) {
+      throw new Error('The adverse event is missing an expected attribute. Adverse event code and effective date are all required.');
     }
 
     const categoryCodes = category.split('|');
@@ -27,7 +44,7 @@ function formatData(adverseEventData) {
 
     return {
       ...(adverseEventId && { id: adverseEventId }),
-      subjectId: mrn,
+      subjectId: patientId,
       code: adverseEventCode,
       system: !adverseEventCodeSystem ? 'http://snomed.info/sct' : adverseEventCodeSystem,
       display: adverseEventDisplayText,
@@ -61,10 +78,18 @@ class CSVAdverseEventExtractor extends BaseCSVExtractor {
     return this.csvModule.get('mrn', mrn);
   }
 
-  async get({ mrn }) {
+  async get({ mrn, context }) {
     const adverseEventData = await this.getAdverseEventData(mrn);
-    const formattedData = formatData(adverseEventData);
+    if (adverseEventData.length === 0) {
+      logger.warn('No adverse event data found for patient');
+      return getEmptyBundle();
+    }
+    const patientId = getPatientFromContext(context).id;
 
+    // Reformat data
+    const formattedData = formatData(adverseEventData, patientId);
+
+    // Fill templates
     return generateMcodeResources('AdverseEvent', formattedData);
   }
 }

@@ -43,9 +43,16 @@ describe('mcodeExtraction', () => {
       expect(extractedData).toHaveLength(0);
     });
 
-    it('should result in a successful extraction when non fatal errors are encountered in the client\'s get method', async () => {
+    it('should succeed in extraction when CSV files do not have data for all patients', async () => {
       const testConfig = {
         extractors: [
+          {
+            label: 'patients',
+            type: 'CSVPatientExtractor',
+            constructorArgs: {
+              filePath: path.join(__dirname, './fixtures/example-patient.csv'),
+            },
+          },
           {
             label: 'condition',
             type: 'CSVConditionExtractor',
@@ -69,10 +76,34 @@ describe('mcodeExtraction', () => {
 
       const { extractedData, successfulExtraction, totalExtractionErrors } = await extractDataForPatients(testPatientIds, testClient, testFromDate, testToDate);
       expect(successfulExtraction).toEqual(true);
-
+      // Should have data for 3 patients and 0 errors
       expect(extractedData).toHaveLength(3);
       const flatErrors = flattenErrorValues(totalExtractionErrors);
-      expect(flatErrors).toHaveLength(1);
+      expect(flatErrors).toHaveLength(0);
+    });
+    it('should result in a successful extraction when non fatal errors are encountered in the client\'s get method', async () => {
+      const testConfig = {
+        extractors: [
+          // Should fail when this extractor is run without patient data in context
+          {
+            label: 'CTI',
+            type: 'CSVClinicalTrialInformationExtractor',
+            constructorArgs: {
+              filePath: path.join(__dirname, './fixtures/example-clinical-trial-info.csv'),
+            },
+          },
+        ],
+      };
+
+      const testClient = new MCODEClient(testConfig);
+      await testClient.init();
+
+      const { extractedData, successfulExtraction, totalExtractionErrors } = await extractDataForPatients(testPatientIds, testClient, testFromDate, testToDate);
+      expect(successfulExtraction).toEqual(true);
+      // Should have three (empty) bundles for patients and an error for each patient when extracting CTI
+      expect(extractedData).toHaveLength(3);
+      const flatErrors = flattenErrorValues(totalExtractionErrors);
+      expect(flatErrors).toHaveLength(3);
     });
   });
 });

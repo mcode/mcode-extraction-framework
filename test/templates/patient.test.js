@@ -9,9 +9,9 @@ describe('JavaScript Render Patient', () => {
     const PATIENT_VALID_DATA = {
       id: 'SomeId',
       mrn: '1234',
-      familyName: 'Patient',
-      givenName: 'Test',
-      gender: 'female',
+      familyName: null,
+      givenName: null,
+      gender: null,
       birthsex: null,
       dateOfBirth: null,
       language: null,

@@ -3,11 +3,12 @@ const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { formatDate } = require('../helpers/dateUtils');
 const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
+const { getPatientFromContext } = require('../helpers/contextUtils');
 const logger = require('../helpers/logger');
 const { CSVTreatmentPlanChangeSchema } = require('../helpers/schemas/csv');
 
 // Formats data to be passed into template-friendly format
-function formatData(tpcData) {
+function formatData(tpcData, patientId) {
   logger.debug('Reformatting treatment plan change data from CSV into template format');
 
   // Nothing to format in empty array
@@ -15,17 +16,18 @@ function formatData(tpcData) {
     return [];
   }
 
-  // Newly combined data has mrn and list of reviews to map to an extension
-  const combinedFormat = { mrn: tpcData[0].mrn, reviews: [] };
+  // Newly combined data has subjectId and list of reviews to map to an extension
+  const combinedFormat = { subjectId: patientId, reviews: [] };
 
   // If there are multiple entries, combine them into one object with multiple reviews
   const combinedData = _.reduce(tpcData, (res, currentDataEntry) => {
-    const {
-      mrn, dateOfCarePlan, changed, reasonCode, reasonDisplayText,
-    } = currentDataEntry;
+    const { dateofcareplan: dateOfCarePlan,
+      changed,
+      reasoncode: reasonCode,
+      reasondisplaytext: reasonDisplayText } = currentDataEntry;
 
-    if (!mrn || !dateOfCarePlan || !changed) {
-      throw new Error('Treatment Plan Change Data missing an expected property: mrn, dateOfCarePlan, changed are required');
+    if (!dateOfCarePlan || !changed) {
+      throw new Error('Treatment Plan Change Data missing an expected property: dateOfCarePlan, changed are required');
     }
 
     // reasonCode is required if changed flag is true
@@ -77,15 +79,18 @@ class CSVTreatmentPlanChangeExtractor extends BaseCSVExtractor {
     return this.csvModule.get('mrn', mrn, fromDate, toDate);
   }
 
-  async get({ mrn, fromDate, toDate }) {
+  async get({ mrn, context, fromDate, toDate }) {
     const tpcData = await this.getTPCData(mrn, fromDate, toDate);
     if (tpcData.length === 0) {
       logger.warn('No treatment plan change data found for patient');
       return getEmptyBundle();
     }
+    const patientId = getPatientFromContext(context).id;
 
-    const formattedData = formatData(tpcData);
+    // Reformat data
+    const formattedData = formatData(tpcData, patientId);
 
+    // Fill templates
     return generateMcodeResources('CarePlanWithReview', formattedData);
   }
 }

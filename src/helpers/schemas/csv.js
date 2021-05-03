@@ -31,9 +31,9 @@ const CSVConditionSchema = {
 const CSVPatientSchema = {
   headers: [
     { name: 'mrn', required: true },
-    { name: 'familyName', required: true },
-    { name: 'givenName', required: true },
-    { name: 'gender', required: true },
+    { name: 'familyName' },
+    { name: 'givenName' },
+    { name: 'gender' },
     { name: 'birthsex' },
     { name: 'dateOfBirth' },
     { name: 'race' },
@@ -61,6 +61,7 @@ const CSVTreatmentPlanChangeSchema = {
   headers: [
     { name: 'mrn', required: true },
     { name: 'reasonCode' },
+    { name: 'reasonDisplayText' },
     { name: 'changed', required: true },
     { name: 'dateOfCarePlan', required: true },
     { name: 'dateRecorded' },

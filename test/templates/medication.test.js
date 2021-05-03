@@ -5,7 +5,7 @@ const { cancerRelatedMedicationTemplate } = require('../../src/templates/CancerR
 const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 const MEDICATION_VALID_DATA = {
-  mrn: 'mrn-1',
+  subjectId: 'mrn-1',
   id: 'medicationId-1',
   code: 'example-code',
   codeSystem: 'example-code-system',
@@ -21,7 +21,7 @@ const MEDICATION_VALID_DATA = {
 
 const MEDICATION_MINIMAL_DATA = {
   // Only include 'mrn', 'code', 'codesystem', and 'status' fields which are required
-  mrn: 'mrn-1',
+  subjectId: 'mrn-1',
   code: 'example-code',
   codeSystem: 'example-code-system',
   status: 'example-status',
@@ -37,7 +37,7 @@ const MEDICATION_MINIMAL_DATA = {
 
 const MEDICATION_INVALID_DATA = {
   // Omitting 'mrn', 'code', 'codesystem', and 'status' fields which are required
-  mrn: null,
+  subjectId: null,
   code: null,
   codeSystem: null,
   status: null,
@@ -90,7 +90,7 @@ describe('test Medication template', () => {
     };
 
     const NECESSARY_DATA = {
-      mrn: 'mrn-1',
+      subjectId: 'mrn-1',
       code: 'example-code',
       codeSystem: 'example-code-system',
       status: 'example-status',

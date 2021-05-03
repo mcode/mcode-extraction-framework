@@ -4,12 +4,14 @@ const _ = require('lodash');
 const { CSVObservationExtractor } = require('../../src/extractors');
 const exampleCSVObservationModuleResponse = require('./fixtures/csv-observation-module-response.json');
 const exampleCSVObservationBundle = require('./fixtures/csv-observation-bundle.json');
+const { getPatientFromContext } = require('../../src/helpers/contextUtils');
+const MOCK_CONTEXT = require('./fixtures/context-with-patient.json');
 
 // Rewired extractor for helper tests
 const CSVObservationExtractorRewired = rewire('../../src/extractors/CSVObservationExtractor.js');
 
 // Constants for tests
-const MOCK_PATIENT_MRN = 'pat-mrn-1'; // linked to values in example-module-response above
+const MOCK_PATIENT_MRN = 'mrn-1'; // linked to values in example-module-response and context-with-patient above
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv'); // need a valid path/csv here to avoid parse error
 
 // Instantiate module with parameters
@@ -28,15 +30,16 @@ const formatData = CSVObservationExtractorRewired.__get__('formatData');
 describe('CSVObservationExtractor', () => {
   describe('formatData', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'The observation is missing an expected attribute. Observation id, mrn, status, code, code system, value, and effective date are all required.';
+      const expectedErrorString = 'The observation is missing an expected attribute. Observation id, status, code, code system, value, and effective date are all required.';
       const localData = _.cloneDeep(exampleCSVObservationModuleResponse);
+      const patientId = getPatientFromContext(MOCK_CONTEXT).id;
 
       // Test that valid maximal data works fine
-      expect(formatData(exampleCSVObservationModuleResponse)).toEqual(expect.anything());
+      expect(formatData(exampleCSVObservationModuleResponse, patientId)).toEqual(expect.anything());
 
       // Test that deleting an optional value works fine
-      delete localData[0].bodySite;
-      expect(formatData(exampleCSVObservationModuleResponse)).toEqual(expect.anything());
+      delete localData[0].bodysite;
+      expect(formatData(exampleCSVObservationModuleResponse, patientId)).toEqual(expect.anything());
 
       // Test that deleting a mandatory value throws an error
       delete localData[0].status;
@@ -47,7 +50,7 @@ describe('CSVObservationExtractor', () => {
   describe('get', () => {
     test('should return bundle with Observation', async () => {
       csvModuleSpy.mockReturnValue(exampleCSVObservationModuleResponse);
-      const data = await csvObservationExtractor.get({ mrn: MOCK_PATIENT_MRN });
+      const data = await csvObservationExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();
@@ -57,7 +60,7 @@ describe('CSVObservationExtractor', () => {
 
     test('should return empty bundle when no data available from module', async () => {
       csvModuleSpy.mockReturnValue([]);
-      const data = await csvObservationExtractor.get({ mrn: MOCK_PATIENT_MRN });
+      const data = await csvObservationExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();

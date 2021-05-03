@@ -1,18 +1,26 @@
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
-const { firstEntryInBundle } = require('../helpers/fhirUtils');
+const { firstEntryInBundle, getEmptyBundle } = require('../helpers/fhirUtils');
+const { getPatientFromContext } = require('../helpers/contextUtils');
 const { generateMcodeResources } = require('../templates');
-const logger = require('../helpers/logger');
 const { formatDateTime } = require('../helpers/dateUtils');
+const logger = require('../helpers/logger');
 
-function formatTNMCategoryData(stagingData) {
+function formatTNMCategoryData(stagingData, patientId) {
   logger.debug('Reformatting TNM Category data into template format');
   const formattedData = [];
   const {
-    mrn, conditionId, t, n, m, type, stagingSystem, stagingCodeSystem, effectiveDate,
+    conditionid: conditionId,
+    t,
+    n,
+    m,
+    type,
+    stagingsystem: stagingSystem,
+    stagingcodesystem: stagingCodeSystem,
+    effectivedate: effectiveDate,
   } = stagingData;
 
-  if (!mrn || !conditionId || !effectiveDate) {
-    throw new Error('Staging data is missing an expected property: mrn, conditionId, effectiveDate are required.');
+  if (!conditionId || !effectiveDate) {
+    throw new Error('Staging data is missing an expected property: conditionId, effectiveDate are required.');
   }
 
   // data needed for each TNM category
@@ -22,7 +30,7 @@ function formatTNMCategoryData(stagingData) {
     stageType: type,
     stagingSystem,
     stagingCodeSystem,
-    subjectId: mrn,
+    subjectId: patientId,
   };
 
   if (t) formattedData.push({ ...necessaryData, valueCode: t, categoryType: 'Tumor' });
@@ -32,13 +40,18 @@ function formatTNMCategoryData(stagingData) {
   return formattedData;
 }
 
-function formatStagingData(stagingData, categoryIds) {
+function formatStagingData(stagingData, categoryIds, patientId) {
   const {
-    mrn, conditionId, type, stageGroup, stagingSystem, stagingCodeSystem, effectiveDate,
+    conditionid: conditionId,
+    type,
+    stagegroup: stageGroup,
+    stagingsystem: stagingSystem,
+    stagingcodesystem: stagingCodeSystem,
+    effectivedate: effectiveDate,
   } = stagingData;
 
   return {
-    subjectId: mrn,
+    subjectId: patientId,
     conditionId,
     type,
     stageGroup,
@@ -59,17 +72,24 @@ class CSVStagingExtractor extends BaseCSVExtractor {
     return this.csvModule.get('mrn', mrn);
   }
 
-  async get({ mrn }) {
+  async get({ mrn, context }) {
     const stagingData = await this.getStagingData(mrn);
+    if (stagingData.length === 0) {
+      logger.warn('No Staging data found for patient');
+      return getEmptyBundle();
+    }
+    const patientId = getPatientFromContext(context).id;
+
+    // Iterate over the loop of staging data rows and make resources for all of them
     const entryResources = [];
     stagingData.forEach((data) => {
-      const formattedCategoryData = formatTNMCategoryData(data);
+      const formattedCategoryData = formatTNMCategoryData(data, patientId);
 
       // Generate observation for each TNM category
       const mcodeCategoryResources = formattedCategoryData.map((d) => firstEntryInBundle(generateMcodeResources('TNMCategory', d)));
 
       // Pass category resource ids to formatStagingData
-      const formattedStagingData = formatStagingData(data, mcodeCategoryResources.map((r) => r.resource.id));
+      const formattedStagingData = formatStagingData(data, mcodeCategoryResources.map((r) => r.resource.id), patientId);
       const stagingResource = firstEntryInBundle(generateMcodeResources('Staging', formattedStagingData));
 
       // Push all resources into entryResources

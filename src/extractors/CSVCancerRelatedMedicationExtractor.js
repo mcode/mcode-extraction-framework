@@ -1,24 +1,36 @@
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
-const logger = require('../helpers/logger');
+const { getPatientFromContext } = require('../helpers/contextUtils');
+const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
+const logger = require('../helpers/logger');
 
 
-function formatData(medicationData) {
+function formatData(medicationData, patientId) {
   logger.debug('Reformatting cancer-related medication data from CSV into template format');
 
   return medicationData.map((medication) => {
     const {
-      mrn, medicationId, code, codeSystem, displayText, startDate, endDate, treatmentReasonCode, treatmentReasonCodeSystem, treatmentReasonDisplayText, treatmentIntent, status,
+      medicationid: medicationId,
+      code,
+      codesystem: codeSystem,
+      displaytext: displayText,
+      startdate: startDate,
+      enddate: endDate,
+      treatmentreasoncode: treatmentReasonCode,
+      treatmentreasoncodesystem: treatmentReasonCodeSystem,
+      treatmentreasondisplaytext: treatmentReasonDisplayText,
+      treatmentintent: treatmentIntent,
+      status,
     } = medication;
 
-    if (!(mrn && code && codeSystem && status)) {
-      throw new Error('The cancer-related medication is missing an expected element; mrn, code, code system, and status are all required values.');
+    if (!(code && codeSystem && status)) {
+      throw new Error('The cancer-related medication is missing an expected element; code, code system, and status are all required values.');
     }
 
     return {
-      mrn,
       ...(medicationId && { id: medicationId }),
+      subjectId: patientId,
       code,
       codeSystem,
       displayText,
@@ -43,10 +55,18 @@ class CSVCancerRelatedMedicationExtractor extends BaseCSVExtractor {
     return this.csvModule.get('mrn', mrn);
   }
 
-  async get({ mrn }) {
+  async get({ mrn, context }) {
     const medicationData = await this.getMedicationData(mrn);
-    const formattedData = formatData(medicationData);
+    if (medicationData.length === 0) {
+      logger.warn('No medication data found for patient');
+      return getEmptyBundle();
+    }
+    const patientId = getPatientFromContext(context).id;
 
+    // Reformat data
+    const formattedData = formatData(medicationData, patientId);
+
+    // Fill templates
     return generateMcodeResources('CancerRelatedMedication', formattedData);
   }
 }

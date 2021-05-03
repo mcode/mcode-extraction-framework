@@ -1,22 +1,22 @@
 [
   {
     "mrn": "mrn-1",
-    "adverseEventId": "adverseEventId-1",
-    "adverseEventCode": "109006",
-    "adverseEventCodeSystem": "code-system",
-    "adverseEventDisplayText": "Anxiety disorder of childhood OR adolescence",
-    "suspectedCauseId": "procedure-id",
-    "suspectedCauseType": "Procedure",
+    "adverseeventid": "adverseEventId-1",
+    "adverseeventcode": "109006",
+    "adverseeventcodesystem": "code-system",
+    "adverseeventdisplaytext": "Anxiety disorder of childhood OR adolescence",
+    "suspectedcauseid": "procedure-id",
+    "suspectedcausetype": "Procedure",
     "seriousness": "serious",
-    "seriousnessCodeSystem": "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness",
-    "seriousnessDisplayText": "Serious",
+    "seriousnesscodesystem": "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness",
+    "seriousnessdisplaytext": "Serious",
     "category": "product-use-error",
-    "categoryCodeSystem": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
-    "categoryDisplayText": "Product Use Error",
+    "categorycodesystem": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
+    "categorydisplaytext": "Product Use Error",
     "severity": "severe",
     "actuality": "actual",
-    "studyId": "researchId-1",
-    "effectiveDate": "12-09-1994",
-    "recordedDate": "12-09-1994"
+    "studyid": "researchId-1",
+    "effectivedate": "12-09-1994",
+    "recordeddate": "12-09-1994"
   }
 ]

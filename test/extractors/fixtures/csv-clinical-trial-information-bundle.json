@@ -3,14 +3,16 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:f8acc19f44696eea31532ac9d3b658f1fea317eba9455eddc78de0857220d362",
+      "fullUrl": "urn:uuid:a9235b06dfe8c24b40b938c7a1265ed3087cf0fa43ef0f11375effbb25ecca25",
       "resource": {
         "resourceType": "ResearchSubject",
-        "id": "f8acc19f44696eea31532ac9d3b658f1fea317eba9455eddc78de0857220d362",
+        "id": "a9235b06dfe8c24b40b938c7a1265ed3087cf0fa43ef0f11375effbb25ecca25",
         "identifier": [
           {
             "system": "http://example.com/clinicaltrialsubjectids",
-            "type": { "text": "Clinical Trial Subject ID" },
+            "type": {
+              "text": "Clinical Trial Subject ID"
+            },
             "value": "example-subjectId"
           }
         ],
@@ -21,20 +23,23 @@
             "value": "example-researchId"
           }
         },
-        "individual": { "reference": "urn:uuid:EXAMPLE-MRN", "type": "Patient" }
+        "individual": {
+          "reference": "urn:uuid:mrn-1",
+          "type": "Patient"
+        }
       }
     },
     {
-      "fullUrl": "urn:uuid:b245aa8a67b5f67263f5a688813c435ccfb364e0f7865885c512e3a5ca3c9093",
+      "fullUrl": "urn:uuid:28bd7a4890539dc60998a1b2d423e631a6d4373eb05001c45bd9f2bab3166506",
       "resource": {
         "resourceType": "ResearchStudy",
-        "id": "b245aa8a67b5f67263f5a688813c435ccfb364e0f7865885c512e3a5ca3c9093",
+        "id": "28bd7a4890539dc60998a1b2d423e631a6d4373eb05001c45bd9f2bab3166506",
         "status": "example-trialStatus",
         "site": [
           {
             "display": "ID associated with Clinical Trial",
             "identifier": {
-              "system": "http://example.com/clinicalSiteIds",
+              "system": "EXAMPLE-CLINICAL-SITE-SYSTEM",
               "value": "EXAMPLE-CLINICAL-SITE-ID"
             }
           }
@@ -42,7 +47,9 @@
         "identifier": [
           {
             "system": "example-system",
-            "type": { "text": "Clinical Trial Research ID" },
+            "type": {
+              "text": "Clinical Trial Research ID"
+            },
             "value": "example-researchId"
           }
         ]

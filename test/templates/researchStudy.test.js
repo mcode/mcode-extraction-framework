@@ -7,6 +7,7 @@ const VALID_DATA = {
   trialStatus: 'active',
   trialResearchID: 'AFT1235',
   clinicalSiteID: 'EXAMPLE_SITE_ID',
+  clinicalSiteSystem: 'EXAMPLE_SITE_SYSTEM',
   trialResearchSystem: 'example-system',
 };
 

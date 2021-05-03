@@ -82,10 +82,10 @@ function categoryTemplate() {
 // Treatment Plan Change modeled with CarePlanWithReview Template
 // Uses the ICARE R4 Care Plan profile which is not published yet
 // For reference, ICARE R4 Care Plan profile: http://standardhealthrecord.org/guides/icare/StructureDefinition-icare-care-plan-with-review.html
-function carePlanWithReviewTemplate({ id, mrn, name, reviews }) {
-  if (!(id && mrn && reviews)) {
+function carePlanWithReviewTemplate({ id, subjectId, name, reviews }) {
+  if (!(id && subjectId && reviews)) {
     const errorMessage = 'Trying to render a CarePlanWithReviewTemplate, but a required argument was missing; '
-      + 'ensure that id, mrn, reviews are all present';
+      + 'ensure that id, subjectId, reviews are all present';
     throw new Error(errorMessage);
   }
   return {
@@ -96,7 +96,7 @@ function carePlanWithReviewTemplate({ id, mrn, name, reviews }) {
     ...extensionArr(
       ...reviews.map(carePlanChangeReasonExtensionTemplate),
     ),
-    ...subjectTemplate({ id: mrn, name }),
+    ...subjectTemplate({ id: subjectId, name }),
     status: 'draft',
     intent: 'proposal',
     ...categoryTemplate(),

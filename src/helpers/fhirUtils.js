@@ -163,8 +163,22 @@ const logOperationOutcomeInfo = (operationOutcome) => {
   });
 };
 
-const isValidFHIR = (resource) => validator.validate('FHIR', resource);
-
+function isValidFHIR(resource) {
+  return validator.validate('FHIR', resource);
+}
+function invalidResourcesFromBundle(bundle) {
+  // Bundle is assumed to have all resources in bundle.entry[x].resource
+  const failingResources = [];
+  bundle.entry.forEach((e) => {
+    const { resource } = e;
+    const { id, resourceType } = resource;
+    if (!validator.validate('FHIR', resource)) {
+      const failureId = `${resourceType}-${id}`;
+      failingResources.push(failureId);
+    }
+  });
+  return failingResources;
+}
 
 module.exports = {
   allResourcesInBundle,
@@ -182,4 +196,5 @@ module.exports = {
   mapFHIRVersions,
   quantityCodeToUnitLookup,
   isValidFHIR,
+  invalidResourcesFromBundle,
 };

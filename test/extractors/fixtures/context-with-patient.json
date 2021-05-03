@@ -1,0 +1,12 @@
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "fullUrl": "context-url",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mrn-1"
+      }
+    }
+  ]
+}

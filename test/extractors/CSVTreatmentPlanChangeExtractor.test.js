@@ -4,48 +4,55 @@ const _ = require('lodash');
 const { CSVTreatmentPlanChangeExtractor } = require('../../src/extractors');
 const exampleCSVTPCModuleResponse = require('./fixtures/csv-treatment-plan-change-module-response.json');
 const exampleCSVTPCBundle = require('./fixtures/csv-treatment-plan-change-bundle.json');
+const { getPatientFromContext } = require('../../src/helpers/contextUtils');
+const MOCK_CONTEXT = require('./fixtures/context-with-patient.json');
 
-const MOCK_MRN = 'mrn-1';
+// Constants for tests
+const MOCK_PATIENT_MRN = 'mrn-1'; // linked to values in example-module-response above
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv');
+
+// Instantiate module with parameters
 const csvTPCExtractor = new CSVTreatmentPlanChangeExtractor({
   filePath: MOCK_CSV_PATH,
 });
 
+// Destructure all modules
 const { csvModule } = csvTPCExtractor;
 
 // Spy on csvModule
 const csvModuleSpy = jest.spyOn(csvModule, 'get');
-
 const formatData = rewire('../../src/extractors/CSVTreatmentPlanChangeExtractor.js').__get__('formatData');
 
 describe('CSVTreatmentPlanChangeExtractor', () => {
   describe('formatData', () => {
     const exampleData = [
       {
-        dateOfCarePlan: '2020-04-15',
+        dateofcareplan: '2020-04-15',
         changed: 'false',
         mrn: 'id',
       },
       {
-        dateOfCarePlan: '2020-04-30',
+        dateofcareplan: '2020-04-30',
         changed: 'true',
-        reasonCode: 'example code',
+        reasoncode: 'example code',
         mrn: 'id',
       },
     ];
+    const patientId = getPatientFromContext(MOCK_CONTEXT).id;
 
     test('should join data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'Treatment Plan Change Data missing an expected property: mrn, dateOfCarePlan, changed are required';
+      const expectedErrorString = 'Treatment Plan Change Data missing an expected property: dateOfCarePlan, changed are required';
 
       // formatData on example data should not throw error when changed is false
-      expect(() => formatData(exampleData)).not.toThrowError();
+      expect(() => formatData(exampleData, patientId)).not.toThrowError();
 
       // Test required properties throw error
-      Object.keys(exampleData[0]).forEach((key) => {
+      const requiredKeys = ['dateofcareplan', 'changed'];
+      requiredKeys.forEach((key) => {
         const clonedData = _.cloneDeep(exampleData);
 
         delete clonedData[0][key];
-        expect(() => formatData(clonedData)).toThrow(new Error(expectedErrorString));
+        expect(() => formatData(clonedData, patientId)).toThrow(new Error(expectedErrorString));
       });
     });
 
@@ -54,17 +61,17 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
 
       // error should get throw when changed flag is true and there is no reasonCode provided
       exampleData[0].changed = 'true';
-      expect(() => formatData(exampleData)).toThrow(new Error(expectedErrorString));
+      expect(() => formatData(exampleData, patientId)).toThrow(new Error(expectedErrorString));
 
       // No error should be throw when reasonCode is provided
-      exampleData[0].reasonCode = 'example code';
-      expect(() => formatData(exampleData)).not.toThrowError();
+      exampleData[0].reasoncode = 'example code';
+      expect(() => formatData(exampleData, patientId)).not.toThrowError();
     });
 
     test('should join multiple entries into one', () => {
       const expectedFormattedData = [
         {
-          mrn: 'mrn-1',
+          subjectId: 'mrn-1',
           reviews: [
             {
               effectiveDate: '2020-04-15',
@@ -81,14 +88,14 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
         },
       ];
 
-      expect(formatData(exampleCSVTPCModuleResponse)).toEqual(expectedFormattedData);
+      expect(formatData(exampleCSVTPCModuleResponse, patientId)).toEqual(expectedFormattedData);
     });
   });
 
   describe('get', () => {
     test('should return bundle with CarePlan', async () => {
       csvModuleSpy.mockReturnValue(exampleCSVTPCModuleResponse);
-      const data = await csvTPCExtractor.get({ mrn: MOCK_MRN });
+      const data = await csvTPCExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
 
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');
@@ -98,7 +105,7 @@ describe('CSVTreatmentPlanChangeExtractor', () => {
 
     test('should return empty bundle with no data available from module', async () => {
       csvModuleSpy.mockReturnValue([]);
-      const data = await csvTPCExtractor.get({ mrn: MOCK_MRN });
+      const data = await csvTPCExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
 
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');

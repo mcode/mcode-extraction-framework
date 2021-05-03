@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const fhirpath = require('fhirpath');
+const shajs = require('sha.js');
 const { extensionArr, dataAbsentReasonExtension } = require('../templates/snippets/extension.js');
 
 // Based on the OMB Ethnicity table found here:http://hl7.org/fhir/us/core/STU3.1/ValueSet-omb-ethnicity-category.html
@@ -98,6 +99,9 @@ function maskPatientData(bundle, mask) {
       delete patient.gender;
       // an underscore is added when a primitive type is being replaced by an object (extension)
       patient._gender = masked;
+    } else if (field === 'gender' && '_gender' in patient) {
+      delete patient._gender; // gender may have a dataAbsentReason on it for 'unknown' data, but we'll still want to mask it
+      patient._gender = masked;
     } else if (field === 'mrn' && 'identifier' in patient) {
       patient.identifier = [masked];
     } else if (field === 'name' && 'name' in patient) {
@@ -118,8 +122,8 @@ function maskPatientData(bundle, mask) {
         'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex\')',
       );
       // fhirpath.evaluate will return [] if there is no extension with the given URL
-      // so checking if the result is [] checks if the field exists to be masked
-      if (birthsex !== []) {
+      // so checking if the result is an array with anything in it checks if the field exists to be masked
+      if (birthsex.length > 0) {
         delete birthsex[0].valueCode;
         birthsex[0]._valueCode = masked;
       }
@@ -128,7 +132,7 @@ function maskPatientData(bundle, mask) {
         patient,
         'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race\')',
       );
-      if (race !== []) {
+      if (race.length > 0) {
         race[0].extension[0].valueCoding = masked;
         delete race[0].extension[1].valueString;
         race[0].extension[1]._valueString = masked;
@@ -138,7 +142,7 @@ function maskPatientData(bundle, mask) {
         patient,
         'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity\')',
       );
-      if (ethnicity !== []) {
+      if (ethnicity.length > 0) {
         ethnicity[0].extension[0].valueCoding = masked;
         delete ethnicity[0].extension[1].valueString;
         ethnicity[0].extension[1]._valueString = masked;
@@ -147,10 +151,33 @@ function maskPatientData(bundle, mask) {
   });
 }
 
+/**
+ * Mask all references to the MRN used as an id
+ * Currently, the MRN appears as an id in 'subject' and 'individual' objects in other resources
+ * and in the 'id' and 'fullUrl' fields of the Patient resource.
+ * Replaces the MRN with a hash of the MRN
+ * @param {Object} bundle a FHIR bundle with a Patient resource and other resources
+ */
+function maskMRN(bundle) {
+  const patient = fhirpath.evaluate(bundle, 'Bundle.entry.where(resource.resourceType=\'Patient\')')[0];
+  if (patient === undefined) throw Error('No Patient resource in bundle. Could not mask MRN.');
+  const mrn = patient.resource.id;
+  const masked = shajs('sha256').update(mrn).digest('hex');
+  patient.fullUrl = `urn:uuid:${masked}`;
+  patient.resource.id = masked;
+  const subjects = fhirpath.evaluate(bundle, `Bundle.entry.resource.subject.where(reference='urn:uuid:${mrn}')`);
+  const individuals = fhirpath.evaluate(bundle, `Bundle.entry.resource.individual.where(reference='urn:uuid:${mrn}')`);
+  const mrnOccurrences = subjects.concat(individuals);
+  for (let i = 0; i < mrnOccurrences.length; i += 1) {
+    mrnOccurrences[i].reference = `urn:uuid:${masked}`;
+  }
+}
+
 module.exports = {
   getEthnicityDisplay,
   getRaceCodesystem,
   getRaceDisplay,
   getPatientName,
   maskPatientData,
+  maskMRN,
 };

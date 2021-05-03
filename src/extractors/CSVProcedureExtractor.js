@@ -1,22 +1,36 @@
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
-const logger = require('../helpers/logger');
+const { getPatientFromContext } = require('../helpers/contextUtils');
+const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
+const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
-function formatData(procedureData) {
+function formatData(procedureData, patientId) {
   logger.debug('Reformatting procedure data from CSV into template format');
   return procedureData.map((data) => {
     const {
-      mrn, procedureId, conditionId, status, code, codeSystem, displayName, reasonCode, reasonCodeSystem, reasonDisplayName, bodySite, laterality, effectiveDate, treatmentIntent,
+      procedureid: procedureId,
+      conditionid: conditionId,
+      status,
+      code,
+      codesystem: codeSystem,
+      displayname: displayName,
+      reasoncode: reasonCode,
+      reasoncodesystem: reasonCodeSystem,
+      reasondisplayname: reasonDisplayName,
+      bodysite: bodySite,
+      laterality,
+      effectivedate: effectiveDate,
+      treatmentintent: treatmentIntent,
     } = data;
 
-    if (!(mrn && procedureId && status && code && codeSystem && effectiveDate)) {
-      throw new Error('The procedure is missing an expected attribute. Procedure id, mrn, code system, code, status and effective date are all required.');
+    if (!(procedureId && status && code && codeSystem && effectiveDate)) {
+      throw new Error('The procedure is missing an expected attribute. Procedure id, code system, code, status and effective date are all required.');
     }
     return {
       id: procedureId,
-      subjectId: mrn,
+      subjectId: patientId,
       status,
       code,
       system: codeSystem,
@@ -43,10 +57,18 @@ class CSVProcedureExtractor extends BaseCSVExtractor {
     return this.csvModule.get('mrn', mrn);
   }
 
-  async get({ mrn }) {
+  async get({ mrn, context }) {
     const procedureData = await this.getProcedureData(mrn);
-    const formattedData = formatData(procedureData);
+    if (procedureData.length === 0) {
+      logger.warn('No procedure data found for patient');
+      return getEmptyBundle();
+    }
+    const patientId = getPatientFromContext(context).id;
 
+    // Reformat data
+    const formattedData = formatData(procedureData, patientId);
+
+    // Fill templates
     return generateMcodeResources('Procedure', formattedData);
   }
 }
