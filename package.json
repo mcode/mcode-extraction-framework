@@ -12,7 +12,7 @@
   ],
   "main": "src/",
   "scripts": {
-    "start":"node src/cli/cli.js",
+    "start": "node src/cli/cli.js",
     "lint": "eslint \"./**/*.js\"",
     "lint-fix": "eslint \"./**/*.js\" --fix",
     "test": "cross-env LOGGING=none jest",
@@ -38,7 +38,7 @@
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "jest": "^24.9.0",
+    "jest": "^26.6.3",
     "jest-when": "^2.7.0",
     "nock": "^11.7.0",
     "rewire": "^5.0.0"
