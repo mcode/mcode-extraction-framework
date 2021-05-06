@@ -47,7 +47,7 @@ Each extractor exposes an asynchronous `get` function that will return a bundle 
 const { CSVCancerDiseaseStatusExtractor, logger} = require('mcode-extraction-framework');
 
 // Instantiate extractor with base URL and any additional request headers
-const cancerDiseaseStatusExtractor = new CSVCancerDiseaseStatusExtractor('path-to-csv');
+const cancerDiseaseStatusExtractor = new CSVCancerDiseaseStatusExtractor({ filePath: 'path-to-csv' });
 
 (async () => {
   logger.info('Extracting primary disease status data');
