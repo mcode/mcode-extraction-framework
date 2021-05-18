@@ -5,12 +5,12 @@ const { validateCSV } = require('../helpers/csvValidator');
 const logger = require('../helpers/logger');
 
 class BaseCSVExtractor extends Extractor {
-  constructor({ filePath, csvSchema, unalterableAttributes }) {
+  constructor({ filePath, csvSchema, unalterableColumns }) {
     super();
-    this.unalterableAttributes = unalterableAttributes || [];
+    this.unalterableColumns = unalterableColumns || [];
     this.csvSchema = csvSchema;
     this.filePath = path.resolve(filePath);
-    this.csvModule = new CSVModule(this.filePath, this.unalterableAttributes);
+    this.csvModule = new CSVModule(this.filePath, this.unalterableColumns);
   }
 
   validate() {

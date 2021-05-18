@@ -3,18 +3,18 @@ const moment = require('moment');
 const parse = require('csv-parse/lib/sync');
 const logger = require('../helpers/logger');
 
-function normalizeEmptyValues(data, unalterableAttributes = []) {
+function normalizeEmptyValues(data, unalterableColumns = []) {
   const EMPTY_VALUES = ['null', 'nil'];
 
   return data.map((row) => {
     const newRow = { ...row };
-    // Filter out unalterable attributes
-    const attributesToNormalize = Object.keys(row).filter((attr) => !unalterableAttributes.includes(attr));
-    attributesToNormalize.forEach((attr) => {
-      const value = newRow[attr];
-      // If the value for this row-attr combo is a value that should be empty, replace it
+    // Filter out unalterable columns
+    const columnsToNormalize = Object.keys(row).filter((col) => !unalterableColumns.includes(col));
+    columnsToNormalize.forEach((col) => {
+      const value = newRow[col];
+      // If the value for this row-col combo is a value that should be empty, replace it
       if (EMPTY_VALUES.includes(value.toLowerCase())) {
-        newRow[attr] = '';
+        newRow[col] = '';
       }
     });
     return newRow;
@@ -22,13 +22,13 @@ function normalizeEmptyValues(data, unalterableAttributes = []) {
 }
 
 class CSVModule {
-  constructor(csvFilePath, unalterableAttributes) {
+  constructor(csvFilePath, unalterableColumns) {
     // Parse then normalize the data
     const parsedData = parse(fs.readFileSync(csvFilePath), {
       columns: (header) => header.map((column) => column.toLowerCase()),
       bom: true,
     });
-    this.data = normalizeEmptyValues(parsedData, unalterableAttributes);
+    this.data = normalizeEmptyValues(parsedData, unalterableColumns);
   }
 
   async get(key, value, fromDate, toDate) {
