@@ -84,7 +84,7 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
 
     // Parse CSV for list of patient mrns
     const patientIdsCsvPath = path.resolve(config.patientIdCsvPath);
-    const patientIds = parse(fs.readFileSync(patientIdsCsvPath, 'utf8'), { columns: true }).map((row) => row.mrn);
+    const patientIds = parse(fs.readFileSync(patientIdsCsvPath, 'utf8'), { columns: true, bom: true }).map((row) => row.mrn);
 
     // Get RunInstanceLogger for recording new runs and inferring dates from previous runs
     const runLogger = allEntries ? null : new RunInstanceLogger(pathToRunLogs);
