@@ -4,9 +4,10 @@ const parse = require('csv-parse/lib/sync');
 const logger = require('../helpers/logger');
 
 function normalizeEmptyValues(data, unalterableColumns = []) {
-  const EMPTY_VALUES = ['null', 'nil'];
-
-  return data.map((row) => {
+  const EMPTY_VALUES = ['null', 'nil'].map((v) => v.toLowerCase());
+  // Flag tracking if data was normalized or not.
+  let wasNormalized = false;
+  const newData = data.map((row, i) => {
     const newRow = { ...row };
     // Filter out unalterable columns
     const columnsToNormalize = Object.keys(row).filter((col) => !unalterableColumns.includes(col));
@@ -14,11 +15,18 @@ function normalizeEmptyValues(data, unalterableColumns = []) {
       const value = newRow[col];
       // If the value for this row-col combo is a value that should be empty, replace it
       if (EMPTY_VALUES.includes(value.toLowerCase())) {
+        logger.debug(`NULL/NIL values '${value}' found in row-${i}, col-${col}`);
+        wasNormalized = true;
         newRow[col] = '';
       }
     });
     return newRow;
   });
+
+  if (wasNormalized) {
+    logger.warn('NULL/NIL values found and replaced with empty-strings');
+  }
+  return newData;
 }
 
 class CSVModule {
