@@ -1,6 +1,7 @@
 const path = require('path');
 const program = require('commander');
 const { MCODEClient } = require('../client/MCODEClient');
+const logger = require('../helpers/logger');
 const { mcodeApp } = require('./app');
 
 const defaultPathToConfig = path.join('config', 'csv.config.json');
@@ -23,4 +24,15 @@ const {
 // Flag to extract allEntries, or just to use to-from dates
 const allEntries = !entriesFilter;
 
-mcodeApp(MCODEClient, fromDate, toDate, configFilepath, runLogFilepath, debug, allEntries);
+async function runApp() {
+  try {
+    await mcodeApp(MCODEClient, fromDate, toDate, configFilepath, runLogFilepath, debug, allEntries);
+  } catch (e) {
+    if (debug) logger.level = 'debug';
+    logger.error(e.message);
+    logger.debug(e.stack);
+    process.exit(1);
+  }
+}
+
+runApp();
