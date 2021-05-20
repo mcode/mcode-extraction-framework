@@ -20,6 +20,7 @@ A Node.js framework for extracting mCODE FHIR resources. All resources are profi
     - [Extraction Date Range](#extraction-date-range)
       - [CLI From-Date and To-Date (NOT recommended use)](#cli-from-date-and-to-date-not-recommended-use)
     - [Troubleshooting](#troubleshooting)
+      - [NULL/NIL values found and replaced with empty-strings](#nullnil-values-found-and-replaced-with-empty-strings)
       - [Byte Order Markers in CSV Files](#byte-order-markers-in-csv-files)
   - [Terminology and Architecture](#terminology-and-architecture)
     - [Glossary](#glossary)
@@ -164,6 +165,10 @@ npm start -- --entries-filter --from-date <YYYY-MM-DD> --to-date <YYYY-MM-DD> --
 ```
 
 ### Troubleshooting
+
+#### NULL/NIL values found and replaced with empty-strings
+
+When CSV files are provided containing NULL/NIL values, those values are treated as empty values and are translated into ''. Each Extractor, however, defines a set of `unalterableColumns` which will be immune from this NULL/NIL correction. All values that are corrected will produce a `debug`-level message, and can be seen by running the extractor with the debug flag set.
 
 #### Byte Order Markers in CSV Files
 

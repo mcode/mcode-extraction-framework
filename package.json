@@ -1,6 +1,6 @@
 {
   "name": "mcode-extraction-framework",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "contributors": [
     "Julia Afeltra <jafeltra@mitre.org>",
@@ -8,6 +8,7 @@
     "Matthew Gramigna <mgramigna@mitre.org>",
     "Daniel Lee <daniellee@mitre.org>",
     "Dylan Mahalingam <kmahalingam@mitre.org>",
+    "Dylan Mendelowitz <dmendelowitz@mitre.org>",
     "Dylan Phelan <dphelan@mitre.org>"
   ],
   "main": "src/",
@@ -26,9 +27,9 @@
     "csv-parse": "^4.8.8",
     "fhir-crud-client": "^1.2.2",
     "fhirpath": "2.1.5",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment": "^2.26.0",
-    "nodemailer": "^6.4.14",
+    "nodemailer": "^6.4.16",
     "sha.js": "^2.4.9",
     "winston": "^3.2.1"
   },
