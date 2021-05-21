@@ -71,84 +71,78 @@ function getEffectiveFromDate(fromDate, runLogger) {
 }
 
 async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, debug, allEntries) {
-  try {
-    if (debug) logger.level = 'debug';
-    // Don't require a run-logs file if we are extracting all-entries. Only required when using --entries-filter.
-    if (!allEntries) checkLogFile(pathToRunLogs);
-    const config = getConfig(pathToConfig);
-    checkInputAndConfig(config, fromDate, toDate);
+  if (debug) logger.level = 'debug';
+  // Don't require a run-logs file if we are extracting all-entries. Only required when using --entries-filter.
+  if (!allEntries) checkLogFile(pathToRunLogs);
+  const config = getConfig(pathToConfig);
+  checkInputAndConfig(config, fromDate, toDate);
 
-    // Create and initialize client
-    const mcodeClient = new Client(config);
-    await mcodeClient.init();
+  // Create and initialize client
+  const mcodeClient = new Client(config);
+  await mcodeClient.init();
 
-    // Parse CSV for list of patient mrns
-    const patientIdsCsvPath = path.resolve(config.patientIdCsvPath);
-    const patientIds = parse(fs.readFileSync(patientIdsCsvPath, 'utf8'), { columns: true, bom: true }).map((row) => row.mrn);
+  // Parse CSV for list of patient mrns
+  const patientIdsCsvPath = path.resolve(config.patientIdCsvPath);
+  const patientIds = parse(fs.readFileSync(patientIdsCsvPath, 'utf8'), { columns: true }).map((row) => row.mrn);
 
-    // Get RunInstanceLogger for recording new runs and inferring dates from previous runs
-    const runLogger = allEntries ? null : new RunInstanceLogger(pathToRunLogs);
-    const effectiveFromDate = allEntries ? null : getEffectiveFromDate(fromDate, runLogger);
-    const effectiveToDate = allEntries ? null : toDate;
+  // Get RunInstanceLogger for recording new runs and inferring dates from previous runs
+  const runLogger = allEntries ? null : new RunInstanceLogger(pathToRunLogs);
+  const effectiveFromDate = allEntries ? null : getEffectiveFromDate(fromDate, runLogger);
+  const effectiveToDate = allEntries ? null : toDate;
 
-    // Extract the data
-    logger.info(`Extracting data for ${patientIds.length} patients`);
-    const { extractedData, successfulExtraction, totalExtractionErrors } = await extractDataForPatients(patientIds, mcodeClient, effectiveFromDate, effectiveToDate);
+  // Extract the data
+  logger.info(`Extracting data for ${patientIds.length} patients`);
+  const { extractedData, successfulExtraction, totalExtractionErrors } = await extractDataForPatients(patientIds, mcodeClient, effectiveFromDate, effectiveToDate);
 
-    // If we have notification information, send an emailNotification
-    const { notificationInfo } = config;
-    if (notificationInfo) {
-      const notificationErrors = zipErrors(totalExtractionErrors);
-      try {
-        await sendEmailNotification(notificationInfo, notificationErrors, debug);
-      } catch (e) {
-        logger.error(e.message);
-      }
+  // If we have notification information, send an emailNotification
+  const { notificationInfo } = config;
+  if (notificationInfo) {
+    const notificationErrors = zipErrors(totalExtractionErrors);
+    try {
+      await sendEmailNotification(notificationInfo, notificationErrors, debug);
+    } catch (e) {
+      logger.error(e.message);
     }
-    // A run is successful and should be logged when both extraction finishes without fatal errors
-    // and messages are posted without fatal errors
-    if (!allEntries && effectiveFromDate) {
-      const successCondition = successfulExtraction;
-      if (successCondition) {
-        runLogger.addRun(effectiveFromDate, effectiveToDate);
-      }
-    }
-
-    // check if config specifies that MRN needs to be masked
-    // if it does need to be masked, mask all references to MRN outside of the patient resource
-    const patientConfig = config.extractors.find((e) => e.type === 'CSVPatientExtractor');
-    if (patientConfig && ('constructorArgs' in patientConfig && 'mask' in patientConfig.constructorArgs)) {
-      if (patientConfig.constructorArgs.mask.includes('mrn')) {
-        extractedData.forEach((bundle, i) => {
-          // NOTE: This may fail to mask MRN-related properties on non-patient resources
-          //       Need to investigate further.
-          try {
-            maskMRN(bundle);
-          } catch (e) {
-            logger.error(`Bundle ${i + 1}: ${e.message}`);
-          }
-        });
-      }
-    }
-
-    // Finally, save the data to disk
-    const outputPath = './output';
-    if (!fs.existsSync(outputPath)) {
-      logger.info(`Creating directory ${outputPath}`);
-      fs.mkdirSync(outputPath);
-    }
-    // For each bundle in our extractedData, write it to our output directory
-    extractedData.forEach((bundle, i) => {
-      const outputFile = path.join(outputPath, `mcode-extraction-patient-${i + 1}.json`);
-      logger.debug(`Logging mCODE output to ${outputFile}`);
-      fs.writeFileSync(outputFile, JSON.stringify(bundle), 'utf8');
-    });
-    logger.info(`Successfully logged ${extractedData.length} mCODE bundle(s) to ${outputPath}`);
-  } catch (e) {
-    logger.error(e.message);
-    logger.debug(e.stack);
-    process.exit(1);
   }
+  // A run is successful and should be logged when both extraction finishes without fatal errors
+  // and messages are posted without fatal errors
+  if (!allEntries && effectiveFromDate) {
+    const successCondition = successfulExtraction;
+    if (successCondition) {
+      runLogger.addRun(effectiveFromDate, effectiveToDate);
+    }
+  }
+
+  // check if config specifies that MRN needs to be masked
+  // if it does need to be masked, mask all references to MRN outside of the patient resource
+  const patientConfig = config.extractors.find((e) => e.type === 'CSVPatientExtractor');
+  if (patientConfig && ('constructorArgs' in patientConfig && 'mask' in patientConfig.constructorArgs)) {
+    if (patientConfig.constructorArgs.mask.includes('mrn')) {
+      extractedData.forEach((bundle, i) => {
+        // NOTE: This may fail to mask MRN-related properties on non-patient resources
+        //       Need to investigate further.
+        try {
+          maskMRN(bundle);
+        } catch (e) {
+          logger.error(`Bundle ${i + 1}: ${e.message}`);
+        }
+      });
+    }
+  }
+
+  // Finally, save the data to disk
+  const outputPath = './output';
+  if (!fs.existsSync(outputPath)) {
+    logger.info(`Creating directory ${outputPath}`);
+    fs.mkdirSync(outputPath);
+  }
+  // For each bundle in our extractedData, write it to our output directory
+  extractedData.forEach((bundle, i) => {
+    const outputFile = path.join(outputPath, `mcode-extraction-patient-${i + 1}.json`);
+    logger.debug(`Logging mCODE output to ${outputFile}`);
+    fs.writeFileSync(outputFile, JSON.stringify(bundle), 'utf8');
+  });
+  logger.info(`Successfully logged ${extractedData.length} mCODE bundle(s) to ${outputPath}`);
 }
 
 module.exports = {
