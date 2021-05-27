@@ -1,4 +1,3 @@
-const parse = require('csv-parse/lib/sync');
 const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
@@ -7,6 +6,7 @@ const { RunInstanceLogger } = require('./RunInstanceLogger');
 const { sendEmailNotification, zipErrors } = require('./emailNotifications');
 const { extractDataForPatients } = require('./mcodeExtraction');
 const { maskMRN } = require('../helpers/patientUtils');
+const { parsePatientIds } = require('../helpers/appUtils');
 
 function getConfig(pathToConfig) {
   // Checks pathToConfig points to valid JSON file
@@ -82,8 +82,7 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
   await mcodeClient.init();
 
   // Parse CSV for list of patient mrns
-  const patientIdsCsvPath = path.resolve(config.patientIdCsvPath);
-  const patientIds = parse(fs.readFileSync(patientIdsCsvPath, 'utf8'), { columns: true }).map((row) => row.mrn);
+  const patientIds = parsePatientIds(config.patientIdCsvPath);
 
   // Get RunInstanceLogger for recording new runs and inferring dates from previous runs
   const runLogger = allEntries ? null : new RunInstanceLogger(pathToRunLogs);
