@@ -13,6 +13,7 @@ function parsePatientIds(pathToCSV) {
   const patientIdsCsvPath = path.resolve(pathToCSV);
   const patientIds = parse(fs.readFileSync(patientIdsCsvPath, 'utf8'), {
     columns: true,
+    bom: true,
   }).map((row) => {
     if (!row.mrn) {
       throw new Error(`${pathToCSV} has no "mrn" column`);
