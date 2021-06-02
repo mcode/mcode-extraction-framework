@@ -66,12 +66,14 @@ const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = req
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
 const { lowercaseLookupQuery, createLowercaseLookup, createInvertedLookup } = require('./helpers/lookupUtils');
 const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersFromContext, getPatientFromContext } = require('./helpers/contextUtils');
+const { parsePatientIds } = require('./helpers/appUtils');
 
 module.exports = {
   // CLI Related utilities
-  mcodeApp,
   RunInstanceLogger,
   extractDataForPatients,
+  mcodeApp,
+  parsePatientIds,
   sendEmailNotification,
   zipErrors,
   // Extractors and Clients
