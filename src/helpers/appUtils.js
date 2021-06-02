@@ -12,7 +12,7 @@ function parsePatientIds(pathToCSV) {
   // Parse CSV for list of patient IDs
   const patientIdsCsvPath = path.resolve(pathToCSV);
   const patientIds = parse(fs.readFileSync(patientIdsCsvPath, 'utf8'), {
-    columns: true,
+    columns: (header) => header.map((column) => column.toLowerCase()),
     bom: true,
   }).map((row) => {
     if (!row.mrn) {
