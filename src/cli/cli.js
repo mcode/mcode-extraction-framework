@@ -27,8 +27,7 @@ const allEntries = !entriesFilter;
 
 async function runApp() {
   try {
-    extractedData = await mcodeApp(MCODEClient, fromDate, toDate, configFilepath, runLogFilepath, debug, allEntries);
-
+    const extractedData = await mcodeApp(MCODEClient, fromDate, toDate, configFilepath, runLogFilepath, debug, allEntries);
 
     // Finally, save the data to disk
     const outputPath = './output';
@@ -43,8 +42,7 @@ async function runApp() {
       fs.writeFileSync(outputFile, JSON.stringify(bundle), 'utf8');
     });
     logger.info(`Successfully logged ${extractedData.length} mCODE bundle(s) to ${outputPath}`);
-
-    } catch (e) {
+  } catch (e) {
     if (debug) logger.level = 'debug';
     logger.error(e.message);
     logger.debug(e.stack);
