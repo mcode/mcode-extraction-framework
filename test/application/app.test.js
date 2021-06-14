@@ -2,7 +2,7 @@ const fs = require('fs');
 const rewire = require('rewire');
 const testConfig = require('./fixtures/test-config.json');
 
-const app = rewire('../../src/cli/app.js');
+const app = rewire('../../src/application/app.js');
 const getConfig = app.__get__('getConfig');
 const checkInputAndConfig = app.__get__('checkInputAndConfig');
 const checkLogFile = app.__get__('checkLogFile');
@@ -10,7 +10,7 @@ const getEffectiveFromDate = app.__get__('getEffectiveFromDate');
 
 describe('App Tests', () => {
   describe('getConfig', () => {
-    const pathToConfig = 'test/cli/fixtures/test-config.json';
+    const pathToConfig = 'test/application/fixtures/test-config.json';
 
     it('should throw error when pathToConfig does not point to valid JSON file.', () => {
       expect(() => getConfig()).toThrowError();

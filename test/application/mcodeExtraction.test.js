@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const path = require('path');
-const { extractDataForPatients } = require('../../src/cli/mcodeExtraction');
+const { extractDataForPatients } = require('../../src/application/tools/mcodeExtraction');
 const { MCODEClient } = require('../../src/client/MCODEClient');
 const testBundle = require('./fixtures/test-bundle.json');
 

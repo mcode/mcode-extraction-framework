@@ -7,7 +7,7 @@ const {
   extractDataForPatients,
   sendEmailNotification,
   zipErrors,
-} = require('./cli');
+} = require('./application');
 const {
   BaseFHIRExtractor,
   CSVAdverseEventExtractor,

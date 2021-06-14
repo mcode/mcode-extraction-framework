@@ -1,7 +1,7 @@
 const path = require('path');
 const moment = require('moment');
 const fs = require('fs');
-const logger = require('../helpers/logger');
+const logger = require('../../helpers/logger');
 
 // Sort Log records by `dateRun`, more recent (larger) dates to least recent (smaller)
 function logSorter(a, b) {

@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const moment = require('moment');
 const logger = require('../helpers/logger');
-const { RunInstanceLogger } = require('./RunInstanceLogger');
-const { sendEmailNotification, zipErrors } = require('./emailNotifications');
-const { extractDataForPatients } = require('./mcodeExtraction');
+const { RunInstanceLogger } = require('./tools/RunInstanceLogger');
+const { sendEmailNotification, zipErrors } = require('./tools/emailNotifications');
+const { extractDataForPatients } = require('./tools/mcodeExtraction');
 const { maskMRN } = require('../helpers/patientUtils');
 const { parsePatientIds } = require('../helpers/appUtils');
 

@@ -1,5 +1,5 @@
 {
-  "patientIdCsvPath": "test/cli/fixtures/patient-mrns.csv",
+  "patientIdCsvPath": "test/application/fixtures/patient-mrns.csv",
   "commonExtractorArgs": {},
   "extractors": [],
   "notificationInfo": {
