@@ -3,8 +3,9 @@ const logger = require('./logger');
 /**
  * Checks if any dependencies of extractors are missing.
  * If no depedencies are missing, sorts extractors into the correct order.
- * @param {Array} extractors array of extractors from the config file, this function will modify the order of this array
+ * @param {Array} extractors array of extractors from the config file
  * @param {Array} dependencyInfo array of objects dictacting order of extractors and their dependencies
+ * @returns {Array} array of extractors sorted into the order defined in dependency info
  * Example of dependencyInfo:
  * [
  *  { type: 'CSVPatientExtractor', dependencies: [] },
