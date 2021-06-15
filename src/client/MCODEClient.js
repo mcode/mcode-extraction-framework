@@ -66,7 +66,7 @@ class MCODEClient extends BaseClient {
       { type: 'CSVAdverseEventExtractor', dependencies: ['CSVPatientExtractor'] },
     ];
     // Sort extractors based on order and dependencies
-    sortExtractors(this.extractorConfig, dependencyInfo);
+    this.extractorConfig = sortExtractors(this.extractorConfig, dependencyInfo);
     // Store webServiceAuthConfig if provided`
     this.authConfig = webServiceAuthConfig;
     this.commonExtractorArgs = {

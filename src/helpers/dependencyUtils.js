@@ -14,7 +14,7 @@ const logger = require('./logger');
  */
 function sortExtractors(extractors, dependencyInfo) {
   const missing = {};
-  // Filter dependency info to onlly extractors in the config
+  // Filter dependency info to only extractors in the config
   dependencyInfo.filter((e) => extractors.map((x) => x.type).includes(e.type)).forEach((extractor) => {
     // For each extractor, check if its dependencies are present
     extractor.dependencies.forEach((dependency) => {
@@ -35,8 +35,10 @@ function sortExtractors(extractors, dependencyInfo) {
     throw new Error('Some extractors are missing dependencies, see above for details.');
   }
   // If no missing dependencies, sort extractors into correct order
+  const sortedExtractors = [...extractors];
   const order = dependencyInfo.map((x) => x.type);
-  extractors.sort((a, b) => order.indexOf(a.type) - order.indexOf(b.type));
+  sortedExtractors.sort((a, b) => order.indexOf(a.type) - order.indexOf(b.type));
+  return sortedExtractors;
 }
 
 module.exports = {

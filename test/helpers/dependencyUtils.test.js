@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const { sortExtractors } = require('../../src/helpers/dependencyUtils.js');
 
 const WRONG_ORDER = [
@@ -26,15 +25,14 @@ const DEPENDENCY_INFO = [
 
 describe('sortExtractors', () => {
   test('should put extractors in the correct order', () => {
-    sortExtractors(WRONG_ORDER, DEPENDENCY_INFO);
-    expect(WRONG_ORDER[0].type).toEqual('Extractor1');
-    expect(WRONG_ORDER[1].type).toEqual('Extractor2');
-    expect(WRONG_ORDER[2].type).toEqual('Extractor3');
+    const sorted = sortExtractors(WRONG_ORDER, DEPENDENCY_INFO);
+    expect(sorted[0].type).toEqual('Extractor1');
+    expect(sorted[1].type).toEqual('Extractor2');
+    expect(sorted[2].type).toEqual('Extractor3');
   });
 
   test('should change nothing if all extractors are in order with all dependencies', () => {
-    const unchanged = _.cloneDeep(NO_CHANGE);
-    sortExtractors(unchanged, DEPENDENCY_INFO);
+    const unchanged = sortExtractors(NO_CHANGE, DEPENDENCY_INFO);
     expect(unchanged).toEqual(NO_CHANGE);
   });
 
