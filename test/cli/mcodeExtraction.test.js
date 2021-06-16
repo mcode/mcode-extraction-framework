@@ -115,7 +115,7 @@ describe('mcodeExtraction', () => {
     it('should throw error when initialized with missing dependencies', async () => {
       const testConfig = {
         extractors: [
-          // Should fail when this extractor is run without patient data in context
+          // Should fail when this extractor is run without patient in config becuase patient is required dependency
           {
             label: 'CTI',
             type: 'CSVClinicalTrialInformationExtractor',
