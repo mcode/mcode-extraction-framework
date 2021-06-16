@@ -1,5 +1,5 @@
-const logger = require('../helpers/logger');
-const { getResourceCountInBundle } = require('../helpers/fhirUtils');
+const logger = require('../../helpers/logger');
+const { getResourceCountInBundle } = require('../../helpers/fhirUtils');
 
 async function extractDataForPatients(patientIds, mcodeClient, fromDate, toDate) {
   // Using an initialized mcodeClient, extract data for patient ids in the appropriate toDate-fromDate range

@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const logger = require('../helpers/logger');
+const logger = require('../../helpers/logger');
 
 function zipErrors(...allErrorSources) {
   // NOTE: assumes each error object is a k-v pair: k is the MRN-id CSV row of the patient, v is an [errors] for that patient at some pipeline step

@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const { sendEmailNotification } = require('../../src/cli/emailNotifications');
+const { sendEmailNotification } = require('../../src/application/tools/emailNotifications');
 
 const createTransportSpy = jest.spyOn(nodemailer, 'createTransport');
 

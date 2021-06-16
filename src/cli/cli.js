@@ -3,7 +3,7 @@ const path = require('path');
 const program = require('commander');
 const { MCODEClient } = require('../client/MCODEClient');
 const logger = require('../helpers/logger');
-const { mcodeApp } = require('./app');
+const { mcodeApp } = require('../application');
 
 const defaultPathToConfig = path.join('config', 'csv.config.json');
 const defaultPathToRunLogs = path.join('logs', 'run-logs.json');
