@@ -92,6 +92,13 @@ describe('mcodeExtraction', () => {
               filePath: path.join(__dirname, './fixtures/example-clinical-trial-info.csv'),
             },
           },
+          {
+            label: 'patient',
+            type: 'CSVPatientExtractor',
+            constructorArgs: {
+              filePath: path.join(__dirname, './fixtures/example-patient.csv'),
+            },
+          },
         ],
       };
 
@@ -104,6 +111,22 @@ describe('mcodeExtraction', () => {
       expect(extractedData).toHaveLength(3);
       const flatErrors = flattenErrorValues(totalExtractionErrors);
       expect(flatErrors).toHaveLength(3);
+    });
+    it('should throw error when initialized with missing dependencies', async () => {
+      const testConfig = {
+        extractors: [
+          // Should fail when this extractor is run without patient in config becuase patient is required dependency
+          {
+            label: 'CTI',
+            type: 'CSVClinicalTrialInformationExtractor',
+            constructorArgs: {
+              filePath: path.join(__dirname, './fixtures/example-clinical-trial-info.csv'),
+            },
+          },
+        ],
+      };
+
+      expect(() => new MCODEClient(testConfig)).toThrow();
     });
   });
 });
