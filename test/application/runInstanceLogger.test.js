@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { RunInstanceLogger } = require('../../src/cli/RunInstanceLogger.js');
+const { RunInstanceLogger } = require('../../src/application/tools/RunInstanceLogger.js');
 
 describe('RunInstanceLogger', () => {
   describe('constructor', () => {
@@ -19,7 +19,7 @@ describe('RunInstanceLogger', () => {
     });
 
     it('should not throw error when log file is an array', () => {
-      expect(() => new RunInstanceLogger('./test/cli/fixtures/run-logs.json')).not.toThrowError();
+      expect(() => new RunInstanceLogger('./test/application/fixtures/run-logs.json')).not.toThrowError();
       expect(fsSpy).toHaveBeenCalled();
     });
   });
@@ -28,17 +28,17 @@ describe('RunInstanceLogger', () => {
     const testDate = '2020-06-16';
 
     it('should return fromDate when valid', () => {
-      const runLogger = new RunInstanceLogger('./test/cli/fixtures/run-logs.json');
+      const runLogger = new RunInstanceLogger('./test/application/fixtures/run-logs.json');
       expect(runLogger.getEffectiveFromDate(testDate)).toEqual(testDate);
     });
 
     it('should return most recent date from runLogger', () => {
-      const runLogger = new RunInstanceLogger('./test/cli/fixtures/run-logs.json');
+      const runLogger = new RunInstanceLogger('./test/application/fixtures/run-logs.json');
       expect(runLogger.getEffectiveFromDate(null)).toEqual(testDate);
     });
 
     it('should throw error when no recent date from runlogger', () => {
-      const runLogger = new RunInstanceLogger('./test/cli/fixtures/empty-run-logs.json');
+      const runLogger = new RunInstanceLogger('./test/application/fixtures/empty-run-logs.json');
       expect(() => runLogger.getEffectiveFromDate(null)).toThrowError();
     });
   });
