@@ -1,9 +1,15 @@
 {
   "$id": "csv-config",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "Schema for CSV config files. TODO: Fill out the rest of this schema will all config properties",
+  "description": "Schema for CSV config files",
   "type": "object",
   "properties": {
+    "patientIdCsvPath": {
+      "type": "string"
+    },
+    "notificationInfo": {
+      "$ref": "#/$defs/notificationInfo"
+    },
     "extractors": {
       "type": "array",
       "items": {
@@ -12,15 +18,69 @@
     }
   },
   "$defs": {
+    "notificationInfo": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "format": "hostname"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string",
+          "format": "email"
+        },
+        "tlsRejectUnauthorized": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "host",
+        "port",
+        "from",
+        "to"
+      ]
+    },
     "extractor": {
       "type": "object",
       "properties": {
+        "label": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "constructorArgs": {
+          "$ref": "#/$defs/constructorArgs"
+        }
+      }
+    },
+    "constructorArgs": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string"
+        },
+        "clinicalSiteID": {
+          "type": "string"
+        },
+        "clinicalSiteSystem": {
+          "type": "string"
+        },
         "type": {
           "type": "string"
         }
       },
-      "required": ["type"]
+      "required": ["filePath"]
     }
   },
-  "required": ["extractors"]
+  "required": [
+    "extractors",
+    "patientIdCsvPath"
+  ]
 }
