@@ -28,14 +28,36 @@ function createLogObject(fromDate, toDate) {
 class RunInstanceLogger {
   constructor(pathToLogFile) {
     this.logPath = pathToLogFile;
-    try {
-      this.logs = JSON.parse(fs.readFileSync(path.resolve(this.logPath)));
-      // Sort logs on load
-      this.logs.sort(logSorter);
-    } catch (err) {
-      logger.error(`FATAL-Could not parse the logPath provided: ${this.logPath}`);
-      process.exit(1);
+    if (path.resolve(this.logPath) === path.resolve(path.join('logs', 'run-logs.json')) && !fs.existsSync(this.logPath)) {
+      logger.info(`No log file found. Creating default log file at ${this.logPath}`);
+      if (!fs.existsSync('logs')) fs.mkdirSync('logs');
+      fs.appendFileSync(this.logPath, '[]');
     }
+    // Check that the given log file exists
+    try {
+      this.logs = JSON.parse(fs.readFileSync(this.logPath));
+      if (!Array.isArray(this.logs)) throw new Error('Log file needs to be an array.');
+    } catch (err) {
+      logger.error(`The provided filepath to a LogFile, ${this.logPath}, did not point to a valid JSON file. Create a json file with an empty array at this location.`);
+      throw new Error(err.message);
+    }
+    // Sort logs on load
+    this.logs.sort(logSorter);
+  }
+
+  // Use previous runs to infer a valid fromDate if none was provided
+  getEffectiveFromDate(fromDate) {
+    if (fromDate) return fromDate;
+
+    // Use the most recent ToDate
+    logger.info('No fromDate was provided, inferring an effectiveFromDate');
+    const effectiveFromDate = this.getMostRecentToDate();
+    logger.info(`effectiveFromDate: ${effectiveFromDate}`);
+    if (!effectiveFromDate) {
+      throw new Error('no valid fromDate was supplied, and there are no log records from which we could pull a fromDate');
+    }
+
+    return effectiveFromDate;
   }
 
   // Get the most recent run performed and logged
