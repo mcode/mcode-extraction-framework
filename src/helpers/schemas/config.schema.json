@@ -7,6 +7,9 @@
     "patientIdCsvPath": {
       "type": "string"
     },
+    "commonExtractorArgs": {
+      "$ref": "#/$defs/commonExtractorArgs"
+    },
     "notificationInfo": {
       "$ref": "#/$defs/notificationInfo"
     },
@@ -18,6 +21,18 @@
     }
   },
   "$defs": {
+    "commonExtractorArgs": {
+      "type": "object",
+      "properties": {
+        "baseFhirUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "requestHeaders": {
+          "type": "object"
+        }
+      }
+    },
     "notificationInfo": {
       "type": "object",
       "properties": {
@@ -32,8 +47,17 @@
           "type": "string"
         },
         "to": {
-          "type": "string",
-          "format": "email"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         },
         "tlsRejectUnauthorized": {
           "type": "boolean"
@@ -75,8 +99,7 @@
         "type": {
           "type": "string"
         }
-      },
-      "required": ["filePath"]
+      }
     }
   },
   "required": [
