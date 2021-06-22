@@ -1,7 +1,7 @@
 {
   "$id": "csv-config",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "Schema for CSV config files",
+  "description": "Schema for mcode-extraction-framework config files",
   "type": "object",
   "properties": {
     "patientIdCsvPath": {
@@ -65,8 +65,6 @@
       },
       "required": [
         "host",
-        "port",
-        "from",
         "to"
       ]
     },
@@ -98,6 +96,12 @@
         },
         "type": {
           "type": "string"
+        },
+        "mask": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     }
