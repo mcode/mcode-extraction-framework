@@ -39,7 +39,7 @@ function checkInputAndConfig(config, fromDate, toDate) {
 }
 
 async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, debug, allEntries) {
-  if (debug) logger.level = 'debug';
+  logger.level = debug ? 'debug' : 'info';
   const config = getConfig(pathToConfig);
   checkInputAndConfig(config, fromDate, toDate);
 
