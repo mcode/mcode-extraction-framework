@@ -1,9 +1,18 @@
 {
   "$id": "csv-config",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "Schema for CSV config files. TODO: Fill out the rest of this schema will all config properties",
+  "description": "Schema for mcode-extraction-framework config files",
   "type": "object",
   "properties": {
+    "patientIdCsvPath": {
+      "type": "string"
+    },
+    "commonExtractorArgs": {
+      "$ref": "#/$defs/commonExtractorArgs"
+    },
+    "notificationInfo": {
+      "$ref": "#/$defs/notificationInfo"
+    },
     "extractors": {
       "type": "array",
       "items": {
@@ -12,15 +21,93 @@
     }
   },
   "$defs": {
+    "commonExtractorArgs": {
+      "type": "object",
+      "properties": {
+        "baseFhirUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "requestHeaders": {
+          "type": "object"
+        }
+      }
+    },
+    "notificationInfo": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "format": "hostname"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "tlsRejectUnauthorized": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "host",
+        "to"
+      ]
+    },
     "extractor": {
       "type": "object",
       "properties": {
+        "label": {
+          "type": "string"
+        },
         "type": {
           "type": "string"
+        },
+        "constructorArgs": {
+          "$ref": "#/$defs/constructorArgs"
         }
-      },
-      "required": ["type"]
+      }
+    },
+    "constructorArgs": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string"
+        },
+        "clinicalSiteID": {
+          "type": "string"
+        },
+        "clinicalSiteSystem": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "mask": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
-  "required": ["extractors"]
+  "required": [
+    "extractors",
+    "patientIdCsvPath"
+  ]
 }
