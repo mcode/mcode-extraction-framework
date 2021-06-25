@@ -96,8 +96,25 @@ class BaseClient {
       }
     }, Promise.resolve(contextBundle));
 
+    // Report detailed validation errors
     if (!isValidFHIR(contextBundle)) {
-      logger.warn(`Extracted bundle is not valid FHIR, the following resources failed validation: ${invalidResourcesFromBundle(contextBundle).join(',')}`);
+      const invalidResources = invalidResourcesFromBundle(contextBundle);
+      const baseWarningMessage = 'Extracted bundle is not valid FHIR, the following resources failed validation: ';
+
+      const warnMessages = [];
+      const debugMessages = [];
+      invalidResources.forEach(({ failureId, errors }) => {
+        warnMessages.push(`${failureId} at ${errors.map((e) => e.dataPath).join(',')}`);
+
+        errors.forEach((e) => {
+          debugMessages.push(`${failureId} at ${e.dataPath} - ${e.message}`);
+        });
+      });
+
+      logger.warn(`${baseWarningMessage}${warnMessages.join(', ')}`);
+      debugMessages.forEach((m) => {
+        logger.debug(m);
+      });
     }
 
     return { bundle: contextBundle, extractionErrors };

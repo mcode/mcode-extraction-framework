@@ -160,6 +160,26 @@ describe('invalidResourcesFromBundle', () => {
     invalidBundle.entry[0].resource = invalidResource;
     // This is dependent on implementation details intrinsic to invalidResourcesFromBundle
     const invalidResourceId = `${invalidResource.resourceType}-${invalidResource.id}`;
-    expect(invalidResourcesFromBundle(invalidBundle)).toEqual([invalidResourceId]);
+    expect(invalidResourcesFromBundle(invalidBundle)).toEqual([
+      {
+        failureId: invalidResourceId,
+        errors: [
+          {
+            keyword: 'enum',
+            dataPath: '.gender',
+            schemaPath: '#/properties/gender/enum',
+            params: {
+              allowedValues: [
+                'male',
+                'female',
+                'other',
+                'unknown',
+              ],
+            },
+            message: 'should be equal to one of the allowed values',
+          },
+        ],
+      },
+    ]);
   });
 });
