@@ -104,7 +104,7 @@ class BaseClient {
       const warnMessages = [];
       const debugMessages = [];
       invalidResources.forEach(({ failureId, errors }) => {
-        warnMessages.push(`${failureId} at ${errors.map((e) => e.dataPath).join(',')}`);
+        warnMessages.push(`${failureId} at ${errors.map((e) => e.dataPath).join(', ')}`);
 
         errors.forEach((e) => {
           debugMessages.push(`${failureId} at ${e.dataPath} - ${e.message}`);
