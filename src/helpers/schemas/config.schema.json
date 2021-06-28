@@ -1,6 +1,6 @@
 {
   "$id": "csv-config",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "http://json-schema.org/draft-06/schema#",
   "description": "Schema for mcode-extraction-framework config files",
   "type": "object",
   "properties": {

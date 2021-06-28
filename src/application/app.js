@@ -7,6 +7,7 @@ const { sendEmailNotification, zipErrors } = require('./tools/emailNotifications
 const { extractDataForPatients } = require('./tools/mcodeExtraction');
 const { maskMRN } = require('../helpers/patientUtils');
 const { parsePatientIds } = require('../helpers/appUtils');
+const { validateConfig } = require('../helpers/configValidator');
 
 function getConfig(pathToConfig) {
   // Checks pathToConfig points to valid JSON file
@@ -20,7 +21,7 @@ function getConfig(pathToConfig) {
 
 function checkInputAndConfig(config, fromDate, toDate) {
   // Check input args and needed config variables based on client being used
-  const { patientIdCsvPath } = config;
+  validateConfig(config);
 
   // Check if `fromDate` is a valid date
   if (fromDate && !moment(fromDate).isValid()) {
@@ -30,11 +31,6 @@ function checkInputAndConfig(config, fromDate, toDate) {
   // Check if `toDate` is a valid date
   if (toDate && !moment(toDate).isValid()) {
     throw new Error('-t/--to-date is not a valid date.');
-  }
-
-  // Check if there is a path to the MRN CSV within our config JSON
-  if (!patientIdCsvPath) {
-    throw new Error('patientIdCsvPath is required in config file');
   }
 }
 
