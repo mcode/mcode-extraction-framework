@@ -5,7 +5,7 @@ const metaSchema = require('ajv/lib/refs/json-schema-draft-06.json');
 const schema = require('./schemas/fhir.schema.json');
 const logger = require('./logger');
 
-const ajv = new Ajv({ logger: false });
+const ajv = new Ajv({ logger: false, allErrors: true });
 ajv.addMetaSchema(metaSchema);
 const validate = ajv.compile(schema);
 
