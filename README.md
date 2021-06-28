@@ -152,7 +152,9 @@ To mask a property, provide an array of the properties to mask in the `construct
 
 The mCODE Extraction Client will extract all data that is provided in the CSV files by default, regardless of any dates associated with each row of data. It is recommended that any required date filtering is performed outside of the scope of this client.
 
-If for any reason a user is required to specify a date range to be extracted through this client, users _must_ add a `dateRecorded` column in every data CSV file. This column will indicate when each row of data was added to the CSV file. Note that this date _does not_ correspond to any date associated with the data element.
+If for any reason a user is required to specify a date range to be extracted through this client, users _must_ add a `dateRecorded` column in every relevant data CSV file. This column will indicate when each row of data was added to the CSV file. Note that this date _does not_ correspond to any date associated with the data element.
+
+Note that some resources should always be included and should not be filtered out with a `dateRecorded` column and date. For example, every extraction should extract patient information to a Patient resource, so no `dateRecorded` column should be provided in a CSV that contains the Patient information.
 
 #### CLI From-Date and To-Date (NOT recommended use)
 
