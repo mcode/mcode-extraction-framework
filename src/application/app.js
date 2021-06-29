@@ -5,7 +5,6 @@ const logger = require('../helpers/logger');
 const { RunInstanceLogger } = require('./tools/RunInstanceLogger');
 const { sendEmailNotification, zipErrors } = require('./tools/emailNotifications');
 const { extractDataForPatients } = require('./tools/mcodeExtraction');
-const { maskMRN } = require('../helpers/patientUtils');
 const { parsePatientIds } = require('../helpers/appUtils');
 
 function getConfig(pathToConfig) {
@@ -75,23 +74,6 @@ async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, d
     const successCondition = successfulExtraction;
     if (successCondition) {
       runLogger.addRun(effectiveFromDate, effectiveToDate);
-    }
-  }
-
-  // check if config specifies that MRN needs to be masked
-  // if it does need to be masked, mask all references to MRN outside of the patient resource
-  const patientConfig = config.extractors.find((e) => e.type === 'CSVPatientExtractor');
-  if (patientConfig && ('constructorArgs' in patientConfig && 'mask' in patientConfig.constructorArgs)) {
-    if (patientConfig.constructorArgs.mask.includes('mrn')) {
-      extractedData.forEach((bundle, i) => {
-        // NOTE: This may fail to mask MRN-related properties on non-patient resources
-        //       Need to investigate further.
-        try {
-          maskMRN(bundle);
-        } catch (e) {
-          logger.error(`Bundle ${i + 1}: ${e.message}`);
-        }
-      });
     }
   }
 
