@@ -49,12 +49,14 @@
         "to": {
           "anyOf": [
             {
-              "type": "string"
+              "type": "string",
+              "format": "comma-separated-emails"
             },
             {
               "type": "array",
               "items": {
-                "type": "string"
+                "type": "string",
+                "format": "email"
               }
             }
           ]

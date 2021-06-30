@@ -5,6 +5,15 @@ const configSchema = require('./schemas/config.schema.json');
 
 const ajv = new Ajv({ logger: false, allErrors: true });
 ajv.addMetaSchema(metaSchema);
+
+ajv.addFormat('comma-separated-emails', {
+  type: 'string',
+  validate: (emails) => {
+    const emailRegex = new RegExp(/^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$/i);
+    return emails.split(',').every((email) => emailRegex.test(email.trim()));
+  },
+});
+
 const validator = ajv.addSchema(configSchema, 'config');
 
 function validateConfig(config) {
