@@ -14,6 +14,14 @@ ajv.addFormat('comma-separated-emails', {
     return emails.split(',').every((email) => emailRegex.test(email.trim()));
   },
 });
+ajv.addFormat('email-with-name', {
+  type: 'string',
+  validate: (email) => {
+    // this is Ajv's regex for email format (https://github.com/ajv-validator/ajv-formats/blob/master/src/formats.ts#L106)
+    const emailRegex = new RegExp(/^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$/i);
+    return emailRegex.test(email.split(' ').pop());
+  },
+});
 
 const validator = ajv.addSchema(configSchema, 'config');
 
