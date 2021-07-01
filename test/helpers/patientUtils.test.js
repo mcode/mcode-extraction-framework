@@ -1,11 +1,9 @@
 const _ = require('lodash');
-const shajs = require('sha.js');
 const {
-  getEthnicityDisplay, getRaceCodesystem, getRaceDisplay, getPatientName, maskPatientData, maskMRN,
+  getEthnicityDisplay, getRaceCodesystem, getRaceDisplay, getPatientName, maskPatientData,
 } = require('../../src/helpers/patientUtils');
 const examplePatient = require('../extractors/fixtures/csv-patient-bundle.json');
 const exampleMaskedPatient = require('./fixtures/masked-patient-bundle.json');
-const exampleBundleWithMRN = require('./fixtures/bundle-with-mrn-id.json');
 
 describe('PatientUtils', () => {
   describe('getEthnicityDisplay', () => {
@@ -117,20 +115,6 @@ describe('PatientUtils', () => {
     test('should throw error when provided an invalid field to mask', () => {
       const bundle = _.cloneDeep(examplePatient);
       expect(() => maskPatientData(bundle, ['this is an invalid field', 'mrn'])).toThrowError();
-    });
-  });
-  describe('maskMRN', () => {
-    test('all occurances of the MRN as an id should be masked by a hashed version', () => {
-      const bundle = _.cloneDeep(exampleBundleWithMRN);
-      const hashedMRN = shajs('sha256').update(bundle.entry[0].resource.id).digest('hex');
-      maskMRN(bundle);
-      expect(bundle.entry[0].resource.id).toEqual(hashedMRN);
-      expect(bundle.entry[0].fullUrl).toEqual(`urn:uuid:${hashedMRN}`);
-      expect(bundle.entry[1].resource.subject.reference).toEqual(`urn:uuid:${hashedMRN}`);
-      expect(bundle.entry[2].resource.individual.reference).toEqual(`urn:uuid:${hashedMRN}`);
-    });
-    test('should throw error when there is no Patient resource in bundle', () => {
-      expect(() => maskMRN({})).toThrowError();
     });
   });
 });

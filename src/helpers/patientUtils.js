@@ -103,6 +103,14 @@ function maskPatientData(bundle, mask) {
       delete patient._gender; // gender may have a dataAbsentReason on it for 'unknown' data, but we'll still want to mask it
       patient._gender = masked;
     } else if (field === 'mrn' && 'identifier' in patient) {
+      // id and fullURL still need valid values, so we use a hashed version of MRN instead of dataAbsentReason
+      const maskedMRN = shajs('sha256').update(patient.id).digest('hex');
+      patient.id = maskedMRN;
+      const patientEntry = fhirpath.evaluate(
+        bundle,
+        'Bundle.entry.where(resource.resourceType=\'Patient\')',
+      )[0];
+      patientEntry.fullUrl = `urn:uuid:${maskedMRN}`;
       patient.identifier = [masked];
     } else if (field === 'name' && 'name' in patient) {
       patient.name = [masked];
@@ -151,33 +159,10 @@ function maskPatientData(bundle, mask) {
   });
 }
 
-/**
- * Mask all references to the MRN used as an id
- * Currently, the MRN appears as an id in 'subject' and 'individual' objects in other resources
- * and in the 'id' and 'fullUrl' fields of the Patient resource.
- * Replaces the MRN with a hash of the MRN
- * @param {Object} bundle a FHIR bundle with a Patient resource and other resources
- */
-function maskMRN(bundle) {
-  const patient = fhirpath.evaluate(bundle, 'Bundle.entry.where(resource.resourceType=\'Patient\')')[0];
-  if (patient === undefined) throw Error('No Patient resource in bundle. Could not mask MRN.');
-  const mrn = patient.resource.id;
-  const masked = shajs('sha256').update(mrn).digest('hex');
-  patient.fullUrl = `urn:uuid:${masked}`;
-  patient.resource.id = masked;
-  const subjects = fhirpath.evaluate(bundle, `Bundle.entry.resource.subject.where(reference='urn:uuid:${mrn}')`);
-  const individuals = fhirpath.evaluate(bundle, `Bundle.entry.resource.individual.where(reference='urn:uuid:${mrn}')`);
-  const mrnOccurrences = subjects.concat(individuals);
-  for (let i = 0; i < mrnOccurrences.length; i += 1) {
-    mrnOccurrences[i].reference = `urn:uuid:${masked}`;
-  }
-}
-
 module.exports = {
   getEthnicityDisplay,
   getRaceCodesystem,
   getRaceDisplay,
   getPatientName,
   maskPatientData,
-  maskMRN,
 };
