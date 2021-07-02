@@ -1,25 +1,25 @@
-const path = require('path');
-const { Extractor } = require('./Extractor');
-const { CSVModule } = require('../modules');
-const { validateCSV } = require('../helpers/csvValidator');
 const logger = require('../helpers/logger');
+const { Extractor } = require('./Extractor');
+const { CSVFileModule, CSVURLModule } = require('../modules');
 
 class BaseCSVExtractor extends Extractor {
-  constructor({ filePath, csvSchema, unalterableColumns }) {
+  constructor({ filePath, url, csvSchema, unalterableColumns }) {
     super();
     this.unalterableColumns = unalterableColumns || [];
     this.csvSchema = csvSchema;
-    this.filePath = path.resolve(filePath);
-    this.csvModule = new CSVModule(this.filePath, this.unalterableColumns);
+    if (filePath) {
+      this.filePath = filePath;
+      this.csvModule = new CSVFileModule(this.filePath, this.unalterableColumns);
+    } else if (url) {
+      this.url = url;
+      this.csvModule = new CSVURLModule(this.url, this.unalterableColumns);
+    } else {
+      throw new Error('Trying to instantiate a CSVExtractor without a filePath or url');
+    }
   }
 
-  validate() {
-    if (this.csvSchema) {
-      logger.info(`Validating CSV file for ${this.filePath}`);
-      return validateCSV(this.filePath, this.csvSchema, this.csvModule.data);
-    }
-    logger.warn(`No CSV schema provided for ${this.filePath}`);
-    return true;
+  async validate() {
+    return this.csvModule.validate(this.csvSchema);
   }
 }
 

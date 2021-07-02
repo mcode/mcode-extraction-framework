@@ -8,8 +8,8 @@ const logger = require('../helpers/logger');
 const { CSVCancerDiseaseStatusSchema } = require('../helpers/schemas/csv');
 
 class CSVCancerDiseaseStatusExtractor extends BaseCSVExtractor {
-  constructor({ filePath, implementation }) {
-    super({ filePath, csvSchema: CSVCancerDiseaseStatusSchema });
+  constructor({ filePath, url, implementation }) {
+    super({ filePath, url, csvSchema: CSVCancerDiseaseStatusSchema });
     this.implementation = implementation;
   }
 

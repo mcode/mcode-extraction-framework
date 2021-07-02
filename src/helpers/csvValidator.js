@@ -1,7 +1,9 @@
 const _ = require('lodash');
 const logger = require('./logger');
 
-function validateCSV(pathToCSVFile, csvSchema, csvData) {
+// Validates csvData against the csvSchema
+// Uses the csvFileIdentifier in logs for readability
+function validateCSV(csvFileIdentifier, csvSchema, csvData) {
   let isValid = true;
 
   // Check headers
@@ -10,17 +12,17 @@ function validateCSV(pathToCSVFile, csvSchema, csvData) {
   const fileDiff = _.difference(headers, csvSchema.headers.map((h) => h.name.toLowerCase()));
 
   if (fileDiff.length > 0) {
-    logger.warn(`Found extra column(s) in CSV ${pathToCSVFile}: "${fileDiff.join(',')}"`);
+    logger.warn(`Found extra column(s) in CSV ${csvFileIdentifier}: "${fileDiff.join(',')}"`);
   }
 
   if (schemaDiff.length > 0) {
     schemaDiff.forEach((sd) => {
       const headerSchema = csvSchema.headers.find((h) => h.name.toLowerCase() === sd);
       if (headerSchema.required) {
-        logger.error(`Column ${sd} is marked as required but is missing in CSV ${pathToCSVFile}`);
+        logger.error(`Column ${sd} is marked as required but is missing in CSV ${csvFileIdentifier}`);
         isValid = false;
       } else {
-        logger.warn(`Column ${sd} is missing in CSV ${pathToCSVFile}`);
+        logger.warn(`Column ${sd} is missing in CSV ${csvFileIdentifier}`);
       }
     });
   }
@@ -31,7 +33,7 @@ function validateCSV(pathToCSVFile, csvSchema, csvData) {
       const schema = csvSchema.headers.find((h) => h.name === key);
 
       if (schema && schema.required && !value) {
-        logger.error(`Column ${key} marked as required but missing value in row ${i + 1} column ${j + 1} in CSV ${pathToCSVFile}`);
+        logger.error(`Column ${key} marked as required but missing value in row ${i + 1} column ${j + 1} in CSV ${csvFileIdentifier}`);
         isValid = false;
       }
     });

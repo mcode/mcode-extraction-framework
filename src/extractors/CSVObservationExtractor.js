@@ -42,8 +42,8 @@ function formatData(observationData, patientId) {
 }
 
 class CSVObservationExtractor extends BaseCSVExtractor {
-  constructor({ filePath }) {
-    super({ filePath });
+  constructor({ filePath, url }) {
+    super({ filePath, url });
   }
 
   async getObservationData(mrn) {
