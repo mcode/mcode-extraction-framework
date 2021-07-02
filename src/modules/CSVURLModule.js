@@ -16,7 +16,7 @@ class CSVURLModule {
   // If data is already cached, this function does nothing
   async fillDataCache() {
     if (!this.data) {
-      const csvData = await axios(this.url).then((res) => res.data);
+      const csvData = await axios.get(this.url).then((res) => res.data);
       // Parse then normalize the data
       const parsedData = parse(csvData, {
         columns: (header) => header.map((column) => stringNormalizer(column)),
