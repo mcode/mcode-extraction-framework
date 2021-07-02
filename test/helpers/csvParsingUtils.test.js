@@ -1,4 +1,4 @@
-const { normalizeEmptyValues, stringNormalizer } = require('../../src/helpers/csvParsingUtils.js');
+const { normalizeEmptyValues } = require('../../src/helpers/csvParsingUtils.js');
 
 describe('csvParsingUtils', () => {
   describe('normalizeEmptyValues', () => {

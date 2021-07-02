@@ -60,7 +60,7 @@ class CSVPatientExtractor extends BaseCSVExtractor {
     super({
       filePath,
       url,
-      // csvSchema: CSVPatientSchema,
+      csvSchema: CSVPatientSchema,
       unalterableColumns,
     });
     this.mask = mask;

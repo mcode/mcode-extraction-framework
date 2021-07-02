@@ -1,4 +1,3 @@
-const logger = require('../helpers/logger');
 const { Extractor } = require('./Extractor');
 const { CSVFileModule, CSVURLModule } = require('../modules');
 
