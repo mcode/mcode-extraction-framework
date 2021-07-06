@@ -59,7 +59,7 @@ class CSVURLModule {
         });
         this.data = normalizeEmptyValues(parsedData, this.unalterableColumns);
       }
-      return validateCSV(this.url, csvSchema, this.csvModule.data);
+      return validateCSV(this.url, csvSchema, this.data);
     }
     logger.warn(`No CSV schema provided for data found at ${this.url}`);
     return true;
