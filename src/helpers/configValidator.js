@@ -19,7 +19,7 @@ ajv.addFormat('email-with-name', {
   validate: (email) => {
     // this is Ajv's regex for email format (https://github.com/ajv-validator/ajv-formats/blob/master/src/formats.ts#L106)
     const emailRegex = new RegExp(/^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$/i);
-    return emailRegex.test(email.split(' ').pop());
+    return emailRegex.test(email.trim().split(' ').pop());
   },
 });
 
