@@ -4,9 +4,9 @@ const { CSVFileModule, CSVURLModule } = require('../modules');
 class BaseCSVExtractor extends Extractor {
   constructor({ filePath, url, csvSchema, unalterableColumns }) {
     super();
+    this.unalterableColumns = unalterableColumns || [];
+    this.csvSchema = csvSchema;
     if (url) {
-      this.unalterableColumns = unalterableColumns || [];
-      this.csvSchema = csvSchema;
       this.url = url;
       this.csvModule = new CSVURLModule(this.url, this.unalterableColumns);
     } else if (filePath) {
