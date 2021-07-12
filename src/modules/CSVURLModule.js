@@ -49,16 +49,7 @@ class CSVURLModule {
     await this.fillDataCache();
 
     if (csvSchema) {
-      logger.info(`Validating CSV data for ${this.url}`);
-      if (!this.data) {
-        const csvData = await axios(this.url);
-        // Parse then normalize the data
-        const parsedData = parse(csvData, {
-          columns: (header) => header.map((column) => stringNormalizer(column)),
-          bom: true,
-        });
-        this.data = normalizeEmptyValues(parsedData, this.unalterableColumns);
-      }
+      this.data = normalizeEmptyValues(this.data, this.unalterableColumns);
       return validateCSV(this.url, csvSchema, this.data);
     }
     logger.warn(`No CSV schema provided for data found at ${this.url}`);
