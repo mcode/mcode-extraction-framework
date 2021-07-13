@@ -70,8 +70,8 @@ function formatData(tpcData, patientId) {
 }
 
 class CSVTreatmentPlanChangeExtractor extends BaseCSVExtractor {
-  constructor({ filePath }) {
-    super({ filePath, csvSchema: CSVTreatmentPlanChangeSchema });
+  constructor({ filePath, url }) {
+    super({ filePath, url, csvSchema: CSVTreatmentPlanChangeSchema });
   }
 
   async getTPCData(mrn, fromDate, toDate) {

@@ -25,32 +25,37 @@ class BaseClient {
   }
 
   // Given an extractor configuration, initialize all the necessary extractors
-  initializeExtractors(extractorConfig, commonExtractorArgs) {
-    let allExtractorsValid = true;
-
+  async initializeExtractors(extractorConfig, commonExtractorArgs) {
+    // Loop to initialize the extractors
     extractorConfig.forEach((curExtractorConfig) => {
       const { label, type, constructorArgs } = curExtractorConfig;
       logger.debug(`Initializing ${label} extractor with type ${type}`);
       const ExtractorClass = this.extractorClasses[type];
-
       try {
         const newExtractor = new ExtractorClass({ ...commonExtractorArgs, ...constructorArgs });
-
-        if (newExtractor.validate) {
-          const isExtractorValid = newExtractor.validate();
-          allExtractorsValid = (allExtractorsValid && isExtractorValid);
-          if (isExtractorValid) {
-            logger.debug(`Extractor ${label} PASSED CSV validation`);
-          } else {
-            logger.debug(`Extractor ${label} FAILED CSV validation`);
-          }
-        }
-
         this.extractors.push(newExtractor);
       } catch (e) {
         throw new Error(`Unable to initialize ${label} extractor with type ${type}: ${e.message}`);
       }
     });
+    // For validation, we are looping over extractors and performing an async operation on each.
+    // We need to loop without forEach (since forEach is sequential).
+    // Using Reduce to compute the validity of all extractors
+    const allExtractorsValid = await this.extractors.reduce(async (curExtractorsValid, curExtractor) => {
+      const { name } = curExtractor.constructor;
+
+      if (curExtractor.validate) {
+        logger.debug(`Validating ${name}`);
+        const isExtractorValid = await curExtractor.validate();
+        if (isExtractorValid) {
+          logger.debug(`Extractor ${name} PASSED CSV validation`);
+        } else {
+          logger.warn(`Extractor ${name} FAILED CSV validation`);
+        }
+        return (curExtractorsValid && isExtractorValid);
+      }
+      return curExtractorsValid;
+    }, true);
 
     if (allExtractorsValid) {
       logger.info('Validation succeeded');

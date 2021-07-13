@@ -35,7 +35,7 @@ const {
   MCODERadiationProcedureExtractor,
   MCODESurgicalProcedureExtractor,
 } = require('./extractors');
-const { BaseFHIRModule, CSVModule } = require('./modules');
+const { BaseFHIRModule, CSVFileModule, CSVURLModule } = require('./modules');
 const { getEthnicityDisplay,
   getPatientName,
   getRaceCodesystem,
@@ -85,7 +85,8 @@ module.exports = {
   CSVCancerRelatedMedicationExtractor,
   CSVClinicalTrialInformationExtractor,
   CSVConditionExtractor,
-  CSVModule,
+  CSVFileModule,
+  CSVURLModule,
   CSVPatientExtractor,
   CSVObservationExtractor,
   CSVProcedureExtractor,

@@ -91,6 +91,10 @@
         "filePath": {
           "type": "string"
         },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
         "clinicalSiteID": {
           "type": "string"
         },
