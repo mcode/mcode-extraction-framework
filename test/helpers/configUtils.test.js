@@ -1,4 +1,18 @@
-const { validateConfig } = require('../../src/helpers/configValidator.js');
+const { validateConfig, getConfig } = require('../../src/helpers/configUtils.js');
+const testConfig = require('./fixtures/test-config.json');
+
+describe('getConfig', () => {
+  const pathToConfig = 'test/helpers/fixtures/test-config.json';
+
+  it('should throw error when pathToConfig does not point to valid JSON file.', () => {
+    expect(() => getConfig()).toThrowError();
+  });
+
+  it('should return test config', () => {
+    const config = getConfig(pathToConfig);
+    expect(config).toEqual(testConfig);
+  });
+});
 
 describe('validateConfig', () => {
   const missingPropertyConfig = { patientIdCsvPath: '' };
