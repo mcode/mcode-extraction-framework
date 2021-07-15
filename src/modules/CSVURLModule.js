@@ -31,7 +31,6 @@ class CSVURLModule {
       });
       logger.debug('Data parsing successful');
       this.data = normalizeEmptyValues(parsedData, this.unalterableColumns);
-      logger.debug('Normalization of empty values successful');
     }
   }
 
