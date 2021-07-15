@@ -7,6 +7,7 @@ function stringNormalizer(str) {
 
 // For translating null/nil-like values into empty strings
 function normalizeEmptyValues(data, unalterableColumns = []) {
+  logger.debug('Checking for empty CSV values to normalize');
   const EMPTY_VALUES = ['null', 'nil'].map(stringNormalizer);
   const normalizedUnalterableColumns = unalterableColumns.map(stringNormalizer);
   // Flag tracking if empty values were normalized or not.
