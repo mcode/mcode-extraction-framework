@@ -67,6 +67,7 @@ const { formatDate, formatDateTime } = require('./helpers/dateUtils');
 const { lowercaseLookupQuery, createLowercaseLookup, createInvertedLookup } = require('./helpers/lookupUtils');
 const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersFromContext, getPatientFromContext } = require('./helpers/contextUtils');
 const { parsePatientIds } = require('./helpers/appUtils');
+const { getConfig, validateConfig } = require('./helpers/configUtils');
 
 module.exports = {
   // CLI Related utilities
@@ -76,6 +77,8 @@ module.exports = {
   parsePatientIds,
   sendEmailNotification,
   zipErrors,
+  getConfig,
+  validateConfig,
   // Extractors and Clients
   BaseClient,
   BaseFHIRExtractor,

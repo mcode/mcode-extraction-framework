@@ -1,24 +1,9 @@
 const rewire = require('rewire');
-const testConfig = require('./fixtures/test-config.json');
 
 const app = rewire('../../src/application/app.js');
-const getConfig = app.__get__('getConfig');
 const checkInputAndConfig = app.__get__('checkInputAndConfig');
 
 describe('App Tests', () => {
-  describe('getConfig', () => {
-    const pathToConfig = 'test/application/fixtures/test-config.json';
-
-    it('should throw error when pathToConfig does not point to valid JSON file.', () => {
-      expect(() => getConfig()).toThrowError();
-    });
-
-    it('should return test config', () => {
-      const config = getConfig(pathToConfig);
-      expect(config).toEqual(testConfig);
-    });
-  });
-
   describe('checkInputAndConfig', () => {
     const config = { patientIdCsvPath: '', extractors: [] };
     it('should throw error when fromDate is invalid.', () => {
