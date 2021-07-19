@@ -54,7 +54,7 @@ class BaseClient {
           }
           return ((await curExtractorsValid) && isExtractorValid);
         } catch (e) {
-          logger.warn(`Extractor ${name} FAILED CSV validation`);
+          logger.warn(`Extractor ${name} could not validate. Encountered the following error: ${e.message}`);
           return false;
         }
       }
