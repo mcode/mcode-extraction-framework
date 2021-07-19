@@ -4,6 +4,7 @@ const program = require('commander');
 const { MCODEClient } = require('../client/MCODEClient');
 const logger = require('../helpers/logger');
 const { mcodeApp } = require('../application');
+const { getConfig } = require('../helpers/configUtils');
 
 const defaultPathToConfig = path.join('config', 'csv.config.json');
 const defaultPathToRunLogs = path.join('logs', 'run-logs.json');
@@ -27,7 +28,8 @@ const allEntries = !entriesFilter;
 
 async function runApp() {
   try {
-    const extractedData = await mcodeApp(MCODEClient, fromDate, toDate, configFilepath, runLogFilepath, debug, allEntries);
+    const config = getConfig(configFilepath);
+    const extractedData = await mcodeApp(MCODEClient, fromDate, toDate, config, runLogFilepath, debug, allEntries);
 
     // Finally, save the data to disk
     const outputPath = './output';

@@ -1,22 +1,10 @@
-const fs = require('fs');
-const path = require('path');
 const moment = require('moment');
 const logger = require('../helpers/logger');
 const { RunInstanceLogger } = require('./tools/RunInstanceLogger');
 const { sendEmailNotification, zipErrors } = require('./tools/emailNotifications');
 const { extractDataForPatients } = require('./tools/mcodeExtraction');
 const { parsePatientIds } = require('../helpers/appUtils');
-const { validateConfig } = require('../helpers/configValidator');
-
-function getConfig(pathToConfig) {
-  // Checks pathToConfig points to valid JSON file
-  const fullPath = path.resolve(pathToConfig);
-  try {
-    return JSON.parse(fs.readFileSync(fullPath));
-  } catch (err) {
-    throw new Error(`The provided filepath to a configuration file ${pathToConfig}, full path ${fullPath} did not point to a valid JSON file.`);
-  }
-}
+const { validateConfig } = require('../helpers/configUtils');
 
 function checkInputAndConfig(config, fromDate, toDate) {
   // Check input args and needed config variables based on client being used
@@ -33,9 +21,8 @@ function checkInputAndConfig(config, fromDate, toDate) {
   }
 }
 
-async function mcodeApp(Client, fromDate, toDate, pathToConfig, pathToRunLogs, debug, allEntries) {
+async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, allEntries) {
   logger.level = debug ? 'debug' : 'info';
-  const config = getConfig(pathToConfig);
   checkInputAndConfig(config, fromDate, toDate);
 
   // Create and initialize client
