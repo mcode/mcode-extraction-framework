@@ -20,7 +20,7 @@ class CSVURLModule {
       const csvData = await axios.get(this.url)
         .then((res) => res.data)
         .catch((e) => {
-          logger.error('Error occurred when getting CSV data using url');
+          logger.error('Error occurred when making a connection to this url');
           throw e;
         });
       logger.debug('Web request successful');
@@ -29,7 +29,7 @@ class CSVURLModule {
         columns: (header) => header.map((column) => stringNormalizer(column)),
         bom: true,
       });
-      logger.debug('Data parsing successful');
+      logger.debug('CSV Data parsing successful');
       this.data = normalizeEmptyValues(parsedData, this.unalterableColumns);
     }
   }

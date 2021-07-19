@@ -43,19 +43,23 @@ class BaseClient {
     // Using Reduce to compute the validity of all extractors
     const allExtractorsValid = await this.extractors.reduce(async (curExtractorsValid, curExtractor) => {
       const { name } = curExtractor.constructor;
-
       if (curExtractor.validate) {
         logger.debug(`Validating ${name}`);
-        const isExtractorValid = await curExtractor.validate();
-        if (isExtractorValid) {
-          logger.debug(`Extractor ${name} PASSED CSV validation`);
-        } else {
+        try {
+          const isExtractorValid = await curExtractor.validate();
+          if (isExtractorValid) {
+            logger.debug(`Extractor ${name} PASSED CSV validation`);
+          } else {
+            logger.warn(`Extractor ${name} FAILED CSV validation`);
+          }
+          return ((await curExtractorsValid) && isExtractorValid);
+        } catch (e) {
           logger.warn(`Extractor ${name} FAILED CSV validation`);
+          return false;
         }
-        return (curExtractorsValid && isExtractorValid);
       }
       return curExtractorsValid;
-    }, true);
+    }, Promise.resolve(true));
 
     if (allExtractorsValid) {
       logger.info('Validation succeeded');
