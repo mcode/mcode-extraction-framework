@@ -16,12 +16,20 @@ class CSVURLModule {
   // If data is already cached, this function does nothing
   async fillDataCache() {
     if (!this.data) {
-      const csvData = await axios.get(this.url).then((res) => res.data);
+      logger.debug('Filling the data cache of CSVURLModule');
+      const csvData = await axios.get(this.url)
+        .then((res) => res.data)
+        .catch((e) => {
+          logger.error('Error occurred when making a connection to this url');
+          throw e;
+        });
+      logger.debug('Web request successful');
       // Parse then normalize the data
       const parsedData = parse(csvData, {
         columns: (header) => header.map((column) => stringNormalizer(column)),
         bom: true,
       });
+      logger.debug('CSV Data parsing successful');
       this.data = normalizeEmptyValues(parsedData, this.unalterableColumns);
     }
   }
