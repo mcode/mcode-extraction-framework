@@ -73,7 +73,7 @@
           ]
         },
         "tlsRejectUnauthorized": {
-          "title": "Reject Unauthorized Connections",
+          "title": "TLS Reject Unauthorized Connections",
           "type": "boolean"
         }
       },

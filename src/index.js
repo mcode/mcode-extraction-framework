@@ -68,7 +68,6 @@ const { lowercaseLookupQuery, createLowercaseLookup, createInvertedLookup } = re
 const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersFromContext, getPatientFromContext } = require('./helpers/contextUtils');
 const { parsePatientIds } = require('./helpers/appUtils');
 const { getConfig, validateConfig } = require('./helpers/configUtils');
-
 const configSchema = require('./helpers/schemas/config.schema.json');
 
 module.exports = {
