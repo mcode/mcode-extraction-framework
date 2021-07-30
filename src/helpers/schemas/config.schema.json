@@ -5,6 +5,7 @@
   "type": "object",
   "properties": {
     "patientIdCsvPath": {
+      "title": "Patient ID CSV File",
       "type": "string"
     },
     "commonExtractorArgs": {
@@ -14,6 +15,7 @@
       "$ref": "#/$defs/notificationInfo"
     },
     "extractors": {
+      "title": "Extractors",
       "type": "array",
       "items": {
         "$ref": "#/$defs/extractor"
@@ -22,32 +24,40 @@
   },
   "$defs": {
     "commonExtractorArgs": {
+      "title": "Common Extractor Arguments",
       "type": "object",
       "properties": {
         "baseFhirUrl": {
+          "title": "Base FHIR URL",
           "type": "string",
           "format": "uri"
         },
         "requestHeaders": {
+          "title": "Request Headers",
           "type": "object"
         }
       }
     },
     "notificationInfo": {
+      "title": "Notification Info",
       "type": "object",
       "properties": {
         "host": {
+          "title": "Host",
           "type": "string",
           "format": "hostname"
         },
         "port": {
+          "title": "Port",
           "type": "integer"
         },
         "from": {
+          "title": "From",
           "type": "string",
           "format": "email-with-name"
         },
         "to": {
+          "title": "To",
           "anyOf": [
             {
               "type": "string",
@@ -63,6 +73,7 @@
           ]
         },
         "tlsRejectUnauthorized": {
+          "title": "Reject Unauthorized Connections",
           "type": "boolean"
         }
       },
@@ -72,12 +83,15 @@
       ]
     },
     "extractor": {
+      "title": "Extractor",
       "type": "object",
       "properties": {
         "label": {
+          "title": "Label",
           "type": "string"
         },
         "type": {
+          "title": "Type",
           "type": "string"
         },
         "constructorArgs": {
@@ -86,25 +100,32 @@
       }
     },
     "constructorArgs": {
+      "title": "Constructor Arguments",
       "type": "object",
       "properties": {
         "filePath": {
+          "title": "File Path",
           "type": "string"
         },
         "url": {
+          "title": "URL",
           "type": "string",
           "format": "uri"
         },
         "clinicalSiteID": {
+          "title": "Clinical Site ID",
           "type": "string"
         },
         "clinicalSiteSystem": {
+          "title": "Clinical Site System",
           "type": "string"
         },
         "type": {
+          "title": "Type",
           "type": "string"
         },
         "mask": {
+          "title": "Masked Fields",
           "type": "array",
           "items": {
             "type": "string"

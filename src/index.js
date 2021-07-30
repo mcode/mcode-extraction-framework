@@ -69,6 +69,8 @@ const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersF
 const { parsePatientIds } = require('./helpers/appUtils');
 const { getConfig, validateConfig } = require('./helpers/configUtils');
 
+const configSchema = require('./helpers/schemas/config.schema.json');
+
 module.exports = {
   // CLI Related utilities
   RunInstanceLogger,
@@ -147,4 +149,6 @@ module.exports = {
   getConditionsFromContext,
   getEncountersFromContext,
   getPatientFromContext,
+  // Configuration file schema
+  configSchema,
 };
