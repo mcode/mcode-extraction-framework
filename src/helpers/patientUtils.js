@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const fhirpath = require('fhirpath');
-const shajs = require('sha.js');
+const crypto = require('crypto');
 const { extensionArr, dataAbsentReasonExtension } = require('../templates/snippets/extension.js');
 
 // Based on the OMB Ethnicity table found here:http://hl7.org/fhir/us/core/STU3.1/ValueSet-omb-ethnicity-category.html
@@ -104,7 +104,9 @@ function maskPatientData(bundle, mask) {
       patient._gender = masked;
     } else if (field === 'mrn' && 'identifier' in patient) {
       // id and fullURL still need valid values, so we use a hashed version of MRN instead of dataAbsentReason
-      const maskedMRN = shajs('sha256').update(patient.id).digest('hex');
+      const hash = crypto.createHash('sha256');
+      const maskedMRN = hash.update(patient.id).digest('hex');
+
       patient.id = maskedMRN;
       const patientEntry = fhirpath.evaluate(
         bundle,
