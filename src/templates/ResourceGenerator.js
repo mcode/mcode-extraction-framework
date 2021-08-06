@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const shajs = require('sha.js');
+const crypto = require('crypto');
 const logger = require('../helpers/logger');
 
 const { adverseEventTemplate } = require('./AdverseEventTemplate');
@@ -36,7 +36,8 @@ function loadFhirTemplate(mcodeProfileID) {
 
 // Hash a data object to get a unique, deterministic ID for it
 function generateResourceId(data) {
-  return shajs('sha256').update(JSON.stringify(data)).digest('hex');
+  const hash = crypto.createHash('sha256');
+  return hash.update(JSON.stringify(data)).digest('hex');
 }
 
 // Ensures that empty data in the resource object carries a null value, rather than being undefined or an empty string
