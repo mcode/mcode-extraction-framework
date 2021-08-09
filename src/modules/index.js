@@ -1,7 +1,9 @@
 const { BaseFHIRModule } = require('./BaseFHIRModule');
-const { CSVModule } = require('./CSVModule');
+const { CSVFileModule } = require('./CSVFileModule');
+const { CSVURLModule } = require('./CSVURLModule');
 
 module.exports = {
   BaseFHIRModule,
-  CSVModule,
+  CSVFileModule,
+  CSVURLModule,
 };

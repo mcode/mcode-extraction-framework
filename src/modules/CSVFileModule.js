@@ -2,52 +2,23 @@ const fs = require('fs');
 const moment = require('moment');
 const parse = require('csv-parse/lib/sync');
 const logger = require('../helpers/logger');
+const { validateCSV } = require('../helpers/csvValidator');
+const { stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
 
-// The standard string normalizer function
-function stringNormalizer(str) {
-  return str.toLowerCase();
-}
-
-// For translating null/nil-like values into empty strings
-function normalizeEmptyValues(data, unalterableColumns = []) {
-  const EMPTY_VALUES = ['null', 'nil'].map(stringNormalizer);
-  const normalizedUnalterableColumns = unalterableColumns.map(stringNormalizer);
-  // Flag tracking if empty values were normalized or not.
-  let wasEmptyNormalized = false;
-  const newData = data.map((row, i) => {
-    const newRow = { ...row };
-    // Filter out unalterable columns
-    const columnsToNormalize = Object.keys(row).filter((col) => !normalizedUnalterableColumns.includes(stringNormalizer(col)));
-    columnsToNormalize.forEach((col) => {
-      const value = newRow[col];
-      // If the value for this row-col combo is a value that should be empty, replace it
-      if (EMPTY_VALUES.includes(stringNormalizer(value))) {
-        logger.debug(`NULL/NIL values '${value}' found in row-${i}, col-${col}`);
-        wasEmptyNormalized = true;
-        newRow[col] = '';
-      }
-    });
-    return newRow;
-  });
-
-  if (wasEmptyNormalized) {
-    logger.warn('NULL/NIL values found and replaced with empty-strings');
-  }
-  return newData;
-}
-
-class CSVModule {
+class CSVFileModule {
   constructor(csvFilePath, unalterableColumns) {
     // Parse then normalize the data
     const parsedData = parse(fs.readFileSync(csvFilePath), {
       columns: (header) => header.map((column) => stringNormalizer(column)),
       bom: true,
     });
+    this.filePath = csvFilePath;
+
     this.data = normalizeEmptyValues(parsedData, unalterableColumns);
   }
 
   async get(key, value, fromDate, toDate) {
-    logger.debug(`Get csvModule info by key '${key}'`);
+    logger.debug(`Get csvFileModule info by key '${key}'`);
     // return all rows if key and value aren't provided
     if (!key && !value) return this.data;
     let result = this.data.filter((d) => d[stringNormalizer(key)] === value);
@@ -62,8 +33,18 @@ class CSVModule {
     if (result.length === 0) logger.warn('No data for patient within specified time range');
     return result;
   }
+
+  async validate(csvSchema) {
+    if (csvSchema) {
+      logger.info(`Validating CSV file for ${this.filePath}`);
+      return validateCSV(this.filePath, csvSchema, this.data);
+    }
+    logger.warn(`No CSV schema provided for ${this.filePath}`);
+    return true;
+  }
 }
 
+
 module.exports = {
-  CSVModule,
+  CSVFileModule,
 };

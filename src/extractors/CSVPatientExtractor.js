@@ -54,10 +54,15 @@ function joinAndReformatData(patientData) {
 }
 
 class CSVPatientExtractor extends BaseCSVExtractor {
-  constructor({ filePath, mask = [] }) {
+  constructor({ filePath, url, mask = [] }) {
     // Define CSV Columns whose values should never be altered
     const unalterableColumns = ['familyName', 'givenName'];
-    super({ filePath, csvSchema: CSVPatientSchema, unalterableColumns });
+    super({
+      filePath,
+      url,
+      csvSchema: CSVPatientSchema,
+      unalterableColumns,
+    });
     this.mask = mask;
   }
 

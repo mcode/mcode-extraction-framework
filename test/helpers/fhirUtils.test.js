@@ -146,6 +146,7 @@ describe('isValidFHIR', () => {
   test('Should return true when provided valid FHIR resources', () => {
     expect(isValidFHIR(validResource)).toEqual(true);
   });
+
   test('Should return false when provided invalid FHIR resources', () => {
     expect(isValidFHIR(invalidResource)).toEqual(false);
   });
@@ -155,11 +156,92 @@ describe('invalidResourcesFromBundle', () => {
   test('Should return an empty array when all resources are valid', () => {
     expect(invalidResourcesFromBundle(emptyBundle)).toEqual([]);
   });
-  test('Should return an array of all invalid resources when they exist', () => {
+
+  test('Should return an error for each invalid resource', () => {
+    const secondInvalidResource = {
+      ...invalidResource,
+      id: 'secondInvalidResource',
+    };
+
+    const invalidBundleWithTwoResources = {
+      resourceType: 'Bundle',
+      entry: [
+        {
+          resource: invalidResource,
+        },
+        {
+          resource: secondInvalidResource,
+        },
+      ],
+    };
+
+    const response = invalidResourcesFromBundle(invalidBundleWithTwoResources);
+
+    const invalidResourceId = `${invalidResource.resourceType}-${invalidResource.id}`;
+    const invalidResourceId2 = `${secondInvalidResource.resourceType}-${secondInvalidResource.id}`;
+
+    expect(response).toHaveLength(2);
+    expect(response).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        failureId: invalidResourceId,
+      }),
+      expect.objectContaining({
+        failureId: invalidResourceId2,
+      }),
+    ]));
+  });
+
+  test('Should return detailed error for invalid resource', () => {
     const invalidBundle = { ...bundleWithOneEntry };
     invalidBundle.entry[0].resource = invalidResource;
     // This is dependent on implementation details intrinsic to invalidResourcesFromBundle
     const invalidResourceId = `${invalidResource.resourceType}-${invalidResource.id}`;
-    expect(invalidResourcesFromBundle(invalidBundle)).toEqual([invalidResourceId]);
+    expect(invalidResourcesFromBundle(invalidBundle)).toEqual([
+      {
+        failureId: invalidResourceId,
+        errors: [
+          {
+            keyword: 'enum',
+            dataPath: '.gender',
+            schemaPath: '#/properties/gender/enum',
+            params: {
+              allowedValues: [
+                'male',
+                'female',
+                'other',
+                'unknown',
+              ],
+            },
+            message: 'should be equal to one of the allowed values',
+          },
+        ],
+      },
+    ]);
+  });
+
+  test('Should return multiple errors if present within the same resource', () => {
+    // invalidResource already has an invalid gender enum value
+    const invalidResourceWithTwoProps = {
+      ...invalidResource,
+      birthDate: 'not-a-real-date',
+    };
+
+    const invalidBundle = {
+      resourceType: 'Bundle',
+      entry: [
+        {
+          resource: invalidResourceWithTwoProps,
+        },
+      ],
+    };
+
+    const response = invalidResourcesFromBundle(invalidBundle);
+
+    expect(response).toHaveLength(1);
+
+    const [invalidResponseObj] = response;
+
+    expect(invalidResponseObj.errors).toBeDefined();
+    expect(invalidResponseObj.errors).toHaveLength(2);
   });
 });

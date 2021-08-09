@@ -29,16 +29,16 @@ describe('BaseClient', () => {
   });
 
   describe('initializeExtractors', () => {
-    it('should fail if extractors are missing a type', () => {
+    it('should fail if extractors are missing a type', async () => {
       const extractorsWithoutType = [
         {
           label: 'Broken extractor',
           type: undefined,
         },
       ];
-      expect(() => engine.initializeExtractors(extractorsWithoutType)).toThrowError();
+      await expect(engine.initializeExtractors(extractorsWithoutType)).rejects.toThrowError();
     });
-    it('should fail on un-registered extractors', () => {
+    it('should fail on un-registered extractors', async () => {
       // No extractors are registered by default
       const unregisteredExtractors = [
         {
@@ -46,9 +46,9 @@ describe('BaseClient', () => {
           type: 'UnregisteredExtractor',
         },
       ];
-      expect(() => engine.initializeExtractors(unregisteredExtractors)).toThrowError();
+      await expect(engine.initializeExtractors(unregisteredExtractors)).rejects.toThrowError();
     });
-    it('should add extractors to engine if they are registered', () => {
+    it('should add extractors to engine if they are registered', async () => {
       // Register classes
       const extractorClasses = [
         class Extractor {},
@@ -61,7 +61,7 @@ describe('BaseClient', () => {
           type: 'Extractor',
         },
       ];
-      engine.initializeExtractors(registeredExtractors);
+      await engine.initializeExtractors(registeredExtractors);
       expect(engine.extractors).toHaveLength(registeredExtractors.length);
       expect(engine.extractors[0]).toBeInstanceOf(extractorClasses[0]);
     });
@@ -76,8 +76,8 @@ describe('BaseClient', () => {
     });
     it('should iterate over all extractors gets, aggregating resultant entries in a bundle', async () => {
       const extractorClassesWithEntryGets = [
-        class Ext1 { get() { return { entry: [{ resource: 'here' }] }; }},
-        class Ext2 { get() { return { entry: [{ resource: 'alsoHere' }] }; }},
+        class Ext1 { get() { return { entry: [{ resource: { resourceType: 'Patient' } }] }; }},
+        class Ext2 { get() { return { entry: [{ resource: { resourceType: 'Patient' } }] }; }},
         class Ext3 { get() { throw new Error('Error'); }},
       ];
       engine.registerExtractors(...extractorClassesWithEntryGets);

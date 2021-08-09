@@ -152,7 +152,9 @@ To mask a property, provide an array of the properties to mask in the `construct
 
 The mCODE Extraction Client will extract all data that is provided in the CSV files by default, regardless of any dates associated with each row of data. It is recommended that any required date filtering is performed outside of the scope of this client.
 
-If for any reason a user is required to specify a date range to be extracted through this client, users _must_ add a `dateRecorded` column in every data CSV file. This column will indicate when each row of data was added to the CSV file. Note that this date _does not_ correspond to any date associated with the data element.
+If for any reason a user is required to specify a date range to be extracted through this client, users _must_ add a `dateRecorded` column in every relevant data CSV file. This column will indicate when each row of data was added to the CSV file. Note that this date _does not_ correspond to any date associated with the data element.
+
+Note that some resources should always be included and should not be filtered out with a `dateRecorded` column and date. For example, every extraction should extract patient information to a Patient resource, so no `dateRecorded` column should be provided in a CSV that contains the Patient information.
 
 #### CLI From-Date and To-Date (NOT recommended use)
 
@@ -189,11 +191,11 @@ This framework consists of three key components: Extractors, Modules and Templat
 
 ### Glossary
 
-![Image detailing exact definitions of what is meant by Client, Extractor, Module and Template](./docs/diagrams/20_11_23_steam-terminology-breakdown.png)
+![Image detailing exact definitions of what is meant by Client, Extractor, Module and Template](./docs/diagrams/steam-terminology-breakdown.png)
 
 ### High Level Diagram
 
-![High-level architecture diagram, detailing exactly how Clients, Extractors, Modules, Templates and various web services communicate with one another](./docs/diagrams/20_11_23_steam-high-level-arch.png)
+![High-level architecture diagram, detailing exactly how Clients, Extractors, Modules, Templates and various web services communicate with one another](./docs/diagrams/steam-high-level-arch.png)
 
 These diagrams can be modified by updating the XML files in the `/docs/diagrams/` directory using draw.io or a company licensed equivalent.
 

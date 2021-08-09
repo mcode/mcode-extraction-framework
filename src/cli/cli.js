@@ -1,7 +1,10 @@
+const fs = require('fs');
 const path = require('path');
 const program = require('commander');
 const { MCODEClient } = require('../client/MCODEClient');
-const { mcodeApp } = require('./app');
+const logger = require('../helpers/logger');
+const { mcodeApp } = require('../application');
+const { getConfig } = require('../helpers/configUtils');
 
 const defaultPathToConfig = path.join('config', 'csv.config.json');
 const defaultPathToRunLogs = path.join('logs', 'run-logs.json');
@@ -23,4 +26,30 @@ const {
 // Flag to extract allEntries, or just to use to-from dates
 const allEntries = !entriesFilter;
 
-mcodeApp(MCODEClient, fromDate, toDate, configFilepath, runLogFilepath, debug, allEntries);
+async function runApp() {
+  try {
+    const config = getConfig(configFilepath);
+    const extractedData = await mcodeApp(MCODEClient, fromDate, toDate, config, runLogFilepath, debug, allEntries);
+
+    // Finally, save the data to disk
+    const outputPath = './output';
+    if (!fs.existsSync(outputPath)) {
+      logger.info(`Creating directory ${outputPath}`);
+      fs.mkdirSync(outputPath);
+    }
+    // For each bundle in our extractedData, write it to our output directory
+    extractedData.forEach((bundle, i) => {
+      const outputFile = path.join(outputPath, `mcode-extraction-patient-${i + 1}.json`);
+      logger.debug(`Logging mCODE output to ${outputFile}`);
+      fs.writeFileSync(outputFile, JSON.stringify(bundle), 'utf8');
+    });
+    logger.info(`Successfully logged ${extractedData.length} mCODE bundle(s) to ${outputPath}`);
+  } catch (e) {
+    if (debug) logger.level = 'debug';
+    logger.error(e.message);
+    logger.debug(e.stack);
+    process.exit(1);
+  }
+}
+
+runApp();

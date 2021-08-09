@@ -25,32 +25,41 @@ class BaseClient {
   }
 
   // Given an extractor configuration, initialize all the necessary extractors
-  initializeExtractors(extractorConfig, commonExtractorArgs) {
-    let allExtractorsValid = true;
-
+  async initializeExtractors(extractorConfig, commonExtractorArgs) {
+    // Loop to initialize the extractors
     extractorConfig.forEach((curExtractorConfig) => {
       const { label, type, constructorArgs } = curExtractorConfig;
       logger.debug(`Initializing ${label} extractor with type ${type}`);
       const ExtractorClass = this.extractorClasses[type];
-
       try {
         const newExtractor = new ExtractorClass({ ...commonExtractorArgs, ...constructorArgs });
-
-        if (newExtractor.validate) {
-          const isExtractorValid = newExtractor.validate();
-          allExtractorsValid = (allExtractorsValid && isExtractorValid);
-          if (isExtractorValid) {
-            logger.debug(`Extractor ${label} PASSED CSV validation`);
-          } else {
-            logger.debug(`Extractor ${label} FAILED CSV validation`);
-          }
-        }
-
         this.extractors.push(newExtractor);
       } catch (e) {
         throw new Error(`Unable to initialize ${label} extractor with type ${type}: ${e.message}`);
       }
     });
+    // For validation, we are looping over extractors and performing an async operation on each.
+    // We need to loop without forEach (since forEach is sequential).
+    // Using Reduce to compute the validity of all extractors
+    const allExtractorsValid = await this.extractors.reduce(async (curExtractorsValid, curExtractor) => {
+      const { name } = curExtractor.constructor;
+      if (curExtractor.validate) {
+        logger.debug(`Validating ${name}`);
+        try {
+          const isExtractorValid = await curExtractor.validate();
+          if (isExtractorValid) {
+            logger.debug(`Extractor ${name} PASSED CSV validation`);
+          } else {
+            logger.warn(`Extractor ${name} FAILED CSV validation`);
+          }
+          return ((await curExtractorsValid) && isExtractorValid);
+        } catch (e) {
+          logger.warn(`Extractor ${name} could not validate. Encountered the following error: ${e.message}`);
+          return false;
+        }
+      }
+      return curExtractorsValid;
+    }, Promise.resolve(true));
 
     if (allExtractorsValid) {
       logger.info('Validation succeeded');
@@ -96,8 +105,25 @@ class BaseClient {
       }
     }, Promise.resolve(contextBundle));
 
+    // Report detailed validation errors
     if (!isValidFHIR(contextBundle)) {
-      logger.warn(`Extracted bundle is not valid FHIR, the following resources failed validation: ${invalidResourcesFromBundle(contextBundle).join(',')}`);
+      const invalidResources = invalidResourcesFromBundle(contextBundle);
+      const baseWarningMessage = 'Extracted bundle is not valid FHIR, the following resources failed validation: ';
+
+      const warnMessages = [];
+      const debugMessages = [];
+      invalidResources.forEach(({ failureId, errors }) => {
+        warnMessages.push(`${failureId} at ${errors.map((e) => e.dataPath).join(', ')}`);
+
+        errors.forEach((e) => {
+          debugMessages.push(`${failureId} at ${e.dataPath} - ${e.message}`);
+        });
+      });
+
+      logger.warn(`${baseWarningMessage}${warnMessages.join(', ')}`);
+      debugMessages.forEach((m) => {
+        logger.debug(m);
+      });
     }
 
     return { bundle: contextBundle, extractionErrors };

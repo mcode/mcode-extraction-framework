@@ -5,9 +5,9 @@ const metaSchema = require('ajv/lib/refs/json-schema-draft-06.json');
 const schema = require('./schemas/fhir.schema.json');
 const logger = require('./logger');
 
-const ajv = new Ajv({ logger: false });
+const ajv = new Ajv({ logger: false, allErrors: true });
 ajv.addMetaSchema(metaSchema);
-const validator = ajv.addSchema(schema, 'FHIR');
+const validate = ajv.compile(schema);
 
 // Unit codes and display values fo Vital Signs values
 // Code mapping is based on http://hl7.org/fhir/R4/observation-vitalsigns.html
@@ -164,17 +164,29 @@ const logOperationOutcomeInfo = (operationOutcome) => {
 };
 
 function isValidFHIR(resource) {
-  return validator.validate('FHIR', resource);
+  return validate(resource);
 }
+
+function errorFilter(error) {
+  return error.message !== 'should NOT have additional properties' && error.keyword !== 'oneOf' && error.keyword !== 'const';
+}
+
 function invalidResourcesFromBundle(bundle) {
   // Bundle is assumed to have all resources in bundle.entry[x].resource
   const failingResources = [];
   bundle.entry.forEach((e) => {
     const { resource } = e;
     const { id, resourceType } = resource;
-    if (!validator.validate('FHIR', resource)) {
+
+    // Validate only this resource to get more scoped errors
+    const subSchema = schema;
+    subSchema.oneOf = [{ $ref: `#/definitions/${resourceType}` }];
+
+    const validateResource = ajv.compile(subSchema);
+
+    if (!validateResource(resource)) {
       const failureId = `${resourceType}-${id}`;
-      failingResources.push(failureId);
+      failingResources.push({ failureId, errors: validateResource.errors.filter(errorFilter) });
     }
   });
   return failingResources;

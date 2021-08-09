@@ -7,7 +7,7 @@ const {
   extractDataForPatients,
   sendEmailNotification,
   zipErrors,
-} = require('./cli');
+} = require('./application');
 const {
   BaseFHIRExtractor,
   CSVAdverseEventExtractor,
@@ -35,7 +35,7 @@ const {
   MCODERadiationProcedureExtractor,
   MCODESurgicalProcedureExtractor,
 } = require('./extractors');
-const { BaseFHIRModule, CSVModule } = require('./modules');
+const { BaseFHIRModule, CSVFileModule, CSVURLModule } = require('./modules');
 const { getEthnicityDisplay,
   getPatientName,
   getRaceCodesystem,
@@ -66,14 +66,20 @@ const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = req
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
 const { lowercaseLookupQuery, createLowercaseLookup, createInvertedLookup } = require('./helpers/lookupUtils');
 const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersFromContext, getPatientFromContext } = require('./helpers/contextUtils');
+const { parsePatientIds } = require('./helpers/appUtils');
+const { getConfig, validateConfig } = require('./helpers/configUtils');
+const configSchema = require('./helpers/schemas/config.schema.json');
 
 module.exports = {
   // CLI Related utilities
-  mcodeApp,
   RunInstanceLogger,
   extractDataForPatients,
+  mcodeApp,
+  parsePatientIds,
   sendEmailNotification,
   zipErrors,
+  getConfig,
+  validateConfig,
   // Extractors and Clients
   BaseClient,
   BaseFHIRExtractor,
@@ -83,7 +89,8 @@ module.exports = {
   CSVCancerRelatedMedicationExtractor,
   CSVClinicalTrialInformationExtractor,
   CSVConditionExtractor,
-  CSVModule,
+  CSVFileModule,
+  CSVURLModule,
   CSVPatientExtractor,
   CSVObservationExtractor,
   CSVProcedureExtractor,
@@ -141,4 +148,6 @@ module.exports = {
   getConditionsFromContext,
   getEncountersFromContext,
   getPatientFromContext,
+  // Configuration file schema
+  configSchema,
 };
