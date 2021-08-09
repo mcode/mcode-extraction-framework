@@ -1,0 +1,858 @@
+{
+  "resourceType": "ValueSet",
+  "id": "elixhauser-fluid-electrolyte-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/elixhauser-fluid-electrolyte-vs",
+  "version": "1.0.1",
+  "name": "ElixhauserFluidElectrolyteDisordersVS",
+  "title": "Elixhauser Comorbid Condition Value Set for Fluid Electrolyte Disorders",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
+        "valueBoolean": true
+      }
+    ],
+    "identifier": "urn:uuid:71821838-a1f6-4b96-92f6-7965acddfa2f",
+    "timestamp": "2021-08-06T22:13:49.001Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/elixhauser-fluid-electrolyte-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      },
+      {
+        "name": "version",
+        "valueString": "http://hl7.org/fhir/sid/icd-10-cm|2021"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "76314005",
+        "display": "Disorder of fluid AND/OR electrolyte"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1860003",
+        "display": "Fluid volume disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4519003",
+        "display": "Hypouricemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4575002",
+        "display": "Acute hyponatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "5354002",
+        "display": "Hyperkalemia, transcellular shifts"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "5579000",
+        "display": "Acute hyperkalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "6509007",
+        "display": "Electrolyte imbalance following molar AND/OR ectopic pregnancy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "7405009",
+        "display": "Acute hypernatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10399008",
+        "display": "Hypochloremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10469003",
+        "display": "Chronic hypokalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "12403008",
+        "display": "Chronic hypernatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "12901004",
+        "display": "Transitory neonatal electrolyte disturbance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "14140009",
+        "display": "Hyperkalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "18829008",
+        "display": "Electrolyte depletion"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "20269002",
+        "display": "Hypokalemia, ECF to ICF shifts"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "20313009",
+        "display": "Hyperosmolality"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "20987006",
+        "display": "McKittrick-Wheelock syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "21639008",
+        "display": "Hypervolemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "22774003",
+        "display": "Hypokalemic alkalosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "23800005",
+        "display": "Hypokalemia, inadequate intake"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "24529006",
+        "display": "Potassium disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "24754009",
+        "display": "Isolated familial intestinal hypomagnesemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "25404008",
+        "display": "Illegal abortion with electrolyte imbalance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "32442003",
+        "display": "Volume excess, primary hormone excess"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "34095006",
+        "display": "Dehydration"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "34530006",
+        "display": "Failed attempted abortion with electrolyte imbalance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "35633007",
+        "display": "Transfusion reaction due to excess volume"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "38495009",
+        "display": "Hypokalemia, excessive renal losses"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "39239006",
+        "display": "Legal abortion with electrolyte imbalance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "40777006",
+        "display": "Chronic hyperkalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "42669007",
+        "display": "Hyponatremia with excess extracellular fluid volume"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "43339004",
+        "display": "Hypokalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "43498006",
+        "display": "Body fluid retention"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "44759006",
+        "display": "Volume depletion, extrarenal loss"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "47417003",
+        "display": "Volume depletion, gastrointestinal loss"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "48655003",
+        "display": "Isolated familial renal hypomagnesemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "50029007",
+        "display": "Familial hypomagnesemia-hypercalciuria"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "50327002",
+        "display": "Chronic hyponatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "52139007",
+        "display": "Volume excess, disturbed Starling forces"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "52600004",
+        "display": "Osmolality disturbance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "54781007",
+        "display": "Hyperkalemia, diminished renal excretion"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "59586001",
+        "display": "Hypokalemia, gastrointestinal losses"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "60853003",
+        "display": "Disorder of magnesium metabolism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "61120003",
+        "display": "Acute hypokalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "61688009",
+        "display": "Overhydration"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "64814003",
+        "display": "Spontaneous abortion with electrolyte imbalance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "66978005",
+        "display": "Hypermagnesemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "67455003",
+        "display": "Essential hypernatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71785001",
+        "display": "Water intoxication syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "72452005",
+        "display": "Cerebral hypernatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "74003001",
+        "display": "Hyponatremia with normal extracellular fluid volume"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "74185008",
+        "display": "Hyponatremia with extracellular fluid depletion"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "74450001",
+        "display": "Hyperchloremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "75598001",
+        "display": "Chloride disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "75853001",
+        "display": "Central nervous system disorder of water regulation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "77624000",
+        "display": "Volume excess, primary renal sodium retention"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "78812008",
+        "display": "Neonatal dehydration"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "80710001",
+        "display": "Primary hypomagnesemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "81987005",
+        "display": "Familial hypokalemic alkalosis, Gullner type"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "84937002",
+        "display": "Cerebral hyponatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "87898000",
+        "display": "Neonatal hypomagnesemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "89627008",
+        "display": "Hyponatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "105593004",
+        "display": "Electrolyte imbalance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "123807007",
+        "display": "Sodium disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190330002",
+        "display": "Type 1 diabetes mellitus with hyperosmolar coma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190331003",
+        "display": "Type 2 diabetes mellitus with hyperosmolar coma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190855004",
+        "display": "Hypomagnesemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190856003",
+        "display": "Hypomagnesemic tetany"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190894003",
+        "display": "Isonatremic dehydration"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190902006",
+        "display": "Fluid imbalance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "206489003",
+        "display": "Transitory neonatal hypernatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "206490007",
+        "display": "Transitory neonatal hyponatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "206491006",
+        "display": "Transitory neonatal hyperkalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "206492004",
+        "display": "Transitory neonatal hypokalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "206493009",
+        "display": "Disturbances of sodium balance of newborn"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "206494003",
+        "display": "Disturbances of potassium balance of newborn"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "212970002",
+        "display": "Effects of thirst"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "212971003",
+        "display": "Deprivation of water"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "234176004",
+        "display": "Idiopathic fluid retention"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "234177008",
+        "display": "Excess interdialytic weight gain"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237840007",
+        "display": "Disorder of electrolytes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237841006",
+        "display": "Hyperosmolality with hypernatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237842004",
+        "display": "Hyponatremia with decreased serum osmolality"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237843009",
+        "display": "Hyponatremia with normal or increased serum osmolality"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237844003",
+        "display": "Drug-induced hyponatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237846001",
+        "display": "Hyperkalemic alkalosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237847005",
+        "display": "Hyperkalemic acidosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237848000",
+        "display": "Hyperkalemia with normal acid-base balance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237849008",
+        "display": "Drug-induced hyperkalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237851007",
+        "display": "Hypokalemic acidosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237852000",
+        "display": "Hypokalemia with normal acid-base balance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237853005",
+        "display": "Drug-induced hypokalemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237854004",
+        "display": "Increased anion gap"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237855003",
+        "display": "Reduced anion gap"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237856002",
+        "display": "Reversed anion gap"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237907004",
+        "display": "Secondary hypomagnesemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237908009",
+        "display": "Drug-induced hypomagnesemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "238115004",
+        "display": "Sodium deficiency"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "267446004",
+        "display": "Hyperosmolality and or hypernatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "267447008",
+        "display": "Hypo-osmolality and or hyponatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "276569005",
+        "display": "Perinatal disorder of electrolytes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "276644000",
+        "display": "Neonatal overhydration"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "277365009",
+        "display": "TUR syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "307201006",
+        "display": "Dilutional hyponatremia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "310505005",
+        "display": "Diabetic hyperosmolar non-ketotic state"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "370493008",
+        "display": "Renal medullary washout (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "395204000",
+        "display": "Hyperosmolar non-ketotic state in type 2 diabetes mellitus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "405566004",
+        "display": "Paraneoplastic hyponatremia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "405581005",
+        "display": "Paraneoplastic hypokalemia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "420200001",
+        "display": "Magnesium disorder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "422126006",
+        "display": "Hyperosmolar coma due to diabetes mellitus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "427195008",
+        "display": "Hyperkalemia due to ACE inhibitor"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "427784006",
+        "display": "Hypernatremic dehydration (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "428896009",
+        "display": "Hyperosmolality due to uncontrolled type 1 diabetes mellitus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "450316000",
+        "display": "Severe dehydration (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "609463005",
+        "display": "Termination of pregnancy complicated by electrolyte imbalance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "700107006",
+        "display": "Hypokalemic alkalosis with hypercalciuria antenatal type 1"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "700109009",
+        "display": "Bartter syndrome antenatal type 2 (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "700111000",
+        "display": "Bartter syndrome type 3 (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "700112007",
+        "display": "Bartter syndrome type 4"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "707742001",
+        "display": "Bartter syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "707755000",
+        "display": "Familial hypokalemic and hypomagnesemic tubulopathy (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "707756004",
+        "display": "Gitelman's syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "709413001",
+        "display": "Isolated hyperchlorhidrosis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "711151004",
+        "display": "Hypomagnesemia with secondary hypocalcemia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "717787005",
+        "display": "Familial hypomagnesemia hypercalciuria nephrocalcinosis with severe ocular involvement (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "717788000",
+        "display": "Familial primary hypomagnesemia with normocalciuria (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "717791000",
+        "display": "Bartter syndrome type 4a (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "721163008",
+        "display": "Fluid overload without edema (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "721172000",
+        "display": "Hypomagnesemia co-occurrent with normocalciuria (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "722008003",
+        "display": "Isolated autosomal dominant hypomagnesemia Glaudemans type (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "725031005",
+        "display": "Familial primary hypomagnesemia with normocalciuria and normocalcemia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "725033008",
+        "display": "Familial primary hypomagnesemia with hypercalciuria and nephrocalcinosis without severe ocular involvement (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "725393000",
+        "display": "Autosomal dominant primary hypomagnesemia with hypocalciuria (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "735537007",
+        "display": "Hyperosmolar hyperglycemic coma due to diabetes mellitus without ketoacidosis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "735909008",
+        "display": "Dehydration following exertion (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "770655004",
+        "display": "Microcephalus, brain defect, spasticity, hypernatremia syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "771113001",
+        "display": "Sodium retention (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "771115008",
+        "display": "Sodium overload"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1601000119105",
+        "display": "Moderate dehydration"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1611000119108",
+        "display": "Mild dehydration"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "112421000119102",
+        "display": "Dehydration due to radiation (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "256571000119105",
+        "display": "Hypokalemic alkalosis due to diarrhea"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "367241000119104",
+        "display": "Hyperosmolar coma due to drug induced diabetes mellitus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "367261000119100",
+        "display": "Hyperosmolarity due to drug induced diabetes mellitus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "368561000119102",
+        "display": "Hyperosmolarity due to type 1 diabetes mellitus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "368601000119102",
+        "display": "Hyperosmolar coma due to secondary diabetes mellitus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16914911000119107",
+        "display": "Neonatal transient hypochloremia"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E86.0",
+        "display": "Dehydration"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E86.1",
+        "display": "Hypovolemia"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E86.9",
+        "display": "Volume depletion, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.0",
+        "display": "Hyperosmolality and hypernatremia"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.1",
+        "display": "Hypo-osmolality and hyponatremia"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.2",
+        "display": "Acidosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.3",
+        "display": "Alkalosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.4",
+        "display": "Mixed disorder of acid-base balance"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.5",
+        "display": "Hyperkalemia"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.6",
+        "display": "Hypokalemia"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.70",
+        "display": "Fluid overload, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.71",
+        "display": "Transfusion associated circulatory overload"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.79",
+        "display": "Other fluid overload"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E87.8",
+        "display": "Other disorders of electrolyte and fluid balance, not elsewhere classified"
+      }
+    ]
+  }
+}

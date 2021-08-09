@@ -1,0 +1,1723 @@
+{
+  "resourceType": "ValueSet",
+  "id": "elixhauser-cardiac-arrhythmia-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/elixhauser-cardiac-arrhythmia-vs",
+  "version": "1.0.1",
+  "name": "ElixhauserCardiacArrhythmiaVS",
+  "title": "Elixhauser Comorbid Condition Value Set for Cardiac Arrhythmia",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
+        "valueBoolean": true
+      }
+    ],
+    "identifier": "urn:uuid:ee8d00d1-0431-4c5b-a491-6eb35ab61d83",
+    "timestamp": "2021-08-06T22:13:47.735Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/elixhauser-cardiac-arrhythmia-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      },
+      {
+        "name": "version",
+        "valueString": "http://hl7.org/fhir/sid/icd-10-cm|2021"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698247007",
+        "display": "Arrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "184004",
+        "display": "Withdrawal arrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "2374000",
+        "display": "Monofascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4006006",
+        "display": "Fetal tachycardia affecting management of mother"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4554005",
+        "display": "Intraventricular conduction defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4973001",
+        "display": "Left bundle branch hemiblock"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "5370000",
+        "display": "Atrial flutter"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "5609005",
+        "display": "Sinus arrest"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "6180003",
+        "display": "Complete left bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "6285003",
+        "display": "Tachyarrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "6374002",
+        "display": "Bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "6456007",
+        "display": "Supraventricular tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "6624005",
+        "display": "Ventricular tachyarrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "9651007",
+        "display": "Long QT syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10164001",
+        "display": "Parasystole"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10626002",
+        "display": "Multifocal PVCs"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "11157007",
+        "display": "Ventricular bigeminy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "11849007",
+        "display": "AV junctional rhythm"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "12026006",
+        "display": "Paroxysmal tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "13395001",
+        "display": "Sinoatrial arrest with nodal/ventricular escape"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "13640000",
+        "display": "Fusion beats"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "14718009",
+        "display": "Right bundle branch block, posterior fascicular block AND incomplete left bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16574001",
+        "display": "Cardiac arrest after obstetrical surgery AND/OR other procedure including delivery"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16797001",
+        "display": "Accelerated atrioventricular conduction"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "17338001",
+        "display": "Ventricular premature beats"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "17366009",
+        "display": "Atrial arrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "17869006",
+        "display": "Anomalous atrioventricular excitation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "19092004",
+        "display": "Holt-Oram syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "20143001",
+        "display": "Bilateral bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "20852007",
+        "display": "Romano-Ward syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "26950008",
+        "display": "Chronic ectopic atrial tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "27337007",
+        "display": "Unifocal PVCs"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "27885002",
+        "display": "Complete atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "28189009",
+        "display": "Mobitz type II atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "29320008",
+        "display": "Ectopic rhythm"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "29717002",
+        "display": "Premature beats"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "29894000",
+        "display": "Vagal autonomic bradycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "30667004",
+        "display": "Right bundle branch block AND left anterior fascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "32425009",
+        "display": "Right bundle branch block, anterior fascicular block AND posterior fascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "32758004",
+        "display": "Right bundle branch block with left bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "33413000",
+        "display": "Ectopic beats"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "36083008",
+        "display": "Sick sinus syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "37760005",
+        "display": "Left anterior fascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "38274001",
+        "display": "Interpolated PVCs"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "38566003",
+        "display": "Right bundle branch block, anterior fascicular block AND incomplete left bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "39260000",
+        "display": "Nonparoxysmal AV nodal tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "39357005",
+        "display": "Paroxysmal atrial tachycardia with block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "40593004",
+        "display": "Fibrillation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "41863008",
+        "display": "Right bundle branch block, anterior fascicular block AND incomplete posterior fascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "43906007",
+        "display": "Right bundle branch block AND incomplete left bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "44103008",
+        "display": "Ventricular arrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "44602002",
+        "display": "Persistent sinus bradycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "44808001",
+        "display": "Conduction disorder of the heart"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "46220003",
+        "display": "Tic-tac rhythm"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "46319007",
+        "display": "Right bundle branch block AND left posterior fascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "46619002",
+        "display": "Congenital heart block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "46935006",
+        "display": "Stokes-Adams syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "47830009",
+        "display": "Junctional escape beats"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "49044005",
+        "display": "Severe sinus bradycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "49260003",
+        "display": "Ventricular rhythm"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "49436004",
+        "display": "Atrial fibrillation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "49710005",
+        "display": "Sinus bradycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "49982000",
+        "display": "Multifocal atrial tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "50799005",
+        "display": "Atrioventricular dissociation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "54016002",
+        "display": "Mobitz type I incomplete atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "55475008",
+        "display": "Lown-Ganong-Levine syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "59118001",
+        "display": "Right bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "59272004",
+        "display": "Ventricular parasystole"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "60423000",
+        "display": "Coronary sinus rhythm disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "61277005",
+        "display": "Accelerated idioventricular rhythm"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "62026008",
+        "display": "Left posterior fascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "62657007",
+        "display": "Cardiac arrest AND/OR failure following anesthesia AND/OR sedation in labor AND/OR delivery"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "63232000",
+        "display": "Multifocal premature beats"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "63467002",
+        "display": "Left bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "63593006",
+        "display": "Supraventricular premature beats"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "65778007",
+        "display": "Sinoatrial block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "66568003",
+        "display": "Right bundle branch block, posterior fascicular block AND incomplete anterior fascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "66657009",
+        "display": "Paroxysmal ventricular tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "67198005",
+        "display": "Paroxysmal supraventricular tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "69730002",
+        "display": "Idiojunctional tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71792006",
+        "display": "Nodal rhythm disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71908006",
+        "display": "Ventricular fibrillation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "72654001",
+        "display": "Supraventricular arrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "73459006",
+        "display": "Right branch block, incomplete anterior fascicular block AND incomplete posterior fascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "74021003",
+        "display": "Bifascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "74390002",
+        "display": "Ventricular pre-excitation with arrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "74615001",
+        "display": "Tachycardia-bradycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "75532003",
+        "display": "Ventricular escape beat"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "76887001",
+        "display": "Anterior fascicular block, posterior fascicular block AND incomplete right bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "77221000",
+        "display": "Incomplete atrioventricular block with atrioventricular response"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "78240009",
+        "display": "Cardiac arrest due to pacemaker failure"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "81681009",
+        "display": "Junctional premature beats"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "81898007",
+        "display": "Ventricular escape rhythm"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "82226007",
+        "display": "Diffuse intraventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "82838007",
+        "display": "Irregular tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "86014007",
+        "display": "Trifascicular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "86152005",
+        "display": "Cardiac arrest during AND/OR resulting from a procedure"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "88412007",
+        "display": "AV node arrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "129575004",
+        "display": "Pacemaker twiddler's syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "179924009",
+        "display": "Cardiac arrest in fetus OR newborn"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "180906006",
+        "display": "Neonatal cardiac arrest"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "181869007",
+        "display": "Neonatal cardiorespiratory arrest"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195039008",
+        "display": "Partial atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195042002",
+        "display": "Second degree atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195046004",
+        "display": "Left main stem bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195060002",
+        "display": "Ventricular pre-excitation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195069001",
+        "display": "Atrial paroxysmal tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195070000",
+        "display": "AV paroxysmal tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195071001",
+        "display": "Paroxysmal junctional tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195072008",
+        "display": "Nodal paroxysmal tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195080001",
+        "display": "Atrial fibrillation and flutter"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195083004",
+        "display": "Ventricular fibrillation and flutter"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195105007",
+        "display": "Re-entry ventricular arrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "204383001",
+        "display": "Congenital complete atrioventricular heart block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "204384007",
+        "display": "Congenital incomplete atrioventricular heart block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "213213007",
+        "display": "Cardiac arrest as a complication of care"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233891009",
+        "display": "Sinoatrial node tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233892002",
+        "display": "Ectopic atrial tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233893007",
+        "display": "Re-entrant atrial tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233894001",
+        "display": "Incessant atrial tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233895000",
+        "display": "Ectopic atrioventricular node tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233896004",
+        "display": "Re-entrant atrioventricular node tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233897008",
+        "display": "AVRT - Atrioventricular re-entrant tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233898003",
+        "display": "Orthodromic atrioventricular re-entrant tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233899006",
+        "display": "Antidromic atrioventricular re-entrant tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233900001",
+        "display": "Supraventricular tachycardia with functional bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233901002",
+        "display": "His bundle tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233902009",
+        "display": "Congenital His bundle tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233903004",
+        "display": "Postoperative His bundle tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233904005",
+        "display": "Permanent junctional reciprocating tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233910005",
+        "display": "Lone atrial fibrillation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233911009",
+        "display": "Non-rheumatic atrial fibrillation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233913007",
+        "display": "Familial sick sinus syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233914001",
+        "display": "Postoperative sinoatrial disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233915000",
+        "display": "Paroxysmal familial ventricular fibrillation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233916004",
+        "display": "Heart block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233917008",
+        "display": "AVB - Atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233918003",
+        "display": "Postoperative complete heart block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233919006",
+        "display": "Familial isolated complete right bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233922008",
+        "display": "Concealed accessory pathway"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233923003",
+        "display": "Unidirectional retrograde accessory pathway"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233927002",
+        "display": "Cardiac arrest with successful resuscitation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "234172002",
+        "display": "Electromechanical dissociation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "240298005",
+        "display": "Fetal tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "240299002",
+        "display": "Fetal bradycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251092003",
+        "display": "Sinus arrest with atrial escape"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251093008",
+        "display": "Sinus arrest with junctional escape"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251094002",
+        "display": "Sinus arrest with ventricular escape"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251114004",
+        "display": "Intermittent second degree atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251120003",
+        "display": "Incomplete left bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251123001",
+        "display": "Complete right bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251124007",
+        "display": "Incomplete right bundle branch block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251125008",
+        "display": "Minor intraventricular conduction defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251152003",
+        "display": "Marked sinus arrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251155001",
+        "display": "Junctional ectopic tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251161003",
+        "display": "Slow ventricular response"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251162005",
+        "display": "AV-junctional (nodal) bradycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251163000",
+        "display": "AV junctional (nodal) arrest"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251164006",
+        "display": "Junctional premature complex"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251165007",
+        "display": "Nodal tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251166008",
+        "display": "AV nodal re-entry tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251167004",
+        "display": "Aberrant premature complexes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251168009",
+        "display": "Supraventricular bigeminy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251170000",
+        "display": "Blocked premature atrial contraction"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251171001",
+        "display": "Multiple atrial premature complexes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251172008",
+        "display": "Run of atrial premature complexes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251173003",
+        "display": "Atrial bigeminy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251174009",
+        "display": "Atrial trigeminy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251175005",
+        "display": "Ventricular premature complex"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251176006",
+        "display": "Multiple premature ventricular complexes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251177002",
+        "display": "Run of ventricular premature complexes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251178007",
+        "display": "Ventricular interpolated complexes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251179004",
+        "display": "Multiple ventricular interpolated complexes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251180001",
+        "display": "Ventricular trigeminy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251181002",
+        "display": "Ventricular quadrigeminy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251182009",
+        "display": "Paired ventricular premature complexes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251183004",
+        "display": "Aberrantly conducted complex"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251186007",
+        "display": "Ventricular escape complex"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251187003",
+        "display": "Atrial escape complex"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251188008",
+        "display": "Atrial parasystole"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "253528005",
+        "display": "Arrhythmogenic right ventricular dysplasia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "261195002",
+        "display": "Circulatory arrest"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "270492004",
+        "display": "First degree atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "276512006",
+        "display": "Fetal dysrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "276513001",
+        "display": "Neonatal dysrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "276796006",
+        "display": "Atrial tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "278482008",
+        "display": "Atrioventricular tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "282825002",
+        "display": "AF - Paroxysmal atrial fibrillation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "283645003",
+        "display": "Lev's disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "284470004",
+        "display": "Premature atrial contraction"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "287057009",
+        "display": "Atrial premature complex"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "300996004",
+        "display": "Controlled atrial fibrillation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "300997008",
+        "display": "Asymptomatic sinoatrial node dysfunction"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "309809007",
+        "display": "Electromechanical dissociation with successful resuscitation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "314208002",
+        "display": "Rapid atrial fibrillation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "315027009",
+        "display": "Congenital conduction defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "373905003",
+        "display": "Jervell and Lange-Nielsen syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "397829000",
+        "display": "Asystole (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "406461004",
+        "display": "Ectopic atrial beats (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "410429000",
+        "display": "Cardiac arrest (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "410430005",
+        "display": "Cardiorespiratory arrest (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "413341007",
+        "display": "Neonatal bradycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "413342000",
+        "display": "Neonatal tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "418341009",
+        "display": "Atrioventricular conduction disorder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "418493005",
+        "display": "Right atrial incisional tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "418818005",
+        "display": "Brugada syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "419400008",
+        "display": "Incisional tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "419671004",
+        "display": "Catecholaminergic polymorphic ventricular tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "419752005",
+        "display": "Sinoatrial nodal reentrant tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "420002000",
+        "display": "Left atrial incisional tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421869004",
+        "display": "Bradyarrhythmia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "422348008",
+        "display": "Andersen Tawil syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "422970001",
+        "display": "Cardiac arrest due to trauma (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "423168004",
+        "display": "Cardiac arrest due to respiratory disorder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "423191000",
+        "display": "Cardiac arrest due to cardiac disorder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "424571008",
+        "display": "Cardiac arrest due to drowning (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "425582007",
+        "display": "Inappropriate sinus tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "425615007",
+        "display": "Chronic atrial flutter (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "426749004",
+        "display": "Chronic atrial fibrillation (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "427665004",
+        "display": "Paroxysmal atrial flutter (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "429243003",
+        "display": "Sustained ventricular fibrillation (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "440028005",
+        "display": "Permanent atrial fibrillation (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "440059007",
+        "display": "Persistent atrial fibrillation (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "442559009",
+        "display": "Bundle branch reentrant ventricular tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "442917000",
+        "display": "Congenital long QT syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "442946007",
+        "display": "Acquired long QT syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "443478002",
+        "display": "Heart block due to drug"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "444605001",
+        "display": "Symptomatic sinus bradycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "450919004",
+        "display": "Atrial standstill (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "462169004",
+        "display": "Fetal supraventricular tachycardia with short ventriculoatrial interval"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "462170003",
+        "display": "Fetal supraventricular tachycardia with long RP interval"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "472809000",
+        "display": "Atrioventricular block due to endocarditis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "472810005",
+        "display": "Arrhythmia due to vegetation of infectious endocarditis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "473006003",
+        "display": "Vagal autonomic bradycardia of prematurity (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "609506003",
+        "display": "Induced termination of pregnancy complicated by cardiac arrest"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698249005",
+        "display": "Progressive familial heart block (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698250005",
+        "display": "Progressive familial heart block, type IB"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698251009",
+        "display": "Progressive familial heart block, type II"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698252002",
+        "display": "Non-specific intraventricular conduction delay"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698270004",
+        "display": "Cardiac arrhythmia associated with genetic disorder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698271000",
+        "display": "Cardiac channelopathy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698272007",
+        "display": "Short QT syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698504006",
+        "display": "Postoperative cardiopulmonary failure"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "699256006",
+        "display": "Long QT syndrome with syndactyly"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "699748007",
+        "display": "Cardiopulmonary arrest with successful resuscitation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "703162001",
+        "display": "Bradycardic cardiac arrest"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "706923002",
+        "display": "Longstanding persistent atrial fibrillation (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "710878005",
+        "display": "Mahaim fiber tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "713419002",
+        "display": "Intraoperative cardiopulmonary arrest"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "715395008",
+        "display": "Familial atrial fibrillation (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "715535009",
+        "display": "Naxos disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "715560009",
+        "display": "Idiopathic neonatal atrial flutter (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "715865008",
+        "display": "Familial isolated arrhythmogenic right ventricular dysplasia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "715971003",
+        "display": "Long QT syndrome caused by drug (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "716050002",
+        "display": "Cardiac arrest during surgery (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "719823007",
+        "display": "Ventricular extrasystoles with syncope, perodactyly and Robin sequence syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "719907006",
+        "display": "Timothy syndrome type 2 (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "720448006",
+        "display": "Typical atrial flutter (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "720507006",
+        "display": "Chronic atrial and intestinal dysrhythmia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "721010003",
+        "display": "Heart-hand syndrome type 2 (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "721013001",
+        "display": "Heart-hand syndrome type 3 (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "723860000",
+        "display": "Arrhythmia as current complication following acute myocardial infarction"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "723866006",
+        "display": "Idiopathic ventricular fibrillation not Brugada type (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "725145002",
+        "display": "Atrial septal defect, atrioventricular conduction defect syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "733125004",
+        "display": "Acquired complete atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "733454004",
+        "display": "Brachydactyly long thumb type"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "735682000",
+        "display": "Macro re-entrant atrial tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "735683005",
+        "display": "Cavotricuspid isthmus dependent macroreentry tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "735684004",
+        "display": "Non-cavotricuspid isthmus dependent atrial tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "735685003",
+        "display": "Atrioventricular reciprocating tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "762247006",
+        "display": "Preexcited atrial fibrillation (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "762534000",
+        "display": "Supraventricular bradyarrhythmia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "764457005",
+        "display": "Cardiac arrhythmia ankyrin-B related"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "764732004",
+        "display": "Zaki Gleeson syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "766883006",
+        "display": "Familial dilated cardiomyopathy with conduction defect due to lamin A/C mutation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "770784003",
+        "display": "Sinoatrial node dysfunction and deafness"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "771179007",
+        "display": "Char Douglas Dungan syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "773587008",
+        "display": "X-linked intellectual disability, cardiomegaly, congestive heart failure syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "789039008",
+        "display": "Scar mediated macro re-entrant atrial tachycardia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "789693005",
+        "display": "Acquired Brugada syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "871644005",
+        "display": "Ion cardiac channelopathy (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "871686004",
+        "display": "Multiple atrial ectopics"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "871832005",
+        "display": "Multifocal atrial ectopics (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1010405004",
+        "display": "Paroxysmal atrial fibrillation with rapid ventricular response"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1010443001",
+        "display": "Legal abortion complicated by cardiac arrest (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1010446009",
+        "display": "Illegal abortion complicated by cardiac arrest (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "5761000119100",
+        "display": "Nonsustained paroxysmal supraventricular tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10701000087104",
+        "display": "Arrhythmia during surgery (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "21421000119109",
+        "display": "Nonsustained paroxysmal ventricular tachycardia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "102451000119107",
+        "display": "Complete atrioventricular block due to atrioventricular nodal ablation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "120041000119109",
+        "display": "Atrial fibrillation with rapid ventricular response"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "284941000119107",
+        "display": "High degree second degree atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "284951000119109",
+        "display": "Postoperative atrioventricular block"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10743741000119103",
+        "display": "Cardiac arrhythmia in childbirth"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10745231000119102",
+        "display": "Cardiac arrest due to administration of anesthesia for obstetric procedure in pregnancy (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10750641000119101",
+        "display": "Cardiac arrest due to failed attempted abortion"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10760181000119109",
+        "display": "Cardiac arrest due to miscarriage"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10811961000119109",
+        "display": "Cardiac arrest due to incomplete miscarriage (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15964901000119107",
+        "display": "Atypical atrial flutter (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I44.1",
+        "display": "Atrioventricular block, second degree"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I44.2",
+        "display": "Atrioventricular block, complete"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I44.30",
+        "display": "Unspecified atrioventricular block"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I45.6",
+        "display": "Pre-excitation syndrome"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I45.9",
+        "display": "Conduction disorder, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I47.0",
+        "display": "Re-entry ventricular arrhythmia"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I47.1",
+        "display": "Supraventricular tachycardia"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I47.2",
+        "display": "Ventricular tachycardia"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I47.9",
+        "display": "Paroxysmal tachycardia, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I48.0",
+        "display": "Paroxysmal atrial fibrillation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I48.11",
+        "display": "Longstanding persistent atrial fibrillation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I48.19",
+        "display": "Other persistent atrial fibrillation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I48.20",
+        "display": "Chronic atrial fibrillation, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I48.21",
+        "display": "Permanent atrial fibrillation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I48.3",
+        "display": "Typical atrial flutter"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I48.4",
+        "display": "Atypical atrial flutter"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I48.91",
+        "display": "Unspecified atrial fibrillation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I48.92",
+        "display": "Unspecified atrial flutter"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.01",
+        "display": "Ventricular fibrillation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.02",
+        "display": "Ventricular flutter"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.1",
+        "display": "Atrial premature depolarization"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.2",
+        "display": "Junctional premature depolarization"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.3",
+        "display": "Ventricular premature depolarization"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.40",
+        "display": "Unspecified premature depolarization"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.49",
+        "display": "Other premature depolarization"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.5",
+        "display": "Sick sinus syndrome"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.8",
+        "display": "Other specified cardiac arrhythmias"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "I49.9",
+        "display": "Cardiac arrhythmia, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "R00.0",
+        "display": "Tachycardia, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "R00.1",
+        "display": "Bradycardia, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "R00.8",
+        "display": "Other abnormalities of heart beat"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "Z45.010",
+        "display": "Encounter for checking and testing of cardiac pacemaker pulse generator [battery]"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "Z45.018",
+        "display": "Encounter for adjustment and management of other part of cardiac pacemaker"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "Z45.02",
+        "display": "Encounter for adjustment and management of automatic implantable cardiac defibrillator"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "Z45.09",
+        "display": "Encounter for adjustment and management of other cardiac device"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "Z95.0",
+        "display": "Presence of cardiac pacemaker"
+      }
+    ]
+  }
+}

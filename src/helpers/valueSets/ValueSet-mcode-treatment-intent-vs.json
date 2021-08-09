@@ -1,0 +1,48 @@
+{
+  "resourceType": "ValueSet",
+  "id": "mcode-treatment-intent-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-treatment-intent-vs",
+  "version": "1.0.1",
+  "name": "TreatmentIntentVS",
+  "title": "Treatment Intent Value Set",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "identifier": "urn:uuid:ec161356-3e6f-4880-8e28-b7e8fded2b09",
+    "timestamp": "2021-08-06T22:13:49.438Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-treatment-intent-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "373808002",
+        "display": "Curative procedure"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "363676003",
+        "display": "Palliative intent"
+      }
+    ]
+  }
+}

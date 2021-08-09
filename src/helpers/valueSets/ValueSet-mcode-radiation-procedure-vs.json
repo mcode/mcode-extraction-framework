@@ -1,0 +1,63 @@
+{
+  "resourceType": "ValueSet",
+  "id": "mcode-radiation-procedure-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-radiation-procedure-vs",
+  "version": "1.0.1",
+  "name": "RadiationProcedureVS",
+  "title": "Radiation Procedure Value Set",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "identifier": "urn:uuid:8a90fbee-8f44-41c8-a454-51e4b6cd1cf7",
+    "timestamp": "2021-08-06T22:13:48.626Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-radiation-procedure-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "448385000",
+        "display": "Megavoltage radiation therapy using photons (procedure)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "45643008",
+        "display": "Teleradiotherapy using electrons"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10611004",
+        "display": "Teleradiotherapy protons"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "80347004",
+        "display": "Teleradiotherapy neutrons"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "152198000",
+        "display": "Brachytherapy"
+      }
+    ]
+  }
+}

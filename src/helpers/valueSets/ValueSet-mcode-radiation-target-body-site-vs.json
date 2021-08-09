@@ -1,0 +1,368 @@
+{
+  "resourceType": "ValueSet",
+  "id": "mcode-radiation-target-body-site-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-radiation-target-body-site-vs",
+  "version": "1.0.1",
+  "name": "RadiationTargetBodySiteVS",
+  "title": "Radiation Target Body Site Value Set",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "identifier": "urn:uuid:08739df3-95ec-410b-bc7d-fbe465bae3a1",
+    "timestamp": "2021-08-06T22:13:47.438Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-radiation-target-body-site-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "81105003",
+        "display": "Lymph node of neck"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "196374005",
+        "display": "Entire lymph node of thorax"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "245269009",
+        "display": "Axillary lymph node group"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "245265003",
+        "display": "Supraclavicular lymph node group"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "245282001",
+        "display": "Internal mammary lymph node group"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "245284000",
+        "display": "Abdominal lymph node group"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "245294005",
+        "display": "Pelvic lymph node group"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "59441001",
+        "display": "Lymph node"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "244486005",
+        "display": "Entire eye"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "56329008",
+        "display": "Pituitary gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "12738006",
+        "display": "Brain"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "119235005",
+        "display": "Brain part"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "2748008",
+        "display": "Spinal cord"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71836000",
+        "display": "Nasopharynx"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "74262004",
+        "display": "Oral cavity"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "31389004",
+        "display": "Oropharynx"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4596009",
+        "display": "Larynx"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "81502006",
+        "display": "Hypopharynx"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "2095001",
+        "display": "Accessory sinus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385294005",
+        "display": "Salivary gland structure (body structure)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "69748006",
+        "display": "Thyroid gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "361355005",
+        "display": "Entire head and neck"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "181216001",
+        "display": "Entire lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71400007",
+        "display": "Mesothelium"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "302551006",
+        "display": "Entire thorax"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "181131000",
+        "display": "Entire breast"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "119184005",
+        "display": "Breast part"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "78904004",
+        "display": "Chest wall"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "181245004",
+        "display": "Entire esophagus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "69695003",
+        "display": "Stomach"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "30315005",
+        "display": "Small intestine"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71854001",
+        "display": "Colon"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "34402009",
+        "display": "Rectum"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "53505006",
+        "display": "Anus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10200004",
+        "display": "Liver"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "34707002",
+        "display": "Biliary tract"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "28231008",
+        "display": "Gallbladder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15776009",
+        "display": "Pancreas"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "113345001",
+        "display": "Abdomen"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "302512001",
+        "display": "Entire bladder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "119221008",
+        "display": "Bladder part"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "64033007",
+        "display": "Kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "87953007",
+        "display": "Ureter"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "181422007",
+        "display": "Entire prostate"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "119231001",
+        "display": "Prostate part"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "13648007",
+        "display": "Urethra"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "18911002",
+        "display": "Penis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "40689003",
+        "display": "Testis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "20233005",
+        "display": "Scrotum"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15497006",
+        "display": "Ovary"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "31435000",
+        "display": "Fallopian tube"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "35039007",
+        "display": "Uterus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71252005",
+        "display": "Uterine cervix"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "76784001",
+        "display": "Vagina"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "45292006",
+        "display": "Vulva"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "89546000",
+        "display": "Skull"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "44300000",
+        "display": "Entire vertebral column"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16982005",
+        "display": "Shoulder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "113197003",
+        "display": "Rib"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "29836001",
+        "display": "Hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "46633002",
+        "display": "Entire bony pelvis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "12921003",
+        "display": "Pelvis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "48566001",
+        "display": "Bone of limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "39937001",
+        "display": "Skin"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "87784001",
+        "display": "Soft tissues"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "38266002",
+        "display": "Entire body as a whole"
+      }
+    ]
+  }
+}

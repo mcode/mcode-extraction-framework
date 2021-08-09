@@ -1,0 +1,73 @@
+{
+  "resourceType": "ValueSet",
+  "id": "mcode-treatment-termination-reason-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-treatment-termination-reason-vs",
+  "version": "1.0.1",
+  "name": "TreatmentTerminationReasonVS",
+  "title": "Treatment Termination Reason Value Set",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "identifier": "urn:uuid:b0d7ec10-7791-48da-b5c0-4956c98309a3",
+    "timestamp": "2021-08-06T22:13:49.079Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-treatment-termination-reason-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "182992009",
+        "display": "Treatment completed"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "266721009",
+        "display": "Absent response to treatment"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "407563006",
+        "display": "Treatment not tolerated"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "160932005",
+        "display": "Financial problem"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "105480006",
+        "display": "Refusal of treatment by patient"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "184081006",
+        "display": "Patient has moved away"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "309846006",
+        "display": "Treatment not available"
+      }
+    ]
+  }
+}

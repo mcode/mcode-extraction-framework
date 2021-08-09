@@ -1,0 +1,128 @@
+{
+  "resourceType": "ValueSet",
+  "id": "elixhauser-blood-loss-anemia-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/elixhauser-blood-loss-anemia-vs",
+  "version": "1.0.1",
+  "name": "ElixhauserBloodLossAnemiaVS",
+  "title": "Elixhauser Comorbid Condition Value Set for Blood Loss Anemia",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
+        "valueBoolean": true
+      }
+    ],
+    "identifier": "urn:uuid:40568040-1b2d-4006-bc4f-e6d6db1f9424",
+    "timestamp": "2021-08-06T22:13:49.298Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/elixhauser-blood-loss-anemia-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      },
+      {
+        "name": "version",
+        "valueString": "http://hl7.org/fhir/sid/icd-10-cm|2021"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "413532003",
+        "display": "Anemia due to blood loss (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "53743006",
+        "display": "Anemia following fetal blood loss"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "234352004",
+        "display": "Normocytic anemia due to chronic blood loss"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "267530009",
+        "display": "Acute posthemorrhagic anemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "303060002",
+        "display": "Normocytic anemia following acute bleed"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "413533008",
+        "display": "Anemia due to chronic blood loss (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "724556004",
+        "display": "Iron deficiency anemia due to blood loss (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10762261000119105",
+        "display": "Anemia following acute postoperative blood loss (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "D50.0",
+        "display": "Iron deficiency anemia secondary to blood loss (chronic)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "O90.81",
+        "display": "Anemia of the puerperium"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "O99.011",
+        "display": "Anemia complicating pregnancy, first trimester"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "O99.012",
+        "display": "Anemia complicating pregnancy, second trimester"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "O99.013",
+        "display": "Anemia complicating pregnancy, third trimester"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "O99.019",
+        "display": "Anemia complicating pregnancy, unspecified trimester"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "O99.02",
+        "display": "Anemia complicating childbirth"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "O99.03",
+        "display": "Anemia complicating the puerperium"
+      }
+    ]
+  }
+}

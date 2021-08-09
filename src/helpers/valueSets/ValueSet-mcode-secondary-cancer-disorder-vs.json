@@ -7,6 +7,18 @@
   "name": "SecondaryCancerDisorderVS",
   "title": "Secondary Cancer Disorder Value Set",
   "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
   "expansion": {
     "extension": [
       {
@@ -14,8 +26,8 @@
         "valueBoolean": true
       }
     ],
-    "identifier": "urn:uuid:7c77e768-9d40-493c-8b23-612313418418",
-    "timestamp": "2021-08-02T15:35:07.520Z",
+    "identifier": "urn:uuid:519567bf-845c-4476-8117-5c6206b5ac8d",
+    "timestamp": "2021-08-06T22:13:49.813Z",
     "parameter": [
       {
         "name": "expansion-source",

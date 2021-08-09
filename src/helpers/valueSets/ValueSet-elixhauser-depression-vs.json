@@ -1,0 +1,843 @@
+{
+  "resourceType": "ValueSet",
+  "id": "elixhauser-depression-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/elixhauser-depression-vs",
+  "version": "1.0.1",
+  "name": "ElixhauserDepressionVS",
+  "title": "Elixhauser Comorbid Condition Value Set for Depression",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
+        "valueBoolean": true
+      }
+    ],
+    "identifier": "urn:uuid:65465780-41c2-4c46-90ea-52a7a711361d",
+    "timestamp": "2021-08-06T22:13:52.220Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/elixhauser-depression-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      },
+      {
+        "name": "version",
+        "valueString": "http://hl7.org/fhir/sid/icd-10-cm|2021"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "35489007",
+        "display": "Depressive disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "596004",
+        "display": "Premenstrual dysphoric disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "832007",
+        "display": "Moderate major depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "2506003",
+        "display": "Early onset dysthymia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "2618002",
+        "display": "Chronic recurrent major depressive disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "3109008",
+        "display": "Secondary dysthymia early onset"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "14070001",
+        "display": "Multi-infarct dementia with depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "14183003",
+        "display": "Chronic major depressive disorder, single episode"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15193003",
+        "display": "Severe recurrent major depression with psychotic features, mood-incongruent"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15639000",
+        "display": "Moderate major depression, single episode"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "18818009",
+        "display": "Moderate recurrent major depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "19527009",
+        "display": "Major depression, single episode, in complete remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "19694002",
+        "display": "Late onset dysthymia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "20250007",
+        "display": "Severe major depression, single episode, with psychotic features, mood-incongruent"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "25922000",
+        "display": "Major depressive disorder, single episode with postpartum onset"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "28475009",
+        "display": "Severe recurrent major depression with psychotic features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "29929003",
+        "display": "Bipolar I disorder, most recent episode depressed with atypical features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "30605009",
+        "display": "Major depression in partial remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "33078009",
+        "display": "Severe recurrent major depression with psychotic features, mood-congruent"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "33135002",
+        "display": "Recurrent major depression in partial remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "33736005",
+        "display": "Severe major depression with psychotic features, mood-congruent"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "36170009",
+        "display": "Secondary dysthymia late onset"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "36474008",
+        "display": "Severe recurrent major depression without psychotic features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "36923009",
+        "display": "Major depression, single episode"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "38451003",
+        "display": "Primary dysthymia early onset"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "38694004",
+        "display": "Recurrent major depressive disorder with atypical features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "39809009",
+        "display": "Recurrent major depressive disorder with catatonic features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "40379007",
+        "display": "Mild recurrent major depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "40568001",
+        "display": "Recurrent brief depressive disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "42810003",
+        "display": "Major depression in remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "42925002",
+        "display": "Major depressive disorder, single episode with atypical features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "46244001",
+        "display": "Recurrent major depression in complete remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "48589009",
+        "display": "Minor depressive disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "58703003",
+        "display": "Postpartum depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "60099002",
+        "display": "Severe major depression with psychotic features, mood-incongruent"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "63412003",
+        "display": "Major depression in complete remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "63778009",
+        "display": "Major depressive disorder, single episode with melancholic features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "66344007",
+        "display": "Recurrent major depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "67711008",
+        "display": "Primary dysthymia late onset"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "68019004",
+        "display": "Recurrent major depression in remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "69392006",
+        "display": "Major depressive disorder, single episode with catatonic features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "70747007",
+        "display": "Major depression single episode, in partial remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71336009",
+        "display": "Recurrent major depressive disorder with postpartum onset"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "73867007",
+        "display": "Severe major depression with psychotic features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "75084000",
+        "display": "Severe major depression without psychotic features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "76441001",
+        "display": "Severe major depression, single episode, without psychotic features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "77911002",
+        "display": "Severe major depression, single episode, with psychotic features, mood-congruent"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "78667006",
+        "display": "Dysthymia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "79298009",
+        "display": "Mild major depression, single episode"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "79842004",
+        "display": "Stuporous depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "82218004",
+        "display": "Postoperative depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "83176005",
+        "display": "Primary dysthymia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "83458005",
+        "display": "Agitated depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "84760002",
+        "display": "Schizoaffective disorder, depressive type"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "84788008",
+        "display": "Menopausal depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "85080004",
+        "display": "Secondary dysthymia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "87414006",
+        "display": "Reactive depression (situational)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "87512008",
+        "display": "Mild major depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "87842000",
+        "display": "Generalized neuromuscular exhaustion syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191495003",
+        "display": "Drug-induced depressive state"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191604000",
+        "display": "Single major depressive episode, severe, with psychosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191610000",
+        "display": "Recurrent major depressive episodes, mild"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191611001",
+        "display": "Recurrent major depressive episodes, moderate"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191613003",
+        "display": "Recurrent major depressive episodes, severe, with psychosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191616006",
+        "display": "Recurrent depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191627008",
+        "display": "Bipolar affective disorder, current episode depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191629006",
+        "display": "Bipolar affective disorder, currently depressed, mild"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191630001",
+        "display": "Bipolar affective disorder, currently depressed, moderate"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191634005",
+        "display": "Bipolar affective disorder, currently depressed, in full remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191659001",
+        "display": "Atypical depressive disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191676002",
+        "display": "Reactive depressive psychosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "192079006",
+        "display": "Postviral depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "192080009",
+        "display": "Chronic depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "231485007",
+        "display": "Post-schizophrenic depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "231499006",
+        "display": "Endogenous depression first episode"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "231500002",
+        "display": "Masked depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "231504006",
+        "display": "Mixed anxiety and depressive disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "231542000",
+        "display": "Depressive conduct disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237349002",
+        "display": "Mild postnatal depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237350002",
+        "display": "Severe postnatal depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "247803002",
+        "display": "Seasonal affective disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "268621008",
+        "display": "Recurrent major depressive episodes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "274948002",
+        "display": "Endogenous depression - recurrent"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "279225001",
+        "display": "Maternity blues"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "300706003",
+        "display": "Endogenous depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "310495003",
+        "display": "Mild depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "310496002",
+        "display": "Moderate depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "310497006",
+        "display": "Severe depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "319768000",
+        "display": "Recurrent major depressive disorder with melancholic features"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "320751009",
+        "display": "Major depression, melancholic type"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "321717001",
+        "display": "Involutional depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "370143000",
+        "display": "Major depressive disorder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "426578000",
+        "display": "Premenstrual dysphoric disorder in remission (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "430852001",
+        "display": "Severe major depression, single episode, with psychotic features (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "442057004",
+        "display": "Chronic depressive personality disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "450714000",
+        "display": "Severe major depression (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698957003",
+        "display": "Depressive disorder in remission"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "712823008",
+        "display": "Acute depression (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "718636001",
+        "display": "Minimal depression (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "719592004",
+        "display": "Moderately severe major depression (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "719593009",
+        "display": "Moderately severe depression (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "720451004",
+        "display": "Minimal recurrent major depression (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "720452006",
+        "display": "Moderately severe recurrent major depression (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "720453001",
+        "display": "Moderately severe major depression single episode (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "720454007",
+        "display": "Minimal major depression single episode (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "720455008",
+        "display": "Minimal major depression (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "723928009",
+        "display": "Mood disorder with depressive symptoms caused by alcohol (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "723930006",
+        "display": "Mood disorder with mixed manic and depressive symptoms caused by alcohol (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "724676000",
+        "display": "Mood disorder with depressive symptoms caused by sedative (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "724677009",
+        "display": "Mood disorder with depressive symptoms caused by hypnotic (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "724678004",
+        "display": "Mood disorder with depressive symptoms caused by anxiolytic (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "724690002",
+        "display": "Mood disorder with depressive symptoms caused by cocaine (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "726772006",
+        "display": "Major depression with psychotic features (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "762321000",
+        "display": "Opioid-induced mood disorder with depressive symptoms"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "762329003",
+        "display": "Mood disorder with depressive symptoms caused by stimulant"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "762336002",
+        "display": "Hallucinogen-induced mood disorder with depressive symptoms"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "762339009",
+        "display": "Inhalant-induced mood disorder with depressive symptoms"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "762345001",
+        "display": "Mood disorder with depressive symptoms caused by dissociative drug"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "762512002",
+        "display": "Mood disorder with depressive symptoms caused by synthetic cathinone (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "765176007",
+        "display": "Psychosis and severe depression co-occurrent and due to bipolar affective disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "788120007",
+        "display": "Antenatal depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "838530009",
+        "display": "Mood disorder with depressive symptoms caused by amfetamine and amfetamine derivative"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "251000119105",
+        "display": "Severe major depression, single episode"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "281000119103",
+        "display": "Severe recurrent major depression"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10211000132109",
+        "display": "Perinatal depression (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "94631000119100",
+        "display": "Depressive disorder in mother complicating pregnancy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "104851000119103",
+        "display": "Postpartum major depression in remission (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "133121000119109",
+        "display": "Severe seasonal affective disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "288751000119101",
+        "display": "Reactive depressive psychosis, single episode"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10811121000119102",
+        "display": "Major depressive disorder in childbirth"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10811161000119107",
+        "display": "Major depressive disorder in pregnancy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10835871000119104",
+        "display": "Depression in childbirth"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16238181000119101",
+        "display": "Depressive disorder due to amphetamine"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16238221000119109",
+        "display": "Depressive disorder caused by methamphetamine (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16264621000119109",
+        "display": "Recurrent mild major depressive disorder co-occurrent with anxiety"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16264821000119108",
+        "display": "Recurrent severe major depressive disorder co-occurrent with anxiety"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16264901000119109",
+        "display": "Recurrent moderate major depressive disorder co-occurrent with anxiety (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16265061000119105",
+        "display": "Recurrent major depressive disorder co-occurrent with anxiety in full remission (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16265301000119106",
+        "display": "Recurrent major depressive disorder in partial remission co-occurrent with anxiety"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16265951000119109",
+        "display": "Mild major depressive disorder co-occurrent with anxiety single episode (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16266831000119100",
+        "display": "Moderate major depressive disorder co-occurrent with anxiety single episode (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16266991000119108",
+        "display": "Severe major depressive disorder co-occurrent with anxiety single episode (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.0",
+        "display": "Major depressive disorder, single episode, mild"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.1",
+        "display": "Major depressive disorder, single episode, moderate"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.2",
+        "display": "Major depressive disorder, single episode, severe without psychotic features"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.3",
+        "display": "Major depressive disorder, single episode, severe with psychotic features"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.4",
+        "display": "Major depressive disorder, single episode, in partial remission"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.5",
+        "display": "Major depressive disorder, single episode, in full remission"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.81",
+        "display": "Premenstrual dysphoric disorder"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.89",
+        "display": "Other specified depressive episodes"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.9",
+        "display": "Major depressive disorder, single episode, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F33.0",
+        "display": "Major depressive disorder, recurrent, mild"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F33.1",
+        "display": "Major depressive disorder, recurrent, moderate"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F33.2",
+        "display": "Major depressive disorder, recurrent severe without psychotic features"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F33.3",
+        "display": "Major depressive disorder, recurrent, severe with psychotic symptoms"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F33.8",
+        "display": "Other recurrent depressive disorders"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F33.9",
+        "display": "Major depressive disorder, recurrent, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F34.1",
+        "display": "Dysthymic disorder"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F43.21",
+        "display": "Adjustment disorder with depressed mood"
+      }
+    ]
+  }
+}

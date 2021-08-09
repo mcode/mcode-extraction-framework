@@ -1,0 +1,54 @@
+{
+  "resourceType": "ValueSet",
+  "id": "mcode-tumor-size-method-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-tumor-size-method-vs",
+  "version": "1.0.1",
+  "name": "TumorSizeMethodVS",
+  "title": "Methods for measuring tumor size",
+  "status": "draft",
+  "experimental": true,
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "identifier": "urn:uuid:f456a964-271c-4403-87ae-968bc2582735",
+    "timestamp": "2021-08-06T22:13:46.970Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-tumor-size-method-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://loinc.org|2.69"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://loinc.org",
+        "code": "24419-4",
+        "display": "Pathology report gross observation"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "29544-4",
+        "display": "Physical findings"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "18748-4",
+        "display": "Diagnostic imaging study"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "resourceType": "ValueSet",
+  "id": "mcode-hgvs-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-hgvs-vs",
+  "version": "1.0.1",
+  "name": "HGVSVS",
+  "title": "Human Genome Variation Society Sequence Variant Nomenclature Value Set",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "identifier": "urn:uuid:88c22790-2cb7-4602-8bdd-ed96443e5fec",
+    "timestamp": "2021-08-06T22:13:51.704Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-hgvs-vs"
+      }
+    ]
+  }
+}

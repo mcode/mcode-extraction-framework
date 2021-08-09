@@ -7,6 +7,18 @@
   "name": "PrimaryOrUncertainBehaviorCancerDisorderVS",
   "title": "Primary or Uncertain Behavior Cancer Disorder Value Set",
   "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
   "expansion": {
     "extension": [
       {
@@ -14,8 +26,8 @@
         "valueBoolean": true
       }
     ],
-    "identifier": "urn:uuid:47751f9a-8075-4b2c-978e-4a806875e2d3",
-    "timestamp": "2021-08-02T15:34:00.879Z",
+    "identifier": "urn:uuid:0ae74613-092c-4579-b5b3-948a30635fd2",
+    "timestamp": "2021-08-06T22:13:53.751Z",
     "parameter": [
       {
         "name": "expansion-source",

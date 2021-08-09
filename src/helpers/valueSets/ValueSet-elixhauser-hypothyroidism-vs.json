@@ -1,0 +1,593 @@
+{
+  "resourceType": "ValueSet",
+  "id": "elixhauser-hypothyroidism-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/elixhauser-hypothyroidism-vs",
+  "version": "1.0.1",
+  "name": "ElixhauserHypothyroidismVS",
+  "title": "Elixhauser Comorbid Condition Value Set for Hypothyroidism",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
+        "valueBoolean": true
+      }
+    ],
+    "identifier": "urn:uuid:0336229e-23a1-482c-922a-c62d9b0d0a72",
+    "timestamp": "2021-08-06T22:13:49.641Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/elixhauser-hypothyroidism-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      },
+      {
+        "name": "version",
+        "valueString": "http://hl7.org/fhir/sid/icd-10-cm|2021"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "40930008",
+        "display": "Hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "2917005",
+        "display": "Transient hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4641009",
+        "display": "Myxedema heart disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10718002",
+        "display": "Juvenile myxedema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "17885001",
+        "display": "Iodotyrosine deiodination defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "18621008",
+        "display": "Transient decreased production of T>4<"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "22558005",
+        "display": "Iodide transport defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "23536000",
+        "display": "Iodotyrosyl coupling defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "26692000",
+        "display": "Central hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "27059002",
+        "display": "Postoperative hypothyroidism (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "30229009",
+        "display": "Hypothyroidism due to infiltrative disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "37429009",
+        "display": "Hypothalamic hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "39444001",
+        "display": "Hypothyroidism due to fibrous invasive thyroiditis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "40539002",
+        "display": "Hypothyroidism following radioiodine therapy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "42277004",
+        "display": "Transient decreased production of T>3<"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "42785009",
+        "display": "Hypothyroidism due to cystinosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "43153006",
+        "display": "Myxedema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "43507005",
+        "display": "Adult myxedema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "49830003",
+        "display": "Hypothyroidism caused by food stuff (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "50375007",
+        "display": "Thyroid hormone responsiveness defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "52724003",
+        "display": "Iodide oxidation defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "54823002",
+        "display": "Subclinical hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "55838005",
+        "display": "Athyrotic hypothyroidism sequence"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "56041007",
+        "display": "Hypothyroidism due to defect in thyroid hormone synthesis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "57185003",
+        "display": "Primary hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "60733007",
+        "display": "Hypothyroidism due to amyloidosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "63115005",
+        "display": "Hypothyroidism due to scleroderma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "63127008",
+        "display": "Thyroglobulin synthesis defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "64491003",
+        "display": "Myxedematous form of cretinism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "70225006",
+        "display": "Hypothyroidism due to iodide excess"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "75065003",
+        "display": "Endemic cretinism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "78574007",
+        "display": "Hypothyroidism due to sarcoidosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "82598004",
+        "display": "Secondary hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "83664006",
+        "display": "Idiopathic atrophic hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "83986005",
+        "display": "Severe hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "84781002",
+        "display": "Sporadic cretinism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "88273006",
+        "display": "Iatrogenic hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "89261000",
+        "display": "Isolated thyrotropin deficiency"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "93359004",
+        "display": "Congenital malposition of the thyroid gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "111566002",
+        "display": "Acquired hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "111567006",
+        "display": "Refetoff syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190268003",
+        "display": "Congenital hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190279008",
+        "display": "Iodine hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190282003",
+        "display": "Hypothyroidism resulting from para-aminosalicylic acid"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190283008",
+        "display": "Hypothyroidism resulting from phenylbutazone"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "190284002",
+        "display": "Hypothyroidism resulting from resorcinol"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "216693007",
+        "display": "Hypothyroid dwarfism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237515009",
+        "display": "Congenital hypothyroidism without goiter"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237518006",
+        "display": "Hypothyroid goiter, acquired"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237519003",
+        "display": "Autoimmune myxedema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237520009",
+        "display": "Hypothyroidism due to Hashimoto's thyroiditis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237521008",
+        "display": "Hypothyroidism due to TSH receptor blocking antibody"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237526003",
+        "display": "Euthyroid with thyroid antibodies"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237527007",
+        "display": "Postablative hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237528002",
+        "display": "Post-infectious hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237555006",
+        "display": "Hypothyroidism due to iodide trapping defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237556007",
+        "display": "Hypothyroidism due to iodide organification defect"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237559000",
+        "display": "Thyroid hormone resistance syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237560005",
+        "display": "Generalized thyroid hormone resistance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237565000",
+        "display": "Congenital iodine deficiency syndrome - mixed type"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237566004",
+        "display": "Congenital iodine deficiency syndrome - neurological type"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237567008",
+        "display": "Subclinical iodine deficiency hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "237695004",
+        "display": "Idiopathic TSH deficiency"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "276566003",
+        "display": "Transient neonatal hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "276630006",
+        "display": "Transient hypothyrotropinemia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "278503003",
+        "display": "Goitrous cretin"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "360348000",
+        "display": "Pituitary thyroid hormone resistance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "360353005",
+        "display": "Thyrotoxicosis due to pituitary thyroid hormone resistance"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "405629002",
+        "display": "Infant hypothyroidism (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "405630007",
+        "display": "Infant hypothyroidism to 24 months of age (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "428165003",
+        "display": "Hypothyroidism in pregnancy (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "440092001",
+        "display": "Endemic congenital iodine deficiency syndrome of myxedematous type (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "698577000",
+        "display": "Infant hypothyroidism due to maternal drug"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "699298009",
+        "display": "Blepharophimosis-mental retardation syndrome, Say-Barber-Biesecker-Young-Simpson type"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "716338001",
+        "display": "Muscular pseudohypertrophy and hypothyroidism syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "717333002",
+        "display": "Congenital hypothyroidism due to transplacental passage of maternal thyroid stimulating hormone binding inhibitory antibody (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "717334008",
+        "display": "Idiopathic congenital hypothyroidism (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "718183003",
+        "display": "Familial thyroid dyshormonogenesis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "718193005",
+        "display": "Peripheral resistance to thyroid hormone (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "718194004",
+        "display": "Hypothyroidism due to mutation in transcription factor of pituitary development (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "718690009",
+        "display": "Congenital hypothyroidism due to absence of thyroid gland (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "722051004",
+        "display": "Obesity, colitis, hypothyroidism, cardiac hypertrophy, developmental delay syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "722375007",
+        "display": "Bamforth Lazarus syndrome (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "722938007",
+        "display": "Congenital central hypothyroidism (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "722939004",
+        "display": "Congenital hypothyroidism due to iodine deficiency (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "722940002",
+        "display": "Acquired central hypothyroidism (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "725462002",
+        "display": "Congenital central hypothyroidism due to thyrotropin-releasing hormone receptor deficiency (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "763890006",
+        "display": "Short stature with delayed bone age due to thyroid hormone metabolism deficiency (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "770631009",
+        "display": "Genetic transient congenital hypothyroidism (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "771510006",
+        "display": "X-linked central congenital hypothyroidism with late-onset testicular enlargement (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "773987000",
+        "display": "Neonatal iodine exposure"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "783177006",
+        "display": "Congenital hypothyroidism due to maternal intake of antithyroid drug"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "102871000119101",
+        "display": "Hypothyroidism due to thyroiditis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "367631000119105",
+        "display": "Drug-induced hypothyroidism"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "369091000119106",
+        "display": "Hypothyroidism caused by amiodarone"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10809101000119109",
+        "display": "Hypothyroidism in childbirth (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E00.0",
+        "display": "Congenital iodine-deficiency syndrome, neurological type"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E00.1",
+        "display": "Congenital iodine-deficiency syndrome, myxedematous type"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E00.2",
+        "display": "Congenital iodine-deficiency syndrome, mixed type"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E00.9",
+        "display": "Congenital iodine-deficiency syndrome, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E01.8",
+        "display": "Other iodine-deficiency related thyroid disorders and allied conditions"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E02",
+        "display": "Subclinical iodine-deficiency hypothyroidism"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E03.0",
+        "display": "Congenital hypothyroidism with diffuse goiter"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E03.1",
+        "display": "Congenital hypothyroidism without goiter"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E03.2",
+        "display": "Hypothyroidism due to medicaments and other exogenous substances"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E03.3",
+        "display": "Postinfectious hypothyroidism"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E03.8",
+        "display": "Other specified hypothyroidism"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E03.9",
+        "display": "Hypothyroidism, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "E89.0",
+        "display": "Postprocedural hypothyroidism"
+      }
+    ]
+  }
+}

@@ -1,0 +1,798 @@
+{
+  "resourceType": "ValueSet",
+  "id": "elixhauser-chronic-pulmonary-disease-vs",
+  "language": "en",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/elixhauser-chronic-pulmonary-disease-vs",
+  "version": "1.0.1",
+  "name": "ElixhauserChronicPulmonaryDiseaseVS",
+  "title": "Elixhauser Comorbid Condition Value Set for Chronic Pulmonary Disease",
+  "status": "active",
+  "date": "2021-08-06T14:55:17-04:00",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "expansion": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
+        "valueBoolean": true
+      }
+    ],
+    "identifier": "urn:uuid:3c372fef-38a8-471d-986f-904ac562296e",
+    "timestamp": "2021-08-06T22:13:47.563Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/elixhauser-chronic-pulmonary-disease-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+      },
+      {
+        "name": "version",
+        "valueString": "http://hl7.org/fhir/sid/icd-10-cm|2021"
+      }
+    ],
+    "contains": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "413839001",
+        "display": "Chronic lung disease (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "2912004",
+        "display": "Cystic-bullous disease of the lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4981000",
+        "display": "Panacinar emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "13645005",
+        "display": "Chronic obstructive lung disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16003001",
+        "display": "Giant bullous emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16846004",
+        "display": "Obstructive emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "18121009",
+        "display": "Chronic berylliosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "18354001",
+        "display": "Chronic induration of lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "23958009",
+        "display": "Vanishing lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "26427008",
+        "display": "Chronic pulmonary histoplasmosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "31898008",
+        "display": "Paraseptal emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "33325001",
+        "display": "Compensatory emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "36599006",
+        "display": "Chronic fibrosis of lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "37180002",
+        "display": "Chronic nonspecific lung disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "46847001",
+        "display": "Chronic pulmonary edema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "47895001",
+        "display": "Congenital emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "47938003",
+        "display": "Chronic obliterative bronchiolitis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "57686001",
+        "display": "Emphysematous bleb of lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "60805002",
+        "display": "Hemolytic anemia with emphysema AND cutis laxa"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "63841001",
+        "display": "Chronic pulmonary congestion"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "66987001",
+        "display": "Congenital lobar emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "68328006",
+        "display": "Centriacinar emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "70756004",
+        "display": "Bronchial atresia with segmental pulmonary emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "77690003",
+        "display": "Interstitial emphysema of lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "86680006",
+        "display": "Ruptured emphysematous bleb of lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "87433001",
+        "display": "Pulmonary emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "123713005",
+        "display": "Chronic atelectasis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "135836000",
+        "display": "End stage chronic obstructive airways disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195951007",
+        "display": "Acute exacerbation of chronic obstructive airways disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195957006",
+        "display": "Chronic bullous emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195958001",
+        "display": "Segmental bullous emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "195959009",
+        "display": "Zonal bullous emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "196001008",
+        "display": "Chronic obstructive pulmonary disease with acute lower respiratory infection"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "196026004",
+        "display": "Chronic emphysema due to chemical fumes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "196028003",
+        "display": "Chronic pulmonary fibrosis due to chemical fumes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "196049002",
+        "display": "Chronic pulmonary radiation disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233615002",
+        "display": "Chronic pulmonary coccidioidomycosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233674008",
+        "display": "Pulmonary emphysema in alpha-1 PI deficiency"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233675009",
+        "display": "Toxic emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233677001",
+        "display": "Scar emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233713004",
+        "display": "Seasonal cryptogenic organizing pneumonia with biochemical cholestasis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "233762004",
+        "display": "Chronic silicosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "240742009",
+        "display": "Chronic pulmonary African histoplasmosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "240747003",
+        "display": "Chronic pulmonary blastomycosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "266355005",
+        "display": "Bullous emphysema with collapse"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "266356006",
+        "display": "Atrophic (senile) emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "266404004",
+        "display": "Chronic chemical respiratory disease (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "285381006",
+        "display": "Acute infective exacerbation of chronic obstructive airways disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "313296004",
+        "display": "Mild chronic obstructive pulmonary disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "313297008",
+        "display": "Moderate chronic obstructive pulmonary disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "313299006",
+        "display": "Severe chronic obstructive pulmonary disease"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "314954002",
+        "display": "Local recurrence of malignant tumor of lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "417688002",
+        "display": "Chronic progressive coccidioidal pneumonia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "426437004",
+        "display": "Familial idiopathic pulmonary fibrosis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "430476004",
+        "display": "Diffuse panbronchiolitis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "430969000",
+        "display": "Recurrent aspiration pneumonia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "432958009",
+        "display": "Chronic rejection of lung transplant (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "699014000",
+        "display": "Recurrent pneumonia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "700250006",
+        "display": "Usual interstitial pneumonia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "704345008",
+        "display": "Chronic interstitial pneumonia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "707534000",
+        "display": "Chronic lung disease due to surfactant disorder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "707553005",
+        "display": "Chronic exogenous lipoid pneumonia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "708030004",
+        "display": "CPFE - combined pulmonary fibrosis and emphysema"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "713525001",
+        "display": "Recurrent bacterial pneumonia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "713526000",
+        "display": "Recurrent bacterial pneumonia co-occurrent with human immunodeficiency virus infection"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "723829000",
+        "display": "Pulmonary fibrosis, hepatic hyperplasia, bone marrow hypoplasia syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "724500003",
+        "display": "Idiopathic chronic eosinophilic pneumonia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "733171006",
+        "display": "Chronic pulmonary aspergillosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "737180005",
+        "display": "Chronic bronchiolitis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "771306007",
+        "display": "POIKTMP syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "783182004",
+        "display": "Chronic respiratory distress with surfactant metabolism deficiency (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "789574002",
+        "display": "Acute exacerbation of idiopathic pulmonary fibrosis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "836477007",
+        "display": "Chronic emphysema caused by vapor"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "840350008",
+        "display": "Chronic obliterative bronchiolitis caused by chemical fumes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "840351007",
+        "display": "Chronic obliterative bronchiolitis caused by vapor"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "846637007",
+        "display": "Chronic pulmonary fibrosis caused by chemical vapors"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1010333003",
+        "display": "Emphysema of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1010334009",
+        "display": "Emphysema of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1010670004",
+        "display": "Chronic endogenous lipoid pneumonia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1751000119100",
+        "display": "Acute exacerbation of chronic obstructive airways disease with asthma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "28791000119105",
+        "display": "Chronic coccidioidomycotic pneumonia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "102361000119104",
+        "display": "Chronic pneumonia"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "106001000119101",
+        "display": "Chronic obstructive lung disease co-occurrent with acute bronchitis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10692761000119107",
+        "display": "Asthma-chronic obstructive pulmonary disease overlap syndrome"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J40",
+        "display": "Bronchitis, not specified as acute or chronic"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J41.0",
+        "display": "Simple chronic bronchitis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J41.1",
+        "display": "Mucopurulent chronic bronchitis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J41.8",
+        "display": "Mixed simple and mucopurulent chronic bronchitis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J42",
+        "display": "Unspecified chronic bronchitis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J43.0",
+        "display": "Unilateral pulmonary emphysema [MacLeod's syndrome]"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J43.1",
+        "display": "Panlobular emphysema"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J43.2",
+        "display": "Centrilobular emphysema"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J43.8",
+        "display": "Other emphysema"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J43.9",
+        "display": "Emphysema, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J44.0",
+        "display": "Chronic obstructive pulmonary disease with (acute) lower respiratory infection"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J44.1",
+        "display": "Chronic obstructive pulmonary disease with (acute) exacerbation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J44.9",
+        "display": "Chronic obstructive pulmonary disease, unspecified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.20",
+        "display": "Mild intermittent asthma, uncomplicated"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.21",
+        "display": "Mild intermittent asthma with (acute) exacerbation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.22",
+        "display": "Mild intermittent asthma with status asthmaticus"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.30",
+        "display": "Mild persistent asthma, uncomplicated"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.31",
+        "display": "Mild persistent asthma with (acute) exacerbation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.32",
+        "display": "Mild persistent asthma with status asthmaticus"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.40",
+        "display": "Moderate persistent asthma, uncomplicated"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.41",
+        "display": "Moderate persistent asthma with (acute) exacerbation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.42",
+        "display": "Moderate persistent asthma with status asthmaticus"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.50",
+        "display": "Severe persistent asthma, uncomplicated"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.51",
+        "display": "Severe persistent asthma with (acute) exacerbation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.52",
+        "display": "Severe persistent asthma with status asthmaticus"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.901",
+        "display": "Unspecified asthma with (acute) exacerbation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.902",
+        "display": "Unspecified asthma with status asthmaticus"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.909",
+        "display": "Unspecified asthma, uncomplicated"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.990",
+        "display": "Exercise induced bronchospasm"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.991",
+        "display": "Cough variant asthma"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.998",
+        "display": "Other asthma"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J47.0",
+        "display": "Bronchiectasis with acute lower respiratory infection"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J47.1",
+        "display": "Bronchiectasis with (acute) exacerbation"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J47.9",
+        "display": "Bronchiectasis, uncomplicated"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J60",
+        "display": "Coalworker's pneumoconiosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J61",
+        "display": "Pneumoconiosis due to asbestos and other mineral fibers"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J62.0",
+        "display": "Pneumoconiosis due to talc dust"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J62.8",
+        "display": "Pneumoconiosis due to other dust containing silica"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J63.0",
+        "display": "Aluminosis (of lung)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J63.1",
+        "display": "Bauxite fibrosis (of lung)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J63.2",
+        "display": "Berylliosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J63.3",
+        "display": "Graphite fibrosis (of lung)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J63.4",
+        "display": "Siderosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J63.5",
+        "display": "Stannosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J63.6",
+        "display": "Pneumoconiosis due to other specified inorganic dusts"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J64",
+        "display": "Unspecified pneumoconiosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J65",
+        "display": "Pneumoconiosis associated with tuberculosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J66.0",
+        "display": "Byssinosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J66.1",
+        "display": "Flax-dressers' disease"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J66.2",
+        "display": "Cannabinosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J66.8",
+        "display": "Airway disease due to other specific organic dusts"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.0",
+        "display": "Farmer's lung"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.1",
+        "display": "Bagassosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.2",
+        "display": "Bird fancier's lung"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.3",
+        "display": "Suberosis"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.4",
+        "display": "Maltworker's lung"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.5",
+        "display": "Mushroom-worker's lung"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.6",
+        "display": "Maple-bark-stripper's lung"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.7",
+        "display": "Air conditioner and humidifier lung"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.8",
+        "display": "Hypersensitivity pneumonitis due to other organic dusts"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J67.9",
+        "display": "Hypersensitivity pneumonitis due to unspecified organic dust"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J68.0",
+        "display": "Bronchitis and pneumonitis due to chemicals, gases, fumes and vapors"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J68.1",
+        "display": "Pulmonary edema due to chemicals, gases, fumes and vapors"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J68.2",
+        "display": "Upper respiratory inflammation due to chemicals, gases, fumes and vapors, not elsewhere classified"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J68.3",
+        "display": "Other acute and subacute respiratory conditions due to chemicals, gases, fumes and vapors"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J68.4",
+        "display": "Chronic respiratory conditions due to chemicals, gases, fumes and vapors"
+      }
+    ]
+  }
+}
