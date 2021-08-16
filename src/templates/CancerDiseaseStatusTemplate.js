@@ -74,8 +74,8 @@ function cancerDiseaseStatusTemplate({
       coding: [
         coding({
           system: 'http://loinc.org',
-          code: '88040-1',
-          display: 'Response to cancer treatment',
+          code: '97509-4',
+          display: 'Cancer Disease Progression',
         }),
       ],
     },
