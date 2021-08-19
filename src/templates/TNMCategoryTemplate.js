@@ -7,21 +7,21 @@ function getCategorySpecificData(stageType, categoryType) {
     if (categoryType === 'Tumor') {
       return {
         categoryCode,
-        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-primary-tumor-category',
+        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-primary-tumor-category',
         code: '21905-5',
       };
     }
     if (categoryType === 'Metastases') {
       return {
         categoryCode,
-        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-distant-metastases-category',
+        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-distant-metastases-category',
         code: '21907-1',
       };
     }
     if (categoryType === 'Nodes') {
       return {
         categoryCode,
-        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-regional-nodes-category',
+        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-regional-nodes-category',
         code: '21906-3',
       };
     }
@@ -30,21 +30,21 @@ function getCategorySpecificData(stageType, categoryType) {
     if (categoryType === 'Tumor') {
       return {
         categoryCode,
-        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-pathological-primary-tumor-category',
+        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-primary-tumor-category',
         code: '21899-0',
       };
     }
     if (categoryType === 'Metastases') {
       return {
         categoryCode,
-        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-pathological-distant-metastases-category',
+        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-distant-metastases-category',
         code: '21901-4',
       };
     }
     if (categoryType === 'Nodes') {
       return {
         categoryCode,
-        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-pathological-regional-nodes-category',
+        profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-regional-nodes-category',
         code: '21900-6',
       };
     }
