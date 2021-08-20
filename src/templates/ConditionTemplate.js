@@ -1,6 +1,5 @@
 const { extensionArr, coding, valueX, reference } = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
-const { isConditionCodeCancer } = require('../helpers/conditionUtils');
 
 function histologyTemplate({ histology }) {
   return {
@@ -41,20 +40,8 @@ function individualCategoryTemplate(category) {
   };
 }
 
-function categoryArrayTemplate(array, code) {
+function categoryArrayTemplate(array) {
   const category = array.map(individualCategoryTemplate);
-  const codeValue = `${code.code}`;
-  const codeSystem = `${code.system}`;
-  if (isConditionCodeCancer(codeValue, codeSystem)) {
-    // On cancer conditions, include the fixed value for the disease category
-    category.push({
-      coding: [coding({
-        system: 'http://snomed.info/sct',
-        code: '64572001',
-      }),
-      ],
-    });
-  }
   return { category };
 }
 
@@ -126,7 +113,7 @@ function conditionTemplate({
     ),
     ...ifAllArgsObj(clinicalStatusTemplate)({ clinicalStatus }),
     ...ifAllArgsObj(verificationStatusTemplate)({ verificationStatus }),
-    ...categoryArrayTemplate(category, code),
+    ...categoryArrayTemplate(category),
     ...codingTemplate({ code }),
     ...ifAllArgsObj(bodySiteTemplate)({ bodySite, laterality }),
     ...subjectTemplate({ subject }),

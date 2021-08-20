@@ -1,7 +1,6 @@
 const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const maximalValidExampleCondition = require('./fixtures/maximal-condition-resource.json');
 const minimalValidExampleCondition = require('./fixtures/minimal-condition-resource.json');
-const cancerValidExampleCondition = require('./fixtures/cancer-condition-resource.json');
 const { conditionTemplate } = require('../../src/templates/ConditionTemplate');
 const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
@@ -113,27 +112,5 @@ describe('test Condition template', () => {
 
   test('invalid data should throw an error', () => {
     expect(() => conditionTemplate(CONDITION_INVALID_DATA)).toThrow(Error);
-  });
-
-  test('cancer conditions should include the "disease" category', () => {
-    const diseaseCategory = {
-      coding: [
-        {
-          code: '64572001',
-          system: 'http://snomed.info/sct',
-        },
-      ],
-    };
-    // Use a cancer condition code when generating resource
-    const cancerConditionData = { ...CONDITION_MINIMAL_DATA, code: { code: 'C02.0', system: 'http://hl7.org/fhir/sid/icd-10-cm' } };
-    const generatedCondition = conditionTemplate(cancerConditionData);
-    expect(generatedCondition.category).toContainEqual(diseaseCategory);
-    expect(generatedCondition).toEqual(cancerValidExampleCondition);
-  });
-
-  test('non-cancer conditions should not include the "disease" category', () => {
-    const generatedCondition = conditionTemplate(CONDITION_MINIMAL_DATA);
-    expect(generatedCondition.category).toHaveLength(1); // Only provided category is present
-    expect(generatedCondition).toEqual(minimalValidExampleCondition);
   });
 });
