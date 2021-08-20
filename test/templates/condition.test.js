@@ -113,10 +113,4 @@ describe('test Condition template', () => {
   test('invalid data should throw an error', () => {
     expect(() => conditionTemplate(CONDITION_INVALID_DATA)).toThrow(Error);
   });
-
-  test('non-cancer conditions should not include the "disease" category', () => {
-    const generatedCondition = conditionTemplate(CONDITION_MINIMAL_DATA);
-    expect(generatedCondition.category).toHaveLength(1); // Only provided category is present
-    expect(generatedCondition).toEqual(minimalValidExampleCondition);
-  });
 });

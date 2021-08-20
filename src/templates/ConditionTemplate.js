@@ -113,7 +113,7 @@ function conditionTemplate({
     ),
     ...ifAllArgsObj(clinicalStatusTemplate)({ clinicalStatus }),
     ...ifAllArgsObj(verificationStatusTemplate)({ verificationStatus }),
-    ...categoryArrayTemplate(category, code),
+    ...categoryArrayTemplate(category),
     ...codingTemplate({ code }),
     ...ifAllArgsObj(bodySiteTemplate)({ bodySite, laterality }),
     ...subjectTemplate({ subject }),
