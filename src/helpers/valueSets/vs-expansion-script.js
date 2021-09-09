@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
-const PREEXPANSIONPATH = path.resolve(__dirname, 'pre-expansion');
+// NOTE: Update this to point to pre-expansion valuesets on your local machine
+const PREEXPANSIONPATH = path.resolve('../../../../fhir-mCODE-ig/output/valuesets');
 
 function readVsFromPath(vsPath) {
   return JSON.parse(fs.readFileSync(path.resolve(PREEXPANSIONPATH, vsPath)));
@@ -44,7 +45,12 @@ function makeExpansionRequest(vsPath, vs) {
 }
 
 function expandVs() {
-  const vsPaths = listVsForExpansion();
+  let vsPaths;
+  try {
+    vsPaths = listVsForExpansion();
+  } catch (e) {
+    console.error('FAILURE: PREEXPANSIONPATH does not point to a valid directory; make sure you update this variable based on you local machine');
+  }
   // Aggregate requests for each vsPath we have
   const requests = [];
   vsPaths.forEach((vsPath) => {
