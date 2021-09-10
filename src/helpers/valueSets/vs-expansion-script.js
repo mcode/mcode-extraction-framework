@@ -50,6 +50,7 @@ function expandVs() {
     vsPaths = listVsForExpansion();
   } catch (e) {
     console.error('FAILURE: PREEXPANSIONPATH does not point to a valid directory; make sure you update this variable based on you local machine');
+    process.exit(1);
   }
   // Aggregate requests for each vsPath we have
   const requests = [];
