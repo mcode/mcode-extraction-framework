@@ -1,10 +1,10 @@
 const { when } = require('jest-when');
-const rewire = require('rewire');
+// const rewire = require('rewire');
 const { MCODERadiationProcedureExtractor } = require('../../src/extractors/MCODERadiationProcedureExtractor.js');
 const exampleProcedureBundle = require('./fixtures/surgical-radiation-procedure-bundle.json');
 
-const radiationProcedureExtractorRewired = rewire('../../src/extractors/MCODERadiationProcedureExtractor.js');
-const getMCODERadiationProcedures = radiationProcedureExtractorRewired.__get__('getMCODERadiationProcedures');
+// const radiationProcedureExtractorRewired = rewire('../../src/extractors/MCODERadiationProcedureExtractor.js');
+// const getMCODERadiationProcedures = radiationProcedureExtractorRewired.__get__('getMCODERadiationProcedures');
 
 const MOCK_URL = 'http://example.com';
 const MOCK_HEADERS = {};
