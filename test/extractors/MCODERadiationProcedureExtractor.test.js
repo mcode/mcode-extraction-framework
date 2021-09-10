@@ -126,21 +126,21 @@ describe('MCODERadiationProcedureExtractor', () => {
   //   });
   // });
 
-  describe('get', () => {
-    test('should return a bundle with only procedures that are MCODE cancer related radiation procedures', async () => {
-      const bundle = {
-        resourceType: 'Bundle',
-        type: 'collection',
-        entry: exampleProcedureBundle.entry,
-      };
-      fhirProcedureExtractorSpy.mockClear();
-      when(fhirProcedureExtractorSpy).calledWith({ mrn: MOCK_PATIENT_MRN, context: {} }).mockReturnValue(bundle);
-      const data = await extractor.get({ mrn: MOCK_PATIENT_MRN, context: {} });
-      expect(data.resourceType).toEqual('Bundle');
-      expect(data.type).toEqual('collection');
-      expect(data.entry).toBeDefined();
-      expect(data.entry).toHaveLength(1);
-      expect(data.entry[0].resource.code.coding[0].code).toEqual('152198000'); // Brachytherapy (procedure) - is in MCODE Cancer Related Radiation Procedure VS
-    });
-  });
+  // describe('get', () => {
+  //   test('should return a bundle with only procedures that are MCODE cancer related radiation procedures', async () => {
+  //     const bundle = {
+  //       resourceType: 'Bundle',
+  //       type: 'collection',
+  //       entry: exampleProcedureBundle.entry,
+  //     };
+  //     fhirProcedureExtractorSpy.mockClear();
+  //     when(fhirProcedureExtractorSpy).calledWith({ mrn: MOCK_PATIENT_MRN, context: {} }).mockReturnValue(bundle);
+  //     const data = await extractor.get({ mrn: MOCK_PATIENT_MRN, context: {} });
+  //     expect(data.resourceType).toEqual('Bundle');
+  //     expect(data.type).toEqual('collection');
+  //     expect(data.entry).toBeDefined();
+  //     expect(data.entry).toHaveLength(1);
+  //     expect(data.entry[0].resource.code.coding[0].code).toEqual('152198000'); // Brachytherapy (procedure) - is in MCODE Cancer Related Radiation Procedure VS
+  //   });
+  // });
 });
