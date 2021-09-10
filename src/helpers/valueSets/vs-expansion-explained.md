@@ -8,3 +8,4 @@ Follow the steps below to generate a new set of valuesets based on the latest ve
 3. Remove all irrelevant ValueSets from this folder, leaving behind only the ones to be expanded. 
 4. In the MEF, update the`PREEXPANSIONPATH` global variable in `vs-expansion-script.js` to point to the folder made to house the ValueSets in step 2.
 5. Run `vs-expansion-script.js` using node.
+6. For all failed expansions, determine if manual expansion is feasible (i.e. if there is just 1-2 codes that reference codeSystems GG's server do not support). If feasible, manually expand those VS. 
