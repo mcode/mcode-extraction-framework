@@ -1,0 +1,56 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "TeleradiotherapyTechniqueVS",
+  "id": "mcode-teleradiotherapy-technique-vs",
+  "title": "Teleradiotherapy Technique Value Set",
+  "description": "Codes describing the techniques of teleradiotherapy (external beam) procedures.",
+  "version": "1.18.1",
+  "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-teleradiotherapy-technique-vs",
+  "copyright": "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "441799006",
+            "display": "Intensity modulated radiation therapy (procedure)"
+          },
+          {
+            "code": "1156530009",
+            "display": "Volumetric Modulated Arc Therapy (procedure)"
+          },
+          {
+            "code": "1162782007",
+            "display": "Three dimensional external beam radiation therapy (procedure)"
+          },
+          {
+            "code": "1156526006",
+            "display": "Two dimensional external beam radiation therapy (procedure)"
+          },
+          {
+            "code": "168524008",
+            "display": "Radiotherapy - intraoperative control (procedure)"
+          },
+          {
+            "code": "1156529004",
+            "display": "External beam radiation therapy using particle passive scattering technique (procedure)"
+          },
+          {
+            "code": "1156528007",
+            "display": "External beam radiation therapy using particle spot scanning technique (procedure)"
+          },
+          {
+            "code": "1156525005",
+            "display": "Mixed beam external beam radiation therapy (procedure)"
+          },
+          {
+            "code": "169317000",
+            "display": "Neutron capture therapy (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}
