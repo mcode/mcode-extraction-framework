@@ -1,24 +1,1126 @@
 {
   "resourceType": "ValueSet",
-  "status": "active",
-  "name": "CancerStagingSystemVS",
   "id": "mcode-cancer-staging-system-vs",
-  "title": "Cancer Staging System Value Set",
-  "description": "System used for staging.",
-  "version": "1.18.1",
+  "language": "en",
   "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-cancer-staging-system-vs",
-  "copyright": "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement",
-  "compose": {
-    "include": [
+  "version": "1.18.1",
+  "name": "CancerStagingSystemVS",
+  "title": "Cancer Staging System Value Set",
+  "status": "active",
+  "expansion": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/valueset-unclosed",
+        "valueBoolean": true
+      }
+    ],
+    "identifier": "urn:uuid:a0a9fb3d-62e3-478d-beb9-8427badd4c04",
+    "timestamp": "2021-09-10T17:21:18.306Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-cancer-staging-system-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210731"
+      }
+    ],
+    "contains": [
       {
         "system": "http://snomed.info/sct",
-        "filter": [
-          {
-            "property": "concept",
-            "op": "is-a",
-            "value": "254292007"
-          }
-        ]
+        "code": "254292007",
+        "display": "Tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "13808002",
+        "display": "WR stage 3"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15972002",
+        "display": "WR stage 2"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "42114005",
+        "display": "WR stage 1"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "66470009",
+        "display": "WR stage 5"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "74542008",
+        "display": "WR stage 4"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "83200007",
+        "display": "WR stage 6"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "106242004",
+        "display": "Walter Reed staging of prostatic cancer"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "106244003",
+        "display": "FIGO staging of endometrial carcinoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "106245002",
+        "display": "FIGO staging of vulvar carcinoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "106246001",
+        "display": "FIGO staging of vulvar melanoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "106247005",
+        "display": "FIGO staging for epithelial tumor of ovary"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "106250008",
+        "display": "FIGO staging of cervical carcinoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "106252000",
+        "display": "Staging classification for lymphoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "110375007",
+        "display": "Overlapping tumor"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254293002",
+        "display": "TNM tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254294008",
+        "display": "TNM Head and neck tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254295009",
+        "display": "TNM Lip and oral cavity tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254296005",
+        "display": "TNM Oropharynx tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254297001",
+        "display": "TNM Nasopharynx tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254298006",
+        "display": "TNM Hypopharynx tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254299003",
+        "display": "TNM Supraglottic larynx tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254300006",
+        "display": "TNM Glottic larynx tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254301005",
+        "display": "TNM Subglottic larynx tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254302003",
+        "display": "TNM Maxillary sinus tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254303008",
+        "display": "TNM Salivary glands tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254304002",
+        "display": "TNM Thyroid gland tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254305001",
+        "display": "TNM Digestive system tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254306000",
+        "display": "TNM Esophagus tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254307009",
+        "display": "TNM Stomach tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254309007",
+        "display": "TNM Small intestine tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254310002",
+        "display": "TNM Colon and rectum tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254311003",
+        "display": "TNM Anal canal tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254312005",
+        "display": "TNM Liver tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254313000",
+        "display": "TNM Gallbladder tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254314006",
+        "display": "TNM Extrahepatic bile ducts tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254315007",
+        "display": "TNM Ampulla of vater tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254316008",
+        "display": "TNM Pancreas tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254317004",
+        "display": "TNM Lung and pleural tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254318009",
+        "display": "TNM Lung tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254319001",
+        "display": "TNM Pleural mesothelioma tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254320007",
+        "display": "TNM bone and soft tissue tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254321006",
+        "display": "TNM Bone tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254322004",
+        "display": "TNM Soft tissues tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254323009",
+        "display": "TNM Skin tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254324003",
+        "display": "TNM Carcinoma of skin tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254325002",
+        "display": "TNM Malignant melanoma of skin staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254326001",
+        "display": "TNM Breast tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254327005",
+        "display": "TNM Gynecological tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254328000",
+        "display": "TNM Vulva tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254329008",
+        "display": "TNM Vaginal tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254330003",
+        "display": "TNM Cervix uteri tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254331004",
+        "display": "TNM Corpus uteri tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254332006",
+        "display": "TNM Ovary tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254333001",
+        "display": "TNM Urological tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254334007",
+        "display": "TNM Penis tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254335008",
+        "display": "TNM Prostate tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254336009",
+        "display": "TNM Testis tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254337000",
+        "display": "TNM Kidney tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254338005",
+        "display": "TNM Renal pelvis and ureter tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254339002",
+        "display": "TNM Urinary bladder tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254340000",
+        "display": "TNM Urethra tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254341001",
+        "display": "TNM Ophthalmic tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254342008",
+        "display": "TNM Carcinoma of eyelid staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254343003",
+        "display": "TNM Malignant melanoma of eyelid staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254344009",
+        "display": "TNM Carcinoma of conjunctiva staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254345005",
+        "display": "TNM Malignant melanoma of conjunctiva staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254346006",
+        "display": "TNM Malignant melanoma of uvea staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254347002",
+        "display": "TNM Malignant melanoma of iris staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254348007",
+        "display": "TNM Malignant melanoma of ciliary body staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254349004",
+        "display": "TNM Malignant melanoma of choroid staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254350004",
+        "display": "TNM Retinoblastoma staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254351000",
+        "display": "TNM Sarcoma of orbit staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254352007",
+        "display": "TNM Lacrimal gland carcinoma staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254353002",
+        "display": "TNM Brain tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254354008",
+        "display": "TNM Hodgkin's disease staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254355009",
+        "display": "TNM Non-Hodgkin's lymphoma staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254356005",
+        "display": "TNM Pediatric tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254357001",
+        "display": "TNM Wilms' tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254358006",
+        "display": "TNM Neuroblastoma staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254359003",
+        "display": "TNM Soft tissue sarcoma staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254360008",
+        "display": "Dukes staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254361007",
+        "display": "Astler-Coller staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254362000",
+        "display": "Modified Astler-Coller staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254363005",
+        "display": "International neuroblastoma staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254364004",
+        "display": "NWTS - National Wilms' tumor study staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254365003",
+        "display": "Siopel liver staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254366002",
+        "display": "Stannard staging system for retinoblastoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254368001",
+        "display": "United Kingdom children's cancer study group central nervous system tumor staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254370005",
+        "display": "St Jude's malignant histiocytosis tumor staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254371009",
+        "display": "St Jude's non-Hodgkin's lymphoma staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254372002",
+        "display": "Ann Arbor lymphoma staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254373007",
+        "display": "Ann Arbor Hodgkin's disease tumor staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254374001",
+        "display": "Ann Arbor non-Hodgkin's lymphoma tumor staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254375000",
+        "display": "Cotswolds Hodgkin's disease tumor staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254376004",
+        "display": "Testicular tumor staging systems"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254378003",
+        "display": "Walter Reed testicular tumor staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254379006",
+        "display": "Indiana University testicular tumor staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254380009",
+        "display": "Marshall Modification of Jewett-Strong staging system for urinary bladder tumor"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254381008",
+        "display": "American Urological Association staging system for prostate cancer"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254382001",
+        "display": "Trophoblastic malignancy staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254383006",
+        "display": "FIGO staging of gynecological malignancy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254384000",
+        "display": "FIGO Vaginal tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254385004",
+        "display": "Federation internationale de gynecologie et d'obstetrique staging of corpus uteri malignancy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254386003",
+        "display": "Federation Internationale de gynecologie et d'obstetrique staging of ovarian malignancy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258233007",
+        "display": "Generic tumor staging descriptor (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258234001",
+        "display": "TNM tumor staging classifications"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258235000",
+        "display": "UICC"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258236004",
+        "display": "AJCC"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258244004",
+        "display": "G status"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258246002",
+        "display": "L status"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258247006",
+        "display": "V status"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258257007",
+        "display": "Additional tumor staging descriptor (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258258002",
+        "display": "(f)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258259005",
+        "display": "is"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258260000",
+        "display": "(d)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258267002",
+        "display": "Generic tumor risk status stages"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258268007",
+        "display": "Low risk tumor"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258269004",
+        "display": "Medium risk tumor"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258270003",
+        "display": "High risk tumor"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258271004",
+        "display": "Specific tumor staging descriptor (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258272006",
+        "display": "Liver tumor staging descriptor (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258273001",
+        "display": "Liver tumor size index"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258276009",
+        "display": "Timing of liver tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258279002",
+        "display": "Lymphoma staging symptom status values"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258280004",
+        "display": "Lymphomatous extranodal involvement status values"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258281000",
+        "display": "S+ minimal"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258282007",
+        "display": "S+ extensive"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258283002",
+        "display": "Lymphomatous nodal involvement"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258284008",
+        "display": "Stannards retinoblastoma stages"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258285009",
+        "display": "Optic nerve tumor invasion status in retinoblastoma staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258286005",
+        "display": "Choroidal tumor invasion status in retinoblastoma staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258292004",
+        "display": "Lymph nodal tumor invasion status in retinoblastoma staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258293009",
+        "display": "Brain tumor invasion status in retinoblastoma staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258301001",
+        "display": "Langerhans cell histiocytosis stage (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258302008",
+        "display": "Number of organ systems involved with Langerhans cell histiocytosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258303003",
+        "display": "Single system involvement"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258304009",
+        "display": "Multisystem involvement"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258305005",
+        "display": "Organ failure due to Langerhans cell histiocytosis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258306006",
+        "display": "Vital organ failure"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258307002",
+        "display": "Non-vital organ failure"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258309004",
+        "display": "Generic lymph node tumor invasion status stage (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258310009",
+        "display": "Neck node tumor involvement"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258311008",
+        "display": "M+"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258312001",
+        "display": "Axillary lymph node level"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258313006",
+        "display": "Level I"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258314000",
+        "display": "Midaxilla"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258315004",
+        "display": "Level III"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258316003",
+        "display": "Retroperitoneal lymph node tumor invasion status"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258318002",
+        "display": "Generic anatomical site tumor invasion status"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258319005",
+        "display": "Lung involvement stages"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258320004",
+        "display": "Lung stage L2"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258321000",
+        "display": "Lung stage L3"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258322007",
+        "display": "H+"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258323002",
+        "display": "Liver sectors"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258324008",
+        "display": "Liver sector 1"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258325009",
+        "display": "Liver sector 2"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258326005",
+        "display": "Liver sector 3"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258327001",
+        "display": "Liver sector 4"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "258328006",
+        "display": "Markers for liver tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "261663004",
+        "display": "Tumor stage Ta"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "261731003",
+        "display": "CNS metastases"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "261789009",
+        "display": "Extra CNS metastases"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "261985008",
+        "display": "No metastases"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "277318003",
+        "display": "(m)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "277645005",
+        "display": "Additional TNM descriptors"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "277646006",
+        "display": "a - At autopsy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "277647002",
+        "display": "r - Tumor recurrence"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "277649004",
+        "display": "y - During therapy/following treatment"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "277650004",
+        "display": "m - Multiple tumors"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "277652007",
+        "display": "f - Family history"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "277676004",
+        "display": "d - Retinal involvement"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "278241006",
+        "display": "Node stage G1"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "278242004",
+        "display": "Node stage G2"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "278247005",
+        "display": "Lung stage L1"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "282402005",
+        "display": "V - Hepatic vein marker"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "282403000",
+        "display": "P - Portal vein marker"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "282404006",
+        "display": "E - Extrahepatic marker"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "282405007",
+        "display": "M - Metastatic marker"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "282436004",
+        "display": "E - Extralymphatic organ involvement marker"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "282437008",
+        "display": "S - Splenic involvement marker"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "313061008",
+        "display": "TNM Ethmoid sinus tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "313118007",
+        "display": "TNM Fallopian tube tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "313119004",
+        "display": "TNM Gestational trophoblastic tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385345007",
+        "display": "Clark system for melanoma staging (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385346008",
+        "display": "Breslow system for melanoma staging (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385359000",
+        "display": "Modified Dukes staging system (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "417957003",
+        "display": "Uveal metastasis (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "420417005",
+        "display": "Liver tumor size index more than 0.05 (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "420483003",
+        "display": "Abdominal lymph node tumor invasion status A (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "420533005",
+        "display": "Choroidal invasion stage C1 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "420728008",
+        "display": "Timing of liver tumor staging at diagnosis (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "420841002",
+        "display": "Choroidal invasion stage C0 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "420889006",
+        "display": "Liver tumor size index less than 0.05 (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "420969009",
+        "display": "Lymphoma staging symptom status A (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421074006",
+        "display": "Central nervous system stage B3 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421174009",
+        "display": "Choroidal invasion stage C2 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421188008",
+        "display": "Tumor staging descriptor r (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421211000",
+        "display": "Lymphoma staging symptom status B (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421294007",
+        "display": "Timing of liver tumor staging pre-surgery (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421426001",
+        "display": "Tumor staging descriptor a (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421432006",
+        "display": "Choroidal invasion stage C3 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421655002",
+        "display": "Optic nerve invasion stage N1 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421683000",
+        "display": "Optic nerve invasion stage N0 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421745006",
+        "display": "Choroidal invasion stage C4 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421755005",
+        "display": "Tumor staging descriptor y (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421824005",
+        "display": "Tumor staging descriptor p (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421838003",
+        "display": "Optic nerve invasion stage N3 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421923000",
+        "display": "Central nervous system stage B2 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "422196000",
+        "display": "Tumor staging descriptor D (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "422203007",
+        "display": "Central nervous system stage B1 in retinoblastoma (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "443830009",
+        "display": "American Joint Commission on Cancer, Cancer Staging Manual, 7th edition neoplasm staging system (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "444256004",
+        "display": "American Joint Commission on Cancer, Cancer Staging Manual, 6th edition neoplasm staging system (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "706904009",
+        "display": "Tumor-node-metastasis (TNM) colon tumor staging"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "897275008",
+        "display": "American Joint Commission on Cancer, Cancer Staging Manual, 8th edition tumor staging system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1149099005",
+        "display": "Binet staging classification for chronic lymphocytic leukemia (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1149131009",
+        "display": "Rai staging system for chronic lymphocytic leukemia (tumor staging)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1149164009",
+        "display": "ACPS (Australian Clinico-pathological Staging) System for colorectal cancer"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1149295006",
+        "display": "Malignant tumor staging (tumor staging)"
       }
     ]
   }

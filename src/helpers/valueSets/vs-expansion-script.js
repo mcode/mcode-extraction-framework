@@ -3,7 +3,7 @@ const path = require('path');
 const axios = require('axios');
 
 // NOTE: Update this to point to pre-expansion valuesets on your local machine
-const PREEXPANSIONPATH = path.resolve('../../../../fhir-mCODE-ig/output/valuesets');
+const PREEXPANSIONPATH = path.resolve(__dirname, '../../../../fhir-mCODE-ig/fsh-generated/resources/valuesets');
 
 function readVsFromPath(vsPath) {
   return JSON.parse(fs.readFileSync(path.resolve(PREEXPANSIONPATH, vsPath)));

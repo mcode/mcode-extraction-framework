@@ -1,39 +1,50 @@
 {
   "resourceType": "ValueSet",
-  "status": "active",
-  "name": "TeleradiotherapyModalityVS",
   "id": "mcode-teleradiotherapy-modality-vs",
-  "title": "Teleradiotherapy Modality Value Set",
-  "description": "Codes describing the modalities of teleradiotherapy (external beam) procedures.",
-  "version": "1.18.1",
+  "language": "en",
   "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-teleradiotherapy-modality-vs",
-  "copyright": "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement",
-  "compose": {
-    "include": [
+  "version": "1.18.1",
+  "name": "TeleradiotherapyModalityVS",
+  "title": "Teleradiotherapy Modality Value Set",
+  "status": "active",
+  "expansion": {
+    "identifier": "urn:uuid:372ee290-6c8c-4fcb-8dc6-cdfddcfb4370",
+    "timestamp": "2021-09-10T17:21:17.196Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-teleradiotherapy-modality-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210731"
+      }
+    ],
+    "contains": [
       {
         "system": "http://snomed.info/sct",
-        "concept": [
-          {
-            "code": "10611004",
-            "display": "Teleradiotherapy protons (procedure)"
-          },
-          {
-            "code": "45643008",
-            "display": "Teleradiotherapy using electrons (procedure)"
-          },
-          {
-            "code": "80347004",
-            "display": "Teleradiotherapy neutrons (procedure)"
-          },
-          {
-            "code": "1156505006",
-            "display": "External beam radiation therapy using carbon ions (procedure)"
-          },
-          {
-            "code": "1156506007",
-            "display": "External beam radiation therapy using photons (procedure)"
-          }
-        ]
+        "code": "10611004",
+        "display": "Teleradiotherapy protons"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "45643008",
+        "display": "Teleradiotherapy using electrons"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "80347004",
+        "display": "Teleradiotherapy neutrons"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156505006",
+        "display": "Teleradiotherapy using carbon ions"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156506007",
+        "display": "Teleradiotherapy using photons"
       }
     ]
   }

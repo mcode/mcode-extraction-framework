@@ -1,43 +1,55 @@
 {
   "resourceType": "ValueSet",
-  "status": "active",
-  "name": "BrachytherapyModalityVS",
   "id": "mcode-brachytherapy-modality-vs",
-  "title": "Brachytherapy Modality Value Set",
-  "description": "Codes describing the modalities of brachytherapy procedures.",
-  "version": "1.18.1",
+  "language": "en",
   "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-brachytherapy-modality-vs",
-  "copyright": "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement",
-  "compose": {
-    "include": [
+  "version": "1.18.1",
+  "name": "BrachytherapyModalityVS",
+  "title": "Brachytherapy Modality Value Set",
+  "status": "active",
+  "expansion": {
+    "identifier": "urn:uuid:a3433d84-e562-4432-ab4f-0d1d024aa975",
+    "timestamp": "2021-09-10T17:21:17.931Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-brachytherapy-modality-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210731"
+      }
+    ],
+    "contains": [
       {
         "system": "http://snomed.info/sct",
-        "concept": [
-          {
-            "code": "1156708005",
-            "display": "Low dose rate brachytherapy using temporary radioactive source (procedure)"
-          },
-          {
-            "code": "169359004",
-            "display": "Internal radiotherapy - permanent seeds (procedure)"
-          },
-          {
-            "code": "1156384006",
-            "display": "Pulsed dose rate brachytherapy (procedure)"
-          },
-          {
-            "code": "394902000",
-            "display": "High dose brachytherapy (procedure)"
-          },
-          {
-            "code": "438629002",
-            "display": "High dose rate electronic brachytherapy (procedure)"
-          },
-          {
-            "code": "440252007",
-            "display": "Administration of radiopharmaceutical (procedure)"
-          }
-        ]
+        "code": "1156708005",
+        "display": "LDR (low dose rate) brachytherapy temporary placement"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "169359004",
+        "display": "Internal radiotherapy - permanent seeds"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156384006",
+        "display": "Pulsed dose rate brachytherapy (procedure)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "394902000",
+        "display": "High dose brachytherapy (procedure)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "438629002",
+        "display": "High dose rate electronic brachytherapy (procedure)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "440252007",
+        "display": "Administration of radiopharmaceutical (procedure)"
       }
     ]
   }

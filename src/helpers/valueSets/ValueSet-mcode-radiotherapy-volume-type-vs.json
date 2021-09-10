@@ -1,35 +1,40 @@
 {
   "resourceType": "ValueSet",
-  "status": "active",
-  "name": "RadiotherapyVolumeTypeVS",
   "id": "mcode-radiotherapy-volume-type-vs",
-  "title": "Radiotherapy Volume Type Value Set",
-  "description": "Codes describing the types of body volumes used in radiotherapy planning and treatment. The value set includes the most common codes from DICOM CID 9534 Radiotherapy Targets (UID 1.2.840.10008.6.1.1244) and adds a code for Organs at Risk (OAR).",
-  "version": "1.18.1",
+  "language": "en",
   "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-radiotherapy-volume-type-vs",
-  "copyright": "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement",
-  "compose": {
-    "include": [
+  "version": "1.18.1",
+  "name": "RadiotherapyVolumeTypeVS",
+  "title": "Radiotherapy Volume Type Value Set",
+  "status": "active",
+  "expansion": {
+    "identifier": "urn:uuid:3d3c2e54-1084-4acb-9709-c895aa24cf74",
+    "timestamp": "2021-09-10T17:21:17.774Z",
+    "parameter": [
+      {
+        "name": "expansion-source",
+        "valueString": "ValueSet/mcode-radiotherapy-volume-type-vs"
+      },
+      {
+        "name": "version",
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210731"
+      }
+    ],
+    "contains": [
       {
         "system": "http://snomed.info/sct",
-        "concept": [
-          {
-            "code": "228793007",
-            "display": "Planning target volume (observable entity)"
-          },
-          {
-            "code": "228791009",
-            "display": "Gross tumor volume (observable entity)"
-          },
-          {
-            "code": "228792002",
-            "display": "Clinical target volume (observable entity)"
-          },
-          {
-            "code": "1162586008",
-            "display": "Irradiated volume of organ at risk (observable entity)"
-          }
-        ]
+        "code": "228793007",
+        "display": "Planning target volume"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "228791009",
+        "display": "Gross tumor volume"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "228792002",
+        "display": "CTV - Clinical target volume"
       }
     ]
   }
