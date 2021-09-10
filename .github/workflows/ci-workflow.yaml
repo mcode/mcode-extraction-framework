@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   lint:
-    name: Check lint
+    name: Lint
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -16,7 +16,7 @@ jobs:
       env:
         CI: true
   test:
-    name: Run tests on ${{ matrix.os }}
+    name: Tests on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
