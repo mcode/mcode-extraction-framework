@@ -42,9 +42,9 @@ describe('MCODESurgicalProcedureExtractor', () => {
 
   describe('getMCODESurgicalProcedures', () => {
     const otherProcedureCoding = {
-      system: 'http://snomed.info/sct',
-      code: '152198000',
-      display: 'Brachytherapy (procedure)',
+      system: 'http://example.com/madeup/system',
+      code: '12340987',
+      display: 'kick-flip-dectomy',
     };
     const surgicalProcedureCoding = {
       system: 'http://snomed.info/sct',
