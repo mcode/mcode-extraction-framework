@@ -1,8 +1,8 @@
 {
-  "resourceType": "MedicationStatement",
+  "resourceType": "MedicationAdministration",
   "meta": {
     "profile": [
-      "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-statement"
+      "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-administration"
     ]
   },
   "status": "example-status",

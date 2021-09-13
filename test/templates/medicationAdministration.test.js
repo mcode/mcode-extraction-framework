@@ -1,7 +1,7 @@
 const { isValidFHIR } = require('../../src/helpers/fhirUtils');
 const maximalValidExampleMedication = require('./fixtures/maximal-medication-resource.json');
 const minimalValidExampleMedication = require('./fixtures/minimal-medication-resource.json');
-const { cancerRelatedMedicationTemplate } = require('../../src/templates/CancerRelatedMedicationTemplate.js');
+const { cancerRelatedMedicationAdministrationTemplate } = require('../../src/templates/CancerRelatedMedicationAdministrationTemplate.js');
 const { allOptionalKeyCombinationsNotThrow } = require('../utils');
 
 const MEDICATION_VALID_DATA = {
@@ -51,16 +51,16 @@ const MEDICATION_INVALID_DATA = {
   treatmentIntent: 'example-code',
 };
 
-describe('test Medication template', () => {
+describe('test Medication Administration template', () => {
   test('valid data passed into template should generate FHIR resource', () => {
-    const generatedMedication = cancerRelatedMedicationTemplate(MEDICATION_VALID_DATA);
+    const generatedMedication = cancerRelatedMedicationAdministrationTemplate(MEDICATION_VALID_DATA);
 
     expect(generatedMedication).toEqual(maximalValidExampleMedication);
     expect(isValidFHIR(generatedMedication)).toBeTruthy();
   });
 
   test('minimal data passed into template should generate FHIR resource', () => {
-    const generatedMedication = cancerRelatedMedicationTemplate(MEDICATION_MINIMAL_DATA);
+    const generatedMedication = cancerRelatedMedicationAdministrationTemplate(MEDICATION_MINIMAL_DATA);
 
     expect(generatedMedication).toEqual(minimalValidExampleMedication);
 
@@ -96,10 +96,10 @@ describe('test Medication template', () => {
       status: 'example-status',
     };
 
-    allOptionalKeyCombinationsNotThrow(OPTIONAL_DATA, cancerRelatedMedicationTemplate, NECESSARY_DATA);
+    allOptionalKeyCombinationsNotThrow(OPTIONAL_DATA, cancerRelatedMedicationAdministrationTemplate, NECESSARY_DATA);
   });
 
   test('invalid data should throw an error', () => {
-    expect(() => cancerRelatedMedicationTemplate(MEDICATION_INVALID_DATA)).toThrow(Error);
+    expect(() => cancerRelatedMedicationAdministrationTemplate(MEDICATION_INVALID_DATA)).toThrow(Error);
   });
 });

@@ -57,7 +57,7 @@ function treatmentReasonTemplate({ treatmentReasonCode, treatmentReasonCodeSyste
 }
 
 
-function cancerRelatedMedicationTemplate({
+function cancerRelatedMedicationAdministrationTemplate({
   subjectId,
   id,
   code,
@@ -72,15 +72,15 @@ function cancerRelatedMedicationTemplate({
   status,
 }) {
   if (!(subjectId && code && codeSystem && status)) {
-    throw Error('Trying to render a CancerRelatedMedicationTemplate, but a required argument is missing; ensure that subjectId, code, code system, and status are all present');
+    throw Error('Trying to render a CancerRelatedMedicationAdministrationTemplate, but a required argument is missing; ensure that subjectId, code, code system, and status are all present');
   }
 
   return {
-    resourceType: 'MedicationStatement',
+    resourceType: 'MedicationAdministration',
     id,
     meta: {
       profile: [
-        'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-statement',
+        'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-administration',
       ],
     },
     ...extensionArr(ifAllArgsObj(treatmentIntentTemplate)({ treatmentIntent })),
@@ -93,5 +93,5 @@ function cancerRelatedMedicationTemplate({
 }
 
 module.exports = {
-  cancerRelatedMedicationTemplate,
+  cancerRelatedMedicationAdministrationTemplate,
 };

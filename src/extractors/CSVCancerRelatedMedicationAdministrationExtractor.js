@@ -7,7 +7,7 @@ const logger = require('../helpers/logger');
 
 
 function formatData(medicationData, patientId) {
-  logger.debug('Reformatting cancer-related medication data from CSV into template format');
+  logger.debug('Reformatting cancer-related medication administration data from CSV into template format');
 
   return medicationData.map((medication) => {
     const {
@@ -25,7 +25,7 @@ function formatData(medicationData, patientId) {
     } = medication;
 
     if (!(code && codeSystem && status)) {
-      throw new Error('The cancer-related medication is missing an expected element; code, code system, and status are all required values.');
+      throw new Error('The cancer-related medication administration is missing an expected element; code, code system, and status are all required values.');
     }
 
     return {
@@ -45,20 +45,20 @@ function formatData(medicationData, patientId) {
   });
 }
 
-class CSVCancerRelatedMedicationExtractor extends BaseCSVExtractor {
+class CSVCancerRelatedMedicationAdministrationExtractor extends BaseCSVExtractor {
   constructor({ filePath, url }) {
     super({ filePath, url });
   }
 
   async getMedicationData(mrn) {
-    logger.debug('Getting Cancer Related Medication Data');
+    logger.debug('Getting Cancer Related Medication Administration Data');
     return this.csvModule.get('mrn', mrn);
   }
 
   async get({ mrn, context }) {
     const medicationData = await this.getMedicationData(mrn);
     if (medicationData.length === 0) {
-      logger.warn('No medication data found for patient');
+      logger.warn('No medication administration data found for patient');
       return getEmptyBundle();
     }
     const patientId = getPatientFromContext(context).id;
@@ -67,10 +67,10 @@ class CSVCancerRelatedMedicationExtractor extends BaseCSVExtractor {
     const formattedData = formatData(medicationData, patientId);
 
     // Fill templates
-    return generateMcodeResources('CancerRelatedMedication', formattedData);
+    return generateMcodeResources('CancerRelatedMedicationAdministration', formattedData);
   }
 }
 
 module.exports = {
-  CSVCancerRelatedMedicationExtractor,
+  CSVCancerRelatedMedicationAdministrationExtractor,
 };

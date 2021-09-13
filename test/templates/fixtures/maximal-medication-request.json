@@ -1,14 +1,14 @@
 {
-  "resourceType": "MedicationAdministration",
+  "resourceType": "MedicationRequest",
   "id": "medicationId-1",
   "meta": {
     "profile": [
-      "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-administration"
+      "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-request"
     ]
   },
   "extension": [
     {
-      "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent",
+      "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-procedure-intent",
       "valueCodeableConcept": {
         "coding": [
           {
@@ -20,6 +20,7 @@
     }
   ],
   "status": "example-status",
+  "intent": "example-intent",
   "medicationCodeableConcept": {
     "coding": [
       {
@@ -33,9 +34,9 @@
     "reference": "urn:uuid:mrn-1",
     "type": "Patient"
   },
-  "effectivePeriod": {
-    "start": "2020-01-01",
-    "end": "2020-02-01"
+  "authoredOn": "2020-01-01",
+  "requester": {
+    "reference": "urn:uuid:example-requester"
   },
   "reasonCode": [
     {

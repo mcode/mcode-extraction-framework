@@ -1,21 +1,21 @@
 const path = require('path');
 const rewire = require('rewire');
 const _ = require('lodash');
-const { CSVCancerRelatedMedicationExtractor } = require('../../src/extractors');
-const exampleCSVMedicationModuleResponse = require('./fixtures/csv-medication-module-response.json');
-const exampleCSVMedicationBundle = require('./fixtures/csv-medication-bundle.json');
+const { CSVCancerRelatedMedicationRequestExtractor } = require('../../src/extractors');
+const exampleCSVMedicationModuleResponse = require('./fixtures/csv-medication-request-module-response.json');
+const exampleCSVMedicationBundle = require('./fixtures/csv-medication-request-bundle.json');
 const { getPatientFromContext } = require('../../src/helpers/contextUtils');
 const MOCK_CONTEXT = require('./fixtures/context-with-patient.json');
 
 // Rewired extractor for helper tests
-const CSVCancerRelatedMedicationExtractorRewired = rewire('../../src/extractors/CSVCancerRelatedMedicationExtractor.js');
+const CSVCancerRelatedMedicationExtractorRewired = rewire('../../src/extractors/CSVCancerRelatedMedicationRequestExtractor.js');
 
 // Constants for tests
 const MOCK_PATIENT_MRN = 'mrn-1'; // linked to values in example-module-response and context-with-patient above
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv'); // need a valid path/csv here to avoid parse error
 
 // Instantiate module with parameters
-const csvCancerRelatedMedicationExtractor = new CSVCancerRelatedMedicationExtractor({
+const csvCancerRelatedMedicationExtractor = new CSVCancerRelatedMedicationRequestExtractor({
   filePath: MOCK_CSV_PATH,
 });
 
@@ -32,10 +32,10 @@ const exampleEntry = exampleCSVMedicationModuleResponse[0];
 const expandedExampleBundle = _.cloneDeep(exampleCSVMedicationBundle);
 expandedExampleBundle.entry.push(exampleCSVMedicationBundle.entry[0]);
 
-describe('CSVCancerRelatedMedicationExtractor', () => {
+describe('CSVCancerRelatedMedicationRequestExtractor', () => {
   describe('formatData', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'The cancer-related medication is missing an expected element; code, code system, and status are all required values.';
+      const expectedErrorString = 'The cancer-related medication request is missing an expected element; code, code system, status, authoredOn, requesterId, and intent are all required values.';
       const localData = _.cloneDeep(exampleCSVMedicationModuleResponse);
       const patientId = getPatientFromContext(MOCK_CONTEXT).id;
 
@@ -53,7 +53,7 @@ describe('CSVCancerRelatedMedicationExtractor', () => {
   });
 
   describe('get', () => {
-    test('should return bundle with a CancerRelatedMedication', async () => {
+    test('should return bundle with a CancerRelatedMedicationRequest', async () => {
       csvModuleSpy.mockReturnValue(exampleCSVMedicationModuleResponse);
       const data = await csvCancerRelatedMedicationExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
       expect(data.resourceType).toEqual('Bundle');
@@ -72,7 +72,7 @@ describe('CSVCancerRelatedMedicationExtractor', () => {
       expect(data.entry.length).toEqual(0);
     });
 
-    test('get() should return an array of 2 when two medication statements are tied to a single patient', async () => {
+    test('get() should return an array of 2 when two medication requests are tied to a single patient', async () => {
       exampleCSVMedicationModuleResponse.push(exampleEntry);
       csvModuleSpy.mockReturnValue(exampleCSVMedicationModuleResponse);
       const data = await csvCancerRelatedMedicationExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
