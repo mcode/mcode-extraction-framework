@@ -1,6 +1,8 @@
-# Generating New Valuesets
+# Generating New ValueSets
 
-Follow the steps below to generate a new set of valuesets based on the latest version of mCODE's IG.
+Follow the steps below to generate a new set of valuesets based on the latest version of mCODE's IG. 
+
+It's best to have a clean working directory before generating new ValueSets, as it will overwrite existing ValueSets.
 
 1. Clone the fhir-mCODE-ig locally and _only run sushi to build FHIR resources_. This will build all mCODE Valuesets locally. You can find setup instructions for this repo on [HL7's GitHub](https://github.com/HL7/fhir-mCODE-ig). **Note**: you do not need to run the full `genonce` script; you only need to run `sushi`. 
 2. Move all ValueSets into a folder, for ease of access by the MEF'S `vs-expansion-script`. Below is a series of commands that will help with this (on OSX), but you could also do this manually.
