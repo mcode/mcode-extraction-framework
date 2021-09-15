@@ -3,8 +3,8 @@ const cancerStagingSystemVS = require('../../../src/helpers/valueSets/ValueSet-m
 
 describe('cancerStaging snippets', () => {
   describe('stagingMethodTemplate', () => {
-    const stagingCode = cancerStagingSystemVS.compose.include[0].concept[0].code;
-    const stagingCodeSystem = cancerStagingSystemVS.compose.include[0].system;
+    const stagingCode = cancerStagingSystemVS.expansion.contains[0].code;
+    const stagingCodeSystem = cancerStagingSystemVS.expansion.contains[0].system;
     const expectedStagingMethod = {
       method: {
         coding: [

@@ -3,7 +3,7 @@
   "id": "mcode-secondary-cancer-disorder-vs",
   "language": "en",
   "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-secondary-cancer-disorder-vs",
-  "version": "1.0.1",
+  "version": "1.18.1",
   "name": "SecondaryCancerDisorderVS",
   "title": "Secondary Cancer Disorder Value Set",
   "status": "active",
@@ -14,8 +14,8 @@
         "valueBoolean": true
       }
     ],
-    "identifier": "urn:uuid:7c77e768-9d40-493c-8b23-612313418418",
-    "timestamp": "2021-08-02T15:35:07.520Z",
+    "identifier": "urn:uuid:90c80af3-217f-4bc6-8ba9-770db623c4a9",
+    "timestamp": "2021-09-10T18:06:51.115Z",
     "parameter": [
       {
         "name": "expansion-source",
@@ -23,7 +23,7 @@
       },
       {
         "name": "version",
-        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210731"
       },
       {
         "name": "version",
@@ -31,6 +31,11 @@
       }
     ],
     "contains": [
+      {
+        "system": "http://hl7.org/fhir/us/mcode/CodeSystem/mcode-catch-code-cs",
+        "code": "SCC-OTHER",
+        "display": "Other Secondary Cancer Condition, Specify"
+      },
       {
         "system": "http://snomed.info/sct",
         "code": "128462008",
@@ -2669,7 +2674,7 @@
       {
         "system": "http://snomed.info/sct",
         "code": "134421000",
-        "display": "Pathological fracture due to metastatic bone disease"
+        "display": "Pathologic fracture of bone at site of metastatic neoplasm (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -2775,11 +2780,6 @@
         "system": "http://snomed.info/sct",
         "code": "269616004",
         "display": "Secondary nodes - axilla/arm"
-      },
-      {
-        "system": "http://snomed.info/sct",
-        "code": "269617008",
-        "display": "Secondary nodes - inguinal/leg"
       },
       {
         "system": "http://snomed.info/sct",
@@ -3558,6 +3558,11 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "402537005",
+        "display": "Metastatic basal cell carcinoma (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "402563000",
         "display": "Metastatic malignant melanoma with diffuse hypermelanosis (disorder)"
       },
@@ -3793,6 +3798,11 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1155991005",
+        "display": "Secondary malignant neoplasm of leptomeninges"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1661000119106",
         "display": "Metastasis to lung from adenocarcinoma (disorder)"
       },
@@ -3818,6 +3828,31 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "91191000119108",
+        "display": "Secondary adenocarcinoma of pleura (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91211000119109",
+        "display": "Secondary small cell carcinoma of pleura"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91221000119102",
+        "display": "Secondary malignant melanoma of pleura"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91231000119104",
+        "display": "Secondary adenocarcinoma of skin (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91271000119101",
+        "display": "Secondary squamous cell carcinoma of bone (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "91281000119103",
         "display": "Secondary adenocarcinoma of bone (disorder)"
       },
@@ -3838,6 +3873,11 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "107811000119106",
+        "display": "Secondary small cell carcinoma of liver (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "107831000119101",
         "display": "Squamous cell carcinoma metastatic to liver"
       },
@@ -3853,13 +3893,48 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "145501000119108",
+        "display": "Secondary malignant neoplasm of breast (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "145511000119106",
+        "display": "Secondary malignant neoplasm of genital organ"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "353561000119103",
         "display": "Cancer metastatic to right lung"
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "353571000119109",
+        "display": "Secondary malignant neoplasm of right adrenal gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "353721000119100",
+        "display": "Secondary malignant neoplasm of left adrenal gland (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "353741000119106",
         "display": "Cancer metastatic to left lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "354081000119101",
+        "display": "Secondary adenocarcinoma (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079531000119106",
+        "display": "Secondary malignant neoplasm of left kidney (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079541000119102",
+        "display": "Secondary malignant neoplasm of right kidney"
       },
       {
         "system": "http://snomed.info/sct",
@@ -3873,8 +3948,33 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "11717361000119108",
+        "display": "Secondary malignant neoplasm of soft tissue of back"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "12241031000119108",
+        "display": "Secondary malignant neoplasm of left breast (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "12241071000119106",
+        "display": "Secondary malignant neoplasm of right breast"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "12246481000119106",
+        "display": "Bilateral secondary malignant neoplasm of kidneys"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "12246561000119101",
         "display": "Secondary malignant neoplasm of bilateral adrenal glands"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "12246641000119104",
+        "display": "Secondary malignant neoplasm of bilateral breasts"
       },
       {
         "system": "http://snomed.info/sct",
@@ -3883,8 +3983,108 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "15930821000119105",
+        "display": "Secondary malignant neoplasm of bilateral ovaries"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "15956181000119102",
         "display": "Secondary adenocarcinoma of bilateral lungs"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15956221000119105",
+        "display": "Secondary adenocarcinoma of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15956261000119100",
+        "display": "Secondary adenocarcinoma of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15956661000119102",
+        "display": "Secondary small cell carcinoma of right lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15956701000119109",
+        "display": "Secondary small cell carcinoma of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15956741000119106",
+        "display": "Secondary small cell carcinoma of both lungs"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15957141000119109",
+        "display": "Secondary squamous cell carcinoma of both lungs"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15957181000119104",
+        "display": "Secondary squamous cell carcinoma of right lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15957221000119107",
+        "display": "Secondary squamous cell carcinoma of left lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958181000119103",
+        "display": "Secondary adenocarcinoma of bilateral kidneys (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958221000119106",
+        "display": "Secondary adenocarcinoma of left kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958261000119101",
+        "display": "Secondary adenocarcinoma of right kidney (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958301000119109",
+        "display": "Secondary squamous cell carcinoma of right kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958381000119101",
+        "display": "Secondary squamous cell carcinoma of left kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958661000119103",
+        "display": "Secondary malignant melanoma of left kidney (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958701000119105",
+        "display": "Secondary malignant melanoma of bilateral kidneys (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958741000119107",
+        "display": "Secondary malignant melanoma of right kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15977551000119100",
+        "display": "Bilateral secondary malignant neoplasm of eyes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15977591000119105",
+        "display": "Secondary malignant neoplasm of right eye"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15977631000119105",
+        "display": "Secondary malignant neoplasm of left eye"
       },
       {
         "system": "http://snomed.info/sct",
