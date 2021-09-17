@@ -1,9 +1,10 @@
 const {
-  coding,
   dataAbsentReasonExtension,
   extensionArr,
-  reference,
   valueX,
+  medicationTemplate,
+  subjectTemplate,
+  treatmentReasonTemplate,
 } = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
 
@@ -11,21 +12,6 @@ function treatmentIntentTemplate({ treatmentIntent }) {
   return {
     url: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-treatment-intent',
     ...valueX({ code: treatmentIntent, system: 'http://snomed.info/sct' }, 'valueCodeableConcept'),
-  };
-}
-
-function medicationTemplate({ code, codeSystem, displayText }) {
-  return {
-    medicationCodeableConcept: {
-      coding: [coding({ system: codeSystem, code, display: displayText }),
-      ],
-    },
-  };
-}
-
-function subjectTemplate({ id }) {
-  return {
-    subject: reference({ id, resourceType: 'Patient' }),
   };
 }
 
@@ -44,18 +30,6 @@ function periodTemplate({ startDate, endDate }) {
     },
   };
 }
-
-function treatmentReasonTemplate({ treatmentReasonCode, treatmentReasonCodeSystem, treatmentReasonDisplayText }) {
-  return {
-    reasonCode: [
-      {
-        coding: [coding({ system: treatmentReasonCodeSystem, code: treatmentReasonCode, display: treatmentReasonDisplayText }),
-        ],
-      },
-    ],
-  };
-}
-
 
 function cancerRelatedMedicationAdministrationTemplate({
   subjectId,

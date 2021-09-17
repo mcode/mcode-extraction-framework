@@ -7,6 +7,9 @@ const { effectiveX } = require('./effectiveX');
 const { identifier, identifierArr } = require('./identifier');
 const { bodySiteTemplate } = require('./bodySiteTemplate');
 const { stagingMethodTemplate } = require('./cancerStaging');
+const { medicationTemplate } = require('./medication');
+const { subjectTemplate } = require('./subject');
+const { treatmentReasonTemplate } = require('./treatmentReason');
 
 module.exports = {
   bodySiteTemplate,
@@ -16,9 +19,12 @@ module.exports = {
   extensionArr,
   identifier,
   identifierArr,
+  medicationTemplate,
   meta,
   narrative,
   reference,
   stagingMethodTemplate,
+  subjectTemplate,
+  treatmentReasonTemplate,
   valueX,
 };

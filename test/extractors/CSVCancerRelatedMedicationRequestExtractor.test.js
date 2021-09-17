@@ -15,12 +15,12 @@ const MOCK_PATIENT_MRN = 'mrn-1'; // linked to values in example-module-response
 const MOCK_CSV_PATH = path.join(__dirname, 'fixtures/example.csv'); // need a valid path/csv here to avoid parse error
 
 // Instantiate module with parameters
-const csvCancerRelatedMedicationExtractor = new CSVCancerRelatedMedicationRequestExtractor({
+const csvCancerRelatedMedicationRequestExtractor = new CSVCancerRelatedMedicationRequestExtractor({
   filePath: MOCK_CSV_PATH,
 });
 
 // Destructure all modules
-const { csvModule } = csvCancerRelatedMedicationExtractor;
+const { csvModule } = csvCancerRelatedMedicationRequestExtractor;
 
 // Spy on csvModule
 const csvModuleSpy = jest.spyOn(csvModule, 'get');
@@ -55,7 +55,7 @@ describe('CSVCancerRelatedMedicationRequestExtractor', () => {
   describe('get', () => {
     test('should return bundle with a CancerRelatedMedicationRequest', async () => {
       csvModuleSpy.mockReturnValue(exampleCSVMedicationModuleResponse);
-      const data = await csvCancerRelatedMedicationExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
+      const data = await csvCancerRelatedMedicationRequestExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();
@@ -65,7 +65,7 @@ describe('CSVCancerRelatedMedicationRequestExtractor', () => {
 
     test('should return empty bundle when no data available from module', async () => {
       csvModuleSpy.mockReturnValue([]);
-      const data = await csvCancerRelatedMedicationExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
+      const data = await csvCancerRelatedMedicationRequestExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();
@@ -75,7 +75,7 @@ describe('CSVCancerRelatedMedicationRequestExtractor', () => {
     test('get() should return an array of 2 when two medication requests are tied to a single patient', async () => {
       exampleCSVMedicationModuleResponse.push(exampleEntry);
       csvModuleSpy.mockReturnValue(exampleCSVMedicationModuleResponse);
-      const data = await csvCancerRelatedMedicationExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
+      const data = await csvCancerRelatedMedicationRequestExtractor.get({ mrn: MOCK_PATIENT_MRN, context: MOCK_CONTEXT });
       expect(data.resourceType).toEqual('Bundle');
       expect(data.type).toEqual('collection');
       expect(data.entry).toBeDefined();

@@ -1,7 +1,11 @@
-const { coding,
+const {
   extensionArr,
   reference,
-  valueX } = require('./snippets');
+  valueX,
+  medicationTemplate,
+  subjectTemplate,
+  treatmentReasonTemplate,
+} = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
 
 function procedureIntentTemplate({ procedureIntent }) {
@@ -11,38 +15,11 @@ function procedureIntentTemplate({ procedureIntent }) {
   };
 }
 
-function medicationTemplate({ code, codeSystem, displayText }) {
-  return {
-    medicationCodeableConcept: {
-      coding: [coding({ system: codeSystem, code, display: displayText }),
-      ],
-    },
-  };
-}
-
-function subjectTemplate({ id }) {
-  return {
-    subject: reference({ id, resourceType: 'Patient' }),
-  };
-}
-
 function requesterTemplate({ id }) {
   return {
     requester: reference({ id }),
   };
 }
-
-function treatmentReasonTemplate({ treatmentReasonCode, treatmentReasonCodeSystem, treatmentReasonDisplayText }) {
-  return {
-    reasonCode: [
-      {
-        coding: [coding({ system: treatmentReasonCodeSystem, code: treatmentReasonCode, display: treatmentReasonDisplayText }),
-        ],
-      },
-    ],
-  };
-}
-
 
 function cancerRelatedMedicationRequestTemplate({
   subjectId,
