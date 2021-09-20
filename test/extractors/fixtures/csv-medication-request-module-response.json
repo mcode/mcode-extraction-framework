@@ -1,0 +1,17 @@
+[
+  {
+    "mrn": "mrn-1",
+    "requestid": "requestId-1",
+    "code": "example-code",
+    "codesystem": "example-code-system",
+    "displaytext": "Example Text",
+    "authoredon": "YYYY-MM-DD",
+    "treatmentreasoncode": "example-reason",
+    "treatmentreasoncodesystem": "example-code-system",
+    "treatmentreasondisplaytext": "Example Text",
+    "procedureintent": "example-code",
+    "status": "example-status",
+    "requesterid": "example-requester",
+    "intent": "example-intent"
+  }
+]

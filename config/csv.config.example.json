@@ -56,10 +56,17 @@
       }
     },
     {
-      "label": "cancerRelatedMedication",
-      "type": "CSVCancerRelatedMedicationExtractor",
+      "label": "cancerRelatedMedicationAdministration",
+      "type": "CSVCancerRelatedMedicationAdministrationExtractor",
       "constructorArgs": {
-        "filePath": "./data/cancer-related-medication-information.csv"
+        "filePath": "./data/cancer-related-medication-administration-information.csv"
+      }
+    },
+    {
+      "label": "cancerRelatedMedicationRequest",
+      "type": "CSVCancerRelatedMedicationRequestExtractor",
+      "constructorArgs": {
+        "filePath": "./data/cancer-related-medication-request-information.csv"
       }
     },
     {
