@@ -78,7 +78,9 @@ function getPatientName(name) {
  * dataAbsentReason extension with value 'masked'
  * @param {Object} bundle a FHIR bundle with a Patient resource
  * @param {Array} mask an array of fields to mask. Values can be:
- * ['gender','mrn','name','address','birthDate','language','ethnicity','birthsex','race']
+ * 'gender','mrn','name','address','birthDate','language','ethnicity','birthsex',
+ * 'race', 'telecom', 'multipleBirth', 'photo', 'contact', 'generalPractitioner',
+ * 'managingOrganization', and 'link'
  */
 function maskPatientData(bundle, mask) {
   // get Patient resource from bundle
@@ -87,7 +89,24 @@ function maskPatientData(bundle, mask) {
     'Bundle.entry.where(resource.resourceType=\'Patient\').resource,first()',
   )[0];
 
-  const validFields = ['gender', 'mrn', 'name', 'address', 'birthDate', 'language', 'ethnicity', 'birthsex', 'race'];
+  const validFields = [
+    'gender',
+    'mrn',
+    'name',
+    'address',
+    'birthDate',
+    'language',
+    'ethnicity',
+    'birthsex',
+    'race',
+    'telecom',
+    'multipleBirth',
+    'photo',
+    'contact',
+    'generalPractitioner',
+    'managingOrganization',
+    'link',
+  ];
   const masked = extensionArr(dataAbsentReasonExtension('masked'));
 
   mask.forEach((field) => {
@@ -157,6 +176,32 @@ function maskPatientData(bundle, mask) {
         delete ethnicity[0].extension[1].valueString;
         ethnicity[0].extension[1]._valueString = masked;
       }
+    } else if (field === 'telecom' && 'telecom' in patient) {
+      delete patient.telecom;
+      patient.telecom = [masked];
+    } else if (field === 'multipleBirth') {
+      if ('multipleBirthBoolean' in patient) {
+        delete patient.multipleBirthBoolean;
+        patient._multipleBirthBoolean = masked;
+      } else if ('multipleBirthInteger' in patient) {
+        delete patient.multipleBirthInteger;
+        patient._multipleBirthInteger = masked;
+      }
+    } else if (field === 'photo' && 'photo' in patient) {
+      delete patient.phoo;
+      patient.photo = [masked];
+    } else if (field === 'contact' && 'contact' in patient) {
+      delete patient.contact;
+      patient.contact = [masked];
+    } else if (field === 'generalPractitioner' && 'generalPractitioner' in patient) {
+      delete patient.generalPractitioner;
+      patient.generalPractitioner = [masked];
+    } else if (field === 'managingOrganization' && 'managingOrganization' in patient) {
+      delete patient.managingOrganization;
+      patient.managingOrganization = masked;
+    } else if (field === 'link' && 'link' in patient) {
+      delete patient.link;
+      patient.link = [masked];
     }
   });
 }

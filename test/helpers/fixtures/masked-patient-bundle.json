@@ -131,7 +131,73 @@
                             "valueCode": "masked"
                         }
                     ]
-                }
+                },
+                "telecom": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ],
+                "_multipleBirthInteger": {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                      "valueCode": "masked"
+                    }
+                  ]
+                },
+                "contact": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ],
+                "generalPractitioner": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ],
+                "managingOrganization": {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                      "valueCode": "masked"
+                    }
+                  ]
+                },
+                "link": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ],
+                "photo": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ]
             }
         }
     ]

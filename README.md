@@ -134,7 +134,7 @@ npm start -- --entries-filter --from-date YYYY-MM-DD --to-date YYY-MM-DD --run-l
 ### Masking Patient Data
 
 Patient data can be masked within the extracted `Patient` resource. When masked, the value of the field will be replaced with a [Data Absent Reason extension](https://www.hl7.org/fhir/extension-data-absent-reason.html) with the code `masked`.
-Patient properties that can be masked are: `gender`, `mrn`, `name`, `address`, `birthDate`, `language`, `ethnicity`, `birthsex`, and `race`.
+Patient properties that can be masked are: `gender`, `mrn`, `name`, `address`, `birthDate`, `language`, `ethnicity`, `birthsex`, `race`, `telecom`, `multipleBirth`, `photo`, `contact`, `generalPractitioner`, `managingOrganization`, and `link`.
 To mask a property, provide an array of the properties to mask in the `constructorArgs` of the Patient extractor. For example, the following configuration can be used to mask `address` and `birthDate`:
 
 ```bash
