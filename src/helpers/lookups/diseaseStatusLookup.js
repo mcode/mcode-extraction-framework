@@ -2,7 +2,7 @@ const { createInvertedLookup, createLowercaseLookup } = require('../lookupUtils'
 
 // Code mapping is based on current values at http://standardhealthrecord.org/guides/icare/mapping_guidance.html
 const mcodeDiseaseStatusTextToCodeLookup = {
-  'Not detected (qualifier)': '260415000',
+  'No abnormality detected (finding)': '281900007',
   'Patient condition improved (finding)': '268910001',
   'Patient\'s condition stable (finding)': '359746009',
   'Patient\'s condition worsened (finding)': '271299001',

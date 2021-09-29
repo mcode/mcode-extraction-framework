@@ -7,8 +7,8 @@ const {
 } = require('../../src/helpers/diseaseStatusUtils.js');
 
 // Code mapping is based on current values at http://standardhealthrecord.org/guides/icare/mapping_guidance.html
-const currentDiseaseStatusTextToCodeLookup = {
-  'Not detected (qualifier)': '260415000',
+const mcodeDiseaseStatusTextToCodeLookup = {
+  'No abnormality detected (finding)': '281900007',
   'Patient condition improved (finding)': '268910001',
   'Patient\'s condition stable (finding)': '359746009',
   'Patient\'s condition worsened (finding)': '271299001',
@@ -38,8 +38,8 @@ const evidenceTextToCodeLookup = {
 
 describe('diseaseStatusUtils', () => {
   test('getMcodeDiseaseStatusCode,', () => {
-    Object.keys(currentDiseaseStatusTextToCodeLookup).forEach((dsText) => {
-      const dsCode = currentDiseaseStatusTextToCodeLookup[dsText];
+    Object.keys(mcodeDiseaseStatusTextToCodeLookup).forEach((dsText) => {
+      const dsCode = mcodeDiseaseStatusTextToCodeLookup[dsText];
       expect(getDiseaseStatusCode(dsText, 'mcode')).toEqual(dsCode);
       expect(getDiseaseStatusCode(dsText)).toEqual(dsCode);
     });
@@ -51,8 +51,8 @@ describe('diseaseStatusUtils', () => {
     });
   });
   test('getMcodeDiseaseStatusDisplay,', () => {
-    Object.keys(currentDiseaseStatusTextToCodeLookup).forEach((dsText) => {
-      const dsCode = currentDiseaseStatusTextToCodeLookup[dsText];
+    Object.keys(mcodeDiseaseStatusTextToCodeLookup).forEach((dsText) => {
+      const dsCode = mcodeDiseaseStatusTextToCodeLookup[dsText];
       expect(getDiseaseStatusDisplay(dsCode, 'mcode')).toEqual(dsText);
       expect(getDiseaseStatusDisplay(dsCode)).toEqual(dsText);
     });
