@@ -1,6 +1,6 @@
 const { createInvertedLookup, createLowercaseLookup } = require('../lookupUtils');
 
-// Code mapping is based on current values at http://standardhealthrecord.org/guides/icare/mapping_guidance.html
+// Code mapping is based on current values at https://www.hl7.org/fhir/us/mcode/2021May/ValueSet-mcode-condition-status-trend-vs.html
 const mcodeDiseaseStatusTextToCodeLookup = {
   'No abnormality detected (finding)': '281900007',
   'Patient condition improved (finding)': '268910001',
@@ -12,6 +12,7 @@ const mcodeDiseaseStatusCodeToTextLookup = createInvertedLookup(mcodeDiseaseStat
 
 // Code mapping is based on initial values still in use by icare implementors
 // specifically using lowercase versions of the text specified by ICARE for status
+// based on current values at http://standardhealthrecord.org/guides/icare/mapping_guidance.html
 const icareDiseaseStatusTextToCodeLookup = {
   'no evidence of disease': '260415000',
   responding: '268910001',
