@@ -188,7 +188,7 @@ function maskPatientData(bundle, mask) {
         patient._multipleBirthInteger = masked;
       }
     } else if (field === 'photo' && 'photo' in patient) {
-      delete patient.phoo;
+      delete patient.photo;
       patient.photo = [masked];
     } else if (field === 'contact' && 'contact' in patient) {
       delete patient.contact;
