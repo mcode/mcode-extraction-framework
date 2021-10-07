@@ -58,12 +58,14 @@
         },
         "to": {
           "title": "To",
-          "anyOf": [
+          "oneOf": [
             {
+              "title": "To (comma separated list of emails)",
               "type": "string",
               "format": "comma-separated-emails"
             },
             {
+              "title": "To (list of emails)",
               "type": "array",
               "items": {
                 "type": "string",
