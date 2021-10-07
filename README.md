@@ -148,6 +148,18 @@ To mask a property, provide an array of the properties to mask in the `construct
 }
 ```
 
+Alternatively, providing a string with a value of `all` in the `constructorArgs` of the Patient extractor will mask all of the supported properties listed above. The following configuration can be used to mask all properties of the `Patient` resource, rather than listing each individual property:
+
+```bash
+{
+  "label": "patient",
+  "type": "CSVPatientExtractor",
+  "constructorArgs": {
+    "filePath": "./data/patient-information.csv"
+    "mask": "all"
+  }
+}
+```
 ### Extraction Date Range
 
 The mCODE Extraction Client will extract all data that is provided in the CSV files by default, regardless of any dates associated with each row of data. It is recommended that any required date filtering is performed outside of the scope of this client.

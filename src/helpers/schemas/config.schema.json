@@ -128,10 +128,18 @@
         },
         "mask": {
           "title": "Masked Fields",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "mask-all"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       }
     }

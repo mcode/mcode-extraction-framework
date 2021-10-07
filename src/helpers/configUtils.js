@@ -34,6 +34,10 @@ ajv.addFormat('email-with-name', {
     return emailRegex.test(email.trim().split(' ').pop());
   },
 });
+ajv.addFormat('mask-all', {
+  type: 'string',
+  validate: (string) => string === 'all',
+});
 
 const validator = ajv.addSchema(configSchema, 'config');
 
