@@ -60,12 +60,12 @@
           "title": "To",
           "oneOf": [
             {
-              "title": "To, Comma Separated Emails",
+              "title": "To (comma separated list of emails)",
               "type": "string",
               "format": "comma-separated-emails"
             },
             {
-              "title": "To, Array of Emails",
+              "title": "To (list of emails)",
               "type": "array",
               "items": {
                 "type": "string",
