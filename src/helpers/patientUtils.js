@@ -81,8 +81,9 @@ function getPatientName(name) {
  * 'gender','mrn','name','address','birthDate','language','ethnicity','birthsex',
  * 'race', 'telecom', 'multipleBirth', 'photo', 'contact', 'generalPractitioner',
  * 'managingOrganization', and 'link'
+ * @param {Boolean} maskAll indicates that all supported fields should be masked, defaults to false
  */
-function maskPatientData(bundle, mask) {
+function maskPatientData(bundle, mask, maskAll = false) {
   // get Patient resource from bundle
   const patient = fhirpath.evaluate(
     bundle,
@@ -109,7 +110,9 @@ function maskPatientData(bundle, mask) {
   ];
   const masked = extensionArr(dataAbsentReasonExtension('masked'));
 
-  mask.forEach((field) => {
+  const maskingFields = maskAll ? validFields : mask;
+
+  maskingFields.forEach((field) => {
     if (!validFields.includes(field)) {
       throw Error(`'${field}' is not a field that can be masked. Patient will only be extracted if all mask fields are valid. Valid fields include: Valid fields include: ${validFields.join(', ')}`);
     }

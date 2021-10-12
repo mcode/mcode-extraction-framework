@@ -113,6 +113,12 @@ describe('PatientUtils', () => {
       expect(bundle).toEqual(exampleMaskedPatient);
     });
 
+    test('bundle should be modified to have dataAbsentReason for all fields when the maskAll flag is provided', () => {
+      const bundle = _.cloneDeep(examplePatient);
+      maskPatientData(bundle, [], true);
+      expect(bundle).toEqual(exampleMaskedPatient);
+    });
+
     test('should mask gender even if it only had an extension', () => {
       const bundle = _.cloneDeep(examplePatient);
       delete bundle.entry[0].resource.gender;
