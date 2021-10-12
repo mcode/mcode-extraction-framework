@@ -9,26 +9,6 @@ const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { CSVPatientSchema } = require('../helpers/schemas/csv');
 const logger = require('../helpers/logger');
 
-const ALL_SUPPORTED_MASK_FIELDS = [
-  'gender',
-  'mrn',
-  'name',
-  'address',
-  'birthDate',
-  'language',
-  'ethnicity',
-  'birthsex',
-  'race',
-  'telecom',
-  'multipleBirth',
-  'photo',
-  'contact',
-  'generalPractitioner',
-  'managingOrganization',
-  'link',
-];
-
-
 function joinAndReformatData(patientData) {
   logger.debug('Reformatting patient data from CSV into template format');
   // No join needed, just a reformatting
@@ -109,7 +89,7 @@ class CSVPatientExtractor extends BaseCSVExtractor {
 
     // mask specified fields in the patient data
     if (typeof this.mask === 'string' && this.mask === 'all') {
-      maskPatientData(bundle, ALL_SUPPORTED_MASK_FIELDS);
+      maskPatientData(bundle, [], true);
     } else if (this.mask.length > 0) maskPatientData(bundle, this.mask);
     return bundle;
   }

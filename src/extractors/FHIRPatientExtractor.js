@@ -1,25 +1,6 @@
 const { BaseFHIRExtractor } = require('./BaseFHIRExtractor');
 const { maskPatientData } = require('../helpers/patientUtils.js');
 
-const ALL_SUPPORTED_MASK_FIELDS = [
-  'gender',
-  'mrn',
-  'name',
-  'address',
-  'birthDate',
-  'language',
-  'ethnicity',
-  'birthsex',
-  'race',
-  'telecom',
-  'multipleBirth',
-  'photo',
-  'contact',
-  'generalPractitioner',
-  'managingOrganization',
-  'link',
-];
-
 class FHIRPatientExtractor extends BaseFHIRExtractor {
   constructor({ baseFhirUrl, requestHeaders, version, mask = [] }) {
     super({ baseFhirUrl, requestHeaders, version });
@@ -39,7 +20,7 @@ class FHIRPatientExtractor extends BaseFHIRExtractor {
     const bundle = await super.get(argumentObject);
     // mask specified fields in the patient data
     if (typeof this.mask === 'string' && this.mask === 'all') {
-      maskPatientData(bundle, ALL_SUPPORTED_MASK_FIELDS);
+      maskPatientData(bundle, [], true);
     } else if (this.mask.length > 0) maskPatientData(bundle, this.mask);
     return bundle;
   }
