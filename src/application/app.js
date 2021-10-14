@@ -43,7 +43,7 @@ async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, 
 
   // If we have notification information, send an emailNotification
   const { notificationInfo } = config;
-  if (notificationInfo) {
+  if (notificationInfo && Object.keys(notificationInfo).length > 0) {
     const notificationErrors = zipErrors(totalExtractionErrors);
     try {
       await sendEmailNotification(notificationInfo, notificationErrors, debug);

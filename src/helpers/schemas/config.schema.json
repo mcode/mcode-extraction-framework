@@ -79,10 +79,13 @@
           "type": "boolean"
         }
       },
-      "required": [
-        "host",
-        "to"
-      ]
+      "dependencies": {
+        "host": { "required": ["to"] },
+        "to": { "required": ["host"] },
+        "from": { "required": ["host", "to"] },
+        "port": { "required": ["host", "to"] },
+        "tlsRejectUnauthorized": { "required": ["host", "to"] }
+      }
     },
     "extractor": {
       "title": "Extractor",
