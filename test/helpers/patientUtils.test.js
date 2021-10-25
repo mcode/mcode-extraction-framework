@@ -93,14 +93,13 @@ describe('PatientUtils', () => {
     test('bundle should be modified to have dataAbsentReason for all fields specified in mask', () => {
       const bundle = _.cloneDeep(examplePatient);
       maskPatientData(bundle, [
-        'gender',
+        'genderAndSex',
         'mrn',
         'name',
         'address',
         'birthDate',
         'language',
         'ethnicity',
-        'birthsex',
         'race',
         'telecom',
         'multipleBirth',
@@ -132,14 +131,13 @@ describe('PatientUtils', () => {
         ],
       };
       maskPatientData(bundle, [
-        'gender',
+        'genderAndSex',
         'mrn',
         'name',
         'address',
         'birthDate',
         'language',
         'ethnicity',
-        'birthsex',
         'race',
         'telecom',
         'multipleBirth',
