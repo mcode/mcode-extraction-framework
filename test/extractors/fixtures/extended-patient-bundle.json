@@ -155,6 +155,28 @@
             "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
           },
           {
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:1.2.840.114350.1.13.0.1.7.10.698084.130.657370.19999000",
+                  "code": "female"
+                }
+              ]
+            },
+            "url": "http://open.epic.com/FHIR/StructureDefinition/extension/legal-sex"
+          },
+          {
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:1.2.840.114350.1.13.0.1.7.10.698084.130.657370.19999000",
+                  "code": "female"
+                }
+              ]
+            },
+            "url": "http://open.epic.com/FHIR/StructureDefinition/extension/sex-for-clinical-use"
+          },
+          {
             "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
             "valueCode": "male"
           }
