@@ -105,6 +105,28 @@
                         "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
                     },
                     {
+                      "valueCodeableConcept": {
+                        "extension": [
+                          {
+                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                            "valueCode": "masked"
+                          }
+                        ]
+                      },
+                      "url": "http://open.epic.com/FHIR/StructureDefinition/extension/legal-sex"
+                    },
+                    {
+                      "valueCodeableConcept": {
+                        "extension": [
+                          {
+                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                            "valueCode": "masked"
+                          }
+                        ]
+                      },
+                      "url": "http://open.epic.com/FHIR/StructureDefinition/extension/sex-for-clinical-use"
+                    },
+                    {
                         "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
                         "_valueCode": {
                             "extension": [

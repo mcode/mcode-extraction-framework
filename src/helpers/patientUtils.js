@@ -78,7 +78,7 @@ function getPatientName(name) {
  * dataAbsentReason extension with value 'masked'
  * @param {Object} bundle a FHIR bundle with a Patient resource
  * @param {Array} mask an array of fields to mask. Values can be:
- * 'gender','mrn','name','address','birthDate','language','ethnicity','birthsex',
+ * 'genderAndSex','mrn','name','address','birthDate','language','ethnicity',
  * 'race', 'telecom', 'multipleBirth', 'photo', 'contact', 'generalPractitioner',
  * 'managingOrganization', and 'link'
  * @param {Boolean} maskAll indicates that all supported fields should be masked, defaults to false
@@ -91,14 +91,13 @@ function maskPatientData(bundle, mask, maskAll = false) {
   )[0];
 
   const validFields = [
-    'gender',
+    'genderAndSex',
     'mrn',
     'name',
     'address',
     'birthDate',
     'language',
     'ethnicity',
-    'birthsex',
     'race',
     'telecom',
     'multipleBirth',
@@ -117,13 +116,40 @@ function maskPatientData(bundle, mask, maskAll = false) {
       throw Error(`'${field}' is not a field that can be masked. Patient will only be extracted if all mask fields are valid. Valid fields include: Valid fields include: ${validFields.join(', ')}`);
     }
     // must check if the field exists in the patient resource, so we don't add unnecessary dataAbsent extensions
-    if (field === 'gender' && 'gender' in patient) {
-      delete patient.gender;
-      // an underscore is added when a primitive type is being replaced by an object (extension)
-      patient._gender = masked;
-    } else if (field === 'gender' && '_gender' in patient) {
-      delete patient._gender; // gender may have a dataAbsentReason on it for 'unknown' data, but we'll still want to mask it
-      patient._gender = masked;
+    if (field === 'genderAndSex') {
+      if ('gender' in patient) {
+        delete patient.gender;
+        // an underscore is added when a primitive type is being replaced by an object (extension)
+        patient._gender = masked;
+      } else if ('_gender' in patient) {
+        delete patient._gender; // gender may have a dataAbsentReason on it for 'unknown' data, but we'll still want to mask it
+        patient._gender = masked;
+      }
+      // fields that are extensions need to be differentiated by URL using fhirpath
+      const birthsex = fhirpath.evaluate(
+        patient,
+        'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex\')',
+      );
+      // fhirpath.evaluate will return [] if there is no extension with the given URL
+      // so checking if the result is an array with anything in it checks if the field exists to be masked
+      if (birthsex.length > 0) {
+        delete birthsex[0].valueCode;
+        birthsex[0]._valueCode = masked;
+      }
+      const legalsex = fhirpath.evaluate(
+        patient,
+        'Patient.extension.where(url=\'http://open.epic.com/FHIR/StructureDefinition/extension/legal-sex\')',
+      );
+      if (legalsex.length > 0) {
+        legalsex[0].valueCodeableConcept = masked;
+      }
+      const clinicaluse = fhirpath.evaluate(
+        patient,
+        'Patient.extension.where(url=\'http://open.epic.com/FHIR/StructureDefinition/extension/sex-for-clinical-use\')',
+      );
+      if (clinicaluse.length > 0) {
+        clinicaluse[0].valueCodeableConcept = masked;
+      }
     } else if (field === 'mrn' && 'identifier' in patient) {
       // id and fullURL still need valid values, so we use a hashed version of MRN instead of dataAbsentReason
       const hash = crypto.createHash('sha256');
@@ -146,18 +172,6 @@ function maskPatientData(bundle, mask, maskAll = false) {
     } else if (field === 'language') {
       if ('communication' in patient && 'language' in patient.communication[0]) {
         patient.communication[0].language = masked;
-      }
-    } else if (field === 'birthsex') {
-      // fields that are extensions need to be differentiated by URL using fhirpath
-      const birthsex = fhirpath.evaluate(
-        patient,
-        'Patient.extension.where(url=\'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex\')',
-      );
-      // fhirpath.evaluate will return [] if there is no extension with the given URL
-      // so checking if the result is an array with anything in it checks if the field exists to be masked
-      if (birthsex.length > 0) {
-        delete birthsex[0].valueCode;
-        birthsex[0]._valueCode = masked;
       }
     } else if (field === 'race') {
       const race = fhirpath.evaluate(
