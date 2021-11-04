@@ -6,7 +6,7 @@ const dateFormat = 'YYYY-MM-DD';
 const dateTimeFormat = 'YYYY-MM-DDThh:mm:ssZ';
 
 function formatDate(date) {
-  const parsedDate = moment(date);
+  const parsedDate = moment.parseZone(date);
   if (!parsedDate.isValid()) {
     logger.warn(`Invalid date provided: ${date}. Provided value will be used.`);
     return date; // Use the provided date rather than 'Invalid date'
@@ -16,7 +16,7 @@ function formatDate(date) {
 }
 
 function formatDateTime(date) {
-  const parsedDate = moment(date);
+  const parsedDate = moment.parseZone(date);
   if (!parsedDate.isValid()) {
     logger.warn(`Invalid date provided: ${date}. Provided value will be used.`);
     return date; // Use the provided date rather than 'Invalid date'
