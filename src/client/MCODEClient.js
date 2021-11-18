@@ -6,6 +6,7 @@ const {
   CSVCancerRelatedMedicationRequestExtractor,
   CSVClinicalTrialInformationExtractor,
   CSVConditionExtractor,
+  CSVCTCAdverseEventExtractor,
   CSVObservationExtractor,
   CSVPatientExtractor,
   CSVProcedureExtractor,
@@ -35,6 +36,7 @@ class MCODEClient extends BaseClient {
       CSVCancerRelatedMedicationRequestExtractor,
       CSVClinicalTrialInformationExtractor,
       CSVConditionExtractor,
+      CSVCTCAdverseEventExtractor,
       CSVObservationExtractor,
       CSVPatientExtractor,
       CSVProcedureExtractor,
@@ -67,6 +69,7 @@ class MCODEClient extends BaseClient {
       { type: 'CSVProcedureExtractor', dependencies: ['CSVPatientExtractor'] },
       { type: 'CSVObservationExtractor', dependencies: ['CSVPatientExtractor'] },
       { type: 'CSVAdverseEventExtractor', dependencies: ['CSVPatientExtractor'] },
+      { type: 'CSVCTCAdverseEventExtractor', dependencies: ['CSVPatientExtractor'] },
     ];
     // Sort extractors based on order and dependencies
     this.extractorConfig = sortExtractors(this.extractorConfig, dependencyInfo);

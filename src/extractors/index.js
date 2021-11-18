@@ -5,6 +5,7 @@ const { CSVCancerRelatedMedicationAdministrationExtractor } = require('./CSVCanc
 const { CSVCancerRelatedMedicationRequestExtractor } = require('./CSVCancerRelatedMedicationRequestExtractor');
 const { CSVClinicalTrialInformationExtractor } = require('./CSVClinicalTrialInformationExtractor');
 const { CSVConditionExtractor } = require('./CSVConditionExtractor');
+const { CSVCTCAdverseEventExtractor } = require('./CSVCTCAdverseEventExtractor');
 const { CSVObservationExtractor } = require('./CSVObservationExtractor');
 const { CSVPatientExtractor } = require('./CSVPatientExtractor');
 const { CSVProcedureExtractor } = require('./CSVProcedureExtractor');
@@ -32,6 +33,7 @@ module.exports = {
   CSVCancerRelatedMedicationRequestExtractor,
   CSVClinicalTrialInformationExtractor,
   CSVConditionExtractor,
+  CSVCTCAdverseEventExtractor,
   CSVObservationExtractor,
   CSVPatientExtractor,
   CSVProcedureExtractor,
