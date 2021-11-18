@@ -1,6 +1,6 @@
 # mCODE Extraction Framework
 
-A Node.js framework for extracting mCODE FHIR resources. All resources are profiled per the [mCODE v1.0.0 R4 FHIR Implementation Guide](https://mcodeinitiative.github.io/index.html)
+A Node.js framework for extracting mCODE FHIR resources. All resources are profiled per the [mCODE v1.16.0 R4 FHIR Implementation Guide](http://hl7.org/fhir/us/mcode/2021May/)
 
 ## Table of Contents
 
@@ -44,7 +44,7 @@ There are various extractors, modules, and helper functions exposed by the frame
 
 Each extractor exposes an asynchronous `get` function that will return a bundle of extracted mCODE data.
 
-``` JavaScript
+```JavaScript
 // Example
 const { CSVCancerDiseaseStatusExtractor, logger} = require('mcode-extraction-framework');
 
@@ -116,7 +116,7 @@ In order to send an email, users must specify the hostname or IP address of an S
 - `port`: `<number>` (Optional) The port to connect to (defaults to 587)
 - `to`: `<string[]>` Comma separated list or an array of recipients email addresses that will appear on the _To:_ field
 - `from`: `<string>` (Optional) The email address of the sender. All email addresses can be plain `'sender@server.com'` or formatted `'"Sender Name" sender@server.com'` (defaults to mcode-extraction-errors@mitre.org, which cannot receive reply emails)
-- `tlsRejectUnauthorized`: `<boolean>` (Optional) A boolean value to set the [node.js TLSSocket option](https://nodejs.org/api/tls.html#tls_class_tls_tlssocket) for rejecting any unauthorized connections, `tls.rejectUnauthorized`.  (defaults to `true`)
+- `tlsRejectUnauthorized`: `<boolean>` (Optional) A boolean value to set the [node.js TLSSocket option](https://nodejs.org/api/tls.html#tls_class_tls_tlssocket) for rejecting any unauthorized connections, `tls.rejectUnauthorized`. (defaults to `true`)
 
 An example of this object can be found in [`config/csv.config.example.json`](config/csv.config.example.json).
 
@@ -161,6 +161,7 @@ Alternatively, providing a string with a value of `all` in the `constructorArgs`
   }
 }
 ```
+
 ### Extraction Date Range
 
 The mCODE Extraction Client will extract all data that is provided in the CSV files by default, regardless of any dates associated with each row of data. It is recommended that any required date filtering is performed outside of the scope of this client.
