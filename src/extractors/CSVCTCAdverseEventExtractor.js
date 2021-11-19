@@ -3,7 +3,7 @@ const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { getPatientFromContext } = require('../helpers/contextUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
-const { ctcAECodeToTextLookup } = require('../helpers/lookups/ctcAEGradeLookup');
+const { ctcAECodeToTextLookup } = require('../helpers/lookups/ctcAdverseEventLookup');
 const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
