@@ -89,6 +89,13 @@
       "constructorArgs": {
         "filePath": "./test/sample-client-data/adverse-event-information.csv"
       }
+    },
+    {
+      "label": "ctcAdverseEvent",
+      "type": "CSVCTCAdverseEventExtractor",
+      "constructorArgs": {
+        "filePath": "./test/sample-client-data/ctc-adverse-event-information.csv"
+      }
     }
   ]
 }

@@ -3,6 +3,7 @@ const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { getPatientFromContext } = require('../helpers/contextUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
+const { ctcAECodeToTextLookup } = require('../helpers/lookups/ctcAEGradeLookup');
 const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
@@ -27,10 +28,11 @@ function formatData(adverseEventData, patientId) {
       studyid: studyId,
       effectivedate: effectiveDate,
       recordeddate: recordedDate,
+      grade,
     } = data;
 
-    if (!(adverseEventCode && effectiveDate)) {
-      throw new Error('The adverse event is missing an expected attribute. Adverse event code and effective date are all required.');
+    if (!(adverseEventCode && effectiveDate && grade)) {
+      throw new Error('The adverse event is missing an expected attribute. Adverse event code, effective date, and grade are all required.');
     }
 
     const categoryCodes = category.split('|');
@@ -64,6 +66,7 @@ function formatData(adverseEventData, patientId) {
       studyId,
       effectiveDateTime: formatDateTime(effectiveDate),
       recordedDateTime: !recordedDate ? null : formatDateTime(recordedDate),
+      grade: { code: grade, display: ctcAECodeToTextLookup[grade] },
     };
   });
 }
