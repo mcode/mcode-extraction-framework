@@ -8,6 +8,7 @@ const { cancerRelatedMedicationAdministrationTemplate } = require('./CancerRelat
 const { cancerRelatedMedicationRequestTemplate } = require('./CancerRelatedMedicationRequestTemplate');
 const { carePlanWithReviewTemplate } = require('./CarePlanWithReviewTemplate');
 const { conditionTemplate } = require('./ConditionTemplate');
+const { CTCAdverseEventTemplate } = require('./CTCAdverseEventTemplate');
 const { observationTemplate } = require('./ObservationTemplate');
 const { patientTemplate } = require('./PatientTemplate');
 const { procedureTemplate } = require('./ProcedureTemplate');
@@ -23,6 +24,7 @@ const fhirTemplateLookup = {
   CancerRelatedMedicationRequest: cancerRelatedMedicationRequestTemplate,
   CarePlanWithReview: carePlanWithReviewTemplate,
   Condition: conditionTemplate,
+  CTCAdverseEvent: CTCAdverseEventTemplate,
   Observation: observationTemplate,
   Patient: patientTemplate,
   Procedure: procedureTemplate,
