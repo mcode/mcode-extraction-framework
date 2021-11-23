@@ -1,0 +1,32 @@
+{
+  "resourceType": "AdverseEvent",
+  "id": "adverseEventId-1",
+  "subject": {
+    "reference": "urn:uuid:mrn-1",
+    "type": "Patient"
+  },
+  "extension" : [
+    {
+      "url" : "http://hl7.org/fhir/us/ctcae/StructureDefinition/ctcae-grade",
+      "valueCodeableConcept" : {
+        "coding" : [
+          {
+            "system" : "http://hl7.org/fhir/us/ctcae/CodeSystem/ctcae-grade-code-system",
+            "code" : "2",
+            "display" : "Moderate Adverse Event"
+          }
+        ]
+      }
+    }
+  ],
+  "event": {
+    "coding": [
+      {
+        "system": "code-system",
+        "code": "109006"
+      }
+    ]
+  },
+  "actuality": "actual",
+  "date": "1994-12-09"
+}

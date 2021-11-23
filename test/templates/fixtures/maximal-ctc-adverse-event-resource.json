@@ -1,0 +1,76 @@
+{
+  "resourceType": "AdverseEvent",
+  "id": "adverseEventId-1",
+  "subject": {
+    "reference": "urn:uuid:mrn-1",
+    "type": "Patient"
+  },
+  "extension" : [
+    {
+      "url" : "http://hl7.org/fhir/us/ctcae/StructureDefinition/ctcae-grade",
+      "valueCodeableConcept" : {
+        "coding" : [
+          {
+            "system" : "http://hl7.org/fhir/us/ctcae/CodeSystem/ctcae-grade-code-system",
+            "code" : "2",
+            "display" : "Moderate Adverse Event"
+          }
+        ]
+      }
+    }
+  ],
+  "event": {
+    "coding": [
+      {
+        "system": "code-system",
+        "code": "109006",
+        "display": "Anxiety disorder of childhood OR adolescence"
+      }
+    ]
+  },
+  "suspectEntity": [
+    {
+      "instance": {
+        "reference": "urn:uuid:procedure-id",
+        "type": "Procedure"
+      }
+    }
+  ],
+  "seriousness": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness",
+        "code": "serious",
+        "display": "Serious"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
+          "code": "product-use-error",
+          "display": "Product Use Error"
+        }
+      ]
+    }
+  ],
+  "severity": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/adverse-event-severity",
+        "code": "severe"
+      }
+    ]
+  },
+  "actuality": "actual",
+  "study": [
+    {
+      "reference": "urn:uuid:researchId-1",
+      "type": "ResearchStudy"
+    }
+  ],
+  "date": "1994-12-09",
+  "recordedDate": "1994-12-09"
+}

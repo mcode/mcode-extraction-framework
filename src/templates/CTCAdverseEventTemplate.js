@@ -1,4 +1,4 @@
-const { coding, reference } = require('./snippets');
+const { coding, reference, extensionArr } = require('./snippets');
 const { ifAllArgsObj, ifSomeArgsObj, ifAllArgs, ifSomeArgsArr } = require('../helpers/templateUtils');
 
 function eventTemplate(eventCoding) {
@@ -72,17 +72,29 @@ function recordedDateTemplate(recordedDateTime) {
   };
 }
 
+function gradeTemplate(grade) {
+  return {
+    url: 'http://hl7.org/fhir/us/ctcae/StructureDefinition/ctcae-grade',
+    valueCodeableConcept: {
+      coding: [
+        coding({ ...grade, system: 'http://hl7.org/fhir/us/ctcae/CodeSystem/ctcae-grade-code-system' }),
+      ],
+    },
+  };
+}
+
 function CTCAdverseEventTemplate({
   id, subjectId, code, system, display, suspectedCauseId, suspectedCauseType, seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText, category,
-  severity, actuality, studyId, effectiveDateTime, recordedDateTime,
+  severity, actuality, studyId, effectiveDateTime, recordedDateTime, grade,
 }) {
-  if (!(subjectId && code && system && effectiveDateTime && actuality)) {
-    throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, actuality, and effectiveDateTime are all present');
+  if (!(subjectId && code && system && effectiveDateTime && actuality && grade)) {
+    throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, actuality, grade, and effectiveDateTime are all present');
   }
 
   return {
     resourceType: 'AdverseEvent',
     id,
+    ...extensionArr(gradeTemplate(grade)),
     subject: reference({ id: subjectId, resourceType: 'Patient' }),
     ...ifSomeArgsObj(eventTemplate)({ code, system, display }),
     ...ifAllArgsObj(suspectedCauseTemplate)({ suspectedCauseId, suspectedCauseType }),
