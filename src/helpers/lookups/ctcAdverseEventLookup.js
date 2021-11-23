@@ -1,6 +1,6 @@
 const { createInvertedLookup, createLowercaseLookup } = require('../lookupUtils');
 
-const ctcAETextToCodeLookup = {
+const ctcAEGradeTextToCodeLookup = {
   'Absent Adverse Event': '0',
   'Mild Adverse Event': '1',
   'Moderate Adverse Event': '2',
@@ -9,9 +9,9 @@ const ctcAETextToCodeLookup = {
   'Death Related to Adverse Event': '5',
 };
 
-const ctcAECodeToTextLookup = createInvertedLookup(ctcAETextToCodeLookup);
+const ctcAEGradeCodeToTextLookup = createInvertedLookup(ctcAEGradeTextToCodeLookup);
 
 module.exports = {
-  ctcAECodeToTextLookup: createLowercaseLookup(ctcAECodeToTextLookup),
-  ctcAETextToCodeLookup: createLowercaseLookup(ctcAETextToCodeLookup),
+  ctcAEGradeCodeToTextLookup: createLowercaseLookup(ctcAEGradeCodeToTextLookup),
+  ctcAEGradeTextToCodeLookup: createLowercaseLookup(ctcAEGradeTextToCodeLookup),
 };

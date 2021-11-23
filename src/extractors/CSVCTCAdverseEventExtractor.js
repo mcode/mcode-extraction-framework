@@ -3,7 +3,7 @@ const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { getPatientFromContext } = require('../helpers/contextUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
-const { ctcAECodeToTextLookup } = require('../helpers/lookups/ctcAdverseEventLookup');
+const { ctcAEGradeCodeToTextLookup } = require('../helpers/lookups/ctcAdverseEventLookup');
 const logger = require('../helpers/logger');
 
 // Formats data to be passed into template-friendly format
@@ -66,7 +66,7 @@ function formatData(adverseEventData, patientId) {
       studyId,
       effectiveDateTime: formatDateTime(effectiveDate),
       recordedDateTime: !recordedDate ? null : formatDateTime(recordedDate),
-      grade: { code: grade, display: ctcAECodeToTextLookup[grade] },
+      grade: { code: grade, display: ctcAEGradeCodeToTextLookup[grade] },
     };
   });
 }
