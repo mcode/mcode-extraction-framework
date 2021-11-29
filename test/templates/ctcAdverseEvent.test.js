@@ -16,8 +16,6 @@ const VALID_DATA = {
   seriousnessCodeSystem: 'http://terminology.hl7.org/CodeSystem/adverse-event-seriousness',
   seriousnessDisplayText: 'Serious',
   category: [{ code: 'product-use-error', system: 'http://terminology.hl7.org/CodeSystem/adverse-event-category', display: 'Product Use Error' }],
-  severity: 'severe',
-  actuality: 'actual',
   studyId: 'researchId-1',
   effectiveDateTime: '1994-12-09',
   recordedDateTime: '1994-12-09',
@@ -25,12 +23,11 @@ const VALID_DATA = {
 };
 
 const MINIMAL_DATA = {
-  // Only include 'id', 'subjectId', 'code', 'system', 'actuality', 'grade', and 'effectiveDateTime' fields which are required
+  // Only include 'id', 'subjectId', 'code', 'system', 'grade', and 'effectiveDateTime' fields which are required
   subjectId: 'mrn-1',
   code: '109006',
   system: 'code-system',
   effectiveDateTime: '1994-12-09',
-  actuality: 'actual',
   id: 'adverseEventId-1',
   grade: { code: '2', display: 'Moderate Adverse Event' },
   display: null,
@@ -40,19 +37,17 @@ const MINIMAL_DATA = {
   seriousnessCodeSystem: null,
   seriousnessDisplayText: null,
   category: [null],
-  severity: null,
   studyId: null,
   recordedDateTime: null,
 };
 
 
 const INVALID_DATA = {
-  // Omitting 'subjectId', 'code', 'system', 'actuality', and 'effectiveDateTime' fields which are required
+  // Omitting 'subjectId', 'code', 'system', and 'effectiveDateTime' fields which are required
   subjectId: null,
   code: null,
   system: null,
   effectiveDateTime: null,
-  actuality: null,
   grade: null,
   id: 'adverseEventId-1',
   display: 'Anxiety disorder of childhood OR adolescence',
@@ -62,7 +57,6 @@ const INVALID_DATA = {
   seriousnessCodeSystem: 'http://terminology.hl7.org/CodeSystem/adverse-event-seriousness',
   seriousnessDisplayText: 'Serious',
   category: [{ code: 'product-use-error', system: 'http://terminology.hl7.org/CodeSystem/adverse-event-category' }],
-  severity: 'severe',
   studyId: 'researchId-1',
   recordedDateTime: '1994-12-09',
 };
@@ -92,7 +86,6 @@ describe('test Adverse Event template', () => {
       seriousnessCodeSystem: 'http://terminology.hl7.org/CodeSystem/adverse-event-seriousness',
       seriousnessDisplayText: 'Serious',
       category: [{ code: 'product-use-error', system: 'http://terminology.hl7.org/CodeSystem/adverse-event-category' }],
-      severity: 'severe',
       studyId: 'researchId-1',
       recordedDateTime: '1994-12-09',
     };
@@ -102,7 +95,6 @@ describe('test Adverse Event template', () => {
       code: '109006',
       system: 'code-system',
       effectiveDateTime: '1994-12-09',
-      actuality: 'actual',
       grade: { code: '2', display: 'Moderate Adverse Event' },
     };
 

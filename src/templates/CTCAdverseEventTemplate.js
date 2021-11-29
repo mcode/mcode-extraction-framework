@@ -45,19 +45,6 @@ function categoryArrayTemplate(categoryArr) {
   return { category };
 }
 
-function severityTemplate(severityCode) {
-  return {
-    severity: {
-      coding: [
-        coding({
-          code: severityCode,
-          system: 'http://terminology.hl7.org/CodeSystem/adverse-event-severity',
-        }),
-      ],
-    },
-  };
-}
-
 function studyTemplate(studyId) {
   return {
     study: [
@@ -85,9 +72,9 @@ function gradeTemplate(grade) {
 
 function CTCAdverseEventTemplate({
   id, subjectId, code, system, display, suspectedCauseId, suspectedCauseType, seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText, category,
-  severity, actuality, studyId, effectiveDateTime, recordedDateTime, grade,
+  studyId, effectiveDateTime, recordedDateTime, grade,
 }) {
-  if (!(subjectId && code && system && effectiveDateTime && actuality && grade)) {
+  if (!(subjectId && code && system && effectiveDateTime && grade)) {
     throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, actuality, grade, and effectiveDateTime are all present');
   }
 
@@ -100,8 +87,7 @@ function CTCAdverseEventTemplate({
     ...ifAllArgsObj(suspectedCauseTemplate)({ suspectedCauseId, suspectedCauseType }),
     ...ifSomeArgsObj(seriousnessTemplate)({ code: seriousnessCode, system: seriousnessCodeSystem, display: seriousnessDisplayText }),
     ...ifSomeArgsArr(categoryArrayTemplate)(category),
-    ...ifAllArgs(severityTemplate)(severity),
-    actuality,
+    actuality: 'actual',
     ...ifAllArgs(studyTemplate)(studyId),
     date: effectiveDateTime,
     ...ifAllArgs(recordedDateTemplate)(recordedDateTime),
