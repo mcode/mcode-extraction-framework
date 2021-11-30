@@ -23,8 +23,6 @@ function formatData(adverseEventData, patientId) {
       category,
       categorycodesystem: categoryCodeSystem,
       categorydisplaytext: categoryDisplayText,
-      severity,
-      actuality,
       studyid: studyId,
       effectivedate: effectiveDate,
       recordeddate: recordedDate,
@@ -61,8 +59,6 @@ function formatData(adverseEventData, patientId) {
         if (categoryDisplays[index]) categoryCoding.display = categoryDisplays[index];
         return categoryCoding;
       }),
-      severity,
-      actuality: !actuality ? 'actual' : actuality,
       studyId,
       effectiveDateTime: formatDateTime(effectiveDate),
       recordedDateTime: !recordedDate ? null : formatDateTime(recordedDate),

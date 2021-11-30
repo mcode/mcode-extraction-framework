@@ -13,8 +13,6 @@
     "category": "product-use-error",
     "categorycodesystem": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
     "categorydisplaytext": "Product Use Error",
-    "severity": "severe",
-    "actuality": "actual",
     "studyid": "researchId-1",
     "effectivedate": "12-09-1994",
     "recordeddate": "12-09-1994",
