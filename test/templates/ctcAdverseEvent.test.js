@@ -9,7 +9,9 @@ const VALID_DATA = {
   id: 'adverseEventId-1',
   code: '109006',
   system: 'code-system',
+  version: 'code-version',
   display: 'Anxiety disorder of childhood OR adolescence',
+  text: 'event-text',
   suspectedCauseId: 'procedure-id',
   suspectedCauseType: 'Procedure',
   seriousnessCode: 'serious',
@@ -23,13 +25,15 @@ const VALID_DATA = {
 };
 
 const MINIMAL_DATA = {
-  // Only include 'id', 'subjectId', 'code', 'system', 'grade', and 'effectiveDateTime' fields which are required
+  // Only include 'id', 'subjectId', 'code', 'system', 'text', 'grade', and 'effectiveDateTime' fields which are required
   subjectId: 'mrn-1',
   code: '109006',
   system: 'code-system',
+  text: 'event-text',
   effectiveDateTime: '1994-12-09',
   id: 'adverseEventId-1',
   grade: { code: '2', display: 'Moderate Adverse Event' },
+  version: null,
   display: null,
   suspectedCauseId: null,
   suspectedCauseType: null,
@@ -43,13 +47,15 @@ const MINIMAL_DATA = {
 
 
 const INVALID_DATA = {
-  // Omitting 'subjectId', 'code', 'system', and 'effectiveDateTime' fields which are required
+  // Omitting 'subjectId', 'code', 'system', 'text', and 'effectiveDateTime' fields which are required
   subjectId: null,
   code: null,
   system: null,
   effectiveDateTime: null,
   grade: null,
+  text: null,
   id: 'adverseEventId-1',
+  version: 'code-version',
   display: 'Anxiety disorder of childhood OR adolescence',
   suspectedCauseId: 'procedure-id',
   suspectedCauseType: 'Procedure',
@@ -79,6 +85,7 @@ describe('test Adverse Event template', () => {
   test('missing non-required data should not throw an error', () => {
     const OPTIONAL_DATA = {
       id: 'adverseEventId-1',
+      version: 'code-version',
       display: 'Anxiety disorder of childhood OR adolescence',
       suspectedCauseId: 'procedure-id',
       suspectedCauseType: 'Procedure',
@@ -94,6 +101,7 @@ describe('test Adverse Event template', () => {
       subjectId: 'mrn-1',
       code: '109006',
       system: 'code-system',
+      text: 'event-text',
       effectiveDateTime: '1994-12-09',
       grade: { code: '2', display: 'Moderate Adverse Event' },
     };

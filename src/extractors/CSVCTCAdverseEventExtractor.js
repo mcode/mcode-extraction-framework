@@ -14,7 +14,9 @@ function formatData(adverseEventData, patientId) {
       adverseeventid: adverseEventId,
       adverseeventcode: adverseEventCode,
       adverseeventcodesystem: adverseEventCodeSystem,
+      adverseeventcodeversion: adverseEventCodeVersion,
       adverseeventdisplaytext: adverseEventDisplayText,
+      adverseeventtext: adverseEventText,
       suspectedcauseid: suspectedCauseId,
       suspectedcausetype: suspectedCauseType,
       seriousness,
@@ -29,8 +31,8 @@ function formatData(adverseEventData, patientId) {
       grade,
     } = data;
 
-    if (!(adverseEventCode && effectiveDate && grade)) {
-      throw new Error('The adverse event is missing an expected attribute. Adverse event code, effective date, and grade are all required.');
+    if (!(adverseEventCode && adverseEventText && effectiveDate && grade)) {
+      throw new Error('The adverse event is missing an expected attribute. Adverse event code, adverse event text, effective date, and grade are all required.');
     }
 
     const categoryCodes = category.split('|');
@@ -47,7 +49,9 @@ function formatData(adverseEventData, patientId) {
       subjectId: patientId,
       code: adverseEventCode,
       system: !adverseEventCodeSystem ? 'http://snomed.info/sct' : adverseEventCodeSystem,
+      version: adverseEventCodeVersion,
       display: adverseEventDisplayText,
+      text: adverseEventText,
       suspectedCauseId,
       suspectedCauseType,
       seriousnessCode: seriousness,
