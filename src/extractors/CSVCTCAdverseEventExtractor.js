@@ -31,8 +31,8 @@ function formatData(adverseEventData, patientId) {
       grade,
     } = data;
 
-    if (!(adverseEventCode && adverseEventText && effectiveDate && grade)) {
-      throw new Error('The adverse event is missing an expected attribute. Adverse event code, adverse event text, effective date, and grade are all required.');
+    if (!(adverseEventCode && effectiveDate && grade)) {
+      throw new Error('The adverse event is missing an expected attribute. Adverse event code, effective date, and grade are all required.');
     }
 
     const categoryCodes = category.split('|');

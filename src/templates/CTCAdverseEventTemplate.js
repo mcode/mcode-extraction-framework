@@ -1,5 +1,7 @@
 const { coding, reference, extensionArr } = require('./snippets');
-const { ifAllArgsObj, ifSomeArgsObj, ifAllArgs, ifSomeArgsArr } = require('../helpers/templateUtils');
+const {
+  ifAllArgsObj, ifSomeArgsObj, ifAllArgs, ifSomeArgs, ifSomeArgsArr,
+} = require('../helpers/templateUtils');
 
 function eventTemplate(eventCoding, eventText) {
   return {
@@ -7,7 +9,7 @@ function eventTemplate(eventCoding, eventText) {
       coding: [
         coding(eventCoding),
       ],
-      text: eventText,
+      ...(eventText && { text: eventText }),
     },
   };
 }
@@ -75,8 +77,8 @@ function CTCAdverseEventTemplate({
   id, subjectId, code, system, version, display, text, suspectedCauseId, suspectedCauseType, seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText, category,
   studyId, effectiveDateTime, recordedDateTime, grade,
 }) {
-  if (!(subjectId && code && system && text && effectiveDateTime && grade)) {
-    throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, text, grade, and effectiveDateTime are all present');
+  if (!(subjectId && code && system && effectiveDateTime && grade)) {
+    throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, grade, and effectiveDateTime are all present');
   }
 
   return {
@@ -84,7 +86,7 @@ function CTCAdverseEventTemplate({
     id,
     ...extensionArr(gradeTemplate(grade)),
     subject: reference({ id: subjectId, resourceType: 'Patient' }),
-    ...ifAllArgs(eventTemplate)({ code, system, version, display }, text),
+    ...ifSomeArgs(eventTemplate)({ code, system, version, display }, text),
     ...ifAllArgsObj(suspectedCauseTemplate)({ suspectedCauseId, suspectedCauseType }),
     ...ifSomeArgsObj(seriousnessTemplate)({ code: seriousnessCode, system: seriousnessCodeSystem, display: seriousnessDisplayText }),
     ...ifSomeArgsArr(categoryArrayTemplate)(category),
