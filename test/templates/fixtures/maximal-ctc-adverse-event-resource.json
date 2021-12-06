@@ -24,9 +24,11 @@
       {
         "system": "code-system",
         "code": "109006",
+        "version": "code-version",
         "display": "Anxiety disorder of childhood OR adolescence"
       }
-    ]
+    ],
+    "text": "event-text"
   },
   "suspectEntity": [
     {

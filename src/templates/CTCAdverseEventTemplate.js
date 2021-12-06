@@ -1,12 +1,15 @@
 const { coding, reference, extensionArr } = require('./snippets');
-const { ifAllArgsObj, ifSomeArgsObj, ifAllArgs, ifSomeArgsArr } = require('../helpers/templateUtils');
+const {
+  ifAllArgsObj, ifSomeArgsObj, ifAllArgs, ifSomeArgs, ifSomeArgsArr,
+} = require('../helpers/templateUtils');
 
-function eventTemplate(eventCoding) {
+function eventTemplate(eventCoding, eventText) {
   return {
     event: {
       coding: [
         coding(eventCoding),
       ],
+      ...(eventText && { text: eventText }),
     },
   };
 }
@@ -71,11 +74,11 @@ function gradeTemplate(grade) {
 }
 
 function CTCAdverseEventTemplate({
-  id, subjectId, code, system, display, suspectedCauseId, suspectedCauseType, seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText, category,
+  id, subjectId, code, system, version, display, text, suspectedCauseId, suspectedCauseType, seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText, category,
   studyId, effectiveDateTime, recordedDateTime, grade,
 }) {
   if (!(subjectId && code && system && effectiveDateTime && grade)) {
-    throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, actuality, grade, and effectiveDateTime are all present');
+    throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, grade, and effectiveDateTime are all present');
   }
 
   return {
@@ -83,7 +86,7 @@ function CTCAdverseEventTemplate({
     id,
     ...extensionArr(gradeTemplate(grade)),
     subject: reference({ id: subjectId, resourceType: 'Patient' }),
-    ...ifSomeArgsObj(eventTemplate)({ code, system, display }),
+    ...ifSomeArgs(eventTemplate)({ code, system, version, display }, text),
     ...ifAllArgsObj(suspectedCauseTemplate)({ suspectedCauseId, suspectedCauseType }),
     ...ifSomeArgsObj(seriousnessTemplate)({ code: seriousnessCode, system: seriousnessCodeSystem, display: seriousnessDisplayText }),
     ...ifSomeArgsArr(categoryArrayTemplate)(category),
