@@ -25,7 +25,7 @@ const VALID_DATA = {
 };
 
 const MINIMAL_DATA = {
-  // Only include 'id', 'subjectId', 'code', 'system', 'text', 'grade', and 'effectiveDateTime' fields which are required
+  // Only include 'id', 'subjectId', 'code', 'system', 'grade', and 'effectiveDateTime' fields which are required
   subjectId: 'mrn-1',
   code: '109006',
   system: 'code-system',
@@ -47,7 +47,7 @@ const MINIMAL_DATA = {
 
 
 const INVALID_DATA = {
-  // Omitting 'subjectId', 'code', 'system', 'text', and 'effectiveDateTime' fields which are required
+  // Omitting 'subjectId', 'code', 'system', and 'effectiveDateTime' fields which are required
   subjectId: null,
   code: null,
   system: null,
