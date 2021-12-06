@@ -10,12 +10,15 @@ class CSVFileModule {
     // Parse then normalize the data
     const parsedData = parse(fs.readFileSync(csvFilePath), {
       columns: (header) => header.map((column) => stringNormalizer(column)),
+      // https://csv.js.org/parse/options/bom/
       bom: true,
+      // https://csv.js.org/parse/options/skip_empty_lines/
       skip_empty_lines: true,
+      // NOTE: This will skip any records with empty values, not just skip the empty values themselves
+      // https://csv.js.org/parse/options/skip_records_with_empty_values/
       skip_records_with_empty_values: true,
     });
     this.filePath = csvFilePath;
-
     this.data = normalizeEmptyValues(parsedData, unalterableColumns);
   }
 
