@@ -11,6 +11,8 @@ class CSVFileModule {
     const parsedData = parse(fs.readFileSync(csvFilePath), {
       columns: (header) => header.map((column) => stringNormalizer(column)),
       bom: true,
+      skip_empty_lines: true,
+      skip_records_with_empty_values: true,
     });
     this.filePath = csvFilePath;
 
