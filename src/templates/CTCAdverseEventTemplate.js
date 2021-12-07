@@ -1,4 +1,4 @@
-const { coding, reference, extensionArr } = require('./snippets');
+const { coding, reference, extensionArr, valueX } = require('./snippets');
 const {
   ifAllArgsObj, ifSomeArgsObj, ifAllArgs, ifSomeArgs, ifSomeArgsArr,
 } = require('../helpers/templateUtils');
@@ -73,9 +73,39 @@ function gradeTemplate(grade) {
   };
 }
 
+function resolvedDateTemplate(resolvedDate) {
+  return {
+    url: 'http://hl7.org/fhir/us/ctcae/StructureDefinition/adverse-event-resolved-date',
+    ...valueX(resolvedDate, 'valueDateTime'),
+  };
+}
+
+function expectationTemplate(expectation) {
+  return {
+    url: 'http://hl7.org/fhir/us/ctcae/StructureDefinition/adverse-event-expectation',
+    valueCodeableConcept: {
+      coding: [
+        coding(expectation),
+      ],
+    },
+  };
+}
+
+function seriousnessOutcomeTemplate(seriousnessOutcome) {
+  return {
+    url: 'http://hl7.org/fhir/us/ctcae/StructureDefinition/adverse-event-seriousness-outcome',
+    valueCodeableConcept: {
+      coding: [
+        coding(seriousnessOutcome),
+      ],
+    },
+  };
+}
+
+
 function CTCAdverseEventTemplate({
   id, subjectId, code, system, version, display, text, suspectedCauseId, suspectedCauseType, seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText, category,
-  studyId, effectiveDateTime, recordedDateTime, grade,
+  studyId, effectiveDateTime, recordedDateTime, grade, resolvedDate, expectation, seriousnessOutcome,
 }) {
   if (!(subjectId && code && system && effectiveDateTime && grade)) {
     throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, grade, and effectiveDateTime are all present');
@@ -84,7 +114,12 @@ function CTCAdverseEventTemplate({
   return {
     resourceType: 'AdverseEvent',
     id,
-    ...extensionArr(gradeTemplate(grade)),
+    ...extensionArr(
+      gradeTemplate(grade),
+      resolvedDate ? resolvedDateTemplate(resolvedDate) : null,
+      expectation ? expectationTemplate(expectation) : null,
+      seriousnessOutcome ? seriousnessOutcomeTemplate(seriousnessOutcome) : null,
+    ),
     subject: reference({ id: subjectId, resourceType: 'Patient' }),
     ...ifSomeArgs(eventTemplate)({ code, system, version, display }, text),
     ...ifAllArgsObj(suspectedCauseTemplate)({ suspectedCauseId, suspectedCauseType }),

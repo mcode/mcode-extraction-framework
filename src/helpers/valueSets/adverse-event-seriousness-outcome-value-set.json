@@ -1,0 +1,70 @@
+{
+  "resourceType": "ValueSet",
+  "id": "adverse-event-seriousness-outcome-value-set",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Include these codes as defined in <code>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl</code><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td>C84266</td><td>Life Threatening Adverse Event</td></tr><tr><td>C48275</td><td>Death Related to Adverse Event</td></tr><tr><td>C113380</td><td>Disabling Adverse Event</td></tr><tr><td>C83052</td><td>Adverse Event associated with Hospitalization</td></tr><tr><td>C2849</td><td>Congenital Abnormality</td></tr><tr><td>C52668</td><td>Intervention Required</td></tr></table></li></ul></div>"
+  },
+  "url": "http://hl7.org/fhir/us/ctcae/ValueSet/adverse-event-seriousness-outcome-value-set",
+  "version": "0.0.1",
+  "name": "AdverseEventSeriousnessOutcomeVS",
+  "title": "Adverse Event Seriousness Outcome Value Set",
+  "status": "active",
+  "date": "2021-12-03T16:46:43+00:00",
+  "publisher": "HL7 International Clinical Interoperability Council",
+  "contact": [
+    {
+      "name": "HL7 International Clinical Interoperability Council",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.mcodeinitiative.org"
+        }
+      ]
+    }
+  ],
+  "description": "The outcome of a serious adverse event",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl",
+        "concept": [
+          {
+            "code": "C84266",
+            "display": "Life Threatening Adverse Event"
+          },
+          {
+            "code": "C48275",
+            "display": "Death Related to Adverse Event"
+          },
+          {
+            "code": "C113380",
+            "display": "Disabling Adverse Event"
+          },
+          {
+            "code": "C83052",
+            "display": "Adverse Event associated with Hospitalization"
+          },
+          {
+            "code": "C2849",
+            "display": "Congenital Abnormality"
+          },
+          {
+            "code": "C52668",
+            "display": "Intervention Required"
+          }
+        ]
+      }
+    ]
+  }}

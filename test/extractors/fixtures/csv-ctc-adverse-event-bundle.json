@@ -19,6 +19,34 @@
                 }
               ]
             }
+          },
+          {
+            "url": "http://hl7.org/fhir/us/ctcae/StructureDefinition/adverse-event-resolved-date",
+            "valueDateTime": "2021-12-01"
+          },
+          {
+            "url": "http://hl7.org/fhir/us/ctcae/StructureDefinition/adverse-event-expectation",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl",
+                  "code": "C41333",
+                  "display": "Expected Adverse Event"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/us/ctcae/StructureDefinition/adverse-event-seriousness-outcome",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl",
+                  "code": "C113380",
+                  "display": "Disabling Adverse Event"
+                }
+              ]
+            }
           }
         ],
         "subject": {

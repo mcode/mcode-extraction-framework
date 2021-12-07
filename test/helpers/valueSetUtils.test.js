@@ -1,5 +1,7 @@
 const path = require('path');
-const { checkCodeInVs, vsTypes, loadJsonVs, loadVs } = require('../../src/helpers/valueSetUtils.js');
+const {
+  checkCodeInVs, vsTypes, loadJsonVs, loadVs, getDisplayFromConcept, getConceptFromVSCompose, getConceptFromVSExpansion,
+} = require('../../src/helpers/valueSetUtils.js');
 const exampleValueSet = require('./fixtures/valueset-without-expansion.json');
 
 describe('valueSetUtils', () => {
@@ -97,6 +99,67 @@ describe('valueSetUtils', () => {
       expect(checkCodeInVs(includesCode, icd10System, vsPath)).toBeTruthy();
       expect(checkCodeInVs(expansionCodeWithSystem, icd10System, vsWithExpansionPath)).toBeTruthy();
       expect(checkCodeInVs(missingCode, icd10System, vsPath)).toBeFalsy();
+    });
+  });
+
+  describe('getConceptFromVSExpansion', () => {
+    const vsWithExpansionPath = path.resolve(__dirname, 'fixtures', 'valueset-with-expansion.json');
+    const vs = loadVs(vsWithExpansionPath, vsTypes.json);
+    test('Should retrieve a concept from a ValueSet when the code and system are found in the expansion array', () => {
+      const concept = getConceptFromVSExpansion(vs, 'C00.2', 'http://hl7.org/fhir/sid/icd-10-cm');
+      expect(concept).toStrictEqual({ code: 'C00.2', system: 'http://hl7.org/fhir/sid/icd-10-cm', display: 'Malignant neoplasm of external lower lip' });
+    });
+    test('Should not retrieve a concept from a ValueSet when the code or system are not found in the expansion array', () => {
+      const undefinedConcept1 = getConceptFromVSExpansion(vs, 'C00.2', 'invalid-system');
+      const undefinedConcept2 = getConceptFromVSExpansion(vs, 'incalid-code', 'http://hl7.org/fhir/sid/icd-10-cm');
+      expect(undefinedConcept1).toBeUndefined();
+      expect(undefinedConcept2).toBeUndefined();
+    });
+    test('Should not retrieve concepts without systems from the expansion array of a ValueSet', () => {
+      const undefinedConcept = getConceptFromVSExpansion(vs, 'C00.0', 'http://hl7.org/fhir/sid/icd-10-cm');
+      expect(undefinedConcept).toBeUndefined();
+    });
+  });
+
+  describe('getConceptFromVSCompose', () => {
+    const vsWithoutExpansionPath = path.resolve(__dirname, 'fixtures', 'valueset-without-expansion.json');
+    const vs = loadVs(vsWithoutExpansionPath, vsTypes.json);
+
+    test('Should retrieve a concept from a ValueSet when the code and system are found in the compose array', () => {
+      const concept = getConceptFromVSCompose(vs, 'C00.0', 'http://hl7.org/fhir/sid/icd-10-cm');
+      expect(concept).toStrictEqual({ code: 'C00.0', display: 'Malignant neoplasm of external upper lip' });
+    });
+    test('Should not retrieve a concept from a ValueSet when the code or system are not found in the compose array', () => {
+      const undefinedConcept1 = getConceptFromVSCompose(vs, 'C00.0', 'invalid-system');
+      const undefinedConcept2 = getConceptFromVSCompose(vs, 'incalid-code', 'http://hl7.org/fhir/sid/icd-10-cm');
+      expect(undefinedConcept1).toBeUndefined();
+      expect(undefinedConcept2).toBeUndefined();
+    });
+    test('Should not retrieve concepts without systems from the compose array of a ValueSet', () => {
+      const undefinedConcept = getConceptFromVSCompose(vs, 'C00.1', 'http://hl7.org/fhir/sid/icd-10-cm');
+      expect(undefinedConcept).toBeUndefined();
+    });
+  });
+
+  describe('getDisplayFromConcept', () => {
+    const vsWithExpansionPath = path.resolve(__dirname, 'fixtures', 'valueset-with-expansion.json');
+    const vsWithoutExpansionPath = path.resolve(__dirname, 'fixtures', 'valueset-without-expansion.json');
+
+    test('Should retrieve a display for a concept found in the expansion array of a ValueSet', () => {
+      const display = getDisplayFromConcept(vsWithExpansionPath, 'C00.2', 'http://hl7.org/fhir/sid/icd-10-cm');
+      expect(display).toEqual('Malignant neoplasm of external lower lip');
+    });
+    test('Should retrieve a display for a concept found in the compose array of a ValueSet', () => {
+      const display = getDisplayFromConcept(vsWithoutExpansionPath, 'C00.0', 'http://hl7.org/fhir/sid/icd-10-cm');
+      expect(display).toEqual('Malignant neoplasm of external upper lip');
+    });
+    test('Should not retrieve a display for a concept with a code system that does not match', () => {
+      const undefinedDisplay = getDisplayFromConcept(vsWithoutExpansionPath, 'C00.0', 'wrong-system');
+      expect(undefinedDisplay).toBeUndefined();
+    });
+    test('Should not retrieve a display for a concept that does not exist within a ValueSet', () => {
+      const undefinedDisplay = getDisplayFromConcept(vsWithoutExpansionPath, 'C00.4', 'http://hl7.org/fhir/sid/icd-10-cm');
+      expect(undefinedDisplay).toBeUndefined();
     });
   });
 });
