@@ -23,11 +23,17 @@ describe('CSVFileModule', () => {
     });
 
     test('Reads data from CSV with Empty Values', async () => {
+      // Five row file, with three rows of empty values
+      // Should be just two rows of data after ingestion
       const csvFileModuleWithEmptyValues = new CSVFileModule(
         path.join(__dirname, './fixtures/example-csv-empty-values.csv'),
       );
       const data = await csvFileModuleWithEmptyValues.get('mrn', 'example-mrn-1');
       expect(data).toEqual(exampleResponse);
+      const data2 = await csvFileModuleWithEmptyValues.get('mrn', 'example-mrn-not-ignored');
+      expect(data2).toHaveLength(1);
+      // Should be just two rows of data after ingestion
+      expect(csvFileModuleWithEmptyValues.data).toHaveLength(2);
     });
 
     test('Reads data from CSV with Empty Lines', async () => {

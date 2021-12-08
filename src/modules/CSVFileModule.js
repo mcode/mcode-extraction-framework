@@ -15,9 +15,11 @@ class CSVFileModule {
       // https://csv.js.org/parse/options/skip_empty_lines/
       skip_empty_lines: true,
       // NOTE: This will skip any records with empty values, not just skip the empty values themselves
+      // NOTE-2: The name of the flag changed from v4 (what we use) to v5 (what is documented)
       // https://csv.js.org/parse/options/skip_records_with_empty_values/
-      skip_records_with_empty_values: true,
+      skip_lines_with_empty_values: true,
     });
+
     this.filePath = csvFilePath;
     this.data = normalizeEmptyValues(parsedData, unalterableColumns);
   }
