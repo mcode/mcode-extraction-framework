@@ -1,8 +1,10 @@
+const path = require('path');
 const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { getPatientFromContext } = require('../helpers/contextUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
+const { getDisplayFromConcept } = require('../helpers/valueSetUtils');
 const { ctcAEGradeCodeToTextLookup } = require('../helpers/lookups/ctcAdverseEventLookup');
 const logger = require('../helpers/logger');
 
@@ -29,6 +31,9 @@ function formatData(adverseEventData, patientId) {
       effectivedate: effectiveDate,
       recordeddate: recordedDate,
       grade,
+      expectation,
+      resolveddate: resolvedDate,
+      seriousnessoutcome: seriousnessOutcome,
     } = data;
 
     if (!(adverseEventCode && effectiveDate && grade)) {
@@ -42,7 +47,6 @@ function formatData(adverseEventData, patientId) {
     if (!(categoryCodes.length === categorySystems.length && categoryCodes.length === categoryDisplays.length)) {
       throw new Error('A category attribute on the adverse event is missing a corresponding categoryCodeSystem or categoryDisplayText value.');
     }
-
 
     return {
       ...(adverseEventId && { id: adverseEventId }),
@@ -67,6 +71,25 @@ function formatData(adverseEventData, patientId) {
       effectiveDateTime: formatDateTime(effectiveDate),
       recordedDateTime: !recordedDate ? null : formatDateTime(recordedDate),
       grade: { code: grade, display: ctcAEGradeCodeToTextLookup[grade] },
+      resolvedDate: !resolvedDate ? null : formatDateTime(resolvedDate),
+      expectation: !expectation ? null : {
+        code: expectation,
+        system: 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl',
+        display: getDisplayFromConcept(
+          path.resolve(__dirname, '..', 'helpers', 'valueSets', 'adverse-event-expectation-value-set.json'),
+          expectation,
+          'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl',
+        ),
+      },
+      seriousnessOutcome: !seriousnessOutcome ? null : {
+        code: seriousnessOutcome,
+        system: 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl',
+        display: getDisplayFromConcept(
+          path.resolve(__dirname, '..', 'helpers', 'valueSets', 'adverse-event-seriousness-outcome-value-set.json'),
+          seriousnessOutcome,
+          'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl',
+        ),
+      },
     };
   });
 }

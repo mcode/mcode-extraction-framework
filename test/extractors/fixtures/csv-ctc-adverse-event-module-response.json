@@ -18,6 +18,9 @@
     "studyid": "researchId-1",
     "effectivedate": "12-09-1994",
     "recordeddate": "12-09-1994",
-    "grade": "1"
+    "grade": "1",
+    "resolveddate": "2021-12-01",
+    "seriousnessoutcome": "C113380",
+    "expectation": "C41333"
   }
 ]
