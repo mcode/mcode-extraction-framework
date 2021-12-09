@@ -22,6 +22,17 @@ const VALID_DATA = {
   effectiveDateTime: '1994-12-09',
   recordedDateTime: '1994-12-09',
   grade: { code: '2', display: 'Moderate Adverse Event' },
+  resolvedDate: '2021-12-09',
+  seriousnessOutcome: {
+    code: 'C113380',
+    system: 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl',
+    display: 'Disabling Adverse Event',
+  },
+  expectation: {
+    code: 'C41333',
+    system: 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl',
+    display: 'Expected Adverse Event',
+  },
 };
 
 const MINIMAL_DATA = {
@@ -43,6 +54,9 @@ const MINIMAL_DATA = {
   category: [null],
   studyId: null,
   recordedDateTime: null,
+  resolvedDate: null,
+  seriousnessOutcome: null,
+  expectation: null,
 };
 
 
@@ -65,6 +79,17 @@ const INVALID_DATA = {
   category: [{ code: 'product-use-error', system: 'http://terminology.hl7.org/CodeSystem/adverse-event-category' }],
   studyId: 'researchId-1',
   recordedDateTime: '1994-12-09',
+  resolvedDate: '2021-12-09',
+  seriousnessOutcome: {
+    code: 'C113380',
+    system: 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl',
+    display: 'Disabling Adverse Event',
+  },
+  expectation: {
+    code: 'C41333',
+    system: 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl',
+    display: 'Expected Adverse Event',
+  },
 };
 
 describe('test Adverse Event template', () => {
