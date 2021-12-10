@@ -15,7 +15,7 @@ describe('CSVFileModule', () => {
 
     test('Reads data from CSV with a Byte Order Mark', async () => {
       const csvFileModuleWithBOMs = new CSVFileModule(
-        path.join(__dirname, './fixtures/example-csv-empty-values.csv'),
+        path.join(__dirname, './fixtures/example-csv-bom.csv'),
       );
 
       const data = await csvFileModuleWithBOMs.get('mrn', 'example-mrn-1');
