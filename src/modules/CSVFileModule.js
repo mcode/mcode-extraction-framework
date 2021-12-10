@@ -1,25 +1,13 @@
 const fs = require('fs');
 const moment = require('moment');
-const parse = require('csv-parse/lib/sync');
 const logger = require('../helpers/logger');
 const { validateCSV } = require('../helpers/csvValidator');
-const { stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
+const { csvParse, stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
 
 class CSVFileModule {
   constructor(csvFilePath, unalterableColumns) {
     // Parse then normalize the data
-    const parsedData = parse(fs.readFileSync(csvFilePath), {
-      columns: (header) => header.map((column) => stringNormalizer(column)),
-      // https://csv.js.org/parse/options/bom/
-      bom: true,
-      // https://csv.js.org/parse/options/skip_empty_lines/
-      skip_empty_lines: true,
-      // NOTE: This will skip any records with empty values, not just skip the empty values themselves
-      // NOTE-2: The name of the flag changed from v4 (what we use) to v5 (what is documented)
-      // https://csv.js.org/parse/options/skip_records_with_empty_values/
-      skip_lines_with_empty_values: true,
-    });
-
+    const parsedData = csvParse(fs.readFileSync(csvFilePath));
     this.filePath = csvFilePath;
     this.data = normalizeEmptyValues(parsedData, unalterableColumns);
   }

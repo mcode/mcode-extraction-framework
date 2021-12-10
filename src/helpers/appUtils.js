@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const parse = require('csv-parse/lib/sync');
+const { csvParse } = require('./csvParsingUtils');
 
 /**
  * Parses a provided CSV with MRN column into string array of IDs
@@ -11,10 +11,7 @@ const parse = require('csv-parse/lib/sync');
 function parsePatientIds(pathToCSV) {
   // Parse CSV for list of patient IDs
   const patientIdsCsvPath = path.resolve(pathToCSV);
-  const patientIds = parse(fs.readFileSync(patientIdsCsvPath, 'utf8'), {
-    columns: (header) => header.map((column) => column.toLowerCase()),
-    bom: true,
-  }).map((row) => {
+  const patientIds = csvParse(fs.readFileSync(patientIdsCsvPath, 'utf8')).map((row) => {
     if (!row.mrn) {
       throw new Error(`${pathToCSV} has no "mrn" column`);
     }
