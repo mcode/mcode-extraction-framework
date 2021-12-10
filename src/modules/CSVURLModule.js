@@ -1,9 +1,8 @@
 const axios = require('axios');
 const moment = require('moment');
-const parse = require('csv-parse/lib/sync');
 const logger = require('../helpers/logger');
 const { validateCSV } = require('../helpers/csvValidator');
-const { stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
+const { csvParse, stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
 
 class CSVURLModule {
   constructor(url, unalterableColumns) {
@@ -25,10 +24,7 @@ class CSVURLModule {
         });
       logger.debug('Web request successful');
       // Parse then normalize the data
-      const parsedData = parse(csvData, {
-        columns: (header) => header.map((column) => stringNormalizer(column)),
-        bom: true,
-      });
+      const parsedData = csvParse(csvData);
       logger.debug('CSV Data parsing successful');
       this.data = normalizeEmptyValues(parsedData, this.unalterableColumns);
     }
