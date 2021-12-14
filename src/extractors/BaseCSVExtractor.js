@@ -1,19 +1,35 @@
+const path = require('path');
 const { Extractor } = require('./Extractor');
 const { CSVFileModule, CSVURLModule } = require('../modules');
+const logger = require('../helpers/logger');
+
 
 class BaseCSVExtractor extends Extractor {
-  constructor({ filePath, url, csvSchema, unalterableColumns }) {
+  constructor({
+    filePath, url, fileName, dataDirectory, csvSchema, unalterableColumns,
+  }) {
     super();
     this.unalterableColumns = unalterableColumns || [];
     this.csvSchema = csvSchema;
     if (url) {
+      logger.debug('Found url argument; creating a CSVURLModule with the provided url');
       this.url = url;
       this.csvModule = new CSVURLModule(this.url, this.unalterableColumns);
+    } else if (fileName && dataDirectory) {
+      this.filePath = path.join(dataDirectory, fileName);
+      logger.debug(
+        'Found fileName and dataDirectory arguments; creating a CSVFileModule with the provided dataDirectory and fileName',
+      );
+      this.csvModule = new CSVFileModule(this.filePath, this.unalterableColumns);
     } else if (filePath) {
+      logger.debug('Found filePath argument; creating a CSVFileModule with the provided filePath');
       this.filePath = filePath;
       this.csvModule = new CSVFileModule(this.filePath, this.unalterableColumns);
     } else {
-      throw new Error('Trying to instantiate a CSVExtractor without a filePath or url');
+      logger.debug(
+        'Could not instantiate a CSVExtractor with the provided constructor args',
+      );
+      throw new Error('Trying to instantiate a CSVExtractor without a filePath, url, or fileName+dataDirectory combination');
     }
   }
 

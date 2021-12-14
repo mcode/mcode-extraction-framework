@@ -8,8 +8,10 @@ const { CSVClinicalTrialInformationSchema } = require('../helpers/schemas/csv');
 
 
 class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
-  constructor({ filePath, url, clinicalSiteID, clinicalSiteSystem }) {
-    super({ filePath, url, csvSchema: CSVClinicalTrialInformationSchema });
+  constructor({
+    filePath, url, fileName, dataDirectory, clinicalSiteID, clinicalSiteSystem,
+  }) {
+    super({ filePath, url, fileName, dataDirectory, csvSchema: CSVClinicalTrialInformationSchema });
     if (!clinicalSiteID) logger.warn(`${this.constructor.name} expects a value for clinicalSiteID but got ${clinicalSiteID}`);
     this.clinicalSiteID = clinicalSiteID;
     this.clinicalSiteSystem = clinicalSiteSystem;
