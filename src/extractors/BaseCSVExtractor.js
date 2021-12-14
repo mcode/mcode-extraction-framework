@@ -16,6 +16,7 @@ class BaseCSVExtractor extends Extractor {
       this.url = url;
       this.csvModule = new CSVURLModule(this.url, this.unalterableColumns);
     } else if (fileName && dataDirectory) {
+      if (!path.isAbsolute(dataDirectory)) throw new Error('dataDirectory is not an absolutePath, it needs to be.');
       this.filePath = path.join(dataDirectory, fileName);
       logger.debug(
         'Found fileName and dataDirectory arguments; creating a CSVFileModule with the provided dataDirectory and fileName',

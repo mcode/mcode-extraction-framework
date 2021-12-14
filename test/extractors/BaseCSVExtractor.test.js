@@ -18,17 +18,21 @@ describe('BaseCSVExtractor', () => {
       expect(fileNameDataDirectoryExtractor.csvModule).not.toBeUndefined();
       expect(fileNameDataDirectoryExtractor.csvModule.constructor.name).toEqual('CSVFileModule');
     });
+    test('Should fail when the provided dataDirectory is not an absolute path', () => {
+      expect(() => new BaseCSVExtractor({ fileName: 'example.csv', dataDirectory: './extractors/fixtures/' }))
+        .toThrowError('dataDirectory is not an absolutePath, it needs to be.');
+    });
     test('Should fail when provided only provided a fileName and no dataDirectory', () => {
-      expect(() => new BaseCSVExtractor({ fileName: 'example.csv' })
-        .toThrowError('Trying to instantiate a CSVExtractor without a valid filePath, url, or fileName+dataDirectory combination'));
+      expect(() => new BaseCSVExtractor({ fileName: 'example.csv' }))
+        .toThrowError('Trying to instantiate a CSVExtractor without a valid filePath, url, or fileName+dataDirectory combination');
     });
     test('Should fail when provided only provided a dataDirectory and no fileName', () => {
-      expect(() => new BaseCSVExtractor({ dataDirectory: '/Users/dphelan/Development/mcode-extraction-framework/test/extractors/fixtures/' })
-        .toThrowError('Trying to instantiate a CSVExtractor without a valid filePath, url, or fileName+dataDirectory combination'));
+      expect(() => new BaseCSVExtractor({ dataDirectory: '/Users/dphelan/Development/mcode-extraction-framework/test/extractors/fixtures/' }))
+        .toThrowError('Trying to instantiate a CSVExtractor without a valid filePath, url, or fileName+dataDirectory combination');
     });
     test('Should fail when provided none of the three options above', () => {
-      expect(() => new BaseCSVExtractor({})
-        .toThrowError('Trying to instantiate a CSVExtractor without a valid filePath, url, or fileName+dataDirectory combination'));
+      expect(() => new BaseCSVExtractor({}))
+        .toThrowError('Trying to instantiate a CSVExtractor without a valid filePath, url, or fileName+dataDirectory combination');
     });
   });
 });
