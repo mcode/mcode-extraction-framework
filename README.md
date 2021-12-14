@@ -92,8 +92,9 @@ Examples files for these extractor can be found in the [`test/sample-client-data
 
 After exporting your CSV files to the `data` directory, kickstart the creation of a configuration file by renaming the provided `csv.config.example.json` to `csv.config.json`. Then, ensure the following configuration parameters are properly set:
 
-1. `patientIdCsvPath` should provide a file path to a CSV file containing MRN's for relevant patients;
-2. For each extractor, `filePath:` should provide a file path to a CSV file containing that corresponding extractor's data;
+1. `patientIdCsvPath` should correspond to an absolute file path to a CSV file containing MRN's for relevant patients;
+2. `commonExtractorArgs.dataDirectory` should correspond to an absolute path to the dataDirectory containing all your exported CSV files;
+3. For each extractor, `fileName` should correspond to the file name this extractor should be reading from. Note: combining the `dataDirectory` above and `fileName` should resolve to a file on disk containing this corresponding extractor's data;
 
 For instructions on setting up an email notification trigger whenever an error is encountered in extraction, see the [Email Notification](#Email-Notification) section below.
 

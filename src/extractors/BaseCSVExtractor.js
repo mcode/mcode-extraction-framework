@@ -29,7 +29,7 @@ class BaseCSVExtractor extends Extractor {
       logger.debug(
         'Could not instantiate a CSVExtractor with the provided constructor args',
       );
-      throw new Error('Trying to instantiate a CSVExtractor without a filePath, url, or fileName+dataDirectory combination');
+      throw new Error('Trying to instantiate a CSVExtractor without a valid filePath, url, or fileName+dataDirectory combination');
     }
   }
 

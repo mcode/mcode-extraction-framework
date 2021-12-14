@@ -1,3 +1,4 @@
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { BaseFHIRExtractor } = require('./BaseFHIRExtractor');
 const { CSVAdverseEventExtractor } = require('./CSVAdverseEventExtractor');
 const { CSVCancerDiseaseStatusExtractor } = require('./CSVCancerDiseaseStatusExtractor');
@@ -26,6 +27,7 @@ const { FHIRProcedureExtractor } = require('./FHIRProcedureExtractor');
 const { MCODESurgicalProcedureExtractor } = require('./MCODESurgicalProcedureExtractor');
 
 module.exports = {
+  BaseCSVExtractor,
   BaseFHIRExtractor,
   CSVAdverseEventExtractor,
   CSVCancerDiseaseStatusExtractor,
