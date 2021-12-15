@@ -144,7 +144,7 @@ To mask a property, provide an array of the properties to mask in the `construct
   "label": "patient",
   "type": "CSVPatientExtractor",
   "constructorArgs": {
-    "filePath": "./data/patient-information.csv"
+    "fileName": "patient-information.csv"
     "mask": ["address", "birthDate"]
   }
 }
@@ -157,7 +157,7 @@ Alternatively, providing a string with a value of `all` in the `constructorArgs`
   "label": "patient",
   "type": "CSVPatientExtractor",
   "constructorArgs": {
-    "filePath": "./data/patient-information.csv"
+    "fileName": "patient-information.csv"
     "mask": "all"
   }
 }
