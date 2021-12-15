@@ -110,9 +110,7 @@ describe('test Adverse Event template', () => {
 
     expect(generatedAdverseEvent).toEqual(maximalValidExampleAdverseEvent);
 
-    // Commenting out for now as Practitioner resources are not extracted and thus
-    // references in the Participation extension won't resolve
-    // expect(isValidFHIR(generatedAdverseEvent)).toBeTruthy();
+    expect(isValidFHIR(generatedAdverseEvent)).toBeTruthy();
   });
 
   test('minimal data passed into template should generate FHIR resource', () => {

@@ -66,9 +66,7 @@
               {
                 "url": "actor",
                 "valueReference": {
-                  "reference": {
                     "reference": "urn:uuid:practitioner-id"
-                  }
                 }
               }
             ]

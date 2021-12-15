@@ -117,7 +117,7 @@ function participantActorTemplate(actor) {
   return {
     url: 'actor',
     valueReference: {
-      reference: reference({ id: actor }),
+      ...reference({ id: actor }),
     },
   };
 }
