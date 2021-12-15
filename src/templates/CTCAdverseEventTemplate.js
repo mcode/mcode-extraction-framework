@@ -102,13 +102,47 @@ function seriousnessOutcomeTemplate(seriousnessOutcome) {
   };
 }
 
+function participantFunctionTemplate(functionCode) {
+  return {
+    url: 'function',
+    valueCodeableConcept: {
+      coding: [
+        coding(functionCode),
+      ],
+    },
+  };
+}
+
+function participantActorTemplate(actor) {
+  return {
+    url: 'actor',
+    valueReference: {
+      reference: reference({ id: actor }),
+    },
+  };
+}
+
+function participantTemplate(actor, functionCode) {
+  return {
+    url: 'http://hl7.org/fhir/us/ctcae/StructureDefinition/adverse-event-participant',
+    ...extensionArr(
+      functionCode ? participantFunctionTemplate(functionCode) : null,
+      participantActorTemplate(actor),
+    ),
+  };
+}
+
 
 function CTCAdverseEventTemplate({
   id, subjectId, code, system, version, display, text, suspectedCauseId, suspectedCauseType, seriousnessCode, seriousnessCodeSystem, seriousnessDisplayText, category,
-  studyId, effectiveDateTime, recordedDateTime, grade, resolvedDate, expectation, seriousnessOutcome,
+  studyId, effectiveDateTime, recordedDateTime, grade, resolvedDate, expectation, seriousnessOutcome, actor, functionCode,
 }) {
   if (!(subjectId && code && system && effectiveDateTime && grade)) {
-    throw Error('Trying to render an AdverseEventTemplate, but a required argument is messing; ensure that subjectId, code, system, grade, and effectiveDateTime are all present');
+    throw Error('Trying to render an AdverseEventTemplate, but a required argument is missing; ensure that subjectId, code, system, grade, and effectiveDateTime are all present');
+  }
+
+  if (functionCode && !actor) {
+    throw Error('Trying to render an AdverseEventTemplate, but a required argument is missing; actor is a required value');
   }
 
   return {
@@ -119,6 +153,7 @@ function CTCAdverseEventTemplate({
       resolvedDate ? resolvedDateTemplate(resolvedDate) : null,
       expectation ? expectationTemplate(expectation) : null,
       seriousnessOutcome ? seriousnessOutcomeTemplate(seriousnessOutcome) : null,
+      actor ? participantTemplate(actor, functionCode) : null,
     ),
     subject: reference({ id: subjectId, resourceType: 'Patient' }),
     ...ifSomeArgs(eventTemplate)({ code, system, version, display }, text),

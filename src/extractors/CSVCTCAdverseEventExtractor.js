@@ -34,10 +34,14 @@ function formatData(adverseEventData, patientId) {
       expectation,
       resolveddate: resolvedDate,
       seriousnessoutcome: seriousnessOutcome,
+      actor,
+      functioncode: functionCode,
     } = data;
 
     if (!(adverseEventCode && effectiveDate && grade)) {
       throw new Error('The adverse event is missing an expected attribute. Adverse event code, effective date, and grade are all required.');
+    } else if (functionCode && !actor) {
+      throw new Error('The adverse event is missing an expected attribute. Adverse event actor is a required element within the Participation extension');
     }
 
     const categoryCodes = category.split('|');
@@ -88,6 +92,16 @@ function formatData(adverseEventData, patientId) {
           path.resolve(__dirname, '..', 'helpers', 'valueSets', 'adverse-event-seriousness-outcome-value-set.json'),
           seriousnessOutcome,
           'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl',
+        ),
+      },
+      actor,
+      functionCode: !functionCode ? null : {
+        code: functionCode,
+        system: 'http://terminology.hl7.org/CodeSystem/v3-ParticipationType',
+        display: getDisplayFromConcept(
+          path.resolve(__dirname, '..', 'helpers', 'valueSets', 'adverse-event-participant-function-value-set.json'),
+          functionCode,
+          'http://terminology.hl7.org/CodeSystem/v3-ParticipationType',
         ),
       },
     };

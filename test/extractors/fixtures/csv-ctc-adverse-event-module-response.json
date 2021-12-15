@@ -21,6 +21,8 @@
     "grade": "1",
     "resolveddate": "2021-12-01",
     "seriousnessoutcome": "C113380",
-    "expectation": "C41333"
+    "expectation": "C41333",
+    "actor": "practitioner-id",
+    "functioncode": "INF"
   }
 ]

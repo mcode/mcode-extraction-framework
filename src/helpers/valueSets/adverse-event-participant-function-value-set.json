@@ -1,0 +1,67 @@
+{
+  "resourceType": "ValueSet",
+  "id": "adverse-event-participant-function-value-set",
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Include these codes as defined in <a href=\"http://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html\"><code>http://terminology.hl7.org/CodeSystem/v3-ParticipationType</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"http://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html#v3-ParticipationType-INF\">INF</a></td><td>Informant</td><td>A source of reported information (e.g., a next of kin who answers questions about the patient's history). For history questions, the patient is logically an informant, yet the informant of history questions is implicitly the subject.</td></tr><tr><td><a href=\"http://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html#v3-ParticipationType-PART\">PART</a></td><td>Participation</td><td>Indicates that the target of the participation is involved in some manner in the act, but does not qualify how.</td></tr><tr><td><a href=\"http://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html#v3-ParticipationType-WIT\">WIT</a></td><td>Witness</td><td>Only with service events. A person witnessing the action happening without doing anything. A witness is not necessarily aware, much less approves of anything stated in the service event. Example for a witness is students watching an operation or an advanced directive witness.</td></tr><tr><td><a href=\"http://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html#v3-ParticipationType-AUT\">AUT</a></td><td>Author (originator)</td><td>**Definition:** A party that originates the Act and therefore has responsibility for the information given in the Act and ownership of this Act.<br/><br/>**Example:** the report writer, the person writing the act definition, the guideline author, the placer of an order, the EKG cart (device) creating a report etc. Every Act should have an author. Authorship is regardless of mood always actual authorship.<br/><br/>Examples of such policies might include:<br/><br/> *  The author and anyone they explicitly delegate may update the report;<br/> *  All administrators within the same clinic may cancel and reschedule appointments created by other administrators within that clinic;<br/><br/>A party that is neither an author nor a party who is extended authorship maintenance rights by policy, may only amend, reverse, override, replace, or follow up in other ways on this Act, whereby the Act remains intact and is linked to another Act authored by that other party.</td></tr><tr><td><a href=\"http://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html#v3-ParticipationType-AUTHEN\">AUTHEN</a></td><td>Authenticator</td><td>A verifier who attests to the accuracy of an act, but who does not have privileges to legally authenticate the act. An example would be a resident physician who sees a patient and dictates a note, then later signs it. Their signature constitutes an authentication.</td></tr></table></li></ul></div>"
+  },
+  "url": "http://hl7.org/fhir/us/ctcae/ValueSet/adverse-event-participant-function-value-set",
+  "version": "0.0.1",
+  "name": "AdverseEventParticipantFunctionVS",
+  "title": "Adverse Event Participant Function",
+  "status": "active",
+  "date": "2021-12-03T16:46:43+00:00",
+  "publisher": "HL7 International Clinical Interoperability Council",
+  "contact": [
+    {
+      "name": "HL7 International Clinical Interoperability Council",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.mcodeinitiative.org"
+        }
+      ]
+    }
+  ],
+  "description": "This value set includes codes that describe the type of involvement of the actor in the adverse event",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+        "concept": [
+          {
+            "code": "INF",
+            "display": "Informant"
+          },
+          {
+            "code": "PART",
+            "display": "Participation"
+          },
+          {
+            "code": "WIT",
+            "display": "Witness"
+          },
+          {
+            "code": "AUT",
+            "display": "Author (originator)"
+          },
+          {
+            "code": "AUTHEN",
+            "display": "Authenticator"
+          }
+        ]
+      }
+    ]
+  }
+}
