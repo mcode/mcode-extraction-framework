@@ -1,6 +1,8 @@
 {
-  "patientIdCsvPath": "./data/patient-mrns.csv",
-  "commonExtractorArgs": {},
+  "patientIdCsvPath": "Users/YourAccount/absolute/path/to/patient-mrns.csv",
+  "commonExtractorArgs": {
+    "dataDirectory": "Users/YourAccount/absolute/path/to/data/directory"
+  },
   "notificationInfo": {
     "host": "smtp.example.com",
     "port": 587,
@@ -16,28 +18,28 @@
       "label": "patient",
       "type": "CSVPatientExtractor",
       "constructorArgs": {
-        "filePath": "./data/patient-information.csv"
+        "fileName": "patient-information.csv"
       }
     },
     {
       "label": "condition",
       "type": "CSVConditionExtractor",
       "constructorArgs": {
-        "filePath": "./data/condition-information.csv"
+        "fileName": "condition-information.csv"
       }
     },
     {
       "label": "cancerDiseaseStatus",
       "type": "CSVCancerDiseaseStatusExtractor",
       "constructorArgs": {
-        "filePath": "./data/cancer-disease-status-information.csv"
+        "fileName": "cancer-disease-status-information.csv"
       }
     },
     {
       "label": "clinicalTrialInformation",
       "type": "CSVClinicalTrialInformationExtractor",
       "constructorArgs": {
-        "filePath": "./data/clinical-trial-information.csv",
+        "fileName": "clinical-trial-information.csv",
         "clinicalSiteID": "example-site-id"
       }
     },
@@ -45,56 +47,56 @@
       "label": "treatmentPlanChange",
       "type": "CSVTreatmentPlanChangeExtractor",
       "constructorArgs": {
-        "filePath": "./data/treatment-plan-change-information.csv"
+        "fileName": "treatment-plan-change-information.csv"
       }
     },
     {
       "label": "staging",
       "type": "CSVStagingExtractor",
       "constructorArgs": {
-        "filePath": "./data/staging-information.csv"
+        "fileName": "staging-information.csv"
       }
     },
     {
       "label": "cancerRelatedMedicationAdministration",
       "type": "CSVCancerRelatedMedicationAdministrationExtractor",
       "constructorArgs": {
-        "filePath": "./data/cancer-related-medication-administration-information.csv"
+        "fileName": "cancer-related-medication-administration-information.csv"
       }
     },
     {
       "label": "cancerRelatedMedicationRequest",
       "type": "CSVCancerRelatedMedicationRequestExtractor",
       "constructorArgs": {
-        "filePath": "./data/cancer-related-medication-request-information.csv"
+        "fileName": "cancer-related-medication-request-information.csv"
       }
     },
     {
       "label": "genericObservations",
       "type": "CSVObservationExtractor",
       "constructorArgs": {
-        "filePath": "./data/observation-information.csv"
+        "fileName": "observation-information.csv"
       }
     },
     {
       "label": "genericProcedures",
       "type": "CSVProcedureExtractor",
       "constructorArgs": {
-        "filePath": "./data/procedure-information.csv"
+        "fileName": "procedure-information.csv"
       }
     },
     {
       "label": "adverseEvent",
       "type": "CSVAdverseEventExtractor",
       "constructorArgs": {
-        "filePath": "./test/sample-client-data/adverse-event-information.csv"
+        "fileName": "adverse-event-information.csv"
       }
     },
     {
       "label": "ctcAdverseEvent",
       "type": "CSVCTCAdverseEventExtractor",
       "constructorArgs": {
-        "filePath": "./test/sample-client-data/ctc-adverse-event-information.csv"
+        "fileName": "ctc-adverse-event-information.csv"
       }
     }
   ]

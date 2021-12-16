@@ -48,8 +48,8 @@ function formatData(procedureData, patientId) {
 }
 
 class CSVProcedureExtractor extends BaseCSVExtractor {
-  constructor({ filePath, url }) {
-    super({ filePath, url });
+  constructor({ filePath, url, fileName, dataDirectory }) {
+    super({ filePath, url, fileName, dataDirectory });
   }
 
   async getProcedureData(mrn) {

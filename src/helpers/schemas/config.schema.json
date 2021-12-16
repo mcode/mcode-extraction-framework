@@ -32,6 +32,11 @@
           "type": "string",
           "format": "uri"
         },
+        "dataDirectory": {
+          "title": "Data Directory",
+          "description": "Absolute path for the directory containing any data files used by extractors.",
+          "type": "string"
+        },
         "requestHeaders": {
           "title": "Request Headers",
           "type": "object"
@@ -110,6 +115,17 @@
       "properties": {
         "filePath": {
           "title": "File Path",
+          "description": "An absolute path to a data file from which data is to be extracted",
+          "type": "string"
+        },
+        "fileName": {
+          "title": "File Name",
+          "description": "The name of a file, with the appropriate file suffix, from which data is to be extracted. This fileName is combined with the extractor's dataDictionary to create a valid path.",
+          "type": "string"
+        },
+        "dataDirectory": {
+          "title": "Data Directory",
+          "description": "Absolute path for the directory containing any data files used by extractors. Extractors can infer this value from the global commonExtractorArgs or define their own.",
           "type": "string"
         },
         "url": {

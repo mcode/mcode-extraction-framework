@@ -92,8 +92,11 @@ Examples files for these extractor can be found in the [`test/sample-client-data
 
 After exporting your CSV files to the `data` directory, kickstart the creation of a configuration file by renaming the provided `csv.config.example.json` to `csv.config.json`. Then, ensure the following configuration parameters are properly set:
 
-1. `patientIdCsvPath` should provide a file path to a CSV file containing MRN's for relevant patients;
-2. For each extractor, `filePath:` should provide a file path to a CSV file containing that corresponding extractor's data;
+1. `patientIdCsvPath` should correspond to an absolute file path to a CSV file containing MRN's for relevant patients;
+2. `commonExtractorArgs.dataDirectory` should correspond to an absolute path to the dataDirectory containing all your exported CSV files;
+3. For each extractor, `fileName` should correspond to the file name this extractor should be reading from. Note: combining the `dataDirectory` above and `fileName` should resolve to a file on disk containing this corresponding extractor's data;
+
+**Note**: Previous versions of the MEF suggested using a `filePath` property for each extractor; while this property should still work without issue, the recommended approach is to use a common dataDirectory for all CSV files and to have each Extractor call out the name of the CSV file they need.
 
 For instructions on setting up an email notification trigger whenever an error is encountered in extraction, see the [Email Notification](#Email-Notification) section below.
 
@@ -143,7 +146,7 @@ To mask a property, provide an array of the properties to mask in the `construct
   "label": "patient",
   "type": "CSVPatientExtractor",
   "constructorArgs": {
-    "filePath": "./data/patient-information.csv"
+    "fileName": "patient-information.csv"
     "mask": ["address", "birthDate"]
   }
 }
@@ -156,7 +159,7 @@ Alternatively, providing a string with a value of `all` in the `constructorArgs`
   "label": "patient",
   "type": "CSVPatientExtractor",
   "constructorArgs": {
-    "filePath": "./data/patient-information.csv"
+    "fileName": "patient-information.csv"
     "mask": "all"
   }
 }
