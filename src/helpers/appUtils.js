@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { csvParse } = require('./csvParsingUtils');
+const logger = require('./logger');
 
 /**
  * Parses a provided CSV with MRN column into string array of IDs
@@ -22,6 +23,19 @@ function parsePatientIds(pathToCSV) {
   return patientIds;
 }
 
+function buildPatientCSVPath(config) {
+  try {
+    const patientIdCsvPath = path.resolve(config.patientIdCsvPath);
+    return patientIdCsvPath;
+  } catch (e) {
+    if (config.commonExtractorArgs.dataDirectory) {
+      logger.error(`Could not resolve ${config.patientIdCsvPath}; even with a dataDirectory, the config.patientIdCsvPath variable needs to be a resolvable path to the patientID file on disk.`);
+    }
+    throw e;
+  }
+}
+
 module.exports = {
+  buildPatientCSVPath,
   parsePatientIds,
 };
