@@ -36,7 +36,7 @@ describe('CSVCTCAdverseEventExtractor', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
       const expectedErrorString = 'The adverse event is missing an expected attribute. Adverse event code, effective date, and grade are all required.';
       const expectedCategoryErrorString = 'A category attribute on the adverse event is missing a corresponding categoryCodeSystem or categoryDisplayText value.';
-      const expectedActorErrorString = 'The adverse event is missing an expected attribute. Adverse event actor is a required element within the Participation extension';
+      const expectedActorErrorString = 'The adverse event is missing an expected attribute. Adverse event actor is a required element when a functionCode value is included.';
       const localData = _.cloneDeep(exampleCTCCSVAdverseEventModuleResponse);
       const patientId = getPatientFromContext(MOCK_CONTEXT).id;
 

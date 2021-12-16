@@ -142,7 +142,7 @@ function CTCAdverseEventTemplate({
   }
 
   if (functionCode && !actor) {
-    throw Error('Trying to render an AdverseEventTemplate, but a required argument is missing; actor is a required value');
+    throw Error('Trying to render an AdverseEventTemplate, but a required argument is missing; actor is a required value when functionCode is included');
   }
 
   return {
