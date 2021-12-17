@@ -8,12 +8,12 @@ const logger = require('./logger');
  *
  * @returns array of parsed IDs from the CSV
  */
-function getPatientIdCSVData(patientIdCsvPath, commonExtractorArgs) {
+function getPatientIdCSVData(patientIdCsvPath, dataDirectory) {
   try {
     const patientIdsCsvPath = path.resolve(patientIdCsvPath);
     return fs.readFileSync(patientIdsCsvPath, 'utf8');
   } catch (e) {
-    if (commonExtractorArgs && commonExtractorArgs.dataDirectory) {
+    if (dataDirectory) {
       logger.error(`Could not resolve ${patientIdCsvPath}; even with a dataDirectory, the config.patientIdCsvPath variable needs to be a resolvable path to the patientID file on disk.`);
     }
     throw e;
@@ -25,8 +25,8 @@ function getPatientIdCSVData(patientIdCsvPath, commonExtractorArgs) {
  *
  * @returns array of parsed IDs from the CSV
  */
-function parsePatientIds({ patientIdCsvPath, commonExtractorArgs }) {
-  const csvData = getPatientIdCSVData(patientIdCsvPath, commonExtractorArgs);
+function parsePatientIds(patientIdCsvPath, dataDirectory) {
+  const csvData = getPatientIdCSVData(patientIdCsvPath, dataDirectory);
   return csvParse(csvData).map((row) => {
     if (!row.mrn) {
       throw new Error(`${patientIdCsvPath} has no "mrn" column`);
