@@ -3,7 +3,7 @@ const logger = require('../helpers/logger');
 const { RunInstanceLogger } = require('./tools/RunInstanceLogger');
 const { sendEmailNotification, zipErrors } = require('./tools/emailNotifications');
 const { extractDataForPatients } = require('./tools/mcodeExtraction');
-const { buildPatientCSVPath, parsePatientIds } = require('../helpers/appUtils');
+const { parsePatientIds } = require('../helpers/appUtils');
 const { validateConfig } = require('../helpers/configUtils');
 
 function checkInputAndConfig(config, fromDate, toDate) {
@@ -30,8 +30,7 @@ async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, 
   await mcodeClient.init();
 
   // Parse CSV for list of patient mrns
-  const patientCSVPath = buildPatientCSVPath(config);
-  const patientIds = parsePatientIds(patientCSVPath);
+  const patientIds = parsePatientIds(config);
 
   // Get RunInstanceLogger for recording new runs and inferring dates from previous runs
   const runLogger = allEntries ? null : new RunInstanceLogger(pathToRunLogs);
