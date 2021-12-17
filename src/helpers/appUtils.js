@@ -6,7 +6,7 @@ const logger = require('./logger');
 /**
  * Loads the patientIdCSV data from disk, with some helpful hints logged in case of failure
  *
- * @returns array of parsed IDs from the CSV
+ * @returns file corresponding to the patient data
  */
 function getPatientIdCSVData(patientIdCsvPath, dataDirectory) {
   try {
