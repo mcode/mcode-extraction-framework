@@ -11,7 +11,7 @@ describe('appUtils', () => {
   describe('parsePatientIds', () => {
     test('valid path should parse content', () => {
       const expectedIds = ['123', '456', '789'];
-      const ids = parsePatientIds(MOCK_VALID_ID_CSV);
+      const ids = parsePatientIds({ patientIdCsvPath: MOCK_VALID_ID_CSV });
 
       // Should get every MRN
       expect(ids).toHaveLength(expectedIds.length);
@@ -20,7 +20,7 @@ describe('appUtils', () => {
 
     test('valid path to CSV with BOM should parse content', () => {
       const expectedIds = ['123', '456', '789'];
-      const ids = parsePatientIds(MOCK_VALID_ID_CSV_WITH_BOM);
+      const ids = parsePatientIds({ patientIdCsvPath: MOCK_VALID_ID_CSV_WITH_BOM });
 
       // Should get every MRN and correctly parse with BOM
       expect(ids).toHaveLength(expectedIds.length);
@@ -28,7 +28,7 @@ describe('appUtils', () => {
     });
 
     test('invalid path should throw error', () => {
-      expect(() => parsePatientIds(MOCK_INVALID_ID_CSV)).toThrowError();
+      expect(() => parsePatientIds({ patientIdCsvPath: MOCK_INVALID_ID_CSV })).toThrowError();
     });
   });
 });
