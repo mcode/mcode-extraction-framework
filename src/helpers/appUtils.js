@@ -23,6 +23,8 @@ function getPatientIdCSVData(patientIdCsvPath, dataDirectory) {
 /**
  * Parses a provided CSV with MRN column into string array of IDs
  *
+ * @param {string} patientIdCsvPath filePath to the CSV content to be parsed to get IDs
+ * @param {string} dataDirectory optional argument for if a dataDirectory was specified by the config
  * @returns array of parsed IDs from the CSV
  */
 function parsePatientIds(patientIdCsvPath, dataDirectory) {
