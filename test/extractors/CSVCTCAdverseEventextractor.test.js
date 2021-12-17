@@ -36,6 +36,7 @@ describe('CSVCTCAdverseEventExtractor', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
       const expectedErrorString = 'The adverse event is missing an expected attribute. Adverse event code, effective date, and grade are all required.';
       const expectedCategoryErrorString = 'A category attribute on the adverse event is missing a corresponding categoryCodeSystem or categoryDisplayText value.';
+      const expectedActorErrorString = 'The adverse event is missing an expected attribute. Adverse event actor is a required element when a functionCode value is included.';
       const localData = _.cloneDeep(exampleCTCCSVAdverseEventModuleResponse);
       const patientId = getPatientFromContext(MOCK_CONTEXT).id;
 
@@ -58,6 +59,15 @@ describe('CSVCTCAdverseEventExtractor', () => {
       // Test that adding another category but including syntax for default categoryCodeSystem and categoryDisplayText values works fine
       localData[0].categorycodesystem = 'http://terminology.hl7.org/CodeSystem/adverse-event-category|';
       localData[0].categorydisplaytext = 'Product Use Error|';
+      expect(formatData(localData, patientId)).toEqual(expect.anything());
+
+      // Test that deleting the actor value but leaving functionCode will throw an error
+      delete localData[0].actor;
+      expect(() => formatData(localData, patientId)).toThrow(new Error(expectedActorErrorString));
+
+      // Test that deleting the functionCode value works fine
+      localData[0].actor = 'practitioner-id';
+      delete localData[0].functioncode;
       expect(formatData(localData, patientId)).toEqual(expect.anything());
 
       // Test that deleting a mandatory value throws an error
