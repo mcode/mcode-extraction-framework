@@ -60,10 +60,7 @@ async function sendEmailNotification(notificationInfo, errors, debug = false) {
   // Ensure that the tlsRejectUnauthorized property is a boolean
   if (
     notificationInfo.tlsRejectUnauthorized
-    && !(
-      notificationInfo.tlsRejectUnauthorized === true
-      || notificationInfo.tlsRejectUnauthorized === false
-    )
+    && typeof notificationInfo.tlsRejectUnauthorized !== 'boolean'
   ) {
     logger.warn('The notificationInfo.tlsRejectUnauthorized should be a boolean value. The value provided will not be used.');
   }
