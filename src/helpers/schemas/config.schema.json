@@ -40,6 +40,17 @@
         "requestHeaders": {
           "title": "Request Headers",
           "type": "object"
+        },
+        "csvParse" : {
+          "title": "CSV Parse",
+          "type": "object",
+          "properties": {
+            "options": {
+              "titles": "Options",
+              "description": "Options to be passed to the \"CSV Parse\" module used for parsing CSV files.",
+              "type": "object"
+            }
+          }
         }
       }
     },
