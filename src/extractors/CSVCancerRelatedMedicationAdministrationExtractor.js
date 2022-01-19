@@ -46,7 +46,9 @@ function formatData(medicationData, patientId) {
 }
 
 class CSVCancerRelatedMedicationAdministrationExtractor extends BaseCSVExtractor {
-  constructor({ filePath, url, fileName, dataDirectory, csvParse }) {
+  constructor({
+    filePath, url, fileName, dataDirectory, csvParse,
+  }) {
     super({ filePath, url, fileName, dataDirectory, csvParse });
   }
 

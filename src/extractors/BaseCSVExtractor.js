@@ -6,7 +6,7 @@ const logger = require('../helpers/logger');
 
 class BaseCSVExtractor extends Extractor {
   constructor({
-    filePath, url, fileName, dataDirectory, csvSchema, unalterableColumns, csvParse
+    filePath, url, fileName, dataDirectory, csvSchema, unalterableColumns, csvParse,
   }) {
     super();
     this.unalterableColumns = unalterableColumns || [];

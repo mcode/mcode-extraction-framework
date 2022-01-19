@@ -70,7 +70,9 @@ function formatData(tpcData, patientId) {
 }
 
 class CSVTreatmentPlanChangeExtractor extends BaseCSVExtractor {
-  constructor({ filePath, url, fileName, dataDirectory, csvParse }) {
+  constructor({
+    filePath, url, fileName, dataDirectory, csvParse,
+  }) {
     super({ filePath, url, fileName, dataDirectory, csvSchema: CSVTreatmentPlanChangeSchema, csvParse });
   }
 

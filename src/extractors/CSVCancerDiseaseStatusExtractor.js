@@ -9,7 +9,7 @@ const { CSVCancerDiseaseStatusSchema } = require('../helpers/schemas/csv');
 
 class CSVCancerDiseaseStatusExtractor extends BaseCSVExtractor {
   constructor({
-    filePath, url, fileName, dataDirectory, csvParse, implementation
+    filePath, url, fileName, dataDirectory, csvParse, implementation,
   }) {
     super({ filePath, url, fileName, dataDirectory, csvSchema: CSVCancerDiseaseStatusSchema, csvParse });
     this.implementation = implementation;
