@@ -1,12 +1,7 @@
 {
   "patientIdCsvPath": "Users/YourAccount/absolute/path/to/patient-mrns.csv",
   "commonExtractorArgs": {
-    "dataDirectory": "Users/YourAccount/absolute/path/to/data/directory",
-    "csvParse": {
-      "options": {
-        "bom": true
-      }
-    }
+    "dataDirectory": "Users/YourAccount/absolute/path/to/data/directory"
   },
   "notificationInfo": {
     "host": "smtp.example.com",

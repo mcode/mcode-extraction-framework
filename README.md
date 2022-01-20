@@ -213,6 +213,8 @@ The mCODE Extraction Framework uses the node `csv-parse` library to parse specif
   },
 ```
 
+**Note:** The mCODE Extraction Framework enables the `bom`, `skip_empty_lines`, and `skip_lines_with_empty_values` options by default, including these options in the configuration file will cause these default options to be overwritten.
+
 ## Terminology and Architecture
 
 This framework consists of three key components: Extractors, Modules and Templates. Below is, in order:
