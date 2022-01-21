@@ -5,9 +5,9 @@ const { validateCSV } = require('../helpers/csvValidator');
 const { csvParse, stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
 
 class CSVFileModule {
-  constructor(csvFilePath, unalterableColumns) {
+  constructor(csvFilePath, unalterableColumns, parserOptions) {
     // Parse then normalize the data
-    const parsedData = csvParse(fs.readFileSync(csvFilePath));
+    const parsedData = csvParse(fs.readFileSync(csvFilePath), parserOptions);
     this.filePath = csvFilePath;
     this.data = normalizeEmptyValues(parsedData, unalterableColumns);
   }

@@ -5,10 +5,11 @@ const { validateCSV } = require('../helpers/csvValidator');
 const { csvParse, stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
 
 class CSVURLModule {
-  constructor(url, unalterableColumns) {
+  constructor(url, unalterableColumns, parserOptions) {
     this.unalterableColumns = unalterableColumns;
     this.url = url;
     this.data = undefined;
+    this.parserOptions = parserOptions;
   }
 
   // Ensures that this.data contains normalized CSV data fetched from the module's url
@@ -24,7 +25,7 @@ class CSVURLModule {
         });
       logger.debug('Web request successful');
       // Parse then normalize the data
-      const parsedData = csvParse(csvData);
+      const parsedData = csvParse(csvData, this.parserOptions);
       logger.debug('CSV Data parsing successful');
       this.data = normalizeEmptyValues(parsedData, this.unalterableColumns);
     }

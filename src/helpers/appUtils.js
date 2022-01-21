@@ -25,11 +25,12 @@ function getPatientIdCSVData(patientIdCsvPath, dataDirectory) {
  *
  * @param {string} patientIdCsvPath filePath to the CSV content to be parsed to get IDs
  * @param {string} dataDirectory optional argument for if a dataDirectory was specified by the config
+ * @param {object} parserOptions options for the csv-parse module
  * @returns array of parsed IDs from the CSV
  */
-function parsePatientIds(patientIdCsvPath, dataDirectory) {
+function parsePatientIds(patientIdCsvPath, dataDirectory, parserOptions) {
   const csvData = getPatientIdCSVData(patientIdCsvPath, dataDirectory);
-  return csvParse(csvData).map((row) => {
+  return csvParse(csvData, parserOptions).map((row) => {
     if (!row.mrn) {
       throw new Error(`${patientIdCsvPath} has no "mrn" column`);
     }

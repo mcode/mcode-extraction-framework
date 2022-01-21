@@ -199,6 +199,22 @@ cat -v <file.csv>
 
 If there is an unexpected symbol at the beginning of the file, then there may be a byte order marker that needs to be removed.
 
+#### Troubleshooting Additional Errors
+The mCODE Extraction Framework uses the node `csv-parse` library to parse specified CSV files. [Parsing options for the `csv-parse` library](https://csv.js.org/parse/options/) can be included in the configuration file within the `commonExtractorArgs.csvParse.options` section. For example, the following configuration will pass the `to` option to the `csv-parse` module, causing the mCODE Extraction Framework to only read CSV files up to the specified line number: 
+
+```
+"commonExtractorArgs": {
+    "dataDirectory": "/Users/*****/Documents/dataDirectory",
+    "csvParse": {
+      "options": {
+        "to": 3
+      }
+    }
+  },
+```
+
+**Note:** The mCODE Extraction Framework enables the `bom`, `skip_empty_lines`, and `skip_lines_with_empty_values` options by default, including these options in the configuration file will cause these default options to be overwritten.
+
 ## Terminology and Architecture
 
 This framework consists of three key components: Extractors, Modules and Templates. Below is, in order:
