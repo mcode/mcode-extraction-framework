@@ -31,7 +31,8 @@ async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, 
 
   // Parse CSV for list of patient mrns
   const dataDirectory = config.commonExtractorArgs && config.commonExtractorArgs.dataDirectory;
-  const patientIds = parsePatientIds(config.patientIdCsvPath, dataDirectory);
+  const parserOptions = config.commonExtractorArgs && config.commonExtractorArgs.csvParse && config.commonExtractorArgs.csvParse.options ? config.commonExtractorArgs.csvParse.options : {};
+  const patientIds = parsePatientIds(config.patientIdCsvPath, dataDirectory, parserOptions);
 
   // Get RunInstanceLogger for recording new runs and inferring dates from previous runs
   const runLogger = allEntries ? null : new RunInstanceLogger(pathToRunLogs);
