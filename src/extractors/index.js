@@ -1,9 +1,12 @@
+const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { BaseFHIRExtractor } = require('./BaseFHIRExtractor');
 const { CSVAdverseEventExtractor } = require('./CSVAdverseEventExtractor');
 const { CSVCancerDiseaseStatusExtractor } = require('./CSVCancerDiseaseStatusExtractor');
-const { CSVCancerRelatedMedicationExtractor } = require('./CSVCancerRelatedMedicationExtractor');
+const { CSVCancerRelatedMedicationAdministrationExtractor } = require('./CSVCancerRelatedMedicationAdministrationExtractor');
+const { CSVCancerRelatedMedicationRequestExtractor } = require('./CSVCancerRelatedMedicationRequestExtractor');
 const { CSVClinicalTrialInformationExtractor } = require('./CSVClinicalTrialInformationExtractor');
 const { CSVConditionExtractor } = require('./CSVConditionExtractor');
+const { CSVCTCAdverseEventExtractor } = require('./CSVCTCAdverseEventExtractor');
 const { CSVObservationExtractor } = require('./CSVObservationExtractor');
 const { CSVPatientExtractor } = require('./CSVPatientExtractor');
 const { CSVProcedureExtractor } = require('./CSVProcedureExtractor');
@@ -21,16 +24,18 @@ const { FHIRMedicationStatementExtractor } = require('./FHIRMedicationStatementE
 const { FHIRObservationExtractor } = require('./FHIRObservationExtractor');
 const { FHIRPatientExtractor } = require('./FHIRPatientExtractor');
 const { FHIRProcedureExtractor } = require('./FHIRProcedureExtractor');
-const { MCODERadiationProcedureExtractor } = require('./MCODERadiationProcedureExtractor');
 const { MCODESurgicalProcedureExtractor } = require('./MCODESurgicalProcedureExtractor');
 
 module.exports = {
+  BaseCSVExtractor,
   BaseFHIRExtractor,
   CSVAdverseEventExtractor,
   CSVCancerDiseaseStatusExtractor,
-  CSVCancerRelatedMedicationExtractor,
+  CSVCancerRelatedMedicationAdministrationExtractor,
+  CSVCancerRelatedMedicationRequestExtractor,
   CSVClinicalTrialInformationExtractor,
   CSVConditionExtractor,
+  CSVCTCAdverseEventExtractor,
   CSVObservationExtractor,
   CSVPatientExtractor,
   CSVProcedureExtractor,
@@ -48,6 +53,5 @@ module.exports = {
   FHIRObservationExtractor,
   FHIRPatientExtractor,
   FHIRProcedureExtractor,
-  MCODERadiationProcedureExtractor,
   MCODESurgicalProcedureExtractor,
 };

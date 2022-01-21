@@ -32,9 +32,25 @@
           "type": "string",
           "format": "uri"
         },
+        "dataDirectory": {
+          "title": "Data Directory",
+          "description": "Absolute path for the directory containing any data files used by extractors.",
+          "type": "string"
+        },
         "requestHeaders": {
           "title": "Request Headers",
           "type": "object"
+        },
+        "csvParse" : {
+          "title": "CSV Parse",
+          "type": "object",
+          "properties": {
+            "options": {
+              "titles": "Options",
+              "description": "Options to be passed to the \"CSV Parse\" module used for parsing CSV files.",
+              "type": "object"
+            }
+          }
         }
       }
     },
@@ -58,12 +74,14 @@
         },
         "to": {
           "title": "To",
-          "anyOf": [
+          "oneOf": [
             {
+              "title": "To (comma separated list of emails)",
               "type": "string",
               "format": "comma-separated-emails"
             },
             {
+              "title": "To (list of emails)",
               "type": "array",
               "items": {
                 "type": "string",
@@ -77,10 +95,13 @@
           "type": "boolean"
         }
       },
-      "required": [
-        "host",
-        "to"
-      ]
+      "dependencies": {
+        "host": { "required": ["to"] },
+        "to": { "required": ["host"] },
+        "from": { "required": ["host", "to"] },
+        "port": { "required": ["host", "to"] },
+        "tlsRejectUnauthorized": { "required": ["host", "to"] }
+      }
     },
     "extractor": {
       "title": "Extractor",
@@ -105,6 +126,17 @@
       "properties": {
         "filePath": {
           "title": "File Path",
+          "description": "An absolute path to a data file from which data is to be extracted",
+          "type": "string"
+        },
+        "fileName": {
+          "title": "File Name",
+          "description": "The name of a file, with the appropriate file suffix, from which data is to be extracted. This fileName is combined with the extractor's dataDictionary to create a valid path.",
+          "type": "string"
+        },
+        "dataDirectory": {
+          "title": "Data Directory",
+          "description": "Absolute path for the directory containing any data files used by extractors. Extractors can infer this value from the global commonExtractorArgs or define their own.",
           "type": "string"
         },
         "url": {
@@ -126,10 +158,18 @@
         },
         "mask": {
           "title": "Masked Fields",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "mask-all"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       }
     }

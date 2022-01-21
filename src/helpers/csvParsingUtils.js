@@ -1,3 +1,4 @@
+const parse = require('csv-parse/lib/sync');
 const logger = require('./logger');
 
 // The standard string normalizer function
@@ -38,7 +39,27 @@ function normalizeEmptyValues(data, unalterableColumns = []) {
   return newData;
 }
 
+// Default options for CSV parsing
+const DEFAULT_OPTIONS = {
+  columns: (header) => header.map((column) => stringNormalizer(column)),
+  // https://csv.js.org/parse/options/bom/
+  bom: true,
+  // https://csv.js.org/parse/options/skip_empty_lines/
+  skip_empty_lines: true,
+  // NOTE: This will skip any records with empty values, not just skip the empty values themselves
+  // NOTE-2: The name of the flag changed from v4 (what we use) to v5 (what is documented)
+  // https://csv.js.org/parse/options/skip_records_with_empty_values/
+  skip_lines_with_empty_values: true,
+};
+
+// Common utility for parsing CSV files
+function csvParse(csvData, options = {}) {
+  return parse(csvData, { ...DEFAULT_OPTIONS, ...options });
+}
+
+
 module.exports = {
   stringNormalizer,
   normalizeEmptyValues,
+  csvParse,
 };

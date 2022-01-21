@@ -4,9 +4,11 @@ const logger = require('../helpers/logger');
 
 const { adverseEventTemplate } = require('./AdverseEventTemplate');
 const { cancerDiseaseStatusTemplate } = require('./CancerDiseaseStatusTemplate');
-const { cancerRelatedMedicationTemplate } = require('./CancerRelatedMedicationTemplate');
+const { cancerRelatedMedicationAdministrationTemplate } = require('./CancerRelatedMedicationAdministrationTemplate');
+const { cancerRelatedMedicationRequestTemplate } = require('./CancerRelatedMedicationRequestTemplate');
 const { carePlanWithReviewTemplate } = require('./CarePlanWithReviewTemplate');
 const { conditionTemplate } = require('./ConditionTemplate');
+const { CTCAdverseEventTemplate } = require('./CTCAdverseEventTemplate');
 const { observationTemplate } = require('./ObservationTemplate');
 const { patientTemplate } = require('./PatientTemplate');
 const { procedureTemplate } = require('./ProcedureTemplate');
@@ -18,9 +20,11 @@ const { tnmCategoryTemplate } = require('./TNMCategoryTemplate');
 const fhirTemplateLookup = {
   AdverseEvent: adverseEventTemplate,
   CancerDiseaseStatus: cancerDiseaseStatusTemplate,
-  CancerRelatedMedication: cancerRelatedMedicationTemplate,
+  CancerRelatedMedicationAdministration: cancerRelatedMedicationAdministrationTemplate,
+  CancerRelatedMedicationRequest: cancerRelatedMedicationRequestTemplate,
   CarePlanWithReview: carePlanWithReviewTemplate,
   Condition: conditionTemplate,
+  CTCAdverseEvent: CTCAdverseEventTemplate,
   Observation: observationTemplate,
   Patient: patientTemplate,
   Procedure: procedureTemplate,

@@ -2,7 +2,7 @@ const _ = require('lodash');
 const {
   getEthnicityDisplay, getRaceCodesystem, getRaceDisplay, getPatientName, maskPatientData,
 } = require('../../src/helpers/patientUtils');
-const examplePatient = require('../extractors/fixtures/csv-patient-bundle.json');
+const examplePatient = require('../extractors/fixtures/extended-patient-bundle.json');
 const exampleMaskedPatient = require('./fixtures/masked-patient-bundle.json');
 
 describe('PatientUtils', () => {
@@ -92,7 +92,29 @@ describe('PatientUtils', () => {
 
     test('bundle should be modified to have dataAbsentReason for all fields specified in mask', () => {
       const bundle = _.cloneDeep(examplePatient);
-      maskPatientData(bundle, ['gender', 'mrn', 'name', 'address', 'birthDate', 'language', 'ethnicity', 'birthsex', 'race']);
+      maskPatientData(bundle, [
+        'genderAndSex',
+        'mrn',
+        'name',
+        'address',
+        'birthDate',
+        'language',
+        'ethnicity',
+        'race',
+        'telecom',
+        'multipleBirth',
+        'photo',
+        'contact',
+        'generalPractitioner',
+        'managingOrganization',
+        'link',
+      ]);
+      expect(bundle).toEqual(exampleMaskedPatient);
+    });
+
+    test('bundle should be modified to have dataAbsentReason for all fields when the maskAll flag is provided', () => {
+      const bundle = _.cloneDeep(examplePatient);
+      maskPatientData(bundle, [], true);
       expect(bundle).toEqual(exampleMaskedPatient);
     });
 
@@ -108,7 +130,23 @@ describe('PatientUtils', () => {
           },
         ],
       };
-      maskPatientData(bundle, ['gender', 'mrn', 'name', 'address', 'birthDate', 'language', 'ethnicity', 'birthsex', 'race']);
+      maskPatientData(bundle, [
+        'genderAndSex',
+        'mrn',
+        'name',
+        'address',
+        'birthDate',
+        'language',
+        'ethnicity',
+        'race',
+        'telecom',
+        'multipleBirth',
+        'photo',
+        'contact',
+        'generalPractitioner',
+        'managingOrganization',
+        'link',
+      ]);
       expect(bundle).toEqual(exampleMaskedPatient);
     });
 

@@ -49,8 +49,10 @@ function formatData(conditionData, patientId) {
 }
 
 class CSVConditionExtractor extends BaseCSVExtractor {
-  constructor({ filePath, url }) {
-    super({ filePath, url, csvSchema: CSVConditionSchema });
+  constructor({
+    filePath, url, fileName, dataDirectory, csvParse,
+  }) {
+    super({ filePath, url, fileName, dataDirectory, csvSchema: CSVConditionSchema, csvParse });
   }
 
   async getConditionData(mrn) {

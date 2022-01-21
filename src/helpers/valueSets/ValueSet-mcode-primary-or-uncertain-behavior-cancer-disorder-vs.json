@@ -3,7 +3,7 @@
   "id": "mcode-primary-or-uncertain-behavior-cancer-disorder-vs",
   "language": "en",
   "url": "http://hl7.org/fhir/us/mcode/ValueSet/mcode-primary-or-uncertain-behavior-cancer-disorder-vs",
-  "version": "1.0.1",
+  "version": "1.18.1",
   "name": "PrimaryOrUncertainBehaviorCancerDisorderVS",
   "title": "Primary or Uncertain Behavior Cancer Disorder Value Set",
   "status": "active",
@@ -14,8 +14,8 @@
         "valueBoolean": true
       }
     ],
-    "identifier": "urn:uuid:47751f9a-8075-4b2c-978e-4a806875e2d3",
-    "timestamp": "2021-08-02T15:34:00.879Z",
+    "identifier": "urn:uuid:76477163-02ca-4fe1-b90b-0e82e2dafcd8",
+    "timestamp": "2021-09-10T17:47:37.460Z",
     "parameter": [
       {
         "name": "expansion-source",
@@ -23,7 +23,7 @@
       },
       {
         "name": "version",
-        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210131"
+        "valueString": "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20210731"
       },
       {
         "name": "version",
@@ -31,6 +31,11 @@
       }
     ],
     "contains": [
+      {
+        "system": "http://hl7.org/fhir/us/mcode/CodeSystem/mcode-catch-code-cs",
+        "code": "PCC-OTHER",
+        "display": "Other Primary Cancer Condition, Specify"
+      },
       {
         "system": "http://snomed.info/sct",
         "code": "363346000",
@@ -55,6 +60,11 @@
         "system": "http://snomed.info/sct",
         "code": "35868009",
         "display": "Carcinoid syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "36222008",
+        "display": "Carcinoid heart disease"
       },
       {
         "system": "http://snomed.info/sct",
@@ -1274,12 +1284,12 @@
       {
         "system": "http://snomed.info/sct",
         "code": "93764002",
-        "display": "Primary malignant neoplasm of conjunctiva (primary)"
+        "display": "Primary malignant neoplasm of conjunctiva of eye (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
         "code": "93766000",
-        "display": "Primary malignant neoplasm of cornea (primary)"
+        "display": "Primary malignant neoplasm of cornea of eye (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -2194,7 +2204,7 @@
       {
         "system": "http://snomed.info/sct",
         "code": "93987004",
-        "display": "Primary malignant neoplasm of retina (primary)"
+        "display": "Primary malignant neoplasm of retina of eye (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -2244,7 +2254,7 @@
       {
         "system": "http://snomed.info/sct",
         "code": "93998003",
-        "display": "Primary malignant neoplasm of sclera (primary)"
+        "display": "Primary malignant neoplasm of sclera of eye (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -2819,7 +2829,7 @@
       {
         "system": "http://snomed.info/sct",
         "code": "94128004",
-        "display": "Primary malignant neoplasm of uveal tract (primary)"
+        "display": "Primary malignant neoplasm of uveal tract of eye (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -2940,11 +2950,6 @@
         "system": "http://snomed.info/sct",
         "code": "94711005",
         "display": "Mycosis fungoides of lymph nodes of head, face AND/OR neck"
-      },
-      {
-        "system": "http://snomed.info/sct",
-        "code": "94712003",
-        "display": "Mycosis fungoides of lymph nodes of inguinal region AND/OR lower limb"
       },
       {
         "system": "http://snomed.info/sct",
@@ -3085,16 +3090,6 @@
         "system": "http://snomed.info/sct",
         "code": "109356001",
         "display": "Primary malignant neoplasm of unspecified site (clinical)"
-      },
-      {
-        "system": "http://snomed.info/sct",
-        "code": "109357005",
-        "display": "Primary malignant neoplasm of ill-defined site"
-      },
-      {
-        "system": "http://snomed.info/sct",
-        "code": "109358000",
-        "display": "Overlapping malignant neoplasm of ill-defined site"
       },
       {
         "system": "http://snomed.info/sct",
@@ -5763,11 +5758,6 @@
       },
       {
         "system": "http://snomed.info/sct",
-        "code": "188733003",
-        "display": "Chronic eosinophilic leukemia"
-      },
-      {
-        "system": "http://snomed.info/sct",
         "code": "188734009",
         "display": "Chronic neutrophilic leukemia"
       },
@@ -5828,6 +5818,11 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "189814006",
+        "display": "Pancreatoblastoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "189815007",
         "display": "Pulmonary blastoma"
       },
@@ -5835,6 +5830,11 @@
         "system": "http://snomed.info/sct",
         "code": "189847002",
         "display": "Malignant teratoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "189924002",
+        "display": "Pleomorphic xanthoastrocytoma"
       },
       {
         "system": "http://snomed.info/sct",
@@ -5864,7 +5864,7 @@
       {
         "system": "http://snomed.info/sct",
         "code": "231833004",
-        "display": "Meibomian gland carcinoma"
+        "display": "Sebaceous adenocarcinoma of eyelid"
       },
       {
         "system": "http://snomed.info/sct",
@@ -5925,6 +5925,11 @@
         "system": "http://snomed.info/sct",
         "code": "253001006",
         "display": "Trabecular cell carcinoma of skin"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "253003009",
+        "display": "Carcinoid bronchial adenoma"
       },
       {
         "system": "http://snomed.info/sct",
@@ -6988,11 +6993,6 @@
       },
       {
         "system": "http://snomed.info/sct",
-        "code": "255102004",
-        "display": "Angioendotheliomatosis"
-      },
-      {
-        "system": "http://snomed.info/sct",
         "code": "255107005",
         "display": "Seminoma of testis"
       },
@@ -7769,7 +7769,7 @@
       {
         "system": "http://snomed.info/sct",
         "code": "285422003",
-        "display": "IgD myeloma"
+        "display": "Immunoglobulin D myeloma (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -7975,6 +7975,11 @@
         "system": "http://snomed.info/sct",
         "code": "307576001",
         "display": "Osteosarcoma of bone"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "307591004",
+        "display": "Malignant mastocytosis"
       },
       {
         "system": "http://snomed.info/sct",
@@ -8375,11 +8380,6 @@
         "system": "http://snomed.info/sct",
         "code": "363355002",
         "display": "Malignant tumor of adrenal gland"
-      },
-      {
-        "system": "http://snomed.info/sct",
-        "code": "363357005",
-        "display": "Malignant tumor of ill-defined site"
       },
       {
         "system": "http://snomed.info/sct",
@@ -10173,11 +10173,6 @@
       },
       {
         "system": "http://snomed.info/sct",
-        "code": "393573009",
-        "display": "Hypereosinophilic syndrome"
-      },
-      {
-        "system": "http://snomed.info/sct",
         "code": "396198006",
         "display": "Small cell carcinoma of prostate (disorder)"
       },
@@ -10505,11 +10500,6 @@
         "system": "http://snomed.info/sct",
         "code": "402536001",
         "display": "Basal cell carcinoma - primary (disorder)"
-      },
-      {
-        "system": "http://snomed.info/sct",
-        "code": "402537005",
-        "display": "Metastatic basal cell carcinoma (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -11780,11 +11770,6 @@
         "system": "http://snomed.info/sct",
         "code": "423284006",
         "display": "Squamous cell carcinoma of skin of neck (disorder)"
-      },
-      {
-        "system": "http://snomed.info/sct",
-        "code": "423294001",
-        "display": "Idiopathic hypereosinophilic syndrome (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -13598,6 +13583,11 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "700057001",
+        "display": "Emberger syndrome"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "700423003",
         "display": "Pancreatic adenocarcinoma"
       },
@@ -14615,6 +14605,11 @@
         "system": "http://snomed.info/sct",
         "code": "716653001",
         "display": "Neuroendocrine carcinoma of thymus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "716655008",
+        "display": "Aggressive systemic mastocytosis (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -15729,7 +15724,7 @@
       {
         "system": "http://snomed.info/sct",
         "code": "733350009",
-        "display": "Primary malignant neuroendocrine of distal bile duct"
+        "display": "Primary malignant neuroendocrine neoplasm of distal bile duct (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -16738,11 +16733,6 @@
       },
       {
         "system": "http://snomed.info/sct",
-        "code": "866109006",
-        "display": "Lymphocytic hypereosinophilic syndrome (disorder)"
-      },
-      {
-        "system": "http://snomed.info/sct",
         "code": "866176003",
         "display": "Clear cell adenocarcinoma of peritoneum"
       },
@@ -16923,6 +16913,491 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1137644008",
+        "display": "Leiomyosarcoma of fundus of stomach"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1141621000",
+        "display": "Malignant epithelial neoplasm of pyriform fossa"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1141626005",
+        "display": "Adenocarcinoma of pancreas with neuregulin 1 gene fusion"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1141627001",
+        "display": "Non-small cell lung carcinoma with NRG1 fusion"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1144252005",
+        "display": "Malignant neoplasm of lateral border of tongue (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1144303008",
+        "display": "Leiomyosarcoma of pylorus of stomach (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1144304002",
+        "display": "Leiomyosarcoma of pyloric antrum of stomach (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1144305001",
+        "display": "Leiomyosarcoma of body of stomach"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1144306000",
+        "display": "Leiomyosarcoma of lesser curvature of stomach (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1144307009",
+        "display": "Leiomyosarcoma of greater curvature of stomach"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1144764001",
+        "display": "Malignant tumor of esophagus with NRG1 fusion"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1144891007",
+        "display": "Primary cholangiocarcinoma of extrahepatic bile duct"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1144945000",
+        "display": "Adnexal carcinoma of vulva"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1145245004",
+        "display": "Carcinoma of meibomian gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1148551007",
+        "display": "Infiltrating duct carcinoma of pancreas (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1148845007",
+        "display": "Follicular lymphoma grade 3b"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1148847004",
+        "display": "Follicular non-Hodgkin's lymphoma in situ (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1148851002",
+        "display": "Follicular lymphoma grade IIIa"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1148852009",
+        "display": "Malignant cystic nephroma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1148901006",
+        "display": "Squamous cell carcinoma of male genital (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1148904003",
+        "display": "Spermatocytic seminoma of testis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1148906001",
+        "display": "Acute myeloid leukemia with t(8;21)(q22;q22) RUNX1-RUNX1T1 (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1148931000",
+        "display": "Cystic renal cell carcinoma of kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153336009",
+        "display": "Pediatric nodal marginal zone B cell lymphoma (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153345005",
+        "display": "Refractory cytopenia with unilineage dysplasia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153346006",
+        "display": "Primary non Hodgkin malignant lymphoma of uveal tract"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153347002",
+        "display": "Primary non Hodgkin malignant lymphoma of vitreoretinal tract"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153348007",
+        "display": "Primary effusion lymphoma due to human immune deficiency virus infection"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153349004",
+        "display": "Primary familial polycythemia due to erythropoietin receptor mutation"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153354008",
+        "display": "Malignant lymphoma of duodenum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153355009",
+        "display": "Malignant lymphoma of esophagus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153356005",
+        "display": "Lymphoma of anus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153357001",
+        "display": "Lymphoma of appendix (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153377008",
+        "display": "Mixed phenotype acute leukemia with t(9;22) (q34;q11.2); BCR-ABL1 (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153379006",
+        "display": "Mixed phenotype acute leukemia with T-cell and myeloid lineage (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153381008",
+        "display": "Mixed phenotype acute leukemia with myeloid and B-cell lymphoid phenotypes"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153382001",
+        "display": "Lymphoma of lacrimal gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153383006",
+        "display": "Lymphoma of liver"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153421007",
+        "display": "Chondrosarcoma of sternum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153422000",
+        "display": "Chondrosarcoma of mandible"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153423005",
+        "display": "Chondrosarcoma of rib"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153424004",
+        "display": "Chondrosarcoma of bone of pelvic wall (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153425003",
+        "display": "Chondrosarcoma of clavicle"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153426002",
+        "display": "Chondrosarcoma of skull (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1153427006",
+        "display": "Chondrosarcoma of vertebral column"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156403002",
+        "display": "Composite Hodgkin and non-Hodgkin lymphoma (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156404008",
+        "display": "Polyembryoma (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156406005",
+        "display": "Anaplastic oligodendroglioma of central nervous system (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156409003",
+        "display": "Anaplastic ependymoma of central nervous system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156410008",
+        "display": "Anaplastic oligoastrocytoma of central nervous system (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156413005",
+        "display": "Gliomatosis cerebri (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156414004",
+        "display": "Giant cell glioblastoma of brain (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156415003",
+        "display": "Protoplasmic astrocytoma of brain"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156416002",
+        "display": "Gemistocytic astrocytoma of brain (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156417006",
+        "display": "Fibrillary astrocytoma of brain"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156418001",
+        "display": "Malignant rhabdoid tumor (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156420003",
+        "display": "DSRCT - desmoplastic small round cell tumor"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156452003",
+        "display": "Mixed germ cell tumor (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156453008",
+        "display": "Chordoma (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156454002",
+        "display": "Embryonal carcinoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156455001",
+        "display": "Pleomorphic xanthoastrocytoma of brain (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156456000",
+        "display": "Pilomyxoid astrocytoma of brain (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156459007",
+        "display": "Anaplastic ganglioglioma of central nervous system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156460002",
+        "display": "Desmoplastic nodular medulloblastoma of brain"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156461003",
+        "display": "Gliosarcoma of brain"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156469001",
+        "display": "Large cell medulloblastoma of brain (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156471001",
+        "display": "Choroid plexus carcinoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156472008",
+        "display": "Papillary tumor of pineal region"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156495004",
+        "display": "Dendritic cell sarcoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156783003",
+        "display": "Leiomyosarcoma of rectum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156785005",
+        "display": "Leiomyosarcoma of duodenum"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156786006",
+        "display": "Leiomyosarcoma of esophagus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156788007",
+        "display": "Leiomyosarcoma of colon"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156795003",
+        "display": "Kaposi sarcoma of colon (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156797006",
+        "display": "Kaposi sarcoma of rectum"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156804004",
+        "display": "Peripheral neuroectodermal neoplasm of corpus uteri"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156806002",
+        "display": "Primary malignant neoplasm of musculoskeletal system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156807006",
+        "display": "Peripheral neuroectodermal neoplasm of cervix uteri (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156808001",
+        "display": "Malignant mixed Müllerian neoplasm of corpus uteri (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156809009",
+        "display": "Malignant mesenchymal neoplasm of duodenum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156810004",
+        "display": "Malignant mesenchymal neoplasm of esophagus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156811000",
+        "display": "Malignant mesenchymal neoplasm of anus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156812007",
+        "display": "Malignant mesenchymal neoplasm of appendix"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156833003",
+        "display": "Germinoma of central nervous system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157060001",
+        "display": "Diffuse astrocytoma of brain"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157061002",
+        "display": "Gliosarcoma of central nervous system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157062009",
+        "display": "Giant cell glioblastoma of central nervous system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157063004",
+        "display": "Malignant neoplasm of vertebral column region (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157064005",
+        "display": "Gemistocytic astrocytoma of central nervous system (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157067003",
+        "display": "Malignant neoplasm of vertebra"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157068008",
+        "display": "Fibrillary astrocytoma of central nervous system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157070004",
+        "display": "Pilomyxoid astrocytoma"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157071000",
+        "display": "Anaplastic ganglioglioma (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157072007",
+        "display": "Gliosarcoma of spinal cord (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157141006",
+        "display": "Astroblastoma of central nervous system"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157157006",
+        "display": "Acute myeloid leukemia with 11q23 abnormality (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1157162007",
+        "display": "Intravascular large B-cell lymphoma (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1651000119109",
         "display": "Primary adenocarcinoma of pancreas"
       },
@@ -17008,11 +17483,6 @@
       },
       {
         "system": "http://snomed.info/sct",
-        "code": "67771000119102",
-        "display": "Grade 2 astrocytoma of brain (disorder)"
-      },
-      {
-        "system": "http://snomed.info/sct",
         "code": "67811000119102",
         "display": "Primary small cell malignant neoplasm of lung, TNM stage 1 (disorder)"
       },
@@ -17063,6 +17533,11 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "84821000119100",
+        "display": "Primary follicular dendritic cell sarcoma of spleen (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "87091000119101",
         "display": "Malignant glioma of cerebrum (disorder)"
       },
@@ -17075,6 +17550,11 @@
         "system": "http://snomed.info/sct",
         "code": "87121000119102",
         "display": "Malignant glioma of cerebellum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "87141000119108",
+        "display": "Primary malignant neoplasm of intramedullary spinal cord"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17263,6 +17743,11 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "130941000119107",
+        "display": "Primary chordoma of bone of skull (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "133531000119104",
         "display": "Malignant neuroendocrine tumor"
       },
@@ -17363,8 +17848,38 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "350621000119100",
+        "display": "Primary malignant neoplasm of right acoustic nerve"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "350631000119102",
+        "display": "Primary malignant neoplasm of left vestibulocochlear nerve (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "350681000119101",
+        "display": "Primary malignant neoplasm of adrenal medulla of right adrenal gland (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "350801000119105",
+        "display": "Primary malignant neoplasm of left adrenal cortex"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "350851000119109",
+        "display": "Primary malignant neoplasm of adrenal medulla of left adrenal gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "350861000119106",
         "display": "Primary malignant neoplasm of right adrenal gland (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "350881000119102",
+        "display": "Primary malignant neoplasm of right adrenal cortex (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17378,8 +17893,23 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "351041000119109",
+        "display": "Primary malignant neoplasm of left upper limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "351051000119106",
+        "display": "Primary malignant neoplasm of right upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "351211000119104",
         "display": "B-cell lymphoma of lymph nodes of multiple sites (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "351251000119103",
+        "display": "Acute myelofibrosis in remission (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17433,13 +17963,108 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "352331000119105",
+        "display": "Primary malignant neoplasm of left spermatic cord (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352341000119101",
+        "display": "Primary malignant neoplasm of right spermatic cord (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352381000119106",
+        "display": "Primary malignant neoplasm of skin of left upper limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352391000119109",
+        "display": "Primary malignant neoplasm of skin of left ear"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "352411000119109",
         "display": "Small lymphocytic B-cell lymphoma of intra-abdominal lymph nodes"
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "352421000119102",
+        "display": "Primary malignant neoplasm of skin of left shoulder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352431000119104",
+        "display": "Primary malignant neoplasm of skin of right ear"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352461000119107",
+        "display": "Primary malignant neoplasm of skin of right lower limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352471000119101",
+        "display": "Primary malignant neoplasm of skin of right shoulder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352481000119103",
+        "display": "Primary malignant neoplasm of skin of left lower limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352701000119102",
+        "display": "Primary malignant neoplasm of neck of pancreas"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352731000119109",
+        "display": "Primary malignant neoplasm of peripheral nerves of left lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352751000119103",
+        "display": "Primary malignant neoplasm of peripheral nerves of right upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352771000119107",
+        "display": "Primary malignant neoplasm of peripheral nerves of right lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "352791000119108",
         "display": "Non-Hodgkin's lymphoma of lymph nodes of multiple sites (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352911000119101",
+        "display": "Primary malignant neoplasm of left optic nerve"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352921000119108",
+        "display": "Primary malignant neoplasm of right optic nerve (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "352961000119103",
+        "display": "Primary malignant neoplasm of right renal pelvis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "353061000119107",
+        "display": "Primary malignant neoplasm of right retina"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "353081000119103",
+        "display": "Primary malignant neoplasm of retina of left eye"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "353111000119108",
+        "display": "Primary malignant neoplasm of left renal pelvis (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17483,6 +18108,41 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "353761000119105",
+        "display": "Primary malignant neoplasm of cornea of left eye"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "353791000119103",
+        "display": "Primary malignant neoplasm of right conjunctiva"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "353801000119102",
+        "display": "Primary malignant neoplasm of right choroid"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "353811000119104",
+        "display": "Primary malignant neoplasm of cornea of right eye"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "353841000119100",
+        "display": "Primary malignant neoplasm of left conjunctiva"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "354301000119106",
+        "display": "Primary malignant neoplasm of left choroid"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "354331000119104",
+        "display": "Primary malignant neoplasm of left lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "354351000119105",
         "display": "Primary malignant neoplasm of left kidney (disorder)"
       },
@@ -17490,6 +18150,21 @@
         "system": "http://snomed.info/sct",
         "code": "354361000119107",
         "display": "Primary malignant neoplasm of right kidney (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "354391000119100",
+        "display": "Kaposi sarcoma of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "354421000119107",
+        "display": "Primary malignant neoplasm of right lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "354461000119102",
+        "display": "Kaposi sarcoma of right lung (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17528,13 +18203,38 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "354721000119103",
+        "display": "Primary malignant neoplasm of left main bronchus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "354731000119100",
+        "display": "Primary malignant neoplasm of right main bronchus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "354851000119101",
         "display": "Follicular non-Hodgkin's lymphoma of lymph nodes of multiple sites"
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "355141000119106",
+        "display": "Primary malignant neoplasm of skin of right upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681591000119108",
+        "display": "Primary adenocarcinoma of anterior wall of urinary bladder"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "681601000119101",
         "display": "Primary adenocarcinoma of ascending colon (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681611000119103",
+        "display": "Primary adenocarcinoma of neck of urinary bladder"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17553,8 +18253,203 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "681661000119100",
+        "display": "Primary adenocarcinoma of dome of urinary bladder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681681000119109",
+        "display": "Primary adenocarcinoma of fundus of stomach (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681691000119107",
+        "display": "Primary adenocarcinoma of gastrointestinal tract (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681701000119107",
+        "display": "Primary adenocarcinoma of greater curvature of stomach"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681711000119105",
+        "display": "Primary adenocarcinoma of head"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "681721000119103",
         "display": "Primary adenocarcinoma of head of pancreas (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681751000119106",
+        "display": "Primary adenocarcinoma of intrahepatic bile duct (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681781000119104",
+        "display": "Primary adenocarcinoma of lesser curvature of stomach (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681821000119109",
+        "display": "Primary adenocarcinoma of neck (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681831000119107",
+        "display": "Primary adenocarcinoma of neck of pancreas (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681911000119108",
+        "display": "Primary adenocarcinoma of pancreatic duct"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681941000119107",
+        "display": "Primary adenocarcinoma of pylorus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681971000119100",
+        "display": "Primary adenocarcinoma of tail of pancreas (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "681991000119104",
+        "display": "Primary adenocarcinoma of trigone of urinary bladder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682031000119109",
+        "display": "Primary adenocarcinoma of urachus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682041000119100",
+        "display": "Primary adenocarcinoma of ureteric orifice"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682221000119103",
+        "display": "Primary anaplastic astrocytoma of cerebrum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682231000119100",
+        "display": "Primary anaplastic astrocytoma of frontal lobe (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682241000119109",
+        "display": "Primary anaplastic astrocytoma of occipital lobe (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682251000119106",
+        "display": "Primary anaplastic astrocytoma of parietal lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682261000119108",
+        "display": "Primary anaplastic astrocytoma of temporal lobe (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682271000119102",
+        "display": "Primary angiosarcoma of abdomen (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682291000119101",
+        "display": "Primary angiosarcoma of axillary region"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682311000119102",
+        "display": "Primary angiosarcoma of face"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682321000119109",
+        "display": "Primary angiosarcoma of head (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682361000119104",
+        "display": "Primary angiosarcoma of neck"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682381000119108",
+        "display": "Primary angiosarcoma of pelvis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682411000119106",
+        "display": "Primary angiosarcoma of thorax (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682421000119104",
+        "display": "Primary angiosarcoma of trunk (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682451000119107",
+        "display": "Primary astrocytoma of frontal lobe (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682471000119103",
+        "display": "Primary astrocytoma of parietal lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682481000119100",
+        "display": "Primary astrocytoma of temporal lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "682541000119106",
+        "display": "Primary basal cell carcinoma of skin of perianal area"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "683031000119101",
+        "display": "Primary carcinoma ex pleomorphic adenoma of salivary gland (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "683041000119105",
+        "display": "Primary carcinoma ex pleomorphic adenoma of submandibular gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "683121000119103",
+        "display": "Primary chondrosarcoma of mandible (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "683131000119100",
+        "display": "Primary chondrosarcoma of vertebral column (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "683761000119107",
+        "display": "Primary ependymoma of brain ventricle (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "683791000119100",
+        "display": "Primary ependymoma of parietal lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "683981000119101",
+        "display": "Primary Ewing sarcoma of bone of spine"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17563,13 +18458,498 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "684901000119107",
+        "display": "Primary glioblastoma multiforme of cerebrum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "684911000119105",
         "display": "Primary glioblastoma multiforme of frontal lobe (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "684921000119103",
+        "display": "Primary glioblastoma multiforme of occipital lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "684931000119100",
+        "display": "Primary glioblastoma multiforme of parietal lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "684941000119109",
+        "display": "Primary glioblastoma multiforme of temporal lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685571000119105",
+        "display": "Primary leiomyosarcoma of abdomen (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685601000119104",
+        "display": "Primary leiomyosarcoma of buttock"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685611000119101",
+        "display": "Primary leiomyosarcoma of face (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685621000119108",
+        "display": "Primary leiomyosarcoma of head"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685641000119102",
+        "display": "Primary leiomyosarcoma of inguinal region (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685671000119109",
+        "display": "Primary leiomyosarcoma of neck"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685691000119105",
+        "display": "Primary leiomyosarcoma of pelvis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685701000119105",
+        "display": "Primary leiomyosarcoma of perineum"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685721000119101",
+        "display": "Primary leiomyosarcoma of thorax (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685731000119103",
+        "display": "Primary leiomyosarcoma of trunk (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685831000119105",
+        "display": "Primary liposarcoma of soft tissue of abdomen (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685851000119104",
+        "display": "Primary liposarcoma of soft tissue of axilla"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685861000119102",
+        "display": "Primary liposarcoma of soft tissue of buttock"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685901000119108",
+        "display": "Primary liposarcoma of soft tissue of inguinal region"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685921000119104",
+        "display": "Primary liposarcoma of soft tissue of neck"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685941000119105",
+        "display": "Primary liposarcoma of soft tissue of pelvis"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685951000119107",
+        "display": "Primary liposarcoma of soft tissue of perineum"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685971000119103",
+        "display": "Primary liposarcoma of soft tissue of thorax (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "685981000119100",
+        "display": "Primary liposarcoma of soft tissue of trunk"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "686431000119100",
+        "display": "Primary malignant glioma of frontal lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "686441000119109",
+        "display": "Primary malignant glioma of occipital lobe (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "686451000119106",
+        "display": "Primary malignant glioma of parietal lobe (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "686461000119108",
+        "display": "Primary malignant glioma of temporal lobe (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "686591000119102",
+        "display": "Primary malignant pheochromocytoma of left adrenal gland (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "686601000119109",
+        "display": "Primary malignant pheochromocytoma of right adrenal gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "686981000119108",
+        "display": "Mycosis fungoides of inguinal lymph node"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "686991000119106",
+        "display": "Mycosis fungoides of lower limb lymph node"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687331000119109",
+        "display": "Primary oligodendroglioma of frontal lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687351000119103",
+        "display": "Primary oligodendroglioma of parietal lobe (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687361000119101",
+        "display": "Primary oligodendroglioma of temporal lobe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687401000119105",
+        "display": "Primary osteosarcoma of mandible"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687421000119101",
+        "display": "Primary osteosarcoma of vertebral column"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687771000119106",
+        "display": "Primary rhabdomyosarcoma of abdomen (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687801000119108",
+        "display": "Primary rhabdomyosarcoma of buttock (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687811000119106",
+        "display": "Primary rhabdomyosarcoma of face (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687821000119104",
+        "display": "Primary rhabdomyosarcoma of head (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687841000119105",
+        "display": "Primary rhabdomyosarcoma of inguinal region (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687861000119109",
+        "display": "Primary rhabdomyosarcoma of neck (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687881000119100",
+        "display": "Primary rhabdomyosarcoma of pelvis (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687891000119102",
+        "display": "Primary rhabdomyosarcoma of perineum"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687911000119100",
+        "display": "Primary rhabdomyosarcoma of thorax (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687941000119101",
+        "display": "Primary sarcoma of soft tissues of abdomen"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687961000119102",
+        "display": "Primary sarcoma of axilla"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687971000119108",
+        "display": "Primary sarcoma of buttock"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "687991000119109",
+        "display": "Primary sarcoma of head"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688011000119102",
+        "display": "Primary sarcoma of inguinal region"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688031000119107",
+        "display": "Primary sarcoma of neck (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688061000119104",
+        "display": "Primary sarcoma of perineum"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688081000119108",
+        "display": "Primary sarcoma of thorax"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688091000119106",
+        "display": "Primary sarcoma of trunk (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688321000119107",
+        "display": "Primary malignant neoplasm of skin of bridge of nose"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688381000119106",
+        "display": "Primary malignant neoplasm of skin of ala nasi"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688411000119109",
+        "display": "Primary malignant neoplasm of skin of tip of nose"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688671000119103",
+        "display": "Primary squamous cell carcinoma of anterior floor of mouth (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688681000119100",
+        "display": "Primary squamous cell carcinoma of anterior two thirds of tongue"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688691000119102",
+        "display": "Primary squamous cell carcinoma of anterior wall of urinary bladder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688711000119104",
+        "display": "Primary squamous cell carcinoma of aryepiglottic fold (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688731000119109",
+        "display": "Primary squamous cell carcinoma of neck of urinary bladder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688751000119103",
+        "display": "Primary squamous cell carcinoma of border of tongue (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688781000119105",
+        "display": "Primary squamous cell carcinoma of commissure of lip (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688801000119109",
+        "display": "Primary squamous cell carcinoma of dome of urinary bladder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688811000119107",
+        "display": "Primary squamous cell carcinoma of dorsal surface of tongue"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688861000119105",
+        "display": "Primary squamous cell carcinoma of hard palate (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688891000119103",
+        "display": "Primary squamous cell carcinoma of mucous membrane of lip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688901000119104",
+        "display": "Primary squamous cell carcinoma of mucous membrane of lower lip (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688911000119101",
+        "display": "Primary squamous cell carcinoma of mucous membrane of upper lip (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688931000119106",
+        "display": "Primary squamous cell carcinoma of lateral portion of floor of mouth"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688941000119102",
+        "display": "Primary squamous cell carcinoma of lateral wall of urinary bladder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "688981000119107",
+        "display": "Primary squamous cell carcinoma of lower gum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689211000119102",
+        "display": "Primary squamous cell carcinoma of perianal skin (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689231000119107",
+        "display": "Primary squamous cell carcinoma of posterior wall of urinary bladder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689251000119101",
+        "display": "Primary squamous cell carcinoma of posterior wall of nasopharynx"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689281000119108",
+        "display": "Primary squamous cell carcinoma of retromolar area"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689311000119105",
+        "display": "Primary squamous cell carcinoma of soft palate"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689361000119108",
+        "display": "Primary squamous cell carcinoma of tonsillar fossa (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689371000119102",
+        "display": "Primary squamous cell carcinoma of tonsillar pillar (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689401000119104",
+        "display": "Primary squamous cell carcinoma of upper gum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689441000119102",
+        "display": "Primary squamous cell carcinoma of ureteral orifice"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689451000119100",
+        "display": "Primary squamous cell carcinoma of uvula"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689471000119109",
+        "display": "Primary squamous cell carcinoma of ventral surface of tongue"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689481000119107",
+        "display": "Primary squamous cell carcinoma of vermilion border of lower lip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689491000119105",
+        "display": "Primary squamous cell carcinoma of vermilion border of upper lip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689501000119103",
+        "display": "Primary squamous cell carcinoma of vestibule of mouth"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689771000119103",
+        "display": "Primary transitional cell carcinoma of anterior wall of urinary bladder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689781000119100",
+        "display": "Primary transitional cell carcinoma of neck of urinary bladder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689791000119102",
+        "display": "Primary transitional cell carcinoma of dome of urinary bladder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689801000119101",
+        "display": "Primary transitional cell carcinoma of lateral wall of urinary bladder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689821000119105",
+        "display": "Primary transitional cell carcinoma of posterior wall of urinary bladder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689831000119108",
+        "display": "Primary transitional cell carcinoma of trigone of urinary bladder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "689851000119102",
+        "display": "Primary transitional cell carcinoma of ureteric orifice"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "690121000119109",
+        "display": "Primary basal cell carcinoma of skin of scrotum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "690141000119103",
+        "display": "Primary basal cell carcinoma of skin of male genitalia (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1078881000119102",
         "display": "Primary adenocarcinoma of lower lobe of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1078891000119104",
+        "display": "Primary adenocarcinoma of left main bronchus (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17583,8 +18963,58 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1078941000119103",
+        "display": "Primary adenocarcinoma of right main bronchus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1078951000119101",
+        "display": "Primary adenocarcinoma of middle lobe of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1078961000119104",
         "display": "Primary adenocarcinoma of upper lobe of right lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1078971000119105",
+        "display": "Adenoid cystic carcinoma of left lacrimal gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1078981000119108",
+        "display": "Adenoid cystic carcinoma of right lacrimal gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079011000119109",
+        "display": "Primary angiosarcoma of left upper extremity"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079021000119102",
+        "display": "Primary angiosarcoma of left hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079031000119104",
+        "display": "Primary angiosarcoma of left lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079051000119105",
+        "display": "Primary angiosarcoma of right upper limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079061000119107",
+        "display": "Primary angiosarcoma of right hip region"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079071000119101",
+        "display": "Primary angiosarcoma of right lower limb (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17603,8 +19033,18 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1079121000119101",
+        "display": "Primary basal cell carcinoma of skin of left hip (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1079131000119103",
         "display": "Primary basal cell carcinoma of left lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079141000119107",
+        "display": "Primary basal cell carcinoma of skin of left shoulder"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17623,8 +19063,98 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1079181000119102",
+        "display": "Primary basal cell carcinoma of skin of right hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1079191000119104",
         "display": "Primary basal cell carcinoma of right lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079201000119101",
+        "display": "Primary basal cell carcinoma of skin of right shoulder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079551000119100",
+        "display": "Primary chondrosarcoma of bone of left upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079561000119103",
+        "display": "Primary chondrosarcoma of bone of left foot"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079571000119109",
+        "display": "Primary chondrosarcoma of bone of left hand (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079581000119107",
+        "display": "Primary chondrosarcoma of bone of left lower limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079591000119105",
+        "display": "Primary chondrosarcoma of left scapula (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079601000119103",
+        "display": "Primary chondrosarcoma of bone of right upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079611000119100",
+        "display": "Primary chondrosarcoma of bone of right foot (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079621000119107",
+        "display": "Primary chondrosarcoma of bone of right hand (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079631000119105",
+        "display": "Primary chondrosarcoma of bone of right lower limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079641000119101",
+        "display": "Primary chondrosarcoma of right scapula (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1079991000119101",
+        "display": "Primary Ewing sarcoma of bone of left upper extremity"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080001000119106",
+        "display": "Primary Ewing sarcoma of bone of left foot (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080021000119102",
+        "display": "Primary Ewing sarcoma of bone of left lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080041000119108",
+        "display": "Primary Ewing sarcoma of bone of right upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080051000119105",
+        "display": "Primary Ewing sarcoma of bone of right foot"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080071000119101",
+        "display": "Primary Ewing sarcoma of bone of right lower extremity"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17698,6 +19228,116 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1080451000119101",
+        "display": "Primary large cell carcinoma of lower lobe of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080471000119105",
+        "display": "Primary large cell carcinoma of upper lobe of left lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080501000119104",
+        "display": "Primary large cell carcinoma of lower lobe of right lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080531000119106",
+        "display": "Primary large cell carcinoma of upper lobe of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080541000119102",
+        "display": "Primary leiomyosarcoma of left upper extremity"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080551000119100",
+        "display": "Primary leiomyosarcoma of left hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080561000119103",
+        "display": "Primary leiomyosarcoma of left kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080571000119109",
+        "display": "Primary leiomyosarcoma of left lower limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080581000119107",
+        "display": "Primary leiomyosarcoma of left shoulder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080591000119105",
+        "display": "Primary leiomyosarcoma of right upper limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080601000119103",
+        "display": "Primary leiomyosarcoma of right hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080611000119100",
+        "display": "Primary leiomyosarcoma of right kidney (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080621000119107",
+        "display": "Primary leiomyosarcoma of right lower limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080631000119105",
+        "display": "Primary leiomyosarcoma of right shoulder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080681000119106",
+        "display": "Primary liposarcoma of soft tissue of left upper limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080691000119109",
+        "display": "Primary liposarcoma of soft tissue of left hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080701000119109",
+        "display": "Primary liposarcoma of soft tissue of left lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080711000119107",
+        "display": "Primary liposarcoma of soft tissue of left shoulder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080721000119100",
+        "display": "Primary liposarcoma of soft tissue of right upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080731000119102",
+        "display": "Primary liposarcoma of soft tissue of right hip (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080741000119106",
+        "display": "Primary liposarcoma of soft tissue of right lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1080751000119108",
+        "display": "Primary liposarcoma of soft tissue of right shoulder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1080941000119109",
         "display": "Malignant melanoma of left choroid (disorder)"
       },
@@ -17713,6 +19353,56 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1081271000119100",
+        "display": "Primary osteosarcoma of bone of left upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081281000119102",
+        "display": "Primary osteosarcoma of bone of left foot (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081291000119104",
+        "display": "Primary osteosarcoma of bone of left hand (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081301000119103",
+        "display": "Primary osteosarcoma of bone of left lower limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081311000119100",
+        "display": "Primary osteosarcoma of left scapula (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081321000119107",
+        "display": "Primary osteosarcoma of bone of right upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081331000119105",
+        "display": "Primary osteosarcoma of bone of right foot"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081341000119101",
+        "display": "Primary osteosarcoma of bone of right hand"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081351000119104",
+        "display": "Primary osteosarcoma of bone of right lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081361000119102",
+        "display": "Primary osteosarcoma of right scapula (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1081551000119106",
         "display": "Recurrent primary malignant neoplasm of left female breast (disorder)"
       },
@@ -17723,13 +19413,73 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1081591000119101",
+        "display": "Primary retinoblastoma of left retina"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081601000119108",
+        "display": "Primary retinoblastoma of right retina (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081611000119106",
+        "display": "Primary rhabdomyosarcoma of left upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081631000119101",
+        "display": "Primary rhabdomyosarcoma of left lower extremity"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081651000119107",
+        "display": "Primary rhabdomyosarcoma of right upper extremity"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081671000119103",
+        "display": "Primary rhabdomyosarcoma of right lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081691000119102",
+        "display": "Primary sarcoma of soft tissues of left upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081701000119102",
+        "display": "Primary sarcoma of soft tissues of left hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1081711000119104",
         "display": "Primary sarcoma of left lower limb (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1081721000119106",
+        "display": "Primary sarcoma of left shoulder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081731000119109",
+        "display": "Primary sarcoma of soft tissues of right upper limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081741000119100",
+        "display": "Primary sarcoma of soft tissues of right hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1081751000119103",
         "display": "Primary sarcoma of right lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081761000119101",
+        "display": "Primary sarcoma of right shoulder"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17743,8 +19493,58 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1081841000119106",
+        "display": "Primary small cell carcinoma of lower lobe of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081851000119108",
+        "display": "Primary small cell carcinoma of left main bronchus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081861000119105",
+        "display": "Primary small cell carcinoma of upper lobe of left lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081891000119103",
+        "display": "Primary small cell carcinoma of lower lobe of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081901000119104",
+        "display": "Primary small cell carcinoma of right main bronchus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081911000119101",
+        "display": "Primary small cell carcinoma of middle lobe of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1081921000119108",
+        "display": "Primary small cell carcinoma of upper lobe of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082051000119106",
+        "display": "Primary squamous cell carcinoma of skin of left upper limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082061000119108",
+        "display": "Primary squamous cell carcinoma of left conjunctiva"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1082071000119102",
         "display": "Primary squamous cell carcinoma of left ear (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082091000119101",
+        "display": "Primary squamous cell carcinoma of skin of left hip (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17753,13 +19553,73 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1082111000119109",
+        "display": "Primary squamous cell carcinoma of lower lobe of left lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082121000119102",
+        "display": "Primary squamous cell carcinoma of left main bronchus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082131000119104",
+        "display": "Primary squamous cell carcinoma of skin of left shoulder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082141000119108",
+        "display": "Primary squamous cell carcinoma of upper lobe of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082171000119101",
+        "display": "Primary squamous cell carcinoma of skin of right upper limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082181000119103",
+        "display": "Primary squamous cell carcinoma of right conjunctiva"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1082191000119100",
         "display": "Primary squamous cell carcinoma of right ear (disorder)"
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1082211000119104",
+        "display": "Primary squamous cell carcinoma of skin of right hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "1082221000119106",
         "display": "Primary squamous cell carcinoma of skin of right lower limb (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082231000119109",
+        "display": "Primary squamous cell carcinoma of lower lobe of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082241000119100",
+        "display": "Primary squamous cell carcinoma of right main bronchus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082251000119103",
+        "display": "Primary squamous cell carcinoma of middle lobe of right lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082261000119101",
+        "display": "Primary squamous cell carcinoma of skin of right shoulder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1082271000119107",
+        "display": "Primary squamous cell carcinoma of upper lobe of right lung"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17803,8 +19663,58 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "1099571000119100",
+        "display": "Primary malignant neoplasm of left lacrimal sac (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1099581000119102",
+        "display": "Primary malignant neoplasm of right lacrimal sac (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "10708511000119108",
         "display": "Primary malignant neoplasm of uterus"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10737361000119109",
+        "display": "Primary adenocarcinoma of right fallopian tube"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10737401000119100",
+        "display": "Primary adenocarcinoma of left fallopian tube (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10737521000119108",
+        "display": "Primary mucinous cystadenocarcinoma of right ovary"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10737561000119103",
+        "display": "Primary mucinous cystadenocarcinoma of left ovary"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10737601000119103",
+        "display": "Primary serous papillary cystadenocarcinoma of right ovary (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10737641000119101",
+        "display": "Primary serous papillary cystadenocarcinoma of left ovary (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10737781000119101",
+        "display": "Primary endometrioid carcinoma of right ovary"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10737821000119106",
+        "display": "Primary endometrioid carcinoma of left ovary"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17815,6 +19725,16 @@
         "system": "http://snomed.info/sct",
         "code": "10749871000119100",
         "display": "Malignant neoplastic disease in pregnancy"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10976631000119101",
+        "display": "Leiomyosarcoma of skin of chest"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "10976711000119104",
+        "display": "Primary primitive neuroectodermal tumor of central nervous system"
       },
       {
         "system": "http://snomed.info/sct",
@@ -17843,6 +19763,76 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "15931021000119108",
+        "display": "Primary sarcoma of left ovary (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15931061000119103",
+        "display": "Primary sarcoma of right ovary"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15949941000119101",
+        "display": "Primary squamous cell carcinoma of skin of left breast"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15950021000119100",
+        "display": "Primary squamous cell carcinoma of skin of right breast"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15950061000119105",
+        "display": "Primary malignant neoplasm of skin of right breast (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15950101000119108",
+        "display": "Primary basal cell carcinoma of skin of right breast"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15950141000119105",
+        "display": "Primary basal cell carcinoma of skin of left breast (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15950221000119108",
+        "display": "Primary malignant neoplasm of skin of left breast (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15951021000119107",
+        "display": "Bilateral malignant melanoma of skin of lower limbs"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15951061000119102",
+        "display": "Malignant melanoma of skin of both upper extremities"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15955101000119101",
+        "display": "Primary malignant neoplasm of right Bartholin's gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15955141000119104",
+        "display": "Primary malignant neoplasm of left greater vestibular gland"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15955901000119104",
+        "display": "Primary small cell carcinoma of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15955941000119102",
+        "display": "Primary small cell carcinoma of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "15956341000119105",
         "display": "Adenocarcinoma of left lung (disorder)"
       },
@@ -17853,6 +19843,21 @@
       },
       {
         "system": "http://snomed.info/sct",
+        "code": "15957261000119102",
+        "display": "Kaposi sarcoma of bilateral lungs (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958021000119103",
+        "display": "Primary sarcoma of left kidney (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15958101000119106",
+        "display": "Primary sarcoma of right kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
         "code": "15959061000119101",
         "display": "Transitional cell carcinoma of left kidney (disorder)"
       },
@@ -17860,6 +19865,271 @@
         "system": "http://snomed.info/sct",
         "code": "15959101000119103",
         "display": "Transitional cell carcinoma of right kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16091131000119108",
+        "display": "Primary angiosarcoma of skin of forehead"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16091251000119109",
+        "display": "Primary angiosarcoma of skin of nose"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16091371000119108",
+        "display": "Primary angiosarcoma of skin of temporal region (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16091411000119109",
+        "display": "Primary angiosarcoma of skin of lip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16218761000119102",
+        "display": "Primary squamous cell carcinoma of skin of lip (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16228971000119104",
+        "display": "Primary malignant neoplasm of soft tissue of left hip"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16229011000119100",
+        "display": "Primary malignant neoplasm of soft tissue of right hip (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16260391000119109",
+        "display": "Primary malignant neoplasm of soft tissues of left shoulder (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16260431000119104",
+        "display": "Primary malignant neoplasm of soft tissues of right shoulder"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16414611000119100",
+        "display": "Primary malignant neoplasm of peripheral nerves of left upper limb"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16527441000119105",
+        "display": "Primary non-small cell carcinoma of lower lobe of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16527481000119100",
+        "display": "Primary non-small cell carcinoma of middle lobe of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16527521000119100",
+        "display": "Primary non-small cell carcinoma of upper lobe of left lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16527561000119105",
+        "display": "Primary non-small cell carcinoma of lower lobe of right lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16527601000119105",
+        "display": "Primary non-small cell carcinoma of right lung (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16527641000119107",
+        "display": "Primary non-small cell carcinoma of left lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16527721000119108",
+        "display": "Primary non-small cell carcinoma of upper lobe of right lung"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16636051000119105",
+        "display": "Primary malignant gastrointestinal stromal neoplasm of colon"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16636101000119105",
+        "display": "Primary malignant gastrointestinal stromal neoplasm of rectum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16637101000119107",
+        "display": "Primary sarcoma of small intestine (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16699241000119100",
+        "display": "Kaposi's sarcoma of toe"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16774551000119100",
+        "display": "Primary basal cell carcinoma of skin of left hand"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16774591000119105",
+        "display": "Primary basal cell carcinoma of skin of right hand"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16774671000119108",
+        "display": "Primary basal cell carcinoma of skin of labium majus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16775311000119107",
+        "display": "Mycosis fungoides of facial lymph node (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16782241000119104",
+        "display": "Primary squamous cell carcinoma of skin of left hand"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16782321000119104",
+        "display": "Primary squamous cell carcinoma of skin of right hand"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16823941000119108",
+        "display": "Primary malignant gastrointestinal stromal tumor of pancreas"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16845301000119108",
+        "display": "Primary glioblastoma multiforme of cerebellum (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16845341000119105",
+        "display": "Primary glioblastoma multiforme of brainstem"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16845381000119100",
+        "display": "Primary chondrosarcoma of sternum"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16899941000119102",
+        "display": "Primary squamous cell carcinoma of skin of anus (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16905141000119107",
+        "display": "Primary malignant neoplasm of skin of right upper eyelid"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16905341000119105",
+        "display": "Primary malignant neoplasm of skin of right lower eyelid (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16905381000119100",
+        "display": "Primary basal cell carcinoma of left upper eyelid"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16905421000119109",
+        "display": "Primary basal cell carcinoma of right upper eyelid"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16905461000119104",
+        "display": "Primary basal cell carcinoma of right lower eyelid (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16905501000119104",
+        "display": "Primary basal cell carcinoma of left lower eyelid (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16905541000119102",
+        "display": "Primary malignant neoplasm of skin of left lower eyelid"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16905581000119107",
+        "display": "Primary malignant neoplasm of skin of left upper eyelid (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16906481000119103",
+        "display": "Primary squamous cell carcinoma of right upper eyelid"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16906521000119103",
+        "display": "Primary squamous cell carcinoma of right lower eyelid (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16906561000119108",
+        "display": "Primary squamous cell carcinoma of left upper eyelid (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16906601000119108",
+        "display": "Primary squamous cell carcinoma of left lower eyelid"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "243971001000119103",
+        "display": "Malignant melanoma of skin of right ankle"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "249389151000119103",
+        "display": "Malignant melanoma of skin of right wrist"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "400375351000119102",
+        "display": "Malignant melanoma of skin of left ankle"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "455733521000119103",
+        "display": "Primary squamous cell carcinoma of skin of head and/or neck (disorder)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "763101411000119100",
+        "display": "Primary renal cell carcinoma of left kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "808558991000119105",
+        "display": "Malignant melanoma of skin of left forearm"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "894171571000119107",
+        "display": "Primary renal cell carcinoma of right kidney"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "939595491000119108",
+        "display": "Malignant melanoma of skin of right forearm"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "985355341000119101",
+        "display": "Malignant melanoma of skin of left wrist (disorder)"
       },
       {
         "system": "http://hl7.org/fhir/sid/icd-10-cm",

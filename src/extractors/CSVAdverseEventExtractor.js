@@ -69,8 +69,10 @@ function formatData(adverseEventData, patientId) {
 }
 
 class CSVAdverseEventExtractor extends BaseCSVExtractor {
-  constructor({ filePath, url }) {
-    super({ filePath, url });
+  constructor({
+    filePath, url, fileName, dataDirectory, csvParse,
+  }) {
+    super({ filePath, url, fileName, dataDirectory, csvParse });
   }
 
   async getAdverseEventData(mrn) {

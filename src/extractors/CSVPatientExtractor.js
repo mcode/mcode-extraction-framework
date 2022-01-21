@@ -54,14 +54,19 @@ function joinAndReformatData(patientData) {
 }
 
 class CSVPatientExtractor extends BaseCSVExtractor {
-  constructor({ filePath, url, mask = [] }) {
+  constructor({
+    filePath, url, fileName, dataDirectory, mask = [], csvParse,
+  }) {
     // Define CSV Columns whose values should never be altered
     const unalterableColumns = ['familyName', 'givenName'];
     super({
       filePath,
       url,
+      fileName,
+      dataDirectory,
       csvSchema: CSVPatientSchema,
       unalterableColumns,
+      csvParse,
     });
     this.mask = mask;
   }
@@ -87,8 +92,10 @@ class CSVPatientExtractor extends BaseCSVExtractor {
     // 3. Generate FHIR Resources
     const bundle = generateMcodeResources('Patient', packagedPatientData);
 
-    // mask fields in the patient data if specified in mask array
-    if (this.mask.length > 0) maskPatientData(bundle, this.mask);
+    // mask specified fields in the patient data
+    if (typeof this.mask === 'string' && this.mask === 'all') {
+      maskPatientData(bundle, [], true);
+    } else if (this.mask.length > 0) maskPatientData(bundle, this.mask);
     return bundle;
   }
 }

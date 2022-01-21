@@ -63,8 +63,10 @@ function formatStagingData(stagingData, categoryIds, patientId) {
 }
 
 class CSVStagingExtractor extends BaseCSVExtractor {
-  constructor({ filePath, url }) {
-    super({ filePath, url });
+  constructor({
+    filePath, url, fileName, dataDirectory, csvParse,
+  }) {
+    super({ filePath, url, fileName, dataDirectory, csvParse });
   }
 
   async getStagingData(mrn) {

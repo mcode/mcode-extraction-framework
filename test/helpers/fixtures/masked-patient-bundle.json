@@ -105,6 +105,28 @@
                         "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
                     },
                     {
+                      "valueCodeableConcept": {
+                        "extension": [
+                          {
+                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                            "valueCode": "masked"
+                          }
+                        ]
+                      },
+                      "url": "http://open.epic.com/FHIR/StructureDefinition/extension/legal-sex"
+                    },
+                    {
+                      "valueCodeableConcept": {
+                        "extension": [
+                          {
+                            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                            "valueCode": "masked"
+                          }
+                        ]
+                      },
+                      "url": "http://open.epic.com/FHIR/StructureDefinition/extension/sex-for-clinical-use"
+                    },
+                    {
                         "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
                         "_valueCode": {
                             "extension": [
@@ -131,7 +153,73 @@
                             "valueCode": "masked"
                         }
                     ]
-                }
+                },
+                "telecom": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ],
+                "_multipleBirthInteger": {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                      "valueCode": "masked"
+                    }
+                  ]
+                },
+                "contact": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ],
+                "generalPractitioner": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ],
+                "managingOrganization": {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                      "valueCode": "masked"
+                    }
+                  ]
+                },
+                "link": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ],
+                "photo": [
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "masked"
+                      }
+                    ]
+                  }
+                ]
             }
         }
     ]

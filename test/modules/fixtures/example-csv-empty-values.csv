@@ -1,0 +1,6 @@
+﻿mrn,trialSubjectID,enrollmentStatus,trialResearchID,trialStatus,dateRecorded
+example-mrn-1,subjectId-1,status-1,researchId-1,trialStatus-1,2020-01-10
+, , , , , 
+,    ,   ,    ,,
+,,,		,	,
+example-mrn-not-ignored,,,,,

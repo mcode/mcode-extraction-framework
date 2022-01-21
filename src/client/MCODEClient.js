@@ -2,9 +2,11 @@ const { BaseClient } = require('./BaseClient');
 const {
   CSVAdverseEventExtractor,
   CSVCancerDiseaseStatusExtractor,
-  CSVCancerRelatedMedicationExtractor,
+  CSVCancerRelatedMedicationAdministrationExtractor,
+  CSVCancerRelatedMedicationRequestExtractor,
   CSVClinicalTrialInformationExtractor,
   CSVConditionExtractor,
+  CSVCTCAdverseEventExtractor,
   CSVObservationExtractor,
   CSVPatientExtractor,
   CSVProcedureExtractor,
@@ -30,9 +32,11 @@ class MCODEClient extends BaseClient {
     this.registerExtractors(
       CSVAdverseEventExtractor,
       CSVCancerDiseaseStatusExtractor,
-      CSVCancerRelatedMedicationExtractor,
+      CSVCancerRelatedMedicationAdministrationExtractor,
+      CSVCancerRelatedMedicationRequestExtractor,
       CSVClinicalTrialInformationExtractor,
       CSVConditionExtractor,
+      CSVCTCAdverseEventExtractor,
       CSVObservationExtractor,
       CSVPatientExtractor,
       CSVProcedureExtractor,
@@ -60,10 +64,12 @@ class MCODEClient extends BaseClient {
       { type: 'CSVClinicalTrialInformationExtractor', dependencies: ['CSVPatientExtractor'] },
       { type: 'CSVTreatmentPlanChangeExtractor', dependencies: ['CSVPatientExtractor'] },
       { type: 'CSVStagingExtractor', dependencies: ['CSVPatientExtractor'] },
-      { type: 'CSVCancerRelatedMedicationExtractor', dependencies: ['CSVPatientExtractor'] },
+      { type: 'CSVCancerRelatedMedicationAdministrationExtractor', dependencies: ['CSVPatientExtractor'] },
+      { type: 'CSVCancerRelatedMedicationRequestExtractor', dependencies: ['CSVPatientExtractor'] },
       { type: 'CSVProcedureExtractor', dependencies: ['CSVPatientExtractor'] },
       { type: 'CSVObservationExtractor', dependencies: ['CSVPatientExtractor'] },
       { type: 'CSVAdverseEventExtractor', dependencies: ['CSVPatientExtractor'] },
+      { type: 'CSVCTCAdverseEventExtractor', dependencies: ['CSVPatientExtractor'] },
     ];
     // Sort extractors based on order and dependencies
     this.extractorConfig = sortExtractors(this.extractorConfig, dependencyInfo);

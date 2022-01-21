@@ -1,19 +1,14 @@
 const fs = require('fs');
 const moment = require('moment');
-const parse = require('csv-parse/lib/sync');
 const logger = require('../helpers/logger');
 const { validateCSV } = require('../helpers/csvValidator');
-const { stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
+const { csvParse, stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
 
 class CSVFileModule {
-  constructor(csvFilePath, unalterableColumns) {
+  constructor(csvFilePath, unalterableColumns, parserOptions) {
     // Parse then normalize the data
-    const parsedData = parse(fs.readFileSync(csvFilePath), {
-      columns: (header) => header.map((column) => stringNormalizer(column)),
-      bom: true,
-    });
+    const parsedData = csvParse(fs.readFileSync(csvFilePath), parserOptions);
     this.filePath = csvFilePath;
-
     this.data = normalizeEmptyValues(parsedData, unalterableColumns);
   }
 

@@ -6,7 +6,6 @@ function getTypeSpecificData(type) {
     return {
       categoryCode: 'survey',
       code: '21908-9',
-      profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-stage-group',
     };
   }
 
@@ -14,7 +13,6 @@ function getTypeSpecificData(type) {
     return {
       categoryCode: 'laboratory',
       code: '21902-2',
-      profileUrl: 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-pathological-stage-group',
     };
   }
 
@@ -46,13 +44,13 @@ function stagingTemplate({
   }
 
   const typeSpecificData = getTypeSpecificData(type);
-  const { categoryCode, code, profileUrl } = typeSpecificData;
+  const { categoryCode, code } = typeSpecificData;
 
   return {
     resourceType: 'Observation',
     id,
     meta: {
-      profile: [profileUrl],
+      profile: ['http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-stage-group'],
     },
     status: 'final',
     category: [

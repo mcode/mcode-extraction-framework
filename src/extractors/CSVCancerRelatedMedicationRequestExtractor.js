@@ -7,58 +7,62 @@ const logger = require('../helpers/logger');
 
 
 function formatData(medicationData, patientId) {
-  logger.debug('Reformatting cancer-related medication data from CSV into template format');
+  logger.debug('Reformatting cancer-related medication request data from CSV into template format');
 
   return medicationData.map((medication) => {
     const {
-      medicationid: medicationId,
+      requestid: requestId,
       code,
       codesystem: codeSystem,
       displaytext: displayText,
-      startdate: startDate,
-      enddate: endDate,
       treatmentreasoncode: treatmentReasonCode,
       treatmentreasoncodesystem: treatmentReasonCodeSystem,
       treatmentreasondisplaytext: treatmentReasonDisplayText,
-      treatmentintent: treatmentIntent,
+      procedureintent: procedureIntent,
       status,
+      intent,
+      authoredon: authoredOn,
+      requesterid: requesterId,
     } = medication;
 
-    if (!(code && codeSystem && status)) {
-      throw new Error('The cancer-related medication is missing an expected element; code, code system, and status are all required values.');
+    if (!(code && codeSystem && status && intent && requesterId && authoredOn)) {
+      throw new Error('The cancer-related medication request is missing an expected element; code, code system, status, authoredOn, requesterId, and intent are all required values.');
     }
 
     return {
-      ...(medicationId && { id: medicationId }),
+      ...(requestId && { id: requestId }),
       subjectId: patientId,
       code,
       codeSystem,
       displayText,
-      startDate: !startDate ? null : formatDateTime(startDate),
-      endDate: !endDate ? null : formatDateTime(endDate),
       treatmentReasonCode,
       treatmentReasonCodeSystem,
       treatmentReasonDisplayText,
-      treatmentIntent,
+      procedureIntent,
       status,
+      intent,
+      authoredOn: formatDateTime(authoredOn),
+      requesterId,
     };
   });
 }
 
-class CSVCancerRelatedMedicationExtractor extends BaseCSVExtractor {
-  constructor({ filePath, url }) {
-    super({ filePath, url });
+class CSVCancerRelatedMedicationRequestExtractor extends BaseCSVExtractor {
+  constructor({
+    filePath, url, fileName, dataDirectory, csvParse,
+  }) {
+    super({ filePath, url, fileName, dataDirectory, csvParse });
   }
 
   async getMedicationData(mrn) {
-    logger.debug('Getting Cancer Related Medication Data');
+    logger.debug('Getting Cancer Related Medication Request Data');
     return this.csvModule.get('mrn', mrn);
   }
 
   async get({ mrn, context }) {
     const medicationData = await this.getMedicationData(mrn);
     if (medicationData.length === 0) {
-      logger.warn('No medication data found for patient');
+      logger.warn('No medication request data found for patient');
       return getEmptyBundle();
     }
     const patientId = getPatientFromContext(context).id;
@@ -67,10 +71,10 @@ class CSVCancerRelatedMedicationExtractor extends BaseCSVExtractor {
     const formattedData = formatData(medicationData, patientId);
 
     // Fill templates
-    return generateMcodeResources('CancerRelatedMedication', formattedData);
+    return generateMcodeResources('CancerRelatedMedicationRequest', formattedData);
   }
 }
 
 module.exports = {
-  CSVCancerRelatedMedicationExtractor,
+  CSVCancerRelatedMedicationRequestExtractor,
 };

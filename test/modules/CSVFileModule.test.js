@@ -4,7 +4,6 @@ const exampleResponse = require('./fixtures/csv-response.json');
 
 const INVALID_MRN = 'INVALID MRN';
 const csvFileModule = new CSVFileModule(path.join(__dirname, './fixtures/example-csv.csv'));
-const csvFileModuleWithBOMs = new CSVFileModule(path.join(__dirname, './fixtures/example-csv-bom.csv'));
 
 
 describe('CSVFileModule', () => {
@@ -15,7 +14,33 @@ describe('CSVFileModule', () => {
     });
 
     test('Reads data from CSV with a Byte Order Mark', async () => {
+      const csvFileModuleWithBOMs = new CSVFileModule(
+        path.join(__dirname, './fixtures/example-csv-bom.csv'),
+      );
+
       const data = await csvFileModuleWithBOMs.get('mrn', 'example-mrn-1');
+      expect(data).toEqual(exampleResponse);
+    });
+
+    test('Reads data from CSV with Empty Values', async () => {
+      // Five row file, with three rows of empty values
+      // Should be just two rows of data after ingestion
+      const csvFileModuleWithEmptyValues = new CSVFileModule(
+        path.join(__dirname, './fixtures/example-csv-empty-values.csv'),
+      );
+      const data = await csvFileModuleWithEmptyValues.get('mrn', 'example-mrn-1');
+      expect(data).toEqual(exampleResponse);
+      const data2 = await csvFileModuleWithEmptyValues.get('mrn', 'example-mrn-not-ignored');
+      expect(data2).toHaveLength(1);
+      // Should be just two rows of data after ingestion
+      expect(csvFileModuleWithEmptyValues.data).toHaveLength(2);
+    });
+
+    test('Reads data from CSV with Empty Lines', async () => {
+      const csvFileModuleWithEmptyLines = new CSVFileModule(
+        path.join(__dirname, './fixtures/example-csv-empty-line.csv'),
+      );
+      const data = await csvFileModuleWithEmptyLines.get('mrn', 'example-mrn-1');
       expect(data).toEqual(exampleResponse);
     });
 

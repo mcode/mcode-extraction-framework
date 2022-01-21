@@ -30,7 +30,9 @@ async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, 
   await mcodeClient.init();
 
   // Parse CSV for list of patient mrns
-  const patientIds = parsePatientIds(config.patientIdCsvPath);
+  const dataDirectory = config.commonExtractorArgs && config.commonExtractorArgs.dataDirectory;
+  const parserOptions = config.commonExtractorArgs && config.commonExtractorArgs.csvParse && config.commonExtractorArgs.csvParse.options ? config.commonExtractorArgs.csvParse.options : {};
+  const patientIds = parsePatientIds(config.patientIdCsvPath, dataDirectory, parserOptions);
 
   // Get RunInstanceLogger for recording new runs and inferring dates from previous runs
   const runLogger = allEntries ? null : new RunInstanceLogger(pathToRunLogs);
@@ -43,7 +45,7 @@ async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, 
 
   // If we have notification information, send an emailNotification
   const { notificationInfo } = config;
-  if (notificationInfo) {
+  if (notificationInfo && Object.keys(notificationInfo).length > 0) {
     const notificationErrors = zipErrors(totalExtractionErrors);
     try {
       await sendEmailNotification(notificationInfo, notificationErrors, debug);

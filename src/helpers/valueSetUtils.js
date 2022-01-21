@@ -35,6 +35,37 @@ function loadVs(absoluteFilepath, typeOfVS) {
   }
 }
 
+function getConceptFromVSExpansion(valueSet, code, codeSystem) {
+  if (!code || !codeSystem || !valueSet) return undefined;
+  return valueSet.expansion.contains.find((containsItem) => containsItem
+      && containsItem.system
+      && code === containsItem.code
+      && codeSystem === containsItem.system);
+}
+
+function getConceptFromVSCompose(valueSet, code, codeSystem) {
+  if (!code || !codeSystem || !valueSet) return undefined;
+  const includeItem = valueSet.compose.include.find((item) => item
+      && item.system
+      && item.system === codeSystem
+      && item.concept);
+  if (!includeItem) return undefined;
+  return includeItem.concept.find((concept) => concept.code === code);
+}
+
+function getDisplayFromConcept(pathToValueSet, code, codeSystem) {
+  if (!code || !codeSystem || !pathToValueSet) return undefined;
+  const valueSet = loadVs(pathToValueSet, vsTypes.json);
+  let concept;
+  if (valueSet.expansion) {
+    // If valueSet has expansion, we only need to check these codes
+    concept = getConceptFromVSExpansion(valueSet, code, codeSystem);
+    return (concept && concept.display) ? concept.display : undefined;
+  }
+  concept = getConceptFromVSCompose(valueSet, code, codeSystem);
+  return (concept && concept.display) ? concept.display : undefined;
+}
+
 /**
  * Check if code is in value set
  * @param {string} code value to look for in a valueset
@@ -43,22 +74,21 @@ function loadVs(absoluteFilepath, typeOfVS) {
  * @param {string} typeOfVS the file type of the value set to be searched
  * @return {boolean} true if condition is in valueSet's compose block or expansion block
  */
-const checkCodeInVs = (code, codeSystem, valueSetFilePath, typeOfVS = vsTypes.json) => {
+const checkCodeInVs = (
+  code,
+  codeSystem,
+  valueSetFilePath,
+  typeOfVS = vsTypes.json,
+) => {
   const valueSet = loadVs(valueSetFilePath, typeOfVS);
   let inVSExpansion = false;
   let inVSCompose = false;
   if (valueSet.expansion) {
     // If valueSet has expansion, we only need to check these codes
-    inVSExpansion = valueSet.expansion.contains.some((containsItem) => {
-      if (!code || !codeSystem || !containsItem || !containsItem.system) return false;
-      return code === containsItem.code && codeSystem === containsItem.system;
-    });
+    inVSExpansion = (getConceptFromVSExpansion(valueSet, code, codeSystem) !== undefined);
   } else {
     // Checks if code is in any of the valueSet.compose.include arrays
-    inVSCompose = valueSet.compose.include.some((includeItem) => {
-      if (!code || !codeSystem || !includeItem || !includeItem.system || !includeItem.concept) return false;
-      return includeItem.system === codeSystem && includeItem.concept.map((concept) => concept.code).includes(code);
-    });
+    inVSCompose = (getConceptFromVSCompose(valueSet, code, codeSystem) !== undefined);
   }
   return inVSCompose || inVSExpansion;
 };
@@ -68,4 +98,7 @@ module.exports = {
   loadJsonVs,
   loadVs,
   checkCodeInVs,
+  getDisplayFromConcept,
+  getConceptFromVSCompose,
+  getConceptFromVSExpansion,
 };

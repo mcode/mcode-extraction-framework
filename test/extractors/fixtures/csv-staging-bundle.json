@@ -9,7 +9,7 @@
         "id": "626b61fd700d8ddc5a6a576a2e47944191b5f608e03083d00c49614f0158bb65",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-primary-tumor-category"
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-primary-tumor-category"
           ]
         },
         "status": "final",
@@ -67,7 +67,7 @@
         "id": "66e0e5f216bebeba287c3a3b0e220170bab88da95030e0c4bdba32f66628d00c",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-distant-metastases-category"
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-distant-metastases-category"
           ]
         },
         "status": "final",
@@ -125,7 +125,7 @@
         "id": "4469acab85a889d722f5b8b1cb786df8adbfc5f0b50ac23393ec42b8ecfd49e9",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-regional-nodes-category"
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-regional-nodes-category"
           ]
         },
         "status": "final",
@@ -183,7 +183,7 @@
         "id": "8fca0c2922335ea3c92022b4b2d4de17ba0645ce72d884b1e1c71a757c300a10",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-tnm-clinical-stage-group"
+            "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-stage-group"
           ]
         },
         "status": "final",
