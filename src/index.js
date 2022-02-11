@@ -69,6 +69,7 @@ const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersF
 const { parsePatientIds } = require('./helpers/appUtils');
 const { getConfig, validateConfig } = require('./helpers/configUtils');
 const configSchema = require('./helpers/schemas/config.schema.json');
+const { sortExtractors } = require('./helpers/dependencyUtils');
 
 module.exports = {
   // CLI Related utilities
@@ -143,6 +144,7 @@ module.exports = {
   logOperationOutcomeInfo,
   lowercaseLookupQuery,
   mEpochToDate,
+  sortExtractors,
   // Context operations
   getConditionEntriesFromContext,
   getConditionsFromContext,
