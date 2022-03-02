@@ -48,6 +48,36 @@ function getConditionsFromContext(context) {
 }
 
 /**
+* Parses context for AdverseEvent resources
+* @param {Object} context - Context object consisting of a FHIR Bundle
+* @return {Array} All the AdverseEvent resources found in context
+*/
+function getAdverseEventsFromContext(context) {
+  logger.debug('Getting adverse event resources from context');
+  const adverseEventResourcesInContext = getBundleResourcesByType(context, 'AdverseEvent', {}, false);
+  if (_.isEmpty(adverseEventResourcesInContext)) {
+    throw Error('Could not find any adverse events in context; ensure that an AdverseEventExtractor is used earlier in your extraction configuration');
+  }
+  logger.debug(`AdverseEvent resources found in context. Found ${adverseEventResourcesInContext.length} adverse event resources.`);
+  return adverseEventResourcesInContext;
+}
+
+/**
+* Parses context for AdverseEvent entries, which themselves contain resources
+* @param {Object} context - Context object consisting of a FHIR Bundle
+* @return {Array} All the AdverseEvents entries found in context
+*/
+function getAdverseEventEntriesFromContext(context) {
+  logger.debug('Getting adverse event entries from context');
+  const adverseEventEntriesInContext = getBundleEntriesByResourceType(context, 'AdverseEvent', {}, false);
+  if (adverseEventEntriesInContext.length === 0) {
+    throw Error('Could not find any adverse events in context; ensure that an AdverseEventExtractor is used earlier in your extraction configuration');
+  }
+  logger.debug(`AdverseEvent entries found in context. Found ${adverseEventEntriesInContext.length} adverse event resources.`);
+  return adverseEventEntriesInContext;
+}
+
+/**
 * Parses context for Encounter resources
 * @param {Object} context - Context object consisting of a FHIR Bundle
 * @return {Array} All the encounter resources found in context
@@ -78,4 +108,6 @@ module.exports = {
   getEncountersFromContext,
   getPatientFromContext,
   getResearchStudiesFromContext,
+  getAdverseEventEntriesFromContext,
+  getAdverseEventsFromContext,
 };
