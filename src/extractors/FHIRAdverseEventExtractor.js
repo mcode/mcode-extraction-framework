@@ -18,8 +18,12 @@ class FHIRAdverseEventExtractor extends BaseFHIRExtractor {
     try {
       allResearchStudyResources = getResearchStudiesFromContext(context);
     } catch (e) {
-      logger.error(e.message);
+      logger.debug(e.message);
       logger.debug(e.stack);
+      if (!this.study) {
+        logger.error('There is no ResearchStudy id to complete a request for Adverse Event resources; please include a ClinicalTrialInformationExtractor,'
+        + ' ResearchStudyExtractor, or "study" constructorArg in your extraction configuration.');
+      }
     }
 
     // The patient is referenced in the 'subject' field of an AdverseEvent

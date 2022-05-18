@@ -65,10 +65,18 @@ const {
 const { getDiseaseStatusCode, getDiseaseStatusEvidenceCode, mEpochToDate } = require('./helpers/diseaseStatusUtils');
 const { formatDate, formatDateTime } = require('./helpers/dateUtils');
 const { lowercaseLookupQuery, createLowercaseLookup, createInvertedLookup } = require('./helpers/lookupUtils');
-const { getConditionEntriesFromContext, getConditionsFromContext, getEncountersFromContext, getPatientFromContext } = require('./helpers/contextUtils');
+const {
+  getConditionEntriesFromContext,
+  getConditionsFromContext,
+  getEncountersFromContext,
+  getPatientFromContext,
+  getAdverseEventsFromContext,
+  getAdverseEventEntriesFromContext,
+} = require('./helpers/contextUtils');
 const { parsePatientIds } = require('./helpers/appUtils');
 const { getConfig, validateConfig } = require('./helpers/configUtils');
 const configSchema = require('./helpers/schemas/config.schema.json');
+const { sortExtractors } = require('./helpers/dependencyUtils');
 
 module.exports = {
   // CLI Related utilities
@@ -143,11 +151,14 @@ module.exports = {
   logOperationOutcomeInfo,
   lowercaseLookupQuery,
   mEpochToDate,
+  sortExtractors,
   // Context operations
   getConditionEntriesFromContext,
   getConditionsFromContext,
   getEncountersFromContext,
   getPatientFromContext,
+  getAdverseEventEntriesFromContext,
+  getAdverseEventsFromContext,
   // Configuration file schema
   configSchema,
 };
