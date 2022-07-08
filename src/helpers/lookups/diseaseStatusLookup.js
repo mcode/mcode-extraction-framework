@@ -11,7 +11,7 @@ const mcodeDiseaseStatusTextToCodeLookup = {
   // TODO: These are placeholder codes representing codes that are requested additions to the SNOMED vocabulary
   // They will likely need to be updated in future versions of mCODE
   'Cancer in complete remission(finding)': 'USCRS-352236',
-  'Cancer in partial remission (finding)': 'USCRS-352237'
+  'Cancer in partial remission (finding)': 'USCRS-352237',
 };
 const mcodeDiseaseStatusCodeToTextLookup = createInvertedLookup(mcodeDiseaseStatusTextToCodeLookup);
 

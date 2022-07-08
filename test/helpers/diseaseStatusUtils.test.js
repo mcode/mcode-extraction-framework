@@ -13,6 +13,8 @@ const mcodeDiseaseStatusTextToCodeLookup = {
   'Patient\'s condition stable (finding)': '359746009',
   'Patient\'s condition worsened (finding)': '271299001',
   'Patient condition undetermined (finding)': '709137006',
+  'Cancer in complete remission(finding)': 'USCRS-352236',
+  'Cancer in partial remission (finding)': 'USCRS-352237',
 };
 
 // Code mapping is based on initial values still in use by icare implementors
