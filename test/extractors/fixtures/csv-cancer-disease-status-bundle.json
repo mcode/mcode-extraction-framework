@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:4b9e9b5a8db529782cd9e89b68c6a3fac408d2195f025691a3f2850cab18057f",
+      "fullUrl": "urn:uuid:e8293a0d18fb20d6b1749009032a26f2d34d8418369c87c8345f6c988fa0fc33",
       "resource": {
         "resourceType": "Observation",
-        "id": "4b9e9b5a8db529782cd9e89b68c6a3fac408d2195f025691a3f2850cab18057f",
+        "id": "e8293a0d18fb20d6b1749009032a26f2d34d8418369c87c8345f6c988fa0fc33",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status"
@@ -47,9 +47,9 @@
         "valueCodeableConcept": {
           "coding": [
             {
-              "system": "http://snomed.info/sct",
-              "code": "268910001",
-              "display": "Patient condition improved (finding)"
+              "system": "http://hl7.org/fhir/us/mcode/CodeSystem/snomed-requested-cs",
+              "code": "USCRS-352236",
+              "display": "Cancer in complete remission(finding)"
             }
           ]
         },
