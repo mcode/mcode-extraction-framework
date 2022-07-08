@@ -1,12 +1,17 @@
 const { createInvertedLookup, createLowercaseLookup } = require('../lookupUtils');
 
-// Code mapping is based on current values at https://www.hl7.org/fhir/us/mcode/2021May/ValueSet-mcode-condition-status-trend-vs.html
+// Code mapping is based on current values at https://hl7.org/fhir/us/mcode/ValueSet-mcode-condition-status-trend-vs.html
+// along with legacy codes included at https://www.hl7.org/fhir/us/mcode/2021May/ValueSet-mcode-condition-status-trend-vs.html
 const mcodeDiseaseStatusTextToCodeLookup = {
-  'No abnormality detected (finding)': '281900007',
+  'No abnormality detected (finding)': '281900007', // No longer in the Vs, included for backwards compatibility
   'Patient condition improved (finding)': '268910001',
   'Patient\'s condition stable (finding)': '359746009',
   'Patient\'s condition worsened (finding)': '271299001',
   'Patient condition undetermined (finding)': '709137006',
+  // TODO: These are placeholder codes representing codes that are requested additions to the SNOMED vocabulary
+  // They will likely need to be updated in future versions of mCODE
+  'Cancer in complete remission(finding)': 'USCRS-352236',
+  'Cancer in partial remission (finding)': 'USCRS-352237'
 };
 const mcodeDiseaseStatusCodeToTextLookup = createInvertedLookup(mcodeDiseaseStatusTextToCodeLookup);
 
