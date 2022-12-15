@@ -3,11 +3,10 @@ const logger = require('./logger');
 
 // Validates csvData against the csvSchema
 // Uses the csvFileIdentifier in logs for readability
-function validateCSV(csvFileIdentifier, csvSchema, csvData) {
+function validateCSV(csvFileIdentifier, csvSchema, csvData, headers) {
   let isValid = true;
 
   // Check headers
-  const headers = Object.keys(csvData[0]).map((h) => h.toLowerCase());
   const schemaDiff = _.difference(csvSchema.headers.map((h) => h.name.toLowerCase()), headers);
   const fileDiff = _.difference(headers, csvSchema.headers.map((h) => h.name.toLowerCase()));
 
