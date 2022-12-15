@@ -27,10 +27,6 @@ function validateCSV(csvFileIdentifier, csvSchema, csvData, header) {
     });
   }
 
-  if (csvData.length === 0) {
-    return true;
-  }
-
   // Check values
   csvData.forEach((row, i) => {
     Object.entries(row).forEach(([key, value], j) => {
