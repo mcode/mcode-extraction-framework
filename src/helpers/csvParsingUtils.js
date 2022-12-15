@@ -64,7 +64,7 @@ function getCSVHeader(csvData) {
     bom: true,
     trim: true,
     to: 1,
-  })[0];
+  })[0].map((h) => h.toLowerCase());
 }
 
 module.exports = {
