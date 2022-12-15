@@ -3,11 +3,11 @@ const logger = require('./logger');
 
 // Validates csvData against the csvSchema
 // Uses the csvFileIdentifier in logs for readability
-function validateCSV(csvFileIdentifier, csvSchema, csvData) {
+function validateCSV(csvFileIdentifier, csvSchema, csvData, header) {
   let isValid = true;
 
   // Check headers
-  const headers = Object.keys(csvData[0]).map((h) => h.toLowerCase());
+  const headers = header.map((h) => h.toLowerCase());
   const schemaDiff = _.difference(csvSchema.headers.map((h) => h.name.toLowerCase()), headers);
   const fileDiff = _.difference(headers, csvSchema.headers.map((h) => h.name.toLowerCase()));
 
@@ -25,6 +25,10 @@ function validateCSV(csvFileIdentifier, csvSchema, csvData) {
         logger.warn(`Column ${sd} is missing in CSV ${csvFileIdentifier}`);
       }
     });
+  }
+
+  if (csvData.length === 0) {
+    return true;
   }
 
   // Check values

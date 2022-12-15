@@ -44,6 +44,8 @@ const DEFAULT_OPTIONS = {
   columns: (header) => header.map((column) => stringNormalizer(column)),
   // https://csv.js.org/parse/options/bom/
   bom: true,
+  // https://csv.js.org/parse/options/trim/
+  trim: true,
   // https://csv.js.org/parse/options/skip_empty_lines/
   skip_empty_lines: true,
   // NOTE: This will skip any records with empty values, not just skip the empty values themselves
@@ -57,9 +59,17 @@ function csvParse(csvData, options = {}) {
   return parse(csvData, { ...DEFAULT_OPTIONS, ...options });
 }
 
+function getCSVHeader(csvData) {
+  return parse(csvData, {
+    bom: true,
+    trim: true,
+    to: 1,
+  })[0];
+}
 
 module.exports = {
   stringNormalizer,
   normalizeEmptyValues,
   csvParse,
+  getCSVHeader,
 };

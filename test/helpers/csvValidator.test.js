@@ -83,26 +83,30 @@ const schema = {
 
 describe('csvValidator', () => {
   test('simple data validates', () => {
-    expect(validateCSV('', schema, SIMPLE_DATA)).toBe(true);
+    expect(validateCSV('', schema, SIMPLE_DATA, Object.keys(SIMPLE_DATA[0]))).toBe(true);
   });
 
   test('data missing required value does not validate', () => {
-    expect(validateCSV('', schema, SIMPLE_DATA_MISSING_REQUIRED_VALUE)).toBe(false);
+    expect(validateCSV('', schema, SIMPLE_DATA_MISSING_REQUIRED_VALUE, Object.keys(SIMPLE_DATA_MISSING_REQUIRED_VALUE[0]))).toBe(false);
   });
 
   test('data missing required header does not validate', () => {
-    expect(validateCSV('', schema, SIMPLE_DATA_MISSING_HEADER)).toBe(false);
+    expect(validateCSV('', schema, SIMPLE_DATA_MISSING_HEADER, Object.keys(SIMPLE_DATA_MISSING_HEADER[0]))).toBe(false);
   });
 
   test('data with erroneous column should still validate', () => {
-    expect(validateCSV('', schema, SIMPLE_DATA_EXTRA_COLUMNS)).toBe(true);
+    expect(validateCSV('', schema, SIMPLE_DATA_EXTRA_COLUMNS, Object.keys(SIMPLE_DATA_EXTRA_COLUMNS[0]))).toBe(true);
   });
 
   test('data missing an optional column should still validate', () => {
-    expect(validateCSV('', schema, SIMPLE_DATA_MISSING_OPTIONAL_COLUMN)).toBe(true);
+    expect(validateCSV('', schema, SIMPLE_DATA_MISSING_OPTIONAL_COLUMN, Object.keys(SIMPLE_DATA_MISSING_OPTIONAL_COLUMN[0]))).toBe(true);
   });
 
   test('data with different casing in the column header should still validate', () => {
-    expect(validateCSV('', schema, SIMPLE_DATA_DIFFERENT_CASING)).toBe(true);
+    expect(validateCSV('', schema, SIMPLE_DATA_DIFFERENT_CASING, Object.keys(SIMPLE_DATA_DIFFERENT_CASING[0]))).toBe(true);
+  });
+
+  test('data with only the header but no rows should still validate', () => {
+    expect(validateCSV('', schema, [], ['header1', 'header2', 'header3'])).toBe(true);
   });
 });
