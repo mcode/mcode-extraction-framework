@@ -2,7 +2,7 @@ const axios = require('axios');
 const moment = require('moment');
 const logger = require('../helpers/logger');
 const { validateCSV } = require('../helpers/csvValidator');
-const { csvParse, stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
+const { csvParse, stringNormalizer, normalizeEmptyValues, getCSVHeader } = require('../helpers/csvParsingUtils');
 
 class CSVURLModule {
   constructor(url, unalterableColumns, parserOptions) {
@@ -28,6 +28,7 @@ class CSVURLModule {
       const parsedData = csvParse(csvData, this.parserOptions);
       logger.debug('CSV Data parsing successful');
       this.data = normalizeEmptyValues(parsedData, this.unalterableColumns);
+      this.header = getCSVHeader(csvData);
     }
   }
 
@@ -55,7 +56,7 @@ class CSVURLModule {
 
     if (csvSchema) {
       this.data = normalizeEmptyValues(this.data, this.unalterableColumns);
-      return validateCSV(this.url, csvSchema, this.data);
+      return validateCSV(this.url, csvSchema, this.data, this.header);
     }
     logger.warn(`No CSV schema provided for data found at ${this.url}`);
     return true;

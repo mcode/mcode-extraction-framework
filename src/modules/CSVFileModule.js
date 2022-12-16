@@ -2,14 +2,16 @@ const fs = require('fs');
 const moment = require('moment');
 const logger = require('../helpers/logger');
 const { validateCSV } = require('../helpers/csvValidator');
-const { csvParse, stringNormalizer, normalizeEmptyValues } = require('../helpers/csvParsingUtils');
+const { csvParse, stringNormalizer, normalizeEmptyValues, getCSVHeader } = require('../helpers/csvParsingUtils');
 
 class CSVFileModule {
   constructor(csvFilePath, unalterableColumns, parserOptions) {
     // Parse then normalize the data
-    const parsedData = csvParse(fs.readFileSync(csvFilePath), parserOptions);
+    const csvData = fs.readFileSync(csvFilePath);
+    const parsedData = csvParse(csvData, parserOptions);
     this.filePath = csvFilePath;
     this.data = normalizeEmptyValues(parsedData, unalterableColumns);
+    this.header = getCSVHeader(csvData);
   }
 
   async get(key, value, fromDate, toDate) {
@@ -32,7 +34,7 @@ class CSVFileModule {
   async validate(csvSchema) {
     if (csvSchema) {
       logger.info(`Validating CSV file for ${this.filePath}`);
-      return validateCSV(this.filePath, csvSchema, this.data);
+      return validateCSV(this.filePath, csvSchema, this.data, this.header);
     }
     logger.warn(`No CSV schema provided for ${this.filePath}`);
     return true;

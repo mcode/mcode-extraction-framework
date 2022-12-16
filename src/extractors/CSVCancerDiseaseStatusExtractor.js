@@ -36,7 +36,7 @@ class CSVCancerDiseaseStatusExtractor extends BaseCSVExtractor {
         status: observationStatus || 'final',
         value: {
           code: diseaseStatusCode,
-          system: 'http://snomed.info/sct',
+          system: diseaseStatusCode.includes('USCRS') ? 'http://hl7.org/fhir/us/mcode/CodeSystem/snomed-requested-cs' : 'http://snomed.info/sct',
           display: diseaseStatusText || getDiseaseStatusDisplay(diseaseStatusCode, this.implementation),
         },
         subject: {
