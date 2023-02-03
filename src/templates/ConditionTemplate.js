@@ -48,8 +48,7 @@ function categoryArrayTemplate(array) {
 function codingTemplate({ code }) {
   return {
     code: {
-      coding: [coding(code),
-      ],
+      coding: code.map((c) => coding(c)),
     },
   };
 }
@@ -100,7 +99,7 @@ function subjectTemplate({ subject }) {
 function conditionTemplate({
   subject, id, code, category, dateOfDiagnosis, clinicalStatus, verificationStatus, bodySite, laterality, histology,
 }) {
-  if (!(id && subject && code.system && code.code && category)) {
+  if (!(id && subject && code.every((c) => c.system) && code.every((c) => c.code) && category)) {
     throw Error('Trying to render a ConditionTemplate, but a required argument is missing; ensure that id, mrn, code, codesystem, and category are all present');
   }
 
