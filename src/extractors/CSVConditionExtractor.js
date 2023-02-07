@@ -32,11 +32,11 @@ function formatData(conditionData, patientId) {
       subject: {
         id: patientId,
       },
-      code: {
-        code,
+      code: code.split('|').map((c) => ({
+        code: c,
         system: codeSystem,
         display: displayName,
-      },
+      })),
       category: category.split('|'),
       dateOfDiagnosis: !dateOfDiagnosis ? null : formatDateTime(dateOfDiagnosis),
       clinicalStatus,
