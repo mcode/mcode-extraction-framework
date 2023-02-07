@@ -9,11 +9,11 @@ const CONDITION_VALID_DATA = {
   subject: {
     id: 'example-subject-id',
   },
-  code: {
+  code: [{
     system: 'example-system',
     code: 'example-code',
     display: 'exampleDisplayName',
-  },
+  }],
   category: [
     'example-code',
   ],
@@ -33,10 +33,10 @@ const CONDITION_MINIMAL_DATA = {
   subject: {
     id: 'example-subject-id',
   },
-  code: {
+  code: [{
     system: 'example-system',
     code: 'example-code',
-  },
+  }],
   category: [
     'example-code',
   ],
@@ -97,11 +97,11 @@ describe('test Condition template', () => {
       subject: {
         id: 'example-subject-id',
       },
-      code: {
+      code: [{
         system: 'example-system',
         code: 'example-code',
         display: 'exampleDisplayName',
-      },
+      }],
       category: [
         'example-code',
       ],
