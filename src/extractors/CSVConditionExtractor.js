@@ -27,12 +27,16 @@ function formatData(conditionData, patientId) {
     if (!(conditionId && codeSystem && code && category)) {
       throw new Error('The condition is missing an expected attribute. Condition id, code system, code, and category are all required.');
     }
+    const codes = code.split('|').map((c) => c.trim()).filter((c) => c && c !== '');
+    if (codes.length < code.split('|').length) {
+      logger.warn('Delimiter (|) used to indicate multiple condition codes but no additional code provided');
+    }
     return {
       id: conditionId,
       subject: {
         id: patientId,
       },
-      code: code.split('|').map((c) => ({
+      code: codes.map((c) => ({
         code: c,
         system: codeSystem,
         display: displayName,
