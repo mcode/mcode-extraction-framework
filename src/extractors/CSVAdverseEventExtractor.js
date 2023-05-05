@@ -4,6 +4,7 @@ const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { getPatientFromContext } = require('../helpers/contextUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
+const { CSVAdverseEventSchema } = require('../helpers/schemas/csv');
 
 // Formats data to be passed into template-friendly format
 function formatData(adverseEventData, patientId) {
@@ -72,7 +73,7 @@ class CSVAdverseEventExtractor extends BaseCSVExtractor {
   constructor({
     filePath, url, fileName, dataDirectory, csvParse,
   }) {
-    super({ filePath, url, fileName, dataDirectory, csvParse });
+    super({ filePath, url, fileName, dataDirectory, csvSchema: CSVAdverseEventSchema, csvParse });
   }
 
   async getAdverseEventData(mrn) {

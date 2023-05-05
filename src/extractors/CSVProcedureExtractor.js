@@ -4,6 +4,7 @@ const { getPatientFromContext } = require('../helpers/contextUtils');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
+const { CSVProcedureSchema } = require('../helpers/schemas/csv');
 
 // Formats data to be passed into template-friendly format
 function formatData(procedureData, patientId) {
@@ -51,7 +52,7 @@ class CSVProcedureExtractor extends BaseCSVExtractor {
   constructor({
     filePath, url, fileName, dataDirectory, csvParse,
   }) {
-    super({ filePath, url, fileName, dataDirectory, csvParse });
+    super({ filePath, url, fileName, dataDirectory, csvSchema: CSVProcedureSchema, csvParse });
   }
 
   async getProcedureData(mrn) {

@@ -4,6 +4,7 @@ const { getPatientFromContext } = require('../helpers/contextUtils');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
+const { CSVCancerRelatedMedicationRequestSchema } = require('../helpers/schemas/csv');
 
 
 function formatData(medicationData, patientId) {
@@ -51,7 +52,7 @@ class CSVCancerRelatedMedicationRequestExtractor extends BaseCSVExtractor {
   constructor({
     filePath, url, fileName, dataDirectory, csvParse,
   }) {
-    super({ filePath, url, fileName, dataDirectory, csvParse });
+    super({ filePath, url, fileName, dataDirectory, csvSchema: CSVCancerRelatedMedicationRequestSchema, csvParse });
   }
 
   async getMedicationData(mrn) {
