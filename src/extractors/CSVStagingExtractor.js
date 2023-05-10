@@ -4,6 +4,7 @@ const { getPatientFromContext } = require('../helpers/contextUtils');
 const { generateMcodeResources } = require('../templates');
 const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
+const { CSVStagingSchema } = require('../helpers/schemas/csv');
 
 function formatTNMCategoryData(stagingData, patientId) {
   logger.debug('Reformatting TNM Category data into template format');
@@ -66,7 +67,7 @@ class CSVStagingExtractor extends BaseCSVExtractor {
   constructor({
     filePath, url, fileName, dataDirectory, csvParse,
   }) {
-    super({ filePath, url, fileName, dataDirectory, csvParse });
+    super({ filePath, url, fileName, dataDirectory, csvSchema: CSVStagingSchema, csvParse });
   }
 
   async getStagingData(mrn) {

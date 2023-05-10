@@ -7,6 +7,7 @@ const { formatDateTime } = require('../helpers/dateUtils');
 const { getDisplayFromConcept } = require('../helpers/valueSetUtils');
 const { ctcAEGradeCodeToTextLookup } = require('../helpers/lookups/ctcAdverseEventLookup');
 const logger = require('../helpers/logger');
+const { CSVCTCAdverseEventSchema } = require('../helpers/schemas/csv');
 
 // Formats data to be passed into template-friendly format
 function formatData(adverseEventData, patientId) {
@@ -112,7 +113,7 @@ class CSVCTCAdverseEventExtractor extends BaseCSVExtractor {
   constructor({
     filePath, url, fileName, dataDirectory, csvParse,
   }) {
-    super({ filePath, url, fileName, dataDirectory, csvParse });
+    super({ filePath, url, fileName, dataDirectory, csvSchema: CSVCTCAdverseEventSchema, csvParse });
   }
 
   async getAdverseEventData(mrn) {

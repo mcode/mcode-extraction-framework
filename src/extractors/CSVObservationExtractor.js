@@ -4,6 +4,7 @@ const { getPatientFromContext } = require('../helpers/contextUtils');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
 const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
+const { CSVObservationSchema } = require('../helpers/schemas/csv');
 
 function formatData(observationData, patientId) {
   logger.debug('Reformatting observation data from CSV into template format');
@@ -45,7 +46,7 @@ class CSVObservationExtractor extends BaseCSVExtractor {
   constructor({
     filePath, url, fileName, dataDirectory, csvParse,
   }) {
-    super({ filePath, url, fileName, dataDirectory, csvParse });
+    super({ filePath, url, fileName, dataDirectory, csvSchema: CSVObservationSchema, csvParse });
   }
 
   async getObservationData(mrn) {
