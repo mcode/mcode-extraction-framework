@@ -1,4 +1,4 @@
 mrn,requestId,code,codeSystem,displayText,treatmentReasonCode,treatmentReasonCodeSystem,treatmentReasonDisplayText,procedureIntent,status,intent,authoredOn,requesterId
 123,requestId-1,10760,http://www.nlm.nih.gov/research/umls/rxnorm,Triamcinolone Oral Paste,999000,http://snomed.info/sct,Mixed islet cell and exocrine adenocarcinoma,373808002,active,order,2020-01-01,requester-1
 456,requestId-2,91318,http://www.nlm.nih.gov/research/umls/rxnorm,Coal Tar Topical Solution,915007,http://snomed.info/sct,Malignant melanoma in junctional nevus,373808002,on-hold,proposal,2019-02-02,requester-2
-789,requestId-3,91833,http://www.nlm.nih.gov/research/umls/rxnorm,Vitamin K1 Injectable Solution [Aquamephyton],900006,http://snomed.info/sct,Mucin-producing adenocarcinoma,363676003,cancelled,plan,2021-06-12,requester-3
+789,requestId-3,91833,http://www.nlm.nih.gov/research/umls/rxnorm,Vitamin K1 Injectable Solution [Aquamephyton],900006,http://snomed.info/sct,Mucin-producing adenocarcinoma,363676003,cancelled,plan,,requester-3

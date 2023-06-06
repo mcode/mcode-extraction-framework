@@ -35,7 +35,7 @@ expandedExampleBundle.entry.push(exampleCSVMedicationBundle.entry[0]);
 describe('CSVCancerRelatedMedicationRequestExtractor', () => {
   describe('formatData', () => {
     test('should join data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'The cancer-related medication request is missing an expected element; code, code system, status, authoredOn, requesterId, and intent are all required values.';
+      const expectedErrorString = 'The cancer-related medication request is missing an expected element; code, code system, status, requesterId, and intent are all required values.';
       const localData = _.cloneDeep(exampleCSVMedicationModuleResponse);
       const patientId = getPatientFromContext(MOCK_CONTEXT).id;
 

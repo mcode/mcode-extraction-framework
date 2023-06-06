@@ -7,6 +7,7 @@ const {
   treatmentReasonTemplate,
 } = require('./snippets');
 const { ifAllArgsObj } = require('../helpers/templateUtils');
+const { formatDateTime } = require('../helpers/dateUtils');
 
 function procedureIntentTemplate({ procedureIntent }) {
   return {
@@ -36,9 +37,9 @@ function cancerRelatedMedicationRequestTemplate({
   authoredOn,
   requesterId,
 }) {
-  if (!(subjectId && code && codeSystem && status && intent && requesterId && authoredOn)) {
+  if (!(subjectId && code && codeSystem && status && intent && requesterId)) {
     const e1 = 'Trying to render a CancerRelatedMedicationRequestTemplate, but a required argument is missing; ';
-    const e2 = 'ensure that subjectId, code, codeSystem, intent, requesterId, authoredOn, and status are all present';
+    const e2 = 'ensure that subjectId, code, codeSystem, intent, requesterId, and status are all present';
     throw Error(e1 + e2);
   }
 
@@ -55,7 +56,7 @@ function cancerRelatedMedicationRequestTemplate({
     intent,
     ...medicationTemplate({ code, codeSystem, displayText }),
     ...ifAllArgsObj(subjectTemplate)({ id: subjectId }),
-    authoredOn,
+    ...(authoredOn && { authoredOn: formatDateTime(authoredOn) }),
     ...ifAllArgsObj(requesterTemplate)({ id: requesterId }),
     ...ifAllArgsObj(treatmentReasonTemplate)({ treatmentReasonCode, treatmentReasonCodeSystem, treatmentReasonDisplayText }),
   };
