@@ -113,7 +113,7 @@ const CSVCancerRelatedMedicationRequestSchema = {
     { name: 'procedureIntent' },
     { name: 'status', required: true },
     { name: 'intent', required: true },
-    { name: 'authoredOn', required: true },
+    { name: 'authoredOn' },
     { name: 'requesterId', required: true },
   ],
 };

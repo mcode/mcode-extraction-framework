@@ -2,7 +2,6 @@ const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
 const { getPatientFromContext } = require('../helpers/contextUtils');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
-const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
 const { CSVCancerRelatedMedicationRequestSchema } = require('../helpers/schemas/csv');
 
@@ -26,8 +25,8 @@ function formatData(medicationData, patientId) {
       requesterid: requesterId,
     } = medication;
 
-    if (!(code && codeSystem && status && intent && requesterId && authoredOn)) {
-      throw new Error('The cancer-related medication request is missing an expected element; code, code system, status, authoredOn, requesterId, and intent are all required values.');
+    if (!(code && codeSystem && status && intent && requesterId)) {
+      throw new Error('The cancer-related medication request is missing an expected element; code, code system, status, requesterId, and intent are all required values.');
     }
 
     return {
@@ -42,7 +41,7 @@ function formatData(medicationData, patientId) {
       procedureIntent,
       status,
       intent,
-      authoredOn: formatDateTime(authoredOn),
+      authoredOn,
       requesterId,
     };
   });

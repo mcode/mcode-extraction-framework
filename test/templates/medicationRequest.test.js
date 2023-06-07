@@ -25,7 +25,7 @@ const REQUEST_MINIMAL_DATA = {
   code: 'example-code',
   codeSystem: 'example-code-system',
   displayText: null,
-  authoredOn: '2020-01-01',
+  authoredOn: null,
   treatmentReasonCode: null,
   treatmentReasonCodeSystem: null,
   treatmentReasonDisplayText: null,

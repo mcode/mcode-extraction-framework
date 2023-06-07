@@ -19,7 +19,6 @@
     "reference": "urn:uuid:mrn-1",
     "type": "Patient"
   },
-  "authoredOn": "2020-01-01",
   "requester": {
     "reference": "urn:uuid:example-requester"
   }
