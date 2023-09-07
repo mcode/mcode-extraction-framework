@@ -1,0 +1,13 @@
+[
+  {
+    "mrn": "mrn-1",
+    "encounterid": "encounterId-1",
+    "status": "arrived",
+    "classcode": "AMB",
+    "classsystem": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "typecode": "11429006",
+    "typesystem": "http://snomed.info/sct",
+    "startdate": "2020-01-10",
+    "enddate": "2020-01-10"
+  }
+]

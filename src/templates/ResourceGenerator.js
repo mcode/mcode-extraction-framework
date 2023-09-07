@@ -16,6 +16,7 @@ const { researchStudyTemplate } = require('./ResearchStudyTemplate');
 const { researchSubjectTemplate } = require('./ResearchSubjectTemplate');
 const { stagingTemplate } = require('./StagingTemplate');
 const { tnmCategoryTemplate } = require('./TNMCategoryTemplate');
+const { encounterTemplate } = require('./EncounterTemplate');
 
 const fhirTemplateLookup = {
   AdverseEvent: adverseEventTemplate,
@@ -25,6 +26,7 @@ const fhirTemplateLookup = {
   CarePlanWithReview: carePlanWithReviewTemplate,
   Condition: conditionTemplate,
   CTCAdverseEvent: CTCAdverseEventTemplate,
+  Encounter: encounterTemplate,
   Observation: observationTemplate,
   Patient: patientTemplate,
   Procedure: procedureTemplate,

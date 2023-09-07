@@ -205,6 +205,20 @@ const CSVCTCAdverseEventSchema = {
   ],
 };
 
+const CSVEncounterSchema = {
+  headers: [
+    { name: 'mrn', required: true },
+    { name: 'encounterId' },
+    { name: 'status', required: true },
+    { name: 'classCode', required: true },
+    { name: 'classSystem', required: true },
+    { name: 'typeCode' },
+    { name: 'typeSystem' },
+    { name: 'startDate' },
+    { name: 'endDate' },
+  ],
+};
+
 module.exports = {
   CSVCancerDiseaseStatusSchema,
   CSVConditionSchema,
@@ -218,4 +232,5 @@ module.exports = {
   CSVObservationSchema,
   CSVAdverseEventSchema,
   CSVCTCAdverseEventSchema,
+  CSVEncounterSchema,
 };
