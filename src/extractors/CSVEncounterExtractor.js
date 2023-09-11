@@ -21,8 +21,8 @@ function formatData(encounterData, patientId) {
       enddate: endDate,
     } = data;
 
-    if (!(status && classCode && classSystem)) {
-      throw Error('Missing required field for Encounter CSV Extraction: status, classCode or classSystem');
+    if (!(encounterId && status && classCode && classSystem)) {
+      throw Error('Missing required field for Encounter CSV Extraction: encounterId, status, classCode or classSystem');
     }
 
     return {

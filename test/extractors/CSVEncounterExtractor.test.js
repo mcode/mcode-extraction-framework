@@ -33,20 +33,20 @@ const csvModuleSpy = jest.spyOn(csvModule, 'get');
 describe('CSVEncounterExtractor', () => {
   describe('formatData', () => {
     test('should format data appropriately and throw errors when missing required properties', () => {
-      const expectedErrorString = 'Missing required field for Encounter CSV Extraction: status, classCode or classSystem';
+      const expectedErrorString = 'Missing required field for Encounter CSV Extraction: encounterId, status, classCode or classSystem';
       const localData = _.cloneDeep(exampleCSVEncounterModuleResponse);
       const patientId = getPatientFromContext(MOCK_CONTEXT).id;
 
       // Test that valid data works fine
       expect(formatData(exampleCSVEncounterModuleResponse, patientId)).toEqual(expect.anything());
 
-      localData[0].typecode = ''; // Evidence is not required and will not throw an error
-      localData[0].enddate = ''; // Observation Status is not required and will not throw an error
+      localData[0].typecode = '';
+      localData[0].enddate = '';
 
       // Only including required properties is valid
       expect(formatData(localData, patientId)).toEqual(expect.anything());
 
-      const requiredProperties = ['status', 'classcode', 'classsystem'];
+      const requiredProperties = ['encounterid', 'status', 'classcode', 'classsystem'];
 
       // Removing each required property should throw an error
       requiredProperties.forEach((key) => {

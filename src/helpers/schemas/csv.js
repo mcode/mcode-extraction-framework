@@ -208,7 +208,7 @@ const CSVCTCAdverseEventSchema = {
 const CSVEncounterSchema = {
   headers: [
     { name: 'mrn', required: true },
-    { name: 'encounterId' },
+    { name: 'encounterId', required: true },
     { name: 'status', required: true },
     { name: 'classCode', required: true },
     { name: 'classSystem', required: true },
