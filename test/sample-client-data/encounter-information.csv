@@ -1,0 +1,4 @@
+mrn,encounterId,status,classCode,classSystem,typeCode,typeSystem,startDate,endDate
+123,encounterId-1,arrived,AMB,http://terminology.hl7.org/CodeSystem/v3-ActCode,11429006,http://snomed.info/sct,2020-01-10,2020-01-10
+456,encounterId-2,planned,AMB,http://terminology.hl7.org/CodeSystem/v3-ActCode,270427003,http://snomed.info/sct,2021-02-10,2021-05-12
+789,encounterId-3,cancelled,IMP,http://terminology.hl7.org/CodeSystem/v3-ActCode,,,,
