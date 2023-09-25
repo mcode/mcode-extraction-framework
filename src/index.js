@@ -79,6 +79,7 @@ const { parsePatientIds } = require('./helpers/appUtils');
 const { getConfig, validateConfig } = require('./helpers/configUtils');
 const configSchema = require('./helpers/schemas/config.schema.json');
 const { sortExtractors } = require('./helpers/dependencyUtils');
+const { postExtractionFilter } = require('./helpers/filterUtils');
 
 module.exports = {
   // CLI Related utilities
@@ -156,6 +157,7 @@ module.exports = {
   lowercaseLookupQuery,
   mEpochToDate,
   sortExtractors,
+  postExtractionFilter,
   // Context operations
   getConditionEntriesFromContext,
   getConditionsFromContext,

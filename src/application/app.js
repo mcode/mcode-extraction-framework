@@ -5,6 +5,7 @@ const { sendEmailNotification, zipErrors } = require('./tools/emailNotifications
 const { extractDataForPatients } = require('./tools/mcodeExtraction');
 const { parsePatientIds } = require('../helpers/appUtils');
 const { validateConfig } = require('../helpers/configUtils');
+const { postExtractionFilter } = require('../helpers/filterUtils');
 
 function checkInputAndConfig(config, fromDate, toDate) {
   // Check input args and needed config variables based on client being used
@@ -42,6 +43,12 @@ async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, 
   // Extract the data
   logger.info(`Extracting data for ${patientIds.length} patients`);
   const { extractedData, successfulExtraction, totalExtractionErrors } = await extractDataForPatients(patientIds, mcodeClient, effectiveFromDate, effectiveToDate);
+
+  // Perform post-extraction processes
+  if (config.postExtractionFilter) {
+    logger.info('Applying post-extraction filter to bundle');
+    postExtractionFilter(extractedData, config.postExtractionFilter);
+  }
 
   // If we have notification information, send an emailNotification
   const { notificationInfo } = config;

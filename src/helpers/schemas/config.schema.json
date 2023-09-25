@@ -8,6 +8,10 @@
       "title": "Patient ID CSV File",
       "type": "string"
     },
+    "postExtractionFilter": {
+      "title": "Post-Extraction Filter",
+      "type": "string"
+    },
     "commonExtractorArgs": {
       "$ref": "#/$defs/commonExtractorArgs"
     },
