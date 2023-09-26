@@ -5,6 +5,8 @@
     "enrollmentstatus": "example-enrollment-status",
     "trialresearchid": "example-researchId",
     "trialstatus": "example-trialStatus",
-    "trialresearchsystem":"example-system"
+    "trialresearchsystem":"example-system",
+    "startdate": "2020-01-01",
+    "enddate": "2021-01-01"
   }
 ]

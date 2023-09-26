@@ -54,6 +54,8 @@ const CSVClinicalTrialInformationSchema = {
     { name: 'trialResearchID', required: true },
     { name: 'trialStatus', required: true },
     { name: 'trialResearchSystem' },
+    { name: 'startDate' },
+    { name: 'endDate' },
   ],
 };
 

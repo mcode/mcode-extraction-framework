@@ -8,6 +8,8 @@ const VALID_DATA = {
   trialSubjectID: 'trial-123',
   trialResearchID: 'rs1',
   patientId: 'mCODEPatient1',
+  startDate: '2020-01-01',
+  endDate: '2021-01-01',
 };
 
 const INVALID_DATA = {
@@ -16,6 +18,8 @@ const INVALID_DATA = {
   trialResearchID: 'rs1',
   patientId: 'mCODEPatient1',
   trialSubjectID: null,
+  startDate: '2020-01-01',
+  endDate: '2021-01-01',
 };
 
 describe('test ResearchSubject template', () => {
@@ -25,6 +29,8 @@ describe('test ResearchSubject template', () => {
     expect(generatedResearchSubject.id).toEqual(validResearchSubject.id);
     expect(generatedResearchSubject.trialStatus).toEqual(validResearchSubject.trialStatus);
     expect(generatedResearchSubject.trialResearchID).toEqual(validResearchSubject.trialResearchID);
+    expect(generatedResearchSubject.period.start).toEqual(validResearchSubject.period.start);
+    expect(generatedResearchSubject.period.end).toEqual(validResearchSubject.period.end);
     expect(isValidFHIR(generatedResearchSubject)).toBeTruthy();
   });
 

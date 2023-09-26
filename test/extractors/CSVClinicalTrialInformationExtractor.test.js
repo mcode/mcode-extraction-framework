@@ -40,6 +40,8 @@ describe('CSVClinicalTrialInformationExtractor', () => {
         expect(csvClinicalTrialInformationExtractor.joinClinicalTrialData(clonedData, patientId)).toEqual(expect.anything());
         if (key === 'patientId') return; // MRN is optional
         if (key === 'trialresearchsystem') return; // trialResearchSystem is optional
+        if (key === 'startdate') return; // startDate is optional
+        if (key === 'enddate') return; // endDate is optional
         delete clonedData[key];
         expect(() => csvClinicalTrialInformationExtractor.joinClinicalTrialData(clonedData, patientId)).toThrow(new Error(expectedErrorString));
       });
@@ -52,6 +54,8 @@ describe('CSVClinicalTrialInformationExtractor', () => {
           trialResearchID: firstClinicalTrialInfoResponse.trialresearchid,
           patientId,
           trialResearchSystem: firstClinicalTrialInfoResponse.trialresearchsystem,
+          startDate: firstClinicalTrialInfoResponse.startdate,
+          endDate: firstClinicalTrialInfoResponse.enddate,
         },
         formattedDataStudy: {
           trialStatus: firstClinicalTrialInfoResponse.trialstatus,
