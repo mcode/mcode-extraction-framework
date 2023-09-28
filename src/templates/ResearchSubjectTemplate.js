@@ -1,4 +1,4 @@
-const { reference, identifier, identifierArr } = require('./snippets');
+const { reference, identifier, identifierArr, periodTemplate } = require('./snippets');
 const { ifSomeArgsObj } = require('../helpers/templateUtils');
 
 function studyTemplate(trialResearchID, trialResearchSystem) {
@@ -30,15 +30,6 @@ function researchSubjectIdentifiersTemplate(trialSubjectID) {
       value: trialSubjectID,
     },
   );
-}
-
-function periodTemplate({ startDate, endDate }) {
-  return {
-    period: {
-      ...(startDate && { start: startDate }),
-      ...(endDate && { end: endDate }),
-    },
-  };
 }
 
 function researchSubjectTemplate({

@@ -1,14 +1,5 @@
 const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
-const { coding, reference } = require('./snippets');
-
-function periodTemplate({ startDate, endDate }) {
-  return {
-    period: {
-      ...(startDate && { start: startDate }),
-      ...(endDate && { end: endDate }),
-    },
-  };
-}
+const { coding, reference, periodTemplate } = require('./snippets');
 
 function classTemplate({ classCode, classSystem }) {
   return {
