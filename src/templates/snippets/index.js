@@ -10,6 +10,7 @@ const { stagingMethodTemplate } = require('./cancerStaging');
 const { medicationTemplate } = require('./medication');
 const { subjectTemplate } = require('./subject');
 const { treatmentReasonTemplate } = require('./treatmentReason');
+const { periodTemplate } = require('./period');
 
 module.exports = {
   bodySiteTemplate,
@@ -22,6 +23,7 @@ module.exports = {
   medicationTemplate,
   meta,
   narrative,
+  periodTemplate,
   reference,
   stagingMethodTemplate,
   subjectTemplate,

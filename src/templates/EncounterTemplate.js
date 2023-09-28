@@ -1,14 +1,5 @@
-const { ifAllArgsObj } = require('../helpers/templateUtils');
-const { coding, reference } = require('./snippets');
-
-function periodTemplate({ startDate, endDate }) {
-  return {
-    period: {
-      start: startDate,
-      end: endDate,
-    },
-  };
-}
+const { ifAllArgsObj, ifSomeArgsObj } = require('../helpers/templateUtils');
+const { coding, reference, periodTemplate } = require('./snippets');
 
 function classTemplate({ classCode, classSystem }) {
   return {
@@ -42,7 +33,7 @@ function encounterTemplate({
     ...classTemplate({ classCode, classSystem }),
     ...subjectTemplate({ subject }),
     ...ifAllArgsObj(typeTemplate)({ typeCode, typeSystem }),
-    ...ifAllArgsObj(periodTemplate)({ startDate, endDate }),
+    ...ifSomeArgsObj(periodTemplate)({ startDate, endDate }),
   };
 }
 

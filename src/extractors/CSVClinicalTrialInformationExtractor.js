@@ -4,6 +4,7 @@ const { firstEntryInBundle, getEmptyBundle } = require('../helpers/fhirUtils');
 const { getPatientFromContext } = require('../helpers/contextUtils');
 const { generateMcodeResources } = require('../templates');
 const logger = require('../helpers/logger');
+const { formatDateTime } = require('../helpers/dateUtils');
 const { CSVClinicalTrialInformationSchema } = require('../helpers/schemas/csv');
 
 
@@ -25,6 +26,8 @@ class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
       trialresearchid: trialResearchID,
       trialstatus: trialStatus,
       trialresearchsystem: trialResearchSystem,
+      startdate: startDate,
+      enddate: endDate,
     } = clinicalTrialData;
     const { clinicalSiteID, clinicalSiteSystem } = this;
 
@@ -40,6 +43,8 @@ class CSVClinicalTrialInformationExtractor extends BaseCSVExtractor {
         trialResearchID,
         patientId,
         trialResearchSystem,
+        startDate: !startDate ? null : formatDateTime(startDate),
+        endDate: !endDate ? null : formatDateTime(endDate),
       },
       formattedDataStudy: {
         trialStatus,

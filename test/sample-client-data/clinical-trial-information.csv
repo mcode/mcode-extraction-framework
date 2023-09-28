@@ -1,4 +1,4 @@
-mrn,trialSubjectID,enrollmentStatus,trialResearchID,trialStatus,trialResearchSystem
-123,subjectId-1,potential-candidate,researchId-1,approved,system-1
-456,subjectId-2,on-study-intervention,researchId-1,completed,system-2
-789,subjectId-3,on-study-observation,researchId-2,active,
+mrn,trialSubjectID,enrollmentStatus,trialResearchID,trialStatus,trialResearchSystem,startDate,endDate
+123,subjectId-1,potential-candidate,researchId-1,approved,system-1,2020-01-01,2021-01-03
+456,subjectId-2,on-study-intervention,researchId-1,completed,system-2,2023-05-03,
+789,subjectId-3,on-study-observation,researchId-2,active,,,

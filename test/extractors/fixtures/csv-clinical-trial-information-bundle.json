@@ -3,10 +3,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "urn:uuid:a9235b06dfe8c24b40b938c7a1265ed3087cf0fa43ef0f11375effbb25ecca25",
+      "fullUrl": "urn:uuid:aea78e13731d4b105b3a731a48ce77602f159d46299bb02aaaf80e49530115bd",
       "resource": {
         "resourceType": "ResearchSubject",
-        "id": "a9235b06dfe8c24b40b938c7a1265ed3087cf0fa43ef0f11375effbb25ecca25",
+        "id": "aea78e13731d4b105b3a731a48ce77602f159d46299bb02aaaf80e49530115bd",
         "identifier": [
           {
             "system": "http://example.com/clinicaltrialsubjectids",
@@ -26,6 +26,10 @@
         "individual": {
           "reference": "urn:uuid:mrn-1",
           "type": "Patient"
+        },
+        "period": {
+          "start": "2020-01-01",
+          "end": "2021-01-01"
         }
       }
     },

@@ -1,4 +1,5 @@
-const { reference, identifier, identifierArr } = require('./snippets');
+const { reference, identifier, identifierArr, periodTemplate } = require('./snippets');
+const { ifSomeArgsObj } = require('../helpers/templateUtils');
 
 function studyTemplate(trialResearchID, trialResearchSystem) {
   return {
@@ -38,6 +39,8 @@ function researchSubjectTemplate({
   trialResearchID,
   patientId,
   trialResearchSystem,
+  startDate,
+  endDate,
 }) {
   if (!(id && enrollmentStatus && trialSubjectID && trialResearchID && patientId)) {
     throw Error('Trying to render a ResearchStudyTemplate, but a required argument is missing; ensure that id, trialStatus, trialResearchID, clinicalSiteID are all present');
@@ -50,6 +53,7 @@ function researchSubjectTemplate({
     ...studyTemplate(trialResearchID, trialResearchSystem),
     ...individualTemplate(patientId),
     ...researchSubjectIdentifiersTemplate(trialSubjectID),
+    ...ifSomeArgsObj(periodTemplate)({ startDate, endDate }),
   };
 }
 
