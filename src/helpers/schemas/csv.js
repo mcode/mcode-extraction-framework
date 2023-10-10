@@ -221,6 +221,22 @@ const CSVEncounterSchema = {
   ],
 };
 
+const CSVAppointmentSchema = {
+  headers: [
+    { name: 'mrn', required: true },
+    { name: 'appointmentId', required: true },
+    { name: 'status', required: true },
+    { name: 'serviceCategory' },
+    { name: 'serviceType' },
+    { name: 'appointmentType' },
+    { name: 'specialty' },
+    { name: 'start' },
+    { name: 'end' },
+    { name: 'cancelationCode' },
+    { name: 'description' },
+  ],
+};
+
 module.exports = {
   CSVCancerDiseaseStatusSchema,
   CSVConditionSchema,
@@ -235,4 +251,5 @@ module.exports = {
   CSVAdverseEventSchema,
   CSVCTCAdverseEventSchema,
   CSVEncounterSchema,
+  CSVAppointmentSchema,
 };

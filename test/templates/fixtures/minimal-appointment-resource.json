@@ -1,0 +1,14 @@
+{
+  "resourceType": "Appointment",
+  "id": "appointmentId-3",
+  "status": "cancelled",
+  "participant": [
+    {
+      "actor": {
+        "reference": "urn:uuid:789",
+        "type": "Patient"
+      },
+      "status": "tentative"
+    }
+  ]
+}
