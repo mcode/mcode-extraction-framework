@@ -1,0 +1,15 @@
+[
+  {
+    "mrn": "mrn-1",
+    "appointmentid": "appointmentId-1",
+    "status": "arrived",
+    "servicecategory": "35",
+    "servicetype": "175",
+    "appointmenttype": "CHECKUP",
+    "specialty": "394592004",
+    "start": "2019-12-10T09:00:00+00:00",
+    "end": "2019-12-10T11:00:00+00:00",
+    "cancelationcode": "pat-cpp",
+    "description": "Example description 1"
+  }
+]

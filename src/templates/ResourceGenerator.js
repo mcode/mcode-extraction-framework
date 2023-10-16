@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const logger = require('../helpers/logger');
 
 const { adverseEventTemplate } = require('./AdverseEventTemplate');
+const { appointmentTemplate } = require('./AppointmentTemplate');
 const { cancerDiseaseStatusTemplate } = require('./CancerDiseaseStatusTemplate');
 const { cancerRelatedMedicationAdministrationTemplate } = require('./CancerRelatedMedicationAdministrationTemplate');
 const { cancerRelatedMedicationRequestTemplate } = require('./CancerRelatedMedicationRequestTemplate');
@@ -20,6 +21,7 @@ const { encounterTemplate } = require('./EncounterTemplate');
 
 const fhirTemplateLookup = {
   AdverseEvent: adverseEventTemplate,
+  Appointment: appointmentTemplate,
   CancerDiseaseStatus: cancerDiseaseStatusTemplate,
   CancerRelatedMedicationAdministration: cancerRelatedMedicationAdministrationTemplate,
   CancerRelatedMedicationRequest: cancerRelatedMedicationRequestTemplate,

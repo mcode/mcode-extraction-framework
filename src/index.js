@@ -11,6 +11,7 @@ const {
 const {
   BaseFHIRExtractor,
   CSVAdverseEventExtractor,
+  CSVAppointmentExtractor,
   CSVCancerDiseaseStatusExtractor,
   CSVCancerRelatedMedicationAdministrationExtractor,
   CSVCancerRelatedMedicationRequestExtractor,
@@ -95,6 +96,7 @@ module.exports = {
   BaseFHIRExtractor,
   BaseFHIRModule,
   CSVAdverseEventExtractor,
+  CSVAppointmentExtractor,
   CSVCancerDiseaseStatusExtractor,
   CSVCancerRelatedMedicationAdministrationExtractor,
   CSVCancerRelatedMedicationRequestExtractor,

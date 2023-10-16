@@ -1,0 +1,72 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:appointmentId-1",
+      "resource": {
+        "resourceType": "Appointment",
+        "id": "appointmentId-1",
+        "status": "arrived",
+        "serviceCategory": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/service-category",
+                "code": "35"
+              }
+            ]
+          }
+        ],
+        "serviceType": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/service-type",
+                "code": "175"
+              }
+            ]
+          }
+        ],
+        "appointmentType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0276",
+              "code": "CHECKUP"
+            }
+          ]
+        },
+        "specialty": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "394592004"
+              }
+            ]
+          }
+        ],
+        "participant": [
+          {
+            "actor": {
+              "reference": "urn:uuid:mrn-1",
+              "type": "Patient"
+            },
+            "status": "tentative"
+          }
+        ],
+        "start": "2019-12-10T09:00:00+00:00",
+        "end": "2019-12-10T11:00:00+00:00",
+        "cancelationReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason",
+              "code": "pat-cpp"
+            }
+          ]
+        },
+        "description": "Example description 1"
+      }
+    }
+  ]
+}

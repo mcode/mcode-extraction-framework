@@ -1,6 +1,7 @@
 const { BaseClient } = require('./BaseClient');
 const {
   CSVAdverseEventExtractor,
+  CSVAppointmentExtractor,
   CSVCancerDiseaseStatusExtractor,
   CSVCancerRelatedMedicationAdministrationExtractor,
   CSVCancerRelatedMedicationRequestExtractor,
@@ -32,6 +33,7 @@ class MCODEClient extends BaseClient {
     super();
     this.registerExtractors(
       CSVAdverseEventExtractor,
+      CSVAppointmentExtractor,
       CSVCancerDiseaseStatusExtractor,
       CSVCancerRelatedMedicationAdministrationExtractor,
       CSVCancerRelatedMedicationRequestExtractor,
@@ -73,6 +75,7 @@ class MCODEClient extends BaseClient {
       { type: 'CSVAdverseEventExtractor', dependencies: ['CSVPatientExtractor'] },
       { type: 'CSVCTCAdverseEventExtractor', dependencies: ['CSVPatientExtractor'] },
       { type: 'CSVEncounterExtractor', dependencies: ['CSVPatientExtractor'] },
+      { type: 'CSVAppointmentExtractor', dependencies: ['CSVPatientExtractor'] },
     ];
     // Sort extractors based on order and dependencies
     this.extractorConfig = sortExtractors(this.extractorConfig, dependencyInfo);

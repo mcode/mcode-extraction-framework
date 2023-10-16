@@ -1,0 +1,4 @@
+mrn,appointmentId,status,serviceCategory,serviceType,appointmentType,specialty,start,end,cancelationCode,description
+123,appointmentId-1,arrived,35,175,CHECKUP,394592004,2019-12-10T09:00:00Z,2019-12-10T11:00:00Z,,"Example description 1"
+456,appointmentId-2,pending,35,175,FOLLOWUP,394592004,2020-12-10T09:00:00Z,2020-12-10T11:00:00Z,,"Example description 2"
+789,appointmentId-3,cancelled,,,,,,,pat-cpp,
