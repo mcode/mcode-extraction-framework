@@ -14,6 +14,9 @@
     "notificationInfo": {
       "$ref": "#/$defs/notificationInfo"
     },
+    "postExtraction": {
+      "$ref": "#/$defs/postExtraction"
+    },
     "extractors": {
       "title": "Extractors",
       "type": "array",
@@ -41,7 +44,7 @@
           "title": "Request Headers",
           "type": "object"
         },
-        "csvParse" : {
+        "csvParse": {
           "title": "CSV Parse",
           "type": "object",
           "properties": {
@@ -96,11 +99,61 @@
         }
       },
       "dependencies": {
-        "host": { "required": ["to"] },
-        "to": { "required": ["host"] },
-        "from": { "required": ["host", "to"] },
-        "port": { "required": ["host", "to"] },
-        "tlsRejectUnauthorized": { "required": ["host", "to"] }
+        "host": {
+          "required": [
+            "to"
+          ]
+        },
+        "to": {
+          "required": [
+            "host"
+          ]
+        },
+        "from": {
+          "required": [
+            "host",
+            "to"
+          ]
+        },
+        "port": {
+          "required": [
+            "host",
+            "to"
+          ]
+        },
+        "tlsRejectUnauthorized": {
+          "required": [
+            "host",
+            "to"
+          ]
+        }
+      }
+    },
+    "postExtraction": {
+      "title": "Post Extraction Processes",
+      "type": "object",
+      "properties": {
+        "dateFilter": {
+          "$ref": "#/$defs/postExtraction"
+        }
+      }
+    },
+    "dateFilter": {
+      "title": "Date Filter",
+      "type": "object",
+      "properties": {
+        "resourceTypes": {
+          "title": "Resource Types",
+          "type": "string"
+        },
+        "startDate": {
+          "title": "Start Date",
+          "type": "string"
+        },
+        "endDate": {
+          "title": "End Date",
+          "type": "string"
+        }
       }
     },
     "extractor": {
