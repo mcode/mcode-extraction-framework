@@ -19,7 +19,6 @@ class DateFilterMapper extends AggregateMapper {
       filter: (r) => r.resource.resourceType === this.resourceType,
       exclude: (r) => {
         const date = fhirpath.evaluate(r.resource, DateFormatByResourceType[this.resourceType])[0];
-        // const date = resource[DateFormatByResourceType[this.resourceType]];
         const time = new Date(date).getTime();
         const start = (new Date(this.startDate)).getTime();
         const end = (new Date(this.endDate)).getTime();
