@@ -1,5 +1,6 @@
 const moment = require('moment');
 const fs = require('fs');
+const path = require('path');
 const { AggregateMapper } = require('fhir-mapper');
 const logger = require('../helpers/logger');
 const { RunInstanceLogger } = require('./tools/RunInstanceLogger');
@@ -48,8 +49,8 @@ async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, 
   // Post-extraction mapping
   if (fs.existsSync('./config/mapper.js')) {
     logger.info('Applying post-extraction mapping');
-    // eslint-disable-next-line global-require
-    const { resourceMapping, variables } = require('../../config/mapper.js');
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    const { resourceMapping, variables } = require(path.resolve('../../config/mapper.js'));
     const mapper = new AggregateMapper(resourceMapping, variables);
     extractedData.map((bundle) => {
       const mappedBundle = bundle;
