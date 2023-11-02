@@ -1,11 +1,12 @@
 const moment = require('moment');
+const fs = require('fs');
+const { AggregateMapper } = require('fhir-mapper');
 const logger = require('../helpers/logger');
 const { RunInstanceLogger } = require('./tools/RunInstanceLogger');
 const { sendEmailNotification, zipErrors } = require('./tools/emailNotifications');
 const { extractDataForPatients } = require('./tools/mcodeExtraction');
 const { parsePatientIds } = require('../helpers/appUtils');
 const { validateConfig } = require('../helpers/configUtils');
-const { DateFilterMapper } = require('../helpers/mapperUtils');
 
 function checkInputAndConfig(config, fromDate, toDate) {
   // Check input args and needed config variables based on client being used
@@ -44,23 +45,17 @@ async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, 
   logger.info(`Extracting data for ${patientIds.length} patients`);
   const { extractedData, successfulExtraction, totalExtractionErrors } = await extractDataForPatients(patientIds, mcodeClient, effectiveFromDate, effectiveToDate);
 
-  // Perform post-extraction processes
-  if (config.postExtraction) {
-    logger.info('Running post-extraction processes');
-    // If dateFilter is in the config file, apply date filtering to specified resourceTypes
-    if (config.postExtraction.dateFilter) {
-      const filter = config.postExtraction.dateFilter;
-      logger.info(`Filtering ${filter.resourceTypes} resources to be within ${filter.startDate} and ${filter.endDate}`);
-      // generate a date filter mapper for each resource type
-      const mappers = filter.resourceTypes.map((type) => new DateFilterMapper(type, filter.startDate, filter.endDate));
-      mappers.forEach((mapper) => {
-        extractedData.map((bundle) => {
-          const mappedBundle = bundle;
-          mappedBundle.entry = mapper.execute(bundle.entry);
-          return bundle;
-        });
-      });
-    }
+  // Post-extraction mapping
+  if (fs.existsSync('./config/mapper.js')) {
+    logger.info('Applying post-extraction mapping');
+    // eslint-disable-next-line global-require
+    const { resourceMapping, variables } = require('../../config/mapper.js');
+    const mapper = new AggregateMapper(resourceMapping, variables);
+    extractedData.map((bundle) => {
+      const mappedBundle = bundle;
+      mappedBundle.entry = mapper.execute(bundle.entry);
+      return bundle;
+    });
   }
 
   // If we have notification information, send an emailNotification
