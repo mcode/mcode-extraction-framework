@@ -41,6 +41,10 @@
           "title": "Request Headers",
           "type": "object"
         },
+        "queryParameters": {
+          "title": "Query Parameters",
+          "type": "object"
+        },
         "csvParse" : {
           "title": "CSV Parse",
           "type": "object",
