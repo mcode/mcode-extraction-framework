@@ -36,6 +36,42 @@
             }
           ]
         },
+        "dosageInstruction": [
+          {
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "example-route"
+                }
+              ]
+            },
+            "asNeededCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "example-asneeded"
+                }
+              ]
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "example-type"
+                    }
+                  ]
+                },
+                "doseQuantity": {
+                  "value": 111,
+                  "unit": "example-unit"
+                }
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "urn:uuid:mrn-1",
           "type": "Patient"

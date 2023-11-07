@@ -23,6 +23,11 @@ function formatData(medicationData, patientId) {
       intent,
       authoredon: authoredOn,
       requesterid: requesterId,
+      dosageroute: dosageRoute,
+      asneededcode: asNeededCode,
+      doseratetype: doseRateType,
+      dosequantityvalue: doseQuantityValue,
+      dosequantityunit: doseQuantityUnit,
     } = medication;
 
     if (!(code && codeSystem && status && intent && requesterId)) {
@@ -43,6 +48,11 @@ function formatData(medicationData, patientId) {
       intent,
       authoredOn,
       requesterId,
+      dosageRoute,
+      asNeededCode,
+      doseRateType,
+      doseQuantityValue,
+      doseQuantityUnit,
     };
   });
 }

@@ -12,6 +12,11 @@
     "procedureintent": "example-code",
     "status": "example-status",
     "requesterid": "example-requester",
-    "intent": "example-intent"
+    "intent": "example-intent",
+    "dosageroute": "example-route",
+    "asneededcode": "example-asneeded",
+    "doseratetype": "example-type",
+    "dosequantityvalue": "111",
+    "dosequantityunit": "example-unit"
   }
 ]
