@@ -84,7 +84,7 @@ describe('firstIdentifierEntry', () => {
 describe('firstResourceInBundle', () => {
   test('Empty bundle should throw an error', () => {
     expect(() => firstResourceInBundle(emptyBundle))
-      .toThrow(TypeError("Cannot read property 'resource' of undefined"));
+      .toThrow(TypeError("Cannot read properties of undefined (reading 'resource')"));
   });
 
   test('Bundles with entries should always return the first', () => {

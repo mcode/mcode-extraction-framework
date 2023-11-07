@@ -29,8 +29,8 @@ A Node.js framework for extracting mCODE FHIR resources. All resources are profi
 
 ## Prerequisites
 
-- [Node.js v14.18.1 (LTS as of Oct 2021)](https://nodejs.org/en/)
-  - npm v6.14.15 (included in LTS of Oct 2021)
+- [Node.js version >v16 LTS](https://nodejs.org/en/)
+  - npm (included in LTS)
 
 ### Latest
 
