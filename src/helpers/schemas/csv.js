@@ -117,6 +117,11 @@ const CSVCancerRelatedMedicationRequestSchema = {
     { name: 'intent', required: true },
     { name: 'authoredOn' },
     { name: 'requesterId', required: true },
+    { name: 'dosageRoute' },
+    { name: 'asNeededCode' },
+    { name: 'doseRateType' },
+    { name: 'doseQuantityValue' },
+    { name: 'doseQuantityUnit' },
   ],
 };
 

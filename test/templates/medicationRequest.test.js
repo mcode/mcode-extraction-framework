@@ -18,6 +18,11 @@ const REQUEST_VALID_DATA = {
   status: 'example-status',
   requesterId: 'example-requester',
   intent: 'example-intent',
+  dosageRoute: 'example-route',
+  asNeededCode: 'example-asneeded',
+  doseRateType: 'example-type',
+  doseQuantityValue: '111',
+  doseQuantityUnit: 'example-unit',
 };
 
 const REQUEST_MINIMAL_DATA = {
@@ -33,6 +38,11 @@ const REQUEST_MINIMAL_DATA = {
   status: 'example-status',
   requesterId: 'example-requester',
   intent: 'example-intent',
+  dosageRoute: null,
+  asNeededCode: null,
+  doseRateType: null,
+  doseQuantityValue: null,
+  doseQuantityUnit: null,
 };
 
 
@@ -50,6 +60,11 @@ const REQUEST_INVALID_DATA = {
   status: null,
   requesterId: 'example-requester',
   intent: 'example-intent',
+  dosageRoute: 'example-route',
+  asNeededCode: 'example-asneeded',
+  doseRateType: 'example-type',
+  doseQuantityValue: '111',
+  doseQuantityUnit: 'example-unit',
 };
 
 describe('test Medication Request template', () => {
@@ -76,6 +91,11 @@ describe('test Medication Request template', () => {
       treatmentReasonCodeSystem: 'example-code-system',
       treatmentReasonDisplayText: 'Example Text',
       procedureIntent: 'example-code',
+      dosageRoute: 'example-route',
+      asNeededCode: 'example-asneeded',
+      doseRateType: 'example-type',
+      doseQuantityValue: '111',
+      doseQuantityUnit: 'example-unit',
     };
 
     const NECESSARY_DATA = {
