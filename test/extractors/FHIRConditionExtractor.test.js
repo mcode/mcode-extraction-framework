@@ -4,7 +4,6 @@ const MOCK_URL = 'http://example.com';
 const MOCK_HEADERS = {};
 
 
-
 const extractor = new FHIRConditionExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_HEADERS });
 
 describe('FHIRConditionExtractor', () => {

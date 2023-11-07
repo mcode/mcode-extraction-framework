@@ -2,7 +2,9 @@ const { BaseFHIRExtractor } = require('./BaseFHIRExtractor');
 const { maskPatientData } = require('../helpers/patientUtils.js');
 
 class FHIRPatientExtractor extends BaseFHIRExtractor {
-  constructor({ baseFhirUrl, requestHeaders, version, mask = [], searchParameters }) {
+  constructor({
+    baseFhirUrl, requestHeaders, version, mask = [], searchParameters,
+  }) {
     super({ baseFhirUrl, requestHeaders, version, searchParameters });
     this.resourceType = 'Patient';
     this.mask = mask;

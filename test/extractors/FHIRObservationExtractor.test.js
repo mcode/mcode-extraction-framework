@@ -4,7 +4,6 @@ const MOCK_URL = 'http://example.com';
 const MOCK_HEADERS = {};
 
 
-
 // Construct extractor and create spies for mocking responses
 const extractor = new FHIRObservationExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_HEADERS });
 
@@ -14,5 +13,4 @@ describe('FHIRObservationExtractor', () => {
       expect(extractor.resourceType).toEqual('Observation');
     });
   });
-
 });

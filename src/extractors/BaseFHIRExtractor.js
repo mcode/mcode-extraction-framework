@@ -5,7 +5,9 @@ const { getPatientFromContext } = require('../helpers/contextUtils');
 const logger = require('../helpers/logger');
 
 class BaseFHIRExtractor extends Extractor {
-  constructor({ baseFhirUrl, requestHeaders, version, resourceType, searchParameters={} }) {
+  constructor({
+    baseFhirUrl, requestHeaders, version, resourceType, searchParameters = {},
+  }) {
     super();
     this.resourceType = resourceType;
     this.version = version;
