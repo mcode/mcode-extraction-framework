@@ -1,4 +1,7 @@
 const moment = require('moment');
+const fs = require('fs');
+const path = require('path');
+const { AggregateMapper } = require('fhir-mapper');
 const logger = require('../helpers/logger');
 const { RunInstanceLogger } = require('./tools/RunInstanceLogger');
 const { sendEmailNotification, zipErrors } = require('./tools/emailNotifications');
@@ -42,6 +45,19 @@ async function mcodeApp(Client, fromDate, toDate, config, pathToRunLogs, debug, 
   // Extract the data
   logger.info(`Extracting data for ${patientIds.length} patients`);
   const { extractedData, successfulExtraction, totalExtractionErrors } = await extractDataForPatients(patientIds, mcodeClient, effectiveFromDate, effectiveToDate);
+
+  // Post-extraction mapping
+  if (fs.existsSync('./config/mapper.js')) {
+    logger.info('Applying post-extraction mapping');
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    const { resourceMapping, variables } = require(path.resolve('../../config/mapper.js'));
+    const mapper = new AggregateMapper(resourceMapping, variables);
+    extractedData.map((bundle) => {
+      const mappedBundle = bundle;
+      mappedBundle.entry = mapper.execute(bundle.entry);
+      return bundle;
+    });
+  }
 
   // If we have notification information, send an emailNotification
   const { notificationInfo } = config;
