@@ -9,6 +9,9 @@ const {
   zipErrors,
 } = require('./application');
 const {
+  allExtractors,
+  CSVExtractors,
+  dependencyInfo,
   BaseFHIRExtractor,
   CSVAdverseEventExtractor,
   CSVAppointmentExtractor,
@@ -92,6 +95,9 @@ module.exports = {
   getConfig,
   validateConfig,
   // Extractors and Clients
+  allExtractors,
+  CSVExtractors,
+  dependencyInfo,
   BaseClient,
   BaseFHIRExtractor,
   BaseFHIRModule,
