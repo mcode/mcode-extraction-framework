@@ -63,7 +63,20 @@
             "unit": "example-unit"
           }
         }
-      ]
+      ],
+      "timing": {
+        "event": [
+          "2020-01-01"
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation",
+              "code": "example-code"
+            }
+          ]
+        }
+      }
     }
   ],
   "subject": {

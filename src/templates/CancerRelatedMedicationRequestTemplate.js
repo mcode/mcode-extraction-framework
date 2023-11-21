@@ -41,14 +41,24 @@ function doseAndRateTemplate({ doseRateType, doseQuantityValue, doseQuantityUnit
   };
 }
 
+function timingTemplate({ timingCode, timingEvent }) {
+  return {
+    timing: {
+      event: [timingEvent],
+      code: { coding: [coding({ code: timingCode, system: 'http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation' })] },
+    },
+  };
+}
+
 function dosageInstructionTemplate({
-  dosageRoute, asNeededCode, doseRateType, doseQuantityValue, doseQuantityUnit,
+  dosageRoute, asNeededCode, doseRateType, doseQuantityValue, doseQuantityUnit, timingCode, timingEvent,
 }) {
   return {
     dosageInstruction: [{
       route: { coding: [coding({ code: dosageRoute, system: 'http://snomed.info/sct' })] },
       asNeededCodeableConcept: { coding: [coding({ code: asNeededCode, system: 'http://snomed.info/sct' })] },
       ...ifSomeArgsObj(doseAndRateTemplate)({ doseRateType, doseQuantityValue, doseQuantityUnit }),
+      ...ifSomeArgsObj(timingTemplate)({ timingCode, timingEvent }),
     }],
   };
 }
@@ -72,6 +82,8 @@ function cancerRelatedMedicationRequestTemplate({
   doseRateType,
   doseQuantityValue,
   doseQuantityUnit,
+  timingCode,
+  timingEvent,
 }) {
   if (!(subjectId && code && codeSystem && status && intent && requesterId)) {
     const e1 = 'Trying to render a CancerRelatedMedicationRequestTemplate, but a required argument is missing; ';
@@ -91,7 +103,7 @@ function cancerRelatedMedicationRequestTemplate({
     status,
     intent,
     ...medicationTemplate({ code, codeSystem, displayText }),
-    ...ifSomeArgsObj(dosageInstructionTemplate)({ dosageRoute, asNeededCode, doseRateType, doseQuantityValue, doseQuantityUnit }),
+    ...ifSomeArgsObj(dosageInstructionTemplate)({ dosageRoute, asNeededCode, doseRateType, doseQuantityValue, doseQuantityUnit, timingCode, timingEvent }),
     ...ifAllArgsObj(subjectTemplate)({ id: subjectId }),
     ...(authoredOn && { authoredOn: formatDateTime(authoredOn) }),
     ...ifAllArgsObj(requesterTemplate)({ id: requesterId }),
