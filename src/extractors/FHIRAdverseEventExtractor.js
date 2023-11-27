@@ -5,8 +5,10 @@ const logger = require('../helpers/logger');
 const BASE_STUDY = ''; // No base study specified
 
 class FHIRAdverseEventExtractor extends BaseFHIRExtractor {
-  constructor({ baseFhirUrl, requestHeaders, version, study }) {
-    super({ baseFhirUrl, requestHeaders, version });
+  constructor({
+    baseFhirUrl, requestHeaders, version, study, searchParameters,
+  }) {
+    super({ baseFhirUrl, requestHeaders, version, searchParameters });
     this.resourceType = 'AdverseEvent';
     this.study = study || BASE_STUDY;
   }

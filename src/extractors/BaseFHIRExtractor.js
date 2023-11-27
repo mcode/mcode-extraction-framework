@@ -5,11 +5,14 @@ const { getPatientFromContext } = require('../helpers/contextUtils');
 const logger = require('../helpers/logger');
 
 class BaseFHIRExtractor extends Extractor {
-  constructor({ baseFhirUrl, requestHeaders, version, resourceType }) {
+  constructor({
+    baseFhirUrl, requestHeaders, version, resourceType, searchParameters = {},
+  }) {
     super();
     this.resourceType = resourceType;
     this.version = version;
     this.baseFHIRModule = new BaseFHIRModule(baseFhirUrl, requestHeaders);
+    this.searchParameters = searchParameters;
   }
 
   updateRequestHeaders(newHeaders) {
@@ -21,7 +24,8 @@ class BaseFHIRExtractor extends Extractor {
   // NOTE: Async because other extractors that extend this may need to make async lookups in the future
   async parametrizeArgsForFHIRModule({ context }) {
     const patient = getPatientFromContext(context);
-    return { patient: patient.id };
+
+    return { ...this.searchParameters, patient: patient.id };
   }
   /* eslint-enable class-methods-use-this */
 

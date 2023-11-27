@@ -1,8 +1,8 @@
 const { BaseFHIRExtractor } = require('./BaseFHIRExtractor');
 
 class FHIRDocumentReferenceExtractor extends BaseFHIRExtractor {
-  constructor({ baseFhirUrl, requestHeaders, version }) {
-    super({ baseFhirUrl, requestHeaders, version });
+  constructor({ baseFhirUrl, requestHeaders, version, searchParameters }) {
+    super({ baseFhirUrl, requestHeaders, version, searchParameters });
     this.resourceType = 'DocumentReference';
   }
 }

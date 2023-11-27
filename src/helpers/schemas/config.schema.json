@@ -156,6 +156,10 @@
           "title": "Type",
           "type": "string"
         },
+        "searchParameters": {
+          "title": "Search Parameters",
+          "type": "object"
+        },
         "mask": {
           "title": "Masked Fields",
           "oneOf": [

@@ -21,6 +21,6 @@
         "object-curly-newline": ["error", {
             "ObjectPattern": { "minProperties": 5 }
         }],
-        "no-underscore-dangle":  ["error", { "allow": ["__get__", "__set__"] }]
+        "no-underscore-dangle":  ["error", { "allow": ["__get__", "__set__","_include"] }]
     }
 }

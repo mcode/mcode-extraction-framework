@@ -87,7 +87,7 @@ function maskPatientData(bundle, mask, maskAll = false) {
   // get Patient resource from bundle
   const patient = fhirpath.evaluate(
     bundle,
-    'Bundle.entry.where(resource.resourceType=\'Patient\').resource,first()',
+    'Bundle.entry.where(resource.resourceType=\'Patient\').resource.first()',
   )[0];
 
   const validFields = [

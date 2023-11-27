@@ -8,6 +8,9 @@ const MOCK_URL = 'http://localhost';
 const MOCK_REQUEST_HEADERS = {
   Accept: 'application/json',
 };
+const MOCK_SEARCH_PARAMS = { _include: 'Condition::subject',
+  category: 'problem-list-item',
+  status: 'final' };
 const MOCK_RESOURCE_TYPE = 'Condition';
 const MOCK_PATIENT_MRN = 'EXAMPLE-MRN';
 const MOCK_CONTEXT = {
@@ -21,7 +24,7 @@ const MOCK_CONTEXT = {
 };
 
 // Create extractor and destructure to mock responses on modules
-const baseFHIRExtractor = new BaseFHIRExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_REQUEST_HEADERS, resourceType: MOCK_RESOURCE_TYPE });
+const baseFHIRExtractor = new BaseFHIRExtractor({ baseFhirUrl: MOCK_URL, requestHeaders: MOCK_REQUEST_HEADERS, resourceType: MOCK_RESOURCE_TYPE, searchParameters: MOCK_SEARCH_PARAMS });
 const { baseFHIRModule } = baseFHIRExtractor;
 
 // Spies for mocking
@@ -30,7 +33,10 @@ const moduleRequestHeadersSpy = jest.spyOn(baseFHIRModule, 'updateRequestHeaders
 
 // Ensure that data is returned for condition
 when(baseFHIRModuleSearchSpy)
-  .calledWith('Condition', { patient: examplePatientBundle.entry[0].resource.id })
+  .calledWith('Condition', { patient: examplePatientBundle.entry[0].resource.id,
+    _include: MOCK_SEARCH_PARAMS._include,
+    category: MOCK_SEARCH_PARAMS.category,
+    status: MOCK_SEARCH_PARAMS.status })
   .mockReturnValue(exampleConditionBundle);
 
 // Tests
@@ -47,6 +53,12 @@ describe('BaseFhirExtractor', () => {
     expect(baseFHIRModuleSearchSpy).not.toHaveBeenCalled();
     expect(paramsBasedOnContext).toHaveProperty('patient');
     expect(paramsBasedOnContext.patient).toEqual(MOCK_CONTEXT.entry[0].resource.id);
+    expect(paramsBasedOnContext).toHaveProperty('_include');
+    expect(paramsBasedOnContext._include).toEqual(MOCK_SEARCH_PARAMS._include);
+    expect(paramsBasedOnContext).toHaveProperty('category');
+    expect(paramsBasedOnContext.category).toEqual(MOCK_SEARCH_PARAMS.category);
+    expect(paramsBasedOnContext).toHaveProperty('status');
+    expect(paramsBasedOnContext.status).toEqual(MOCK_SEARCH_PARAMS.status);
   });
 
   test('parametrizeArgsForFHIRModule throws an error if context has no relevant ID', async () => {
