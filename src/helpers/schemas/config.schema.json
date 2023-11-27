@@ -41,10 +41,6 @@
           "title": "Request Headers",
           "type": "object"
         },
-        "queryParameters": {
-          "title": "Query Parameters",
-          "type": "object"
-        },
         "csvParse" : {
           "title": "CSV Parse",
           "type": "object",
@@ -159,6 +155,10 @@
         "type": {
           "title": "Type",
           "type": "string"
+        },
+        "searchParameters": {
+          "title": "Search Parameters",
+          "type": "object"
         },
         "mask": {
           "title": "Masked Fields",
