@@ -44,7 +44,7 @@ function doseAndRateTemplate({ doseRateType, doseQuantityValue, doseQuantityUnit
 function timingTemplate({ timingCode, timingEvent }) {
   return {
     timing: {
-      event: [timingEvent],
+      ...(timingEvent && { event: [timingEvent] }),
       code: { coding: [coding({ code: timingCode, system: 'http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation' })] },
     },
   };
