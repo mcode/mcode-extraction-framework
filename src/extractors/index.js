@@ -28,7 +28,73 @@ const { FHIRPatientExtractor } = require('./FHIRPatientExtractor');
 const { FHIRProcedureExtractor } = require('./FHIRProcedureExtractor');
 const { MCODESurgicalProcedureExtractor } = require('./MCODESurgicalProcedureExtractor');
 
+// Define information about the order and dependencies of extractors
+const dependencyInfo = [
+  { type: 'CSVPatientExtractor', dependencies: [] },
+  { type: 'CSVConditionExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVCancerDiseaseStatusExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVClinicalTrialInformationExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVTreatmentPlanChangeExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVStagingExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVCancerRelatedMedicationAdministrationExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVCancerRelatedMedicationRequestExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVProcedureExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVObservationExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVAdverseEventExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVCTCAdverseEventExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVEncounterExtractor', dependencies: ['CSVPatientExtractor'] },
+  { type: 'CSVAppointmentExtractor', dependencies: ['CSVPatientExtractor'] },
+];
+
+const CSVExtractors = [
+  CSVAdverseEventExtractor,
+  CSVAppointmentExtractor,
+  CSVCancerDiseaseStatusExtractor,
+  CSVCancerRelatedMedicationAdministrationExtractor,
+  CSVCancerRelatedMedicationRequestExtractor,
+  CSVClinicalTrialInformationExtractor,
+  CSVConditionExtractor,
+  CSVCTCAdverseEventExtractor,
+  CSVEncounterExtractor,
+  CSVObservationExtractor,
+  CSVPatientExtractor,
+  CSVProcedureExtractor,
+  CSVStagingExtractor,
+  CSVTreatmentPlanChangeExtractor,
+];
+
+const allExtractors = [
+  CSVAdverseEventExtractor,
+  CSVAppointmentExtractor,
+  CSVCancerDiseaseStatusExtractor,
+  CSVCancerRelatedMedicationAdministrationExtractor,
+  CSVCancerRelatedMedicationRequestExtractor,
+  CSVClinicalTrialInformationExtractor,
+  CSVConditionExtractor,
+  CSVCTCAdverseEventExtractor,
+  CSVEncounterExtractor,
+  CSVObservationExtractor,
+  CSVPatientExtractor,
+  CSVProcedureExtractor,
+  CSVStagingExtractor,
+  CSVTreatmentPlanChangeExtractor,
+  FHIRAdverseEventExtractor,
+  FHIRAllergyIntoleranceExtractor,
+  FHIRConditionExtractor,
+  FHIRDocumentReferenceExtractor,
+  FHIREncounterExtractor,
+  FHIRMedicationOrderExtractor,
+  FHIRMedicationRequestExtractor,
+  FHIRMedicationStatementExtractor,
+  FHIRObservationExtractor,
+  FHIRPatientExtractor,
+  FHIRProcedureExtractor,
+];
+
 module.exports = {
+  allExtractors,
+  CSVExtractors,
+  dependencyInfo,
   BaseCSVExtractor,
   BaseFHIRExtractor,
   CSVAdverseEventExtractor,

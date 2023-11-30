@@ -27,7 +27,7 @@
     "commander": "^6.2.0",
     "csv-parse": "^4.8.8",
     "fhir-crud-client": "^1.2.2",
-    "fhir-mapper": "git+https://github.com/standardhealth/fhir-mapper.git",
+    "fhir-mapper": "git+https://github.com/standardhealth/fhir-mapper.git#old-fhirpath",
     "fhirpath": "2.1.5",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
