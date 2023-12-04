@@ -122,6 +122,8 @@ const CSVCancerRelatedMedicationRequestSchema = {
     { name: 'doseRateType' },
     { name: 'doseQuantityValue' },
     { name: 'doseQuantityUnit' },
+    { name: 'timingCode' },
+    { name: 'timingEvent' },
   ],
 };
 

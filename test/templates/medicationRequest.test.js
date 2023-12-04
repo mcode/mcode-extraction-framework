@@ -23,6 +23,8 @@ const REQUEST_VALID_DATA = {
   doseRateType: 'example-type',
   doseQuantityValue: '111',
   doseQuantityUnit: 'example-unit',
+  timingEvent: '2020-01-01',
+  timingCode: 'example-code',
 };
 
 const REQUEST_MINIMAL_DATA = {
@@ -43,6 +45,8 @@ const REQUEST_MINIMAL_DATA = {
   doseRateType: null,
   doseQuantityValue: null,
   doseQuantityUnit: null,
+  timingEvent: null,
+  timingCode: null,
 };
 
 
@@ -65,6 +69,8 @@ const REQUEST_INVALID_DATA = {
   doseRateType: 'example-type',
   doseQuantityValue: '111',
   doseQuantityUnit: 'example-unit',
+  timingEvent: '2020-01-01',
+  timingCode: 'example-code',
 };
 
 describe('test Medication Request template', () => {
@@ -96,6 +102,8 @@ describe('test Medication Request template', () => {
       doseRateType: 'example-type',
       doseQuantityValue: '111',
       doseQuantityUnit: 'example-unit',
+      timingEvent: '2020-01-01',
+      timingCode: 'example-code',
     };
 
     const NECESSARY_DATA = {

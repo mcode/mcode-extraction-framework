@@ -2,6 +2,7 @@ const { BaseCSVExtractor } = require('./BaseCSVExtractor');
 const { generateMcodeResources } = require('../templates');
 const { getPatientFromContext } = require('../helpers/contextUtils');
 const { getEmptyBundle } = require('../helpers/fhirUtils');
+const { formatDateTime } = require('../helpers/dateUtils');
 const logger = require('../helpers/logger');
 const { CSVCancerRelatedMedicationRequestSchema } = require('../helpers/schemas/csv');
 
@@ -28,6 +29,8 @@ function formatData(medicationData, patientId) {
       doseratetype: doseRateType,
       dosequantityvalue: doseQuantityValue,
       dosequantityunit: doseQuantityUnit,
+      timingcode: timingCode,
+      timingevent: timingEvent,
     } = medication;
 
     if (!(code && codeSystem && status && intent && requesterId)) {
@@ -53,6 +56,8 @@ function formatData(medicationData, patientId) {
       doseRateType,
       doseQuantityValue,
       doseQuantityUnit,
+      timingCode,
+      timingEvent: !timingEvent ? null : formatDateTime(timingEvent),
     };
   });
 }

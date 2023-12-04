@@ -17,6 +17,8 @@
     "asneededcode": "example-asneeded",
     "doseratetype": "example-type",
     "dosequantityvalue": "111",
-    "dosequantityunit": "example-unit"
+    "dosequantityunit": "example-unit",
+    "timingevent": "YYYY-MM-DD",
+    "timingcode": "example-code"
   }
 ]

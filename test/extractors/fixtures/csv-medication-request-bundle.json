@@ -69,7 +69,20 @@
                   "unit": "example-unit"
                 }
               }
-            ]
+            ],
+            "timing": {
+              "event": [
+                "YYYY-MM-DD"
+              ],
+              "code": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation",
+                    "code": "example-code"
+                  }
+                ]
+              }
+            }
           }
         ],
         "subject": {
