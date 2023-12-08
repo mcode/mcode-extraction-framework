@@ -1,0 +1,4 @@
+mrn,appointmentId,status,serviceCategory,serviceType,appointmentType,specialty,start,end,cancelationCode,description
+mrn-1,exampleId-1,status-code,service-cat,service-type,app-type,specialty-code,YYYY-MM-DD,YYYY-MM-DD,cancel-code,"Example description 1"
+mrn-2,exampleId-2,status-code,service-cat,service-type,app-type,specialty-code,YYYY-MM-DD,YYYY-MM-DD,cancel-code,"Example description 2"
+mrn-2,exampleId-3,status-code,,,,,,,,
