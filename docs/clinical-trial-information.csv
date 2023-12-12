@@ -1,3 +1,3 @@
-mrn,trialSubjectID,enrollmentStatus,trialResearchID,trialStatus
-123,subjectId-1,example-status,researchId-1,example-trialStatus
-456,subjectId-2,example-status,researchId-1,example-trialStatus
+mrn,trialSubjectID,enrollmentStatus,trialResearchID,trialStatus,trialResearchSystem,startDate,endDate
+123,subjectId-1,example-status,researchId-1,example-trialStatus,research-system,YYYY-MM-DD,YYYY-MM-DD
+456,subjectId-2,example-status,researchId-1,example-trialStatus,research-system,YYYY-MM-DD,YYYY-MM-DD

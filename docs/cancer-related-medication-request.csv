@@ -1,3 +1,3 @@
-mrn,requestId,code,codeSystem,displayText,treatmentReasonCode,treatmentReasonCodeSystem,treatmentReasonDisplayText,procedureIntent,status,intent,authoredOn,requesterId
-mrn-1,requestId-1,code,code-system,code-text,code,code-system,display-text,procedure-intent-code,status-code,intent-code,YYY-MM-DD,requesterId-1
-mrn-2,requestId-2,code,code-system,code-text,code,code-system,display-text,procedure-intent-code,status-code,intent-code,YYY-MM-DD,requesterId-2
+mrn,requestId,code,codeSystem,displayText,treatmentReasonCode,treatmentReasonCodeSystem,treatmentReasonDisplayText,procedureIntent,status,intent,authoredOn,requesterId,dosageRoute,asNeededCode,doseRateType,doseQuantityValue,doseQuantityUnit,timingCode,timingEvent
+mrn-1,requestId-1,code,code-system,code-text,code,code-system,display-text,procedure-intent-code,status-code,intent-code,YYY-MM-DD,requesterId-1,route-code,needed-code,rate-type,quantity-value,quantity-unit,timing-code,YYYY-MM-DD
+mrn-2,requestId-2,code,code-system,code-text,code,code-system,display-text,procedure-intent-code,status-code,intent-code,YYY-MM-DD,requesterId-2,route-code,needed-code,rate-type,quantity-value,quantity-unit,timing-code,YYYY-MM-DD

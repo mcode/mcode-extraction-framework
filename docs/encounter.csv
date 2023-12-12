@@ -1,0 +1,4 @@
+mrn,encounterId,status,classCode,classSystem,typeCode,typeSystem,startDate,endDate
+mrn-1,exampleId-1,status-code,class-code,http://terminology.hl7.org/CodeSystem/v3-ActCode,type-code,http://snomed.info/sct,YYYY-MM-DD,YYYY-MM-DD
+mrn-2,exampleId-2,status-code,class-code,http://terminology.hl7.org/CodeSystem/v3-ActCode,type-code,http://snomed.info/sct,YYYY-MM-DD,YYYY-MM-DD
+mrn-3,exampleId-3,status-code,class-code,http://terminology.hl7.org/CodeSystem/v3-ActCode,,,,

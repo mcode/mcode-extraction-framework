@@ -108,6 +108,8 @@ To specify which patients the client should extract data for, the configuration 
 
 Each extractor uses various methods to gather data and format that data into [mCODE](http://hl7.org/fhir/us/mcode/index.html) profiled resources. The `observation` extractor formats data into a general [FHIR R4](http://hl7.org/fhir/R4) profile. Extractors may require additional configuration items that can be specified in the configuration file.
 
+Post-extraction mapping can be enabled by including a file named `mapper.js` in the `config` folder which exports `resourceMapping` and `variables`. For more information about defining mappers see documentation for the [FHIR Mapper](https://github.com/standardhealth/fhir-mapper)
+
 ### Email Notification
 
 The mCODE Extraction Client supports sending an email using the SMTP protocol when there are errors during data extraction.
